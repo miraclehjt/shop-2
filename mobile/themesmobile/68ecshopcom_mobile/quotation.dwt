@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>{$page_title}</title>
+	<meta name="Keywords" content="{$keywords}" />
+	<meta name="Description" content="{$description}" />
+    <script src="themesmobile/68ecshopcom_mobile/js/modernizr.js"></script>
+<link rel="shortcut icon" href="themesmobile/68ecshopcom_mobile/img/favicon.png">
+	<link rel="apple-touch-icon-precomposed" href="themesmobile/68ecshopcom_mobile/img/website_icon.png">
+	<link rel="stylesheet" href="themesmobile/68ecshopcom_mobile/css/style.css">
+
+{insert_scripts files='common.js,utils.js'}
+
+	</head>
+<body id="page_goods">
+<div id="container">
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+
+<div id="main"><div class="wrapper">
+	{include file='library/ur_here.lbi'}
+	<!-- TemplateBeginEditable name="主栏上方" --><!-- TemplateEndEditable -->
+	<div class="quotation box full_box">
+		<div class="hd"><h3>{$lang.print_quotation}</h3><div class="extra"></div></div>
+		<div class="bd">
+			<form action="quotation.php" method="post">
+				<select name="cat_id"><option value="0">{$lang.all_category}</option>{$cat_list}</select>
+				<select name="brand_id"><option value="0">{$lang.all_brand}</option>{html_options options=$brand_list}</select>
+				{$lang.keywords} <input type="text" name="keyword"/>
+				<input type="submit" id="print_quotation" value="{$lang.print_quotation}">
+				<input name="act" type="hidden" value="print_quotation">
+			</form>
+		</div>
+	</div>
+	<!-- TemplateBeginEditable name="主栏下方" --><!-- TemplateEndEditable -->
+</div></div>
+
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+
+
+</div>
+</body>
+
+</html>

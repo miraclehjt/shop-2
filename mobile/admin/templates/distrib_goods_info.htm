@@ -1,0 +1,327 @@
+<!-- $Id: group_buy_info.htm 14216 2008-03-10 02:27:21Z testyang $ -->
+
+{include file="pageheader.htm"}
+
+{insert_scripts files="validator.js,../js/utils.js"}
+
+
+
+<script type="text/javascript" src="../js/calendar.php?lang={$cfg_lang}"></script>
+
+<link href="../js/calendar/calendar.css" rel="stylesheet" type="text/css" />
+
+
+
+<!-- 商品搜索 -->
+
+<div class="form-div">
+
+  <form action="javascript:searchGoods()" name="searchForm">
+
+    <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
+
+    <!-- 分类 -->
+
+    <select name="cat_id"><option value="0">{$lang.all_cat}</caption>{$cat_list}</select>
+
+    <!-- 品牌 -->
+
+    <select name="brand_id"><option value="0">{$lang.all_brand}</caption>{html_options options=$brand_list}</select>
+
+    <!-- 关键字 -->
+
+    <input type="text" name="keyword" size="20" />
+
+    <input type="submit" value="{$lang.button_search}" class="button" />
+
+  </form>
+
+</div>
+
+
+
+<form method="post" action="distrib_goods.php?act=insert_update" name="theForm" onsubmit="return validate()">
+
+<div class="main-div">
+
+<table id="group-table" cellspacing="1" cellpadding="3" width="100%">
+
+  <tr>
+
+    <td class="label">{$lang.label_goods_name}</td>
+
+    <td><select name="goods_id">
+
+      {if $distrib_goods.id}
+
+      <option value="{$distrib_goods.goods_id}">{$distrib_goods.goods_name}</option>
+
+      {else}
+
+      <option value="0">{$lang.notice_goods_name}</option>
+
+      {/if}
+
+    </select>    </td>
+
+  </tr>
+  
+  <tr>
+  	<td class="label">分销类型：</td>
+    <td>
+        <input type="radio" name="distrib_time" value="0" {if $distrib_goods.distrib_time eq 0} checked="checked"{/if} onclick="display_time(this.value)"/>
+        永久分销
+        <input type="radio" name="distrib_time" value="1" {if $distrib_goods.distrib_time eq 1} checked="checked"{/if} onclick="display_time(this.value)"/>
+        定时分销
+    </td>
+  </tr>
+
+  <tr {if $distrib_goods.distrib_time eq 0} style="display:none"{else} style="display:table-row"{/if} id="st_time">
+
+    <td class="label">
+      {$lang.label_start_date}</td>
+
+    <td>
+
+      <input name="start_time" type="text" id="start_time" size="22" value='{$distrib_goods.start_time}' readonly="readonly" /><input name="selbtn1" type="button" id="selbtn1" onclick="return showCalendar('start_time', '%Y-%m-%d %H:%M', '24', false, 'selbtn1');" value="{$lang.btn_select}" class="button"/>
+
+    </td>
+
+  </tr>
+
+  <tr {if $distrib_goods.distrib_time eq 0} style="display:none"{else} style="display:table-row"{/if} id="en_time">
+
+    <td class="label">{$lang.label_end_date}</td>
+
+    <td>
+
+      <input name="end_time" type="text" id="end_time" size="22" value='{$distrib_goods.end_time}' readonly="readonly" /><input name="selbtn2" type="button" id="selbtn2" onclick="return showCalendar('end_time', '%Y-%m-%d %H:%M', '24', false, 'selbtn2');" value="{$lang.btn_select}" class="button"/>
+
+    </td>
+
+  </tr>
+  
+  <tr>
+  	<td class="label">分成类型：</td>
+    <td>
+    	<select name="distrib_type" onchange="change_type(this.value)">
+        	<option value="1" {if $distrib_goods.distrib_type eq 1} selected="selected"{/if}>分成金额</option>
+            <option value="2" {if $distrib_goods.distrib_type eq 2} selected="selected"{/if}>商品价格百分比</option>
+        </select>
+    </td>
+  </tr>
+
+  <tr>
+
+    <td class="label">&nbsp;</td>
+    <td><input name="distrib_money" type="text" id="distrib_money" value="{$distrib_goods.distrib_money|default:0}" size="10">
+    <span id="sign">{if $distrib_goods.distrib_type eq 2}%{else}元{/if}</span>
+    </td>
+
+  </tr>
+
+
+  <tr>
+
+    <td class="label">&nbsp;</td>
+
+    <td>
+
+      <input name="id" type="hidden" id="id" value="{$distrib_goods.id}">
+
+      <input type="submit" name="submit" value="{$lang.button_submit}" class="button" />
+
+      <input type="reset" value="{$lang.button_reset}" class="button" />
+
+      </td>
+
+  </tr>
+
+</table>
+
+</div>
+
+</form>
+
+<script language="JavaScript">
+
+<!--
+
+{literal}
+
+
+
+// 检查新订单
+
+startCheckOrder();
+
+
+function display_time(val)
+{
+	if(val == 0)
+	{
+		document.getElementById('st_time').style.display = 'none';
+		document.getElementById('en_time').style.display = 'none'; 
+	} 
+	else
+	{
+		document.getElementById('st_time').style.display = 'table-row';
+		document.getElementById('en_time').style.display = 'table-row';  
+	}
+}
+
+function change_type(val)
+{
+	if(val == 2)
+	{
+		document.getElementById('sign').innerHTML = '%';
+	} 
+	else
+	{
+		document.getElementById('sign').innerHTML = '元';
+	}
+}
+
+/**
+
+ * 检查表单输入的数据
+
+ */
+
+function validate()
+
+{
+
+  validator = new Validator("theForm");
+
+  var eles = document.forms['theForm'].elements;
+
+
+
+  var goods_id = eles['goods_id'].value;
+
+  if (goods_id <= 0)
+
+  {
+
+    validator.addErrorMsg(error_goods_null);
+
+  }
+
+  validator.isNumber('deposit', error_deposit, false);
+
+  validator.isInt('restrict_amount', error_restrict_amount, false);
+
+  validator.isInt('gift_integral', error_gift_integral, false);
+
+  return validator.passed();
+
+}
+
+
+
+/**
+
+ * 搜索商品
+
+ */
+
+function searchGoods()
+
+{
+
+  var filter = new Object;
+
+  filter.cat_id   = document.forms['searchForm'].elements['cat_id'].value;
+
+  filter.brand_id = document.forms['searchForm'].elements['brand_id'].value;
+
+  filter.keyword  = document.forms['searchForm'].elements['keyword'].value;
+
+
+
+  Ajax.call('distrib_goods.php?is_ajax=1&act=search_goods', filter, searchGoodsResponse, 'GET', 'JSON');
+
+}
+
+
+
+function searchGoodsResponse(result)
+
+{
+
+  if (result.error == '1' && result.message != '')
+
+  {
+
+    alert(result.message);
+
+	return;
+
+  }
+
+
+
+  var sel = document.forms['theForm'].elements['goods_id'];
+
+
+
+  sel.length = 0;
+
+
+
+  /* 创建 options */
+
+  var goods = result.content;
+
+  if (goods)
+
+  {
+
+    for (i = 0; i < goods.length; i++)
+
+    {
+
+      var opt = document.createElement("OPTION");
+
+      opt.value = goods[i].goods_id;
+
+      opt.text  = goods[i].goods_name;
+
+      sel.options.add(opt);
+
+    }
+
+  }
+
+  else
+
+  {
+
+    var opt = document.createElement("OPTION");
+
+    opt.value = 0;
+
+    opt.text  = search_is_null;
+
+    sel.options.add(opt);
+
+  }
+
+
+
+  return;
+
+}
+
+
+
+//-->
+
+{/literal}
+
+</script>
+
+
+
+{include file="pagefooter.htm"}

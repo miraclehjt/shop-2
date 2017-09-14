@@ -1,0 +1,15 @@
+<div class="cat_articles box">
+	<div class="hd">
+		<h3><a href="{$articles_cat.url}">{$articles_cat.name|escape:html}</a></h3>
+		<div class="extra">
+			<a href="{$articles_cat.url}">{$lang.more}</a>
+		</div>
+	</div>
+	<div class="bd">	
+		<ul class="text_list">
+			{foreach from=$articles item=article_item name=articles}
+			<li{if $smarty.foreach.articles.first} class="first"{/if}><a href="{$article_item.url}" title="{$article_item.title|escape:html}">{$article_item.short_title|escape:html}</a></li>
+			{/foreach}
+		</ul>
+	</div>
+</div>

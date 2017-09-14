@@ -1,0 +1,12 @@
+{if $ad4}
+<div class="uh-ele1 swiper-container m-l-r3">
+  <div class='ub swiper-wrapper ub-fh m-top3'>
+  {foreach from=$ad4 item=ad name=ad}
+      <div class='swiper-slide ub-fh goods-img ad' ad_link = "{$ad.ad_link}" id='swiper7_slide_{$smarty.foreach.ad.iteration}'> 
+	<img src='{$url}mobile/data/afficheimg/{$ad.ad_code}?{$rand}'/> 
+      </div>
+  {/foreach}
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
+{/if}

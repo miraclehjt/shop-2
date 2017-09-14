@@ -1,0 +1,117 @@
+{include file="pageheader.htm"}
+
+{insert_scripts files="../js/utils.js,listtable.js"}
+
+<!-- 通用信息 -->
+
+<div class="list-div" id="listDiv">
+
+<form name="theForm" method="post" action="weixin.php?act=addconfig">
+
+  <table width="100%" cellpadding="3" cellspacing="1">
+
+  <tbody>
+
+  <tr>
+
+    <td class="label">名称:</td>
+
+	<td><input type="text " name="title" size="50" value="{$config.title}"></td>
+
+  </tr>
+
+ <tr>
+
+    <td class="label">Token:</td>
+
+	<td><input type="text " name="token" size="20" value="{$config.token}"></td>
+
+  </tr>
+
+  <tr>
+
+    <td class="label">AppId :</td>
+
+    <td><input type="text " name="appid" size="20" value="{$config.appid}"></td>
+
+  </tr>
+
+ <tr>
+
+    <td class="label">AppSecret :</td>
+
+    <td><input type="text " name="appsecret" size="32" value="{$config.appsecret}"></td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2" align="center">
+
+      <input type="submit" value="{$lang.button_submit}" class="button" />
+
+    <input type="reset" value="{$lang.button_reset}" class="button" />
+
+	<input type="hidden" value="{$config.id}" name="id" />
+
+    </td>
+
+  </tr>
+
+</tbody></table>
+
+</form>
+
+<table width="100%" cellspacing="1" cellpadding="2" id="list-table">
+
+  <tr>
+
+	<th>名称</th>
+
+	<th>TOKEN</th>
+
+    <th>APPID</th>
+
+	<th>appsecret</th>
+
+	<th>接口地址</th>
+
+	<th>操作</th>
+
+  </tr>
+
+	{foreach item=item from=$list}
+
+  <tr>
+
+	<td>{$item.title}</td>
+
+	<td>{$item.token}</td>
+
+	<td>{$item.appid}</td>
+
+	<td>{$item.appsecret}</td>
+
+	<td>{$baseurl}weixin?id={$item.id}</td>
+
+	<td>
+
+		<a href="weixin.php?act=addconfig&id={$item.id}">修改</a>|<a href="weixin.php?act=addconfig&up=1&id={$item.id}">更新菜单</a>|<a href="weixin.php?act=addconfig&up=2&id={$item.id}">删除</a>
+
+	</td>
+
+  </tr>
+
+	{foreachelse}
+
+  <tr><td class="no-records" colspan="7">{$lang.no_records}</td></tr>
+
+  {/foreach}
+
+  </table>
+
+</div>
+
+{/literal}
+
+{include file="pagefooter.htm"}

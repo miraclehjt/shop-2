@@ -1,0 +1,505 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link rel="stylesheet" type="text/css" href="themes/68ecshopcom_360buy/css/category.css" />
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery_006.js"></script> 
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/search_goods.js"></script> 
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/base-2011.js"></script>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-lazyload.js" ></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+{* 包含脚本文件 *}
+{insert_scripts files='utils.js,common.js,global.js'}
+</head>
+<body>
+<div id="site-nav"> 
+  <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+  <div class="blank"></div>
+  <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem --> 
+  <!--crumb end-->
+  <div class="w main">
+    <div class="right-extra"> 
+      <!-- {if $action eq "form"} --> 
+      <!--  搜索的表单 -->
+      <div class="box">
+        <div class="box_1">
+          <h3 style="height:30px; line-height:30px; background:#f2f2f2; text-indent:15px; border:#dddddd 1px solid;"><span>{$lang.advanced_search}</span></h3>
+          <div class="boxCenterList">
+            <form action="search.php" method="get" name="advancedSearchForm" id="advancedSearchForm">
+              <table border="0" align="center" cellpadding="3">
+                <tr>
+                  <td valign="top">{$lang.keywords}：</td>
+                  <td><input name="keywords" id="keywords" type="text" size="40" maxlength="120" class="inputBg" value="{$adv_val.keywords}" />
+                    <label for="sc_ds">
+                      <input type="checkbox" name="sc_ds" value="1" id="sc_ds" {$scck} />
+                      {$lang.sc_ds}</label>
+                    <br />
+                    {$lang.searchkeywords_notice} </td>
+                </tr>
+                <tr>
+                  <td>{$lang.category}：</td>
+                  <td><select name="category" id="select" style="border:1px solid #ccc;">
+                      <option value="0">{$lang.all_category}</option>
+                      
+                    {$cat_list}
+                  
+                    </select></td>
+                </tr>
+                <tr>
+                  <td>{$lang.brand}：</td>
+                  <td><select name="brand" id="brand" style="border:1px solid #ccc;">
+                      <option value="0">{$lang.all_brand}</option>
+                      
+                    
+            {html_options options=$brand_list selected=$adv_val.brand}
+          
+                  
+                    </select></td>
+                </tr>
+                <tr>
+                  <td>{$lang.price}：</td>
+                  <td><input name="min_price" type="text" id="min_price" class="inputBg" value="{$adv_val.min_price}" size="10" maxlength="8" />
+                    -
+                    <input name="max_price" type="text" id="max_price" class="inputBg" value="{$adv_val.max_price}" size="10" maxlength="8" /></td>
+                </tr>
+                <!--{if $goods_type_list}-->
+                <tr>
+                  <td>{$lang.extension}：</td>
+                  <td><select name="goods_type" onchange="this.form.submit()" style="border:1px solid #ccc;">
+                      <option value="0">{$lang.all_option}</option>
+                      
+                    
+            {html_options options=$goods_type_list selected=$goods_type_selected}
+          
+                  
+                    </select></td>
+                </tr>
+                <!--{/if}--> 
+                <!--{if $goods_type_selected > 0}--> 
+                <!--{foreach from=$goods_attributes item=item}--> 
+                <!--{if $item.type eq 1}-->
+                <tr>
+                  <td>{$item.attr}：</td>
+                  <td colspan="3"><input name="attr[{$item.id}]" value="{$item.value}" class="inputBg" type="text" size="20" maxlength="120" /></td>
+                </tr>
+                <!--{/if}--> 
+                <!--{if $item.type eq 2}-->
+                <tr>
+                  <td>{$item.attr}：</td>
+                  <td colspan="3"><input name="attr[{$item.id}][from]" class="inputBg" value="{$item.value.from}" type="text" size="5" maxlength="5" />
+                    -
+                    <input name="attr[{$item.id}][to]" value="{$item.value.to}"  class="inputBg" type="text" maxlength="5" /></td>
+                </tr>
+                <!--{/if}--> 
+                <!--{if $item.type eq 3}-->
+                <tr>
+                  <td>{$item.attr}：</td>
+                  <td colspan="3"><select name="attr[{$item.id}]" style="border:1px solid #ccc;">
+                      <option value="0">{$lang.all_option}</option>
+                      
+                    
+            {html_options options=$item.options selected=$item.value}
+          
+                  
+                    </select></td>
+                </tr>
+                <!--{/if}--> 
+                <!--{/foreach}--> 
+                <!--{/if}--> 
+                
+                <!-- {if $use_storage eq 1} -->
+                <tr>
+                  <td>&nbsp;</td>
+                  <td><label for="outstock"><input type="checkbox" name="outstock" value="1" id="outstock" <!-- {if $outstock} -->checked="checked"<!--{/if}-->/> {$lang.hidden_outstock}</label></td>
+                </tr>
+                <!--{/if}-->
+                
+                <tr>
+                  <td colspan="4" align="center"><input type="hidden" name="action" value="form" />
+                    <input type="submit" name="Submit" class="bnt_blue_1" value="{$lang.button_search}" /></td>
+                </tr>
+              </table>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="blank5"></div>
+      <!-- {/if} --> 
+      
+      <!-- {if isset($goods_list)} -->
+      <div class="box">
+        <div id="filter">
+          <div class='fore1' style="border:none;">
+            <dl class='order'>
+              <dt> <!-- {if $intromode eq 'best'} --> 
+                <span>{$lang.best_goods}</span> 
+                <!-- {elseif $intromode eq 'new'} --> 
+                <span>{$lang.new_goods}</span> 
+                <!-- {elseif $intromode eq 'hot'} --> 
+                <span>{$lang.hot_goods}</span> 
+                <!-- {elseif $intromode eq 'promotion'} --> 
+                <span>{$lang.promotion_goods}</span> 
+                <!-- {else} --> 
+                <span>{$lang.search_result}</span> 
+                <!-- {/if} -->&nbsp;&nbsp;</dt>
+              <dd  class=<!-- {if $pager.search.sort == 'goods_id'} -->curr<!-- {/if} -->>
+              	<a href="search.php?{foreach from=$pager.search key=key item=item}{if $key neq "sort" and $key neq "order"}{$key}={$item}&{/if}{/foreach}page={$pager.page}&sort=goods_id&order={if $pager.search.order eq 'DESC'}ASC{else}DESC{/if}#list">上架
+                <b class="icon-order-{if $pager.search.sort == 'goods_id'}{$pager.search.order}{else}DESC{/if}ending"></b></a>
+              </dd>
+              <dd class=<!-- {if $pager.search.sort == 'shop_price'} -->curr<!-- {/if} -->>
+              	<a href="search.php?{foreach from=$pager.search key=key item=item}{if $key neq "sort" and $key neq "order"}{$key}={$item}&{/if}{/foreach}page={$pager.page}&sort=shop_price&order={if $pager.search.order eq 'DESC'}ASC{else}DESC{/if}#list">价格
+                <b class="icon-order-{if $pager.search.sort == 'shop_price'}{$pager.search.order}{else}DESC{/if}ending"></b></a>
+              </dd>
+              <dd  class=<!-- {if $pager.search.sort == 'last_update'} -->curr<!-- {/if} -->>
+              	<a href="search.php?{foreach from=$pager.search key=key item=item}{if $key neq "sort" and $key neq "order"}{$key}={$item}&{/if}{/foreach}page={$pager.page}&sort=last_update&order={if $pager.search.order eq 'DESC'}ASC{else}DESC{/if}#list">更新
+                <b class="icon-order-{if $pager.search.sort == 'last_update'}{$pager.search.order}{else}DESC{/if}ending"></b></a>
+              </dd>
+              <dd  class=<!-- {if $pager.search.sort == 'click_count'} -->curr<!-- {/if} -->>
+              	<a href="search.php?{foreach from=$pager.search key=key item=item}{if $key neq "sort" and $key neq "order"}{$key}={$item}&{/if}{/foreach}page={$pager.page}&sort=click_count&order={if $pager.search.order eq 'DESC'}ASC{else}DESC{/if}#list">人气
+                <b class="icon-order-{if $pager.search.sort == 'click_count'}{$pager.search.order}{else}DESC{/if}ending"></b></a>
+              </dd>
+            </dl>
+            <div class='pagin pagin-m'><span class='text'><font>{$pager.page}</font>/{$pager.page_count}</span><!-- {if $pager.page_prev} --> 
+              <a href="{$pager.page_prev}" class="prev" >&lt;</a> 
+              <!-- {else} --> 
+              <span class="prev-disabled">&lt;</span> 
+              <!-- {/if} --> 
+              <!-- {if $pager.page_next} --> 
+              <a href="{$pager.page_next}" class="next" >&gt;</a> 
+              <!-- {else} --> 
+              <span class="next-disabled">&gt;</span> 
+              <!-- {/if} --></div>
+            <div class='total'><span>共<strong>{$pager.record_count}</strong>个商品</span></div>
+            <span class='clr'></span></div>
+        </div>
+        <!--{if $goods_list}-->
+        <form action="compare.php" method="post" name="compareForm" id="compareForm" onsubmit="return compareGoods(this);">
+          {* 代码增加_start  By bbs.hongyuvip.com *}
+          {if $beizhuxinxi_www_68ecshop_com}
+          <div style="width:100%;height:50px;margin:10px 0;overflow:hidden;text-align:center;"> {$beizhuxinxi_www_68ecshop_com} </div>
+          {/if}
+          {* 代码增加_end  By bbs.hongyuvip.com *}
+          <div class="squares" nc_type="current_display_mode">
+            <ul class="list_pic">
+              <!--{foreach from=$goods_list item=goods name=name}--> 
+              <!-- {if $goods.goods_id} -->
+              <li id="li_{$goods.goods_id}" class="item" {if $smarty.foreach.name.iteration % 4 eq 1}style="margin-left:0px;"{/if}>
+                <div class="goods-content" style="position:relative">
+                <!-- {if $goods.is_hot eq 1} --><span class="little_pic">爆款</span><!--{/if}--> 
+		<!-- {if $goods.is_best eq 1} --><span class="little_pic">精品</span><!--{/if}-->
+		<!-- {if $goods.is_new eq 1} --><span class="little_pic">新品</span><!--{/if}--> 
+                  <div class="goods-pic">
+                  	<a href="{$goods.url}" target="_blank" title="{$goods.name|escape:html}">
+                    	<img data-original="{$goods.goods_thumb}" src="themes/68ecshopcom_360buy/images/loading.gif" title="{$goods.name|escape:html}" class="pic_img_{$goods.goods_id}">
+                    </a>
+		    <!--{if $goods.goods_number eq 0}--><div class="shop_over1"></div><!-- {/if} -->
+                  </div>
+                  <div class="goods-info"> 
+                    <div class="goods-name">
+                    	<a href="{$goods.url}" target="_blank" title="{$goods.goods_name|escape:html}">{$goods.goods_name_www_68ecshop_com}<em></em></a>
+                    </div>
+                    <div class="goods-price"> 
+                    	<em class="sale-price" title="本店价{if $goods.promote_price neq "" }{$goods.promote_price}{else}{$goods.shop_price}{/if}">
+                        <!--{if $goods.promote_price neq "" } -->
+                        {$goods.promote_price}
+                        <!--{else}-->
+                        {$goods.shop_price}
+                        <!--{/if}-->
+                        </em> 
+                        <em class="market-price" title="">{$goods.market_price}</em>
+                    </div>
+                    <div class="sell-stat">
+                      <ul>
+                        <li><a href="{$goods.url}" target="_blank" class="status">{$goods.count}</a>
+                          <p>商品销量</p>
+                        </li>
+                        <li><a href="{$goods.url}#product-detail" target="_blank">{$goods.comment_count}</a>
+                          <p>用户评论</p>
+                        </li>
+                        <li><em member_id="46"><a class="chat chat_offline" href="javascript:;">{$goods.click_count}</a>&nbsp;</em>
+                          <p>关注人气</p>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="store"> 
+                    	<a id="collect_{$goods.goods_id}" href="javascript:collect({$goods.goods_id}); re_collect({$goods.goods_id})" class="collet-btn{if $goods.is_collet eq 1} collet-btn-t{/if}"></a> 
+                        <a class="compare-btn shop-compare" data-goods="{$goods.goods_id}" data-type="{$goods.type}" onclick="Compare.add({$goods.goods_id},'{$goods.goods_name|escape:"html"}','{$goods.type}', '{$goods.goods_thumb}', '{if $smarty.session.user_name}{if $goods.is_promote and $goods.gmt_end_time }{$goods.promote_price}{else}{$goods.shop_price_formated} {/if}{else}{$goods.market_price}{/if}')"></a> 
+                    </div>
+                    <div class="add-cart"> <a href="javascript:addToCart({$goods.goods_id})" nctype="add_cart"><i class="icon-shopping-cart"></i>加入购物车</a> </div>
+                  </div>
+                </div>
+              </li>
+              <!--{/if}--> 
+              <!--{/foreach}-->
+            </ul>
+          </div>
+        </form>
+        <script type="text/javascript">
+        {foreach from=$lang.compare_js item=item key=key}
+        var {$key} = "{$item}";
+        {/foreach}
+
+                                {foreach from=$lang.compare_js item=item key=key}
+        {if $key neq 'button_compare'}
+        var {$key} = "{$item}";
+        {else}
+        var button_compare = '';
+        {/if}
+        {/foreach}
+
+
+        var compare_no_goods = "{$lang.compare_no_goods}";
+        window.onload = function()
+        {
+          Compare.init();
+          fixpng();
+        }
+        var btn_buy = "{$lang.btn_buy}";
+        var is_cancel = "{$lang.is_cancel}";
+        var select_spe = "{$lang.select_spe}";
+        </script> 
+        <!--{else}-->
+        <div style="padding:20px 0px; text-align:center" class="f5" >{$lang.no_search_result}</div>
+        <!--{/if}--> 
+      </div>
+      <div class="blank"></div>
+      <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem --> 
+      <!-- {/if} --> 
+    </div>
+    <div class="left"> <!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+      <div style="height:10px; line-height:10px; clear:both;"></div>
+      <!-- #BeginLibraryItem "/library/top10.lbi" --><!-- #EndLibraryItem --> </div>
+    <!--left end--> 
+   </div>
+   <div style="height:0px; line-height:0px; clear:both;"></div>
+   <!-- #BeginLibraryItem "/library/history.lbi" --><!-- #EndLibraryItem -->
+  <div class="blank"></div>
+    <!-- #BeginLibraryItem "/library/arrive_notice_list.lbi" --><!-- #EndLibraryItem -->
+  <!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem --> 
+  <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+  <!-- #BeginLibraryItem "/library/site_bar.lbi" --><!-- #EndLibraryItem --> 
+</div>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/lib-v1.js"></script>
+</body>
+<!-- 代码增加_end  By  bbs.hongyuvip.com -->
+<script type="text/javascript" src="{$option.static_path}js/compare.js"></script>
+<script type="text/javascript" src="{$option.static_path}js/json2.js"></script>
+<script>
+$(document).ready(function(e) {
+	Compare.init();
+    $('#compareBox .menu li').click(function(e) {
+		$('#compareBox .menu li').each(function(index, element) {
+			$(this).removeClass('current');
+        });
+		if($(this).attr('data-value') == 'compare')
+		{
+			$('#historyList').css('display', 'none');
+			$('#compareList').css('display', 'block');
+		}
+		else
+		{
+			$('#historyList').css('display', 'block');
+			$('#compareList').css('display', 'none');
+		}
+        $(this).addClass('current');
+    });
+	if($('#historyList li').length > 4)
+	{
+		$('#historyList ul').css('width', (226*$('#historyList li').length)+'px');
+		$('#historyList #sc-prev').addClass('disable');
+		var count = 0;
+		$('#historyList #sc-next').click(function(e) {
+			if(($('#historyList li').length-4) > count)
+			{
+				count++;
+				$('#historyList #sc-prev').removeClass('disable');
+				if(($('#historyList li').length-4) >= count)
+					$('#historyList ul').animate({marginLeft:(-226*count)+'px'});
+				if(($('#historyList li').length-4) == count)
+					$('#historyList #sc-next').addClass('disable');
+			}
+        });
+		$('#historyList #sc-prev').click(function(e) {
+			if(count > 0)
+			{
+				count--;
+				$('#historyList #sc-next').removeClass('disable');
+				if(count >= 0)
+					$('#historyList ul').animate({marginLeft:(-226*count)+'px'});
+				if(count == 0)
+					$('#historyList #sc-prev').addClass('disable');
+			}
+        });
+	}
+	else
+	{
+		$('#historyList #sc-prev').css('display', 'none');
+		$('#historyList #sc-next').css('display', 'none');
+	}
+	var compareData = new Object();
+	var compareCookie = document.getCookie('compareItems');
+	var count = 0;
+	if(compareCookie != null)
+	{
+		compareData = JSON.parse(compareCookie);
+        for(var k in compareData)
+        {
+            if(typeof(compareData[k])=="function")
+            	continue;
+            $('.compare-btn').each(function(index, element) {
+            	if(k == $(this).attr('data-goods'))
+					$(this).css('background-position', '0 -99px');
+        	});
+			count ++;
+        }
+	}
+	if(count>0)
+	{
+		$('#compareBox').css('display', 'block');
+		$('.compareHolder').css('display', 'none');
+	}
+	
+});
+function toggle_compare_box()
+{
+	if($('#compareBox').css('display') == 'none')
+	{
+		$('#compareBox').css('display', 'block');
+		$('.compareHolder').css('display', 'none');
+	}
+	else
+	{
+		$('#compareBox').css('display', 'none');
+		$('.compareHolder').css('display', 'block');
+	}
+}
+</script>
+<div align="center" id="compareBox" style="display:none">
+  <div class="menu">
+    <ul>
+      <li class="current" data-value='compare'>对比栏</li>
+      <li data-value='history'>最近浏览</li>
+    </ul>
+    <a style="color:#005AA0;float: right; line-height: 32px; margin-right: 20px;" href="javascript:void(0)" onClick="toggle_compare_box()">隐藏</a>
+    <div style="clear:both"></div>
+  </div>
+  <div id="compareList"></div>
+  <div id="historyList" style="display:none;"><span id="sc-prev" class="sc-prev scroll-btn"></span><span id="sc-next" class="sc-next scroll-btn"></span>
+    <div class="scroll_wrap">{insert name='history_list'}</div>
+  </div>
+</div>
+<a class="compareHolder" href="javascript:void(0)" onClick="toggle_compare_box()">对比栏</a>
+<!-- 代码增加_end  By  bbs.hongyuvip.com -->
+<script>
+re_collect();
+
+function re_collect(id)
+{
+  goods_id = (typeof(id) == "undefined" ? 0 : id);
+  Ajax.call('user.php?act=re_collect', 'id=' + goods_id, re_collectResponse, 'GET', 'JSON');
+}
+
+function re_collectResponse(result)
+{
+  if (result.goods_id > 0)
+  {
+    document.getElementById("collect_" + result.goods_id).className = (result.is_collect == 1 ? "collet-btn collet-btn-t" : "collet-btn");
+  }
+  else
+  {
+    $("a[id^='collect_']").className = "collet-btn";
+    for(i = 0; i < result.is_collect.length; i++)
+    {
+      document.getElementById("collect_" + result.is_collect[i]).className = "collet-btn collet-btn-t";
+    }
+  }
+}
+
+var skuIds = [];
+$('ul.list-h li[sku]').each(function(i){
+    skuIds.push($(this).attr('sku'));
+})
+
+var imgSize = 'n2';
+if ( $('#plist').hasClass('plist-160') ) {
+    imgSize = 'n2';
+}
+if ( $('#plist').hasClass('plist-220') ) {
+    if ( $('#plist').hasClass('plist-160') ) {
+        imgSize = 'n2';
+    } else {
+        imgSize = 'n7';
+    }
+}
+if ( $('#plist').hasClass('plist-n7') ) {
+    imgSize = 'n7';
+}
+if ( $('#plist').hasClass('plist-n8') ) {
+    imgSize = 'n8';
+}
+
+
+$('.p-scroll').each(function() {
+    var scroll = $(this).find('.p-scroll-wrap'),
+        btnPrev = $(this).find('.p-scroll-prev'),
+        btnNext = $(this).find('.p-scroll-next'),
+        len = $(this).find('li').length;
+    if ( len > 5 ) {
+        btnPrev.css('display', 'inline');
+        btnNext.css('display', 'inline');
+        scroll.imgScroll({
+            visible: 5,
+            showControl: false,
+            next: btnNext,
+            prev: btnPrev
+        });
+    }
+    var colors = scroll.find('img');
+    colors.each(function() {
+        $(this).mouseover(function() {
+            var index = $(this).parent('li').parent('li').attr('index');
+            var src = $(this).attr("src"),
+                skuid = $(this).attr('data-skuid');
+            scroll.find('a').removeClass('curr');
+            $(this).parent('a').addClass('curr');
+            var targetImg = $(this).parents('li').find('.p-img img').eq(0),
+                targetImgLink = $(this).parents('li').find('.p-img a').eq(0),
+                targetNameLink = $(this).parents('li').find('.p-name a').eq(0),
+                targetFollowLink = $(this).parents('li').find('.product-follow a').eq(0);
+            targetImg.attr( 'src', src.replace('\/n5\/', '\/'+imgSize+'\/') );
+            targetImgLink.attr( 'href', targetImgLink.attr('href').replace(/\/\d{6,}/, '/'+skuid) );
+            targetNameLink.attr( 'href', targetNameLink.attr('href').replace(/\/\d{6,}/, '/'+skuid) );
+            targetFollowLink.attr( 'id', targetFollowLink.attr('id').replace(/coll\d{6,}/, 'coll'+skuid) );
+
+        });
+    });
+});
+$('#plist.plist-n7 .list-h>li').hover(function() {
+    $(this).addClass('hover').find('.product-follow,.shop-name').show();
+    $(this).find('.item-wrap').addClass('item-hover');
+}, function() {
+    $(this).removeClass('hover').find('.item-wrap').removeClass('item-hover');
+    $(this).find('.product-follow,.shop-name').hide();
+});
+
+
+/* spu合并 end */
+</script>
+<script type="text/javascript">
+$("img").lazyload({
+    effect       : "fadeIn",
+	 skip_invisible : true,
+	 failure_limit : 20
+});
+</script>
+</html>

@@ -1,0 +1,41 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $category_goods} -->
+<!--{foreach from=$category_goods item=ginfo}-->
+  <!-- {if $ginfo.cat_pic} --> 
+  <div class="no-margin">
+  	<div class="userDefinedArea_two">
+  		<a href="{$ginfo.cat_pic_url}" target="_blank"><img src="{$ginfo.cat_pic}"  class="" alt="" /></a> 
+  	</div>
+  </div>
+  <!-- {else} -->
+  <div class="no-margin">
+  	<div class="userDefinedArea_two"><a href="javascript:void(0);" style="background:url('themes/{$template_dir}/images/ghs/images/new_best_hot.png') no-repeat center top"></a></div>
+  </div>
+  <!-- {/if} -->
+<div class="no-margin">
+  <div class="userDefinedArea_three">
+    <h2 style="color:{$navcolor};">{$ginfo.cat_name}</h2>
+    <div class="userDefinedArea_three_1">
+      <div class="plist">
+        <div class="mc">
+          <ul class="list-h">
+            {foreach from=$ginfo.goods item=bestgoods name=bestgoods}
+            <li class='fore {if $smarty.foreach.bestgoods.iteration < 4}fore1{/if}'>
+              <div class="p-img"><a target="_blank" title="{$bestgoods.name}" href='{$bestgoods.url}'><img alt="{$bestgoods.thumb}" src="{$bestgoods.thumb}" width="150" height="150" /></a></div>
+              <div class="p-name"><a target="_blank" title='{$bestgoods.name}' href='{$bestgoods.url}'>{$bestgoods.name}</a></div>
+              <div  class="p-price">售价：<strong> <!-- {if $bestgoods.promote_price neq ""} --> 
+                {$bestgoods.promote_price} 
+                <!-- {else}--> 
+                {$bestgoods.shop_price} 
+                <!--{/if}--></strong></div>
+            </li>
+            {/foreach}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- {/foreach} --> 
+<!-- {/if} --> 

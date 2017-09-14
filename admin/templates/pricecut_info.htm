@@ -1,0 +1,106 @@
+<!-- $Id: comment_info.htm 16854 2009-12-07 06:20:09Z sxc_shop $ -->
+
+{include file="pageheader.htm"}
+<!-- comment content list -->
+
+<form method="post" action="pricecut.php" name="theForm" onsubmit="return validate()">
+<div class="list-div">
+ <table width="100%" cellpadding="3" cellspacing="1" > 
+ <tr>
+    <th colspan="4">降价通知</th>
+  </tr>
+  <tr height=30 >
+    <td width="30%" align=right ><strong>客户手机号码：</strong></td>
+    <td width="20%" >{$notice.mobile}</td>
+    <td align=right width="15%"  ><strong>商品名称：</strong></td>
+	<td align=left width="35%" >{$notice.goods_name}</td>
+  </tr>
+  <tr height=30>
+    <td align=right ><strong>客户邮箱：</strong></td>
+    <td>{$notice.email}</td>
+    <td align=right  ><strong>商品现价：</strong></td>
+	<td align=left >{$notice.min_price}</td>
+  </tr>
+  <tr height=30>
+    <td align=right ><strong>申请日期：</strong></td>
+    <td>{$notice.add_time}</td>
+    <td align=right  ><strong>通知价格：</strong></td>
+	<td align=left >{$notice.price}</td>
+  </tr>
+  
+  <tr height=30>
+    <td align=right ><strong>备注：</strong></td>
+    <td colspan=3 style="padding:10px 10px 10px 3px;"><textarea name="remark" rows=5 cols=80>{$notice.remark}</textarea></td>
+  </tr> 
+  <tr height=30>
+    <td align=right  height=30><strong>通知状态：</strong></td>
+    <td colspan=3>
+	<select name="status" {if $notice.status eq '2'}disabled=disabled{/if}>
+	<option value="-1">请选择</option>
+	{foreach from=$notice_status key=skey item=status}
+	<option value="{$skey}"  {if $notice.status eq $skey}selected{/if}>{$status}</option>
+	{/foreach}
+	</select></td>
+  </tr>
+  <tr>
+    <td align=center colspan=4 height=50>
+	
+      <input name="submit" type="submit" value="{$lang.button_submit}" class="button">
+	  <input type="hidden" name="act" value="update">
+	  {if $notice.status eq '2'}
+	  <input type="hidden" name="status_must" value="0">
+	  {else}
+	  <input type="hidden" name="status_must" value="1">
+	  {/if}
+      <input type="hidden" name="id" value="{$notice.pricecut_id}">
+    </td>
+  </tr>
+</table>
+</div>
+
+</form>
+
+
+{insert_scripts files="../js/utils.js,validator.js"}
+{literal}
+<script language="JavaScript">
+<!--
+document.forms['theForm'].elements['remark'].focus();
+
+/**
+ * 检查表单输入的数据
+ */
+function validate()
+{
+    var msg = new Array();
+	var err = false;
+	var theForm = document.forms['theForm'];
+    if (theForm.elements['remark'].value == '')
+	{
+			err = true;
+			msg.push('备注不能为空！');
+	}
+	if (theForm.elements['status_must'].value =='1')
+	{
+		if (theForm.elements['status'].value =='-1')
+		{
+			err = true;
+			msg.push('请选择通知状态！');
+		}		 
+	}
+    if (err)
+	{
+			message = msg.join("\n");
+			alert(message);
+	}
+	return !err;
+}
+
+onload = function() {
+    // 开始检查订单
+    startCheckOrder();
+}
+//-->
+</script>
+{/literal}
+{include file="pagefooter.htm"}

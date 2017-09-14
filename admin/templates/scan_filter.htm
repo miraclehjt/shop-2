@@ -1,0 +1,104 @@
+<style type="text/css">
+/*弹出层的STYLE*/
+body {height:100%;}
+.mydiv {
+background:#ffffff;
+text-align: center;
+line-height: 40px;
+font-size: 12px;
+font-weight: bold;
+z-index:10000001;
+width: 650px;
+height: auto;
+left:50%;/*FF IE7*/
+top: 50%;/*FF IE7*/
+margin-left:-325px!important;/*FF IE7 该值为本身宽的一半 150 *2 =300 */
+margin-top:-200px!important;/*FF IE7 该值为本身高的一半 60*2=120 */
+margin-top:0px;
+position:fixed!important;/*FF IE7*/
+position:absolute;/*IE6*/
+_top:       expression(eval(document.compatMode &&
+            document.compatMode=='CSS1Compat') ?
+            documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+            document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
+
+}
+ .blank15{height:15px; line-height:8px; clear:both; visibility:hidden;}
+.mydiv table{margin:0 auto;padding:0 auto;}
+.mydiv tr{padding:0;margin:0;}
+.mydiv td{height:10px;font-size:14px;font-weight:normal;padding:0;margin:0;}
+
+.bg {
+background-color: #a6a6a6;
+width: 100%;
+height: 100%;
+left:0;
+top:0;/*FF IE7*/
+filter:alpha(opacity=70);/*IE*/
+opacity:0.7;/*FF*/
+z-index:10000000;
+position:fixed!important;/*FF IE7*/
+position:absolute;/*IE6*/
+_top:       expression(eval(document.compatMode &&
+            document.compatMode=='CSS1Compat') ?
+            documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+            document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
+
+}
+.qb_left{float:left;width:80%;text-align:left;color:#fff;font-size:15px;}
+.qb_right{float:right;width:20%;background:#f4f4f4;height:40px;line-height:40px;text-align:right;border-bottom:1px solid #eee;}
+.qb_right a{text-decoration:none;color:#ff5a00;}
+/*The END*/
+
+</style>
+<script type="text/javascript">
+function showDiv(rec_id, inout_status, action_val, act)
+{
+	document.getElementById('popDiv').style.display='block';
+	document.getElementById('bg').style.display='block';
+	document.getElementById('action_val').value = action_val;
+	document.getElementById('move_status').value = inout_status;
+	document.getElementById('move_id').value = rec_id;
+	document.getElementById('act').value = act;
+	if(act == 'check_move_no'){
+		document.getElementById('act').innerHTML = '';
+	}
+}
+
+function closeDiv(){
+document.getElementById('popDiv').style.display='none';
+document.getElementById('bg').style.display='none';
+var sels = document.getElementsByTagName('select'); 
+ for (var i = 0; i < sels.length; i++) 
+    {
+		sels[i].style.visibility = '';     
+
+    }
+}
+
+
+
+
+</script>
+
+
+<div id="popDiv" class="mydiv" style="border:1px solid #bbb;display:;">
+
+<div class="qb_left" style="height:40px;line-height:40px;background:#f4f4f4;color:#000;font-size:16px;font-weight:bold;border-bottom:1px solid #eee;">&nbsp;&nbsp;过滤提示</div><div class="qb_right" ><a href="javascript:closeDiv()" >关 闭</a>&nbsp;&nbsp;&nbsp;</div>
+<div style="clear:both;"></div>
+
+<table cellpadding=0 cellspacing=0 width="90%" border=0>  
+    <tr> 
+      <td>请注意，以下条形码不存在或者有误，系统已自动跳过该错误条形码</td> 
+    </tr>
+</table>
+<br>
+<table cellpadding=0 cellspacing=0 width="90%" border=0>
+    <tr> 
+      <td > 
+	  {$cha}
+      </td>  
+    </tr> 
+</table> 
+<br>
+</div>

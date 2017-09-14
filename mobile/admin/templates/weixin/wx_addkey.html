@@ -1,0 +1,164 @@
+{include file="pageheader.htm"}
+
+{insert_scripts files="../js/utils.js,listtable.js"}
+
+<div id="tabbody-div">
+
+<form name="theForm" method="post" action="weixin.php?act=addkey&id={$keywords.id}" enctype="multipart/form-data" onsubmit="return sub_key(this)">
+
+  <table width="100%" cellpadding="3" cellspacing="1">
+
+  <tbody>
+
+  <tr>
+
+    <td class="label">功能描述:</td>
+
+    <td><input type="text" name="keyname" value="{$keywords.keyname}"></td>
+
+  </tr>
+
+  <tr>
+
+    <td class="label">主关键字:</td>
+
+    <td><input type="text" name="key" value="{$keywords.key}"></td>
+
+  </tr>
+
+  <tr>
+
+    <td class="label">扩展关键字:</td>
+
+    <td><input type="text" name="keys" value="{$keywords.keys}">(多个用空格分割)</td>
+
+  </tr>
+
+  <tr>
+
+    <td class="label">回复类型:</td>
+
+    <td>
+
+	<input type="radio" name="diy_type" onclick="shownews(1)" value="1" {if $keywords.diy_type neq 2}checked{/if}>自定义文字
+
+	<input type="radio" name="diy_type" onclick="shownews(2)" value="2" {if $keywords.diy_type eq 2}checked{/if}>自定义图文
+
+	</td>
+
+  </tr>
+
+  <tr id="menuvalue" {if $keywords['diy_type'] eq 2}style="display:none"{/if}>
+
+    <td class="narrow-label">回复内容：</td>
+
+	<td><textarea name="description1" cols="40" rows="5">{$article.description|escape}</textarea>
+   <br /><span style=" color:#F30;">*&nbsp;注:&nbsp;此处必须填写内容，不能为空。</span>
+    </td>
+
+  </tr>
+
+
+
+  <tr id="news" {if $keywords['diy_type'] neq 2}style="display:none"{/if}>
+
+	<td colspan="2">
+
+		<table width="90%" align="right">
+
+			<tr>
+
+				<td class="narrow-label">标题：</td>
+
+				<td><input type="text" name="title" size ="40" maxlength="60" value="{$article.title|escape}" /></td>
+
+			</tr>
+
+			<tr>
+
+				<td class="narrow-label">上传图片：</td>
+
+				<td><input type="file" name="file"></td>
+
+			</tr>
+
+			<tr>
+
+				<td class="narrow-label">描述内容：</td>
+
+				<td><textarea name="description2" cols="40" rows="5">{$article.description|escape}</textarea></td>
+
+			</tr>
+
+			<tr>
+
+				<td class="narrow-label">链接地址：</td>
+
+				<td><input name="link_url" type="text" value="{$article.link|escape}" maxlength="60"></td>
+
+			</tr>
+
+			<input type="hidden" name="article_cat" value="-1" />
+
+			<input type="hidden" name="article_id" value="{$article.article_id}" />
+
+			<input type="hidden" name="file_url" value="{$article.file_url}" />
+
+		</table>
+
+	</td>
+
+</tr>
+
+  <tr>
+
+    <td colspan="2" align="center">
+
+    <input type="submit" value="{$lang.button_submit}" class="button" />
+
+    <input type="reset" value="{$lang.button_reset}" class="button" />
+
+    </td>
+
+  </tr>
+
+</tbody></table>
+
+</form>
+
+</div>
+
+<script language="JavaScript">
+function sub_key(frm)
+{
+	 var key = frm.elements['key'].value;
+	 if(key.length == 0)
+	 {
+		 alert('主关键词不能为空！');
+		 return false; 
+	 }
+	 return true;
+}
+function shownews(t){
+
+	if (t == 2) {
+
+		document.getElementById('news').style.display = "";
+
+		document.getElementById('menuvalue').style.display = "none";
+
+	}else{
+
+		document.getElementById('news').style.display = "none";
+
+		document.getElementById('menuvalue').style.display = "";
+
+	}
+
+}
+
+</script>
+
+{/literal}
+
+{include file="pagefooter.htm"}

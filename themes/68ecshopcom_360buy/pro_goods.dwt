@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link rel="stylesheet" type="text/css" href="themes/68ecshopcom_360buy/css/pro_goods.css" />
+<link rel="stylesheet" type="text/css" href="themes/68ecshopcom_360buy/css/pshow.css" />
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/script.js" ></script>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/common_www_ecshop68_com.js" ></script>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-1.9.1.min.js"></script>
+{insert_scripts files='common.js',global.js,compare.js'}
+{insert_scripts files='jquery.json.js,transport.js,json2.js'}
+</head>
+<body>
+<div id="site-nav"> <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+  <STYLE type=text/css>
+#deal-intro .deal-price {
+	DISPLAY: block; VISIBILITY: visible; TOP: 0px
+}
+.my_comment_list dd {
+	border: solid #d0e4c2 1px;
+	border-left: none;
+	width: 797px;
+	float: right;
+	padding: 0 15px 15px 15px;
+}
+.root61 .right{width:960px}
+.my_comment_list dt{width:100px}
+.my_comment_list dl{
+
+	background: transparent url("themes/68ecshopcom_360buy/images/my_comment_list_bg.gif") no-repeat scroll 130px top;
+}
+.my_comment_list dt{
+	width:122px;
+}
+#content{
+	background:#fff;
+}
+</STYLE>
+  <div id="bdw" class="bdw">
+    <div id="bd">
+      <div id="content" class="right">
+        <div id="deal-intro" class="cf">
+          <h1>{$goods.goods_style_name}</h1>
+          <form action="javascript:addToCart({$goods.goods_id})" method="post" name="ECS_FORMBUYs" id="ECS_FORMBUYs" >
+            <div class="main">
+              <div class="deal-buy">
+                <div class="deal-pc-tag"></div>
+                <p class="deal-price"> <strong> 
+                  <!--{if $goods.is_promote and $goods.gmt_end_time } 促销--> 
+                  {$goods.promote_price} 
+                  <!--{/if}--> 
+                  </strong> 
+                  <!-- {if $goods.goods_number eq 0} --> 
+                  <span class="maiguang"><a href="javascript:void(0);"></a></span> 
+                  <!-- {else} --> 
+                  <span class="tg_pic"><a href="javascript:addToCart({$goods.goods_id})"></a></span> 
+                  <!-- {/if} --> 
+                </p>
+              </div>
+              <table class="deal-discount">
+                <tr>
+                  <th>原价</th>
+                  <th>折扣</th>
+                  <th>节省</th>
+                </tr>
+                <tr>
+                  <td >¥{$goods.shop_price}</td>
+                  <td >{$zhekou}</td>
+                  <td >¥{$jiesheng}</td>
+                </tr>
+              </table>
+              <div class="deal-box deal-timeleft deal-on" > <span>剩余时间
+                <input name="number" type="text"  id="number" value="1" style=" display:none;" />
+                </span> <span id="leftTime">{insert_scripts files='lefttime.js'}{$lang.please_waiting}</span> </div>
+              <div class="deal-box deal-status"> <span><strong>{$order_num}</strong> 人已购买</span> 
+                <!-- {if $goods.goods_number eq 0} --> 
+                <span class="no">卖光啦！请购买其他宝贝</span> 
+                <!-- {else} --> 
+                <span class="secc">团购成功！ 可继续购买 </span> 
+                <!-- {/if} --> 
+              </div>
+            </div>
+            <div class="side">
+              <div class="deal-buy-cover-img"> <img src="{$goods.original_img}" alt="{$goods.goods_style_name|escape:html}" width="293" height="293" /> </div>
+              <div id="deal-share">
+                <div class="deal-share-top">
+                  <div class="deal-share-links"> 
+                    <!-- Baidu Button BEGIN -->
+                    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare"> <span class="bds_more">分享到：</span> <a class="bds_qzone">QQ空间</a> <a class="bds_tsina">新浪微博</a> <a class="bds_tqq">腾讯微博</a> <a class="bds_renren">人人网</a> <a class="bds_t163">网易微博</a> </div>
+                    <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=603029" ></script> 
+                    <script type="text/javascript" id="bdshell_js"></script> 
+                    <script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+</script> 
+                    <!-- Baidu Button END --> 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+        <div id="deal-stuff">
+          <div class="clearfix box box-split">
+            <div class="box-content ">
+              <div class="main">
+                <H2 id=detail>本单详情</H2>
+                <div class="detaildesc"> {$goods.goods_desc} </div>
+                <!-- {if $goods.goods_number neq 0} -->
+                <div id="bottom_tj"> <span class="but"> <a href="javascript:addToCart({$goods.goods_id})" title="{$goods.goods_name}">立即购买</a> </span> 团购价<span> 
+                  <!--{if $goods.is_promote and $goods.gmt_end_time } 促销--> 
+                  {$goods.promote_price} 
+                  <!--{/if}--> 
+                  </span>元，数量有限下单要快 </div>
+                <!--{/if}-->
+                <div class="clr"></div>
+              </div>
+            </div>
+          </div>
+          <div class="box-bottom1"></div>
+        </div>
+        <div class="clearfix"></div>
+        <!-- #BeginLibraryItem "/library/my_comments.lbi" --><!-- #EndLibraryItem -->
+        <div class="clearfix"></div>
+      </div>
+      <div class="r">
+      <!-- {if $promotion_goods} --> 
+        <div class="rm" id="hott">
+          <div class="rmt">同类团购推荐</div>
+          <!--{foreach from=$promotion_goods key=key item=goods name="promotion_foreach"}-->
+          <div class="rmc">
+            <div class="tcon2 tcon">
+              <div class="title"> <a href="pro_goods.php?id={$goods.id}" target="_blank" title="{$goods.name}">{$goods.name}</a></div>
+              <div class="pic"> <a href="pro_goods.php?id={$goods.id}" target="_blank"> <img  src="{$goods.thumb}" alt=""> </a> </div>
+              <div class="price"><span class="qg"><a href="pro_goods.php?id={$goods.id}" target="_blank" title="抢购">抢购</a></span> <span> 
+                <!-- {if $goods.promote_price neq ""} --> 
+                {$goods.promote_price} 
+                <!-- {else}--> 
+                {$goods.shop_price} 
+                <!-- {/if} --> 
+                </span>元<span>{$goods.valid_goods}</span>人已购买</div>
+            </div>
+            <div class="clr"></div>
+          </div>
+          <!--{/foreach}--> 
+        </div>
+      </div>
+      <div class="clr"></div>
+      <!-- {/if} --> 
+    </div>
+    <div class="blank"></div>
+  </div>
+  <!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem --> 
+  <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+  <!-- #BeginLibraryItem "/library/site_bar.lbi" --><!-- #EndLibraryItem --> 
+</div>
+</body>
+<script type="text/javascript">
+var goods_id = {$goods_id};
+var goodsattr_style = {$cfg.goodsattr_style|default:1};
+var gmt_end_time = {$promote_end_time|default:0};
+{foreach from=$lang.goods_js item=item key=key}
+var {$key} = "{$item}";
+{/foreach}
+var goodsId = {$goods_id};
+var now_time = {$now_time};
+
+<!-- {literal} -->
+onload = function(){
+  changePrice();
+  fixpng();
+  try { onload_leftTime(); }
+  catch (e) {}
+  Compare.init();
+}
+
+/**
+ * 点选可选属性或改变数量时修改商品价格的函数
+ */
+function changePrice()
+{
+  var attr = getSelectedAttributes(document.forms['ECS_FORMBUYs']);
+  var qty = document.forms['ECS_FORMBUYs'].elements['number'].value;
+
+  Ajax.call('goods.php', 'act=price&id=' + goodsId + '&attr=' + attr + '&number=' + qty, changePriceResponse, 'GET', 'JSON');
+}
+
+/**
+ * 接收返回的信息
+ */
+function changePriceResponse(res)
+{
+  if (res.err_msg.length > 0)
+  {
+    alert(res.err_msg);
+  }
+  else
+  {
+    document.forms['ECS_FORMBUYs'].elements['number'].value = res.qty;
+
+    if (document.getElementById('ECS_GOODS_AMOUNT'))
+      document.getElementById('ECS_GOODS_AMOUNT').innerHTML = res.result;
+  }
+}
+<!-- {/literal} -->
+</script>
+<script type="text/javascript">
+$("img").lazyload({
+    effect       : "fadeIn",
+	 skip_invisible : true,
+	 failure_limit : 20
+});
+</script>
+<script type="text/javascript">
+{foreach from=$lang.compare_js item=item key=key}
+{if $key neq 'button_compare'}
+var {$key} = "{$item}";
+{else}
+var button_compare = '';
+{/if}
+{/foreach}
+var compare_no_goods = "{$lang.compare_no_goods}";
+var btn_buy = "{$lang.btn_buy}";
+var is_cancel = "{$lang.is_cancel}";
+var select_spe = "{$lang.select_spe}";
+</script>
+</html>

@@ -1,0 +1,213 @@
+@charset "utf-8";
+/* CSS Document */
+#maincontent {
+	background: #fff;
+	height: 360px;
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 10px
+}
+#maincontent div.pict {
+	cursor: default !important;
+}
+#maincontent div.main {
+	position: static;
+	text-align: center;
+	display: block;
+	cursor: pointer !important
+}
+#maincontent .element {
+	display: none;
+	position: absolute !important;
+}
+#maincontent .left {
+	top : 160px;
+	left: 50%;
+	margin-left:-605px;
+	cursor: pointer;
+}
+#maincontent .right {
+	top: 160px;
+	left: 50%;
+	margin-left:537px;
+	cursor: pointer;
+}
+#maincontent .main .guardian {
+	display: none;
+	height: 0;
+}
+#maincontent .navi {
+	z-index: 9;
+}
+div#maincontent div.main {
+	display: none;
+}
+div#maincontent div.element {
+	position: absolute !important;
+}
+.main{
+	width:1210px;
+	margin:0 auto
+}
+.main .tab {
+	width: 900px;
+	margin-bottom: 10px;	
+	float:left
+}
+.main .tab .tab_tit{
+	border-left: 1px solid #DDD;
+}
+.main .tab .tab_tit ul {
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+	margin-left:-1px;
+	border-bottom:2px #E31939 solid;
+}
+.main .tab .tab_tit ul li{
+	border-right: 1px solid #DDD;
+	border-top: 1px solid #DDD;
+	float: left;
+text-align: center;
+padding: 0px 45px;
+height: 34px;
+	line-height: 34px;
+	cursor:pointer;
+	font-size:14px;
+}
+.main .tab .tab_tit ul li.curr {
+	background: none repeat scroll 0% 0% #E31939;
+    border-top: 1px solid #E31939;
+    border-right: 1px solid #E31939;
+    border-left: 1px solid #E31939;
+	color: #FFF;
+}
+.main .tab .tab_con{
+	width:900px
+}
+.main .tab .tab_con .mc{
+	display:none
+}	
+.main .tab .tab_con ul{
+	width:900px;
+	padding:10px 0px	
+}
+.main .tab .tab_con ul li{
+	width:898px;
+	height:220px;
+	margin:7px 0px	;
+	border:1px #ddd solid
+}
+.main .tab .tab_con ul li:hover{
+	border:1px #E31939 solid;
+}
+.main .tab .tab_con ul li .con_left{
+	float:left;
+	width:520px;
+	height:220px;
+}
+.main .tab .tab_con ul li .con_right{
+	float:right;
+	width:350px;
+	height:220px;
+	position:relative
+}
+.main .tab .tab_con ul li .con_right .count{
+	position:absolute;
+	top:-1px;
+	right:-1px;
+	padding:15px 10px;
+	background:#E31939;
+	color:#ffffff;
+	text-align:center;
+	font-size:14px;
+}
+.main .tab .tab_con ul li .con_right .count font{
+	font-size:20px;
+	font-weight:bold;
+	line-height:1.5em;
+}
+.main .tab .tab_con ul li .con_right p{
+	height:40px;
+	line-height:40px;
+	font-size:14px;
+	width:290px;
+	text-align:left	
+}
+.main .tab .tab_con ul li .con_right p.name{
+	margin-top:15px	;
+	font-size:16px;
+}
+.layout_list {
+	width:1210px;
+	float:left;
+	padding-bottom:20px;
+	background: #fcfcfc;
+	overflow: hidden
+}
+.layout_list h2{height:35px;line-height:35px;border-bottom:2px solid #E31939;font-size:14px;text-indent:10px;}
+.layout_list ul {
+	width: 100%;
+	margin-top:10px;
+}
+.layout_list ul li {
+	width: 232px;
+	display: inline-block;
+*display:inline;
+*zoom:1;
+	float: left;
+	margin-left:10px;
+	margin-bottom:10px;
+	border: 1px solid #dddddd;
+}
+.layout_list ul li:hover{
+	border:1px #E31939 solid;
+}
+.layout_list ul li.layout_list_1{
+	margin-left:0px	
+}
+.layout_list ul li .layout_pic {
+	display: block;
+	background: #fff;
+	text-align: center;
+	padding-top:20px;
+}
+.layout_list ul li .layout_pic img {
+	display: inline-block;
+*display:inline;
+*zoom:1;
+	vertical-align: middle;
+	width: 160px;
+	height: 160px;
+}
+.layout_list ul li .layout_cont {
+	padding: 11px 15px
+}
+.layout_list ul li .layout_cont .layout_name {
+	display: block;
+	height: 35px;
+	overflow: hidden;
+	padding:3px 0px
+}
+.layout_list ul li .layout_cont .layout_price{
+	height:25px;
+	line-height:25px
+}
+.layout_list ul li .layout_cont .layout_price span{
+	font-size:16px;	
+	color:#E31939
+}
+.layout_list ul li .layout_cont .layout_price em{
+	font-size:12px;
+	margin:0px 3px 0px 5px	
+}
+.layout_list .bid_btn{
+	width:202px;
+	height:40px;
+	margin-top:5px;
+	display:inline-block;
+}
+.layout_list .bid_ing{
+	background:url(../images/shengji_ad/auction_ing.jpg) no-repeat;	
+}
+

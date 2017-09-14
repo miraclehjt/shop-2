@@ -1,0 +1,111 @@
+<!-- $Id: valuecard_list.htm 14216 2015-02-04 02:27:21Z derek $ -->
+
+{if $full_page}
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+
+<!-- 订单搜索 -->
+<div class="form-div">
+  <form action="javascript:searchVc()" name="searchForm">
+    <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
+    {$lang.tg_sn}<input name="tg_sn" type="text" id="tg_sn" size="15">
+	<input type="hidden" name="tg_type" id="tg_type" value="{$smarty.get.tg_type}" />
+    <input type="submit" value="{$lang.button_search}" class="button" />
+  </form>
+</div>
+
+<form method="POST" action="takegoods.php?act=remove_order" name="listForm" onsubmit="javascript:return batch_removeorder();">
+<!-- start user_bonus list -->
+<div class="list-div" id="listDiv">
+{/if}
+
+  <table cellpadding="3" cellspacing="1">
+    <tr>
+      <th>
+        <input onclick='listTable.selectAll(this, "checkboxes")' type="checkbox">
+        {$lang.tg_id}</th>
+		<th>{$lang.tg_sn}</th>
+      <th>联系人</th>
+	  <th>联系电话</th>
+      <th>使用会员</th>
+      <th>提货商品</th>
+	  <th>使用时间</th>
+	  <th>快递单号</th>
+	  <th>发货状态</th>
+	  <th>提货状态</th>
+      <th>{$lang.handler}</th>
+    </tr>
+    {foreach from=$vc_list item=order}
+    <tr>
+      <td><span><input value="{$order.rec_id}" name="checkboxes[]" type="checkbox">{$order.rec_id}</span></td>
+	  <td>{if $order.goods_ids}<font color=#ff3300>{/if}{$order.tg_sn}{if $order.goods_ids}</font>{/if}</td>        
+      <td>{$order.consignee}</td>      
+	  <td align=center>{$order.mobile}</td>  
+      <td align=center>{$order.user_name}</td>
+      <td align=center>{$order.goods_name}</td>
+	  <td align=center>{$order.add_time_format}</td>
+	  <td align=center>{$order.shipping_id}</td>
+	  <td align=center>{if $order.shipping_id}<img src="images/yes.gif" >{else}<img src="images/no.gif" >{/if}</td>
+	  <td align=center>{$order.order_status_name}</td>
+      <td align="center">
+      <!-- {if $smarty.get.tgid} -->
+	  <a href="takegoods.php?act=order_view&tg_type={$smarty.get.tg_type}&is_used={$smarty.get.is_used}&tgid={$smarty.get.tgid}&id={$order.rec_id}">查看</a> | <a href="takegoods.php?act=order_view&tg_type={$smarty.get.tg_type}&is_used={$smarty.get.is_used}&tgid={$smarty.get.tgid}&id={$order.rec_id}">去发货</a> |  <a href="?act=remove_order&id={$order.rec_id}&tg_type={$smarty.get.tg_type}&is_used={$smarty.get.is_used}&tgid={$smarty.get.tgid}">移除</a>
+      <!-- {else} -->
+	  <a href="takegoods.php?act=order_view&id={$order.rec_id}">查看</a> | <a href="takegoods.php?act=order_view&id={$order.rec_id}">去发货</a> |  <a href="javascript:;" onclick="listTable.remove({$order.rec_id}, '{$lang.drop_confirm}', 'remove_order',)">移除</a>
+      <!-- {/if} -->
+        </td>
+    </tr>
+    {foreachelse}
+    <tr><td class="no-records" colspan="11">{$lang.no_records}</td></tr>
+    {/foreach}
+  </table>
+
+  <table cellpadding="4" cellspacing="0">
+    <tr>
+      <td><input type="submit" name="drop" id="btnSubmit" value="{$lang.drop}" class="button" disabled="true" /></td>
+      <td align="right">{include file="page.htm"}</td>
+    </tr>
+  </table>
+
+{if $full_page}
+</div>
+<!-- end user_bonus list -->
+</form>
+
+<script type="text/javascript" language="JavaScript">
+  listTable.recordCount = {$record_count};
+  listTable.pageCount = {$page_count};
+  listTable.query = "query_order";
+
+  {foreach from=$filter item=item key=key}
+  listTable.filter.{$key} = '{$item}';
+  {/foreach}
+
+  {literal}
+  onload = function()
+  {
+    // 开始检查订单
+    startCheckOrder();
+    document.forms['listForm'].reset();
+  }
+
+    function searchVc()
+    {
+        listTable.filter['tg_sn'] = Utils.trim(document.forms['searchForm'].elements['tg_sn'].value);
+        listTable.filter['page'] = 1;
+        listTable.loadList();
+    }
+
+	function batch_removeorder()
+	{
+	   if (confirm('您确认要删除吗？'))
+	   {
+		   return true;
+	   }
+	   return false;
+	}
+
+  {/literal}
+</script>
+{include file="pagefooter.htm"}
+{/if}

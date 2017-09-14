@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <title>{$lang.cp_home}{if $ur_here} - {$ur_here} {/if}</title>
+
+    <meta name="robots" content="noindex, nofollow">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link href="styles/general.css" rel="stylesheet" type="text/css" />
+
+    <link href="styles/main.css" rel="stylesheet" type="text/css" />
+
+    {insert_scripts files="../js/transport.js,common.js"}
+
+    <script language="JavaScript">
+
+        <!--
+
+        // 这里把JS用到的所有语言都赋值到这里
+
+        {foreach from=$lang.js_languages key=key item=item}
+
+        var {$key} = "{$item}";
+
+        {/foreach}
+
+        //-->
+
+    </script>
+
+</head>
+
+<body>
+
+
+
+<h1>
+
+    <span class="action-span1"><a href="index.php?act=main">{$lang.cp_home}</a> </span><span id="search_id" class="action-span1"> - 微信设置</span>
+
+    <div style="clear:both"></div>
+
+</h1>
+
+
+
+{insert_scripts files="../js/utils.js,selectzone.js,colorselector.js"}
+
+<script type="text/javascript" src="../js/calendar.php?lang={$cfg_lang}"></script>
+
+<link href="../js/calendar/calendar.css" rel="stylesheet" type="text/css" />
+
+
+
+{if $warning}
+
+<ul style="padding:0; margin: 0; list-style-type:none; color: #CC0000;">
+
+    <li style="border: 1px solid #CC0000; background: #FFFFCC; padding: 10px; margin-bottom: 5px;" >{$warning}</li>
+
+</ul>
+
+{/if}
+
+
+
+<!-- start goods form -->
+
+<div class="tab-div">
+
+<!-- tab bar -->
+
+<div id="tabbar-div">
+
+    <p>
+
+        <span class="tab-front" id="general-tab">命令编辑</span>
+
+    </p>
+
+</div>
+
+
+
+<!-- tab body -->
+
+<div id="tabbody-div">
+
+<!-- 通用信息 -->
+
+<form name="theForm" method="post" action="weixin.php?act=keywords&id={$keywords.id}">
+
+  <table width="100%" cellpadding="3" cellspacing="1">
+
+  <tbody><tr>
+
+    <td class="label">功能名称:</td>
+
+	<td><input type="text " name="keyname" size="20" value="{$keywords.keyname}"></td>
+
+  </tr>
+
+  <tr>
+
+    <td class="label">主功能命令 :</td>
+
+    <td>{$keywords.key}</td>
+
+  </tr>
+
+ <tr>
+
+    <td class="label">扩展功能命令 :</td>
+
+    <td><input type="text " name="keys" size="32" value="{$keywords.keys}">(多个使用空格分开)</td>
+
+  </tr><tr>
+
+    <td class="label">积分赠送方式:</td>
+
+	<td>
+
+	<select name="jf_type">
+
+		<option value="0">请选择积分赠送方式</option>
+
+		<option value="1" {if $keywords.jf_type eq 1}selected{/if}>一次性赠送</option>
+
+		<option value="2" {if $keywords.jf_type eq 2}selected{/if}>按日赠送</option>
+
+    </select>
+
+	</td>
+
+ <tr>
+
+    <td class="label">赠送积分 :</td>
+
+    <td><input type="text " name="jf_num" size="32" value="{$keywords.jf_num}"></td>
+
+  </tr><tr>
+
+ <tr>
+
+    <td class="label">赠送上限 :</td>
+
+    <td><input type="text " name="jf_maxnum" size="32" value="{$keywords.jf_maxnum}">(按日赠送的时候限制单日最高赠送)</td>
+
+  </tr><tr>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2" align="center">
+
+      <input type="submit" value="{$lang.button_submit}" class="button" />
+
+    <input type="reset" value="{$lang.button_reset}" class="button" />
+
+    </td>
+
+  </tr>
+
+</tbody></table>
+
+</form>
+
+</div>
+
+</div>
+
+<!-- end goods form -->
+
+{insert_scripts files="validator.js,tab.js"}
+
+
+
+<script language="JavaScript">
+
+var goodsId = '{$goods.goods_id}';
+
+var elements = document.forms['theForm'].elements;
+
+var sz1 = new SelectZone(1, elements['source_select1'], elements['target_select1']);
+
+var sz2 = new SelectZone(2, elements['source_select2'], elements['target_select2'], elements['price2']);
+
+var sz3 = new SelectZone(1, elements['source_select3'], elements['target_select3']);
+
+var marketPriceRate = {$cfg.market_price_rate|default:1};
+
+var integralPercent = {$cfg.integral_percent|default:0};
+
+
+
+{literal}
+
+onload = function()
+
+{
+
+
+
+    if (document.forms['theForm'].elements['auto_thumb'])
+
+    {
+
+        handleAutoThumb(document.forms['theForm'].elements['auto_thumb'].checked);
+
+    }
+
+
+
+    // 检查新订单
+
+    startCheckOrder();
+
+    {/literal}
+
+        {foreach from=$user_rank_list item=item}
+
+        set_price_note({$item.rank_id});
+
+    {/foreach}
+
+        {literal}
+
+        document.forms['theForm'].reset();
+
+    }
+
+
+
+    function setAttrList(result, text_result)
+
+    {
+
+        document.getElementById('tbody-goodsAttr').innerHTML = result.content;
+
+    }
+
+
+
+
+
+            {/literal}
+
+</script>
+
+{include file="pagefooter.htm"}
+

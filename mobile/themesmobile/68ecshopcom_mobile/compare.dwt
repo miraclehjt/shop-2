@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>{$page_title}</title>
+	<meta name="Keywords" content="{$keywords}" />
+	<meta name="Description" content="{$description}" />
+    <script src="static/js/modernizr.js"></script>
+<link rel="shortcut icon" href="static/img/favicon.png">
+	<link rel="apple-touch-icon-precomposed" href="static/img/website_icon.png">
+	<link rel="stylesheet" href="static/css/style.css">
+
+{insert_scripts files='common.js,utils.js'}
+
+	</head>
+<body id="page_goods">
+<div id="container">
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+
+<div id="main"><div class="wrapper">
+	<!-- TemplateBeginEditable name="主栏上方" --><!-- TemplateEndEditable -->
+	<div class="compare_wrapper box thin_box full_box">
+		<div class="hd"><h3></h3><div class="extra"></div></div>
+		<div class="bd">
+			<table>
+				<colgroup>
+					<col width="100"/>
+					{foreach name="goods_list" from=$goods_list item=goods}
+					<col width="{if $smarty.foreach.goods_list.total gt 3}300{else}300{/if}"/>
+					{/foreach}
+				</colgroup>
+				<tbody>
+					<tr>
+						<th>{$lang.goods_name}{$lang.colon}</th>
+						{foreach from=$goods_list item=goods name=goods_list}
+						<td class="{if $smarty.foreach.goods_list.index %2==0}odd{else}even{/if}{if $smarty.foreach.goods_list.last} last{/if} name">{$goods.goods_name}</td>
+						{/foreach}
+					</tr>
+					<tr>
+						<th>&nbsp;</th>
+						{foreach from=$goods_list item=goods name=goods_list}
+						<td class="{if $smarty.foreach.goods_list.index %2==0}odd{else}even{/if}{if $smarty.foreach.goods_list.last} last{/if} center"><a href="{$goods.url}"><img src="{$option.static_path}{$goods.goods_thumb}" alt="{$goods.goods_name}"/></a></td>
+						{/foreach}
+					</tr>
+					{if $smarty.foreach.goods_list.total gt 2}
+					<tr>
+						<th>&nbsp;</th>
+						{foreach from=$goods_list item=goods name=goods_list}
+						<td class="{if $smarty.foreach.goods_list.index %2==0}odd{else}even{/if}{if $smarty.foreach.goods_list.last} last{/if} center"><a href="compare.php?{$goods.ids}" onclick="return compareRemove({$goods.goods_id});" class="button"><span>{$lang.compare_remove}</span></a></td>
+						{/foreach}
+					</tr>
+					{/if}
+					<tr>
+						<th>{$lang.shop_price}</th>
+						{foreach from=$goods_list item=goods name=goods_list}
+						<td class="{if $smarty.foreach.goods_list.index %2==0}odd{else}even{/if}{if $smarty.foreach.goods_list.last} last{/if} price">{$goods.shop_price}</td>
+						{/foreach}
+					</tr>
+					{if $option.show_goodsweight}
+					<tr>
+						<th>{$lang.brand}{$lang.colon}</th>
+						{foreach from=$goods_list item=goods name=goods_list}
+						<td class="{if $smarty.foreach.goods_list.index %2==0}odd{else}even{/if}{if $smarty.foreach.goods_list.last} last{/if}">{$goods.brand_name}</td>
+						{/foreach}
+					</tr>
+					{/if}
+					{if $option.show_goodsweight}
+					<tr>
+						<th>{$lang.goods_weight}</th>
+						{foreach from=$goods_list item=goods name=goods_list}
+						<td class="{if $smarty.foreach.goods_list.index %2==0}odd{else}even{/if}{if $smarty.foreach.goods_list.last} last{/if}">{$goods.goods_weight}</td>
+						{/foreach}
+					</tr>
+					{/if}
+					{foreach key=key from=$attribute item=val}
+					<tr>
+						<th>{$val}{$lang.colon}</th>
+						{foreach from=$goods_list item=goods name=goods_list}
+						<td class="{if $smarty.foreach.goods_list.index %2==0}odd{else}even{/if}{if $smarty.foreach.goods_list.last} last{/if}">
+						{foreach from=$goods.properties item=property key=k}
+						{if $k eq $key}{$property.value}{/if}
+						{/foreach}
+						</td>
+						{/foreach}
+					</tr>
+					{/foreach}
+					<tr>
+						<th>{$lang.brief}</th>
+						{foreach from=$goods_list item=goods name=goods_list}
+						<td class="{if $smarty.foreach.goods_list.index %2==0}odd{else}even{/if}{if $smarty.foreach.goods_list.last} last{/if}"><a href="{$goods.url}" target="_blank">{$goods.goods_brief}</a></td>
+						{/foreach}
+					</tr>
+					<tr>
+						<th>&nbsp;</th>
+						{foreach from=$goods_list item=goods name=goods_list}
+						<td class="{if $smarty.foreach.goods_list.index %2==0}odd{else}even{/if}{if $smarty.foreach.goods_list.last} last{/if} center"><a href="javascript:addToCart({$goods.goods_id})" class="button brighter_button"><span>{$lang.btn_buy}</span></a><a href="javascript:collect({$goods.goods_id});" class="button"><span>{$lang.btn_collect}</span></a></td>
+						{/foreach}
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!-- TemplateBeginEditable name="主栏下方" --><!-- TemplateEndEditable -->
+</div></div>
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+
+<script type="text/javascript" src="static/js/plugins.js"></script>
+<script type="text/javascript" src="static/js/lang.zh_cn.js"></script>
+<script type="text/javascript" src="static/js/global.js"></script>
+<script type="text/javascript" src="static/js/init.js"></script>
+
+</div>
+</body>
+
+</html>

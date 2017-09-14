@@ -1,0 +1,126 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<!-- {if $promotion_goods} -->
+
+<script >
+
+var Tday = new Array();
+
+var daysms = 24 * 60 * 60 * 1000
+
+var hoursms = 60 * 60 * 1000
+
+var Secondms = 60 * 1000
+
+var microsecond = 1000
+
+var DifferHour = -1
+
+var DifferMinute = -1
+
+var DifferSecond = -1
+
+function clock(key)
+
+  {
+
+   var time = new Date()
+
+   var hour = time.getHours()
+
+   var minute = time.getMinutes()
+
+   var second = time.getSeconds()
+
+   var timevalue = ""+((hour > 12) ? hour-12:hour)
+
+   timevalue +=((minute < 10) ? ":0":":")+minute
+
+   timevalue +=((second < 10) ? ":0":":")+second
+
+   timevalue +=((hour >12 ) ? " PM":" AM")
+
+   var convertHour = DifferHour
+
+   var convertMinute = DifferMinute
+
+   var convertSecond = DifferSecond
+
+   var Diffms = Tday[key].getTime() - time.getTime()
+
+   DifferHour = Math.floor(Diffms / daysms)
+
+   Diffms -= DifferHour * daysms
+
+   DifferMinute = Math.floor(Diffms / hoursms)
+
+   Diffms -= DifferMinute * hoursms
+
+   DifferSecond = Math.floor(Diffms / Secondms)
+
+   Diffms -= DifferSecond * Secondms
+
+   var dSecs = Math.floor(Diffms / microsecond)
+
+   
+
+   if(convertHour != DifferHour) a="<font class=timef1>"+DifferHour+"</font> 天&nbsp;";
+
+   if(convertMinute != DifferMinute) b="<font class=timef1>"+DifferMinute+"</font>时";
+
+   if(convertSecond != DifferSecond) c="<font class=timef1>"+DifferSecond+"</font>分"
+
+     d="<font class=timef1>"+dSecs+"</font>秒"
+
+     if (DifferHour>0) {a=a} 
+
+     else {a=''}
+
+   document.getElementById("leftTime"+key).innerHTML = a + b + c + d; //显示倒计时信息
+
+  
+
+  }
+
+</script>
+
+<script>
+
+Tday[{$key}] = new Date("{$goods.gmt_end_time}");   
+
+window.setInterval(function()     
+
+{clock({$key});}, 1000);     
+
+</script>
+
+
+
+
+
+ <DIV class="box_r miaosha" style="border-bottom:0"  id=me_slider>
+       <!--{foreach from=$promotion_goods key=key item=goods name="promotion_foreach"}-->
+      <!--{if $smarty.foreach.promotion_foreach.iteration lt 2}-->
+        <H3 id="leftTime{$key}">{$lang.please_waiting}</H3>
+
+      <div class="item">
+      <div style="float:left; margin-top:10px; width:49%">
+          <p><a href="{$goods.url}" title="{$goods.name|escape:html}" class="name">{$goods.short_name|escape:html}</a></p>
+          <p class="price">
+             秒杀价：<span style="color:#D00; font-weight:bold;">{$goods.promote_price}</span> 
+          </p>
+          <p class="price">
+             市场价：<span style="font-weight:bold;">{$goods.market_price}</span> 
+          </p>
+      </div>
+      <div class="pic" style="float:left; width:49%"><a href="{$goods.url}"><img style="width:110px; height:110px; border:1px solid #F2F2F2" src="{$goods.thumb}" alt="{$goods.name|escape:html}" /></a></div>
+      </div>
+       <!--{/if}-->
+      <!--{/foreach}-->
+</div>
+
+
+
+
+
+<!-- {/if} -->

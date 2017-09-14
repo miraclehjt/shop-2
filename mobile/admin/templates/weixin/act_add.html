@@ -1,0 +1,37 @@
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<div class="list-div" id="listDiv">
+<form name="theForm" method="post" action="weixin_egg.php?act=add&lid={$actList.lid}">
+  <table width="100%">
+  <tbody>
+ <tr>
+    <td class="label">奖项名称 :</td>
+    <td><input type="text" name="title" value="{$actList.title}"/></td>
+  </tr>
+  <tr>
+    <td class="label">奖品名称 :</td>
+    <td><input type="text" name="awardname" value="{$actList.awardname}"/></td>
+  </tr>
+ <tr>
+    <td class="label">奖项状态 :</td>
+    <td><input type="radio" name="isopen" value="1" {if $actList.isopen eq 1}checked{/if} />开启
+	<input type="radio" name="isopen" value="0" {if $actList.isopen eq 0}checked{/if} />禁用</td>
+  </tr>
+ <tr>
+    <td class="label">奖项数量 :</td>
+    <td><input type="text" name="num" value="{$actList.num}" /></td>
+  </tr>
+ <tr>
+    <td class="label">中奖概率 :</td>
+    <td><input type="text" name="randnum" value="{$actList.randnum}" />%</td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <input type="submit" value="{$lang.button_submit}" class="button" />
+    <input type="reset" value="{$lang.button_reset}" class="button" />
+    </td>
+  </tr>
+</tbody></table>
+</form>
+</div>
+{include file="pagefooter.htm"}

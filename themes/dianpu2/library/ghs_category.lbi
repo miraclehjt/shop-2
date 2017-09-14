@@ -1,0 +1,23 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="fn-clear userdefined-21" style="margin-bottom:0px;" origin="0">
+  <div class="mc" style="background:#ffffff; min-height:0px;">
+    <div class="j-module">
+      <div class="userDefinedArea" style="width: auto; margin: 0px auto;">
+        <div class="user_st"> 
+          <!--{foreach from=$categories item=cat name=catname}-->
+          <div {if $smarty.foreach.catname.last}style="border:none"{/if}> 
+            <a target="_blank" href="{$cat.url}" style="background:{$navcolor}">{$cat.name|escape:html}</a>
+            <div class="jThreeLevel">
+              <ul>
+                <!--{foreach from=$cat.cat_id item=child name=name}-->
+                <li><a title="{$child.name|escape:html}" href="{$child.url}" >{$child.name|escape:html}</a></li>
+                <!--{/foreach}-->
+              </ul>
+            </div>
+          </div>
+          <!--{/foreach}--> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

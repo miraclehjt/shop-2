@@ -1,0 +1,24 @@
+{if $helps }
+<div class="borderTitle">
+	<span class="left">
+		<em class="icon"></em>
+		<em class="borderName">帮助中心</em>
+	</span>
+</div>
+
+<div class="column_list">
+        <ul>
+   {foreach from=$helps item=help_cat name=helps}
+    
+          <li {if $smarty.foreach.helps.last}style=" border-bottom:0;"{/if}> <a href="{$help_cat.cat_id}" class="font_b red">[{$help_cat.cat_name}]</a>
+        {foreach from=$help_cat.article item=item name=help_list}
+          <a href="{$item.url}" class="hui">{$item.short_title}</a> 
+           {/foreach}
+           </li>
+          
+      {/foreach}
+     
+        </ul>
+</div>
+	{/if}	
+

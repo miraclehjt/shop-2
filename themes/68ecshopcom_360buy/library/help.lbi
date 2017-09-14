@@ -1,0 +1,22 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+{if $helps}
+<div class="site-footer" style="border-top:1px solid #dfdfdf">
+  <div class="wrapper">
+<div class="footer-links clearfix"> 
+      <!-- {foreach from=$helps item=help_cat name=no} -->
+      <dl class="col-links {if $smarty.foreach.no.first}col-links-first{/if}">
+        <dt>{$help_cat.cat_name}</dt>
+        <!-- {foreach from=$help_cat.article item=item} -->
+        <dd><a rel="nofollow" href="help.php?id={$item.article_id}" target="_blank">{$item.short_title}</a></dd>
+        <!-- {/foreach} -->
+      </dl>
+      <!-- {/foreach} -->
+      <div class="col-contact">
+        <p class="phone">400-888-8888</p>
+        <p>周一至周五 9:00-17:30<br>
+          （仅收市话费）</p>
+        <a rel="nofollow" class="btn2 btn-primary btn-small" href="javascript:void(0);" style="color:#fff">24小时在线客服</a> </div>
+    </div>
+  </div>
+</div>
+{/if}

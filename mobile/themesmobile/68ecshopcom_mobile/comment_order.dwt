@@ -1,0 +1,172 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/public.css"/>
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/user.css"/> 
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.js"></script>
+<style type="text/css">
+        .jsstar{list-style: none;
+            margin: 0px;
+            padding: 0px;
+            width:80%;
+            height: 30px;
+            position: relative;
+            
+            }
+         .jsstar li  
+         {
+            padding:0px;
+            float: left; 
+            width:25px;
+            height:25px;
+            background:url(./themesmobile/68ecshopcom_mobile/images/star_rating.gif) 0 0px no-repeat;
+           background-size: auto 50px;}  
+           .jsstar span{
+                font-size: 14px; line-height:30px; margin-left:10px; color:#F00
+            } 
+    </style>
+<body>
+<header>
+      <div class="tab_nav">
+        <div class="header">
+          <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+          <div class="h-mid">评价宝贝</div>
+          <div class="h-right">
+            <aside class="top_bar">
+              <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+      </header>
+        <!-- #BeginLibraryItem "/library/up_menu.lbi" --><!-- #EndLibraryItem --> <!--弹出菜单-->
+
+<form  method="post" action="user.php?act=my_comment_send" onsubmit="return validate_comment()">
+<input type="hidden" value="{$goods_id}" name="goods_id">
+<input type="hidden" value="{$rec_id}" name="rec_id">
+<input type="hidden" name="o_id" value="{$order_id}" />
+<div class="pj">
+<dl>
+<dt><img src="./../{$goods.goods_thumb}" width="50"/></dt>
+<dd>
+<p>{$goods.goods_name|truncate:35}</p>
+<span>{$goods.supplier_name}</span>
+</dd>
+</dl>
+<div class="pingfen">
+  <script type="text/javascript">
+$(document).ready(function(){
+ $(".jsstar li").mouseover(function(){
+        $(this).parent().find("li").css({"background-position":"left top"});
+        for(var i=0; i<$(this).attr("title"); i++){
+        $(this).parent().find("li").eq(i).css({"background-position":"left bottom"});
+       }
+    });
+
+ $(".jsstar li").mouseout(function(){
+    $(this).parent().find("li").css({"background-position":"left top"});
+     for(var i=0; i<$(this).parent().find("input").val(); i++){
+        $(this).parent().find("li").eq(i).css({"background-position":"left bottom"});
+    }
+});
+
+$(".jsstar li").click(function(){
+    $(this).parent().find("input").val($(this).attr("title"));
+    $(this).parent().find("span").html($(this).attr("title")+"星");
+    });
+});
+</script>
+<h2>评分:</h2>
+<ul>	
+<li>描述：</li>
+    <ul class="jsstar" style=" width:80%"> <span></span>
+    <input name="comment_rank" value="0" type="hidden">
+        <li  title="1"></li>
+        <li  title="2"></li>
+        <li  title="3"></li>
+        <li  title="4"></li>
+        <li  title="5"></li>
+    </ul>
+</ul>
+ <ul>	
+<li>服务：</li> 
+    <ul class="jsstar" style=" width:80%"> <span></span>
+    <input name="server" value="0" type="hidden">
+        <li title="1"></li>
+        <li title="2"></li>
+        <li title="3"></li>
+        <li title="4"></li>
+        <li title="5"></li>
+    </ul>
+</ul>
+ <ul>	
+<li>发货：</li>
+    <ul class="jsstar" style=" width:80%"><span></span>
+    <input name="send" value="0" type="hidden">
+        <li title="1"></li>
+        <li title="2"></li>
+        <li title="3"></li>
+        <li title="4"></li>
+        <li title="5"></li>
+    </ul>
+</ul>
+ <ul>	
+<li>物流：</li>
+    <ul class="jsstar" style=" width:80%"><span></span>
+    <input name="shipping" value="0" type="hidden">
+        <li title="1"></li>
+        <li title="2"></li>
+        <li title="3"></li>
+        <li title="4"></li>
+        <li title="5"></li>
+    </ul>
+</ul>
+</div>
+<div class="p_main">
+<span style=" display:block; width:100%; overflow:hidden">
+<textarea id="content_13" class="inputBorder" style="height:48px;" name="content"></textarea></span>
+<span style=" display:block; width:90%; overflow:hidden; margin:auto; margin-bottom:20px; margin-top:20px;">
+<input name="" type="submit" value="提交" class="m_pingjia" />
+</span>
+</div>
+</div>
+	<!--评分 start--> 
+ 
+</form>
+</body>
+<script>
+ function validate_comment(){
+var content = $("#content_13").val();
+var error = [];
+$(".jsstar input").each(function(index){
+   if(this.value == '0'){
+       if(this.name == 'comment_rank'){
+            error.push('请给描述评分！');
+        };
+       if(this.name == 'server'){
+            error.push('请给服务评分！');
+        };
+       if(this.name == 'send'){
+            error.push('请给发货评分！');
+        };
+       if(this.name == 'shipping'){
+            error.push('请给物流评分！');
+        };
+
+    }
+});
+ if(content == ''){
+    error.push('评价内容不能为空！');
+}
+
+if(error.length>0){
+alert(error);
+   return false;
+}else{
+  return true;
+}
+}
+</script>
+</html>

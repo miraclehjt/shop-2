@@ -1,0 +1,20 @@
+{if $hot_goods}
+<div class="hot_goods box">
+	<div class="hd"><h3>{$lang.top_exchange}</h3><div class="extra"></div></div>
+	<div class="bd product_list">
+		<ul>
+			{foreach from=$hot_goods item=goods name=hot_goods}
+			<li>
+				<span class="photo">
+					<a href="{$goods.url}" title="{$goods.name|escape:html}" class="image"><img src="{$option.static_path}{$goods.thumb}" alt="{$goods.name|escape:html}"/></a>
+				</span>
+				<span class="info">
+					<a href="{$goods.url}" title="{$goods.name|escape:html}" class="name">{$goods.short_style_name}</a>
+					<em class="price price_point"><span>{$goods.exchange_integral}</span>{$lang.points_price_suf}</em>
+				</span>
+			</li>
+			{/foreach}
+		</ul>
+	</div>
+</div>
+{/if}

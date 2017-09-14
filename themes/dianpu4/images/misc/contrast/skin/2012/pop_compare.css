@@ -1,0 +1,232 @@
+/**
+ * Des：弹出对比模块样式 
+ * Author：kily
+ * Date: 2012-3-23
+ */
+
+/** { margin:0; padding:0; }
+body { font:12px Arial; padding:20px 0; }
+.w { margin:0 auto; position:relative; border:1px solid red; }
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden; }
+a { text-decoration:none; }
+li { list-style:none; }
+img { border:0; }
+* html .clearfix{height:1%;}
+*+html .clearfix{min-height:1%; }
+.clb { clear:both; }
+
+fieldset { margin:10px; }
+fieldset>div { overflow:hidden; height:1%; padding:20px; }
+legend { color:#666; border:1px solid #eee; padding:2px 5px; margin-left:10px; }
+*/
+
+
+
+.center { text-align:center; }
+/*修复ie6 position:fixed bug*/
+* html,* html body {background-image:url(about:blank);background-attachment:fixed;}
+
+* html .pop-compare {
+bottom:auto;
+top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0) ));
+}
+div.pop-me {
+display:block;
+}
+* html .pop-compare { 
+bottom:auto;
+position:absolute;
+}
+
+.root61 #pop-compare {
+	margin-right:-606px;
+}
+
+/*窄版对比栏宽度调整*/
+div.pop-compare-narrow { width:970px; margin-right:-475px; }
+div.pop-compare-narrow #scroll-con-inner dl { width:204px; }
+.pop-compare-narrow  .scroll-con { width:880px; }
+.pop-compare-narrow .scroll-con dd { width:150px; }
+
+.pop-compare { display:none; position:fixed; bottom:-200px; right:50%; margin-right:-495px; z-index:5; width:990px; height:137px; background:#fff;}
+.pop-wrap { position:absolute; left:0; top:0; width:990px; }
+.pop-compare-narrow .pop-wrap { width:970px; }
+.pop-compare-narrow .diff-operate { right:14px; }
+* html .pop-wrap { position: static; }
+
+#goto-contrast:hover { text-decoration:none; }
+#goto-contrast { color:#ccc; }
+#goto-contrast.compare-active { color:#333; }
+.del-comp-item { float:right; }
+.del-items:hover,.btn-compare:hover,.del-comp-item:hover,.addToCompare-follow { cursor:pointer; }
+.btn-compare:hover { text-decoration: none; }
+.hasItem .p-price a:hover { text-decoration: underline; }
+.pop-inner { height:133px; border:2px solid #028dd3; }
+.diff-hd .tab-btns { height:30px; border-bottom:1px solid #028dd3; background:#dcf5ff; _overflow:hidden;}
+.tab-btns a { color:#666; }
+.diff-hd { position:relative; overflow:hidden; }
+.tab-btns .current { position:relative; background:#fff; font-weight:bold; height:31px; }
+.tab-btns .current a { color:#005aa0; }
+.tab-btns .current a:hover { text-decoration: none; }
+.diff-hd .operate { width:190px; text-align:right; position:absolute; right:0; top:0; padding-right:22px; height:30px; line-height:30px; clear:both; }
+.diff-hd li { float:left; position:relative; border-right:1px solid #028dd3; width:110px; height:30px; line-height:30px; text-align:center; *zoom:1; }
+.operate .btn-compare { margin-top:2px; }
+
+div.diff-items { padding:6px; color:#ccc; height:90px; overflow:hidden; }
+
+#scroll-con-inner div.dt { border:none; }
+.diff-items dl,.scroll-con dl { float:left; overflow:hidden; margin-right:10px; padding:17px 10px 12px 0; border-right:1px dotted #c5c5c5; }
+#scroll-con-inner li { float:left; height:84px; overflow:hidden; }
+#scroll-con-inner .rec_item_wrap {
+	margin-right:10px; padding:10px 10px 0 0; border-right:1px dotted #c5c5c5; overflow:hidden; width:205px;
+	
+}
+#diff-items .p-price img { float:left;}
+#diff-items .p-price { display:block; padding:2px 0; overflow: hidden; *zoom:1; }
+.diff-items dt,.scroll-con dt,#scroll-con-inner .dt { float:left; margin-right:5px; width:48px; height:48px; text-align:center; line-height:48px; background:#f6f6f6; color:#ccc; border:1px solid #e7e7e7; font-size:45px; overflow:hidden; }
+.diff-items dd,.scroll-con dd,#scroll-con-inner .dd { float:left; width:140px; }
+a.diff-item-name { height:3em; line-height:1.5em; overflow:hidden; display:block; color:#333; }
+.rec_item_wrap .btns { padding-top:10px; height:26px; overflow: hidden; *zoom:1; }
+.rec_item_wrap .btns img { float:left; margin-top:3px; }
+.rec_item_wrap .btns .btn-compare{ float:right; }
+
+.del-comp-item { visibility:hidden; color:#005aa0; }
+.show-del-comp-item .del-comp-item { visibility:visible; }
+.hasItem dt { border:0; }
+
+.diff-bd { position:relative; }
+.diff-operate { position:absolute; right:22px; top:22px; width:85px; text-align:center; }
+
+a.compare-active { background-position:0 -102px; color:#333; cursor:pointer; }
+.pop-compare-tips { display:none; height:27px; margin-top:-29px; line-height:27px; border:1px solid #db9a9a; color:#c00; text-align:center; background:#ffe8e8; 
+_margin-top:0;
+}
+
+/* compare btns: big、middle、small */
+
+.btn-compare { display:block; background:url(i/cmp_btns.png) 0 -122px no-repeat; border:0; }
+.btn-compare-b { display:block; width:84px; height:30px; margin-bottom:11px; line-height:30px; color:#ccc; cursor:default; background:url(i/cmp_btns.png) 0 -134px no-repeat; }
+.btn-compare-b:hover { color:#ccc; cursor:default; }
+.compare-active:hover { cursor:pointer; color:#333; }
+
+.btn-compare span { white-space: nowrap; }
+
+.btn-compare-s, .btn-compare-s span { float:left; width:auto; height:22px; line-height:22px; background:url(i/cmp_btns.png) 0 -54px no-repeat; }
+.btn-compare-s { padding-left:20px; color:#323333; }
+.btn-compare-s span { padding-right:7px; background-position:right -54px; cursor:pointer; }
+a.btn-compare-s-active { background-position: 0 -78px; color:#333; }
+.btn-compare-s-active span { background-position: right -78px; }
+
+.btn-compare-m,.btn-compare-m span { float:left;  height:25px; line-height:25px; background:url(i/cmp_btns.png) 0 0 no-repeat; }
+.btn-compare-m { position:relative; padding-left:24px; color:#333; }
+.btn-compare-m span { background-position:right 0px; padding-right:13px; cursor:pointer; }
+a.btn-compare-m-active { background-position: 0 -25px; }
+.btn-compare-m-active span { background-position: right -25px; }
+
+.btn-compare-m sup { display:block; position:absolute; right:-20px; top:-6px; width:27px; height:20px; text-indent:-9999px; overflow:hidden; background:url(i/cmp_btns.png) -120px -96px no-repeat; }
+
+
+/* scroll item */
+.scroll-item { margin:6px 10px; }
+div.scroll-con { width:905px; height:90px; position:relative; margin:0 auto; overflow:hidden;}
+#scroll-con-inner { position:absolute; z-index:10; left:0; top:0; }
+#scroll-con-inner dl img,#scroll-con-inner dt { border:none; }
+.scroll-item { position:relative; height:90px; }
+.scroll-loading { width:900px; height:90px; line-height:90px; }
+.scroll-con dd { width:155px; }
+.scroll-btn { position:relative; z-index:10; width:21px; height:70px; text-indent:-9999px; overflow:hidden; cursor:pointer; background-image:url(i/cmp_btns.png) ; background-repeat:no-repeat; margin-top:10px; }
+.sb-prev { float:left; background-position:0 -164px; }
+.sb-next { float:right; background-position:-42px -164px; }
+span.no-prev,#sc-prev.disabled { background-position:-21px -164px; cursor:default; }
+span.no-next,#sc-next.disabled { background-position:-63px -164px; cursor:default; }
+
+/* compare holder */
+.compareHolder { display:block; background-position: 0 -606px; cursor:pointer; }
+#sidepanel .compareHolder b { width:14px; height:13px; background:url(i/cmp_btns.png) -95px -102px no-repeat; }
+#sidepanel .compareHolder:hover b { background-position:-95px -116px; }
+.compareHolder-show { visibility:visible; }
+.tips-inner p { cursor:default; padding:5px; }
+.compareHolder .pop-tips { position:absolute; z-index:1000; left:-340px; bottom:10px; width:320px;  }
+
+
+.tips-close { color:#333; cursor:pointer; }
+.tips-close:hover { text-decoration:underline;}
+a.del-items { cursor: pointer; }
+a.del-items:hover { text-decoration: underline; }
+
+/**
+ * 提示效果
+ */
+.mt-tips { position:relative; }
+.mt-tips .compare-tips-link { float:right; position: absolute; right:0; top:1px; }
+.compare-tips-link { float:right; margin:2px 10px 0 0; height:22px; line-height:22px; padding:0 7px; color:#f60; background:#fffdee; border:1px solid #edd28b; }
+.pagin .compare-tips-link {
+float:left;
+}
+
+.pagin .compare-tips-link a { 
+color:#005ea7;
+float:none;
+height: auto;
+line-height:normal;
+border:none;
+margin:0;
+padding:0;
+}
+.pagin .compare-tips-link a:hover { background:none; color:#005ea7; text-decoration:underline; }
+
+
+.pop-tips { position:relative; left:20px; float:left; padding:4px; border-radius:4px; background:url(i/pop-tips.png) 0 -38px repeat-x;
+_background:#eee;
+_width:200px;
+}
+#tip-once2 .tips-inner { padding:10px 15px; }
+.tips-inner { border:1px solid #edd28b; background:#fffdee; color:#ff6600; padding:5px 20px 5px 10px; }
+.tips-inner cite { color:#f60; font:18px arial; line-height:18px; }
+#sidepanel .tips-inner b { position:static; float:none; margin-bottom:-2px; display:inline-block; *zoom:1; }
+
+.pop-tips-arr { position:absolute; display:block; width:15px; height:15px; background-image:url(i/pop-tips.png); background-repeat:no-repeat;
+}
+
+.pop-tips-arrl { left:-6px; top:10px; background-position:0 -15px; }
+span.pop-tips-arrr { right:-6px; top:10px; background-position:-15px -15px; 
+_background:url(i/arr-r.png) 0 0 no-repeat;
+_right:-10px;
+}
+.pop-tips-arrt { left:10px; top:-6px; background-position:0 0; }
+.pop-tips-arrb { left:10px; bottom:-6px; background-position:-15px 0; }
+
+span.pop-tips-close { position:absolute; right:10px; top:18px; width:7px; height:7px; overflow:hidden; background-position:0 -30px; cursor:pointer; }
+div.pop-tips-hide { display:none; }
+a.btn-compare-follow { background:none;}
+a.btn-compare-follow:hover { text-decoration:underline; }
+a.btn-compare-follow,a.btn-compare-follow:hover,a.btn-compare-follow:visited { color:#005EA7;  }
+
+/**
+ * 单品页面对比按钮样式
+ */
+.contrast { padding:17px 0 0 137px; }
+#float-bar .compareHolder-product {
+	background: url(#/201007/skin/df/i/icon2011111801.png) -188px -202px no-repeat;
+	padding-top: 24px;
+	margin-bottom:5px;
+	height:49px;
+}
+
+.operating li .hasGoodsItem { color:#999; cursor:default; }
+.operating li .hasGoodsItem:hover { text-decoration:none; }
+
+/* follow */
+.compare-follow { position:relative; }
+#tip-once3 { position:absolute; left:-180px; top:-4px; width:188px; _left:-185px; }
+#tip-once3 p { padding:0; }
+
+
+
+
+
+
+
+
+
+

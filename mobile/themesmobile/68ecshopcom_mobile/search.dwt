@@ -1,0 +1,100 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>{$page_title}</title>
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/public.css"/>
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/category_list.css"/>
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.js"></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+{insert_scripts files='common.js'}
+
+</head>
+<body>
+<!----------------------------------header----------------------------------->
+<section class="_pre" >
+<header>
+<section class="header" >
+     <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+    <div class="h-mid">
+    <!-- {if $intromode eq 'best'} -->
+   {$lang.best_goods}
+    <!-- {elseif $intromode eq 'new'} -->
+   {$lang.new_goods}
+   <!-- {elseif $intromode eq 'hot'} -->
+   {$lang.hot_goods}
+   <!-- {elseif $intromode eq 'promotion'} -->
+   {$lang.promotion_goods}
+   <!-- {else} -->
+   {$lang.search_result}
+         <!-- {/if} -->
+          </div>
+<div class="h-right">
+            <aside class="top_bar">
+              <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+            </aside>
+          </div>
+
+<!-- #BeginLibraryItem "/library/up_menu.lbi" --><!-- #EndLibraryItem --> <!--弹出菜单-->
+{if $display neq 'shop_list'}
+<section class="filtrate_term" id="product_sort" style="width: 100%;">
+<ul>
+        <li class="{if $pager.search.sort eq 'goods_id'}on{/if}"><a href="search.php?{foreach from=$pager.search key=key item=item}{if $key neq "sort" and $key neq "order"}{$key}={$item}&{/if}{/foreach}page={$pager.page}&sort=goods_id&order={if $pager.search.order eq 'DESC'}ASC{else}DESC{/if}#list">最新</a></li><li class="{if $pager.search.sort eq 'salenum'}on{/if}"><a href="search.php?{foreach from=$pager.search key=key item=item}{if $key neq "sort" and $key neq "order"}{$key}={$item}&{/if}{/foreach}page={$pager.page}&sort=salenum&order={if $pager.search.order eq 'DESC'}ASC{else}DESC{/if}#list" >销量</a></li><li class="{if $pager.search.sort eq 'last_update'}on{/if}"><a href="search.php?{foreach from=$pager.search key=key item=item}{if $key neq "sort" and $key neq "order"}{$key}={$item}&{/if}{/foreach}page={$pager.page}&sort=last_update&order={if $pager.search.order eq 'DESC'}ASC{else}DESC{/if}#list" >更新</a></li><li class="<!-- {if $pager.search.sort eq 'shop_price'} -->on<!-- {/if} -->"><a href="search.php?{foreach from=$pager.search key=key item=item}{if $key neq "sort" and $key neq "order"}{$key}={$item}&{/if}{/foreach}page={$pager.page}&sort=shop_price&order={if $pager.search.order eq 'DESC'}ASC{else}DESC{/if}#list">价格<span class="arrow_up {if $pager.search.sort eq 'shop_price' && $pager.search.order == 'ASC'}active_up{/if}"></span><span class="arrow_down {if $pager.search.sort eq 'shop_price' && $pager.search.order eq 'DESC'}active_down{/if}"></span></a></li><li class=""><a  href="javascript:void(0);" class="show_type {if $pager.display == 'grid'} show_list{/if}">&nbsp;</a></li>    </ul>
+
+</section>
+{/if}
+</section></header>
+
+
+<section>
+  <div style="height:45px;"></div>
+{$page.display}
+<div class="touchweb-com_searchListBox {if $pager.display == 'grid'}openList{/if}" id="goods_list">
+{if $display eq 'shop_list'}
+<!-- #BeginLibraryItem "/library/search_list.lbi" --><!-- #EndLibraryItem -->
+{else}
+<!-- #BeginLibraryItem "/library/search_goods_list.lbi" --><!-- #EndLibraryItem -->
+{/if}
+   <script type="text/javascript">
+     
+        var btn_buy = "{$lang.btn_buy}";
+        var is_cancel = "{$lang.is_cancel}";
+        var select_spe = "{$lang.select_spe}";
+        </script>
+</div>
+</ul>
+</div>
+</section> 
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/footer_nav.lbi" --><!-- #EndLibraryItem -->
+</section>
+<script>
+
+function guanzhu(sid){
+	Ajax.call('supplier.php', 'go=other&act=add_guanzhu&suppId=' + sid, selcartResponse, 'GET', 'JSON');
+}
+
+function selcartResponse(result){
+	
+	alert(result.info);
+}
+
+   $('.show_type').bind("click", function() {
+    if ($('#goods_list').hasClass('openList')){
+	$('#goods_list').removeClass('openList');
+	$(this).removeClass('show_list');
+	}
+	else
+	{
+	$('#goods_list').addClass('openList');	
+	$(this).addClass('show_list');
+	}
+});
+</script>
+</body>
+</html>

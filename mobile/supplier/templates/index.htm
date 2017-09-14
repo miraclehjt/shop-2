@@ -1,0 +1,61 @@
+{if $full_page eq 1}
+<!DOCTYPE HTML>
+<html>
+  <head>
+    {include file='html_header.htm'}
+    <script></script>
+  </head>
+  <body>
+    <div id='container'>
+      {/if}
+      {include file='page_header.htm'}
+      <section id='content'>
+        <div class="pd">
+          <h4>欢迎您，<span>{$supplier_name}</span>登录商家手机版后台</h4>
+          <div class="index">
+            <ul class="index_menu_one">
+              <li>
+                <a href="order.php?act=list&composite_status={$cs_await_ship}" class="index_menu1">
+                <span>待发货（{if $footer_order.await_ship}{$footer_order.await_ship}{else}0{/if}）</span>
+                </a>
+              </li>
+              <li>
+                <a href="order.php?act=list&composite_status={$os_shipped_part}" class="index_menu2">
+                <span>部分发货（{if $order.shipped_part}{$order.shipped_part}{else}0{/if}）</span>
+                </a>
+              </li>
+              <li>
+                <a href="order.php?act=list&composite_status={$cs_await_pay}" class="index_menu3">
+                <span>待付款（{if $order.await_pay}{$order.await_pay}{else}0{/if}）</span>
+                </a>
+              </li>
+              <li>
+                <a href="order.php?act=delivery_list" class="index_menu4">
+                <span>发货单</span>
+                </a>
+              </li>
+              <li>
+                <a href="back.php?act=back_list&order_type=2&back_type={$back_type_money}" class="index_menu5">
+                <span>新退款（{if $footer_order.return_money}{$footer_order.return_money}{else}0{/if}）</span>
+                </a>
+              </li>
+              <li>
+                <a href="back.php?act=back_list&order_type=2&back_type={$back_type_goods}" class="index_menu6">
+                <span>新退货（{if $footer_order.return_goods}{$footer_order.return_goods}{else}0{/if}）</span>
+                </a>
+              </li>
+            </ul>
+            <p class="index_menu_two">
+              <a href="supplier_rebate.php?act=list&is_pay_ok=0" class="index_menu_7">佣金管理</a>
+              <a href="goods_stock.php?act=list">库存查询</a>
+            </p>
+          </div>
+        </div>
+      </section>
+      {include file='page_footer.htm'}
+      {if $full_page eq 1}
+    </div>
+    {include file='static_div.htm'}
+  </body>
+</html>
+{/if}

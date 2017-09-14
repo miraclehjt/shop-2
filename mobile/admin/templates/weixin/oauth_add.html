@@ -1,0 +1,57 @@
+{include file="pageheader.htm"}
+
+{insert_scripts files="../js/utils.js,listtable.js"}
+
+<div id="tabbody-div">
+
+<form name="theForm" method="post" action="weixin.php?act=oauth&oid={$oauth.oid}&t=add">
+
+  <table width="100%" cellpadding="3" cellspacing="1">
+
+  <tbody>
+
+  <!--<tr>
+
+    <td class="label">请选择对应的分站:</td>
+
+    <td><select name="id">
+
+				{foreach item=item from=$configlist}
+
+				<option value="{$item.id}" {if $item.id eq $oauth.id}selected="selected"{/if}>{$item.appid}</option>
+
+				{/foreach}
+
+		    </select></td>
+
+  </tr>-->
+
+  <tr>
+
+    <td class="label">跳转地址:</td>
+
+    <td><input type="text" name="weburl" value="{$oauth.weburl}"></td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2" align="center">
+
+      <input type="submit" value="{$lang.button_submit}" class="button" />
+
+    <input type="reset" value="{$lang.button_reset}" class="button" />
+
+    </td>
+
+  </tr>
+
+</tbody></table>
+
+</form>
+
+</div>
+
+{/literal}
+
+{include file="pagefooter.htm"}

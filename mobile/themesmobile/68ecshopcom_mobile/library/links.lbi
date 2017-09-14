@@ -1,0 +1,19 @@
+{if $option.links_enabled and ($img_links or $txt_links)}
+<div class="links box thin_box full_box">
+	<div class="hd"><h3>{$lang.links}</h3><div class="extra"></div></div>
+	<div class="bd">
+		<p class="link_list">
+			{if $img_links}
+			{foreach from=$img_links item=link name=img_links}
+			<a href="{$link.url}" target="_blank"><img src="{$link.logo}" alt="{$link.name}"/></a>
+			{/foreach}
+			{/if}
+			{if $txt_links}
+			{foreach from=$txt_links item=link name=txt_links}
+			<a href="{$link.url}" target="_blank">{$link.name}</a>
+			{/foreach}
+			{/if}
+		</p>
+	</div>
+</div>
+{/if}

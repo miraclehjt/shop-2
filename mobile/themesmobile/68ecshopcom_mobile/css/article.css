@@ -1,0 +1,90 @@
+body { background: #FFF }
+.page-service-exchange { background-color: #fff; padding: 0 0 1.5em; position: relative; z-index: 1 }
+.page-service-exchange .pageindex { position: absolute; width: 100%; background-color: #fff }
+.page-service-exchange .list { padding: 1.5em 1.5em 0 }
+.page-service-exchange .list li { position: relative }
+.page-service-exchange .list .dep1 { border-bottom: 1px solid #eee }
+.page-service-exchange .list .item { border-bottom: 1px solid #eee }
+.page-service-exchange .list .more:after { content: '\0020'; display: block; width: 1em; height: 1em; border-top: .2em solid #ccc; border-right: .2em solid #ccc; position: absolute; top: 2.2em; right: .9em; -webkit-transition: .2s ease; -webkit-transition-delay: 0s; -moz-transition: .2s ease; -o-transition: .2s ease; transition: .2s ease; -webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg) }
+.page-service-exchange .list .expen.more:after { -webkit-transform: rotate(-45deg); -moz-transform: rotate(-45deg); -ms-transform: rotate(-45deg); -o-transform: rotate(-45deg); transform: rotate(-45deg) }
+.page-service-exchange .list .item { display: block; line-height: 5.5em }
+.page-service-exchange .list .item .icon { margin-right: 1.5em }
+.page-service-exchange .list .item .title { font-size: 1.6em; color: #333 }
+.page-service-exchange .list .icon { display: inline-block; width: 4em; height: 4em; vertical-align: middle; background-size: 4em 4em }
+.page-service-exchange .list .icon-phone { background-image: url(/static/views/service/exchange/img/phone_cd89613.png) }
+.page-service-exchange .list .icon-tv { background-image: url(/static/views/service/exchange/img/tv_267008b.png) }
+.page-service-exchange .list .icon-hezi { background-image: url(/static/views/service/exchange/img/hezi_ccd4fd6.png) }
+.page-service-exchange .list .icon-miwifi { background-image: url(/static/views/service/exchange/img/miwifi_c9fe758.png) }
+.page-service-exchange .list .icon-accessories { background-image: url(/static/views/service/exchange/img/accessories_f4fde3b.png) }
+.page-service-exchange .backlist { border-bottom: 1px solid #eee }
+.page-service-exchange .backlist .b { display: block; padding: 0 2em; height: 4.1em; line-height: 4.1em }
+.page-service-exchange .backlist .b span { font-size: 1.4em; color: #666 }
+.page-service-exchange .textp { padding: 0 2em }
+.page-service-exchange .textp h3 { padding: 2em 0 1em }
+.page-service-exchange .textp h3 span { font-size: 1.6em; color: #333 }
+.page-service-exchange .textp p { font-size: 1.2em; line-height: 1.58333em; color: #666 }
+.page-service-exchange .textp ul { list-style-type: decimal; font-size: 1.2em; padding: 0 0 0 1.66667em; color: #666 }
+.page-service-exchange .textp ul p { line-height: 1.58333em }
+.page-service-exchange .textp table { margin: 1em 0; border: 1px solid #eee; border-collapse: collapse; text-align: center }
+.page-service-exchange .textp table td { border: 1px solid #eee; font-size: 1.2em; line-height: 1.41667em; color: #666; padding: .66667em .33333em }
+.page-service-exchange .textp table .head td { color: #333 }
+.page-service-exchange .infolay { padding: 1.5em 0 }
+.page-service-exchange .infolay h3 { padding: 1em 0 }
+.page-service-exchange .infolay .dep2 { list-style-type: lower-latin }
+.page-service-exchange .infolay .dep2 p { font-size: 1em }
+.page-service-exchange .pagetype2 { padding: 0 1.5em }
+.page-service-exchange .v-enter { -webkit-animation: fadein .5s; animation: fadein .5s }
+.page-service-exchange .v-leave { -webkit-animation: fadeout .5s; animation: fadeout .5s }
+ @keyframes fadein { 0% {
+ transform:scaleY(0);
+ height:0
+}
+ 50% {
+ transform:scaleY(1.5);
+ height:50px
+}
+ 100% {
+ transform:scaleY(1);
+ height:40px
+}
+}
+ @keyframes fadeout { 0% {
+ transform:scaleY(1);
+ height:40px
+}
+ 50% {
+ transform:scaleY(1.5);
+ height:50px
+}
+ 100% {
+ transform:scaleY(0);
+ height:0
+}
+}
+ @-webkit-keyframes fadein { 0% {
+ -webkit-transform:scaleY(0);
+ height:0
+}
+ 50% {
+ -webkit-transform:scaleY(1.5);
+ height:50px
+}
+ 100% {
+ -webkit-transform:scaleY(1);
+ height:40px
+}
+}
+ @-webkit-keyframes fadeout { 0% {
+ -webkit-transform:scaleY(1);
+ height:40px
+}
+ 50% {
+ -webkit-transform:scaleY(1.5);
+ height:50px
+}
+ 100% {
+ -webkit-transform:scaleY(0);
+ height:0
+}
+}
+.pagecontent { padding: 0.5em; line-height: 1.5em; font-size: 1.2em; color: #666666 }

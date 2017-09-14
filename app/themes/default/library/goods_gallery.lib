@@ -1,0 +1,3 @@
+<div class="swiper-slide ub-fh goods-img">
+<img src='{$url}{if $picture.img_url}{$picture.img_url}{else}{$picture.thumb_url}{/if}' />
+</div>

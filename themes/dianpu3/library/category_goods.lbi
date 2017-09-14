@@ -1,0 +1,39 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $category_goods} -->
+<!--{foreach from=$category_goods item=ginfo name=ginfo}-->
+<div class="floorWrapper floorWrapper_{$smarty.foreach.ginfo.iteration}">
+				<div class="floorTitle">
+					<ul class="J_tabList">
+						<li class="current" type="item">{$ginfo.cat_name}</li>
+					</ul>
+					<div class="floorLine"></div>
+                    <!-- {if $ginfo.cat_pic} --> 
+					<a href="{$ginfo.cat_pic_url}" target="_blank"><div class="floorLogo"><img src="{$ginfo.cat_pic}" width="189" height="50" /></div></a>
+                    <!-- {/if} -->
+				</div>
+ 				<div class="floorContent">
+				 <!--{foreach from=$ginfo.goods item=bestgoods name=bestgoods}-->		
+				<div class="itemOuter {if $smarty.foreach.bestgoods.iteration mod 4 eq 0}itemOuter_ts{/if}">
+                	<div class="itemWrapper">
+                    	<a href="{$bestgoods.url}"  title="{$bestgoods.name}" target="_blank">
+                        	<img src="{$bestgoods.thumb}" alt="{$bestgoods.name}" height="220" width="220">
+                            <h6>{$bestgoods.name}</h6>
+                            <div class="priceSection">
+                            	<div class="priceNumber">
+                                	<span class="mainPrice"> <!-- {if $bestgoods.promote_price neq ""} -->
+          								{$bestgoods.promote_price}
+          							 <!-- {else}-->
+          								{$bestgoods.shop_price}
+          							 <!--{/if}--></span>
+                                    <span class="subPrice"><del>{$bestgoods.market_price}</del></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!--{/foreach}--> 
+      		 </div>				
+		     <div style="clear:both"></div>
+	 </div>
+<!-- {/foreach} --> 
+<!-- {/if} --> 

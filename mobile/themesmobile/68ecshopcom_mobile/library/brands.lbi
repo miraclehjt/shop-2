@@ -1,0 +1,18 @@
+{if $brand_list}
+<div class="brands box">
+	<div class="hd"><h3>{$lang.brands_list}</h3><div class="extra"><a href="brand.php">{$lang.all_brand}</a></div></div>
+	<div class="bd">
+		<ul>
+			{foreach from=$brand_list item=brand name=brand}
+			{if $smarty.foreach.brand.index lt $option.index_brands_number}
+			{if $brand.brand_logo}
+			<li class="image"><a href="{$brand.url}" title="{$brand.brand_name|escape:html}"><img src="../../{$option.static_path}data/brandlogo/{$brand.brand_logo}" alt="{$brand.brand_name|escape:html}"/></a></li>
+			{else}
+			<li class="text"><a href="{$brand.url}" title="{$brand.brand_name|escape:html}">{$brand.brand_name}</a></li>
+			{/if}
+			{/if}
+			{/foreach}
+		</ul>
+	</div>
+</div>
+{/if}

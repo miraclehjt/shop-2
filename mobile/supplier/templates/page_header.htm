@@ -1,0 +1,11 @@
+<header id="header" class='header'>
+	<h1>{$ur_here}</h1>
+  {if $logout_button}
+  <a href="privilege.php?act=logout" class="logout">退出</a>
+  {elseif !$no_back}
+	<a href="javascript:history.back(-1)" class="back">返回</a>
+  {/if}
+	{if !$no_refresh}
+  <a onClick="refresh();" class="clear">刷新</a>
+  {/if}
+</header>

@@ -1,0 +1,37 @@
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js"}
+<form enctype="multipart/form-data" action="app_manage.php" method="post">
+<table width="90%">
+{foreach from=$basic_setting item=var}
+<tr>
+<td class="label" valign="top">{$var.name}</td>
+<td>
+{if $var.type eq "text"}
+<input type="text" name="value[{$var.code}]" value="{$var.value}" />
+{elseif $var.type eq "select"}
+{foreach from=$var.store_options key=k item=opt}
+<label for="value_{$var.id}_{$k}">
+	<input type="radio" name="value[{$var.code}]" id="value_{$var.id}_{$k}" value="{$opt}"
+{if $var.value eq $opt}checked="true"{/if}/>{$var.display_options[$k]}</label>
+{/foreach}
+{/if}
+</td>
+</tr>
+{/foreach}
+</table>
+<div class="button-div">
+<input type="submit" value="确定" class="button" />
+<input type="reset" value="重置" class="button" />
+<input type="hidden" name="act" value="save_basic_setting" />
+</div>
+</form>
+{literal}
+<script language="JavaScript">
+onload = function()
+{
+    // 开始检查订单
+    startCheckOrder();
+}
+</script>
+{/literal}
+{include file="pagefooter.htm"}

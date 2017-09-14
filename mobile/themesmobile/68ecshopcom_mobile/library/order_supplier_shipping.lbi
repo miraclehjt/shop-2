@@ -1,0 +1,20 @@
+<style>
+.store_fee{display:inline-block; font-size:14px;}
+.fee_1{ width:40%}
+.fee_2{ width:60%;}
+</style>
+<div style=" width:100%">
+<div class="title" id="peisongtitle" style="border-bottom:1px solid #eeeeee;">
+<span class="text ">快递运输</span><span style="color:#999; font-weight:normal;">&nbsp;&nbsp;其中{if $total.supplier_goodsnumber.1}第三方配送<font style="color:#FF454F;">{$total.supplier_goodsnumber.1}</font>件商品&nbsp;{/if}{if $total.supplier_goodsnumber.0}网站方配送<font style="color:#FF454F;">{$total.supplier_goodsnumber.0}</font>件{/if}</span>
+  
+</div>
+
+
+   <ul style="padding:10px 20px 10px;  color:#999;">
+     {foreach from=$total.supplier_shipping item=supp_ship}
+     <li>
+    	<span class="store_fee fee_1">{$supp_ship.supplier_name}</span><span class="store_fee fee_2">运费：&nbsp;&nbsp;{$supp_ship.formated_shipping_fee}</span>
+     </li>
+     {/foreach}
+     </ul>
+</div>

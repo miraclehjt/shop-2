@@ -1,0 +1,11 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="region">
+<div class="focus"> 
+<!--{foreach from=$categories item=cat name=name}-->
+<!--{if $smarty.foreach.name.iteration <=6 }-->
+<a class="tag11p" href="{$cat.url}"> <img src="themesmobile/68ecshopcom_mobile/img/category{$smarty.foreach.name.iteration}.jpg"> <span class="focus-name">{$cat.name|truncate:5}</span><br>
+    <span class="focus-info">{$cat.desc}</span></a>
+    <!--{/if}-->
+     <!--{/foreach}-->
+    </div>
+</div>

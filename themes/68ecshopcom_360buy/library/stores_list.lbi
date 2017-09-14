@@ -1,0 +1,59 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="flow-wrap clearfix">
+<!--{foreach from=$shops_list item=shop name=shop}--> 
+	<div class="flow-item first"> 
+      <a href="supplier.php?suppId={$shop.supplier_id}" class="flow-datu" title="{$shop.shop_name}"> 
+        <img title="{$shop.supplier_name}" width="150" height="150" alt="" data-original="{$shop.logo}" src="themes/68ecshopcom_360buy/images/loading.gif" >
+      </a>
+      <div class="flow-content">
+      	<h4 class="flow-title">
+        	<a href="supplier.php?suppId={$shop.supplier_id}" title="{$shop.supplier_title}"><span>{$shop.supplier_title}</span></a>
+            <!---{if $shop.shop_closed}--><span class="guanzhu">装修中..</span><!---{else}--><span onclick='guanzhu({$shop.supplier_id});' class="guanzhu">关注</span><!---{/if}-->
+        </h4>
+        <p class="flow-logo">
+        <a href="supplier.php?suppId={$shop.supplier_id}" style="float:none; display:inline-block;"><img id="j_logo_{$shop.supplier_id}" alt="" width="90" height="45" data-original="{$logopath}logo_supplier{$shop.supplier_id}.jpg" src="themes/68ecshopcom_360buy/images/loading.gif"></a>
+        </p>
+	  	<p class="flow-desc">
+        	<span>卖家：</span>
+            <a href="supplier.php?suppId={$shop.supplier_id}" title="{$shop.shop_name}管理员" target="_blank">{$shop.user_name}</a>
+            <a href="http://wpa.qq.com/msgrd?v=3&uin={$shop.qq}&site=qq&menu=yes" target="_blank" alt="点击这里联系我" title="点击这里联系我" class="flow-qq"><img src="http://wpa.qq.com/pa?p=1:{$shop.qq}:4" height="16" border="0" alt="QQ" /></a>
+            <a href="http://amos1.taobao.com/msg.ww?v=2&uid={$shop.ww}&s=2" target="_blank" class="flow-qq"><img src="http://amos1.taobao.com/online.ww?v=2&uid={$shop.ww}&s=2" width="16" height="16" border="0" alt="淘宝旺旺" /></a>
+        </p>
+        <p class="flow-desc">
+        	<span>所在地：</span>{$shop.address}
+        </p>
+        <p class="flow-desc">
+        	<a href="supplier.php?suppId={$shop.supplier_id}" title="进入店铺，查看所有的商品">共<strong>{$shop.goods_number}</strong>件宝贝>></a>
+        </p>
+      </div>
+      <div class="flow-score">
+      	<h3>店铺动态评分</h3>
+        <p>描述相符：<span>{if $shop.avg_comment gt 0}{$shop.avg_comment}{else}5{/if}</span></p>
+        <p>服务态度：<span>{if $shop.avg_comment gt 0}{$shop.avg_server}{else}5{/if}</span></p>
+        <p>发货速度：<span>{if $shop.avg_comment gt 0}{$shop.avg_shipping}{else}5{/if}</span></p>
+      </div>
+	  <div class="flow-main flow-main{$smarty.foreach.shop.iteration}">
+      	<div class="picMarquee-left">
+			<div class="bda">
+		 {if $shop.goods_info}
+		<div class="picListta">
+			<ul>
+			{foreach from=$shop.goods_info item=goods name=goods}
+				<li>
+					<a href="{$goods.url}" title="{$goods.goods_name}" target="_blank" class="img"><img src="{$goods.goods_thumb}"> <span>￥{$goods.shop_p}</span> </a> 
+					<a href="{$goods.url}" title="{$goods.goods_name}" target="_blank" class="name">{$goods.goods_name}</a> 
+				</li>
+			{/foreach}
+			</ul>
+               </div>
+	       {/if}
+			</div>
+		</div>
+      </div>	
+	</div>
+<!--{foreachelse}-->
+</div>
+<div class="flow-wrap clearfix"  style="width:1208px;text-align:center;padding:55px 0px;border:1px #dddddd solid;margin:30px auto">
+没有找到相应店铺！
+</div>
+<!--{/foreach}-->	

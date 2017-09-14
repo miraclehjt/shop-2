@@ -1,0 +1,316 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>{$page_title}</title>
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/public.css"/>
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/group_buy.css" />
+
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.js"></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/touchslider.dev.js"></script>
+{insert_scripts files='common.js'}
+</head>
+<body style="background: rgb(255, 255, 255);">
+<script type="text/javascript">
+        /*第一种形式 第二种形式 更换显示样式*/
+        function setGoodsTab(name,cursel,n){
+          $('html,body').animate({'scrollTop':0},600);
+        for(i=1;i<=n;i++){
+        var menu=document.getElementById(name+i);
+        var con=document.getElementById("user_"+name+"_"+i);
+        menu.className=i==cursel?"on":"";
+        con.style.display=i==cursel?"block":"none";
+        }
+        }
+        </script>
+<div class="main"> 
+      <!----------------------------------header----------------------------------->
+      <div class="tab_nav">
+        <div class="header">
+          <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+          <div class="h-mid">
+            <ul>
+              <li><a href="javascript:;" class="tab_head on"   id="goods_ka1" onClick="setGoodsTab('goods_ka',1,3)">商品</a></li>
+              <li><a href="javascript:;" class="tab_head" id="goods_ka2" onClick="setGoodsTab('goods_ka',2,3)">说明</a></li>
+            </ul>
+          </div>
+          <div class="h-right">
+            <aside class="top_bar">
+              <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+        <!-- #BeginLibraryItem "/library/up_menu.lbi" --><!-- #EndLibraryItem --> <!--弹出菜单-->
+      <script>
+  $(window).load(function(){
+                $('#product_desc img').each(function() {   
+                var maxWidth =$(document).width(); // 图片最大宽度 
+                var ratio = 0;  // 缩放比例  
+                 var width = $(this).width();    // 图片实际宽度   
+                 var height = $(this).height();  // 图片实际高度     // 检查图片是否超宽   
+                 if(width > maxWidth){       
+                 ratio = maxWidth / width;   // 计算缩放比例       
+                 $(this).attr('width',maxWidth); // 设定实际显示宽度       
+                 height = parseInt(height * ratio);    // 计算等比例缩放后的高度 
+                 $(this).attr('height',height);  // 设定等比例缩放后的高度   
+                  }  
+              });
+ });
+</script> 
+
+
+ <div class="main" id="user_goods_ka_1" style="display:block; ">
+
+<div id="wrapper" class="xm_app">
+  <div id="viewport" class="viewport">
+   <div class="product_view" style="background:none">
+      <div class="box box_01">
+        <div class="product_swipe" style="text-align:center"> <!-- 单品介绍图片 -->
+          <a href="{$gb_goods.url}"><img src="{$gb_goods.goods_img}" alt="{$gb_goods.goods_name|escape:html}"  width="100%"/></a>
+        </div>
+        <div class="product_info">
+          <div class="info info_right">
+            <h3 class="name">{$group_buy.goods_name|escape:html}</h3>
+          </div>
+     <span class="price" >{$group_buy.formated_cur_price}</span>
+     <div class="group_details newclass">
+      <!-- {if $cfg.show_goodssn && 0} -->
+      {$lang.goods_sn} {$gb_goods.goods_sn}<br>
+      <!-- {/if} -->
+      <!-- {if $cfg.goods.brand_name && $show_brand && 0} -->
+      {$lang.goods_brand} {$gb_goods.brand_name}<br>
+      <!--{/if}-->
+      <!-- {if $cfg.show_goodsweight && 0} -->
+      {$lang.goods_weight} {$gb_goods.goods_weight}<br>
+      <!-- {/if} -->
+        {$lang.act_time}：{$group_buy.formated_start_date} -- {$group_buy.formated_end_date}<br>
+    <!-- {if $group_buy.deposit > 0} 保证金额-->
+      {$lang.gb_deposit} {$group_buy.formated_deposit}<br />
+      <!--{/if}-->
+
+      <!--{if $group_buy.restrict_amount > 0} 限购数量-->
+      {$lang.gb_restrict_amount} {$group_buy.restrict_amount}<br />
+      <!--{/if}-->
+
+      <!--{if $group_buy.gift_integral > 0} 送积分-->
+      {$lang.gb_gift_integral} {$group_buy.gift_integral}<br />
+      <!--{/if}-->
+		{insert_scripts files='lefttime.js'}
+      <!-- {if $group_buy.status eq 0} 未开始 -->
+      {$lang.gbs_pre_start}
+      <!-- {elseif $group_buy.status eq 1} 进行中 -->
+      <font class="f4" style="color:red">{$lang.gbs_under_way}
+      <span id="leftTime">{$lang.please_waiting}</span></font><br />
+      {$lang.gb_valid_goods} {$group_buy.valid_goods}<br />
+      <!-- {elseif $group_buy.status eq 2} 已结束 -->
+      {$lang.gbs_finished} <br /> {$lang.gb_valid_goods} {$group_buy.valid_goods}<br />
+      <!-- {elseif $group_buy.status eq 3} 团购成功 -->
+      {$lang.gbs_succeed}<br />
+      {$lang.gb_final_price} {$group_buy.formated_trans_price}<br />
+      {$lang.gb_final_amount} {$group_buy.trans_amount}<br />
+      <!-- {elseif $group_buy.status eq 4} 团购失败 -->
+      {$lang.gbs_fail}
+      <!-- {/if} -->
+       {$lang.gb_price_ladder}<br />
+       <table width="100%" border="1" cellpadding="5" cellspacing="1" bgcolor="#dddddd" bordercolor="#E5E5E5">
+       <tr>
+          <th width="50%" bgcolor="#F1F1F1" align="center" >{$lang.gb_ladder_amount}</th>
+         <th width="50%" bgcolor="#F1F1F1" align="center">{$lang.gb_ladder_price}</th>
+        </tr>
+        <!-- {foreach from=$group_buy.price_ladder item=item} -->
+        <tr>
+          <td width="50%" bgcolor="#FFFFFF" align="center" height="30px;">{$item.amount}</td>
+         <td width="50%" bgcolor="#FFFFFF" align="center" height="30px;">{$item.formated_price}</td>
+        </tr>
+        <!-- {/foreach} -->
+      </table>
+     </div>
+      <form action="group_buy.php?act=buy" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY">
+           <div class="ui-sku" style="margin-bottom:20px;">
+                  {if $specification}                
+                       {foreach from=$specification item=spec key=spec_key name=specification}
+                                <div class="ui-sku-prop" {if $spec_key eq $attr_same.attr_id}style="display:none;"{/if}>
+                                  <h6>可选{$spec.name}：</h6>
+                                  <div class="items">
+                                  {if $spec.attr_type eq 1}
+                                  {foreach from=$spec.values item=value key=key}
+                                  <a {if $key eq 0}class="hover"{/if} href="javascript:;" name="{$value.id}" onclick="changeAtt(this);" for="spec_value_{$value.id}" title="{if $value.price gt 0}{$lang.plus}{$value.format_price|abs}{elseif $value.price lt 0}{$lang.minus}{$value.format_price|abs}{/if}"><input style="display:none" id="spec_value_{$value.id}" type="radio" name="spec_{$spec_key}" value="{$value.id}" {if $key eq 0}checked{/if} />
+                                  {$value.label}  {if $value.price gt 0}<font>+ {$value.format_price|abs}</font>{elseif $value.price lt 0}<font>- {$value.format_price|abs}</font>{/if}
+                                  
+                                  </a>
+                                   {/foreach}
+                                   {else}
+                                    {foreach from=$spec.values item=value key=key}
+                                  <a {if $key eq 0}class="hover"{/if} href="javascript:;" name="{$value.id}" onclick="changeAtt1(this)" for="spec_value_{$value.id}" title="{if $value.price gt 0}{$lang.plus}{$value.format_price|abs}{elseif $value.price lt 0}{$lang.minus}{$value.format_price|abs}{/if}"><input type="checkbox" style=" display:none" name=" spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" {if $key eq 0}checked{/if}/>
+                                                    {$value.label} {if $value.price gt 0}<font>+ {$value.format_price|abs}</font>{elseif $value.price lt 0}<font>- {$value.format_price|abs}</font>{/if}
+                                   </a>
+                                   {/foreach}
+                                    {/if}
+                                  </div>
+                                </div>
+                                {/foreach}
+                                {/if}
+      		</div>
+           <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
+              <!-- {if $smarty.session.user_id > 0} 如果登录了，显示购买按钮 -->
+              <tr>
+                <td bgcolor="#FFFFFF" colspan="2"><strong class="newclass">{$lang.number}:</strong>
+                  <input name="number" type="text" class="inputBg newclass" id="number" value="1" size="4" />
+                <input type="hidden" name="group_buy_id" value="{$group_buy.group_buy_id}" />
+                </td>
+              </tr>
+              <tr>
+               
+              <td bgcolor="#FFFFFF" colspan="2" style="text-align:center; padding-top:15px; padding-bottom:15px;"><input type="submit" class="c-btn-orange" value="立即抢购" /></td>
+              </tr>
+              <!-- {else} 如果没有登录，显示提示信息 -->
+              <tr>
+                <td colspan="2" align="left" bgcolor="#FFFFFF"><br />
+                  <font class="f_red">{$lang.gb_notice_login}</font></td>
+              </tr>
+              <!-- {/if} 判断登录结束 -->
+            </table>
+          </form>
+<section class="s-buy open ui-section-box" id="search_ka">
+    <div class="fields">
+              <script type="text/jscript">
+			  function click_search (){
+				  var search_ka = document.getElementById("search_ka");
+				  if (search_ka.className == "s-buy open ui-section-box"){
+					  search_ka.className = "s-buy ui-section-box";
+					  }else {
+						  search_ka.className = "s-buy open ui-section-box";
+						  }
+				  }
+				function changeAtt(t) {
+				t.lastChild.checked='checked';
+				for (var i = 0; i<t.parentNode.childNodes.length;i++) {
+						if (t.parentNode.childNodes[i].className == 'hover') {
+							t.parentNode.childNodes[i].className = '';
+							t.childNodes[0].checked="checked";
+						}
+					}
+				t.className = "hover";
+				changePrice();
+				}
+				function changeAtt1(t) {
+				t.lastChild.checked='checked';
+				for (var i = 0; i<t.parentNode.childNodes.length;i++) {
+						if (t.className == 'hover') {
+							t.className = '';
+							t.childNodes[0].checked = false;
+						}
+						else{
+							t.className="hover";
+							t.childNodes[0].checked = true;
+						}
+						
+					
+				}
+				
+				changePrice();
+				}
+				</script>
+    </div>
+    
+</section>
+ </div>
+        
+      </div>
+      <!--详情开始-->
+    </div>
+    
+    </div>
+      </div>
+</div>
+    <div class="main" id="user_goods_ka_2" style="display:none">
+      <section class="index_floor">
+        <h6 style=" border-bottom:1px solid #CCC ">
+          <span></span>
+          团购说明
+        </h6>
+        <div class="group_con">{$group_buy.group_buy_desc}</div>
+      </section>
+    </div>
+    <div id="productViewWeixinTip" class="weixin_share_tip"></div>
+    
+    <!-- #BeginLibraryItem "/library/page_footer.lbi" -->    
+    <!-- #EndLibraryItem -->    
+
+  <!-- #BeginLibraryItem "/library/footer_nav.lbi" -->
+  <!-- #EndLibraryItem -->
+<script type="text/javascript">
+var goods_id = {$goods_id};
+var goodsattr_style = {$cfg.goodsattr_style|default:1};
+var gmt_end_time = {$promote_end_time|default:0};
+{foreach from=$lang.goods_js item=item key=key}
+var {$key} = "{$item}";
+{/foreach}
+var goodsId = {$goods_id};
+var now_time = {$now_time};
+
+<!-- {literal} -->
+onload = function(){
+  changePrice();
+  fixpng();
+  try { onload_leftTime(); }
+  catch (e) {}
+}
+
+/**
+ * 点选可选属性或改变数量时修改商品价格的函数
+ */
+function changePrice()
+{
+  var attr = getSelectedAttributes(document.forms['ECS_FORMBUY']);
+  var qty = document.forms['ECS_FORMBUY'].elements['number'].value;
+
+  Ajax.call('goods.php', 'act=price&id=' + goodsId + '&attr=' + attr + '&number=' + qty, changePriceResponse, 'GET', 'JSON');
+}
+
+/**
+ * 接收返回的信息
+ */
+function changePriceResponse(res)
+{
+  if (res.err_msg.length > 0)
+  {
+    alert(res.err_msg);
+  }
+  else
+  {
+    document.forms['ECS_FORMBUY'].elements['number'].value = res.qty;
+
+    if (document.getElementById('ECS_GOODS_AMOUNT'))
+      document.getElementById('ECS_GOODS_AMOUNT').innerHTML = res.result;
+  }
+}
+<!-- {/literal} -->
+</script>
+</body>
+<script type="text/javascript">
+var gmt_end_time = "{$group_buy.gmt_end_date|default:0}";
+{foreach from=$lang.goods_js item=item key=key}
+var {$key} = "{$item}";
+{/foreach}
+var now_time = {$now_time};
+<!-- {literal} -->
+
+onload = function()
+{
+  try
+  {
+    onload_leftTime();
+  }
+  catch (e)
+  {}
+}
+<!-- {/literal} -->
+</script>
+</html>

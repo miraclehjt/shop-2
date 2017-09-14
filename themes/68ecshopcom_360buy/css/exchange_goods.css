@@ -1,0 +1,257 @@
+#GB_overlay {
+	background-image: url(overlay.png);
+	position: absolute;
+	margin: auto;
+	top: 100;
+	left: 0;
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+}
+#GB_overlay {
+	background-color: #000;
+	filter: alpha(opacity=70);
+	opacity: 0.7;
+}
+#GB_back {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+}
+/*********************放大镜配置文件*******************************************************************************************/
+
+/* Copyright 2008 MagicToolBox.com. To use this code on your own site, visit http://magictoolbox.com */
+
+/* CSS class for zoomed area */
+.MagicZoomBigImageCont {
+	border: 1px solid #808080;
+}
+/* Header look and feel CSS class */
+/* header is shown if "title" attribute is present in the <a> tag */
+.MagicZoomHeader {
+	font: 12px Tahoma, Verdana, Arial, sans-serif;
+	color: #fff;
+	background: #808080;
+	text-align: center !important;
+}
+/* CSS class for small looking glass square under mouse */
+.MagicZoomPup {
+	border: 1px solid #aaa;
+	background: #ffffff;
+	cursor: hand;
+}
+/* CSS style for loading animation box */
+.MagicZoomLoading {
+	text-align: center;
+	background: #ffffff;
+	color: #444;
+	border: 1px solid #ccc;
+	opacity: 0.8;
+	padding: 3px 3px 3px 3px !important;
+	display: none; /* do not edit this line please */
+}
+/* CSS style for gif image in the loading animation box */
+.MagicZoomLoading img {
+	padding-top: 3px !important;
+}
+/* ?2008 MagicToolbox.com. To use this code on your own site, visit http://www.magictoolbox.com */
+
+/* CSS class for thumbnail link <a> */
+.MagicThumb {
+	cursor: url(images/zoomin.cur), pointer;
+	outline: none;
+}
+/* CSS class for the thumbnail link <a> when the big image is zoomed mo ban tang ban quan suo you */
+.MagicThumb-zoomed {
+	cursor: default;
+}
+/* CSS class for span inside the thumbnail <a> */
+.MagicThumb span {
+	display: none;
+}
+/* CSS class for the thumbnail image */
+.MagicThumb img {
+	border: 1px solid #e5e5e5;
+	outline: none;
+}
+/* CSS class for the big image while zooming */
+.MagicThumb-image {
+	border: 1px solid #e5e5e5;
+	outline: none;
+}
+/* CSS class for the zoomed big image */
+.MagicThumb-image-zoomed {
+	cursor: url(images/zoomout.cur), pointer;
+}
+/* CSS class for the caption under the big zoomed image */
+.MagicThumb-caption {
+	color: #333333;
+	background-color: #F0F0F0;
+	border: 1px solid #E4E4E4;
+	border-top: none;
+	font-family: Verdana, Helvetica;
+	font-size: 11px;
+	padding: 8px 16px;
+}
+/* CSS class for the control bar  */
+.MagicThumb-controlbar {
+	display: block;
+	height: 18px;
+}
+.MagicThumb-controlbar a {
+	display: block;
+	width: 18px;
+	height: 18px;
+	margin: 0px 1px;
+	outline: none;
+	float: left;
+	overflow: hidden;
+}
+.MagicThumb-controlbar a span {
+	display: block;
+	width: 1000px;
+	height: 1000px;
+	background: transparent url(images/controlbar.png) no-repeat 0 0;
+	outline: none;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+/* CSS class for the loading message box */
+.MagicThumb-loading {
+	border: 1px solid #000000;
+	background: #ffffff url(images/loader.gif) no-repeat 2px 50%;
+	padding: 2px 2px 2px 22px;
+	margin: 0;
+	text-decoration: none;
+	text-align: left;
+	font-size: 8pt;
+	font-family: sans-serif;
+}
+.picture {
+	margin-top: 10px;
+	text-align: left;
+}
+.picture img {
+	width: 50px;
+	height: 50px;
+	cursor: pointer;
+	margin: 0 3px;
+}
+.picture img.onbg {
+	border: 2px solid #ff9900;
+}
+.picture img.autobg {
+	border: 2px solid #fff;
+}
+#GB_window {
+	top: 10px;
+	left: 0px;
+	position: absolute;
+	background: #fff;
+	border: 5px solid #aaa;
+	overflow: auto;
+	width: 400px;
+	height: 400px;
+	z-index: 150;
+}
+#GB_frame {
+	border: 0;
+	overflow: auto;
+	width: 100%;
+	height: 378px;
+}
+#GB_caption {
+	font: 12px bold helvetica, verdana, sans-serif;
+	color: #fff;
+	background: #888;
+	padding: 2px 0 2px 5px;
+	margin: 0;
+	text-align: left;
+}
+#GB_window img {
+	position: absolute;
+	top: 2px;
+	right: 5px;
+	cursor: pointer;
+	cursor: hand;
+}
+.greybox {
+	line-height: 25px;
+	display: block;
+	width: 300px;
+	height: 20px;
+	text-align: center;
+}
+.goodsItem .greybox {
+	line-height: 25px;
+	height: 20px;
+	text-align: center;
+	display: inline;
+}
+.erweima {
+	position: absolute;
+	bottom: 10px;
+	right: 20px;
+}
+#summary LI {
+	height: 20px
+}
+.collect{
+	position:absolute;
+	top:0px;
+	right:0px;	
+	float: left;
+	width: 175px;
+	height: 510px;
+	text-align:center;
+	overflow:hidden;
+	border-left: 1px dotted #dddddd;
+}
+.collect .ald-hd {
+position: relative;
+height: 30px;
+overflow: hidden;
+}
+.collect .ald-hd s {
+position: absolute;
+top: 10px;
+left: 27px;
+width: 120px;
+height: 0;
+border-top: 1px #c9c9c9 dotted;
+text-decoration: none;
+}
+.collect .ald-hd span {
+position: absolute;
+color: #999;
+text-align: center;
+width: 6em;
+top: 0;
+left: 50%;
+margin-left: -3em;
+background-color: #fff;
+}
+.colList{
+	margin-top:0px	
+}
+.collect .colList .colFrame {
+	width: 175px;
+	margin:0 auto;
+	text-align:center
+}
+.collect .colList ul{
+	width: 155px;
+	margin:auto;
+	text-align:center
+}
+.collect .colList ul li {
+	width: 155px;
+}
+.collect .prev {
+	margin-left:45px
+}
+.collect .next {
+	margin-right:45px
+}

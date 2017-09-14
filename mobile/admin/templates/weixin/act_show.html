@@ -1,0 +1,63 @@
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<script type="text/javascript" src="../js/calendar.php"></script>
+<link href="../js/calendar/calendar.css" rel="stylesheet" type="text/css" />
+<div class="list-div" id="listDiv">
+<form name="theForm" method="post" action="weixin_egg.php?act=list&aid={$act.aid}">
+  <table width="100%">
+  <tbody>
+ <tr>
+    <td class="label">活动标题 :</td>
+    <td><input type="text" name="title" value="{$act.title}"/></td>
+  </tr>
+  <tr>
+    <td class="label">活动介绍 :</td>
+    <td><textarea name="content" rows="5" cols="40">{$act.content}</textarea></td>
+  </tr>
+ <tr>
+    <td class="label">是否启用 :</td>
+    <td><input type="radio" name="isopen" value="1" {if $act.isopen eq 1}checked{/if} />开启
+	<input type="radio" name="isopen" value="0" {if $act.isopen eq 0}checked{/if} />关闭</td>
+  </tr>
+ <tr>
+    <td class="label">参与次数 :</td>
+    <td><input type="text" name="num" value="{$act.num}" /></td>
+  </tr>
+ <tr>
+    <td class="label">活动类型 :</td>
+    <td><input type="radio" name="type" value="1" {if $act.type eq 1}checked{/if} />每日（每天有上面的次数）
+	<input type="radio" name="type" value="2" {if $act.type eq 2}checked{/if} />长期（整个活动有上面的次数）</td>
+  </tr>
+  {if $act.aid}
+  <tr>
+    <td class="label">活动地址 :</td>
+    <td>/mobile/weixin/act.php?aid={$act.aid}</td>
+  </tr>
+  {/if}
+    <tr>
+    <td class="label">抽奖形式 :</td>
+    <td>
+	<input type="radio" name="tpl" value="1" {if $act.tpl eq 1}checked{/if} />砸金蛋
+	<input type="radio" name="tpl" value="2" {if $act.tpl eq 2}checked{/if} />刮刮卡
+	<input type="radio" name="tpl" value="3" {if $act.tpl eq 3}checked{/if} />大转盘
+	<!--<input type="radio" name="tpl" value="4" {if $act.tpl eq 4}checked{/if} />大转盘-->
+	</td>
+  </tr>
+  <tr>
+    <td class="label">兑奖截止时间:</td>
+
+    <td><input type="text" name="overymd" size="25" id="overymd" value="{$act.overymd}"><input name="selbtn2" type="button" id="selbtn2" onclick="return showCalendar('overymd', '%Y-%m-%d ', false, false, 'selbtn2');" value="选择" class="button"/>
+     <br /><span style=" color:#F30;">*&nbsp;注:&nbsp;此为兑奖截止时间，也是活动的截止时间。</span>
+    </td>
+
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <input type="submit" value="{$lang.button_submit}" class="button" />
+    <input type="reset" value="{$lang.button_reset}" class="button" />
+    </td>
+  </tr>
+</tbody></table>
+</form>
+</div>
+{include file="pagefooter.htm"}

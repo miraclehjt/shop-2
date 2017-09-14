@@ -1,0 +1,42 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="mui-page" data-spm="20131103">
+        <div class="mui-page-wrap"> 
+		<b class="mui-page-num">
+			<!--{if $smarty.request.page==1}-->
+			<b class="mui-page-prev">&lt;</b>
+			<!--{else}-->
+			<a href="stores.php?type={$smarty.request.type|default:1}&keywords={$smarty.request.keywords}&page=1" class="j_PageChange"  style="border-left: 1px solid #E5E5E5;">&lt;</a> 
+			<!--{/if}-->
+			<!--{if $start}-->
+			<a href="stores.php?type={$smarty.request.type|default:1}&keywords={$smarty.request.keywords}&page={$start}" class="j_PageChange">...</a> 
+			<!--{/if}-->
+			<!--{foreach from=$page_array item=num}-->
+				<!--{if $smarty.request.page == $num }-->
+					<b class="mui-page-cur">{$num}</b> 
+				<!--{else}-->
+					<a href="stores.php?type={$smarty.request.type|default:1}&keywords={$smarty.request.keywords}&page={$num}" class="j_PageChange" data-page="{$num}">{$num}</a> 
+				<!--{/if}-->
+
+			<!--{/foreach}-->
+			<!--{if $end}-->
+			<a href="stores.php?type={$smarty.request.type|default:1}&keywords={$smarty.request.keywords}&page={$end}" class="j_PageChange">...</a> 
+			<!--{/if}-->
+			<!--{if $smarty.request.page==$page_count}-->
+			<b class="mui-page-prev">&gt;</b>
+			<!--{else}-->
+			<a class="mui-page-next  j_PageChange " data-page="{$page_count}" href="stores.php?type={$smarty.request.type|default:1}&keywords={$smarty.request.keywords}&page={$page_count}">&gt;</a> 
+			<!--{/if}-->
+			
+		</b> 
+		<b class="mui-page-skip">
+			<form method="get">
+			<input type="hidden" name="type" value="{$smarty.request.type|default:1}">
+			<input type="hidden" name="keywords" value="{$smarty.request.keywords}">
+			共{$page_count}页，去第
+			<input type="text" value="{$smarty.request.page|default:1}" size="3" class="mui-page-skipTo j_PageChangeInput" name="page">
+			页
+			<button class="mui-btn-s" type="submit">确定</button>
+			</form>
+		</b> 
+	</div>
+</div>

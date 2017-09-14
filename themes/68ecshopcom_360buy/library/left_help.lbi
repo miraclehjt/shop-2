@@ -1,0 +1,17 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--{if $helps}-->
+<div class="left">
+  <div class="help_side"  id="sortlist">
+    <!-- {foreach from=$helps item=help_cat name=name} -->
+    <div class="current">
+      <h4><b></b>{$help_cat.cat_name}</h4>
+      <ul>
+        <!-- {foreach from=$help_cat.article item=item name=name1} -->
+        <li  class="li1 {if $item.title eq $article.title}helpcurr{/if}"  > <a href="help.php?id={$item.article_id}" target="_self">{$item.short_title}</a> </li>
+        <!-- {/foreach} -->
+      </ul>
+    </div>
+    <!-- {/foreach} -->
+  </div>
+</div>
+<!--{/if}-->

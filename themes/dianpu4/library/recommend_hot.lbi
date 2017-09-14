@@ -1,0 +1,26 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $hot_goods} -->
+	<div id="plist-1" class="plist">
+				<div class="mt">
+					<h2>本店热销</h2>
+				</div>
+				<div class="mc">
+					<ul class="list-h">
+                     <!--{foreach from=$hot_goods item=bestgoods}-->
+					
+                     <li class='fore'>
+						<div class="p-img"><a target="_blank" title="{$bestgoods.name}" href='{$bestgoods.url}'><img alt="{$bestgoods.thumb}" src="{$bestgoods.thumb}" width="150" height="150" data-img='1' /></a></div>
+                        <div class="p-name"><a target="_blank" title='{$bestgoods.name}' href='{$bestgoods.url}'>{$bestgoods.name}</a></div>
+                        <div  class="p-price">售价：<strong>   <!-- {if $bestgoods.promote_price neq ""} -->
+          {$bestgoods.promote_price}
+          <!-- {else}-->
+          {$bestgoods.shop_price}
+          <!--{/if}--></strong></div>
+                    	</li>
+					
+                     {/foreach}  						                       
+                     </ul>
+					
+				</div>
+			</div>
+<!-- {/if} -->

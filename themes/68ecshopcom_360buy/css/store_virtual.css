@@ -1,0 +1,67 @@
+@charset "utf-8";
+/* CSS Document */
+a {
+	color: #333
+}
+#content {
+	width: auto!important;
+	background-color: #f5f5f5;
+}
+.flow {
+	width: 1210px;
+	position: relative;
+	margin: -10px auto 0;
+	overflow: hidden;
+	padding-top: 20px;
+}
+.flow-wrap {
+	width: 1020px;
+	padding-left: 1px
+}
+.flow-item{
+	float: left;
+	margin-right: 22px;
+	width: 220px;
+	height: 295px;
+	position: relative;
+	right: 0;
+	top: 0;
+	z-index: 1;
+	overflow: hidden;
+	margin-bottom: 25px;
+	background-color: #fff;
+	border:1px solid #ddd;
+}
+.flow-item.last{
+	margin-right:0;	
+}
+.flow-item:hover{
+	border:1px solid #E31939;	
+}
+.flow-item a {
+	color: #000;
+	display: block;
+	height: 100%
+}
+.flow-item a:hover {
+	text-decoration: none
+}
+.flow-item img {
+	display: block;
+	margin: 0 auto
+}
+.flow-title {
+	font-size: 14px;
+	height: 40px;
+	line-height: 40px;
+	overflow: hidden;
+	margin:0 10px;
+	border-bottom:1px solid #ddd;
+}
+.flow-address{
+	height:30px;
+	line-height:30px;
+	padding:0 10px 0 26px;
+	background:url(../images/virtual_group/address.png) no-repeat 6px center;
+	color:#E4393C;
+}

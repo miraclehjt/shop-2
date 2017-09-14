@@ -1,0 +1,351 @@
+{if $full_page eq 1}
+<!DOCTYPE HTML>
+<html>
+  <head>
+    {include file='html_header.htm'}
+    <script lang='javascript' type='text/javascript'>
+      Zepto(function($)
+      {
+        $('#hidebg').css('height',$('body').height());
+      });
+      
+      function open_surplus(){
+        
+        $('#hidebg').fadeIn(200,function()
+        {
+         $('#popup_window').fadeIn(200);
+        });
+      }
+      
+      function close_surplus(){
+         $('#popup_window').fadeOut(200,function()
+        {
+         $('#hidebg').fadeOut(200);
+        });
+      }
+      
+      function toggle_message()
+      {
+        $("#user_message_div").slideToggle();
+      }
+      
+    </script> 
+  </head>
+  <body>
+    <div id='container'>
+      {/if}
+      {include file='page_header.htm'}
+      <section style="padding-bottom:90px;">
+        {if $back_order.image_arr}
+        <div id="hidebg" onclick='close_surplus()'></div>
+        <div id="popup_window" style="position:fixed;display:none;">
+          <a class='close' onclick="close_surplus()"></a>
+          <div class="buyer">
+            <div class="info info_img">
+              {foreach from=$back_order.image_arr item=img}
+              <img src="{$img}" />
+              {/foreach}
+            </div>
+          </div>
+        </div>
+        {/if}
+        <div class="back_info_con">
+          <div class="order_pass">
+            <p class="edit"><span>{$lang.base_info}</span></p>
+            <div class="order_pass_info">
+              <table width="100%" >
+                <tr>
+                  <td width="18%">
+                    <div ><strong>{$lang.label_order_sn}</strong></div>
+                  </td>
+                  <td width="34%">{$back_order.order_sn}</td>
+                <tr>
+                </tr>
+                <td>
+                  <div ><strong>{$lang.label_order_time}</strong></div>
+                </td>
+                <td>{$base_order.add_time}</td>
+                </tr>
+                <tr>
+                  <td width="18%">
+                    <div ><strong>服务类型：</strong></div>
+                  </td>
+                  <td width="34%">
+                    {if $back_order.back_type eq 1}退货{/if}
+                    {if $back_order.back_type eq 2}换货{/if}
+                    {if $back_order.back_type eq 3}维修{/if}
+                    {if $back_order.back_type eq 4}退款（无需退货）{/if}
+                  </td>
+                <tr>
+                </tr>
+                <td>
+                  <div ><strong>退款方式：</strong></div>
+                </td>
+                <td>
+                  {if $back_order.back_pay eq 1}退款至账户余额{/if}
+                  {if $back_order.back_pay eq 2}原支付方式返回{/if}
+                </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div ><strong>{$lang.label_user_name}</strong></div>
+                  </td>
+                  <td>{$back_order.user_name|default:$lang.anonymous}</td>
+                <tr>
+                </tr>
+                <td>
+                  <div ><strong>{$lang.label_how_oos}</strong></div>
+                </td>
+                <td>{$base_order.how_oos}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div ><strong>{$lang.label_shipping}</strong></div>
+                  </td>
+                  <td>{if $base_order.shipping_id > 0}{$base_order.shipping_name}{/if} </td>
+                <tr>
+                </tr>
+                <td>
+                  <div ><strong>{$lang.label_shipping_fee}</strong></div>
+                </td>
+                <td>{$base_order.shipping_fee}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div ><strong>{$lang.label_insure_yn}</strong></div>
+                  </td>
+                  <td>{if $base_order.insure_yn}{$lang.yes}{else}{$lang.no}{/if}</td>
+                <tr>
+                </tr>
+                <td>
+                  <div ><strong>{$lang.label_insure_fee}</strong></div>
+                </td>
+                <td>{$base_order.insure_fee|default:0.00}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div ><strong>{$lang.label_invoice_no}</strong></div>
+                  </td>
+                  <td >{$base_order.invoice_no}</td>
+                <tr>
+                </tr>
+                <td>
+                  <div ><strong>{$lang.label_shipping_time}</strong></div>
+                </td>
+                <td>{$base_order.shipping_time}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="order_pass">
+            <p class="edit"><span>{$lang.back_info}</span></p>
+            <div class="order_pass_info">
+              <table width="100%" >
+                <tr>
+                  <td>
+                    <div ><strong>申请退货/维修时间：</strong></div>
+                  </td>
+                  <td>{$back_order.formated_add_time}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div ><strong>申请人用户名：</strong></div>
+                  </td>
+                  <td>{$back_order.user_name}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div ><strong>换回商品收件人：</strong></div>
+                  </td>
+                  <td>{$back_order.consignee|escape}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div ><strong>联系电话：</strong></div>
+                  </td>
+                  <td>{$base_order.tel}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div ><strong>换回商品收货人地址：</strong></div>
+                  </td>
+                  <td >{$back_order.address|escape}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div ><strong>邮编：</strong></div>
+                  </td>
+                  <td>{$back_order.zipcode|escape}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div ><strong>退货/维修原因：</strong></div>
+                  </td>
+                  <td colspan=3>{$back_order.back_reason}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div ><strong>用户退回商品所用快递：</strong></div>
+                  </td>
+                  <td>{$back_order.shipping_name|escape}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div ><strong>运单号：</strong></div>
+                  </td>
+                  <td>{$back_order.invoice_no}</td>
+                </tr>
+                {if $back_order.image_arr}
+                <tr>
+                  <td>
+                    <div ><strong>图片：</strong></div>
+                  </td>
+                  <td>
+                    <a href="javascript:open_surplus();" style='color : #FFC486;'>查看图片</a>
+                  </td>
+                </tr>
+                {/if}
+              </table>
+            </div>
+          </div>
+          {if $back_order.postscript || $back_order.back_reply}
+          <div class="order_qita" onclick='toggle_message();'>
+            <p class="edit" id="order_qita"><span>客户留言</span><i></i></p>
+            <div class="qita_info qita_info_t" id='user_message_div'>
+              <table width="100%" >
+                {if $back_order.postscript}
+                <tr>
+                  <td width='10%' align='left'>用户：</td>
+                  <td width='65%' align='left'>{$back_order.postscript}[{$back_order.formated_add_time}]</td>
+                </tr>
+                {/if}
+                {foreach from=$back_order.back_reply item=reply}
+                <tr>
+                  {if $reply.type eq 1}
+                  <td width='10%' align='left'>用户：</td>
+                  {else if $reply.type eq 0}
+                  <td width='10%' align='left'>客服：</td>
+                  {/if}
+                  <td width='65%' align='left'>{$reply.message}[{$reply.add_time}]</td>
+                </tr>
+                {/foreach}
+              </table>
+            </div>
+          </div>
+          {/if}
+          <div class="order_pass">
+            <p class="edit"><span>原订单-商品信息</span></p>
+            <div class="order_pass_info">
+              <table width="100%" >
+                <tr>
+                  <td scope="col">
+                    <div ><strong>{$lang.goods_name_brand}</strong></div>
+                  </td>
+                  <td scope="col">
+                    <div ><strong>{$lang.goods_sn}</strong></div>
+                  </td>
+                  <td scope="col">
+                    <div ><strong>{$lang.product_sn}</strong></div>
+                  </td>
+                  <td scope="col">
+                    <div ><strong>{$lang.goods_attr}</strong></div>
+                  </td>
+                  <td colspan=3>
+                    <div ><strong>{$lang.label_send_number}</strong></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>{$order_goods.goods_name}</td>
+                  <td>{$order_goods.goods_id}</td>
+                  <td>{$order_goods.product_id}</td>
+                  <td>{$order_goods.goods_attr}</td>
+                  <td colspan=3>{$order_goods.send_number}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="order_pass">
+            <p class="edit"><span>退货/返修 - 商品信息</span></p>
+            <div class="order_pass_info">
+              <table width="100%" >
+                <tr>
+                  <td scope="col">
+                    <div ><strong>{$lang.goods_name_brand}</strong></div>
+                  </td>
+                  <td scope="col">
+                    <div ><strong>{$lang.goods_sn}</strong></div>
+                  </td>
+                  <td scope="col">
+                    <div ><strong>{$lang.product_sn}</strong></div>
+                  </td>
+                  <td scope="col">
+                    <div ><strong>{$lang.goods_attr}</strong></div>
+                  </td>
+                  <td scope="col">
+                    <div ><strong>业务</strong></div>
+                  </td>
+                  <td scope="col">
+                    <div ><strong>应退金额</strong></div>
+                  </td>
+                  <td scope="col" >
+                    <div ><strong>{$lang.label_send_number}</strong></div>
+                  </td>
+                </tr>
+                {foreach from=$goods_list item=goods}
+                <tr>
+                  <td>
+                    {if $goods.goods_id gt 0 && $goods.extension_code neq 'package_buy'}
+                    <a href="../goods.php?id={$goods.goods_id}" target="_blank">{$goods.goods_name} {if $goods.brand_name}[ {$goods.brand_name} ]{/if}
+                    {/if}
+                  </td>
+                  <td>
+                    <div >{$goods.goods_id}</div>
+                  </td>
+                  <td>
+                    <div >{$goods.product_id}</div>
+                  </td>
+                  <td>
+                    <div >{$goods.goods_attr|nl2br}</div>
+                  </td>
+                  <td>{$goods.back_type_name}</td>
+                  <td>{$goods.back_goods_money}</td>
+                  <td>
+                    <div >{$goods.back_goods_number}</div>
+                  </td>
+                </tr>
+                {/foreach}
+              </table>
+            </div>
+          </div>
+          <div class="operate">
+            <form  action="back.php?act=operate" method="post">
+            <table width="100%" >
+              <tr>
+                <td>
+                  {if $operable_list.confirm}
+                  <input name="confirm" type="submit" value="收到用户寄回商品" class="button button-size-5" />
+                  {/if} 
+                  {if $operable_list.refund}
+                  <input name="refund" type="submit" value="去退款" class="button button-size-6" />
+                  {/if}
+                  {if $operable_list.backshipping}
+                  <input name="backshipping" type="submit" class="button button-size-6" value="换出商品寄出" />
+                  {/if}
+                  {if $operable_list.backfinish}
+                  <input name="backfinish" type="submit" value="完成退换货" class="button button-size-6" />
+                  {/if} 
+                  <input name="after_service" type="submit" value="{$lang.op_after_service}" class="button button-size-6" />       
+                  <input name="back_id" type="hidden" value="{$smarty.request.back_id}"  class='button  button-size-6'>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </section>
+      {include file='page_footer.htm'}
+      {if $full_page eq 1}
+    </div>
+    {include file='static_div.htm'}
+  </body>
+</html>
+{/if}

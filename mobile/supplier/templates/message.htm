@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    {include file='html_header.htm'}
+    {if $auto_redirect}
+    <script>
+      var _wap_auto_redir_seconds = '3';
+      var _wap_auto_redir_url = '{$default_url}';
+    
+      Zepto(function($){
+        window.setInterval(start_redir, 1000);
+      })
+
+      function start_redir()
+      {
+        if (_wap_auto_redir_seconds <= 0)
+        {
+          window.clearInterval();
+          return;
+        }
+
+        _wap_auto_redir_seconds --;
+
+        $('#_wap_auto_redir_span').html(_wap_auto_redir_seconds);
+
+        if (_wap_auto_redir_seconds == 0)
+        {
+          location.href = _wap_auto_redir_url;
+          window.clearInterval();
+        }
+      }
+    </script>
+    {/if}
+  </head>
+  <body>
+  {include file='page_header.htm'}
+  <section>
+  	<div class="msg">
+    {if $msg_type eq 0}
+    <p><img src='images/sys_normal_msg_icon.png'/></p>
+    {elseif $msg_type eq 1}
+    <p><img src='images/sys_error_msg_icon.png'/></p>
+    {elseif $msg_type eq 2}
+    <p><img src='images/sys_question_msg_icon.png'/></p>
+    {/if}
+    <p class="msg_detail">{$msg_detail}</p>
+    {if $auto_redirect}
+    <p><span id='_wap_auto_redir_span'>3</span>秒后自动跳转</p>
+    {/if}
+    {foreach from=$links item=link}
+    <p><a href='{$link.href}'>{$link.text}</a></p>
+    {/foreach}
+    </div>
+  </section>
+  </body>
+</html>

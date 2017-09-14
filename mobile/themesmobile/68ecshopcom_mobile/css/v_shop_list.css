@@ -1,0 +1,187 @@
+
+/*css初始值*/
+body {margin:0px;font-family: "微软雅黑", "宋体", Arial, Helvetica, sans-serif;font-size: 14px;line-height: 180%;color: #000000; min-width:320px;}
+html, body, div, p, ul, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, form, input, select, button, textarea, iframe, table, th, td {margin: 0;padding: 0;list-style-type: none;}
+img { border:0px}
+a:link {font-family: "微软雅黑", "宋体", Arial, Helvetica, sans-serif;font-size:14px;color: #000000;text-decoration: none;}
+a:visited {font-family: "微软雅黑", "宋体", Arial, Helvetica, sans-serif;font-size:14px;color:#000000;text-decoration: none;}
+a:hover {font-family: "微软雅黑", "宋体", Arial, Helvetica, sans-serif;font-size:14px;color:#E24615;text-decoration: none;}
+html { font-size: 10px; }
+body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, li, ol, p, select, table, td, textarea, th, ul { margin: 0; padding: 0 }
+fieldset, img { border: 0 }
+ol, ul, li { list-style: none }
+address, em { font-style: normal }
+a { color: #000; text-decoration: none; }
+table { border-collapse: collapse; }
+input { font-family: 'microsoft yahei', Verdana, Arial, Helvetica, sans-serif; }
+em, i { font-style: normal; }
+.clearfix:after { clear: both; content: " "; display: block; font-size: 0; height: 0; visibility: hidden }
+.clearfix { zoom: 1 }
+.dis_tab { display: table; width: 100%; }
+.dis_tab_c { display: table-cell; }
+* { -webkit-tap-highlight-color: rgba(0,0,0,0); }
+:focus { outline: none; }
+/* 分类导航页 */
+/* 内容 */
+body { background-color: #f8f8f8; }
+.main { position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; min-width: 320px; overflow: hidden; background-color: #fff; }
+
+/* 页面头部  */
+.menu1,.menu2,.menu3,.menu4,#show_more{background:url(../images/v-shop/pub_goods.png) no-repeat;background-size: auto 200px;}
+.header { width:100%; height:45px; background:#F6F6F6;top:0; z-index:9999; border:0; border-bottom:1px solid #CCC}
+.h-left{float:left;width:15%; height:45px;}
+.h-left a{ display:block; width:45px; height:45px; margin:auto; background: url(../images/v-shop/arrow_left.png) no-repeat 15px center; background-size: auto 16px; }
+.h-right{float:left; width:15%;height:45px;}
+
+.h-mid { width:70%; height:45px; float:left; text-align:center; color:#333; font-size:16px; line-height:45px; position:relative;font-family: "微软雅黑", "宋体", Arial, Helvetica, sans-serif;}
+.h-mid h6 { color:#333; font-size:16px; font-family: "微软雅黑", "宋体", Arial, Helvetica, sans-serif; font-weight:normal;}
+/*弹出菜单*/
+.top_bar{float:right; display:block;margin-right:8px; width:40px; height:40px; float:right;}
+#show_more{width:30px; height:20px; float:right;background-position:0 -110px; margin-left:10px; margin-top:10px;}
+.goods_nav{ width:30%; float:right; right:5px; overflow:hidden; position:fixed;margin-top:-20px; z-index:9999999}
+.hid{ display:none;}
+.goods_nav{ width:30%; float:right; right:5px; overflow:hidden; position:fixed;margin-top:25px; z-index:9999999}
+.Triangle{ width:100%; height:20px; }
+.Triangle h2{ 
+width: 0;height: 0;border-style: solid;border-color: transparent transparent #565553 transparent;border-width: 10px;transition: 0.6s;float:right;
+ margin-right:10px;}
+.goods_nav ul{ width:100%; overflow:hidden;background-color:rgba(46,45,45,0.9);border-radius:2px;}
+.goods_nav li{ width:100%; height:40px; border-bottom:1px solid #959595;}
+.nl5{ background:#2D2D2D}
+.goods_nav li span{display: block;width:25px;height:25px; float:left; margin-top:5px; margin-left:5px;}
+.goods_nav li i{ font-style:normal; color:#f3f1f1; font-size:14px; display:block; float:left; line-height:40px;}
+.menu1{ background-position:0 4px;}
+.menu2{ background-position:0 -19px;}
+.menu3{ background-position:0 -41px;}
+.menu4{ background-position:0 -64px;}
+/* 排序 */
+.filtrate_term { width: 100%; overflow: hidden; z-index: 5000; top: 51px; }
+.filtrate_term ul { width: 100%; display: block; background: #fff; }
+.filtrate_term li { display: inline-block; width: 20%; height: 38px; line-height: 38px; text-align: center; }
+.filtrate_term li a { color: #777f86; font-size:14px; }
+.filtrate_term li.on { border-bottom: 2px solid #ff465a; }
+.filtrate_term li.on a { color: #ff465a; }
+.filtrate_term .arrow_up, .filtrate_term .arrow_down { width: 0px; height: 0px; font-size: 0; line-height: 0; border-color: #fff #fff #a5a5a5 #fff; border-width: 0px 5px 5px; display: inline-block; border-style: solid; position: relative; top: -6px; left: 5px; }
+.filtrate_term .arrow_down { border-color: #a5a5a5 #fff #fff #fff; border-width: 5px 5px 0px; position: relative; top: 2px; left: -5px; }
+.filtrate_term .active_up { border-color: #fff #fff #fcbb00 #fff; }
+.filtrate_term .active_down { border-color: #fcbb00 #fff #fff #fff; }
+.box_fixed { position: static; width: 100%; }
+.sort_fixed { position: static; width: 100%; }
+.show_type { background: url(../images/v-shop/list.png) no-repeat center center; background-size: 20px 20px; display: inline-block; width: 20px; height: 40px; }
+.show_list { background: url(../images/v-shop/gride.png) no-repeat center center; background-size: 20px 20px; }
+/* 商品列表 */
+
+.touchweb-com_searchListBox.hide { display: none; }
+.touchweb-com_searchListBox li { position: relative; border-bottom: 1px solid #e5e5e5; border-right: 1px solid #e5e5e5; margin-left:-1px; padding-bottom:13px;}
+.touchweb-com_searchListBox .item { display: block; padding: 12px 12px 0px 12px; position: relative; z-index: 1; left: 0; top: 0; }
+.touchweb-com_searchListBox .item:active { background-color: #f5f5f5; }
+.touchweb-com_searchListBox .item:after { content: ""; display: table; clear: both; }
+.touchweb-com_searchListBox .item .pic_box { float: left; margin-right: 10px; background-size: cover; background-position: center; width: 90px; height: 90px; background-color: #fff; overflow: hidden; position: relative; }
+.touchweb-com_searchListBox .item .pic_box:after { content: ''; padding-top: 100%; display: block; width: 100%; }
+.touchweb-com_searchListBox .item .pic_box img { display: block; width: 100%; height: auto; position: absolute;  }
+.touchweb-com_searchListBox .item .title_box { height: 36px; overflow: hidden; color:#666; font-size: 1.4rem; line-height: 18px;}
+
+.touchweb-com_searchListBox .item .title_box .self_sell { display: inline-block; height: 12px; line-height: 12px; padding: 0 3px; border: 1px solid #ff3c25; -webkit-border-radius: 2px; border-radius: 2px; color: #ff3c25; font-size: 1rem; }
+.touchweb-com_searchListBox .item .title_box .purchased { font-size: 12px; color: #f39800; }
+.touchweb-com_searchListBox .item .title_box .shop_abroad { display: inline-block; height: 15px; line-height: 15px; padding: 0 3px; border: 1px solid #ae74f3; -webkit-border-radius: 2px; border-radius: 2px; color: #ae74f3; }
+
+.touchweb-com_searchListBox .item .active_box { height:30px;width:30px; position:absolute; z-index:9999; top:0px; left:0px;}
+.touchweb-com_searchListBox .item .active_box span{ display:block; width:30px; height:30px; 
+background: url(../v-shop/HOT.png) no-repeat;background-size: auto 100px;text-indent:-9999px}
+
+.touchweb-com_searchListBox .item .active_box .active_tag:nth-child(-n+3) { display: inline-block; }
+.touchweb-com_searchListBox .item .active_box .active_tag:last-child { margin-right: 0; }
+.touchweb-com_searchListBox .item .active_box .active_tag.bg_blue { background-color: #4cb8f7; }
+.touchweb-com_searchListBox .item .active_box .active_tag.bg_red { background-color: #ff8b67; }
+.touchweb-com_searchListBox .item .active_box .active_tag.bg_purple { background-color: #8f65c4; }
+.touchweb-com_searchListBox .item .active_box .active_tag .icon { display: inline-block; width: 10px; height: 12px; line-height: 12px; text-align: center; vertical-align: middle; }
+.touchweb-com_searchListBox .item .price_box { height: 25px; line-height: 25px;}
+
+.touchweb-com_searchListBox .item .price_box .new_price { display: inline-block; color: #ff3c3c; vertical-align: middle; }
+.touchweb-com_searchListBox .item .price_box i { font-size: 18px; }
+.touchweb-com_searchListBox .item .price_box i { font-size:18px; }
+.touchweb-com_searchListBox .item .price_box small { font-size: 1.4rem; }
+.touchweb-com_searchListBox .item .price_box del { color: #bbb; font-size: 1.0rem; }
+.touchweb-com_searchListBox .ui-number { position: absolute; bottom: 10px; right: 40px; border: 1px solid #ddd9da; overflow: hidden; height: 25px; display: block; width: 92px; background: #FFF; z-index: 9999; }
+.openList .ui-number { border: 1px solid #ddd9da; overflow: hidden; height: 25px; display: block; width: 92px; background: #FFF; margin-left: 15px; margin-top: 5px; margin-bottom: 12px; position: inherit; bottom: 0px; right: auto }
+.touchweb-com_searchListBox .decrease { display: inline-block; background: none; font-size: 24px; line-height: 25px; border: 0; width: 25px; float: left; height: 25px; color: #F8849C; border-right: 1px solid #ddd9da; text-indent: -9999px; background: url(../images/v-shop/shop-cart.png) no-repeat 5px -26px; background-size: 60px; }
+.touchweb-com_searchListBox .ui-number .num { display: inline-block; border: 0; width: 40px; height: 25px; float: left; text-align: center; font-size: 12px; line-height: 25px; color: #666; font-size: 20px; text-align: center }
+.touchweb-com_searchListBox .increase { display: inline-block; background: none; border: 0; border-left: 1px solid #ddd9da; float: left; width: 25px; height: 25px; font-size: 24px; line-height: 25px; color: #F8849C; background: url(../images/v-shop/shop-cart.png) no-repeat -25px -26px; background-size: 60px; text-indent: -9999px }
+
+.touchweb-com_searchListBox .ui-number{ position:absolute;bottom:10px; right:40px;border:1px solid #ddd9da; overflow:hidden; height:25px; display:block;width:92px; background:#FFF; z-index:9; }
+
+.openList .ui-number{ border:1px solid #ddd9da; overflow:hidden; height:25px; display:block;width:92px; background:#FFF; position:absolute; bottom:0px; right:auto}
+.touchweb-com_searchListBox .decrease{ display:inline-block; background:none; font-size:24px; line-height:25px; border:0;width:25px; float:left; height:25px; color:#F8849C; border-right:1px solid #ddd9da;text-indent:-9999px;
+background: url(../images/v-shop/shop-cart.png) no-repeat 5px -26px; background-size:60px;}
+.touchweb-com_searchListBox .ui-number .num{display:inline-block;border:0;width:40px; height:25px;float:left;
+ text-align:center; font-size:12px; line-height:25px; color:#666;font-size:20px;text-align:center}
+.touchweb-com_searchListBox .increase{display:inline-block;background:none;border:0;border-left:1px solid #ddd9da;float:left; width:25px; height:25px;font-size:24px; line-height:25px;color:#F8849C;background: url(../images/v-shop/shop-cart.png) no-repeat -25px -26px; background-size: 60px;text-indent:-9999px}
+
+.touchweb-com_searchListBox .item .comment_box { height: 12px; line-height: 12px; margin-top: 5px; color: #999; font-size: 1rem; }
+.touchweb-com_searchListBox .item .comment_box .percentage { color: #ff3c25; }
+.touchweb-com_searchListBox .item .comment_box .percentage span { display: inline-block; width: 10px; height: 12px; line-height: 12px; text-align: center; vertical-align: top; font-size: 1rem; }
+
+.touchweb-com_searchListBox.openList li { float: left; width: 50%; }
+.touchweb-com_searchListBox.openList li:nth-child(even) .item { border-right-color: #fff; }
+.touchweb-com_searchListBox.openList .item .price_box {height:50px; }
+
+.touchweb-com_searchListBox.openList .item .pic_box { float: none; width: 100%; height: auto; margin-right: 0; margin-bottom: 10px; position: relative; }
+.touchweb-com_searchListBox.openList .item .pic_box.cloth:after { content: ''; padding-top: 140%; display: block; width: 100%; }
+.touchweb-com_searchListBox.openList .item .pic_box:after { content: ''; padding-top: 100%; display: block; width: 100%; }
+
+.touchweb-com_searchListBox.openList .item .active_box .active_tag { display: none; }
+.touchweb-com_searchListBox.openList .item .active_box .active_tag:nth-child(-n+1) { display: inline-block; }
+.touchweb-com_searchListBox.openList .item .comment_box { height:50px; padding-left:3px; display:none;}
+.touchweb-com_searchListBox.openList .bug_car { border-left: none; }
+.touchweb-com_searchListBox .bug_car { position: absolute; bottom: 12px; right: 0; z-index: 2; width: 40px; height: 28px; color: #ff3c3c; font-size: 2.2rem; text-align: center; }
+.touchweb-com_searchListBox.openList .bug_car { border-left: none; }
+
+.touchweb-com_searchListBox .bug_car { position: absolute; bottom:12px; right: 0; z-index: 2; width: 40px; height: 28px; color: #ff3c3c; font-size: 2.2rem; text-align: center; }
+.touchweb-com_searchListBox .bug_car i { background: url(../images/v-shop/cart.png) no-repeat center center; height: 30px; width: 40px; background-size: 30px 30px; display: block; }
+.touchweb-com_searchListBox .bug_car.sold_out { color: #bcbcbc; }
+.loading_banner { text-align: center; }
+.loading_banner .loading { background-image: url("../images/v-shop/loading.png"); display: inline-block; margin: 10px 0; background-size: 12px; width: 12px; height: 12px; -webkit-animation: rotate 2s linear 0s infinite; animation: rotate 2s linear 0s infinite; }
+
+/*遮罩层的时候，页面固定高度不可滚动样式*/
+.sidebar-move { height: 100%; overflow: hidden; animation: sidebar-body-move .5s 1 ease 0; -webkit-animation: sidebar-body-move .5s 1 ease 0; }
+
+
+/* 购物车弹出效果*/
+/*老的带商品信息的弹出层样式*/
+.cartpopDiv { padding: 0 2%; width: 96%; }
+.cartitle { height: 35px; line-height: 35px; color: #FFF; font-size: 14px; font-weight: bold; text-align: left; text-indent: 15px; background: #E3010B }
+.coninfo { padding: 10px 0 0px; border-top: #e5e5e5 1px dashed; font-size: 12px; text-align: center; width: 100%; color: #999; line-height:22px; }
+.shopdiv { border-radius: 5px 5px 5px 5px;}
+.coninfo table { border: none; color: #999999; }
+.toptitle { margin: 8px 0px; }
+.toptitle p a { color: #999999; }
+.toptitle .pic { float: left; margin-right: 10px; }
+.coninfo .gray { color: #999 }
+.coninfo strong { color: #ec5151 }
+.coninfo font { font-size: 18px; }
+.conprice { line-height: 30px; }
+.cardivfloat { background-color: #fff; border-radius: 5px 5px 5px; }
+.cartdivfloattitle { font-weight: normal; color: #ffffff; font-size: 14px; text-indent: 15px; width: 70%; float: left; }
+.cartbntfloat { text-align: center; padding: 15px 0 0px; margin-bottom: 10px; clear:both }
+.con_close { width: 50px; float: right; text-align: right; color: #FFF; padding-right: 15px; font-weight: normal; }
+.greyBtn { background-color:#25C6FC; border-radius: 4px; height: 30px; line-height: 30px; border: none; position: relative; display: inline-block; width: 45%; margin: 10px 0 0 10px; text-align: center; color: #fff; }
+a.redBtn { background-color:#E3010B; height: 30px; line-height: 30px; color: #fff; border-radius: 4px; border: none; position: relative; display: inline-block; width: 45%; margin: 10px 0 0 10px; text-align: center; }
+.bor-top { border-top: #e5e5e5 1px solid; }
+.blank5 { height: 5px; line-height: 5px; clear: both; visibility: hidden; overflow: hidden; }
+.cartbntfloat a{ color:#FFF}
+.touchweb_com-indexPop { display: none; position: fixed; left: 0; top: 0;  display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -ms-flex-pack: center; -webkit-box-pack: center; box-pack: center; -webkit-justify-content: center; justify-content: center; -ms-flex-align: center; -webkit-box-align: center; box-align: center; -webkit-align-items: center; align-items: center; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); visibility: hidden; opacity: 0; -webkit-transition: opacity .3s; transition: opacity .3s; z-index:99999999 }
+.touchweb_com-indexPop.show { opacity: 1; visibility: visible; }
+.touchweb_com-indexPop .inner { width: 235px; -webkit-box-sizing: border-box; box-sizing: border-box; padding: 18px 20px 15px; -webkit-border-radius: 5px; border-radius: 5px; background-color: #fff; height:auto; }
+.touchweb_com-indexPop .inner .btn_box { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -ms-flex-pack: justify; -webkit-box-pack: justify; box-pack: justify; -webkit-justify-content: space-between; justify-content: space-between; height: 30px; margin-top: 10px; text-align: center; }
+.touchweb_com-indexPop .inner .btn_box .btn { display: block; height: 30px; line-height: 28px; width: 85px; font-size: 1.4rem; -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid #ff3c3c; -webkit-border-radius: 4px; border-radius: 4px; color: #333; }
+.touchweb_com-indexPop .inner .btn_box .btn_confirm { color: #fff; background-color: #ff3c3c; }
+.touchweb_com-indexPop .inner .btn_box .btn_confirm:active { background-color: #ff0909; }
+.touchweb_com-indexPop .inner .btn_box .btn_cancel { border: 1px solid #25C6FC; background-color: #25C6FC; color:#FFF }
+.touchweb_com-indexPop .inner .btn_box .btn_cancel:active { background-color: #25C6FC; }
+.touchweb_com-indexPop { font-size:.12rem;}
+.touchweb_com-indexPop .inner .content_name {margin-bottom: 23px;}
+.touchweb_com-indexPop .inner .content_name p {line-height:20px;font-size:14px; color: #000;}
+.touchweb_com-indexPop .inner .btn_box .btn { font-size:14px;}
+/*返回顶部*/
+.gotop{ display:block; width:40px; height:40px; position:fixed; bottom:70px; right:8px;background-color:rgba(243,241,241,0.5); border:1px solid #CCC; -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; z-index:9999}
+.gotop img{ display:block; width:40px; height:40px;}

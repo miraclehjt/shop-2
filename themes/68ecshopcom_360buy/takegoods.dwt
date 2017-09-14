@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="themes/68ecshopcom_360buy/css/takegoods.css" />
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-1.9.1.min.js" ></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+{* 包含脚本文件 *}
+{insert_scripts files='common.js'}
+</head>
+<body>
+<div id="site-nav" > 
+  <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem --> 
+  <!--当前位置 start-->
+  <div class="blank"></div>
+  <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem --> 
+  <!--当前位置 end-->
+  <div class="w main clearfix">
+    <div id="JS_slider" class="act-slider Left">
+      <div class="stage">
+        <table id="JS_slide_stage" cellpadding="0" spellcheck="0" border="0">
+          <tbody>
+            <tr>
+              <td> {insert name='ads' id=58 num=1} </td>
+              <td> {insert name='ads' id=59 num=1} </td>
+              <td> {insert name='ads' id=60 num=1} </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="JS_slide_nav" class="nav"> 
+      	<a href="javascript:;" class="current"></a> 
+        <a href="javascript:;" class=""></a> 
+        <a href="javascript:;" class=""></a> 
+      </div>
+    </div>
+  </div>
+  <div class="blank"></div>
+  <div class="blank"></div>
+  <!-- #BeginLibraryItem "/library/takegoods_list.lbi" --><!-- #EndLibraryItem --> 
+  <!-- #BeginLibraryItem "/library/takegoods_buy.lbi" --><!-- #EndLibraryItem --> 
+  <!-- #BeginLibraryItem "/library/history.lbi" -->
+  <div class="box" id='history_div'>
+    <div class="box_1">
+      <h3><span>{$lang.view_history}</span></h3>
+      <div class="boxCenterList clearfix" id='history_list'> {insert name='history'} </div>
+    </div>
+  </div>
+  <div class="blank5"></div>
+  <script type="text/javascript">
+if (document.getElementById('history_list').innerHTML.replace(/\s/g,'').length<1)
+{
+    document.getElementById('history_div').style.display='none';
+}
+else
+{
+    document.getElementById('history_div').style.display='block';
+}
+function clear_history()
+{
+Ajax.call('user.php', 'act=clear_history',clear_history_Response, 'GET', 'TEXT',1,1);
+}
+function clear_history_Response(res)
+{
+document.getElementById('history_list').innerHTML = '{$lang.no_history}';
+}
+</script> <!-- #EndLibraryItem -->
+  <div class="blank"></div>
+  <!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem --> 
+  <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+</div>
+<script type="text/javascript">
+window.PAGESTR = '/activity-page-1-show_type-0-sort-total_sold_yes_count-order-desc.html';
+// 焦点图
+$(function(){
+    var slider = $('#JS_slider'),
+    sliderWidth = 1210,
+    stage = $('#JS_slide_stage'),
+    list = stage.find('img'),
+    len = list.length,
+    nav = $('#JS_slide_nav a'),
+    pTimer,
+    index = 0;
+
+    function move(index) {
+        var distance = 0 - index * sliderWidth;
+        stage.stop(true, false).animate({'margin-left':distance+'px'}, 300);
+        nav.removeClass('current').eq(index).addClass('current');
+	
+        // 图片加载
+        var img = list.eq(index)
+        img.attr('src',  src );
+		
+    }
+
+    function auto() {
+        move(index);
+        index++;
+        if ( index == len  ) {
+            index = 0
+        }
+    }
+    pTimer = setInterval(function(){
+        auto();
+    }, 3000);
+
+    slider.hover(function(){
+        clearInterval(pTimer);
+    }, function(){
+        pTimer = setInterval(function(){
+            auto();
+        }, 5000);
+    });
+
+    nav.mouseenter(function(){                                                                      
+        index = nav.index(this);
+        move(index);
+    });
+});
+
+// 现货特价
+$(function(){
+    var item = $('#JS_spot_goods li');
+    item.hover(function(){
+        item.removeClass('open')
+        $(this).addClass('open');
+        var img = $(this).find('img'),
+        src = img.attr('data-lazy');
+
+        img.attr('src', src);
+    });
+});
+
+$(window).load(function(){
+    $.lazyImg.start();
+})
+</script>
+</body>
+</html>

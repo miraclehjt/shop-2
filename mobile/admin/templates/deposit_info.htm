@@ -1,0 +1,58 @@
+{include file="pageheader.htm"}
+<div class="list-div">
+<form name="theForm" action="deposit_list.php" enctype="multipart/form-data" method="post">
+<table>
+  <tr>
+  	<td align="left" class="label">提现申请人：</td>
+    <td>{$deposit.user_name}</td>
+  </tr>
+  <tr>
+  	<td align="left" class="label">提现金额：</td>
+    <td>{$deposit.deposit_money}</td>
+  </tr>
+  <tr>
+  	<td align="left" class="label">真实姓名：</td>
+    <td>{$deposit.real_name}</td>
+  </tr>
+  <tr>
+  	<td align="left" class="label">开户行：</td>
+    <td>{$deposit.account_name}</td>
+  </tr>
+  <tr>
+  	<td align="left" class="label">银行帐号：</td>
+    <td>{$deposit.bank_account}</td>
+  </tr>
+  <tr>
+  	<td align="left" class="label">手机号：</td>
+    <td>{$deposit.phone}</td>
+  </tr>
+  <tr>
+  	<td align="left" class="label">申请时间：</td>
+    <td>{$deposit.add_time}</td>
+  </tr>
+  <tr>
+  	<td align="left" class="label">备注：</td>
+    <td><textarea cols="30" rows="3" name="remark">{$deposit.remark}</textarea></td>
+  </tr>
+  <tr>
+  	<td align="left" class="label">状态</td>
+  	<td>
+    	<select name="status" {if $deposit.status eq 1}disabled="disabled"{/if}>
+        	<option value="0" {if $deposit.status eq 0} selected="selected"{/if}>未处理</option>
+            <option value="1" {if $deposit.status eq 1} selected="selected"{/if}>已处理</option>
+            <option value="2" {if $deposit.status eq 2} selected="selected"{/if}>未通过</option>
+        </select>
+    </td>
+  </tr>
+  <tr>
+  <td>&nbsp;</td>
+    <td>
+    <input type="submit" name="" value="提交" class="button"/>
+    <input type="hidden" name="act" value="update" />
+    <input type="hidden" name="id" value="{$deposit.id}"  />
+    </td>
+  </tr>
+</table>
+</form>
+</div>
+{include file="pagefooter.htm"}

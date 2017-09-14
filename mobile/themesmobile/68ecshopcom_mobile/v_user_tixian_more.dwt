@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<title>店铺</title>
+<link href="themesmobile/68ecshopcom_mobile/css/v_user.css" type="text/css" rel="stylesheet">
+</head>
+<body style=" background:#F5F5F5">
+<!--header-->
+<div class="Earnings">
+<h2>账户余额（元）</h2>
+<dl>
+<dt>
+<strong>{$user_money}</strong>
+</dt>
+<dd>
+<a href="v_user_tixianmore.php">查看明细</a>
+</dd>
+</dl>
+</div>
+<form action="v_user_tixian_more.php" method="post">
+<!--main-->
+<div class="tixian">
+<dl>
+<dd class="b_dome"><span>真实姓名：</span><input name="real_name" type="text" value="{$info.real_name}" /></dd>
+<dd class="b_dome"><span>开户行：</span><input name="account_name" type="text" value="{$info.account_name}" /></dd>
+<dd class="b_dome"><span>银行账号：</span><input name="bank_account" type="text" value="{$info.bank_account}" /></dd>
+<dd class="b_dome"><span>手机号：</span><input name="phone" type="text" value="{$info.phone}" /></dd>
+<dd class="b_dome1"><span>备注：</span><textarea name="remark" cols="" rows="">{$info.remark}</textarea></dd>
+</dl>
+</div>
+
+<input type="submit" value="保存" style=" display:block; float:right; margin-right:20px; width:20%; font-size:14px; color:#fff;background:#DD1019; line-height:30px;border:0px solid #CCC; margin-top:20px; "/>
+<input type="hidden" name="act" value="act_save" />
+<input type="hidden" name="id" value="{$info.id}" />
+</form>
+<!-----底部悬浮菜单---->
+<!-- #BeginLibraryItem "/library/footer_nav1.lbi" --><!-- #EndLibraryItem --> 
+</body>
+</html>

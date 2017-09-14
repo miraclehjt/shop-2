@@ -1,0 +1,54 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <div class="headerLayout">
+    <div class="headerCon ">
+      <h1 id="mallLogo" style="padding-top:10px;"> <a href="index.php" class="header-logo"><img src="../images/header/logo.jpg" /></a></h1>
+      <div class="header-extra">
+       	 <div class="panel-heading">
+            <div class="more">
+                <div class="progress">
+                    <div class="progress-wrap">
+                        <div class="progress-item ongoing">
+                            <div class="number">1</div>
+                            <div class="progress-desc">入驻须知</div>
+                        </div>
+                    </div>
+                    <div class="progress-wrap">
+                        <div class="progress-item tobe">
+                            <div class="number">2</div>
+                            <div class="progress-desc">公司信息认证</div>
+                        </div>
+                    </div>
+                    <div class="progress-wrap">
+                        <div class="progress-item tobe">
+                            <div class="number">3</div>
+                            <div class="progress-desc">店铺信息认证</div>
+                        </div>
+                    </div>
+                    <div class="progress-wrap">
+                        <div class="progress-item tobe">
+                            <div class="number"><i class="tick"></i></div>
+                            <div class="progress-desc">等待审核</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+      </div>
+    </div>
+  </div>
+  <div class="store-joinin-apply">
+    <div id="apply_agreement" class="apply-agreement">
+      <h3>入驻协议</h3>
+      <div class="apply-agreement-content">{include file='library/apply_protocol.lbi'} </div>
+      <form action='apply.php' name="applyform" method="post">
+      <div class="apple-agreement">
+        <input id="input_apply_agreement" name="input_apply_agreement" checked="checked" type="checkbox" value="1">
+        <label for="input_apply_agreement">我已阅读并同意以上协议</label>
+      </div>
+      <div class="bottom">
+      <input type="submit" value="下一步" class="btn"></div>
+      <input type="hidden" name="shownum" value="0">
+      <input type="hidden" name="do" value="1">
+      </form>
+    </div>
+  </div>

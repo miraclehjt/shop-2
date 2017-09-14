@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link rel="stylesheet" type="text/css" href="themes/68ecshopcom_360buy/css/scan.css" />
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-1.9.1.min.js" ></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+{* 包含脚本文件 *}
+{insert_scripts files='common.js'}
+</head>
+<body>
+<div id="site-nav"> 
+  <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+  <div class="blank"></div>
+  <div class="w" >
+     <div class="introduce1"> 
+    	<strong>温馨提示：</strong> 
+        <span id='ts'>您购买的商品数不能大于总库存数量，否则会下单失败哦！</span> 
+    </div>
+    <div class="blank"></div>
+    {if $goodsinfo}
+    <div class="scan_con">
+    
+    	<table cellpadding="5" cellspacing="1" width="100%" border=0 bgcolor="#E6E6E6">
+        <tr>
+	  	  <th width="10%" align="center"  bgcolor="#F9F9F9">商品条形码</th>
+          <th width="15%" align="center"  bgcolor="#F9F9F9">商品信息</th>
+          <th width="20%" align="center"  bgcolor="#F9F9F9">商品名称</th>
+          <th width="15%" align="center"  bgcolor="#F9F9F9">价格</th>
+          <th width="15%" align="center"  bgcolor="#F9F9F9">属性</th>
+          <th width="7%" align="center"  bgcolor="#F9F9F9">总库存</th>
+          <th width="10%" align="center"  bgcolor="#F9F9F9">购买数量</th>
+          <th width="8%" align="center"  bgcolor="#F9F9F9">操作</th>
+        </tr>
+        <!--{foreach from=$goodsinfo item=ginfo name=name key=key}--> 
+        <tr id="info{$key}">
+	  <td align="center" bgcolor="#FFFFFF">
+          	{$key}
+          </td>
+          <td align="center" bgcolor="#FFFFFF">
+          	<a href="{$ginfo.url}" target="_blank" title="{$ginfo.goods_name}" class="goods_img">
+            	<img src="{$ginfo.goods_img}"  width="50" height="50"/>
+            </a>
+          </td>
+          <td align="left" bgcolor="#FFFFFF">
+          	<a href="{$ginfo.url}" target="_blank" title="{$ginfo.goods_name}">{$ginfo.goods_name}</a>
+          </td>
+          <td align="center" bgcolor="#FFFFFF">
+          	<p>当前售价：<font color="#E31939">{$ginfo.goods_price}</font></p>
+            <p><del>市场价：{$ginfo.market_price}</del></p>
+          </td>
+          <td align="center" bgcolor="#FFFFFF">
+	  {if $ginfo.goods_attr}
+	  <!--{foreach from=$ginfo.goods_attr item=attr}--> 
+          	<p>{$attr}</p>
+	  <!--{/foreach}-->
+          {/if}
+          </td>
+          <td align="center" bgcolor="#FFFFFF">
+          	{$ginfo.goods_number}
+          </td>
+          <td align="center" bgcolor="#FFFFFF">
+          	<input type="text" value="{$ginfo.buy_number}" class="scan_con_num" />
+          </td>
+          <td align="center" bgcolor="#FFFFFF"><a href="javascript:void(0);" title="删除该商品" class="scan_del" onclick="delgood('{$key}')">删除</a></td>
+        </tr>
+        <!--{/foreach}-->
+        <tr>
+        	<td colspan="8" align="center" bgcolor="#FFFFFF" class="scan_con_te">
+            	<input type="submit" value="提交购物车" onclick="addcart()" class="scan_con_sub" />
+		
+            </td>
+        </tr>
+      </table>
+      
+    </div>
+    {/if}
+    <div class="blank20"></div>
+  </div>
+  <!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem --> 
+  <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+</div>
+<div class="scan-bar"> 
+	<a href="scan.php">继续<br />扫货</a> 
+</div>
+<script>
+function delgood(txm){
+	if(confirm("确定要删除此行数据？")){
+		$.ajax({    
+		    url:'scan_list.php',   
+		    data:{
+			     act : 'del',
+			     txm : txm    
+		    },
+		    type:'post',
+		    cache:false,
+		    dataType:'json',
+		    success:function(data){    
+			if(data.error == 0){       
+			       $('#info'+txm).remove();
+			}else{
+				alert(data.info);
+			}
+		     }
+		});
+	}
+}
+function addcart(){
+	$.ajax({    
+		    url:'scan_list.php',   
+		    data:{
+			     act : 'addcart'   
+		    },
+		    type:'post',
+		    cache:false,
+		    dataType:'json',
+		    success:function(data){    
+			if(data.error == 0){       
+			       location.href = 'flow.php';
+			}else if(data.error == -1){
+				alert(data.info);
+			}else{
+				for(var i in data.ok){
+					$('#info'+data.ok[i].txm).remove();
+				}
+				var ts = data.content+'<br>';
+				for(var j in data.fail){
+					ts += '['+data.fail[j].txm+']'+data.fail[j].message+'<br>';
+				}
+				$('#ts').html(ts);
+			}
+		     }
+		});
+}
+</script>
+</body>
+</html>

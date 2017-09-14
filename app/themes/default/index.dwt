@@ -1,0 +1,11 @@
+{include file='library/index_ad1.lib'}
+{include file='library/index_menu.lib'}
+{include file='library/index_promote_goods.lib'}
+{include file='library/index_ad2.lib'}
+{include file='library/index_ad3.lib'}
+{include file='library/index_new_goods.lib'}
+{include file='library/index_hot_goods.lib'}
+{include file='library/index_ad4.lib'}
+{include file='library/index_goods_cat.lib'}
+{include file='library/index_goods_brand.lib'}
+{include file='library/index_best_goods.lib'}

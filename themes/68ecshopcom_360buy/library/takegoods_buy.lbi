@@ -1,0 +1,204 @@
+<style type="text/css">
+/*弹出层的STYLE*/
+body {height:100%;}
+.mydiv {
+background:url(images/takegoods/quick_buy_box.gif) #ffffff repeat-x 0 0;
+border:#c01621 2px solid;
+text-align: center;
+line-height: 40px;
+font-size: 12px;
+font-weight: bold;
+z-index:10000001;
+width: 650px;
+height: 300px;
+left:50%;/*FF IE7*/
+top: 50%;/*FF IE7*/
+margin-left:-325px!important;/*FF IE7 该值为本身宽的一半 150 *2 =300 */
+margin-top:-200px!important;/*FF IE7 该值为本身高的一半 60*2=120 */
+margin-top:0px;
+position:fixed!important;/*FF IE7*/
+position:absolute;/*IE6*/
+_top:       expression(eval(document.compatMode &&
+            document.compatMode=='CSS1Compat') ?
+            documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+            document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
+
+}
+ .blank15{height:15px; line-height:8px; clear:both; visibility:hidden;}
+.mydiv table{margin:0 auto;padding:0 auto;}
+.mydiv td{height:18px;font-size:12px;font-weight:normal;padding:0;margin:0;}
+
+.bg {
+background-color: #ccc;
+width: 100%;
+height: 100%;
+left:0;
+top:0;/*FF IE7*/
+filter:alpha(opacity=50);/*IE*/
+opacity:0.5;/*FF*/
+z-index:10000000;
+position:fixed!important;/*FF IE7*/
+position:absolute;/*IE6*/
+_top:       expression(eval(document.compatMode &&
+            document.compatMode=='CSS1Compat') ?
+            documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+            document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
+
+}
+.qb_left{float:left;z-index:10000002;width:80%;height:30px;line-height:30px;text-align:left;color:#fff;font-size:15px;}
+.qb_right{float:right;z-index:10000002;width:20%;height:30px;text-align:right;}
+/*The END*/
+
+</style>
+<script type="text/javascript">
+function showDiv(goods_id)
+{
+document.getElementById('popDiv').style.display='block';
+//document.getElementById('bg').style.display='block';
+var form_quick_buy = document.forms['quick_buy'];
+form_quick_buy.elements['goods_id'].value = goods_id;
+ var sels = document.getElementsByTagName('select'); 
+ for (var i = 0; i < sels.length; i++) 
+    {
+	if(sels[i].name!='country' && sels[i].name!='province' && sels[i].name !='city' && sels[i].name !='district')
+	{
+		sels[i].style.visibility = 'hidden';     
+	}
+    }
+}
+
+function closeDiv(){
+document.getElementById('popDiv').style.display='none';
+//document.getElementById('bg').style.display='none';
+var sels = document.getElementsByTagName('select'); 
+ for (var i = 0; i < sels.length; i++) 
+    {
+		sels[i].style.visibility = '';     
+
+    }
+}
+
+
+function check_quick_buy() 
+{
+    var form_quick_buy = document.forms['quick_buy'];
+    var goods_id = form_quick_buy.elements['goods_id'].value;
+    var consignee = form_quick_buy.elements['consignee'].value;
+    var country = form_quick_buy.elements['country'].value;
+    var province = form_quick_buy.elements['province'].value;
+    var city= form_quick_buy.elements['city'].value;
+    var district = form_quick_buy.elements['district'].value;
+    var address = form_quick_buy.elements['address'].value;
+    var mobile = form_quick_buy.elements['mobile'].value;
+    var email = form_quick_buy.elements['email'].value;
+    var msg = '';
+   
+    if (country == '0' || province == '0' || city == '0' || district =='0') 
+    {
+        msg += '收货地址不完整\n';
+    }
+    if (address == '') {
+        msg += '详细地址不能为空\n';
+    }
+     if (consignee == '') 
+    {
+        msg += '收货人不能为空\n';
+    }
+    if (mobile == '') {
+        msg += '联系电话不能为空\n';
+    } else {
+        if (!(/^[\d-]{6,}$/.test(mobile))) {
+            msg += '联系电话格式不对\n';
+        }
+    }
+    if (email == '') {
+        msg += '邮箱不能为空\n';
+    }
+    else
+    {
+        var reg1 = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)/;
+        if (!reg1.test(email)) {
+            msg += '邮箱格式不正确\n';
+        }
+    }
+    if (msg)
+    {
+        alert(msg);
+        return false;
+    }
+    else
+    {		
+        return true;
+    }
+}
+
+</script>
+
+
+<div id="popDiv" class="mydiv" style="display:none;">
+
+<div class="qb_left">&nbsp;&nbsp;提货</div><div class="qb_right"><a href="javascript:closeDiv()" ><img src="images/takegoods/quick_buy_close.gif"  style="padding:8px 10px 0 0;border:none;"></a></div>
+<div class="blank15"></div><div class="blank15"></div>
+
+<form  method="post" name="quick_buy" action="takegoods.php"  onSubmit="return check_quick_buy();"> 
+<table>  
+    <tbody>
+    <tr> 
+      <td valign="top" align=right>收货地址：</td> 
+      <td colspan="3" align="left"> 
+      <select style="border: 1px solid rgb(204, 204, 204);" onchange="region.changed(this, 1, 'selProvinces_')" id="selCountries_" name="country"> 
+       <option value="0">请选择{$name_of_region[0]}</option>
+          <!-- {foreach from=$country_list item=country} -->
+          <option value="{$country.region_id}" {if $consignee.country eq $country.region_id}selected="selected"{/if}>{$country.region_name}</option>
+          <!-- {/foreach} -->
+         </select> 
+	  <select name="province" id="selProvinces_{$sn}" onchange="region.changed(this, 2, 'selCities_{$sn}')" style="border:1px solid #ccc;">
+            <option value="0">请选择{$name_of_region[1]}</option>
+            <!-- {foreach from=$province_list.$sn item=province} -->
+            <option value="{$province.region_id}" {if $consignee.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
+            <!-- {/foreach} -->
+          </select>
+          <select name="city" id="selCities_{$sn}" onchange="region.changed(this, 3, 'selDistricts_{$sn}')" style="border:1px solid #ccc;">
+            <option value="0">请选择{$name_of_region[2]}</option>
+            <!-- {foreach from=$city_list.$sn item=city} -->
+            <option value="{$city.region_id}" {if $consignee.city eq $city.region_id}selected{/if}>{$city.region_name}</option>
+            <!-- {/foreach} -->
+          </select>
+          <select name="district" id="selDistricts_{$sn}" {if !$district_list.$sn}style="display:none;border:1px solid #ccc;"{/if}>
+            <option value="0">请选择{$name_of_region[3]}</option>
+            <!-- {foreach from=$district_list.$sn item=district} -->
+            <option value="{$district.region_id}" {if $consignee.district eq $district.region_id}selected{/if}>{$district.region_name}</option>
+            <!-- {/foreach} -->
+          </select>
+            <font color=#e30000>(必填)</font></td> 
+    </tr> 
+    <tr> 
+      <td valign="top" align="right">详细地址：</td> 
+      <td colspan="3" align="left"> <input type="text" wrap="virtual"  id="address" name="address" size="63"> <font color=#e30000>(必填)</font></td> 
+    </tr> 
+    <tr> 
+      <td valign="top" align="right">收货人：</td> 
+      <td colspan="3" align="left"> <input type="text" wrap="virtual"  id="consignee" name="consignee" size="23"> <font color=#e30000>(必填)</font></td> 
+    </tr> 
+    <tr> 
+      <td align=right>联系电话：</td> 
+      <td align="left"><input type="text" class="textInput" name="mobile" size=23>  <font color=#e30000>(必填)</font></td> 
+      <td align=right>&nbsp;&nbsp;&nbsp;&nbsp;邮箱：</td> 
+      <td align="left"><input type="text" class="textInput" name="email">  <font color=#e30000>(必填)</font></td> 
+    </tr> 
+    
+    <tr> 
+      <td colspan=4 align=center style="padding-top:20px;"> 
+      <input type="hidden" value="" name="goods_id" id="goods_id">
+      <input type="hidden" value="{$smarty.session.takegoods_id_68ecshop}" name="takegoods_id_68ecshop" >
+      <input type="hidden" value="take" name="act" id="act">
+      <input type="image" src="images/takegoods/quick_btn_submit.gif"> 
+      </td>  
+    </tr> 
+  
+</tbody></table> 
+
+</form> 
+</div>
+<script type="text/javascript" src="js/quick_buy.js"></script> 
+<script type="text/javascript" src="js/region.js"></script> 

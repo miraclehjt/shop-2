@@ -1,0 +1,162 @@
+{if $full_page eq 1}
+<!DOCTYPE HTML>
+<html>
+  <head>
+    {include file='html_header.htm'}
+    <script>
+    Zepto(function($)
+    {
+       $.zcontent.add_static('rebate_id');
+    })
+      function toggle_other_info()
+      {
+        $('#other_info').slideToggle();
+      }
+      
+      function toggle_verify_info()
+      {
+        $('#verify_info').slideToggle();
+      }
+      
+      function toggle_logs_info()
+      {
+        $('#logs_info').slideToggle();
+      }    
+      
+    </script>
+  </head>
+  <body>
+    <div id='container'>
+      {/if}
+      {include file='page_header.htm'}
+      <section>
+        <div class="order_info_con order_pd">
+          <div class="order_base">
+            <p class="edit"><span>基本信息</span></p>
+            <div class="base_info base_info_search">
+              <p class="first">结算单编号：{$rebate.sign}</p>
+              <p>入驻商名称：{$supplier.user_name}</p>
+              <p>店铺名称：{$supplier.supplier_name}</p>
+              <p>结算期间：{$rebate.rebate_paytime_start}-{$rebate.rebate_paytime_end}</p>
+            </div>
+          </div>
+          <div class="order_base">
+            <p class="edit"><span>结算信息</span></p>
+            <div class="base_info base_info_search">
+              <table width="100%" >
+                {foreach from=$money_info item=money key=key}
+                <tr>
+                  <td align="left" width='33%'>{if $key eq 'online'}线上货款：{else}线下货款(货到付款)：{/if}{$money.allmoney}</td>
+                  <td align='left' width='33%'>佣金比例：{$money.supplier_rebate}%</td>
+                  <td align="left" width='33%'>佣金：{$money.rebatemoney}</td>
+                </tr>
+                {/foreach}
+              </table>
+            </div>
+          </div>
+          <div class="order_base">
+            <p class="edit"><span>佣金统计</span></p>
+            <div class="base_info base_info_search">
+              <table width="100%" >
+                <tr>
+                  <td align="left" width='33%'>实收货款：{$allmoney.rebate_all}</td>
+                  <td align='left' width='33%'>-佣金：{$allmoney.rebate_money}</td>
+                  <td align="left" width='33%'>=结算金额：{$allmoney.payable_price}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="order_qita">
+            <p class="edit" id="order_qita" onclick='toggle_other_info()'><span>收款账户信息</span> <i></i></p>
+            <div class="qita_info" id='other_info'>
+              <table width='100%'>
+                <tr>
+                  <td>公司名称：</td>
+                  <td>{$supplier.company_name}</td>
+                </tr>
+                <tr>
+                  <td>地址：</td>
+                  <td>{$supplier.province}{$supplier.city}{$supplier.district}{$supplier.address}</td>
+                </tr>
+                <tr>
+                  <td>电话：</td>
+                  <td>{$supplier.tel}</td>
+                </tr>
+                <tr>
+                  <td>开户行：</td>
+                  <td>{$supplier.settlement_bank_name}</td>
+                </tr>
+                <tr>
+                  <td>帐号：</td>
+                  <td>{$supplier.settlement_bank_account_number}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="order_qita">
+            <p class="edit" onclick='toggle_verify_info()'><span>审核</span><a href='javascript:void(0);' class="special">{if $rebate.status eq 4}完成汇款{elseif $rebate.status eq 2}等待商家确认{elseif $rebate.status eq 3}平台已发起结算{elseif $rebate.status eq 1}可结算{else}冻结{/if}</a><i></i></p>
+            <div class="qita_info" id='verify_info'>
+              {if $rebate.status eq 4}
+              <table width='100%' cellpadding="3" cellspacing="1">
+                <tr>
+                  <td align='left'>汇款凭证：</td>
+                  <td align='left'><a href="{$rebate.rebate_img}">查看汇款凭证</a></td>
+                </tr>
+                <tr>
+                  <th align='left'>备注说明：</th>
+                  <td align='left'>{if $rebate.remark}{$rebate.remark}{else}无{/if}</td>
+                </tr>
+              </table>
+              {else}
+              <table width='100%' cellpadding="3" cellspacing="1">
+                {if $rebate.status eq 2}
+                <tr>
+                  <th align='left'>当前进度：</th>
+                  <td>
+                    <input type='button' class='button' onclick='javscript:window.location.href="supplier_rebate.php?act=update&id={$rebate.rebate_id}"' value='确认通过' style='height:20px;line-hegiht:20px;width:60px;'/>
+                  </td>
+                  <td>如有疑问，请联系平台方负责人</td>
+                </tr>
+                {else}
+                <th>当前可操作项：</th>
+                <td>
+                  等待平台方发起结算
+                </td>
+                </tr>
+                {/if}
+              </table>
+              {/if}
+            </div>
+          </div>
+          {if $logs}
+          <div class="order_qita">
+            <p class="edit" id="order_qita" onclick='toggle_logs_info()'><span>操作记录</span> <i></i></p>
+            <div class="qita_info" id='logs_info'>
+              <table width='100%' cellpadding="3" cellspacing="1">
+                <tr>
+                  <th align='left'>操作者</th>
+                  <th align='left'>操作时间</th>
+                  <th align='left'>操作事件</th>
+                  <th align='left'>备注</th>
+                </tr>
+                {foreach from=$logs item=log key=key}
+                <tr>
+                  <td align='left'>{$log.username}</td>
+                  <td align='left'>{$log.addtime_dec}</td>
+                  <td align='left'>{$log.typedec}</td>
+                  <td align='left'>{$log.contents}</td>
+                </tr>
+                {/foreach}
+              </table>
+            </div>
+          </div>
+          {/if}
+        </div>
+      </section>
+      {include file='page_footer.htm'}
+      {if $full_page eq 1}
+    </div>
+    {include file='static_div.htm'}
+  </body>
+</html>
+{/if}

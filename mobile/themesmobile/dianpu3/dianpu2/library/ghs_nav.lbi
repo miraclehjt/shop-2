@@ -1,0 +1,24 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="ghs_body">
+    <div class="ghs_content">
+    	{$shopheader}
+    </div>
+    <div style="height:0px; line-height:0px; clear:both"></div>
+    <div class="ghs_title" style="background:{$navcolor}">
+        <div class="ghs_content fl" style="width:840px;">
+        <a href="supplier.php?suppId={$smarty.get.suppId}" class="cur">店铺首页</a>
+        <!--{foreach from=$navigator_list_supplier.middle item=mall_get_navigator}-->
+        <A title="{$mall_get_navigator.name|escape:html}"
+          href="{$mall_get_navigator.url}" {if $mall_get_navigator.opennew}target="_blank"  {/if}>{$mall_get_navigator.name|escape:html}</A> 
+        <!--{/foreach}-->
+        </div>
+    <div class="Search fr">
+	 <form id="searchForm" name="searchForm" method="get" action="/mobile/supplier.php">
+	 <input type='hidden' name='go' value='search'>
+	 <input type='hidden' name='suppId' value='{$smarty.request.suppId}'>
+       <input class="fl" name="keywords" type="text" id="keyword" value="请输入你要查找的商品" onClick="javascript:this.value='';"/>
+       <input class="fr"  type="submit" id="btsearch" value="搜 索" />
+    </form>
+    </div>
+    </div>
+</div>

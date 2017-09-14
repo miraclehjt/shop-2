@@ -1,0 +1,232 @@
+<!DOCTYPE html >
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>{$page_title}</title>
+  <meta name="Keywords" content="{$keywords}" />
+  <meta name="Description" content="{$description}" />
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+  <link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/public.css"/>
+  <link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/exshangexin.css" />
+
+  <script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.js"></script>
+  {insert_scripts files='jquery.json.js,transport.js'}
+  <script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/touchslider.dev.js"></script>
+  {insert_scripts files='common.js'}
+</head>
+<body style="background:#FFF;">
+  <!----------------------------------header----------------------------------->
+      <div class="tab_nav">
+        <div class="header">
+          <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+          <div class="h-mid">积分详情</div>
+          <div class="h-right">
+            <aside class="top_bar">
+              <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+       	<!-- #BeginLibraryItem "/library/up_menu.lbi" --><!-- #EndLibraryItem --> <!--弹出菜单-->
+
+
+  <section class="innercontent">
+    <div id="product-intro">
+      <div class="p-img">
+        <a href="{$goods.url}" title="{$auction.goods_name|escape:html}">
+          <!-- {if $pictures}-->
+          <img  src="{$pictures.0.img_url}" id="goods_bimg"  />
+          <!-- {else} -->
+          <img src="{$goods.goods_img}" id="goods_bimg"/>
+          <!-- {/if}--> </a>
+      </div>
+      <div class="blank5"></div>
+      <div class="s-summary">
+        <script type='text/javascript'>var warestatus = 1; </script>
+        <form action="exchange.php?act=buy" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
+          <div class="goods_info">
+            <div class="title">
+              <h1>{$goods.goods_style_name}</h1>
+            </div>
+            <div class="summary">
+              <div class="m-sales">
+                <span class="key">{$lang.exchange_integral}</span>
+                <div class="value">{$goods.exchange_integral}</div>
+              </div>
+              <div class="m-sales">
+                <span class="key">{$lang.goods_sn}</span>
+                <div class="value">{$goods.goods_sn}</div>
+              </div>
+              <!-- {if $goods.goods_brand neq "" and $cfg.show_brand} 显示商品品牌-->
+              <div class="m-sales">
+                <span class="key">{$lang.goods_brand}</span>
+                <div class="value">
+                  <a href="{$goods.goods_brand_url}">{$goods.goods_brand}</a>
+                </div>
+              </div>
+              <!--{/if}-->
+              <!-- {if $goods.goods_number neq "" and $cfg.show_goodsnumber} 商品库存-->
+              <div class="m-sales">
+                <!-- {if $goods.goods_number eq 0} -->
+                <span class="key">{$lang.goods_number}</span>
+                <div class="value">{$goods.stock_up}</div>
+                <!-- {else} -->
+                <span class="key">{$lang.goods_number}</span>
+                <div class="value">{$goods.goods_number} {$goods.measure_unit}</div>
+                <!-- {/if} --> </div>
+              <!-- {/if} -->
+              <!-- {if $cfg.show_goodsweight} 商品重量-->
+              <div class="m-sales">
+                <span class="key">{$lang.add_time}</span>
+                <div class="value">{$goods.goods_weight}</div>
+              </div>
+              <!-- {/if} -->
+              <!-- {if $cfg.show_addtime} 上架时间-->
+              <div class="m-sales">
+                <span class="key">{$lang.goods_weight}</span>
+                <div class="value">{$goods.add_time}</div>
+              </div>
+              <!-- {/if} -->
+
+              <ul id="choose">
+                <!-- {* 开始循环所有可选属性 *} -->
+                <!-- {foreach from=$specification item=spec key=spec_key} -->
+                <li id="choose-version">
+                  <div class="dt">{$spec.name}：</div>
+                  <div class="dd catt">
+                    <!-- {* 判断属性是复选还是单选 *} -->
+                    <!-- {if $spec.attr_type eq 1} -->
+                    <!-- {if $cfg.goodsattr_style eq 1} -->
+                    <!-- {foreach from=$spec.values item=value key=key} -->
+                    <a {if $key eq 0}class="cattsel"{/if} onclick="changeAtt(this,'{$value.id}')" href="javascript:;" name="{$value.id}" title="{$value.label}">
+                      {$value.label}
+                      <input style="display:none" id="spec_value_{$value.id}" type="radio" name="spec_{$spec_key}" value="{$value.id}" {if $key eq 0}checked{/if} />
+                    </a>
+                    <!-- {/foreach} -->
+
+                    <!-- {else} -->
+                    <select name="spec_{$spec_key}">
+                      <!-- {foreach from=$spec.values item=value key=key} -->
+                      <option label="{$value.label}" value="{$value.id}">
+                        {$value.label} {if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if}{if $value.price neq 0}{$value.format_price}{/if}
+                      </option>
+                      <!-- {/foreach} --> </select>
+
+                    <!-- {/if} -->
+                    <!-- {else} -->
+                    <!-- {foreach from=$spec.values item=value key=key} -->
+                    <label for="spec_value_{$value.id}">
+                      <input type="checkbox" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" onclick="changePrice()" />
+                      {$value.label} [{if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if} {$value.format_price|abs}]
+                    </label>
+                    <br />
+                    <!-- {/foreach} -->
+                    <input type="hidden" name="spec_list" value="{$key}" />
+                    <!-- {/if} --> </div>
+                </li>
+                <!-- {/foreach} -->
+                <!-- {* 结束循环可选属性 *} -->
+
+                <li id="choose-btns">
+                  <input type="hidden" name="goods_id" value="{$goods.goods_id}" />
+                  <input type="submit" value="{$lang.exchange_goods}" class="c-btn-orange"/>
+                </li>
+              </ul>
+            </div>
+            <span class="clr"></span>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="tab">
+      <script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTabCatGoods(name,cursel,n){
+for(i=1;i<=n;i++){
+var menu=document.getElementById(name+i);
+var con=document.getElementById("con_"+name+"_"+i);
+con.style.display=i==cursel?"block":"none";
+menu.className=i==cursel?"curr":"";
+}
+}
+//--></script>
+      <div class="tab_tit">
+        <ul>
+          <li class="curr" id="goods1" onclick="setTabCatGoods('goods',1,2)" >
+            <a href="#product-detail">商品介绍</a>
+          </li>
+          <li id="goods2" onclick="setTabCatGoods('goods',2,2)">
+            <a href="#product-detail">规格参数</a>
+          </li>
+        </ul>
+      </div>
+      <div class="mc" id="con_goods_1">
+        
+        <style>
+        .detail-content img{ width:100%!important; height:auto!important;}
+        </style>
+        <div class="detail-content" >{$goods.goods_desc}</div></div>
+      <div class="mc" id="con_goods_2" style="display:none;">
+        <ul class="detail-list">
+          <li>商品编号：{$goods.goods_sn}</li>
+          <li>
+            品牌：
+            <a href="{$goods.goods_brand_url}" >{$goods.goods_brand}</a>
+          </li>
+          <li>上架时间：{$goods.add_time}</li>
+          <li>商品毛重：{$goods.goods_weight}</li>
+          <li>
+            库存：
+            <!-- {if $goods.goods_number eq 0} -->
+            {$lang.stock_up}
+            <!-- {else} -->
+            {$goods.goods_number} {$goods.measure_unit}
+            <!-- {/if} --> </li>
+          <!-- {if $properties} -->
+          <!-- {foreach from=$properties item=property_group key=key} -->
+          <!-- {foreach from=$property_group item=property} -->
+          <li>{$property.name|escape:html}：{$property.value}</li>
+          <!-- {/foreach}-->
+          <!-- {/foreach}-->
+          <!-- {/if} --> </ul>
+        <!--product-detail end-->
+        <!-- #BeginLibraryItem "/library/goods_info.lbi" -->
+        <!-- #EndLibraryItem --> </div>
+    </div>
+  </section>
+  <!---返回顶部-->
+<script>
+function goTop(){
+	$('html,body').animate({'scrollTop':0},600);
+}
+</script>
+<a href="javascript:goTop();" class="gotop"><img src="themesmobile/68ecshopcom_mobile/images/topup.png"></a> 
+
+  <!-- #BeginLibraryItem "/library/page_footer.lbi" -->
+  <!-- #EndLibraryItem -->
+  <!-- #BeginLibraryItem "/library/footer_nav.lbi" -->
+  <!-- #EndLibraryItem -->
+</body>
+  <script type="text/javascript">
+<!-- {literal} -->
+onload = function()
+{
+  fixpng();
+}
+delete(Object.prototype.toJSONString);
+<!-- {/literal} -->
+
+function changeAtt(t, goods_id) {
+t.lastChild.checked='checked';
+document.getElementById("spec_value_" + goods_id).checked = true;
+for (var i = 0; i<t.parentNode.childNodes.length;i++) {
+        if (t.parentNode.childNodes[i].className == 'cattsel') {
+            t.parentNode.childNodes[i].className = '';
+        }
+    }
+t.className = "cattsel";
+changePrice();
+}
+</script></html>

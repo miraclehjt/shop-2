@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<title>详细信息</title>
+<!--v_shop.css-->
+<link href="themesmobile/68ecshopcom_mobile/css/v_user.css" type="text/css" rel="stylesheet">
+</head>
+<body >
+<!--header-->
+<div class="dianpu">
+<dl>
+<dt><a href="v_user_tixianmore.php"></a></dt>
+<dd>详细信息</dd>
+</dl>
+</div>
+<!--main-->
+<div class="main">
+<div class="Detail">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="30%" height="40">姓名：</td>
+    <td width="70%" align="center">{$tixian.real_name}</td>
+  </tr>
+    <tr>
+    <td width="30%" height="40">提现金额：</td>
+    <td width="70%" align="center">￥{$tixian.deposit_money}</td>
+  </tr>
+    <tr>
+    <td width="30%" height="40">开户行：</td>
+    <td width="70%" align="center">{$tixian.account_name}</td>
+  </tr>
+    <tr>
+    <td width="30%" height="40">银行账号：</td>
+    <td width="70%" align="center">{$tixian.bank_account}</td>
+  </tr>
+    <tr>
+    <td width="30%" height="40">手机号：</td>
+    <td width="70%" align="center">{$tixian.phone}</td>
+  </tr>
+    <tr>
+    <td width="30%" height="40">状态：</td>
+    <td width="70%" align="center">{if $tixian.status eq 0}未处理{elseif $tixian.status eq 1}已处理{else}未通过{/if}</td>
+  </tr>
+</table>
+</div>
+</div> 
+<!-----底部悬浮菜单---->
+<!-- #BeginLibraryItem "/library/footer_nav1.lbi" --><!-- #EndLibraryItem --> 
+</body>
+</html>

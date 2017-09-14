@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>{$lang.cp_home}{if $ur_here} - {$ur_here} {/if}</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="styles/general.css" rel="stylesheet" type="text/css" />
+    <link href="styles/main.css" rel="stylesheet" type="text/css" />
+    {insert_scripts files="../js/transport.js,common.js"}
+    <script language="JavaScript">
+        <!--
+        // 这里把JS用到的所有语言都赋值到这里
+        {foreach from=$lang.js_languages key=key item=item}
+        var {$key} = "{$item}";
+        {/foreach}
+        //-->
+    </script>
+</head>
+<body>
+
+<h1>
+    <span class="action-span1"><a href="index.php?act=main">{$lang.cp_home}</a> </span><span id="search_id" class="action-span1"> - 功能变量</span>
+    <div style="clear:both"></div>
+</h1>
+
+{insert_scripts files="../js/utils.js,selectzone.js,colorselector.js"}
+<script type="text/javascript" src="../js/calendar.php?lang={$cfg_lang}"></script>
+<link href="../js/calendar/calendar.css" rel="stylesheet" type="text/css" />
+<!-- 通用信息 -->
+<div class="list-div" id="listDiv">
+<table width="100%" cellspacing="1" cellpadding="2" id="list-table">
+  <tr>
+    <th>功能名称</th>
+    <th>主功能命令</th>
+	<th>扩展功能命令</th>
+	<th>积分赠送方式<img src="images/notice.gif" width="16" height="16" border="0" title="用户通过微信使用此功能时赠送积分"></th>
+	<th>赠送分值</th>
+	<th>赠送上限</th>
+	<th>请求量</th>
+	<th>操作</th>
+  </tr>
+	{foreach item=item from=$keywords}
+  <tr>
+	<td>{$item.keyname}</td>
+	<td>{$item.key}</td>
+	<td>{$item.keys}</td>
+	<td>
+	{if $item.jf_type eq 0}无赠送{/if}
+	{if $item.jf_type eq 1}一次性赠送{/if}
+	{if $item.jf_type eq 2}按日赠送{/if}
+	</td>
+	<td>{$item.jf_num}</td>
+	<td>{$item.jf_maxnum}</td>
+	<td>{$item.clicks}</td>
+	<td><a href="weixin.php?act=keywords&id={$item.id}">{$lang.edit}</a></td>
+  </tr>
+	{/foreach}
+  </table>
+
+</div>
+<!-- end goods form -->
+{insert_scripts files="validator.js,tab.js"}
+
+<script language="JavaScript">
+var goodsId = '{$goods.goods_id}';
+var elements = document.forms['theForm'].elements;
+var sz1 = new SelectZone(1, elements['source_select1'], elements['target_select1']);
+var sz2 = new SelectZone(2, elements['source_select2'], elements['target_select2'], elements['price2']);
+var sz3 = new SelectZone(1, elements['source_select3'], elements['target_select3']);
+var marketPriceRate = {$cfg.market_price_rate|default:1};
+var integralPercent = {$cfg.integral_percent|default:0};
+
+{literal}
+onload = function()
+{
+
+    if (document.forms['theForm'].elements['auto_thumb'])
+    {
+        handleAutoThumb(document.forms['theForm'].elements['auto_thumb'].checked);
+    }
+
+    // 检查新订单
+    startCheckOrder();
+    {/literal}
+        {foreach from=$user_rank_list item=item}
+        set_price_note({$item.rank_id});
+    {/foreach}
+        {literal}
+        document.forms['theForm'].reset();
+    }
+
+    function setAttrList(result, text_result)
+    {
+        document.getElementById('tbody-goodsAttr').innerHTML = result.content;
+    }
+
+
+            {/literal}
+</script>
+{include file="pagefooter.htm"}

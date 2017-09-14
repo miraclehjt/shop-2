@@ -1,0 +1,38 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<div class="categoryshou">
+   <div class="left_cp">全部商品</div>
+     <div class="left_bg">
+  <div class="my_left_category">
+    
+	<!--{foreach from=$categories item=cat name=name}-->
+  <div class="h2_cat"  onmouseover="this.className='h2_cat'" onmouseout="this.className='h2_cat'" >
+  
+  <div class="xianzhi">
+  <h3 style='background:none'>
+    <a href="{$cat.url}" class="f_l"><font style="color:#CC0000;font-weight:bold">{$cat.name|escape:html}</font></a>
+  </h3>
+  </div>
+  </div>
+  
+  {if $cat.cat_id}
+    <div style="float:left; background:#fff;padding-left:12px">
+    <ul style="width:170px">
+      <!--{foreach from=$cat.cat_id item=child}-->
+		              <li style="width:85px;float:left"><a href="{$child.url}">{$child.name|escape:html}</a></li>
+			           <!--{/foreach}-->
+			   </ul>	
+  </div>
+    {/if}
+      <!--{/foreach}--> 
+	
+
+    
+  </div>
+</div>
+</div>
+
+
+
+<div class="blank"></div>
+

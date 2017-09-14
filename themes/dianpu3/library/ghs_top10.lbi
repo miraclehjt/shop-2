@@ -1,0 +1,39 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+.rank , .tabcon{ padding:0px;}
+</style>
+<script>
+var old = new Array();
+function show_goodspic(id,type)
+{
+  if(old[type]!=null)
+  {
+	  document.getElementById(type+"b"+old[type]).style.display='none';
+	  document.getElementById(type+"s"+old[type]).style.display='block';
+  }
+      document.getElementById(type+"s"+id).style.display='none';
+	  document.getElementById(type+"b"+id).style.display='block';
+	  old[type] = id;
+}
+
+</script>
+<div id="weekRank" class="rank ghs_cat ghs_top" style="border-top:none;">
+  <h3 class="mall_cat">销量排行榜</h3>
+  <div class="top10List clearfix">
+    <ul class="tabcon" style="border-bottom:none;">
+      <!-- {foreach name=top_goods from=$top_goods item=goods}-->
+      <!-- {if $smarty.foreach.top_goods.iteration<11}-->
+      <li class="fore {if $smarty.foreach.top_goods.iteration < 4}fore1{/if}" id="top2b{$smarty.foreach.top_goods.iteration}" style="display:none; {if $smarty.foreach.top_goods.last}border-bottom:none;{/if}"><span>{$smarty.foreach.top_goods.iteration}</span>
+        <div class="p-img"><a target='_blank' href='{$goods.url}'> <img src="{$goods.thumb}" alt="{$goods.name|escape:html}" width="50" height="50"/></a></div>
+        <div class="p-name"><a target='_blank' href='{$goods.url}'>{$goods.short_name}</a></div>
+        <div class="price" style=" color:#DD0000"> {$goods.price} </div>
+      </li>
+      <li {if $smarty.foreach.top_goods.last}style=" border-bottom:none;"{/if} {if $smarty.foreach.top_goods.iteration < 4}class=" fore1"{/if} id="top2s{$smarty.foreach.top_goods.iteration}" onMouseOver="show_goodspic({$smarty.foreach.top_goods.iteration},'top2')" ><span>{$smarty.foreach.top_goods.iteration}</span>
+      <div class="p-name"><a  href='{$goods.url}'>{$goods.short_name}<font color="#ff6600" ></font></a></div>
+      </li>
+      <!-- {/if} -->
+      <!-- {/foreach} -->  
+    </ul>
+  </div>
+</div>
+<script type=text/javascript>show_goodspic(1,'top2');</script>

@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-1.7.2_www_ecshop68_com.js" ></script>
+{* 包含脚本文件 *}
+{insert_scripts files='common.js'}
+{insert_scripts files='jquery.json.js,transport.js'}
+<script>
+function show_good(comment_id)
+{
+	Ajax.call('goods_comment.php?act=good_json', 'comment_id=' + comment_id, show_goodResponse, 'GET', 'JSON');
+}
+function show_goodResponse(result)
+{
+	if (result.error == 1)
+	{
+		alert("您已经评过分了哦！");
+	}
+	else
+	{
+		var layer = document.getElementById("good_num_"+result.comment_id);
+		layer.innerHTML = result.good_num;
+	}
+}
+</script>
+</head>
+<body>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/base-2011.js"></script>
+<div id="site-nav"> 
+  <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+  <div class="blank"></div>
+  <div class="block box">
+    <div id="ur_here"> <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem --> </div>
+  </div>
+  <div class="blank"></div>
+  <div class="block clearfix"> 
+    <!--left start-->
+    <div class="AreaL">
+      <div class="box">
+        <div class="box_1 comment_box_1">
+          <div class="comment_goods"> <a href="goods.php?id={$goods_id}"><img width="190" src="{$goods.goods_img}" alt="{$goods.goods_name|escape:html}"/></a> </div>
+          <p><a href="goods.php?id={$goods_id}">{$goods.goods_name}</a></p>
+          <p><strong>{$lang.shop_price}</strong><font class="shop">{$goods.shop_price_formated}</font><br /></p>
+          <p><a href="goods.php?id={$goods_id}" class="comment_buy">再次购买</a></p>
+        </div>
+      </div>
+    </div>
+    <!--left end--> 
+    
+    <!--right start-->
+    <div class="AreaR" style="width:990px">
+      <div class="my_comment_tab">
+        <ul class="clearfix">
+          <li>评价详情</li>
+        </ul>
+      </div>
+      <div class="blank"></div>
+      <div class="my_comment_list">
+        <dl class="clearfix">
+          <dt>
+            <div><img src="{if $comment.headimg eq ''}themes/68ecshopcom_360buy/images/upgrade_ad/peopleicon_01.gif{else}{$comment.headimg}{/if}" height="80" width="80" /></div>
+            <p>ecshop</p>
+            <p>{$comment.user_rank.rank_name}</p>
+          </dt>
+          <dd>
+            <div class="rank clearfix" style="height: 20px;border-bottom: solid #d0e4c2 1px;margin-top: 10px;border-top:none;border-left:none;border-right:none"> 
+            	<span>{$comment.add_time_str}</span> 
+                <img src="images/stars{$comment.comment_rank}.gif" /> 
+            </div>
+            <div class="blank"></div>
+            <table width="100%" border="0" cellspacing="1" cellpadding="0">
+              <tr>
+                <th width="64">标　　签：</th>
+                <td class="tag"><!--{foreach from=$comment.tags item=name}--> 
+                  <span>{$name}</span> 
+                  <!--{/foreach}--></td>
+              </tr>
+              <tr>
+                <th>心　　得：</th>
+                <td>{$comment.content}</td>
+              </tr>
+              <!--{if $comment.shaidan_imgs}-->
+              <tr>
+                <th>用户晒单：</th>
+                <td class="shaidan"><!--{foreach from=$comment.shaidan_imgs key=key item=img}--> 
+                  {if $key < 3}<a href="#"><img src="{$img.thumb}"></a>{/if} 
+                  <!--{/foreach}--> 
+                  共4张图片 <a href="#">查看晒单></a></td>
+              </tr>
+              <!--{/if}-->
+              <tr>
+                <th>购买日期：</th>
+                <td>{$comment.buy_time_str}</td>
+              </tr>
+            </table>
+            <ul class="yong clearfix">
+              <li style="display:none"><a href="javascript:;" onClick="show_good()">回复(0)</a></li>
+              <li><a href="javascript:;" onClick="show_good({$comment.comment_id})">有用(<span id="good_num_{$comment.comment_id}">{$comment.good_num}</span>)</a></li>
+            </ul>
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <!--right end--> 
+  </div>
+  <div class="blank"></div>
+</div>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!-- $Id: agency_list.htm 14216 2008-03-10 02:27:21Z testyang $ -->
+
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<script type="text/javascript" src="../js/calendar.php?lang="></script>
+<link href="../js/calendar/calendar.css" rel="stylesheet" type="text/css" />
+<div class="form-div">
+  
+<strong>智能出入库：</strong> 
+
+您可以使用扫描枪扫描需要出库或者入库的商品条形码，系统将自动识别其条形码。您可以多次扫描同一商品来增加其数量，
+
+ 
+
+当然也可以通过 条形码,数量 的格式控制录入该商品的数量（注意“逗号”必须是英文状态下），如 6942044217836,10 ：即
+
+ 
+
+该商品录入10件。
+
+</div>
+
+<form method="post" action="" name="listForm">
+<div class="list-div" id="listDiv">
+
+  <table cellpadding="3" cellspacing="1">
+    <tr>
+	  <th colspan='2'>
+	  <textarea cols="60" rows="40"  name="data" id='send'>{$textvalue}</textarea>
+	  <input type='hidden' name='act' value='view'>
+	  </th>
+    </tr>
+    <tr>
+	  <td align='right'><input type="submit" value="入库预览" name="in" /></td>
+	  <td ><input type="submit" value="出库预览" name="out" /></td>
+    </tr>
+  </table>
+
+</div>
+</form>
+
+
+{include file="pagefooter.htm"}

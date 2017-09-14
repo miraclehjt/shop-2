@@ -1,0 +1,40 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<table width="100%"  border="0" cellpadding="2" cellspacing="0">
+	<!--<tr>
+		<td width=15% align=right>选择区域：</td>
+		<td width=85% >
+		<select onchange="showztd(this.value)">
+		{foreach from=$pinfo item=name key=k}
+		<option value="{$k}" {if $k == $district}selected{/if}>{$name.name}</option>
+		{/foreach}
+		</select>
+		</td>
+	</tr>-->
+	<tr><td colspan='2'>
+	{foreach from=$pinfo item=value key=key}
+	<table class="ztd" width="100%" cellpadding="0" cellspacing="0" border="0" id="txt{$key}" style="display:{if $key == $district}{else}none{/if}">
+		{foreach from=$value.info item=info key=k}
+		<tr>
+			<td width=15% align=right>{if $k == 0}选择自提点：{else}&nbsp;{/if}</td>
+			<td width=85% >
+				<table width="100%"  border="0" cellpadding="2" cellspacing="0" class="ziti_list">
+					<tr>
+						<td width="25%"><span class="ziti_name {if $info.id == $selectid}site-in-short{/if}" onclick="select_point(this,{$info.id})">{$info.shop_name}<b></b></span></td>
+						<td width="42%">{$info.address}</td>
+						<td width="15%">{$info.contact}</td>
+						<td width="18%">{$info.phone}</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		{/foreach}
+	</table>
+	{/foreach}
+	</td></tr>
+	<tr>
+	<td colspan="2" align="center" class="ziti_btn">
+	<input type="hidden" id='s_pid' value='{$selectid}'>
+	<input type="button" name="button" class="bnt_blue_1" value="保存自提点" onclick="save_point({$suppid})" />
+	</td>
+	</tr>
+</table>

@@ -1,0 +1,28 @@
+<!-- {if ($allow_use_bonus && $goodsinfo.goodlist) } 是否使用店铺优惠券 -->
+<div class="uinn-eo5 ub ub-ac ubb border-faxian _fold" fold_key='coupon_integral_{$key}'>
+  <div class="ub-f1 f-color-zi ulev-9 p-all5">使用店铺优惠券</div>
+  <div class="ub-pe ulev-1-4 sc-text umar-r fold_indicator fa"></div>
+</div>
+<div id="coupon_integral_{$key}" class='uhide p-all1 sc-text-hui ubb border-hui'>
+<div class="ub ub-ac p-t-b3">
+  <div class="ub-f1 ulev-1 w-min4">使用店铺优惠券：</div>
+  	<div class="styled-select sc-text-hui ub-ac ulev-1 ub-f1 styled-select">
+	  <select class="bonus" key='{$key}'>
+		<option value="0" selected>{$lang.please_select}</option>
+		<!-- {foreach from=$goodsinfo.redbag item=bonus} -->
+		<option value="{$bonus.bonus_id}">{$bonus.type_name}[{$bonus.bonus_money_formated}]</option>
+		<!-- {/foreach} -->
+	  </select>
+	</div>
+</div>
+<div class="ub ub-ac p-t-b3">
+<div class="ulev-1 w-min4">或输入优惠券号：</div>
+<input id='bonus_sn_{$key}' key='{$key}' class='bonus_sn ub-f1 uinput1 p-all6 uba border-faxian ulev-1' type="text" size="15"
+value="{if $order.bonus_sn_info[$key]}{$order.bonus_sn_info[$key]}{/if}" placeholder='输入优惠券'/>
+<div class="uinput1 ulev-1"> 
+<div class="validate_bonus btn-red-3" key="{$key}" style="background:#dd2726; margin-left:0.5em; padding:0.3em 0.6em">使用</div>
+</div>
+</div>
+</div>
+<!-- {/if} -->
+

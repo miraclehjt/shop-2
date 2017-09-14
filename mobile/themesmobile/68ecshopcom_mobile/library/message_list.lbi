@@ -1,0 +1,137 @@
+{if $msg_lists}
+<ul class="comment_list clearfix">
+	{foreach from=$msg_lists key=key item=msg name=message_lists}
+	<li class="{cycle values="odd,even"}{if $smarty.foreach.message_lists.first} first{/if}">
+		<div class="info">
+			<span class="name">{if $msg.user_name eq ''}{$lang.anonymous}{else}{$msg.user_name|escape:html}{/if}</span>
+			<span class="time">{$msg.msg_time}</span>
+		</div>
+		<div class="talk">
+			<p class="title"><span class="type">[{$msg.msg_type}]</span>{$msg.msg_title}{if $msg.id_value gt 0}{$lang.feed_user_comment}<a href="{$msg.goods_url}" title="{$msg.goods_name}">{$msg.goods_name}</a>:{/if}</p>
+			<p class="text">{$msg.msg_content}</p>
+			{if $msg.re_content}
+			<p class="reply"><span class="name">{$lang.re_name}</span><span class="text">{$msg.re_content}</span></p>
+			{/if}
+		</div>
+	</li>
+	{/foreach}
+</ul>
+{include file='library/pages.lbi'}
+{else}
+<p class="empty">{$lang.no_message}</p>
+{/if}
+
+<section class="Messages_emit01-d1_c1" id="Messages_emit01-001_Messages_emit01-d1_c1">
+<div id="msgTitle" class="normalStyle relateStyle2">
+<div class="borderTitle">
+				<ul class="titleWrap">
+					
+					<li id="emit" class=" current active " style="width:100%">
+							<div style="text-align:left;margin-left:10px;"><span class="text">我要留言</span></div>										
+						</li>
+						
+					
+				</ul>
+				<span class="active controlBar">
+					<em class="icon up"></em>
+				</span>
+			</div>
+            
+            
+ <form action="message.php" method="post" onSubmit="return submitMsgBoard(this)" style="padding:0;">
+  <div class="borderCont z3g-noTouchMoveWrap" id="borderContEmit" style="">
+				<ul>
+					
+					<li class="tel">
+						<b>{$lang.username}:</b> {if $smarty.session.user_name}{$username}{else}{$lang.anonymous}{/if}
+					</li>	
+					
+					<li class="name">
+						<input class="z3g-input"  type="email" name="user_email" maxlength="60" placeholder="{$lang.email}">
+					</li>
+					<li class="email">
+					<b>{$lang.message_board_type}</b>
+			<label><input type="radio" name="msg_type" value="0" checked="checked">{$lang.message_type[0]}</label>
+			<label><input type="radio" name="msg_type" value="1">{$lang.message_type[1]}</label>
+			<label><input type="radio" name="msg_type" value="2">{$lang.message_type[2]}</label>
+			<label><input type="radio" name="msg_type" value="3">{$lang.message_type[3]}</label>
+			<label><input type="radio" name="msg_type" value="4">{$lang.message_type[4]}</label>
+					</li>
+                    <li class="name">
+						<input class="z3g-input"  type="text" name="msg_title" maxlength="20" placeholder="{$lang.message_title}">
+					</li>
+					<li class="cont">
+						<textarea class="z3g-textarea" name="msg_content" placeholder="输入您的留言内容"></textarea>
+					</li>
+					
+					{if $enabled_mes_captcha}
+					<li class="verificationCode">
+						<input class="z3g-input" type="text"  value="" maxlength="25"  name="captcha" placeholder="{$lang.comment_captcha}">
+					    <img class="verify-pic" src="captcha.php?{$rand}" alt="{$lang.comment_captcha}" title="{$lang.captcha_tip}" onClick="this.src='captcha.php?'+Math.random()">
+					</li>
+                    {/if}
+					<li class="submitBtn">
+						<button class="z3g-button active btn" type="submit">{$lang.post_message}</button>
+					</li>
+                    <input type="hidden" name="act" value="act_add_message">
+		<input type="hidden" name="id" value="{$id}">
+				</ul>
+			</div>
+ </form>
+ </div>
+
+</section>
+
+
+<script type="text/javascript">
+{foreach from=$lang.message_board_js item=item key=key}
+var {$key} = "{$item}";
+{/foreach}
+{literal}
+function submitMsgBoard(frm)
+{
+	var msg = new Object;
+	msg.user_email  = frm.elements['user_email'].value;
+	msg.msg_title   = frm.elements['msg_title'].value;
+	msg.msg_content = frm.elements['msg_content'].value;
+	msg.captcha     = frm.elements['captcha'] ? frm.elements['captcha'].value : '';
+	var msg_err = '';
+	if (msg.user_email.length > 0)
+	{
+		if (!isValidEmail(msg.user_email))
+		{
+			msg_err += msg_error_email + '\n';
+		}
+	}
+	else
+	{
+		msg_err += msg_empty_email + '\n';
+	}
+	if (msg.msg_title.length == 0)
+	{
+		msg_err += msg_title_empty + '\n';
+	}
+	if (frm.elements['captcha'] && msg.captcha.length==0)
+	{
+		msg_err += msg_captcha_empty + '\n'
+	}
+	if (msg.msg_content.length == 0)
+	{
+		msg_err += msg_content_empty + '\n'
+	}
+	if (msg.msg_title.length > 200)
+	{
+		msg_err += msg_title_limit + '\n';
+	}
+	if (msg_err.length > 0)
+	{
+		alert(msg_err);
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+{/literal}
+</script>

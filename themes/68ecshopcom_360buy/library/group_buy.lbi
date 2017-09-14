@@ -1,0 +1,21 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $group_buy_goods} -->
+ <DIV class="box_r group_buy" id="globalGroup">
+    <!-- {foreach from=$group_buy_goods item=goods} -->
+    <div class="item">
+      
+      <div style="float:left; margin-top:20px; width:49%">
+          <p><a href="{$goods.url}" title="{$goods.goods_name|escape:html}" class="name">{$goods.short_style_name|truncate:14}</a></p>
+          <p class="price">
+             团购价：<span style="color:#D00; font-weight:bold;">{$goods.last_price}</span> 
+            (已有<font class="price" style="color:#D00">{$goods.valid_goods}</font>人参团) 
+          </p>
+          <p><a href="{$goods.url}"><img src="../images/botton.gif"></a></p>
+      </div>
+      <div class="pic" style="float:left; width:49%"><a href="{$goods.url}"><img style="width:110px; height:110px; border:1px solid #F2F2F2" src="{$goods.thumb}" alt="{$goods.goods_name|escape:html}" /></a></div>
+    </div>
+    <!-- {/foreach} -->
+   
+</div>
+<!-- {/if} -->
+

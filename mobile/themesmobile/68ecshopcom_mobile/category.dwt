@@ -1,0 +1,476 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="minimal-ui=yes,width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>{$page_title}</title>
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/public.css"/>
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/category_list.css"/>
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.js"></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+{insert_scripts files='common.js'}
+<script type="application/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.more.js"></script>
+</head>
+<body>
+<section class="_pre" >
+<header id="head_search_box" style="position: fixed; top: 0px; width: 100%;">
+<div class="search_header">
+    <a href="javascript:history.back(-1)" class="back search_back"></a>
+    <div class="search">
+     <form id="searchForm" name="searchForm" method="get" action="search.php" onSubmit="return checkSearchForm()" >
+   <div class="text_box" name="list_search_text_box" onclick="return 1;">
+   <input id="keyword" name="keywords" type="text" placeholder="请输入商品名称 货号" class="text" value="">
+   </div>
+   <input type="submit" value="" class="submit" id="list_search_submit">
+ </form>
+    </div>
+    <a class="menu filtrate" name="list_go_filter" style=" color:#666">筛选</a>
+</div>
+</header>
+
+<div style="height:51px;" class="empty_div">&nbsp;</div>
+<section class="filtrate_term" id="product_sort" style="width: 100%;">
+<ul><li class="{if $pager.sort == 'goods_id'}on{/if}"><a href="{$script_name}.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=goods_id&order=<!-- {if $pager.sort == 'goods_id' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list">最新</a></li><li class="{if $pager.sort eq 'salenum'}on{/if}"><a href="{$script_name}.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=salenum&order=<!-- {if $pager.sort == 'salenum' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list" >销量</a></li><li class="{if $pager.sort eq 'last_update'}on{/if}"><a href="{$script_name}.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=last_update&order=<!-- {if $pager.sort == 'last_update' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list" >更新</a></li><li class="<!-- {if $pager.sort == 'shop_price'} -->on<!-- {/if} -->"><a href="{$script_name}.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=shop_price&order=<!-- {if $pager.sort == 'shop_price' && $pager.order == 'ASC'} -->DESC<!-- {else} -->ASC<!-- {/if} -->#goods_list">价格<span class="arrow_up {if $pager.sort == 'shop_price' && $pager.order == 'ASC'}active_up{/if}"></span><span class="arrow_down {if $pager.sort == 'shop_price' && $pager.order == 'DESC'}active_down{/if}"></span></a></li><li class=""><a href="javascript:;" class="show_type {if $pager.display == 'grid'} show_list{/if}">&nbsp;</a></li></ul>
+</section>
+
+<section>
+<script type="text/javascript">
+var url = 'category.php?act=ajax&category={$cat_id}&&display=grid&brand={$smarty.request.brand}&price_min={$smarty.request.price_min}&price_max={$smarty.request.price_max}&filter_attr={$smarty.request.filter_attr}&page=1&sort={$smarty.request.sort}&order={$smarty.request.order}&other_has={$other_has}';
+$(function(){
+	$('#J_ItemList').more({'address': url});
+});
+
+</script>
+
+
+<div class="touchweb-com_searchListBox {if $pager.display == 'grid'}openList{/if}" id="goods_list">
+
+  <!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem -->
+   
+</div>
+</ul>
+</div>
+</section> 
+</section>
+<section class="_next" style="-webkit-transform-origin: 0px 0px 0px; opacity: 1; -webkit-transform: scale(1, 1); display: none;">
+<!-- 筛选 -->
+<header>
+    <div class="new_header_2" id="filter_header" >
+        <a href="javascript:;" class="back" id="list_filter_back" ><span>返回</span></a>
+        <h2>筛选</h2>
+    </div>
+</header>
+<section id="filter_content">
+
+     <div class="filtrate_category">
+        <a href="javascript:;" class="filtrate_category_a" >分类 <span class="up_down">全部展开</span></a>
+    </div>   
+    <ul class="filtrate_list" id="filter_category_list" style="display: block; -webkit-transform-origin: 0px 0px 0px; opacity: 1; -webkit-transform: scale(1, 1);">
+        <li class="filtrate_list_li">
+        <!--{foreach from=$categories2 item=cat}--> 
+<ul><li class="filtrate_list_li"><a href="{$cat.url}" class="filtrate_list_li_a {if $current_cat_id eq $cat.id}on{/if}" style="padding-left:25px"><span>{$cat.name}</span></a><ul>
+<!--{foreach from=$cat.children item=child}--> 
+<li class="filtrate_list_li"><a href="{$child.url}" class="filtrate_list_li_a {if $current_cat_id eq $child.id}on{/if}" style="padding-left:45px;">{$child.name|escape:html}</a></li>
+<!--{/foreach}--> 
+</ul></li></ul><!--{/foreach}-->  </li>
+</ul>
+  
+     <form method="post" action="category.php">
+     <input type="hidden" name="brand" id="brand" value="{$brand}">
+     <input type="hidden" name="filter_attr" id="filter_attr" value="{$filter_attr_str}">     
+     <input type="hidden" name="id" value="{$cat_id}">
+       <!--{if $brands.1 || $price_grade.1 || $filter_attr_list}-->
+  <!--{if $brands.1}-->
+
+            <div class="filtrate_category" >
+            <a href="javascript:;" class="filtrate_category_a">品牌 <span class="up_down">全部展开</span></a>
+        </div>
+        
+<ul class="clearfix filtrate_address filtrate_list att_item" id="brands" style="display: block; -webkit-transform-origin: 0px 0px 0px; opacity: 1; -webkit-transform: scale(1, 1);">
+<!--{foreach from=$brands item=brand}-->
+<li {if $brand.selected}class="on"{/if}  id="brand_{$brand.brand_id}"><a href="javascript:get_brand('{$brand.brand_id}')">{$brand.brand_name}</a></li>
+<!--{/foreach}-->
+
+                </ul>
+        
+          <!-- {/if} -->
+          
+        <div class="filtrate_price"onclick="return 1;">
+                    价格 <input type="number" id="lp" value="{$price_min}" name="price_min">∼
+                        <input type="number" id="hp" value="{$price_max}" name="price_max">元
+        </div>      
+                   
+                 {foreach from=$filter_attr_list item=filter_attr name=filter_attr_list}  
+        <div class="filtrate_category" >
+            <a href="javascript:;" class="filtrate_category_a">{$filter_attr.filter_attr_name|escape:html}{$lang.colon} <span class="up_down">全部</span></a>
+        </div>
+        <ul class="clearfix filtrate_address filtrate_list att_item" id="attrs_{$smarty.foreach.filter_attr_list.iteration}">
+        {foreach from=$filter_attr.attr_list item=attr name=filter_attr}
+                <li {if $attr.selected}class="on"{/if} id="attr_{$smarty.foreach.filter_attr_list.iteration}_{if $attr.attr_id}{$attr.attr_id}{else}0{/if}">
+            <a  href="javascript:get_attr_{$smarty.foreach.filter_attr_list.iteration}('{if $attr.attr_id}{$attr.attr_id}{else}0{/if}')">{$attr.attr_value}</a>
+            {if $attr.selected}
+<input type="hidden" id="show68ecshop_{$smarty.foreach.filter_attr_list.iteration}" name="show68ecshop" value="{$attr.attr_id}"/>
+{/if}
+        </li>
+        {/foreach}
+        </ul>
+        {/foreach}
+        <!--需要做程序，注意如果是选中状态给li标签一个on样式-->
+<div class="filtrate_has">
+        <h2>其他条件</h2>
+        <ul class="clearfix">
+    <li  class="{if $other_has eq 1}on{/if}">
+    <label for="">显示全部</label>
+    <input type="radio" name='other_has' id="all_goods" value="1" {if $other_has eq 1}checked="true"{/if}>
+    </li>
+    <li class="{if $other_has eq 2}on{/if}">
+    <label for="">网站自营</label>
+     <input type="radio" name='other_has' id="ziying_goods" value="2" {if $other_has eq 2}checked="true"{/if}>
+    </li>
+    <li class="{if $other_has eq 3}on{/if}">
+    <label for="">入驻商家</label>
+     <input type="radio" name='other_has' id="ruzhu_goods" value="3" {if $other_has eq 3}checked="true"{/if}>
+    </li>
+</ul>
+   </div>
+   <div class="filtrate_has1" style="display:none">
+        <h2>是否有货</h2>
+        <ul class="clearfix">
+  
+    <li  class="">
+    <label for="">仅显示有货</label>
+    <input type="radio" name='other_youhuo' id="other_youhuo" value='1'>
+    </li>
+  
+</ul>
+   </div>
+    <script>
+    $('.filtrate_has li').click(function(){
+	$(this).find("input").attr("checked","checked");
+	$('.filtrate_has li').removeClass("on");
+	$(this).addClass("on");
+	})
+    </script>
+        <script>
+    $('.filtrate_has1 li').click(function(){
+	if($(this).hasClass("on")){
+	$(this).find("input").attr("checked","");
+	$(this).removeClass("on");	
+	}
+	else
+	{
+	$(this).find("input").attr("checked","checked");
+	$(this).addClass("on");	
+	}
+	
+	})
+    </script>
+    
+    <ul class="filtrate_btn">
+        <li><a href="javascript:;" class="reset" id="clear_btn">取消筛选</a></li>
+        <li> <input class="submit" id="submit_btn" type="submit" value="确定"></li>
+    </ul>
+<!-- {/if} -->
+    </form>
+</section>
+</section>
+<section id="mix_search_div" style="display: none;">
+<header class="con floatsearch">
+   <section class="mix_new_header">
+        <a href="javascript:void(0)" class="mix_back"></a>
+        <form id="searchForm" name="searchForm" method="get" action="search.php" onSubmit="return checkSearchForm()" >
+            <div class="search">
+                <div class="text_box">
+                 <input id="keyword1" name="keywords" type="text" value="" placeholder="请输入商品名称 货号" class="keyword text" onkeydown="this.style.color=&#39;#404040&#39;;" maxlength="70" autocomplete="off">
+                </div>
+                <span class="mix_submit"></span>
+                <a href="javascript:void(0)" class="clear_input" id="clear_input" style="display: block;"></a>
+
+            </div>
+            <input type="submit" value="搜索" class="mix_filtrate">
+        </form>
+    </section>
+    <section class="mix_search_list"></section>
+
+   <section class="mix_recently_search"><h3>热门搜索</h3>
+   {if $searchkeywords}
+  <ul>
+    {foreach from=$searchkeywords item=val}
+   <li>
+    <a href="search.php?keywords={$val|escape:url}">{$val}</a>
+   </li>
+   {/foreach}
+   </ul>
+
+    {else}
+    <div class="recently_search_null">没有搜索记录</div>
+    {/if}
+    </section>
+    <div class="spacer"></div>
+</header>
+
+</section>
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/zepto.min.js"></script>
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/filter.min.js"></script>
+<script>
+$(document).ready(function(){
+        //筛选浮层显示控制
+        var filtrate = $(".filtrate"), submit = $(".submit,.back,.reset");
+        filtrate.bind("click", function () {
+            $("._next").show();
+            $("._pre").hide();
+            window.scrollTo(0, 0);
+        });
+        submit.bind("click", function () {
+            $("._next").hide();
+            $("._pre").show();
+        });
+        //初始化筛选浮层
+        bizFilter.init();
+});
+</script>
+<script>
+    $(function(){
+        //搜索浮层显示逻辑
+        var sbox = $("#head_search_box"),
+                sort = $('#product_sort'),
+                g_list = $("#goods_list"),
+                g_m1 = "0", g_m2 = "96px";
+        var initCss = function (type) {
+            if (type == 1) {
+                sort.css({"position":"static","width":"100%"});
+                g_list.css("margin-top", g_m1);
+            } else {
+                sort.attr("style", "");
+                g_list.css("margin-top", g_m2);
+            }
+        };
+        var m = {
+            input: $("#keyword"),
+            rawAll: '',
+            dd: $(".text_box"),
+            cancel: $(".mix_back"),
+            rawKey: '请输入商品名称 货号',
+            main: function () {
+                this.init();
+                this.be();
+            },
+            init: function () {
+                this.rawAll = this.input.val();
+            },
+            be: function () {
+                var _this = this;
+                this.input.focus(function () {
+                    var mix_search = $("#mix_search_div");
+                    if (mix_search.length > 0) {
+                        $("._pre").hide();
+                        mix_search.show();
+                        $("#keyword1").focus();
+                        return;
+                    }
+                    var newKey = _this.input.val();
+                    if (newKey != _this.rawKey && newKey != _this.rawAll) {
+                        $(this).val(newKey);
+                    } else {
+                        $(this).val(_this.rawKey);
+                    }
+                    if ($(window).scrollTop() > 0) {
+                        initCss(1);
+                        window.scrollTo(0, 0);
+                        _this.dd.trigger("click");  //for ddclick
+                    }
+                })
+				.blur(function () {
+                            var newKey = _this.input.val();
+                            if (newKey === _this.rawKey) {
+                                $(this).val(_this.rawAll);
+                            } else {
+                                $(this).val(newKey);
+                            }
+                        });
+                this.cancel.bind("click", function () {
+                    $("#mix_search_div").hide();
+                    $("._pre").show();
+                });
+				document.getElementById("clear_input").onclick = function() {
+		            $("#mix_search_div").hide();
+                    $("._pre").show();
+				}
+            }
+        };
+
+        m.main();
+
+        $(window).resize(function () {
+            sbox.css("width", "100%");
+            sort.css("width", "100%");
+        });
+		 //顶部sticky效果
+        setTimeout(function () {
+            var sboxH = sbox.height();
+            var sortH = sort.height();
+            var sortStart = sort.offset().top - sboxH;
+            var showEnd = sort.offset().top;
+            var init = function () {
+                sbox.css({"position":"fixed", "top":"0"});
+                window.scrollTo(0, 0);
+            };
+            var rawScroll = 0, nowScroll = 0;
+            var upOrDown = function () {
+                var delta = 30;
+                if (nowScroll > rawScroll + delta) {
+                    return 1;
+                } else if (nowScroll < rawScroll - delta) {
+                    return 2;
+                } else {
+                    return 0;
+                }
+            };
+            var sticky = function () {
+                nowScroll = $(window).scrollTop();
+                if (nowScroll >= sortStart) {
+                    sort.css({"position":"fixed","top":sboxH});
+                    g_list.css({"margin-top":sortH});
+                } else {
+                    sort.attr("style", "");
+                    g_list.attr("style", "");
+                }
+                if (nowScroll > showEnd + sortH) {
+                    var up = upOrDown();
+                    if (up == 1) {
+                        if (sbox.css("display") != "none") {
+                            sbox.hide();
+                            sort.hide();
+                        }
+                        rawScroll = nowScroll;
+                    } else if (up == 2) {
+                        if (sbox.css("display") == "none") {
+                            sbox.show();
+                            sort.show();
+                        }
+                        rawScroll = nowScroll;
+                    }
+                } else {
+                    if (sbox.css("display") == "none") {
+                        sbox.show();
+                        sort.show();
+                    }
+                }
+            };
+            init();
+            $(document).on("touchmove", sticky);
+            $(window).on("scroll", sticky);
+        }, 500);
+ 
+	});
+
+</script>
+<script>
+   $('.show_type').bind("click", function() {
+    if ($('#goods_list').hasClass('openList')){
+	$('#goods_list').removeClass('openList');
+	$(this).removeClass('show_list');
+	}
+	else
+	{
+	$('#goods_list').addClass('openList');	
+	$(this).addClass('show_list');
+	}
+});
+</script>
+<script type="text/javascript">
+function get_brand(brand_id)
+{
+	document.getElementById('brand').value = brand_id;
+	var obj = document.getElementById('brands').getElementsByTagName('li');
+	for(var i=0;i<obj.length;i++)
+	{
+		obj[i].className = '';
+	}
+	document.getElementById('brand_'+brand_id).className = 'on';
+}
+
+function get_price(price_min,price_max)
+{
+	document.getElementById('price_min').value = price_min;
+	document.getElementById('price_max').value = price_max;
+	var obj = document.getElementById('prices').getElementsByTagName('a');
+	for(var i=0;i<obj.length;i++)
+	{
+		obj[i].className = '';
+	}
+	document.getElementById('price_'+price_min).className = 'on';
+}
+
+<!--{foreach from=$filter_attr_list item=filter_attr name=filter_attr_list}-->
+
+function get_attr_{$smarty.foreach.filter_attr_list.iteration}(attr_id)
+{
+	document.getElementById('show68ecshop_{$smarty.foreach.filter_attr_list.iteration}').value=attr_id;
+	var show68ecshop = document.getElementsByName("show68ecshop");
+	var zongshu = null;
+	for(var i=show68ecshop.length;i>0;i--){
+	if(zongshu == null)
+	{
+		zongshu = document.getElementById("show68ecshop_"+i).value;
+	
+	}
+	else
+	{
+		zongshu = document.getElementById("show68ecshop_"+i).value +"."+zongshu;
+		document.getElementById('filter_attr').value = zongshu;	
+	}
+	}
+	
+	var obj = document.getElementById('attrs_{$smarty.foreach.filter_attr_list.iteration}').getElementsByTagName('li');
+	for(var i=0;i<obj.length;i++)
+	{
+		obj[i].className = '';
+	}
+	document.getElementById('attr_{$smarty.foreach.filter_attr_list.iteration}_'+attr_id).className = 'on';
+}
+<!--{/foreach}-->
+</script>
+
+<script type="Text/Javascript" language="JavaScript">
+<!--
+{literal}
+function selectPage(sel)
+{
+  sel.form.submit();
+}
+{/literal}
+//-->
+</script>
+<script type="text/javascript">
+window.onload = function()
+{
+//  Compare.init();
+  fixpng();
+}
+{foreach from=$lang.compare_js item=item key=key}
+{if $key neq 'button_compare'}
+var {$key} = "{$item}";
+{else}
+var button_compare = '';
+{/if}
+{/foreach}
+var compare_no_goods = "{$lang.compare_no_goods}";
+var btn_buy = "{$lang.btn_buy}";
+var is_cancel = "{$lang.is_cancel}";
+var select_spe = "{$lang.select_spe}";
+</script>
+<footer>
+<!-- #BeginLibraryItem "/library/footer_nav.lbi" --><!-- #EndLibraryItem -->
+</footer>
+<!---返回顶部-->
+<script>
+function goTop(){
+	$('html,body').animate({'scrollTop':0},600);
+}
+</script>
+<a href="javascript:goTop();" class="gotop" style=" z-index:9999"><img src="themesmobile/68ecshopcom_mobile/images/topup.png"></a> 
+</body>
+</html>

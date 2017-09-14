@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable --><!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+{* 包含脚本文件 *}
+{insert_scripts files='common.js'}
+</head>
+<body>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/base-2011.js"></script>
+<div id="site-nav">
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<div class="blank"></div>
+<div class="block box">
+ <div id="ur_here">
+  <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+ </div>
+</div>
+<div class="blank"></div>
+<div class="block clearfix">
+	<!--left start-->
+	<div class="AreaL">
+		<div class="box"><div class="box_1 shaidan_box_1">
+			<div class="shaidan_goods">
+            	<a href="goods.php?id={$goods_id}"><img width="190" src="{$goods.goods_thumb}" alt="{$goods.goods_name|escape:html}"/></a>
+            </div>
+			<p><a href="goods.php?id={$goods_id}">{$goods.goods_name}</a></p>
+			<p><strong>{$lang.shop_price}</strong><font class="shop">{$goods.shop_price_formated}</font><br /></p>
+			<p><a href="goods.php?id={$goods_id}" class="shaidan_buy">再次购买</a></p>
+		</div></div>
+	</div>
+	<!--left end-->
+    <!--right start-->
+    <div class="AreaR">
+        <div class="shaidan_box">
+        	<div class="title">晒单详情</div>
+			<div class="shaidan_desc">
+            	<div class="message">{$shaidan.message}</div>
+                <!--{foreach from=$shaidan_imgs key=key item=img}-->
+                <dl><dt><img src="{$img.image}"></dt><dd>{$img.desc}</dd></dl>
+                <!--{/foreach}-->
+            </div>
+			<div class="bshare-custom" style="padding:15px;"><div class="bsPromo bsPromo2"></div><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="分享到开心网" class="bshare-kaixin001" href="javascript:void(0);"></a><a title="分享到凤凰微博" class="bshare-ifengmb" href="javascript:void(0);"></a><a title="分享到微信" class="bshare-weixin" href="javascript:void(0);"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count" style="float: none;">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+        </div>
+    </div>
+    <!--right end-->
+</div>
+<div class="blank"></div>
+</div>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+</html>

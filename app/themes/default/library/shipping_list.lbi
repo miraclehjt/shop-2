@@ -1,0 +1,11 @@
+<!-- {foreach from=$shipping_list item=shipping} 循环配送方式 --> 
+  <div class="ub ulev-1 ub-ac lis-checkout shipping {if $shipping.selected neq ''} checked{/if} _checkbox checkbox_radio" radio="true" cancel="false" {if $shipping.selected neq ''} checked="true"{/if} name="shipping_{$suppid}" value="{$shipping.shipping_id}" supplier_id="{$suppid}">
+	<!-- {if $shipping.shipping_code != 'tc_express' && $shipping.shipping_code != 'pups'} -->
+		<!-- {$lang.common_express } -->
+	<!-- {else} -->
+		<!-- {$shipping.shipping_name } -->
+	<!-- {/if} -->
+  </div>
+  <!-- {foreachelse} -->
+  <div>暂不支持收货地址配送</div>
+<!-- {/foreach} --> 

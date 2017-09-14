@@ -1,0 +1,15 @@
+<td style="font-size: 14px; font-weight: bold"><p id="sendMsgAjaxId">推送信息发送中... 请勿刷新或者离开此页面！！如果长时间没有反映请点击<a hret='../weixin/auto_do.php?type=1'>这里</a>手动执行。</p></td>
+<script>
+function sendMsgAjax(){
+	Ajax.call('../weixin/auto_do.php?type=1&ajax=1','', sendMsgAjaxResponse, 'GET', 'JSON');
+}
+function sendMsgAjaxResponse(result){
+	document.getElementById('sendMsgAjaxId').innerHTML = "推送信息发送中... 请勿刷新或者离开此页面！！如果长时间没有反映请点击<a hret='../weixin/auto_do.php?type=1'>这里</a>手动执行。";
+	if (result.error == 0){
+		document.getElementById('sendMsgAjaxId').innerHTML = "推送信息发送成功。";
+	}else{
+		document.getElementById('sendMsgAjaxId').innerHTML = "推送信息执行超时点击<a hret='../weixin/auto_do.php?type=1'>这里</a>手动执行。";
+	}
+}
+sendMsgAjax();
+</script>

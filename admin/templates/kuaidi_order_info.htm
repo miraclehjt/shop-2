@@ -1,0 +1,93 @@
+<!-- $Id: order_info.htm 17060 2015-02-07 03:44:42Z derek $ -->
+
+{include file="pageheader.htm"}
+{insert_scripts files="topbar.js,../js/utils.js,listtable.js,selectzone.js,../js/common.js"}
+
+
+<form action="kuaidi_order.php?act=update" method="post" name="theForm">
+<div class="list-div" style="margin-bottom: 5px">
+<table width="100%" cellpadding="6" cellspacing="1">
+  <tr>
+    <td colspan="4">
+      <div align="center">
+        <input name="prev" type="button" class="button" onClick="location.href='kuaidi_order.php?act=view&order_id={$prev_id}';" value="{$lang.prev}" {if !$prev_id}disabled{/if} />
+        <input name="next" type="button" class="button" onClick="location.href='kuaidi_order.php?act=view&order_id={$next_id}';" value="{$lang.next}" {if !$next_id}disabled{/if} />
+    </div></td>
+  </tr>
+  <tr>
+    <th colspan="4">{$lang.base_info}&nbsp;&nbsp;（快递单ID：{$order.order_id}）</th>
+  </tr>
+  <tr>
+    <td width="18%"><div align="right"><strong>{$lang.label_order_sn1}</strong></div></td>
+    <td width="34%">
+	<input type="text" name="order_sn" size=30 value="{$order.order_sn}">
+	</td>
+    <td width="15%"><div align="right"><strong>{$lang.label_add_time}</strong></div></td>
+    <td> {$order.user_name} {$order.add_time}</td>
+  </tr>
+  <tr>
+    <td><div align="right"><strong>{$lang.label_send_name}</strong></div></td>
+    <td> {$order.send_name} [TEL：{$order.send_tel}]，{$order.send_region_name}{$order.send_address}</td>
+    <td><div align="right"><strong>{$lang.label_postman1}</strong></div></td>
+    <td> {$order.postman_name}</td>
+  </tr>
+  <tr>
+    <td><div align="right"><strong>{$lang.label_to_name}</strong></div></td>
+    <td> {$order.to_name} [TEL：{$order.to_tel}]，{$order.to_region_name}{$order.to_address}</td>
+    <td><div align="right"><strong>{$lang.label_money}</strong></div></td>
+    <td><input type="text" name="money" size=30 value="{$order.money}"></td>
+  </tr>
+  <tr>
+    <td><div align="right"><strong>{$lang.label_send_time}</strong></div></td>
+    <td> {$order.send_time}</td>
+    <td><div align="right"><strong>{$lang.label_order_status1}</strong></div></td>
+    <td>
+	<select name="order_status" size=1 {if !$order.postman_id}disabled=true{/if}>
+	<option value="0">请选择</option>
+	{foreach from=$orderstatus_array key=statuskey item=orderstatus}
+	<option value="{$statuskey}" {if $order.order_status eq $statuskey}selected{/if} >{$orderstatus.name}</option>
+	{/foreach}
+	</select>
+	</td>
+  </tr> 
+  <tr>
+   <th colspan="4">
+   <input type="hidden" name="order_id" value="{$order.order_id}"> 
+   <input type="submit" value="确认"  class="button" ></th>
+   </tr>   
+</table>
+</div>
+</form>
+{literal}
+<script language="JavaScript">
+{/literal}
+  var oldAgencyId = {$order.agency_id|default:0};
+{literal}
+  onload = function()
+  {
+    // 开始检查订单
+    startCheckOrder();
+  }
+
+  /**
+   * 把订单指派给某办事处
+   * @param int agencyId
+   */
+  function assignTo(agencyId)
+  {
+    if (agencyId == 0)
+    {
+      alert(pls_select_agency);
+      return false;
+    }
+    if (oldAgencyId != 0 && agencyId == oldAgencyId)
+    {
+      alert(pls_select_other_agency);
+      return false;
+    }
+    return true;
+  }
+</script>
+{/literal}
+
+{include file="pagefooter.htm"}

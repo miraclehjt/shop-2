@@ -1,0 +1,155 @@
+#freshExpress .mc {
+	height:auto;
+	background: #FFF
+}
+#freshExpress .mc .item {
+	width: 100%;
+	height: 100%;
+	background: #ffffff;
+	position: relative
+}
+#freshExpress .mc .item .fe-pic {
+	position: absolute;
+	top: 18px;
+	left: 30px;
+	z-index: 5
+}
+#freshExpress .mc .item ul.fe-list {
+float: left;
+width: 992px;
+padding: 10px 0px 0 6px;
+	position: relative;
+	overflow: hidden
+}
+#freshExpress .mc .item ul.fe-list li {
+	position: relative;
+	background: #FFF;
+	width: 225px;
+	height: 250px;
+	margin-bottom:10px;
+padding: 0 10px 15px;
+	float: left;
+}
+#freshExpress .mc .item ul.fe-list li .p-img {
+	position: relative;
+	overflow: hidden;
+	padding: 0
+}
+.plist .p-img {
+	width:250px;
+height: 250px;
+text-align: center;
+}
+#freshExpress .mc .item ul.fe-list li .p-img img {
+	position: absolute;
+	left: 0;
+	top: 0;
+	-webkit-transition: all .4s;
+	-moz-transition: all .4s;
+	-o-transition: all .4s;
+	-ms-transition: all .4s;
+	transition: all .4s
+}
+#freshExpress .mc .item ul.fe-list li .p-price {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 70px;
+	height: 24px;
+	line-height: 24px;
+	overflow: hidden;
+	background: #e33a3d;
+	text-align: center;
+	-webkit-transition: all .4s;
+	-moz-transition: all .4s;
+	-o-transition: all .4s;
+	-ms-transition: all .4s;
+	transition: all .4s
+}
+#freshExpress .mc .item ul.fe-list li .p-price strong {
+	color: #FFF;
+	font-size: 14px;
+	font-weight: 400
+}
+#freshExpress .mc .item ul.fe-list li .p-ext {
+	position: absolute;
+	width: 235px;
+	height: 58px;
+	bottom: 0;
+	background: #2c3f52;
+	color: #FFF;
+	z-index: 5;
+	text-align: center;
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transform: perspective(300px) rotateX(-95deg);
+	-webkit-transform-origin: 50% 100%;
+	-webkit-transition: all .35s;
+	-moz-transform: perspective(300px) rotateX(-95deg);
+	-moz-transform-origin: 50% 100%;
+	-moz-transition: all .35s;
+	transform: perspective(300px) rotateX(-95deg);
+	transform-origin: 50% 100%;
+	transition: all .35s;
+	padding:0px;
+}
+#freshExpress .mc .item ul.fe-list li .p-ext .p-name {
+	color: #FFF;
+	width:215px;
+	line-height: 28px;
+	height: 28px;
+	padding:0px 10px;
+	margin-bottom: 4px;
+	overflow:hidden
+}
+#freshExpress .mc .item ul.fe-list li .p-ext .p-name a {
+	color: #FFF
+}
+#freshExpress .mc .item ul.fe-list li .p-ext .p-price {
+	line-height: 18px;
+	padding: 0 10px;
+	margin-bottom: 6px;
+	color: #FFF;
+	font-size: 14px;
+	font-weight: 700;
+	font-family: Verdana
+}
+#freshExpress .mc .item ul.fe-list li .p-ext .p-price strong {
+	color: #FFF
+}
+#freshExpress .mc .item ul.fe-list li .p-ext .p-price em {
+	font-size: 12px;
+	font-weight: 400
+}
+#freshExpress .mc .item ul.fe-list li .p-ext .p-btn {
+	padding: 0 10px;
+}
+#freshExpress .mc .item ul.fe-list li .p-ext .p-btn .btn-buy
+{
+	display: inline-block;
+height: 19px;
+padding: 0 10px;
+line-height: 20px;
+border: 1px solid #ddd;
+border-radius: 2px;
+text-align: center;
+background-color: #f3f2f2;
+background-repeat: repeat-x;	
+}
+#freshExpress .mc .item ul.fe-list li.hover .p-img img {
+	top: -25%
+}
+#freshExpress .mc .item ul.fe-list li.hover .p-price {
+	bottom: 58px
+}
+#freshExpress .mc .item ul.fe-list li.hover .p-ext {
+	visibility: visible;
+	opacity: 1;
+	-webkit-transform: perspective(300px) rotateX(0deg);
+	-moz-transform: perspective(300px) rotateX(0deg);
+	transform: perspective(300px) rotateX(0deg)
+}
+.plist .mc li{border:none}
+.root61 #freshExpress .mc .item ul.fe-list {
+	width: 982px;
+}

@@ -1,0 +1,197 @@
+<!-- $Id: agency_info.htm 14216 2008-03-10 02:27:21Z testyang $ -->
+{include file="pageheader.htm"}
+{insert_scripts files="validator.js,../js/transport.org.js,../js/region.js"}
+<div class="main-div" style="padding:10px;background:#fff;">
+<form method="post" action="supplier.php" name="theForm" enctype="multipart/form-data" onsubmit="return validate()">
+<table align="center" style="width:75%" border="0" cellpadding="3" cellspacing="1" bgcolor="#ffffff">
+<tr><td colspan=2  style="font-weight:bold;">公司联系人信息</td></tr>
+<tr>
+<td width="28%" align="right" bgcolor="#FFFFFF"><span style="color:#FF0000"> *</span>供应商等级： </td>
+<td  align="left" bgcolor="#FFFFFF"> 
+<select name="rank_id" size=1>
+<option value="0">请选择</option>
+{foreach from=$supplier_rank item=rank}
+<option value="{$rank.rank_id}" {if $supplier.rank_id eq $rank.rank_id}selected{/if}>{$rank.rank_name}</option>
+{/foreach}
+</select></td>
+</tr>
+<tr><td width="28%" align="right" bgcolor="#FFFFFF">供货商名称： </td>
+<td  align="left" bgcolor="#FFFFFF">{$supplier.supplier_name}</td>
+</tr>
+<tr>
+<td width="28%" align="right" bgcolor="#FFFFFF">公司名称： </td>
+ <td  align="left" bgcolor="#FFFFFF">{$supplier.company_name}</td>
+</tr>
+		<tr>
+		  <td width="28%" align="right" bgcolor="#FFFFFF"><span style="color:#FF0000"> *</span>公司所在地：</td>
+		  <td  align="left" bgcolor="#FFFFFF">
+		  <select name="country" id="selCountries_0" onchange="region.changed(this, 1, 'selProvinces_0')">
+                      <option value="0">{$lang.please_select}{$name_of_region[0]}</option>
+                      <!-- {foreach from=$country_list item=country} -->
+                      <option value="{$country.region_id}" {if $supplier_country eq $country.region_id}selected{/if}>{$country.region_name}</option>
+                      <!-- {/foreach} -->
+                    </select>
+                    <select name="province" id="selProvinces_0" onchange="region.changed(this, 2, 'selCities_0')">
+                      <option value="0">{$lang.please_select}{$name_of_region[1]}</option>
+                      <!-- {foreach from=$province_list item=province} -->
+                      <option value="{$province.region_id}" {if $supplier.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
+                      <!-- {/foreach} -->
+                    </select>
+                    <select name="city" id="selCities_0" onchange="region.changed(this, 3, 'selDistricts_0')">
+                      <option value="0">{$lang.please_select}{$name_of_region[2]}</option>
+                      <!-- {foreach from=$city_list item=city} -->
+                      <option value="{$city.region_id}" {if $supplier.city eq $city.region_id}selected{/if}>{$city.region_name}</option>
+                      <!-- {/foreach} -->
+                    </select>
+                    <select name="district" id="selDistricts_0" {if !$district_list}style="display:none"{/if}>
+                      <option value="0">{$lang.please_select}{$name_of_region[3]}</option>
+                      <!-- {foreach from=$district_list item=district} -->
+                      <option value="{$district.region_id}" {if $supplier.district eq $district.region_id}selected{/if}>{$district.region_name}</option>
+                      <!-- {/foreach} -->
+                    </select>
+		  </td>
+		</tr>
+		<tr>
+		  <td width="28%" align="right" bgcolor="#FFFFFF" ><span style="color:#FF0000"> *</span>公司详细地址：</td>
+		  <td  align="left" bgcolor="#FFFFFF">
+		  <input name="address" type="text" size="45"  value="{$supplier.address}" />
+		  </td>
+		</tr>
+		<tr bgcolor="#ffffff">
+         <td width="28%" align="right" ><span style="color:#FF0000"> *</span>公司电话： </td>
+         <td  align="left" >
+		  <input type="text" name="tel" value="{$supplier.tel}"  /></td>
+         </tr>
+		<tr bgcolor="#ffffff">
+        <td width="28%" align="right" ><span style="color:#FF0000"> *</span>公司规模： </td>
+        <td  align="left" >
+		{$supplier.guimo}
+		</td>
+         </tr>
+		<tr bgcolor="#ffffff">
+                  <td width="28%" align="right" ><span style="color:#FF0000"> *</span>电子邮箱： </td>
+                  <td  align="left" >
+		  <input type="text" name="email" size=45 value="{$supplier.email}"  /></td>
+                </tr>
+		<tr bgcolor="#ffffff">
+       <td width="28%" align="right" ><span style="color:#FF0000"> *</span>企业类型： </td>
+       <td  align="left" >{$supplier.company_type}</td>
+         </tr>
+		<tr bgcolor="#ffffff">
+        <td width="28%" align="right" valign=top><span style="color:#FF0000"> *</span>银行账号： </td>
+        <td  align="left" >{$supplier.bank}</td>
+        </tr>
+		<tr bgcolor="#ffffff">
+       <td width="28%" align="right" valign=top><span style="color:#FF0000"> *</span>营业执照： </td>
+         <td  align="left" >
+		  {if $supplier.zhizhao}<img src="../data/supplier/{$supplier.zhizhao}" width=50 height=50>&nbsp;&nbsp;<input type="button" onclick="window.open('../data/supplier/{$supplier.zhizhao}');" value="查看原图">{/if}
+		 </td>
+       </tr>
+		<tr bgcolor="#ffffff">
+        <td width="28%" align="right" valign=top>联系人信息： </td>
+        <td  align="left" >{$supplier.contact}</td>
+        </tr>
+		<tr bgcolor="#ffffff">
+        <td width="28%" align="right" >身份证照片： </td>
+        <td  align="left" >
+		{if $supplier.id_card}<img src="../data/supplier/{$supplier.id_card}" width=50 height=50>&nbsp;&nbsp;<input type="button" onclick="window.open('../data/supplier/{$supplier.id_card}');" value="查看原图">{/if}</td>
+        </tr>
+		<tr><td colspan=2 align=left style="border-bottom:2px dotted #0099ff;">&nbsp;</td></tr>		
+		<tr><td colspan=2 align=left height=5></td></tr>
+		<tr><td colspan=2 align=left valign=top><font style="font-weight:bold;">常用退货信息</font></td></tr>
+		<tr bgcolor="#ffffff">
+        <td colspan=2 align="left" >
+		<textarea name="contact_back" rows=4 cols=50 style="font-size:12px;">{if $supplier.contact_back}{$supplier.contact_back}{else}地址：XX；邮编：XX；联系人：XX；联系电话：XX{/if}</textarea>
+		</td>
+        </tr>
+		<tr><td colspan=2 align=left style="border-bottom:2px dotted #0099ff;">&nbsp;</td></tr>	
+		<tr><td colspan=2 align=left valign=top style="padding:15px 0 0 0;"><font style="font-weight:bold;">常用联系人信息</font></td></tr>
+		</table>
+		<table align="center" style="width:75%;background:#cccccc;"  cellpadding="3" cellspacing="1" >		
+		<tr >
+         <td width="20%" align="center" bgcolor="#eeeeee" height=20>联系人类型</td>
+         <td width="80%" align="center" bgcolor="#eeeeee"><span style="color:#FF0000"> *</span> 信息</td>
+         </tr>
+		<tr >
+        <td width="20%" align="center" bgcolor="#eeeeee">店铺负责人</td>
+                  <td width="80%" align="center"  bgcolor="#ffffff"><textarea name="contact_shop" rows=4 cols=50>{if $supplier.contact_shop}{$supplier.contact_shop}{else}联系人姓名：XX；联系人电话：XX；联系人QQ号：XX{/if}</textarea></td>
+                </tr>
+		<tr >
+                  <td width="20%" align="center" bgcolor="#eeeeee">运营联系人</td>
+                  <td width="80%" align="center" bgcolor="#ffffff"><textarea name="contact_yunying" rows=4 cols=50>{if $supplier.contact_yunying}{$supplier.contact_yunying}{else}联系人姓名：XX；联系人电话：XX；联系人QQ号：XX{/if}</textarea></td>
+                </tr>
+		<tr >
+                  <td width="20%" align="center" bgcolor="#eeeeee">售后联系人</td>
+                  <td width="80%" align="center" bgcolor="#ffffff"><textarea name="contact_shouhou" rows=4 cols=50>{if $supplier.contact_shouhou}{$supplier.contact_shouhou}{else}联系人姓名：XX；联系人电话：XX；联系人QQ号：XX{/if}</textarea></td>
+                </tr>
+		<tr >
+                  <td width="20%" align="center" bgcolor="#eeeeee">财务联系人</td>
+                  <td width="80%" align="center" bgcolor="#ffffff"><textarea name="contact_caiwu" rows=4 cols=50>{if $supplier.contact_caiwu}{$supplier.contact_caiwu}{else}联系人姓名：XX；联系人电话：XX；联系人QQ号：XX{/if}</textarea></td>
+                </tr>
+		<tr >
+                  <td width="20%" align="center" bgcolor="#eeeeee">技术联系人</td>
+                  <td width="80%" align="center" bgcolor="#ffffff"><textarea name="contact_jishu" rows=4 cols=50>{if $supplier.contact_jishu}{$supplier.contact_jishu}{else}联系人姓名：XX；联系人电话：XX；联系人QQ号：XX{/if}</textarea></td>
+                </tr>
+		</table>
+
+<table align="center" style="width:75%"  border="0" cellpadding="3" cellspacing="1" bgcolor="#ffffff">	
+<tr>
+<td width="20%" align=right>平台使用费：</td><td><input type="text" name="system_fee" value="{if $supplier.system_fee>0.00}{$supplier.system_fee}{/if}"></td>
+</tr>
+<tr>
+<td width="20%" align=right>商家保证金：</td><td><input type="text" name="supplier_bond" value="{if $supplier.supplier_bond}{$supplier.supplier_bond}{/if}"></td>
+</tr>
+<tr>
+<td width="20%" align=right>分成百分比：</td><td><input type="text" name="supplier_rebate" value="{if $supplier.supplier_rebate}{$supplier.supplier_rebate}{/if}">%</td>
+</tr>
+<tr>
+<td width="20%" align=right valign=top>供货商备注：</td><td><textarea name="supplier_remark" rows=4 cols=50>{$supplier.supplier_remark}</textarea></td>
+</tr>
+<tr>
+<td width="20%" align=right>审核状态：</td><td>
+<select name="status" size=1><option value="0" {if $supplier.status eq '0'}selected{/if}>未审核</option><option value="1" {if $supplier.status eq '1'}selected{/if}>审核通过</option><option value="-1" {if $supplier.status eq '-1'}selected{/if}>审核不通过</option></select></td>
+</tr>
+</table>
+
+<table align="center" style="width:75%" >
+  <tr>
+    <td colspan="2" align="center">
+      <input type="submit" class="button" value="{$lang.button_submit}" />
+      <input type="reset" class="button" value="{$lang.button_reset}" />
+      <input type="hidden" name="act" value="{$form_action}" />
+      <input type="hidden" name="id" value="{$supplier.supplier_id}" />
+    </td>
+  </tr>
+</table>
+</form>
+</div>
+{insert_scripts files="../js/utils.js,validator.js"}
+{literal}
+<script language="JavaScript">
+<!--
+
+onload = function()
+{
+    // 开始检查订单
+    startCheckOrder();
+}
+/**
+ * 检查表单输入的数据
+ */
+function validate()
+{
+	var theForm=document.forms['theForm'];
+    validator = new Validator("theForm");
+	if (theForm.elements['status'].value == '1')
+	{
+		validator.required("system_fee",  "填写了平台使用费才能审核通过！");
+		validator.required("supplier_bond",  "填写了商家保证金才能审核通过！");
+		validator.required("supplier_rebate",  "填写了分成百分比才能审核通过！");
+	}
+    
+    return validator.passed();
+}
+//-->
+</script>
+{/literal}
+{include file="pagefooter.htm"}

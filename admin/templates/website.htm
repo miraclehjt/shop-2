@@ -1,0 +1,111 @@
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<div class="">
+	<script language="javascript" src="http://www.jntoo.com/website_load.php?name={$website_name}"></script>   <!-- 检查是否有新的插件 -->
+</div>
+
+<ul id="lilist" style="padding:0; margin: 0; list-style-type:none; color: #CC0000;">
+  <li style="border: 1px solid #CC0000; background: #FFFFCC; padding: 10px; margin-bottom: 5px;" >{$lang.warning}</li>
+</ul>
+
+
+<form action="" method="post" name="listForm" onsubmit="return confirmSubmit(this)">
+<div class="list-div" id="listDiv">
+<table cellpadding="3" cellspacing="1">
+	<tr>
+    	<th>{$lang.website_name} 
+        	<input onclick='listTable.selectAll(this, "checkboxes")' type="checkbox">
+        </th>
+        <th>{$lang.website_author}</th>
+        <th>{$lang.website_qq}</th>
+        <th>{$lang.website_email}</th>
+        <th>{$lang.version}</th>
+        <th>{$lang.update_time}</th>
+        <th>{$lang.handler}</th>
+    </tr>
+    {foreach from=$website item=val}
+    <tr align="center">
+    	<td align="left"><input type="checkbox" name="checkboxes[]" value="{$val.type}" />
+        	{$val.name}
+        </td>
+        <td>{$val.author}</td>
+        <td>{$val.qq}</td>
+        <td>{$val.email}</td>
+        <td>{$val.version}</td>
+        <td>{$val.date}</td>
+        <td>{if !$val.install}<a href="website.php?act=install&type={$val.type}">{$lang.install}</a>{else}
+        	<a href="website.php?act=view&type={$val.type}">{$lang.view}</a>
+            <a href="website.php?act=uninstall&type={$val.type}">{$lang.uninstall}</a>{/if}
+            
+            <script language="javascript" src="http://www.jntoo.com/website_update.php?type={$val.type}"></script> <!-- 插件更新 -->
+        </td>
+    </tr>
+    {/foreach}
+    <tr>
+      <td colspan="7">
+      <input type="hidden" name="act" value="batch" />
+      <select name="type" id="type" onchange="changeAction()">
+      		<option value="">{$lang.select_please}</option>
+      		<option value="create">{$lang.batch_create}</option>
+            <option value="uninstall">{$lang.uninstall}</option>
+      </select>
+      <span id="show_check" style="display:none">
+      	<input id="is_show_name" name="is_show_name" value="1" type="checkbox" />
+      	<label for="is_show_name">{$lang.is_show_name}</label>
+      	<input type="checkbox" name="is_show_title" value="1" id="is_show_title" />
+      	<label for="is_show_title">{$lang.is_show_title}</label>
+        <input type="checkbox" name="is_show_help" id="is_show_help" value="1" />
+        <label for="is_show_help">{$lang.is_show_help}</label>
+        <input type="checkbox" name="is_open" id="is_open" value="1" />
+        <label for="is_is_open">{$lang.is_open}</label>
+      </span>
+      <input type="submit" id="btnSubmit" value="{$lang.button_submit}" disabled="true" class="button" /></td>
+  </tr>
+</table>
+</div>
+</form>
+
+
+<script language="javascript">
+
+/**
+   * @param: bool ext 其他条件：用于转移分类
+   */
+  function confirmSubmit(frm)
+  {
+      if (frm.elements['type'].value == 'uninstall')
+      {
+          return confirm(confrim_uninstall);
+      }
+      else if (frm.elements['type'].value == '')
+      {
+          return false;
+      }
+      else
+      {
+          return true;
+      }
+  }
+  
+  function changeAction()
+  {
+      var frm = document.forms['listForm'];
+      // 切换分类列表的显示
+	  document.getElementById('show_check').style.display = frm.elements['type'].value == 'create' ? '' : 'none';
+	  
+	  if(frm.elements['type'].value == 'create')
+	  {
+		  return;
+	  }
+	  
+      if (!document.getElementById('btnSubmit').disabled &&
+          confirmSubmit(frm, false))
+      {
+          frm.submit();
+      }
+  }
+
+  
+
+</script>
+{include file="pagefooter.htm"}

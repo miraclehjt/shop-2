@@ -1,0 +1,33 @@
+<ul id="fullScreenSlides" class="full-screen-slides">
+  <!--{foreach from=$flash name=myflash item=flash}-->
+  <li style=" background:url({$flash.src}) center no-repeat;{if !$smarty.foreach.myflash.first}display: none; {else} display:list-item{/if}"> 
+  	<a href="{$flash.url}" target="_blank" title="{$flash.title}">&nbsp;</a> 
+  </li>
+  <!--{/foreach}-->
+</ul>
+<div class="jfocus-trigeminy">
+  <div class="tm-chaoshi-markets">
+    <div class="markets">
+      <p class="row2">
+        <?php
+		 $GLOBALS['smarty']->assign('index_lit_img4',get_advlist('首页幻灯片-小图下1',1));
+		?>
+        <!--{foreach from=$index_lit_img4 item=ad name=index_image}--> 
+        <a href="{$ad.url}" target="_blank" title="{$ad.name}"><img src="{$ad.image}"  alt="{$ad.name}" /></a>
+        <!--{/foreach}-->
+        <?php
+		 $GLOBALS['smarty']->assign('index_lit_img5',get_advlist('首页幻灯片-小图下2',1));
+		?>
+        <!--{foreach from=$index_lit_img5 item=ad name=index_image}--> 
+        <a href="{$ad.url}" target="_blank" title="{$ad.name}" class="row2_2"><img src="{$ad.image}"  alt="{$ad.name}" /></a>
+        <!--{/foreach}-->
+        <?php
+		 $GLOBALS['smarty']->assign('index_lit_img6',get_advlist('首页幻灯片-小图下3',1));
+		?>
+        <!--{foreach from=$index_lit_img6 item=ad name=index_image}--> 
+        <a href="{$ad.url}" target="_blank" title="{$ad.name}"><img src="{$ad.image}"  alt="{$ad.name}" /></a>
+        <!--{/foreach}--> 
+      </p>
+    </div>
+  </div>
+</div>

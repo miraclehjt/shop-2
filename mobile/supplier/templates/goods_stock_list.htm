@@ -1,0 +1,93 @@
+{if $full_page eq 1}
+<!DOCTYPE html>
+<html>
+  <head>
+    {include file='html_header.htm'}
+    <script type="text/javascript">
+      function search_stock()
+       {
+         if(check_form_empty('theForm'))
+         {
+           $.zalert.add('至少有一项输入不为空！',1)
+         }
+         else
+         {
+           $.zcontent.set('goods_name',$('#goods_name').val());
+           $.zcontent.set('goods_sn',$('#goods_sn').val());
+           search();
+         }
+         return false;
+       }
+    </script>
+  </head>
+  <body>
+    <div id='container'>
+      {/if}
+      {include file='page_header.htm'}
+      <section>
+        {include file='menu_list.htm'}
+        <div class="order_con" id="con_order_manage_2" style="display:none">
+          <div class="order_pd">
+            <div class="order order_t">
+              <form name="theForm" method="" action="" class="order_search" onsubmit='return search_stock();return false;'>
+                <table width="100%" border="0">
+                  <tr>
+                    <td>
+                      <input type="text" name="goods_name" id='goods_name' class="inputBg" placeholder="请输入商品名称" {if $filter.goods_name}value='{$filter.goods_name}'{/if}/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="text" name="goods_sn" id='goods_sn' class="inputBg" placeholder="请输入商品货号"  {if $filter.goods_sn}value='{$filter.goods_sn}'{/if}/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="submit" class="button2" value="查找"/>
+                    </td>
+                  </tr>
+                </table>
+              </form>
+            </div>
+          </div>
+		  
+        </div>
+        <div class="order_pd goods_pd"  id="con_order_manage_1">
+		{include file='store_menu.htm'}
+          <div class="goods">
+            <ul class="goods_list">
+              {foreach from=$goods item=item}
+              <li class="goods_list_info">
+                <p>{$item.goods_name}</p>
+                <p>货号：{$item.goods_sn}</p>
+				<p>属性：{$item.goods_attr_name}</p>
+                {if $item.goods_attr}
+                <p class="special_info">
+                <ul>
+                  {foreach from=$item.goods_attr item=attr_item}
+                  <li>{$attr_item.goods_attr_name}&nbsp;&nbsp;：<span class="font">{$attr_item.product_number}</span> </li>
+                  {/foreach}
+                </ul>
+                </p>
+                {else}
+                <p>库存：<span class="font">{$item.number_stock}</span></p>
+                {/if}
+              </li>
+              {foreachelse}
+              <li class="no_goods_list">
+                <div class="no_goods">没有找到任何商品！</div>
+              </li>
+              {/foreach}
+            </ul>
+          </div>
+          {include file='page.htm'}
+        </div>
+      </section>
+      {include file='page_footer.htm'}
+      {if $full_page eq 1}
+    </div>
+    {include file='static_div.htm'}
+  </body>
+</html>
+{/if}
+

@@ -1,0 +1,71 @@
+{include file="pageheader.htm"}
+
+{insert_scripts files="../js/utils.js,listtable.js"}
+
+<div id="tabbody-div">
+
+<form name="theForm" method="post" action="weixin.php?act=addqcode&id={$qcode.id}">
+
+  <table width="100%" cellpadding="3" cellspacing="1">
+
+  <tbody>
+
+  <tr><th colspan="2" align="center">可以根据你的需要为商城商品或文章的永久二维码。生成后用户使用微信扫描后会收到商品或者文章的详细信息。</th></tr>
+
+  <tr>
+
+  <td class="label">二维码类型:</td>
+
+  	<td><select name="type">
+
+		<option value="1" {if $qcode.type eq 1}selected{/if}>商品详情二维码</option>
+
+		<option value="2" {if $qcode.type eq 2}selected{/if}>文章详情二维码</option>
+
+		<option value="3" {if $qcode.type eq 3}selected{/if}>自定义内容</option>
+
+	</select></td>
+
+  </tr>
+
+  <tr>
+
+    <td class="label">二维码内容:</td>
+
+    <td><input type="text" name="content" size="32" value="{$qcode.content}">（根据选择的类型填写商品ID、文章ID、自定义文字）</td>
+
+  </tr>
+
+  {if $qcode.qcode}
+
+  <tr>
+
+  	<td class="label">图片二维码:</td>
+
+  	<td><img src="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket={$qcode.qcode}" height="250"></td>
+
+  </tr>
+
+  {/if}
+
+  <tr>
+
+    <td colspan="2" align="center">
+
+      <input type="submit" value="{$lang.button_submit}" class="button" />
+
+    <input type="reset" value="{$lang.button_reset}" class="button" />
+
+    </td>
+
+  </tr>
+
+</tbody></table>
+
+</form>
+
+</div>
+
+{/literal}
+
+{include file="pagefooter.htm"}

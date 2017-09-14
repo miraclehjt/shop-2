@@ -1,0 +1,55 @@
+<!-- $Id: order_query.htm 14216 2008-03-10 02:27:21Z testyang $ -->
+{include file="pageheader.htm"}
+<script type="text/javascript" src="../js/calendar.php"></script>
+<link href="../js/calendar/calendar.css" rel="stylesheet" type="text/css" />
+<div class="main-div">
+<form action="excel.php?act=excel" method="post" enctype="multipart/form-data" name="searchForm">
+  <table cellspacing="1" cellpadding="3" width="100%">
+    <tr>
+      <td><div align="right"><strong>请选择订单状态：</strong></div></td>
+      <td colspan="3">
+        <select name="order_status" id="select9">
+          <option value="-1">请选择...</option>
+          <option value="o">未确认</option>
+          <option value="1">已确认</option>
+          <option value="2">已取消</option>
+          <option value="3">无效</option>
+          <option value="4">退货</option>
+        </select>
+       </td>
+    </tr>
+    <tr>
+      <td><div align="right"><strong>请选择下单时间：</strong></div></td>
+      <td>
+      <input type="text" name="start_time" maxlength="60" size="20" readonly="readonly" id="start_time_id" />
+      <input name="start_time_btn" type="button" id="start_time_btn" onclick="return showCalendar('start_time_id', '%Y-%m-%d %H:%M', '24', false, 'start_time_btn');" value="{$lang.btn_select}" class="button"/>
+      ~      
+      <input type="text" name="end_time" maxlength="60" size="20" readonly="readonly" id="end_time_id" />
+      <input name="end_time_btn" type="button" id="end_time_btn" onclick="return showCalendar('end_time_id', '%Y-%m-%d %H:%M', '24', false, 'end_time_btn');" value="{$lang.btn_select}" class="button"/>  
+      </td>
+    </tr>
+    <tr>
+      <td><div align="right"><strong>请选择订单号：</strong></div></td>
+      <td colspan="3">从<input name="order_sn1" type="text" id="order_sn1" size="20">到<input name="order_sn2" type="text" id="order_sn2" size="20"/></td>
+    </tr>
+    
+    <tr>
+      <td colspan="4"><div align="center">
+        <input name="query" type="submit" class="button" id="query" value="开始导出" />
+      </div></td>
+      </tr>
+  </table>
+</form>
+</div>
+{insert_scripts files="../js/transport.org.js,../js/region.js"}
+{literal}
+<script language="JavaScript">
+region.isAdmin = true;
+onload = function()
+{
+  // 开始检查订单
+  startCheckOrder();
+}
+</script>
+{/literal}
+{include file="pagefooter.htm"}

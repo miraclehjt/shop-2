@@ -1,0 +1,44 @@
+<div class="has_tab_box has_tab_box_bonus">
+ {if $bonus}
+   {foreach from=$bonus item=item name=bonus}
+  <div class="user_bonus_wrap">
+  {if $item.supplier_id > 0}<h2>店</h2>{/if}
+  	<div class="user_bonus_box">
+        <div class="bonus_l">
+            <div class="bonus_l_price"><i>¥</i><span>{$item.type_money}</span>（满{$item.min_goods_amount}可用）</div>
+             <p class="bonus_l_con">店铺：{$item.supplier_name}</p>
+            <p class="bonus_l_con">{$lang.bonus_name}：{$item.type_name}</p>
+            <p class="bonus_l_con">{$lang.bonus_sn}：{$item.bonus_sn|default:N/A}</p>
+        </div>
+        <div class="bonus_r">
+            <span>{$item.status}</span>
+            <p>{$lang.bonus_end_date}<br><em style=" color:#F90">{$item.use_enddate}</em></p>
+        </div>
+    </div>
+    <div class="user_bonus_border"></div>
+  </div>
+  {/foreach}
+  {else}
+  <p class="empty">{$lang.user_bonus_empty}</p>
+  {/if}
+  {if $bonus}{include file='library/pages.lbi'}{/if}
+  <form name="addBouns" action="user.php" method="post" onSubmit="return addBonus()" class="add_bonus">
+    <section class="innercontent user_bonus_add">
+      <h2>添加红包</h2>
+      <dl class="tbl_type">
+        <dt class="tbl_cell" style="width:82px; font-size:14px;">{$lang.bonus_number}{$lang.colon}</dt>
+        <dd class="tbl_cell">
+          <input type="text" name="bonus_sn" value="" id="bonus_sn" class="c-f-text" size="30" />
+        </dd>
+      </dl>
+      <span style=" display:block; margin:15px auto 0;">
+      <input type="submit" name="submit"  class="btn_big1" value="{$lang.add_user_bonus}" />
+      <input type="hidden" name="act" value="act_add_bonus"/>
+      </span> </section>
+  </form>
+</div>
+<script type="text/javascript">
+{foreach from=$lang.profile_js item=item key=key}
+var {$key} = "{$item}";
+{/foreach}
+</script>

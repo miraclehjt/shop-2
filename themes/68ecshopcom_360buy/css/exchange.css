@@ -1,0 +1,376 @@
+/*20140730#leihao*/@charset 'utf-8';
+a {
+	color: #666
+}
+body {
+	background: #f4f1f2
+}
+.yahei {
+	font-family: 微软雅黑
+}
+.mt25 {
+	margin-top: 25px
+}
+.act-slider {
+	width: 910px;
+	height: 320px;
+	overflow: hidden;
+	background: #fff;
+	position: relative
+}
+.act-slider .stage {
+	width: 910px;
+	height: 320px;
+	overflow: hidden
+}
+.act-slider .stage table {
+	padding: 0px;
+	margin: 0px;
+	border-spacing: 0px
+}
+.act-slider .stage table tr, .act-slider .stage table td {
+	padding: 0px;
+	margin: 0px
+}
+.act-slider .stage a {
+	width: 910px;
+	height: 320px;
+	display: inline-block;
+	overflow: hidden
+}
+.act-slider .stage img {
+	width: 910px;
+	height: 320px;
+	overflow: hidden
+}
+.act-slider .nav {
+	height: 10px;
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	text-align: right
+}
+.act-slider .nav a {
+	display: inline-block;
+	vertical-align: top;
+	width: 10px;
+	height: 10px;
+	overflow: hidden;
+	border-radius: 50%;
+	background: #fff;
+	margin-left: 10px
+}
+.act-slider .nav a:hover, .act-slider .nav a.current {
+	background: #CF0F02
+}
+.spot-goods {
+	width: 288px;
+	height: 318px;
+	border: solid 1px #ddd;
+	overflow: hidden;
+	background: #fff
+}
+.spot-goods h4 {
+	height: 33px;
+	line-height: 33px;
+	font-size: 14px;
+	color: #333;
+	padding: 0 15px;
+	font-family: 微软雅黑
+}
+.spot-goods ul {
+	height: 285px;
+	overflow: hidden
+}
+.spot-goods ul li {
+	border-top: solid 1px #e0e0e0;
+	padding: 0 16px
+}
+.spot-goods ul li span, .spot-goods ul li a {
+	display: inline-block;
+	vertical-align: top
+}
+.spot-goods ul li .index {
+	width: 16px;
+	height: 16px;
+	line-height: 16px;
+	border-radius: 50%;
+	text-align: center;
+	background: #999;
+	color: #fff;
+	margin-right: 9px
+}
+.spot-goods ul li .discount {
+	width: 42px;
+	height: 18px;
+	padding-left: 13px;
+	overflow: hidden;
+	line-height: 18px;
+	color: #fff;
+	background: url(/images/activity/bg.png) 0 -88px no-repeat
+}
+.spot-goods ul li .show {
+	height: 18px;
+	line-height: 18px;
+	padding: 10px 0;
+	overflow: hidden
+}
+.spot-goods ul li .show .index {
+	margin-top: 1px;
+	float: left
+}
+.spot-goods ul li .show a {
+	width: 140px;
+	height: 20px;
+	overflow: hidden;
+	float: left
+}
+.spot-goods ul li .show .price {
+	width: 80px;
+	text-align: right;
+	float: left;
+}
+.spot-goods ul li .show .discount {
+	float: right
+}
+.spot-goods ul li .hide {
+	height: 147px;
+	padding: 11px 0;
+	display: none
+}
+.spot-goods ul li .hide .title {
+	height: 16px;
+	line-height: 16px;
+	overflow: hidden
+}
+.spot-goods ul li .hide .detail {
+	height: 122px;
+	margin-top: 10px;
+	padding-left: 25px
+}
+.spot-goods ul li .hide .detail .img {
+	width: 122px;
+	height: 122px;
+	float: left
+}
+.spot-goods ul li .hide .detail .number {
+	height: 122px;
+	padding-left: 15px;
+	float: left
+}
+.spot-goods ul li .hide .detail .number .p1 {
+	color: #E4393C
+}
+.spot-goods ul li .hide .detail .number .p2 {
+	color: #999;
+	margin-top: 10px
+}
+.spot-goods ul li .hide .detail .number .p2 a {
+	padding: 3px 10px;
+	background: #E4393C;
+	color: #fff;
+	text-decoration: none
+}
+.spot-goods ul li .hide .detail .number .discount {
+	margin-top: 15px
+}
+.spot-goods ul li.open .show {
+	display: none
+}
+.spot-goods ul li.open .hide {
+	display: block
+}
+.spot-goods ul li.open .hide .index {
+	background: #E4393C
+}
+.act-banner {
+	height: 60px;
+	overflow: hidden;
+}
+.act-banner img {
+	width: 1210px;
+	height: 60px
+}
+.act-list ul li {
+	width: 286px;
+	padding: 0px;
+	margin-left: 19px;
+	margin-bottom: 20px;
+	float: left;
+	border: solid 1px #e0e0e0
+}
+.act-list ul li:hover {
+	border: solid 1px #E4393C
+}
+.act-list ul li.first {
+	padding-left: 0;
+	margin-left: 0px;
+}
+.act-list ul li .img {
+	width: 286px;
+	height: 200px;
+	position: relative;
+	text-align: center;
+	overflow: hidden
+}
+.act-list ul li .img img {
+	width: 200px;
+	height: 200px
+}
+.act-list ul li .img .absBg, .act-list ul li .img .absFg {
+	width: 268px;
+	height: 26px;
+	line-height: 26px;
+	text-align: center;
+	padding:0px 10px;
+	position: absolute;
+	bottom: 0;
+	left: 0
+}
+.act-list ul li .img .absBg {
+	background: #000;
+	opacity: .4;
+	filter: alpha(opacity=40)
+}
+.act-list ul li .img .absFg a {
+	color: #fff;
+	height: 26px;
+	line-height: 26px;
+}
+.act-list ul li .info {
+	height: 20px;
+	padding: 19px 0 19px 19px;
+	padding-left: 40px;
+	border-top: 0;
+	background: #fff
+}
+.act-list ul li .info .price {
+	width: 115px;
+	height: 20px;
+	line-height: 20px;
+	border-right: solid 1px #d8d8d8;
+	color: #999;
+	float: left
+}
+.act-list ul li .info .price strong {
+	font-size: 20px;
+	font-family: 微软雅黑
+}
+.act-list ul li .info .price .jifen {
+	margin-left: 5px
+}
+.act-list ul li .info .price .arial {
+	font-family: Arial
+}
+.act-list ul li .info .discount {
+	width: 100px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	color: #333;
+	float: right;
+}
+.act-list ul li .info .discount span {
+	background: #E4393C ;
+	padding: 3px 10px;
+	color: #fff
+}
+.act-list ul li .info .discount span a {
+	color: #fff
+}
+.act-list ul li .info .discount strong {
+	font-size: 34px;
+	font-family: helvetica
+}
+.act-list .pager {
+	line-height: 25px;
+	margin-top: 10px;
+	text-align: center;
+}
+#filter {
+	border: 1px solid #ddd;
+	margin-bottom: 20px;
+	background: #F7F7F7;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.02);
+}
+#filter .fore1 {
+	overflow: hidden;
+	height: 26px;
+	padding: 5px 8px;
+	border-bottom: 1px solid #E7E3E7;
+	zoom: 1;
+}
+#filter .fore2 {
+	padding: 3px 8px;
+	zoom: 1;
+}
+#filter dl, #filter dt, #filter dd {
+	float: left;
+	line-height: 26px;
+	zoom: 1;
+}
+#filter .total {
+	float: right;
+	height: 22px;
+	padding: 2px 15px 2px 0;
+	border-right: 1px solid #E7E3E7;
+	line-height: 22px;
+	font-family: verdana;
+	color: #E4393C;
+}
+#filter .pagin {
+	float: right;
+	height: 22px;
+	padding: 2px 0;
+	border-left: 1px solid #fff;
+}
+#filter .order dd {
+	height: 24px;
+	border: 1px solid #CECBCE;
+	background-position: 0 -73px;
+	background-repeat: repeat-x;
+	background-color: #fff;
+	margin-right: 5px;
+	line-height: 24px;
+	overflow: hidden;
+	zoom: 1;
+}
+#filter .up, #filter .down {
+	position: relative;
+}
+#filter .order a {
+	display: block;
+	padding: 0 10px;
+	height: 24px;
+	line-height:24px;
+}
+#filter .order b {
+	display: none;
+	position: absolute;
+	top: 6px;
+	right: 8px;
+	width: 9px;
+	height: 11px;
+	overflow: hidden;
+	font-size: 0px;
+}
+#filter .order .curr {
+	border: 1px solid #E4393C;
+	background: #E4393C;
+	font-weight: bold;
+}
+#filter .order .curr a {
+	color: #fff;
+}
+#filter .up a, #filter .down a {
+	padding-right: 20px;
+}
+#filter .order .up b, #filter .order .down b {
+	display: block;
+}
+#filter .order .up b {
+	background-position: 0 -12px;
+}
+#filter .order .down b {
+	background-position: 0 0;
+}

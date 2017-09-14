@@ -1,0 +1,13 @@
+@charset "utf-8";
+/* CSS Document */
+/*搜索店铺列表*/
+.m-animation_shop{padding:0px 2%}
+.store{background:#fff;border-radius: 5px;
+overflow: hidden;margin-top:8px;}
+.store .title{height:20px;line-height:20px;padding:10px;}
+.store .title .shop_name{float:left;color:#ee2222}
+.store .title .enter_store{float:right}
+.store ul.shop_goods{padding:2%;width:96%;display:inline-block}
+.store ul.shop_goods li{float:left;width:30%;overflow:hidden;margin-left:5%}
+.store ul.shop_goods li a{width:100%;height:100%}
+.store ul.shop_goods li a img{width:100%}

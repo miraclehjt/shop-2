@@ -1,0 +1,17 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<div class="clearfix" data-spm="20131102">
+<!--{foreach from=$virtual_street item=shop name=name key=key}--> 
+	<div class="flow-item <!--{if $smarty.foreach.name.iteration % 5 eq 0}-->last<!--{/if}-->">
+    	<a href="supplier.php?suppId={$shop.supplier_id}">
+        	<img title="{$shop.supplier_name}" width="220" height="220" data-original="{$shop.logo}" src="themes/68ecshopcom_360buy/images/loading.gif" >
+	  		<h4 class="flow-title">{$shop.supplier_title}</h4>
+	  		<p class="flow-address">{$shop.address}</p>
+        </a>
+	  </div>
+<!--{foreachelse}-->
+<div class="no_stores">
+没有找到相应店铺！
+</div>
+<!--{/foreach}-->	
+</div>

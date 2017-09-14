@@ -1,0 +1,16 @@
+{if $fittings}
+<div class="goods_fittings box" id="fittings">
+	<div class="hd"><h3>{$lang.accessories_releate}</h3></div>
+	<div class="bd product_list">
+		<ul>
+			{foreach from=$fittings item=goods name=fittings}
+			<li data="id:'{$goods.goods_id}'">
+				<a href="{$goods.url}" title="{$goods.goods_name|escape:html}" class="photo"><img src="{$option.static_path}{$goods.goods_thumb}" alt="{$goods.goods_name|escape:html}"/></a>
+				<a href="{$goods.url}" title="{$goods.goods_name|escape:html}" class="name">{$goods.short_name}</a>
+				<span class="price fitting_price">{$goods.fittings_price}</span>
+			</li>
+			{/foreach}
+		</ul>
+	</div>
+</div>
+{/if}

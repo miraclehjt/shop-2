@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link rel="stylesheet" type="text/css" href="themes/68ecshopcom_360buy/css/{$cat_style}" />
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/search_goods.js"></script>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery_006.js"></script>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/base-2011.js"></script>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-lazyload.js" ></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+{insert_scripts files='common.js'}
+</head>
+<body>
+<div id="site-nav"> 
+  <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+  <div class="first-show"> 
+    <!-- #BeginLibraryItem "/library/ad.lbi" --><!-- #EndLibraryItem -->
+    <div class="w">
+      <div id="main-nav" class="mainnav">
+        <div class="navbox">
+          <div class="float-list" id="float-list"> 
+            <!--{foreach from=get_categories_tree(0) item=cat name=cat0}--> 
+            <!--{if $current_cat_pr_id eq $cat.id}--> 
+            <!--{foreach from=$cat.cat_id item=child name=namechild}-->
+            <dl id="webf{$smarty.foreach.namechild.iteration}">
+              <dt class=""> <strong style="background-position: -464px -62px;"><a href="{$child.url}">{$child.name|escape:html}</a></strong>
+                <p> 
+                  <!--{foreach from=$child.cat_id item=childer}--> 
+                  <a href="{$childer.url}" class="" title="{$childer.name}">{$childer.name}</a> 
+                  <!--{/foreach}--> 
+                </p>
+                <b class="arrow-right"></b> 
+              </dt>
+              <dd style="top: 0px; min-height:108px;">
+                <ul class="secondlist">
+                  <li> <strong style="background-position: -464px -80px;"><a href="{$child.url}">{$child.name|escape:html}</a></strong>
+                    <div class="float-list-cont"> 
+                      <!--{foreach from=$child.cat_id item=childer}--> 
+                      <a href="{$childer.url}" class="" title="{$childer.name}">{$childer.name}</a> 
+                      <!--{/foreach}--> 
+                    </div>
+                  </li>
+                </ul>
+              </dd>
+            </dl>
+            <!--{/foreach}--> 
+            <!--{/if}--> 
+            <!--{/foreach}--> 
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript" src="themes/68ecshopcom_360buy/js/categories_nav.js"></script> 
+    </div>
+    <div style="clear:both"></div>
+    <div class="image-box1">
+      <?php
+		 $GLOBALS['smarty']->assign('index_image1',get_advlist('频道页-分类ID'.$GLOBALS['smarty']->_var['category'].'-图片1', 1));
+	  ?>
+      {foreach from=$index_image1 item=ad name=index_image} 
+      <a href="{$ad.url}" target="_blank">
+      	<img src="themes/68ecshopcom_360buy/images/loading.gif" data-original="{$ad.image}"  height="187" width="510">
+      </a> 
+      {/foreach}
+      <?php
+		 $GLOBALS['smarty']->assign('index_image2',get_advlist('频道页-分类ID'.$GLOBALS['smarty']->_var['category'].'-图片2', 1));
+	  ?>
+      {foreach from=$index_image2 item=ad name=index_image} 
+      <a href="{$ad.url}" target="_blank">
+      	<img src="themes/68ecshopcom_360buy/images/loading.gif" data-original="{$ad.image}" height="187" width="340">
+      </a> 
+      {/foreach}
+      <?php
+		 $GLOBALS['smarty']->assign('index_image3',get_advlist('频道页-分类ID'.$GLOBALS['smarty']->_var['category'].'-图片3', 1));
+	  ?>
+      {foreach from=$index_image3 item=ad name=index_image} 
+      <a href="{$ad.url}" target="_blank" style="margin-right:0px">
+      	<img src="themes/68ecshopcom_360buy/images/loading.gif" data-original="{$ad.image}"  height="187" width="340">
+      </a> 
+      {/foreach} 
+    </div>
+  </div>
+  <div class="blank10"></div>
+  
+  {foreach  from=$childcat_goods item=cat name=name}
+  <div class="floorWrapper">
+    <div class="mt">
+      <h2>{$smarty.foreach.name.iteration}F<span>{$cat.cat_name}</span></h2>
+      <a href="{$cat.url}" target="_blank" class="category_more">更多 &gt;</a> </div>
+    <script type="text/javascript"> 
+$(document).ready(function(){ 
+$(".itemOuter .itemWrapper").mouseover(function(){ 
+$(this).addClass("itemWrapper_hover"); 
+}); 
+$(".itemOuter .itemWrapper").mouseout(function(){ 
+$(this).removeClass("itemWrapper_hover"); 
+}); 
+}); 
+</script>
+    <div class="floorContent"> 
+    {foreach  from=$cat.children  name="cat_children"  item=catgoods}
+      <div class="itemOuter"  id="li_{$catgoods.goods_id}">
+        <div class="itemWrapper"> 
+          <a class="add_to_cart" href="javascript:addToCart({$catgoods.goods_id})" title="加入购物车"></a>
+          <a href="{$catgoods.url}" title='{$catgoods.goods_name|escape:html}' target="_blank" class="itemImg">
+            <img data-original="{$catgoods.goods_thumb}" src="themes/68ecshopcom_360buy/images/loading.gif"  class="pic_img_{$catgoods.goods_id}" height="160" width="160"> 
+          </a>
+          <p><a href="{$catgoods.url}" title='{$catgoods.goods_name|escape:html}' target="_blank" class="itemName"> {$catgoods.goods_name}</a></p>
+          <div class="priceSection">
+            <div class="priceNumber"> <span class="mainPrice"> {if $catgoods.promote_price > 0}
+              {$catgoods.promote_price}
+              {else}
+              {$catgoods.shop_price}
+              {/if} </span> <span class="subPrice"><del>{$catgoods.market_price}</del></span> 
+            </div>
+          </div>
+        </div>
+      </div>
+      {/foreach} 
+    </div>
+  </div>
+  {/foreach}
+  <div class="blank"></div>
+  <!-- #BeginLibraryItem "/library/history.lbi" --><!-- #EndLibraryItem -->
+  <div class="blank"></div>
+    <!-- #BeginLibraryItem "/library/arrive_notice_list.lbi" --><!-- #EndLibraryItem -->
+  <!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem --> 
+  <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+  <!-- #BeginLibraryItem "/library/site_bar.lbi" --><!-- #EndLibraryItem --> 
+</div>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/lib-v1.js"></script> 
+<script>//收集skuId
+var skuIds = [];
+$('ul.list-h li[sku]').each(function(i){
+    skuIds.push($(this).attr('sku'));
+})
+
+/* spu合并 begin */
+var imgSize = 'n2';
+if ( $('#plist').hasClass('plist-160') ) {
+    imgSize = 'n2';
+}
+if ( $('#plist').hasClass('plist-220') ) {
+    if ( $('#plist').hasClass('plist-160') ) {
+        imgSize = 'n2';
+    } else {
+        imgSize = 'n7';
+    }
+}
+if ( $('#plist').hasClass('plist-n7') ) {
+    imgSize = 'n7';
+}
+if ( $('#plist').hasClass('plist-n8') ) {
+    imgSize = 'n8';
+}
+
+
+$('.p-scroll').each(function() {
+    var scroll = $(this).find('.p-scroll-wrap'),
+        btnPrev = $(this).find('.p-scroll-prev'),
+        btnNext = $(this).find('.p-scroll-next'),
+        len = $(this).find('li').length;
+    if ( len > 5 ) {
+        btnPrev.css('display', 'inline');
+        btnNext.css('display', 'inline');
+        scroll.imgScroll({
+            visible: 5,
+            showControl: false,
+            next: btnNext,
+            prev: btnPrev
+        });
+    }
+    var colors = scroll.find('img');
+    colors.each(function() {
+        $(this).mouseover(function() {
+            var index = $(this).parent('li').parent('li').attr('index');
+            var src = $(this).attr("src"),
+                skuid = $(this).attr('data-skuid');
+            scroll.find('a').removeClass('curr');
+            $(this).parent('a').addClass('curr');
+            var targetImg = $(this).parents('li').find('.p-img img').eq(0),
+                targetImgLink = $(this).parents('li').find('.p-img a').eq(0),
+                targetNameLink = $(this).parents('li').find('.p-name a').eq(0),
+                targetFollowLink = $(this).parents('li').find('.product-follow a').eq(0);
+            targetImg.attr( 'src', src.replace('\/n5\/', '\/'+imgSize+'\/') );
+            targetImgLink.attr( 'href', targetImgLink.attr('href').replace(/\/\d{6,}/, '/'+skuid) );
+            targetNameLink.attr( 'href', targetNameLink.attr('href').replace(/\/\d{6,}/, '/'+skuid) );
+            targetFollowLink.attr( 'id', targetFollowLink.attr('id').replace(/coll\d{6,}/, 'coll'+skuid) );
+
+        });
+    });
+});
+$('#plist.plist-n7 .list-h>li').hover(function() {
+    $(this).addClass('hover').find('.product-follow,.shop-name').show();
+    $(this).find('.item-wrap').addClass('item-hover');
+}, function() {
+    $(this).removeClass('hover').find('.item-wrap').removeClass('item-hover');
+    $(this).find('.product-follow,.shop-name').hide();
+});
+
+
+/* spu合并 end */
+</script> 
+<script type="text/javascript">
+$(document).ready(function(){
+var headHeight=580;  //这个高度其实有更好的办法的。使用者根据自己的需要可以手工调整。
+ 
+var nav=$("#filter");        //要悬浮的容器的id
+$(window).scroll(function(){
+ 
+if($(this).scrollTop()>headHeight){
+nav.addClass("cat-nav-fixed");   //悬浮的样式
+}
+else{
+nav.removeClass("cat-nav-fixed");
+}
+})
+})
+</script> 
+{* 代码增加_start  By  bbs.hongyuvip.com *}
+<script type="text/javascript">
+$("img").lazyload({
+    effect       : "fadeIn",
+	 skip_invisible : true,
+	 failure_limit : 20
+});
+</script> 
+<script type="text/javascript">
+window.onload = function()
+{
+  Compare.init();
+}
+{foreach from=$lang.compare_js item=item key=key}
+{if $key neq 'button_compare'}
+var {$key} = "{$item}";
+{else}
+var button_compare = '';
+{/if}
+{/foreach}
+var compare_no_goods = "{$lang.compare_no_goods}";
+var btn_buy = "{$lang.btn_buy}";
+var is_cancel = "{$lang.is_cancel}";
+var select_spe = "{$lang.select_spe}";
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<div class="cgy_left ub-ver bc-grey"> 
+{foreach from=$category item=level1 name=level1}
+  <div class="cgy-left-div ubb border-hui ulev-9 f-color-zi _tab {if $smarty.foreach.level1.iteration gt 1} ubr {else} selected {/if}"  tab_key='{$level1.id}' id='tab_{$level1.id}'>{$level1.name}</div>
+  {/foreach}
+  </div>
+{foreach from=$category item=level1 name=level1}
+<div class="cgy_right bg-color-w _tab_content {if $smarty.foreach.level1.iteration gt 1}uhide{/if}" id="tab_content_{$level1.id}">
+{if $level1.image}
+  <div class="cgy_ad_div cat_id" cat_id='{$level1.id}'>
+  <div class="goods-img ulev-1">
+	<img src="{$url}mobile/data/catthumb/{$level1.image}" />
+	<div class="ub ub-ac goods-ad">查看全部</div>
+  </div>
+  </div>
+  {else}
+   <div class="cgy_name2 cat_id" cat_id='{$level1.id}'>查看全部</div>
+  {/if}
+  {foreach from=$level1.cat_id item=level2}
+  <div class="cgy_name2 cat_id" cat_id='{$level2.id}'>{$level2.name}</div>
+  <div class="cgy_name3_div"> 
+  {foreach from=$level2.cat_id item=level3}
+    <div class="cgy_name3 ub-ver cat_id"  cat_id='{$level3.id}'>
+	{if $level3.image}
+	<img src="{$url}mobile/data/catthumb/{$level3.image}"/>
+      <div class="shop_name">{$level3.name}</div>
+	  {else}
+	{$level3.name}
+	{/if}
+    </div>
+    {/foreach} 
+	</div>
+  {/foreach} 
+  </div>
+{/foreach}

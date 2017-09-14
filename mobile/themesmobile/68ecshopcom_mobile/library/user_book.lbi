@@ -1,0 +1,49 @@
+<div class="has_tab_box">
+<div class="tab_wrapper">
+	<p class="tabs">
+		<a href="user.php?act=collection_list" id="tab_collection_list"><span>{$lang.label_collection}</span></a>
+		<a href="user.php?act=booking_list" id="tab_booking_list" class="current"><span>{$lang.label_booking}</span></a>
+	</p>
+	<div class="extra"></div>
+</div>
+<div class="booking_list box">
+	<div class="hd"><h3>{$lang.label_booking}</h3><div class="extra"></div></div>
+	<div class="bd">
+		{if $booking_list}
+		<table class="data_table">
+			<colgroup>
+				<col width="400"/>
+				<col width="50"/>
+				<col width="80"/>
+				<col width="80"/>
+			</colgroup>
+			<thead>
+				<tr>
+					<th>{$lang.goods_name}</th>
+					<th>{$lang.booking_amount}</th>
+					<th>{$lang.booking_time}</th>
+					<th class="last">{$lang.handle}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{foreach from=$booking_list item=item name=booking_list}
+				<tr class="{cycle values="odd,even"}{if $smarty.foreach.booking_list.last} last{/if}">
+					<td>
+						<a href="{$item.url}" class="name" target="_blank">{$item.goods_name}{if $item.dispose_note neq 'N/A'}<em class="icon_info tip" title="{$item.dispose_note|nl2br|escape:html}">{$lang.process_desc}</em>{/if}</a>
+					</td>
+					<td>{$item.goods_number}</td>
+					<td>{$item.booking_time}</td>
+					<td class="last">
+						<a href="user.php?act=act_del_booking&id={$item.rec_id}" class="button"><span>{$lang.drop}</span></a>
+					</td>
+				</tr>
+				{/foreach}
+			</tbody>
+		</table>
+		{else}
+		<p class="empty">{$lang.booking_empty}</p>
+		{/if}
+		{if $booking_list}{include file='library/pages.lbi'}{/if}
+	</div>
+</div>
+</div>

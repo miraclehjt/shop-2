@@ -1,0 +1,47 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+{if $best_goods}
+<section class="index_floor">
+  <div class="floor_body1">
+    <h2><em></em>{$lang.best_goods}<div class="geng"> <a href="../search.php?intro=best" >更多</a> <span></span></div></h2>
+    <div id="scroll_best" class="scroll_hot">
+      <div class="bd">
+        <ul>
+          {foreach from=$best_goods item=goods name=best_goods}
+          <li >
+            <a href="{$goods.url}" title="{$goods.name|escape:html}">
+             <div class="index_pro"> 
+              <div class="products_kuang">
+                <img src="{$option.static_path}{$goods.thumb}"></div>
+              <div class="goods_name">{$goods.name}</div>
+              <div class="price">
+                         <a href="javascript:addToCart({$goods.id})" class="btns">
+                    <img src="themesmobile/68ecshopcom_mobile/images/index_flow.png">
+                </a>
+              <span href="{$goods.url}" class="price_pro"> {if $goods.promote_price}{$goods.promote_price}{else}{$goods.shop_price}{/if}</span>
+      
+      
+              </div>
+              </div>
+            </a>
+          </li>
+
+          <!--{if $smarty.foreach.best_goods.iteration%3 eq 0 && $smarty.foreach.best_goods.iteration neq $smarty.foreach.best_goods.total}--> </ul>
+        <ul>
+          <!--{/if}-->{/foreach}</div>
+        <div class="hd">
+          <ul></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="text/javascript">
+    TouchSlide({ 
+      slideCell:"#scroll_best",
+      titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+      effect:"leftLoop", 
+      autoPage:true, //自动分页
+      //switchLoad:"_src" //切换加载，真实图片路径为"_src" 
+    });
+  </script>
+{/if}

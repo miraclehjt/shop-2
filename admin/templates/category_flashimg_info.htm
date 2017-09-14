@@ -1,0 +1,54 @@
+<!-- $Id: category_flashimg_info.htm 16752 2009-10-20 09:59:38Z wangleisvn $ -->
+{include file="pageheader.htm"}
+<!-- start add new category form -->
+<div class="main-div">
+  <form action="category_flashimg.php" method="post" name="theForm" enctype="multipart/form-data" onsubmit="return validate()">
+  <table width="100%" id="general-table">
+      <tr>
+        <td class="label">图片地址:</td>
+        <td>
+          <input type='file' name='img_url' size=40 /> <font color="red">*</font>
+		  {if $img_info.img_url}<br>你已经上传过图片。再次上传时将覆盖原图片！ {/if}
+        </td>
+      </tr>   
+
+      <tr id="measure_unit">
+        <td class="label">图片链接:</td>
+        <td>
+          <input type="text" name='href_url' value='{$img_info.href_url}' size="50" /> <font color="red">*</font>
+        </td>
+      </tr>
+	   <tr id="measure_unit">
+        <td class="label">图片标题:</td>
+        <td>
+          <input type="text" name='img_title' value='{$img_info.img_title}' size="70" /> <font color="red">*</font>
+        </td>
+      </tr>
+	   <tr id="measure_unit">
+        <td class="label">图片说明:</td>
+        <td>
+		<textarea name="img_desc" rows=5 cols=50>{$img_info.img_desc}</textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="label">排序:</td>
+        <td>
+          <input type="text" name='sort_order' {if $img_info.sort_order}value='{$img_info.sort_order}'{else} value="50"{/if} size="15" />
+        </td>
+      </tr>    
+     
+ 
+      </table>
+      <div class="button-div">
+        <input type="submit" value="{$lang.button_submit}" />
+        <input type="reset" value="{$lang.button_reset}" />
+      </div>
+    <input type="hidden" name="act" value="{$form_act}" />
+	<input type="hidden" name="img_id" value="{$img_info.img_id}" />
+	<input type="hidden" name="cat_id" value="{$cat_id}" />
+  </form>
+</div>
+
+
+{include file="pagefooter.htm"}

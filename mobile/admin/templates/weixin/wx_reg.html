@@ -1,0 +1,59 @@
+{include file="pageheader.htm"}
+
+{insert_scripts files="../js/utils.js,listtable.js"}
+
+<!-- 通用信息 -->
+
+<form name="theForm" method="post" action="weixin.php?act=reg">
+
+  <table width="100%" cellpadding="3" cellspacing="1">
+
+  <tbody>
+
+ <tr>
+
+    <td class="label">注册方式:</td>
+
+    <td>
+
+    <select name="reg_type">
+
+		<option value="1" {if $reg_type eq 1}selected{/if}>关注自动注册</option>
+
+		<option value="2" {if $reg_type eq 2}selected{/if}>邮箱+密码</option>
+
+		<option value="3" {if $reg_type eq 3}selected{/if}>用户名+密码</option>
+
+	</select>
+
+    </td>
+
+  </tr>
+
+  <tr>
+
+    <td class="label">注册引导内容(非自动注册填写) :</td>
+
+    <td><textarea name="reg_notice" rows="5" cols="40">{$reg_notice}</textarea></td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2" align="center">
+
+      <input type="submit" value="{$lang.button_submit}" class="button" />
+
+    <input type="reset" value="{$lang.button_reset}" class="button" />
+
+    </td>
+
+  </tr>
+
+</tbody></table>
+
+</form>
+
+{/literal}
+
+{include file="pagefooter.htm"}

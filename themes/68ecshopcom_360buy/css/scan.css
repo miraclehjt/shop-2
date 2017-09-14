@@ -1,0 +1,223 @@
+@charset "utf-8";
+/* CSS Document */
+.blank20{
+	height: 20px;
+line-height: 20px;
+clear: both;
+visibility: hidden;	
+}
+.introduce{
+	border: 1px solid #D3D3D3;
+	background:#F9F9F9;
+	padding:20px 15px;
+	letter-spacing:1px
+}
+.introduce strong{
+	font-size:20px;
+	margin-right:10px;
+}
+.introduce span{
+	line-height:2.2em;
+	letter-spacing:1px
+}
+.a-flex {
+	border: 1px solid #D3D3D3;
+	background-color: #fff;
+	overflow: visible;
+	clear: left;
+	margin-top: 15px;
+	height: 119px
+}
+.a-flex dt, .a-flex dd {
+	float: left
+}
+.a-flex dt {
+	overflow: hidden;
+	text-indent: -100%
+}
+.flex-icon, .a-flex dt, .a-flex s, .prompt .pt {
+	background-image: url(../images/shengji_ad/a-flex02.png);
+}
+.a-flex dt {
+	width: 107px;
+	height: 119px;
+	position: relative
+}
+.a-flex dd {
+	position: relative;
+	padding-left: 24px;
+	padding-right: 36px;
+	text-align: center;
+	width: 158px;
+}
+.a-flex s {
+	display: inline-block;
+	width: 56px;
+	height: 56px;
+	margin: 17px auto 8px;
+*zoom:1
+}
+.a-flex .fore1 s {
+	background-position: 0 -120px;
+}
+.a-flex .fore2 s {
+	background-position: -57px -120px;
+}
+.a-flex .fore3 s {
+	background-position: -114px -120px;
+}
+.a-flex .fore4 s {
+	background-position: -171px -120px;
+}
+.a-flex .fore5 s {
+	background-position: -228px -120px;
+}
+.a-flex h5 {
+	font-weight: normal;
+	text-align: center;
+	background: none;
+	padding: 0
+}
+.ftx-span {
+	font-size: 14px;
+	font-family: "microsoft yahei";
+	display: block;
+	color: #666;
+	text-align: center;
+	width: 150px;
+	padding: 0px;
+	font-weight: normal
+}
+.flex-icon {
+	background-position: -258px 0;
+	position: absolute;
+	right: 0;
+	top: 50px;
+	width: 17px;
+	height: 34px
+}
+.scan_list{
+	margin-top:15px;	
+}
+.scan_left{
+	float:left;	
+}
+.scan_left .scan_left_con{
+	width:610px;
+	height:450px;
+	padding:15px;
+	overflow-y:auto;
+	border:1px #ddd solid;
+	resize: none;
+}
+.scan_left .scan_left_con p{
+	line-height:1.8em	
+}
+.scan_left .submit{
+	padding:15px 0px;
+	text-align:center	
+}
+.scan_left .submit a{
+	display:inline-block;
+	padding:8px 25px;
+	background:#FE8A7C;
+	color:#ffffff;
+	letter-spacing:3px;
+	font-size:14px;
+	text-decoration:none
+}
+.scan_left .submit a:hover{
+	background:#FEA096;
+}
+.scan_right{
+	width:550px;	
+	height:550px;
+	float:right;
+}
+.introduce1{
+	border: 1px solid #F6E8C5;
+	background:#FFFDEE;
+	padding:20px 15px;
+	letter-spacing:1px;
+	float:left;
+	width:1180px;
+	height:auto
+}
+.introduce1 strong{
+	font-size:20px;
+	margin-right:10px;
+	width:105px;
+	float:left;
+	height:auto
+}
+.introduce1 span{
+	line-height:1.8em;
+	letter-spacing:1px;
+	width:1060px;
+	float:left
+}
+
+.scan_con table th{
+	padding:10px 5px;
+}
+.scan_con .goods_img{
+	width:50px;
+	height:50px;
+	display:block;
+}
+.scan_con .goods_img img{
+	width:50px;
+	height:50px;
+	border:1px #ddd solid
+}
+.scan_con .scan_con_num{
+	border:1px #ddd solid;
+	padding:5px;
+	width:50px;
+	height:15px;
+	line-height:15px;	
+	text-align:center
+}
+.scan_con .scan_del{
+	color:#E31939	
+}
+.scan_con table td.scan_con_te{
+	padding:10px;
+}
+.scan_con_sub{
+	border:none;
+	display:inline-block;
+	padding:8px 25px;
+	background:#FE8A7C;
+	color:#ffffff;
+	letter-spacing:3px;
+	font-size:14px;
+	text-decoration:none;
+	cursor:pointer
+}
+.scan_con_sub:hover{
+	background:#FEA096;
+}
+.scan-bar {
+	width: 40px;
+	position: fixed;
+	top:60%;
+	right: 20px;
+	height: 40px;
+	z-index: 100;
+}
+.scan-bar a {
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+	background-color: #FE8A7C;
+	text-align:center;
+	color:#fff;
+	padding:7px 2px 3px 4px;
+	letter-spacing:2px
+}
+.scan-bar a:hover {
+	background-color: #FEA096;
+	color:#fff;
+	text-decoration:none
+}

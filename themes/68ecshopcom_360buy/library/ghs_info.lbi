@@ -1,0 +1,109 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<div id="brand-bar-pop"> 
+<input type="hidden" id="chat_supp_id" value="{$suppid}" />
+  {if $shopname}
+  <dl id="ghs_shop" style="border-bottom:1px solid #ddd; padding-bottom:5px; text-align:center;padding-top:13px;padding-bottom:12px;*padding-top:12px;*padding-bottom:9px;">
+    <dt class="shop_title">卖家：<a href="supplier.php?suppId={$suppid}" target="_blank" style="color:#333333"> {$shopname}</a></dt>
+    <dd > </dd>
+    <div class="ghs_clear"></div>
+  </dl>
+  {/if}
+  
+  <dl id="hotline">
+    <dt>好评率&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+    <dd><span class="hot_grey"><span class="hot_red" style="width:{if $haoping gt 0}{$haoping}%{else}100%{/if};"></span></span></dd>
+    <dd class="ghs_clear"></dd>
+  </dl>
+  <ul class="score_detail">
+  	<li style="border-left:0;">
+    	<span>描述</span>
+        <span class="scores">{if $c_rank gt 0}{$c_rank}{else}5.0{/if}</span>
+    </li>
+    <li>
+    	<span>服务</span>
+        <span class="scores">{if $serv_rank gt 0}{$serv_rank}{else}5.0{/if}</span>
+    </li>
+    <li>
+    	<span>物流</span>
+        <span class="scores">{if $shipp_rank gt 0}{$shipp_rank}{else}5.0{/if}</span>
+    </li>
+  </ul>
+  {if $suppliername}
+  <dl id="hotline" style="padding-top:10px;">
+    <dt >商家名称&nbsp;&nbsp;&nbsp;&nbsp;{$suppliername}</dt>
+    <dd > </dd>
+    <div class="ghs_clear"></div>
+  </dl>
+  {/if}
+    {if $userrank}
+  <dl id="hotline">
+    <dt >商店等级：{$userrank}</dt>
+    <dd > </dd>
+    <div class="ghs_clear"></div>
+  </dl>
+  {/if} 
+  {if $serviceqq}
+  <dl id="hotline">
+    <dt >客 服 QQ&nbsp;&nbsp;&nbsp;&nbsp;<em><a href="http://wpa.qq.com/msgrd?v=3&uin={$serviceqq}&site=qq&menu=yes" target="_blank" alt="点击这里联系我" title="点击这里联系我"><img src="http://wpa.qq.com/pa?p=1:{$serviceqq}:4" height="16" border="0" alt="QQ" /></a></em></dt>
+    <dd > </dd>
+    <div class="ghs_clear"></div>
+  </dl>
+  {/if}
+  {if $serviceww}
+  <dl id="hotline">
+    <dt >客服旺旺&nbsp;&nbsp;&nbsp;&nbsp;<em><a href="http://amos1.taobao.com/msg.ww?v=2&uid={$serviceww}&s=2" target="_blank"><img src="http://amos1.taobao.com/online.ww?v=2&uid={$serviceww}&s=2" width="16" height="16" border="0" alt="淘宝旺旺" /></a></em></dt>
+    <dd > </dd>
+    <div class="ghs_clear"></div>
+  </dl>
+  {/if}
+ <!-- {if $serviceemail}
+  <dl id="hotline">
+    <dt>客服邮件&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+    <dd>{$serviceemail}</dd>
+    <dd class="ghs_clear"></dd>
+  </dl>
+  {/if}-->{if $servicephone}
+  <dl id="hotline">
+    <dt>客服电话&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+    <dd>{$servicephone}</dd>
+    <dd class="ghs_clear"></dd>
+  </dl>
+  {/if}
+  {if $region}
+  <dl id="hotline">
+    <dt>所在地区&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+    <dd>{$region}</dd>
+    <dd class="ghs_clear"></dd>
+  </dl>
+  {/if}
+  <!--{if $createtime}
+  <dl id="hotline">
+    <dt>创店时间：</dt>
+    <dd>{$createtime}</dd>
+    <dd class="ghs_clear"></dd>
+  </dl>
+  {/if}-->
+  <div id="enter-shop"> 
+  	<div class="shop_follow_item clearfix">
+    <a class="btn_flat1 btn_goto_shop" href="supplier.php?suppId={$suppid}" target="_blank">
+        进入商店
+    </a>
+    <a class="btn_flat1 btn_shop_add" href="javascript:guanzhu({$goods.supplier_id});">
+        关注本店
+    </a>
+	</div>
+    <div id="attention-shop">
+    	<p>扫一扫，手机访问店铺</p>
+	<img src="erweima_supplier.php?sid={$suppid}" width="120" height="120" />
+    </div>
+  </div>
+<script>
+function guanzhu(sid){
+	Ajax.call('supplier.php', 'go=other&act=add_guanzhu&suppId=' + sid, selcartResponse, 'GET', 'JSON');
+}
+
+function selcartResponse(result){
+	alert(result.info);
+}
+</script>

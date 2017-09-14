@@ -1,0 +1,189 @@
+<!-- $Id: order_info.htm 17060 2010-03-25 03:44:42Z liuhui $ -->
+{include file="pageheader.htm"}
+{insert_scripts files="topbar.js,../js/utils.js,listtable.js,selectzone.js,../js/common.js"}
+<script type="text/javascript" src="../js/calendar.php?lang={$cfg_lang}"></script>
+<link href="../js/calendar/calendar.css" rel="stylesheet" type="text/css" />
+<style>
+.pay_type{position:relative;}
+.pay_type_list{position:absolute;width:100px;height:auto;padding-bottom:50px;background:#eeeeee;border:1px solid #000;left:2px;top:25px;}
+</style>
+
+
+<div class="list-div" style="margin-bottom: 5px">
+<form action="supplier_rebate.php" method="post" name="theForm">
+<table width="100%" cellpadding="3" cellspacing="1">
+  <tr>
+    <th>入驻商名称：</th>
+	<td>{$supplier.user_name}</td>
+	<th>结算单编号：</th>
+	<td>{$rebate.sign}</td>
+  </tr>
+  <tr>
+	<th>店铺名称：</th>
+	<td>{$supplier.supplier_name}</td>
+    <th>结算期间：</th>
+	<td>{$rebate.rebate_paytime_start}~{$rebate.rebate_paytime_end}</td>
+  </tr>
+  {if $money_info}
+  <tr>
+  <td colspan='4'>
+	  <table width='100%' cellpadding="3" cellspacing="1">
+	  <tr>
+	  <td colspan='6'>
+	  结算信息
+	  </td>
+	  </tr>
+	  {foreach from=$money_info item=money key=key}
+	  <tr>
+	  <th>{if $key eq 'online'}线上货款：{else}线下货款(货到付款)：{/if}</th><td>{$money.allmoney}</td><th>佣金比例：</th><td>{$money.supplier_rebate}%</td><th>佣金：</th><td>{$money.rebatemoney}</td>
+	  </tr>
+	  {/foreach}
+	  </table>
+   </td>
+  </tr>
+  {/if}
+  <tr>
+    <td colspan='4'>
+	<table width='100%' cellpadding="3" cellspacing="1">
+	  <tr>
+	  <td colspan='4'>
+	  佣金统计
+	  </td>
+	  </tr>
+	  <tr>
+		<th>实收货款：</th>
+		<td>{$allmoney.rebate_all}</td>
+		
+	  </tr>
+	  <tr>
+		<th>-佣金：</th>
+		<td>{$allmoney.rebate_money}</td>
+		
+	  </tr>
+	  <tr>
+		<th>=结算金额：</th><td>{$allmoney.payable_price}</td>
+	  </tr>
+	</table>
+	</td>
+  </tr>
+  <tr>
+    <td colspan='4'>
+	<table width='100%' cellpadding="3" cellspacing="1">
+	  <tr>
+	  <td colspan='4'>
+	  按如下信息给商家付款
+	  </td>
+	  </tr>
+	  <tr>
+		<th>公司名称：</th>
+		<td>{$supplier.company_name}</td>
+		<th>地址：</th>
+		<td>{$supplier.province}{$supplier.city}{$supplier.district}{$supplier.address}</td>
+	  </tr>
+	  <tr>
+		<th>电话：</th>
+		<td>{$supplier.tel}</td>
+		<th>开户行：</th>
+		<td>{$supplier.settlement_bank_name}</td>
+	  </tr>
+	  <tr>
+		<th colspan='2'>帐号：</th><td colspan='2'>{$supplier.settlement_bank_account_number}</td>
+	  </tr>
+	</table>
+	</td>
+  </tr>
+  <tr>
+    <td colspan='4'>
+	{if $rebate.status eq 4}
+	<table width='100%' cellpadding="3" cellspacing="1">
+	  <tr>
+	  <td colspan='4'>
+	  汇款凭证
+	  </td>
+	  </tr>
+	  <tr>
+	  <td colspan='2'><img src="/{$rebate.rebate_img}"></td>
+	  </tr>
+	  <tr>
+	  <th>备注说明:</th>
+	  <td>{$rebate.remark}</td>
+	  </tr>
+	</table>
+	{else}
+	<table width='100%' cellpadding="3" cellspacing="1">
+	  <tr>
+	  <td colspan='4'>
+	  平台方审核
+	  </td>
+	  </tr>
+	  {if $rebate.status eq 2}
+	  <tr>
+	  <th>当前进度：</th>
+	  <td>
+	  <input type='hidden' name='id' value='{$rebate.rebate_id}'>
+	  <input type='hidden' value='update' name='act'>
+	  <input type='submit'  value='确认通过'>如有疑问，请联系平台方负责人
+	  </td>
+	  </tr>
+	  {else}
+	  <tr>
+		<th>操作备注：</th>
+		<td><textarea name='remark'></textarea></td>
+	  </tr>
+	  <tr>
+		<th>当前可操作项：</th>
+		<td>
+		等待平台方发起结算
+		</td>
+	  </tr>
+	  {/if}
+	</table>
+    {/if}
+	</td>
+  </tr>
+{if $logs}
+  <tr>
+    <td colspan='4'>
+	<table width='100%' cellpadding="3" cellspacing="1">
+	  <tr>
+		<th>操作者</th>
+		<th>操作时间</th>
+		<th>操作事件</th>
+		<th>备注</th>
+	  </tr>
+	  {foreach from=$logs item=log key=key}
+	  <tr>
+		<td>{$log.username}</td>
+		<td>{$log.addtime_dec}</td>
+		<td>{$log.typedec}</td>
+		<td>{$log.contents}</td>
+	  </tr>
+	  {/foreach}
+	</table>
+	</td>
+  </tr>
+{/if}
+</table>
+</form>
+</div>
+<script type="text/javascript" language="javascript">
+{literal}
+onload = function()
+{
+  // 开始检查订单
+  startCheckOrder();
+}
+function jian(){
+	var all = parseFloat(document.getElementById('rebate_all').value);
+	var rebate = parseFloat(document.getElementById('rebate_money').value);
+	if(isNaN(all) || isNaN(rebate)){
+		alert('输入金额不正确!');
+		return false;
+	}
+	document.getElementById('payable_price').innerHTML = (all*100 - rebate*100)/100;
+}
+{/literal}
+</script>
+
+
+{include file="pagefooter.htm"}

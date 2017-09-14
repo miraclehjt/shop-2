@@ -1,0 +1,88 @@
+{if $full_page}
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<div class="form-div">
+  <form action="javascript:searchLog()" name="searchForm" style="margin:0px">
+  	{$lang.keywords} <input type="text" name="keyword" size="15" />&nbsp;&nbsp;
+    <input type="hidden" name="act" value="list" />
+    <input type="submit" name="submit" value="{$lang.query}" class="button" />
+  </form>
+</div>
+<form method="post" action="keyword.php?act=batch_drop" name="listForm">
+<div class="list-div" id="listDiv">
+{/if}
+<table cellspacing='1' cellpadding='3'>
+<tr>
+	<th>
+   		<input onclick='listTable.selectAll(this, "checkboxes")' type="checkbox" />
+      <a href="javascript:listTable.sort('w_id'); ">{$lang.record_id}</a>{$sort_w_id}
+    </th>
+	<th>{$lang.keywords}</th>
+	<th>{$lang.letter}</th>
+	<th><a href="javascript:listTable.sort('items'); ">{$lang.items}</a>{$sort_items}</th>
+	<th><a href="javascript:listTable.sort('total_search'); ">{$lang.total_search}</a>{$sort_total_search}</th>
+	<th><a href="javascript:listTable.sort('month_search'); ">{$lang.month_search}</a>{$sort_month_search}</th>
+	<th><a href="javascript:listTable.sort('week_search'); ">{$lang.week_search}</a>{$sort_week_search}</th>
+	<th><a href="javascript:listTable.sort('today_search'); ">{$lang.today_search}</a>{$sort_today_search}</th>
+    <th><a href="javascript:listTable.sort('status'); ">{$lang.status}</a>{$sort_status}</th>
+    <th>{$lang.handler}</th>
+</tr>
+{foreach from=$logdb item=val}
+<tr>
+	<td><input type="checkbox" name="checkboxes[]" value="{$val.w_id}" />{$val.w_id}</td>
+  	<td class="first-cell"><span onclick="listTable.edit(this, 'edit_word', {$val.w_id})">{$val.word}</span></td>
+    <td align="left"><span id="letter{$val.w_id}" onclick="listTable.edit(this, 'edit_letter', {$val.w_id})">{$val.letter}</span></td>
+    <td align="center"><span onclick="listTable.edit(this, 'edit_items', {$val.w_id})">{$val.items}</span></td>
+    <td align="center"><span onclick="listTable.edit(this, 'edit_total_search', {$val.w_id})">{$val.total_search}</span></td>
+    <td align="center"><span onclick="listTable.edit(this, 'edit_month_search', {$val.w_id})">{$val.month_search}</span></td>
+    <td align="center"><span onclick="listTable.edit(this, 'edit_week_search', {$val.w_id})">{$val.week_search}</span></td>
+    <td align="center"><span onclick="listTable.edit(this, 'edit_today_search', {$val.w_id})">{$val.today_search}</span></td>
+	<td align="center"><span>
+    <img src="images/{if $val.status eq 1}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_show', {$val.w_id})" /></span></td>
+    <td align="center"><a href="keyword.php?act=view&amp;id={$val.w_id}" title="{$lang.view}"><img src="images/icon_view.gif" width="16" height="16" border="0" /></a></td>
+</tr>
+{foreachelse}
+<tr>
+  <td class="no-records" colspan="10">{$lang.no_records}</td>
+</tr>
+{/foreach}
+</table>
+<table id="page-table" cellspacing="0">
+  <tr>
+    <td>
+      <input name="remove" type="submit" id="btnSubmit" value="{$lang.drop}" class="button" disabled="true" />
+    </td>
+    <td align="right" nowrap="true">
+    {include file="page.htm"}
+    </td>
+  </tr>
+</table>
+{if $full_page}
+</div>
+</form>
+<script type="Text/Javascript" language="JavaScript">
+listTable.recordCount = {$record_count};
+listTable.pageCount = {$page_count};
+{foreach from=$filter item=item key=key}
+listTable.filter.{$key} = '{$item}';
+{/foreach}
+<!--
+onload = function()
+{
+  // 开始检查订单
+  startCheckOrder();
+}
+/**
+ * 搜索
+ */
+function searchLog()
+{
+	var keyword = Utils.trim(document.forms['searchForm'].elements['keyword'].value);
+	listTable.filter['keywords'] = keyword;
+	listTable.filter.page = 1;
+	listTable.loadList();
+}
+//-->
+</script>
+{include file="pagefooter.htm"}
+{/if}

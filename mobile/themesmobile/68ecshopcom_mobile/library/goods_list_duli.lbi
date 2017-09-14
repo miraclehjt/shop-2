@@ -1,0 +1,29 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="list_product list_column list_tmp">
+  <ul id="ProductList">
+	<!--{foreach name=goods_list from=$goods_list item=goods}--> 
+    {if $goods.goods_id}
+    <li>
+      <div class="product items "> <a href="{$goods.url}" class="ScanProductViewBtn" >
+        <div class="imgurl"><img src="{$goods.goods_thumb}"></div>
+        <div class="info">
+          <p class="name"><!--{if $goods.promote_price neq "" } --> 
+          <span class="discount"></span>  <!-- {/if} -->
+          <!-- {if $goods.goods_style_name} --> 
+            {$goods.goods_style_name} 
+            <!-- {else} --> 
+            {$goods.goods_name} 
+            <!-- {/if} --></p>
+          <div class="price_info"> <span class="price "> <!--{if $goods.promote_price neq "" } --> 
+            {$goods.promote_price} 
+            <!--{else}--> 
+            {$goods.shop_price} 
+            <!--{/if}--></span> </div>
+        </div>
+        </a> </div>
+    </li>
+    {/if} 
+    <!--{/foreach}-->
+    
+  </ul>
+</div>

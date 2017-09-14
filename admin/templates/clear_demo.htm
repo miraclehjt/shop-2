@@ -1,0 +1,48 @@
+{include file="pageheader.htm"}
+{insert_scripts files="validator.js"}
+<div class="main-div">
+    <ul id="lilist" style="padding:0; margin: 0; list-style-type:none; color: #CC0000;">
+        <li class="Start315">
+            {$lang.warning}
+        </li>
+    </ul>
+    <form method="post" action="clear_demo.php" name='theForm' onsubmit="return validate()">
+        <table width="100%">
+            <tr>
+                <td class="label" style="width:15%;">{$lang.username}</td>
+                <td>
+                    <input type="text" name="username" size="30" /></td>
+            </tr>
+            <tr>
+                <td class="label" style="width:15%;">{$lang.password}</td>
+                <td>
+                    <input type="password" name="password" size="30" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="{$lang.clear}" class="button" />
+                    <input type="hidden" name="act" value="clear" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<script type="text/javascript">
+
+    document.forms['theForm'].elements['username'].focus();
+
+    /**
+     * 检查表单输入的数据
+     */
+    function validate()
+    {
+        validator = new Validator("theForm");
+
+        validator.required("username", username_empty);
+        validator.required("password", password_empty);
+
+        return validator.passed();
+    }
+</script>
+{include file="pagefooter.htm"}

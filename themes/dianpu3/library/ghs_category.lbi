@@ -1,0 +1,12 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="ghs_cat">
+<span class="ghs_cate">店内分类</span>
+<!--{foreach from=$categories item=cat name=catname}-->
+	<div class="ghs_ctitle">
+    	<h4 class="mall_cat"><a title="{$cat.name|escape:html}" href="{$cat.url}">{$cat.name|escape:html}</a></h3>
+      <!--{foreach from=$cat.cat_id item=child name=name}-->
+    <p class="cat_title {if $smarty.foreach.name.last}last{/if}"><A  title="{$child.name|escape:html}" href="{$child.url}" >{$child.name|escape:html}</A></p>
+    <!--{/foreach}-->
+    	</div>
+<!--{/foreach}-->
+</div>

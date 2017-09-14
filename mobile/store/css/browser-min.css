@@ -1,0 +1,34 @@
+.browser-popup .btn-green {
+	position: absolute;
+	top: 340px;
+	left: 193px;
+	width: 233px;
+	height: 51px;
+	text-align: center;
+	line-height: 51px;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	color: #fff;
+	font-size: 18px;
+	background: #59b615
+}
+.browser-popup .btn-green:hover {
+	background: #50a810
+}
+.transparentPopMask {
+	width: 100%;
+	overflow: hidden;
+	left: 0;
+	top: 0;
+	outline: 0 none!important;
+	position: absolute;
+	height: 100%;
+	z-index: 1024;
+	background: #000;
+	-ms-filter: 'alpha(Opacity=75)';
+	filter: alpha(opacity=75);
+	-moz-opacity: .75;
+	-khtml-opacity: .75;
+	opacity: .75
+}

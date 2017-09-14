@@ -1,0 +1,41 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<!--{if empty($order_query)}-->
+<script>var invalid_order_sn = "{$lang.invalid_order_sn}"</script>
+
+<div class="left2 borderc">
+<div class="itemtitle" style="margin-top:10px">
+<div class="itemtitleL" style="width:82px;padding-left:8px">{$lang.order_query}</div>
+<div class="itemtitleR" style="width:83px">&nbsp;</div>
+</div>
+	<ul>
+	 <form name="ecsOrderQuery">
+    <li class="lcearli">
+    <label for="order_sn">请在输入框内填写订单号</label></li>
+    <li class="lcearli"><input type="text" name="order_sn" class="inputborder1" style="margin-top:0px" /></li>
+    <li class="lcearli"><input type="button" value=" " class="bnt_number12" onclick="orderQuery()" style="margin-top:0px" /></li>
+    </form>
+    </ul>
+    <div id="ECS_ORDER_QUERY" style="color:#993300">
+     <div class="blank10" style="height:18px"></div> 
+  </div>
+ 
+
+</div>
+
+
+       <!--{else}-->
+      <!--{if $order_query.user_id}-->
+<b>{$lang.order_number}：</b><a href="user.php?act=order_detail&order_id={$order_query.order_id}" class="f6">{$order_query.order_sn}</a><br>
+  <!--{else}-->
+<b>{$lang.order_number}：</b>{$order_query.order_sn}<br>
+  <!--{/if}-->
+<b>{$lang.order_status}：</b><br><font class="f1">{$order_query.order_status}</font><br>
+  <!--{if $order_query.invoice_no }-->
+<b>{$lang.consignment}：</b>{$order_query.invoice_no}<br>
+  <!--{/if}-->
+      {if $order_query.shipping_date}{$lang.shipping_date}： {$order_query.shipping_date}<br>
+  <!--{/if}-->
+  <!--{/if}-->
+
+

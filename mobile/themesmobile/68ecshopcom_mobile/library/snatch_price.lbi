@@ -1,0 +1,9 @@
+{if $price_list}
+<dl class="volume_price table">
+	{foreach from=$price_list item=item}
+	<dt>{$item.user_name}</dt><dd class="{cycle values="odd,even"}">{$item.bid_price}</dd>
+	{/foreach}
+</dl>
+{else}
+<p class="empty">{$lang.price_list_empty}</p>
+{/if}

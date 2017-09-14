@@ -1,0 +1,39 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="brand-rec-slide" id="J_BrandRecSlide">
+{if $tag_info}
+  <ul class="brand-rec-nav clearfix">
+  {foreach from=$tag_info item=tag key=key}
+    <li {if $tag.select eq 1}class="selected"{/if} onclick="qiehuan({$key})">{$tag.name}</li>
+  {/foreach}
+  </ul>
+{/if}
+  <ul class="brand-rec-content clearfix">
+    <li style="display: block;" class="brand-rec-pannel hidden">
+      <div class="brand-wall-slide">
+        <div class="brand-wall-content">
+          <p style="position: absolute; z-index: 0; opacity: 1; display: block;" class="brand-wall-pannel clearfix"> 
+            <!--{foreach from=$supplier_logo item=supp name=supp}--> 
+            <!--{foreach from=$supp item=info name=info}--> 
+            <a class="j_BrandItem brand-item item-row-{$smarty.foreach.supp.index} item-col-{$smarty.foreach.info.index}" href="{$info.shop_url}" target="_blank"> 
+            	<img class="j_BrandLogo brand-logo" src="{$info.shop_logo}" title="{$info.shop_name}" alt="{$info.shop_name}" height="45" width="90"> 
+            </a> 
+            <!--{/foreach}--> 
+            <!--{/foreach}--> 
+          </p>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div><a class="brand-pool" href="stores.php">店铺街<span class="store-iconfont"></span></a></div>
+</div>
+<script>
+function qiehuan(num){
+	Ajax.call('other.php?act=supplier_tag', 'id=' + num, qiehuanResponse, 'GET', 'JSON');
+}
+function qiehuanResponse(result){
+	document.getElementById('J_indexstore').innerHTML = result.result;
+		$(".brand-wall-content img").each(function(k,img){
+		new JumpObj(img,10);
+	});
+}
+</script>

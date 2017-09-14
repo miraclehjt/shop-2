@@ -1,0 +1,75 @@
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js"}
+<div class="main-div">
+点击确定会<span style="color:red;">覆盖当前设置</span>
+</div>
+<div class="list-div">
+<form name="theForm" action="app_manage.php" method="post">
+  <table width="100%" cellpadding="3" cellspacing="1">
+  <tr>
+	<th width="10%">ID</th>
+    <th width="10%">区域</th>
+    <th width="20%">排序</th>
+    <th width="20%">内容</th>
+    <th width="20%">数量</th>
+    <th width="10%">显示</th>
+	<th width="10%">操作</th>
+  </tr> 
+  {foreach from=$template_setting item=item key=key}
+  <tr>
+  <td>{$key}</td>
+  <td>{$item.name}</td>
+  <td><input type="text" name="setting[{$key}][order]" value="{$item.order}" /></td>
+  {if $item.type eq 'ad'}
+  <td><select name="setting[{$key}][value]">
+  <option value="">请选择...</option>
+  {foreach from=$ad_list item=ad key=ad_id}
+  <option value="{$ad_id}" {if $item.value eq $ad_id}selected="seleccted"{/if}>{$ad}</option>
+  {/foreach}
+  </td>
+  {elseif $item.type eq 'goods_brand'}
+  <td><select name="setting[{$key}][value]">
+	{foreach from=$brand_list item=brand_name key=brand_id}
+	<option value="{$brand_id}" {if $brand_id eq $item.value}selected="selected"{/if}>{$brand_name}</option>
+	{/foreach}
+	</td>
+	{elseif $item.type eq 'goods_cat'}
+	<td><select name="setting[{$key}][value]">
+	{foreach from=$cat_list item=cat key=cat_id}
+	<option value="{$cat_id}" {if $cat_id eq $item.value}selected="selected"{/if}>{$cat.cat_name}</option>
+	{/foreach}
+	</td>
+	{elseif $item.type eq 'article'}
+	<td><select name="setting[{$key}][value]">
+	{foreach from=$article_cat_list item=cat key=cat_id}
+	<option value="{$cat_id}" {if $cat_id eq $item.value}selected="selected"{/if}>{$cat.cat_name}</option>
+	{/foreach}
+	</td>
+  {else}
+	<td>{$item.name}</td>
+  {/if}
+  <td><input type="text" name="setting[{$key}][number]" value="{$item.number}" /></td>
+  <td><input type="checkbox" name="setting[{$key}][show]" {if $item.show eq 'on'}checked="checked"{/if} /></td>
+  <td>
+	{if $item.editable eq true}
+	<a href="app_manage.php?act=edit_template&id={$key}">
+		<img src="../images/icon_edit.gif" style="border:none" alt="编辑"/>
+	</a>
+	{/if}
+	<a href="app_manage.php?act=delete_template&id={$key}">
+		<img src="../images/icon_drop.gif" style="border:none" alt="删除"/>
+	</a>
+  </td>
+  </tr>
+  {foreachelse}
+  <tr><td colspan="7" align="center">没有模块，请<a href="app_manage.php?act=add_template" style="color:red;">添加模块</a></td></tr>
+  {/foreach}
+</table>
+  <div class="button-div ">
+    <input type="submit" value="{$lang.button_submit}" class="button" />
+    <input type="reset" value="{$lang.button_reset}" class="button" />
+    <input type="hidden" name="act" value="save_template_setting" />
+  </div>
+</form>
+</div>
+{include file="pagefooter.htm"}

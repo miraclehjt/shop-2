@@ -1,0 +1,453 @@
+<!-- $Id: start.htm 17216 2011-01-19 06:03:12Z Shadow & 鸿宇 -->
+{include file="pageheader_bd.htm"}
+<!-- directory install start -->
+<ul id="lilist" style="padding:0; margin: 0; list-style-type:none; color: #CC0000;">
+  {foreach from=$warning_arr item=warning}
+  <li class="Start315">{$warning}</li>
+  {/foreach}
+</ul>
+<!-- directory install end -->
+<!-- start personal message -->
+{if $admin_msg}
+<div class="list-div" style="border: 1px solid #CC0000">
+  <table cellspacing='1' cellpadding='3'>
+    <tr>
+      <th>{$lang.pm_title}</th>
+      <th>{$lang.pm_username}</th>
+      <th>{$lang.pm_time}</th>
+    </tr>
+    {foreach from=$admin_msg item=msg}
+      <tr align="center">
+        <td align="left"><a href="message.php?act=view&id={$msg.message_id}">{$msg.title|truncate:60:"..."}</a></td>
+        <td>{$msg.user_name}</td>
+        <td>{$msg.send_date}</td>
+      </tr>
+    {/foreach}
+  </table>
+  </div>
+<br />
+{/if}
+<!-- end personal message -->
+<!-- star 升级 -->
+
+<div class="list-div">
+	<div class="important">
+    	<ul class="import">
+        	<li class="import_1">
+            	<div class="module">
+            		<i></i>
+                	<div class="detail">
+                		<strong>{if $today.formatted_money}{$today.formatted_money}{else}0{/if}</strong>
+                		<span>今日销售总额</span>
+                	</div>
+                </div>
+            </li>
+            <li class="import_2">
+            	<div class="module">
+            		<i></i>
+                	<div class="detail">
+                		<strong>{$today.order}</strong>
+                		<span>今日订单数</span>
+                	</div>
+                </div>
+            </li>
+            <li class="import_3">
+            	<div class="module">
+            		<i></i>
+                	<div class="detail">
+                		<strong>{$today.user}</strong>
+                		<span>今日注册会员</span>
+                	</div>
+                </div>
+            </li>
+            <li class="import_4">
+            	<div class="module">
+            		<i></i>
+                	<div class="detail">
+                		<strong>{$today.shop}</strong>
+                		<span>今日入驻店铺数</span>
+                	</div>
+                </div>
+            </li>
+            <li class="import_5">
+            	<div class="module">
+            		<i></i>
+                	<div class="detail">
+                		<strong><a href="supplier.php?act=list" title="待审核店铺" style="color:#FA841E; text-decoration:none">{$task.shop}</a>&nbsp;/&nbsp;{$today.shop_total}</strong>
+                		<span>待审核/店铺总数</span>
+                	</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<br />
+<div class="list-div">
+	<div class="console-detaile">
+        <div class="item shop-item">
+            <div class="item-hd"><span class="bg1">待处理<em>{$task.total} 个</em></span></div>
+            <div class="item-bd item-bd1">
+                <ul class="clearfix">
+                    <li>
+                        <strong><a href="supplier_rebate.php?act=list&is_pay_ok=0">待处理佣金</a></strong>
+                        <span>{$task.commission} 个</span>
+                    </li>
+                    <li class="li_even">
+                        <!-- 代码修改_start  By  bbs.hongyuvip.com -->
+                        <!--
+                        <strong><a href="goods.php?act=list&supplier_status=0">待审核商品</a></strong>
+                        -->
+                        <strong><a href="goods.php?act=list&supp=1&supplier_status=0">待审核商品</a></strong>
+                        <!-- 代码修改_end  By  bbs.hongyuvip.com -->
+                        <span>{$task.goods} 个</span>
+                    </li>
+                    <li>
+                        <strong><a href="user_account.php?act=list&process_type=0&is_paid=0">会员充值</a></strong>
+                        <span>{$task.deposit} 个</span>
+                    </li>
+                    <li class="li_even">
+                        <strong><a href="user_account.php?act=list&process_type=1&is_paid=0">会员提现</a></strong>
+                        <span>{$task.withdraw} 个</span>
+                    </li>
+                    <li>
+                        <strong><a href="user_msg.php?act=list_all&is_replied=unreplied">会员留言</a></strong>
+                        <span>{$task.message} 个</span>
+                    </li>
+                    <li class="li_even">
+                        <strong><a href="comment_manage.php?act=list&is_replied=unreplied">商品评论</a></strong>
+                        <span>{$task.comment} 个</span>
+                    </li>
+                     <li>
+                        <strong><a href="shaidan.php?act=list">用户晒单</a></strong>
+                        <span>{if $task.shared}{$task.shared}{else}0{/if} 个</span>
+                    </li>
+                    <li class="li_even">
+                        <strong><a href="goods_tags.php?act=list">标签审核</a></strong>
+                        <span>{if $task.tag}{$task.tag}{else}0{/if} 个</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="item goods-item">
+            <div class="item-hd"><span class="bg2">商品<em>{$goods.total} 件</em></span></div>
+            <div class="item-bd item-bd2">
+                <ul class="clearfix">
+                    <li>
+                        <strong><a href="goods.php?act=list">自营商品总数</a></strong>
+                        <span>{$goods.self} 件</span>
+                    </li>                   
+                    <li class="li_even">
+                        <strong><a href="goods.php?act=list&supp=1">入驻商商品总数</a></strong>
+                        <span>{$goods.supplier} 件</span>
+                    </li>
+                    <li>
+                        <strong><a href="goods.php?act=list&stock_warning=1">{$lang.warn_goods}</a>
+                        </strong><span>{$goods.warn} 件</span>
+                    </li>
+                    <li class="li_even">
+                        <strong><a href="goods.php?act=list&amp;intro_type=is_new">{$lang.new_goods}</a></strong>
+                        <span>{$goods.new} 件</span>
+                    </li>
+                    <li>
+                        <strong><a href="goods.php?act=list&amp;intro_type=is_best">{$lang.recommed_goods}</a></strong>
+                        <span>{$goods.best} 件</span>
+                    </li>
+                    <li class="li_even">
+                        <strong><a href="goods.php?act=list&amp;intro_type=is_hot">{$lang.hot_goods}</a></strong>
+                        <span>{$goods.hot} 件</span>
+                    </li>
+                    <li>
+                        <strong><a href="goods.php?act=list&amp;intro_type=is_promote">{$lang.sales_count}</a></strong>
+                        <span>{$goods.promote} 件</span>
+                    </li>
+                     <li class="li_even">
+                        <strong><a href="goods.php?act=list&is_on_sale=0">已下架商品总数</a></strong>
+                         <span>{$goods.deleted} 件</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="item order-item">
+            <div class="item-hd"><span class="bg3">订单<em>{$order.total} 笔</em></span></div>
+            <div class="item-bd item-bd3">
+                <ul class="clearfix">
+                	<li>
+                        <strong><a href="order.php?act=list&composite_status={$status.await_ship}">{$lang.await_ship}</a></strong>
+                        <span>{$order.await_ship} 笔</span>
+                    </li>
+                	<li class="li_even">
+                        <strong><a href="order.php?act=list&composite_status={$status.await_pay}">{$lang.await_pay}</a></strong>
+                        <span>{$order.await_pay} 笔</span>
+                    </li>
+                    <li>
+                        <strong><a href="order.php?act=list&composite_status={$status.unconfirmed}">待确认订单</a></strong>
+                        <span>{$order.unconfirmed} 笔</span>
+                    </li>
+                    <li class="li_even">
+                        <strong><a href="order.php?act=list&composite_status={$status.shipped_part}">{$lang.shipped_part}</a></strong>
+                        <span>{$order.shipped_part} 笔</span>
+                    </li>
+                    <li>
+                        <strong><a href="user_account.php?act=list&process_type=1&is_paid=0">{$lang.new_reimburse}</a></strong>
+                        <span>{$order.new_repay} 笔</span>
+                    </li>
+                    <li class="li_even">
+                        <strong><a href="order.php?act=back_list&status_back=0">退货申请</a></strong>
+                        <span>{$order.returns} 笔</span>
+                    </li>
+                    <li>
+                        <strong><a href="goods_booking.php?act=list_all">{$lang.new_booking}</a></strong>
+                        <span>{$order.booking_goods} 笔</span>
+                    </li>
+                    <li class="li_even">
+                        <strong><a href="order.php?act=list&composite_status={$status.finished}">{$lang.finished}</a></strong>
+                        <span>{$order.finished} 笔</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height:0px;line-height:0px;clear:both"></div>
+<br />
+<!-- end order statistics -->
+<div class="list-div">
+	<div class="order_count">
+        <p><span class="tab_front">订单来源统计</span></p>
+        <div style='height:400px;width:50%;margin-left:auto;margin-right:auto;' id='froms_chart_div'></div>
+    </div>
+</div>																<!-- 订单排行统计 -->
+<br />
+<!-- end order statistics -->
+<div class="list-div">
+	<div class="order_count">
+        <p><span class="tab_front">订单排行统计</span></p>
+        <div style='height:400px;width:90%;margin-left:auto;margin-right:auto;' id='order_chart_div'></div>
+    </div>
+</div>
+<br />
+<div class="list-div">
+	<div class="order_count">
+        <p><span class="tab_front">销售额统计</span></p>
+        <div style='height:400px;width:90%;margin-left:auto;margin-right:auto;' id='sales_chart_div'></div>
+    </div>
+</div>
+<br />
+
+
+<div class="list-div">
+
+<table cellspacing='1' cellpadding='3'>
+
+  <tr>
+
+    <th colspan="4" class="group-title">{$lang.system_info}</th>
+
+  </tr>
+
+  <tr>
+
+    <td width="20%">{$lang.os}</td>
+
+    <td width="30%">{$sys_info.os} ({$sys_info.ip})</td>
+
+    <td width="20%">{$lang.web_server}</td>
+
+    <td width="30%">{$sys_info.web_server}</td>
+
+  </tr>
+
+  <tr>
+
+    <td>{$lang.php_version}</td>
+
+    <td>{$sys_info.php_ver}</td>
+
+    <td>{$lang.mysql_version}</td>
+
+    <td>{$sys_info.mysql_ver}</td>
+
+  </tr>
+
+  <tr>
+
+    <td>{$lang.safe_mode}</td>
+
+    <td>{$sys_info.safe_mode}</td>
+
+    <td>{$lang.safe_mode_gid}</td>
+
+    <td>{$sys_info.safe_mode_gid}</td>
+
+  </tr>
+
+  <tr>
+
+    <td>{$lang.socket}</td>
+
+    <td>{$sys_info.socket}</td>
+
+    <td>{$lang.timezone}</td>
+
+    <td>{$sys_info.timezone}</td>
+
+  </tr>
+
+  <tr>
+
+    <td>{$lang.gd_version}</td>
+
+    <td>{$sys_info.gd}</td>
+
+    <td>{$lang.zlib}</td>
+
+    <td>{$sys_info.zlib}</td>
+
+  </tr>
+
+  <tr>
+
+    <td>{$lang.ip_version}</td>
+
+    <td>{$sys_info.ip_version}</td>
+
+    <td>{$lang.max_filesize}</td>
+
+    <td>{$sys_info.max_filesize}</td>
+
+  </tr>
+
+  <tr>
+
+    <td>HongYuJD 多商户 WAP V7.2版</td>
+
+    <td>客服 QQ 1527200768</td>
+
+    <td>{$lang.install_date}</td>
+
+    <td>{$install_date}2015-12-28</td>
+
+  </tr>
+
+  <tr>
+
+    <td>{$lang.ec_charset}</td>
+
+    <td>{$ecs_charset}UTF-8</td>
+
+    <td>鸿宇官网:</td>
+
+    <td>HongYuvip.com</td>
+
+  </tr>
+
+</table>
+
+</div>
+<br />
+
+<div class="list-div">
+<table cellspacing='1' cellpadding='1'>
+
+  <tr>
+    <th class="group-title">安全提示</th>
+  </tr>
+  <tr>
+  	<td>
+    强烈建议您将data/config.php文件属性设置为644（linu/unix）或只读权限（WinNT）<br />
+    强烈建议您在网站上线之后将后台入口目录admin重命名，可增加系统安全性<br />
+    请注意定期做好数据备份，数据的定期备份可最大限度的保障您网站数据的安全
+    </td>
+  </tr>
+  </table>
+</div>
+
+<script src='js/echarts-all.js'></script>
+<script>
+var froms_chart = echarts.init(document.getElementById('froms_chart_div'));
+    froms_chart.setOption({$froms_option});
+    var order_chart = echarts.init(document.getElementById('order_chart_div'));
+    order_chart.setOption({$orders_option});
+    var sales_chart = echarts.init(document.getElementById('sales_chart_div'));
+    sales_chart.setOption({$sales_option});
+</script>
+<!-- end 升级 -->
+{literal}
+{insert_scripts files="../js/utils.js"}
+<script type="Text/Javascript" language="JavaScript">
+<!--
+onload = function()
+{
+  /* 检查订单 */
+  startCheckOrder();
+}
+  Ajax.call('index.php?is_ajax=1&act=main_api','', start_api, 'GET', 'JSON');
+
+   function start_api(result)
+    {
+		document.getElementById("php_ver").innerHTML = result.php_ver;
+		document.getElementById("mysql_ver").innerHTML = result.mysql_ver;
+		document.getElementById("ver").innerHTML = result.ver;
+		document.getElementById("pro_ver").innerHTML = result['version']['ver'];
+		document.getElementById("charset").innerHTML = result.charset;
+		/*
+      apilist = document.getElementById("lilist").innerHTML;
+      document.getElementById("lilist").innerHTML =apilist;
+      if(document.getElementById("Marquee") != null)
+      {
+        var Mar = document.getElementById("Marquee");
+        lis = Mar.getElementsByTagName('div');
+        //alert(lis.length); //显示li元素的个数
+        if(lis.length>1)
+        {
+          api_styel();
+        }      
+      }*/
+    }
+ 
+      function api_styel()
+      {
+        if(document.getElementById("Marquee") != null)
+        {
+            var Mar = document.getElementById("Marquee");
+            if (Browser.isIE)
+            {
+              Mar.style.height = "52px";
+            }
+            else
+            {
+              Mar.style.height = "36px";
+            }
+            
+            var child_div=Mar.getElementsByTagName("div");
+
+        var picH = 16;//移动高度
+        var scrollstep=2;//移动步幅,越大越快
+        var scrolltime=30;//移动频度(毫秒)越大越慢
+        var stoptime=4000;//间断时间(毫秒)
+        var tmpH = 0;
+        
+        function start()
+        {
+          if(tmpH < picH)
+          {
+            tmpH += scrollstep;
+            if(tmpH > picH )tmpH = picH ;
+            Mar.scrollTop = tmpH;
+            setTimeout(start,scrolltime);
+          }
+          else
+          {
+            tmpH = 0;
+            Mar.appendChild(child_div[0]);
+            Mar.scrollTop = 0;
+            setTimeout(start,stoptime);
+          }
+        }
+        setTimeout(start,stoptime);
+        }
+      }
+//-->
+</script>
+{/literal}
+{include file="pagefooter.htm"}

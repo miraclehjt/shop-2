@@ -1,0 +1,36 @@
+
+	<div class="tab">
+    	<div class="tab_tit">
+		<ul>
+          <a href="exchange.php?{foreach from=$pager.search key=key item=item}{if $key neq "sort" and $key neq "order"}{$key}={$item}&{/if}{/foreach}page={$pager.page}&sort=goods_id&order={if $pager.search.order eq 'DESC'}ASC{else}DESC{/if}#list"><li  class=<!-- {if $pager.search.sort == 'goods_id'} -->curr<!-- {/if} -->>上架<b></b></li></a>
+          <a href="exchange.php?display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=exchange_integral&order=<!-- {if $pager.sort == 'exchange_integral' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list"><li  class=<!-- {if $pager.search.sort == 'exchange_integral'} -->curr<!-- {/if} -->>积分<b></b></li></a>
+         <a href="exchange.php?{foreach from=$pager.search key=key item=item}{if $key neq "sort" and $key neq "order"}{$key}={$item}&{/if}{/foreach}page={$pager.page}&sort=last_update&order={if $pager.search.order eq 'DESC'}ASC{else}DESC{/if}#list"> <li class=<!-- {if $pager.search.sort == 'last_update'} -->curr<!-- {/if} -->>更新<b></b></li></a>
+          <A 
+  href="exchange.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=click_count&order=<!-- {if $pager.sort == 'click_count' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list" ><li class=<!-- {if $pager.search.sort == 'click_count'} -->curr<!-- {/if} -->>人气</a><b></b></li>
+        </ul>
+    </div>
+    </div>
+<div class="layout_list">
+		{if $goods_list}
+        <ul class="clearfix">
+      <!-- {foreach from=$goods_list item=goods name=goods_list} -->
+      {if $goods.goods_id}
+  		<li {if $smarty.foreach.goods_list.iteration mod 2 eq 1}class="layout_list_1"{/if}>
+        	<a href="{$goods.url}"  class="layout_pic"><img class="err-product" src="{$goods.goods_thumb}" alt="{$goods.goods_name|escape:html}"></a>
+          	<div class="layout_cont">
+            	<a class="layout_name"  href="{$goods.url}">{$goods.goods_style_name}</a>
+            	<div class="layout_price"><span>{$goods.exchange_integral}积分</span>
+            	<a  href="{$goods.url}" class="bid_btn">
+                    立即兑换
+                </a>
+                </div>
+          	</div>
+        </li>
+        {/if}
+        <!--{/foreach}--> 
+  	  </ul>
+		{include file='library/pro_pages.lbi'}
+		{else}
+		<p class="empty">{$lang.goods_empty}</p>
+		{/if}
+	</div>

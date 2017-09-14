@@ -1,0 +1,56 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="w mt15">
+  <form method="GET" class="sort" name="listform">
+    <div id="filter">
+      <div class='fore1' style="border:none;">
+        <dl class='order'>
+          <dt>{$lang.goods_list}：</dt>
+          <dd  class=<!-- {if $pager.search.sort == 'goods_id'} -->curr<!-- {/if} -->><a href="exchange.php?{foreach from=$pager.search key=key item=item}{if $key neq "sort" and $key neq "order"}{$key}={$item}&{/if}{/foreach}page={$pager.page}&sort=goods_id&order={if $pager.search.order eq 'DESC'}ASC{else}DESC{/if}#list">上架</a><b></b></dd>
+          <dd  class=<!-- {if $pager.search.sort == 'exchange_integral'} -->curr<!-- {/if} -->><a href="exchange.php?display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=exchange_integral&order=<!-- {if $pager.sort == 'exchange_integral' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list">积分</a><b></b></dd>
+          <dd class=<!-- {if $pager.search.sort == 'last_update'} -->curr<!-- {/if} -->><a href="exchange.php?{foreach from=$pager.search key=key item=item}{if $key neq "sort" and $key neq "order"}{$key}={$item}&{/if}{/foreach}page={$pager.page}&sort=last_update&order={if $pager.search.order eq 'DESC'}ASC{else}DESC{/if}#list">更新</a><b></b></dd>
+          <dd class=<!-- {if $pager.search.sort == 'click_count'} -->curr<!-- {/if} -->><A 
+  href="exchange.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=click_count&order=<!-- {if $pager.sort == 'click_count' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list" >人气</a><b></b></dd>
+        </dl>
+        <div class='pagin pagin-m'><span class='text'>{$pager.page}/{$pager.page_count}</span><!-- {if $pager.page_prev} --> 
+          <a href="{$pager.page_prev}" class="prev" >上一页<b></b></a> 
+          <!-- {else} --> 
+          <span class="prev-disabled">上一页<b></b></span> 
+          <!-- {/if} --> 
+          <!-- {if $pager.page_next} --> 
+          <a href="{$pager.page_next}" class="next" >下一页<b></b></a> 
+          <!-- {else} --> 
+          <span class="next-disabled">下一页<b></b></span> 
+          <!-- {/if} --></div>
+        <div class='total'><span>共<strong>{$pager.record_count}</strong>个商品</span></div>
+        <span class='clr'></span></div>
+    </div>
+  </form>
+</div>
+<div class="w mt15">
+<div class="act-list">
+    <form name="compareForm" method="post">
+      <ul class="clearfix">
+        <!--{foreach from=$goods_list item=goods name=goods}--> 
+        <!-- {if $goods.goods_id} -->
+        <li {if $smarty.foreach.goods.iteration % 4 eq 1}class="first"{/if}>
+            <div class="img">
+                <a href='{$goods.url}' target="_blank" title="{$goods.goods_name|escape:html}"><img  src='{$goods.goods_thumb}' width="200" height="200" alt='{$goods.name|escape:html}' /></a>
+                <p class="absBg"></p>
+                <p class="absFg"><a href='{$goods.url}' target="_blank" title="{$goods.goods_name|escape:html}">{$goods.goods_name}</a></p>
+            </div>
+            <div class="info">
+                <div class="price"><strong class="red arial">{$goods.exchange_integral}</strong><span class="red jifen">积分</span></div>
+                <div class="discount"><span class="f16 yahei"><a href='{$goods.url}' target="_blank">立即兑换</a></span></div>
+            </div>
+        </li>
+        <!--{/if}--> 
+        <!--{/foreach}-->
+        
+      </ul>
+    </form>
+    <div class="pager">
+    {include file='library/pages.lbi'} 
+      </div>
+  </div>
+</div>
+<div class="blank5"></div>

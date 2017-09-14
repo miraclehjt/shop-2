@@ -1,0 +1,69 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div id="brand-bar-pop">
+   <dl id="ghs_shop" style="padding:0px;">
+        <dt style="background:{$navcolor};"><a href="supplier.php?suppId={$smarty.get.suppId}" style="color:#fff"> {$shopname}</a></dt>
+        <dd style="height:2px;"></dd>
+        <dd><img width="90" height="45" src="{$shoplogo}" style="margin:0 36px;" /></dd>
+        <div class="ghs_clear"></div>
+   </dl>
+    {if $username}
+  <dl id="online-service">
+        <dt >商家用户：{$username}</dt>
+        <div class="ghs_clear"></div>
+    </dl>
+    {/if}
+     {if $serviceqq}
+  <dl id="hotline">
+    <dt >客 服 QQ：<em><a href="http://wpa.qq.com/msgrd?v=3&uin={$serviceqq}&site=qq&menu=yes" target="_blank" alt="点击这里联系我" title="点击这里联系我">{$serviceqq}&nbsp;<img src="http://wpa.qq.com/pa?p=1:{$serviceqq}:4" height="16" border="0" alt="QQ" /></a></em></dt>
+    <dd > </dd>
+    <div class="ghs_clear"></div>
+  </dl>
+  {/if}
+  {if $serviceww}
+  <dl id="hotline">
+    <dt >客服旺旺：<em><a href="http://amos1.taobao.com/msg.ww?v=2&uid={$serviceww}&s=2" target="_blank">{$serviceww}&nbsp;<img src="http://amos1.taobao.com/online.ww?v=2&uid={$serviceww}&s=2" width="16" height="16" border="0" alt="淘宝旺旺" /></a></em></dt>
+    <dd > </dd>
+    <div class="ghs_clear"></div>
+  </dl>
+  {/if}
+    <dl id="hotline">
+        <dt>商店等级：</dt>
+        <dd>{$userrank}</dd>
+          <dd class="ghs_clear"></dd>
+    </dl>
+        <dl id="hotline">
+        <dt>商品数量：</dt>
+        <dd>{$goodsnum}</dd>
+          <dd class="ghs_clear"></dd>
+    </dl>
+    {if $region}
+        <dl id="hotline">
+        <dt>所在地区：</dt>
+        <dd>{$region}</dd>
+          <dd class="ghs_clear"></dd>
+    </dl>
+    {/if}
+    {if $createtime}
+        <dl id="hotline">
+        <dt>创店时间：</dt>
+        <dd>{$createtime}</dd>
+          <dd class="ghs_clear"></dd>
+    </dl>
+    {/if}
+    {if $address}
+      <dl id="hotline">
+        <dt>详细地址：</dt>
+        <dd>{$address}</dd>
+        <dd class="ghs_clear"></dd>
+    </dl>
+    {/if}
+</div>
+<script>
+function guanzhu(sid){
+	Ajax.call('supplier.php', 'go=other&act=add_guanzhu&suppId=' + sid, selcartResponse, 'GET', 'JSON');
+}
+
+function selcartResponse(result){
+	alert(result.info);
+}
+</script>

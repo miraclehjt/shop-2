@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<title>店铺</title>
+<!--v_shop.css-->
+<link href="themesmobile/68ecshopcom_mobile/css/v_user.css" type="text/css" rel="stylesheet">
+</head>
+<body >
+<!--header-->
+<div class="dianpu">
+<dl>
+<dt><a href="javascript:history.back(-1)"></a></dt>
+<dd>我的上司</dd>
+</dl>
+</div>
+<!--main-->
+<div class="main">
+<dl class="shangsi">
+<dt><img src="{if $boss_info.headimgurl}{$boss_info.headimgurl}{else}themesmobile/68ecshopcom_mobile/images/v-shop/tx.jpg{/if}" alt="头像"/>
+<strong>{if $boss_info.user_name}{$boss_info.user_name}{else}平台方{/if}</strong>
+</dt>
+<dd>姓名：{if $boss_info.user_name}{$boss_info.user_name}{else}平台方{/if}</dd>
+</dl>
+</div>
+<!-----底部悬浮菜单---->
+<!-- #BeginLibraryItem "/library/footer_nav1.lbi" --><!-- #EndLibraryItem --> 
+</body>
+</html>

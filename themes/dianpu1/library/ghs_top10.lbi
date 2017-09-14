@@ -1,0 +1,82 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- JSHOP店铺页面内容 -->
+<!--{if $top_goods}-->
+<div class="layout-container">
+  <div class="layout-main">
+    <div class="layout-area J-layout-area no-margin">
+      <div class="layout J-layout">
+        <div class="layout-one">
+          <div class="fn-clear userdefined-21" style="margin-bottom:10px;">
+            <div class="mc" style="min-height:0px;">
+              <div class="j-module">
+                <div class="userDefinedArea" style="width: auto; margin: 0px auto;">
+                  <div class="user-title1">销量排行<span class="s-r"></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fn-clear user-zx-item-482187" style="margin-bottom:10px;">
+            <div class="mc" style="background:#ffffff; min-height:0px;">
+              <div class="user-zx-item">
+                <div module-name="BannerHtml">
+                  <div class="j-module aitem_box" module-function="slide" module-param="{imgArea:'.jSortContent',imgNode:'.jSortContent .item', tabNode:'.jSortTab .item_tab',eventType:'mouseover',timer:10,arrowLeft:'.Pre',arrowRight:'.Next',subFunction:'moveEffect',slideDirection:'left'}">
+                    <div class="jSortTab"> 
+                     <!-- {foreach from=$top_goods item=goods name=goods }-->
+                     <!-- {if $smarty.foreach.goods.iteration < 5}-->
+                    	<span class="item_tab"> 
+                        	<a href="{$goods.url}" target="_blank">
+                            	<img src="{$goods.original_img}" class="" height="205" width="205">
+                            </a> 
+                        </span> 
+                        <!-- {/if} -->
+                     <!-- {/foreach} -->  
+                    </div>
+                    <div style="margin: 0px auto;" class="jSortContent">
+                      <div class="cont_box">
+                       <!-- {foreach from=$top_goods item=goods name=goods }-->
+                       <!-- {if $smarty.foreach.goods.iteration < 5}-->
+                        <ul style="float: left;" class="item show">
+                          <img src="{$goods.original_img}" height="440" width="440">
+                          <div class="left_two_info">
+                            <h1>NO.<span>{$smarty.foreach.goods.iteration}</span></h1>
+                            <p class="two_1"><a href="{$goods.url}" target="_blank">{$goods.goods_name}</a></p>
+                            <p class="two_4"></p>
+                            <p class="two_word">{$goods.goods_brief}</p>
+                            <p class="two_2">
+          						市场价：<font style="text-decoration:line-through;"><span class="jsNum">{$goods.market_price}</span></font>                            </p>
+                            <p class="two_3">
+          						本店价：<font style="font-size:24px;"><span class="jsNum">{$goods.shop_price}</span></font>
+                            </p>
+                            <p class="two_4"><a href="{$goods.url}" target="_blank"></a></p>
+                          </div>
+                        </ul>
+                         <!-- {/if} -->
+                       <!-- {/foreach} -->  
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    // 销售排行模块
+    function Jshop_salerankhandler(obj){
+        var target = jQuery(obj);
+        var salerankListIndex = jQuery(obj).parent().attr("index");
+        var index = jQuery(obj).find("div>div").html();
+        if(index == salerankListIndex) return;
+        var lastObject = jQuery(jQuery(obj).parent().find("li")[salerankListIndex-1]);
+        lastObject.find(".saleRankList").hide();
+        lastObject.find(".salrRankListShow").show();
+        jQuery(obj).find(".saleRankList").show();
+        jQuery(obj).find(".salrRankListShow").hide();
+        jQuery(obj).parent().attr("index",index);
+    }
+</script>
+<!--{/if}-->

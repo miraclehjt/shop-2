@@ -1,0 +1,677 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link rel="stylesheet" type="text/css" href="themes/68ecshopcom_360buy/css/{$cat_style}" />
+<script>var jdpts = new Object(); jdpts._st = new Date().getTime();</script>
+{insert_scripts files='common.js,global.js,compare.js'}
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery_006.js"></script> 
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/search_goods.js"></script> 
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-lazyload.js" ></script> 
+{insert_scripts files='jquery.json.js,transport.js'}
+</head>
+<body>
+<div role="navigation" id="site-nav"> 
+  <script type="text/javascript" src="themes/68ecshopcom_360buy/js/base-2011.js"></script> 
+  <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+ 
+  <div class="blank"></div>
+  <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+  <div class="w main">
+  	  <!-- #BeginLibraryItem "/library/best_nei.lbi" --><!-- #EndLibraryItem --> 
+      <!--i-right end--> 
+      
+      {* 代码替换_start  By  bbs.hongyuvip.com *}
+      <!--组合搜索 开始--> 
+      <script type="text/javascript">
+	
+	var begin_hidden=0;
+	function init_position_left()
+	{
+	var kuan1=document.getElementById('xxxccczzz').clientWidth;
+	var kuan2=document.getElementById('attr_group_more').clientWidth;
+	var kuan =(kuan1-kuan2)/2;
+	document.getElementById('attr_group_more').style.left=kuan+"px";
+	}
+	function getElementsByName(tagName, eName)
+	{  
+	var tags = document.getElementsByTagName(tagName);  
+	var returns = new Array();  
+      
+	if (tags != null && tags.length > 0) {  
+        for (var i = 0; i < tags.length; i++) {  
+            if (tags[i].getAttribute("name") == eName) {  
+                returns[returns.length] = tags[i];  
+            }  
+        }  
+	}  
+	return returns;  
+	}
+	function Show_More_Attrgroup()
+	{
+		var attr_list_dl = getElementsByName('dl','attr_group_dl');
+		var attr_group_more_text = document.getElementById('attr_group_more_text');
+		if(begin_hidden==2)
+		{
+			for(var i=0;i<attr_list_dl.length;i++)
+			{
+				attr_list_dl[i].style.display= i >= begin_hidden ? 'none' : 'block';
+			}
+			attr_group_more_text.innerHTML="更多选项（" + attr_group_more_txt + "）";
+			init_position_left();
+			begin_hidden=0;
+		}
+		else
+		{
+			for(var i=0;i<attr_list_dl.length;i++)
+			{
+				attr_list_dl[i].style.display='block';				
+			}
+			attr_group_more_text.innerHTML="收起";
+			init_position_left();
+			begin_hidden=2;
+		}
+	}
+	// 是否显示“更多”__初始化
+	function init_more(boxid, moreid, height)
+	{
+	     var obj_brand=document.getElementById(boxid);
+	     var more_brand = document.getElementById(moreid);
+	     if (obj_brand.clientHeight > height)
+	     {
+		obj_brand.style.height= height+ "px";
+		obj_brand.style.overflow="hidden";
+		more_brand.innerHTML='<a href="javascript:void(0);"  onclick="slideDiv(this, \''+boxid+'\', \''+height+'\');" class="more_68ecshop_1" >更多</a>';
+	     }
+	 }
+	 function slideDiv(thisobj, divID,Height)
+	 {  
+	     var obj=document.getElementById(divID).style;  
+	     if(obj.height=="")
+	     {  
+               obj.height= Height+ "px";  
+               obj.overflow="hidden";
+	       thisobj.innerHTML="更多";
+	       thisobj.className="more_68ecshop_1";
+	        // 如果是品牌，额外处理
+		if(divID=='brand_abox')
+		{
+		   //obj.width="456px";
+		   getBrand_By_Zimu(document.getElementById('brand_zimu_all'),'');
+	           document.getElementById('brand_sobox').style.display = "none";
+		   document.getElementById('brand_zimu').style.display = "none";
+		   document.getElementById('brand_abox_father').className="";
+		 }
+            }
+	    else
+	    {  
+               obj.height="";  
+               obj.overflow="";  
+	       thisobj.innerHTML="收起";
+	       thisobj.className="more_68ecshop_2";
+	        // 如果是品牌，额外处理
+		if(divID=='brand_abox')
+		{
+		   //obj.width="456px";
+	           document.getElementById('brand_sobox').style.display = "block";
+		   document.getElementById('brand_zimu').style.display = "block";
+		   //getBrand_By_Zimu(document.getElementById('brand_zimu_all'),'');
+		   document.getElementById('brand_abox_father').className="brand_more_ecshop68";
+		 }
+	     }  
+	  
+        }
+	function getBrand_By_Name(val)
+	{
+	    val =val.toLocaleLowerCase();
+	    var brand_list = document.getElementById('brand_abox').getElementsByTagName('li');    
+	    for(var i=0;i<brand_list.length;i++)
+	    {
+		//document.getElementById('brand_abox').style.width="auto";
+		var name_attr_value= brand_list[i].getAttribute("name").toLocaleLowerCase();
+		if(brand_list[i].title.indexOf(val)==0 || name_attr_value.indexOf(val)==0 || val=='')
+		{
+			brand_list[i].style.display='block';
+		}
+		else
+		{
+			brand_list[i].style.display='none';
+		}
+	    }
+	}
+	//点击字母切换品牌
+	function getBrand_By_Zimu(obj, zimu)
+	{
+		document.getElementById('brand_sobox_input').value="可搜索拼音、汉字查找品牌";
+		obj.focus();
+		var brand_zimu=document.getElementById('brand_zimu');
+		var zimu_span_list = brand_zimu.getElementsByTagName('span');
+		for(var i=0;i<zimu_span_list.length;i++)
+		{
+			zimu_span_list[i].className='';
+		}
+		var thisspan=obj.parentNode;
+		thisspan.className='span';
+		var brand_list = document.getElementById('brand_abox').getElementsByTagName('li');			
+		for(var i=0;i<brand_list.length;i++)
+		{	
+			//document.getElementById('brand_abox').style.width="auto";
+			if(brand_list[i].getAttribute('rel') == zimu || zimu=='')
+			{
+				brand_list[i].style.display='block';
+			}
+			else
+			{
+				brand_list[i].style.display='none';
+			}
+		}
+	}
+	var duoxuan_a_valid=new Array();
+	// 点击多选， 显示多选区
+	function showDuoXuan(dx_divid, a_valid_id)
+	{	     
+	     var dx_dl_68ecshop = document.getElementById('attr_list_ul').getElementsByTagName('dl');
+	     for(var i=0;i<dx_dl_68ecshop.length;i++)
+	     {
+		dx_dl_68ecshop[i].className='';
+	     }
+	     var dxDiv=document.getElementById(dx_divid);
+	     dxDiv.className ="duoxuan";
+	     duoxuan_a_valid[a_valid_id]=1;
+	     
+	}
+	function hiddenDuoXuan(dx_divid, a_valid_id)
+	{
+		var dxDiv=document.getElementById(dx_divid);
+		dxDiv.className ="";
+		duoxuan_a_valid[a_valid_id]=0;
+		if(a_valid_id=='brand')
+		{
+			var ul_obj_68ecshop = document.getElementById('brand_abox');
+			var li_list_68ecshop = ul_obj_68ecshop.getElementsByTagName('li');
+			if(li_list_68ecshop)
+			{
+				for(var j=0;j<li_list_68ecshop.length;j++)
+				{
+					li_list_68ecshop[j].className="";
+				}
+			}
+		}
+		else
+		{
+			var ul_obj_68ecshop = document.getElementById('attr_abox_'+a_valid_id);
+		}
+		var input_list = ul_obj_68ecshop.getElementsByTagName('input');
+		var span_list = ul_obj_68ecshop.getElementsByTagName('span');
+		for(var j=0;j<input_list.length;j++)
+		{
+			input_list[j].checked=false;
+		}
+		if(span_list.length)
+		{
+			for(var j=0;j<span_list.length;j++)
+			{
+				span_list[j].className="color_ecshop68";
+			}
+		}
+	}
+	function duoxuan_Onclick(a_valid_id, idid, thisobj)
+	{			
+		if (duoxuan_a_valid[a_valid_id])
+		{
+			if (thisobj)
+			{	
+				var fatherObj = thisobj.parentNode;
+				if (a_valid_id =="brand")
+				{
+					fatherObj.className = fatherObj.className == "brand_seled" ? "" : "brand_seled";
+				}
+				else
+				{
+					fatherObj.className =   fatherObj.className == "color_ecshop68" ? "color_ecshop68_seled" : "color_ecshop68";
+					
+				}
+			}
+			document.getElementById('chk_'+a_valid_id+'_'+idid).checked= !document.getElementById('chk_'+a_valid_id+'_'+idid).checked;
+			return false;
+		}
+	}
+	
+	function duoxuan_Submit(dxid, indexid, attr_count, category, brand_id, price_min, price_max,  filter_attr,filter)
+	{		
+		var theForm =document.forms['theForm'];
+		var chklist=theForm.elements['checkbox_'+ dxid+'[]'];
+		var newpara="";
+		var mm=0;
+		for(var k=0;k<chklist.length;k++)
+		{
+			if(chklist[k].checked)
+			{
+				//alert(chklist[k].value);
+				newpara += mm>0 ? "_" : "";
+				newpara += chklist[k].value;
+				mm++;
+			}
+		}
+		if (mm==0) 
+		{
+			return false;
+		}
+		if(dxid=='brand')
+		{
+			brand_id = newpara;
+		}
+		else
+		{
+			var attr_array = new Array();
+			filter_attr = filter_attr.replace(/\./g,",");
+			attr_array=filter_attr.split(',');
+
+			for(var h=0;h<attr_count;h++)
+			{
+				if(indexid == h){
+					attr_array[indexid] = newpara;
+				}else{
+					if(attr_array[h]){
+					}else{
+					 attr_array[h] = 0;
+					}
+				}
+			}
+			filter_attr = attr_array.toString();
+		}
+		filter_attr = filter_attr.replace(/,/g,".");
+		var url="other.php";
+		//var url="category.php";
+		url += "?id="+ category;
+		url += brand_id ? "&brand="+brand_id : "";
+		url += price_min ? "&price_min="+price_min : "&price_min=0";
+		url += price_max ? "&price_max="+price_max : "&price_max=0";
+		url += filter_attr ? "&filter_attr="+filter_attr : "&filter_attr=0";
+		url += filter ? "&filter="+filter : "&filter=0";
+		//location.href=url;
+		return_url(url,dxid);
+	}
+
+	function return_url(url,dxid){
+	  $.ajax({    
+		    url:url,   
+		    type:'get',
+		    cache:false,
+		    dataType:'text',
+		    success:function(data){
+		        var obj = document.getElementById('button_'+dxid);
+		        obj.href = data;
+			obj.click();
+			//location.href=data;
+		     }
+		});
+	}
+	
+	</script> 
+      <!--{if $brands.1 || $price_grade.1 || $filter_attr_list}-->
+      <form action="" method="post" name="theForm" >
+        <div class="box_attr_ecshop68" id="attr_list_ul">
+          <h4 id="xxxccczzz"><font color="#E31939">{$cat_name_curr} - </font> 商品筛选</h4>
+          <!--{if $condition}-->
+          <dl style="border-bottom:1px dotted #ccc;border-top:none;">
+            <dt>已选条件：</dt>
+            <dd class="moredd" style="text-align:right;">&nbsp;<a href="category.php?id={$category}">全部撤销</dd>
+            <dd >
+              <ul class="selected_attr">
+                {foreach from=$condition item=cond}
+                <li ><a href="{$cond.cond_url}">{$cond.cond_type}：<b >{$cond.cond_name}  X</b></a></li>
+                {/foreach}
+              </ul>
+            </dd>
+          </dl>
+          <!--{/if}--> 
+          
+          <!--{if $brands.1}-->
+          <dl style="border-top:none;" id="attr_group_dl_brand">
+            <dt>{$lang.brand}：</dt>
+            <dd class="moredd">
+              <label id="brand_more"></label>
+              <label> <a href="javascript:void(0)" onclick="showDuoXuan('attr_group_dl_brand', 'brand');" class="duo_68ecshop"><font class="duo_b">+</font>多选</a> </label>
+            </dd>
+            <dd>
+              <div id="brand_sobox" style="display:none;">
+                <input type="text" id="brand_sobox_input" value="可搜索拼音、汉字查找品牌" onfocus="if(this.value=='可搜索拼音、汉字查找品牌') {this.value=''}" 
+	     onblur="if (this.value=='') {this.value='可搜索拼音、汉字查找品牌'}" onkeyup="getBrand_By_Name(this.value);">
+              </div>
+              <div id="brand_zimu" style="display:none;"> <span class="span"><a href="javascript:void(0);" onmouseover="getBrand_By_Zimu(this,'')" id="brand_zimu_all">所有品牌</a></span> {foreach from=$brand_zimu_68ecshop item=bzimu} <span><a href="javascript:void(0);"  onmouseover="getBrand_By_Zimu(this,'{$bzimu}')" >{$bzimu}</a></span> {/foreach} </div>
+              <div id="brand_abox_father" > {if $brand_have_logo}
+                <ul id="brand_abox" class="brand_abox_imgul">
+                  <!--{foreach from=$brands name="brands_68ecshop" item=brand}--> 
+                  <!--{if $smarty.foreach.brands_68ecshop.index gt 0}-->
+                  <li title="{$brand.brand_name}" name="{$brand.pinyin}" rel="{$brand.shouzimu}" {if $smarty.foreach.brands_68ecshop.iteration > 8}class="bottom"{/if}>
+                    <input type="checkbox" style="display:none;" name="checkbox_brand[]" id="chk_brand_{$smarty.foreach.brands_68ecshop.iteration}" value="{$brand.brand_id_68ecshop}">
+                    <a href="{$brand.url}" onclick="return duoxuan_Onclick('brand','{$smarty.foreach.brands_68ecshop.iteration}', this);"> {if $brand.brand_logo}<img  src="data/brandlogo/{$brand.brand_logo}">{else}{$brand.brand_name}{/if} </a></li>
+                  <!--{/if}--> 
+                  <!--{/foreach}-->
+                </ul>
+                {else}
+                <ul id="brand_abox"  class="brand_abox_ul">
+                  <!--{foreach from=$brands name="brands_68ecshop" item=brand}--> 
+                  <!--{if $smarty.foreach.brands_68ecshop.index gt 0}-->
+                  <li title="{$brand.brand_name}" name="{$brand.pinyin}" rel="{$brand.shouzimu}">
+                    <input type="checkbox"  name="checkbox_brand[]" id="chk_brand_{$smarty.foreach.brands_68ecshop.iteration}" class="chkbox_68ecshop" value="{$brand.brand_id_68ecshop}">
+                    <a href="{$brand.url}"  onclick="return duoxuan_Onclick('brand','{$smarty.foreach.brands_68ecshop.iteration}');">{$brand.brand_name}</a> </li>
+                  <!--{/if}--> 
+                  <!--{/foreach}-->
+                </ul>
+                {/if} </div>
+              <div class="duoxuan_btnbox" >
+                <table align=center >
+                  <tr>
+		  <!-- safety_20150625 change_start -->
+		  
+	      <td><a id="button_brand"></a><a class="button_jd" onclick="duoxuan_Submit('brand',0,'{$filter_attr_count_num}','{$category}','{$brand_id}', '{$price_min}', '{$price_max}', '{$filter_attr}','{$filter}');" >确定</a><a href="javascript:void(0);" onclick="hiddenDuoXuan('attr_group_dl_brand', 'brand');" class="button_jd" style="margin-left:10px;white-space:nowrap;">取消</a></td>
+		  
+		  <!-- safety_20150625 change_end -->
+		  </tr>
+                </table>
+              </div>
+            </dd>
+          </dl>
+          <script type="text/javascript">
+	     duoxuan_a_valid['brand'] = 0;
+	     init_more('brand_abox', 'brand_more', '72');	    
+	     </script> 
+          <!--{/if}--> 
+          
+          <!--{if $price_grade.1}-->
+          <dl>
+            <dt>{$lang.price}：</dt>
+            <dd class="moredd">&nbsp;</dd>
+            <dd>
+              <ul>
+                <!--{foreach from=$price_grade name="price_grade_68ecshop" item=grade}--> 
+                <!--{if $smarty.foreach.price_grade_68ecshop.index gt 0}-->
+                <li><a href="{$grade.url}">{$grade.price_range}</a></li>
+                <!--{/if}--> 
+                <!--{/foreach}-->
+                <li>
+		 <!-- safety_20150625 change_start -->
+		 
+	     <input type="text" name="price_min" id="price_min" value="{$price_min}" class="price_68ecshop" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" autocomplete="off">
+	     <i></i>
+	     <input type="text" name="price_max" id="price_max" value="{$price_max}" class="price_68ecshop" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" autocomplete="off">
+		 
+		 <!-- safety_20150625 change_end -->
+                  <a class="button_jd" href="javascript:void()" onclick="location.href='{$url_no_price}&price_min='+document.getElementById('price_min').value+'&price_max='+document.getElementById('price_max').value " >确定</a> </li>
+              </ul>
+            </dd>
+          </dl>
+          <!--{/if}--> 
+          
+          <!--{foreach from=$filter_attr_list name="filter_attr_list" item=filter_attr key=kattr}-->
+          <dl  name="attr_group_dl" id="attr_group_dl_{$smarty.foreach.filter_attr_list.iteration}" >
+            <dt>{$filter_attr.filter_attr_name|escape:html}：</dt>
+            <dd class="moredd">
+              <label id="attr_more_{$smarty.foreach.filter_attr_list.iteration}"></label>
+              <label><a href="javascript:void(0)" onclick="showDuoXuan('attr_group_dl_{$smarty.foreach.filter_attr_list.iteration}', '{$smarty.foreach.filter_attr_list.iteration}');" class="duo_68ecshop"><font class="duo_b">+</font>多选</a></label>
+            </dd>
+            <dd>
+              <ul id="attr_abox_{$smarty.foreach.filter_attr_list.iteration}">
+                <!--{foreach from=$filter_attr.attr_list name="attr_list_68ecshop" item=attr}--> 
+                <!--{if $smarty.foreach.attr_list_68ecshop.index gt 0}-->
+                <li> {if $filter_attr.filter_attr_name eq '颜色'} <span class="color_ecshop68" style="position:relative;">
+                  <div class="sanjiao_red" onclick="return duoxuan_Onclick('{$smarty.foreach.filter_attr_list.iteration}','{$smarty.foreach.attr_list_68ecshop.iteration}', this);">&nbsp;</div>
+                  <input type="checkbox" style="display:none;" name="checkbox_{$smarty.foreach.filter_attr_list.iteration}[]" id="chk_{$smarty.foreach.filter_attr_list.iteration}_{$smarty.foreach.attr_list_68ecshop.iteration}" value="{$attr.goods_id}">
+                  <a href="{$attr.url}" title="{$attr.attr_value}"  onclick="return duoxuan_Onclick('{$smarty.foreach.filter_attr_list.iteration}','{$smarty.foreach.attr_list_68ecshop.iteration}', this);"  style="display:block;cursor:pointer;width:15px;height:15px;border:1px solid #fff;background:#{$attr.color_code};">&nbsp;</a> </span>
+		  {else}
+                  <input type="checkbox"  name="checkbox_{$smarty.foreach.filter_attr_list.iteration}[]" id="chk_{$smarty.foreach.filter_attr_list.iteration}_{$smarty.foreach.attr_list_68ecshop.iteration}" class="chkbox_68ecshop" value="{$attr.goods_id}" >
+                  <a href="{$attr.url}" onclick="return duoxuan_Onclick('{$smarty.foreach.filter_attr_list.iteration}','{$smarty.foreach.attr_list_68ecshop.iteration}');">{$attr.attr_value}</a> {/if} </li>
+                <!--{/if}--> 
+                <!--{/foreach}-->
+              </ul>
+              <div class="duoxuan_btnbox" >
+                <table align=center >
+                  <tr>
+		  <!-- safety_20150625 change_start -->
+		  
+	      <td><a id="button_{$smarty.foreach.filter_attr_list.iteration}"></a><a class="button_jd" onclick="duoxuan_Submit({$smarty.foreach.filter_attr_list.iteration}, '{$kattr}', '{$filter_attr_count_num}', '{$category}','{$brand_id}', '{$price_min}', '{$price_max}', '{$filter_attr_value}','{$filter}');" >确定</a><a href="javascript:void(0);" onclick="hiddenDuoXuan('attr_group_dl_{$smarty.foreach.filter_attr_list.iteration}', '{$smarty.foreach.filter_attr_list.iteration}');" class="button_jd" style="margin-left:10px;white-space:nowrap;">取消</a></td>
+		  
+		  <!-- safety_20150625 change_end -->
+		  </tr>
+                </table>
+              </div>
+            </dd>
+          </dl>
+          <script type="text/javascript">
+	     duoxuan_a_valid[{$smarty.foreach.filter_attr_list.iteration}] = 0;
+	     init_more('attr_abox_{$smarty.foreach.filter_attr_list.iteration}', 'attr_more_{$smarty.foreach.filter_attr_list.iteration}', '24');	
+	     {if $smarty.foreach.filter_attr_list.iteration gt 2}
+	     document.getElementById('attr_group_dl_{$smarty.foreach.filter_attr_list.iteration}').style.display="none";
+	     {/if}
+	     </script> 
+          <!--{/foreach}--> 
+          
+          {if $attr_group_more_count gt 2} 
+          <script type="text/javascript">var attr_group_more_txt = "{$attr_group_more_txt}";</script>
+          <div class="attr_group_more" id="attr_group_more"> <a href="javascript:void(0);" onclick="Show_More_Attrgroup();" id="attr_group_more_text">更多选项（{$attr_group_more_txt}）</a> </div>
+          <script type="text/javascript" >init_position_left(); </script> 
+          {/if} 
+          <script type="text/javascript" >init_position_left(); </script> 
+        </div>
+      </form>
+      <div class="blank5"></div>
+      <div class="blank40"></div>
+      
+      <!--{/if}--> 
+      <!--组合搜索 结束--> 
+      {* 代码替换_end  By  bbs.hongyuvip.com *}
+      
+      <!--select end -->
+      <div style="height:0px; line-height:0px; clear:both;"></div>
+      <div class="right-extra"> 
+      	<!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem --> 
+	  	<!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem --> 
+      </div>
+      <div class="left"> 
+	  	<!-- #BeginLibraryItem "/library/category_tree2.lbi" --><!-- #EndLibraryItem --> 
+        {if $new_goods}
+      	<div class="m limitbuy " id="limitbuy537">
+        <div class="mt">
+          <h2>新品推荐</h2>
+        </div>
+        <div class="mc">
+          <div class="clock" id="clock537">
+            <ul>
+              <!--{foreach from=$new_goods item=goods name=hot_goods}-->
+              <!--{if $smarty.foreach.hot_goods.iteration < 6}-->
+              <li class="fore{$smarty.foreach.hot_goods.iteration}" >
+                <div class="p-img"><a target="_blank" title="{$goods.name|escape:html}" href="{$goods.url}"><img width="100" height="100" alt="" data-original="{$goods.thumb}" src="themes/68ecshopcom_360buy/images/loading.gif" /></a> 
+                  <!-- {if $goods.is_new} -->
+                  <div class="pi7"></div>
+                  <!-- {elseif $goods.is_hot}-->
+                  <div class="pi2"></div>
+                  <!--{/if}--> 
+                </div>
+                <div class="rate"><a target="_blank" title="{$goods.name|escape:html}" href="{$goods.url}">{$goods.name}</a></div>
+                <div class="p-price"><strong><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></strong><del>{$goods.market_price}</del></div>
+              </li>
+              {if !$smarty.foreach.hot_goods.last}
+              <div class="blank5"></div>
+              {/if} 
+              <!--{/if}-->
+              <!--{/foreach}-->
+              
+            </ul>
+          </div>
+          <div id="limit537"></div>
+        </div>
+      </div>
+      	{/if} 
+      <!--limitbuy end -->
+      <div id="ad_left" reco_id="6" class="m m0 hide"></div>
+      <!--搜索广告推荐--> 
+      {if $hot_goods}
+      <div class="m limitbuy " id="limitbuy537">
+        <div class="mt">
+          <h2>热卖商品</h2>
+        </div>
+        <div class="mc">
+          <div class="clock" id="clock537">
+            <ul>
+              <!--{foreach from=$hot_goods item=goods name=hot_goods}-->
+              <li class="fore{$smarty.foreach.hot_goods.iteration}" >
+                <div class="p-img"><a target="_blank" title="{$goods.name|escape:html}" href="{$goods.url}"><img width="100" height="100" alt="" data-original="{$goods.thumb}" src="themes/68ecshopcom_360buy/images/loading.gif" /></a> 
+                  <!-- {if $goods.is_hot} -->
+                  <div class="pi7"></div>
+                  <!-- {elseif $goods.is_hot}-->
+                  <div class="pi2"></div>
+                  <!--{/if}--> 
+                </div>
+                <div class="rate"><a target="_blank" title="{$goods.name|escape:html}" href="{$goods.url}">{$goods.name}</a></div>
+                <div class="p-price"><strong><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></strong><del>{$goods.market_price}</del></div>
+              </li>
+              {if !$smarty.foreach.hot_goods.last}
+              <div class="blank5"></div>
+              {/if} 
+              <!--{/foreach}-->
+              
+            </ul>
+          </div>
+          <div id="limit537"></div>
+        </div>
+      </div>
+      {/if} <!-- #BeginLibraryItem "/library/top10.lbi" --><!-- #EndLibraryItem --> 
+      <!--rank end-->
+      <div id="alsobuy" class="hide m m0"></div>
+      <!--关注手机为您推荐--> 
+      <!--recent end--> 
+    </div>
+    <!--left end-->
+    <div style="height:0px; line-height:0px; clear:both;"></div>
+  </div>
+  <!-- #BeginLibraryItem "/library/history.lbi" --><!-- #EndLibraryItem -->
+  <div class="blank"></div>
+  <!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem --> <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 			<!-- #BeginLibraryItem "/library/site_bar.lbi" --><!-- #EndLibraryItem --> <!-- #BeginLibraryItem "/library/arrive_notice_list.lbi" --><!-- #EndLibraryItem --></div>
+
+<script>//收集skuId
+var skuIds = [];
+$('ul.list-h li[sku]').each(function(i){
+    skuIds.push($(this).attr('sku'));
+})
+
+/* spu合并 begin */
+var imgSize = 'n2';
+if ( $('#plist').hasClass('plist-160') ) {
+    imgSize = 'n2';
+}
+if ( $('#plist').hasClass('plist-220') ) {
+    if ( $('#plist').hasClass('plist-160') ) {
+        imgSize = 'n2';
+    } else {
+        imgSize = 'n7';
+    }
+}
+if ( $('#plist').hasClass('plist-n7') ) {
+    imgSize = 'n7';
+}
+if ( $('#plist').hasClass('plist-n8') ) {
+    imgSize = 'n8';
+}
+
+
+$('.p-scroll').each(function() {
+    var scroll = $(this).find('.p-scroll-wrap'),
+        btnPrev = $(this).find('.p-scroll-prev'),
+        btnNext = $(this).find('.p-scroll-next'),
+        len = $(this).find('li').length;
+    if ( len > 5 ) {
+        btnPrev.css('display', 'inline');
+        btnNext.css('display', 'inline');
+        scroll.imgScroll({
+            visible: 5,
+            showControl: false,
+            next: btnNext,
+            prev: btnPrev
+        });
+    }
+    var colors = scroll.find('img');
+    colors.each(function() {
+        $(this).mouseover(function() {
+            var index = $(this).parent('li').parent('li').attr('index');
+            var src = $(this).attr("src"),
+                skuid = $(this).attr('data-skuid');
+            scroll.find('a').removeClass('curr');
+            $(this).parent('a').addClass('curr');
+            var targetImg = $(this).parents('li').find('.p-img img').eq(0),
+                targetImgLink = $(this).parents('li').find('.p-img a').eq(0),
+                targetNameLink = $(this).parents('li').find('.p-name a').eq(0),
+                targetFollowLink = $(this).parents('li').find('.product-follow a').eq(0);
+            targetImg.attr( 'src', src.replace('\/n5\/', '\/'+imgSize+'\/') );
+            targetImgLink.attr( 'href', targetImgLink.attr('href').replace(/\/\d{6,}/, '/'+skuid) );
+            targetNameLink.attr( 'href', targetNameLink.attr('href').replace(/\/\d{6,}/, '/'+skuid) );
+            targetFollowLink.attr( 'id', targetFollowLink.attr('id').replace(/coll\d{6,}/, 'coll'+skuid) );
+
+        });
+    });
+});
+$('#plist.plist-n7 .list-h>li').hover(function() {
+    $(this).addClass('hover').find('.product-follow,.shop-name').show();
+    $(this).find('.item-wrap').addClass('item-hover');
+}, function() {
+    $(this).removeClass('hover').find('.item-wrap').removeClass('item-hover');
+    $(this).find('.product-follow,.shop-name').hide();
+});
+
+
+/* spu合并 end */
+</script> 
+<script type="text/javascript">
+$(document).ready(function(){
+var headHeight=580;  //这个高度其实有更好的办法的。使用者根据自己的需要可以手工调整。
+ 
+var nav=$("#filter");        //要悬浮的容器的id
+$(window).scroll(function(){
+ 
+if($(this).scrollTop()>headHeight){
+nav.addClass("cat-nav-fixed");   //悬浮的样式
+}
+else{
+nav.removeClass("cat-nav-fixed");
+}
+})
+})
+</script> 
+{* 代码增加_start  By  bbs.hongyuvip.com *}
+<script type="text/javascript">
+$("img").lazyload({
+    effect       : "fadeIn",
+	 skip_invisible : true,
+	 failure_limit : 20
+});
+</script> 
+<script type="text/javascript">
+window.onload = function()
+{
+  Compare.init();
+}
+{foreach from=$lang.compare_js item=item key=key}
+{if $key neq 'button_compare'}
+var {$key} = "{$item}";
+{else}
+var button_compare = '';
+{/if}
+{/foreach}
+var compare_no_goods = "{$lang.compare_no_goods}";
+var btn_buy = "{$lang.btn_buy}";
+var is_cancel = "{$lang.is_cancel}";
+var select_spe = "{$lang.select_spe}";
+</script>
+</body>
+</html>

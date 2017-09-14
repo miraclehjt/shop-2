@@ -1,0 +1,67 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div id="brand-bar-pop">
+  <dl id="zy_shop" style="border-bottom:1px solid #ddd; text-align:center;padding-top:13px;padding-bottom:12px;*padding-top:12px;*padding-bottom:9px;">
+    <dt class="shop_title">卖家：<span style="color:#333333">平台自营</span></dt>
+    <div class="ghs_clear"></div>
+    <dd></dd>
+  </dl>
+  <dl id="hotline" style="padding-top:5px;">
+    <dt >商家名称&nbsp;&nbsp;&nbsp;&nbsp;{$shop_name}</dt>
+    <dd > </dd>
+    <div class="ghs_clear"></div>
+  </dl>
+  <dl id="hotline">
+
+    <dt >客 服 QQ&nbsp;&nbsp;&nbsp;&nbsp;<em>
+
+     <!-- QQ 号码 {foreach from=$qq item=im} -->
+<!-- {if $im} -->
+    <a href="http://wpa.qq.com/msgrd?V=1&amp;uin={$im}&amp;Site={$shop_name}&amp;Menu=yes" target="_blank" alt="点击这里联系我" title="点击这里联系我"><img src="http://wpa.qq.com/pa?p=1:{$im}:4" height="16" border="0" alt="QQ" /></a>
+<!-- {/if} -->
+      <!-- {/foreach} 结束QQ号码 -->
+    </em></dt>
+    <dd > </dd>
+    <div class="ghs_clear"></div>
+  </dl>
+  <dl id="hotline">
+
+    <dt >客服旺旺&nbsp;&nbsp;&nbsp;&nbsp;<em>
+
+    <!-- 淘宝旺旺 {foreach from=$ww item=im} -->
+<!-- {if $im} -->
+    <a href="http://amos1.taobao.com/msg.ww?v=2&uid={$im|escape:u8_url}&s=2" target="_blank"><img src="http://amos1.taobao.com/online.ww?v=2&uid={$im|escape:u8_url}&s=2" width="16" height="16" border="0" alt="淘宝旺旺" /></a>
+<!-- {/if} -->
+      <!--{/foreach} 结束淘宝旺旺 -->
+    </em></dt>
+    <dd > </dd>
+    <div class="ghs_clear"></div>
+  </dl>
+  <!-- 邮件{if $service_email} -->
+  <dl id="hotline">
+    <dt>客服邮件&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+    <dd>{$service_email}</dd>
+    <dd class="ghs_clear"></dd>
+  </dl>
+  <!-- 结束邮件{/if} -->
+  <!-- 客服电话{if $service_phone} -->
+  <dl id="hotline">
+    <dt>客服电话&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+    <dd>{$service_phone}</dd>
+    <dd class="ghs_clear"></dd>
+  </dl>
+  <!-- 结束客服电话{/if} -->
+  <dl id="hotline">
+    <dt>所在地区：</dt>
+    <dd>{$shop_address}</dd>
+    <dd class="ghs_clear"></dd>
+  </dl>
+    
+  
+  
+  <div id="enter-shop"> 
+      <div id="attention-shop" style="border-top: 1px dotted #C6C6C6;margin: 0px 10px;">
+    	<p>扫一扫，手机访问微商城</p>
+	<img src="erweima_supplier.php?sid=0" width="120" height="120" />
+    </div>
+ </div>
+</div>

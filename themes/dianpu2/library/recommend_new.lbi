@@ -1,0 +1,32 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $new_goods} -->
+<div class="stitle">新品推荐</div>
+<div class="clear"></div>
+              <div class="fn-clear user_s20019-493268">
+                <div class="mc" style="width:1200px; "> 
+                  <div class="user_item_box ">
+                  <!--{foreach from=$new_goods item=bestgoods name=bestgoods}-->
+                    <div class="item {if $smarty.foreach.bestgoods.iteration mod 5 eq 1}item_ts{/if}" >
+                      <div class="jPic"><a href="{$bestgoods.url}" target="_blank" class="user_border_hover_1"><img src="{$bestgoods.original_img}" class="" alt="{$bestgoods.name}" height="232" width="232"></a>
+                        <div class="jBuy jBuy_3 user_bgcolor_1" style="background-color:{$navcolor}">
+                          <div class="jDesc">
+                            <div class="jTitle user_border_dashed_bottom"><a class="user_a_3" href="{$bestgoods.url}" target="_blank" title="{$bestgoods.name}">{$bestgoods.name}</a></div>
+                            <div class="buy"> 
+                            	<span class="jdNum">现价：
+                                     <!-- {if $bestgoods.promote_price neq ""} -->
+          								{$bestgoods.promote_price}
+          							 <!-- {else}-->
+          								{$bestgoods.shop_price}
+          							 <!--{/if}-->
+                                  </span> 
+                            	  <span class="SalePrice user_font_3">参考价:<span class="jsNum">{$bestgoods.market_price}</span></span>  </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <!--{/foreach}--> 
+                  </div>
+                </div>
+              </div>            
+<div class="clear"></div>            
+<!-- {/if} -->

@@ -1,0 +1,45 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $new_goods} -->
+<div class="gallery-grid-pro">
+       <ul class="clearfix">
+        <!--{foreach from=$new_goods item=bestgoods}-->
+                <li class="goods-item-pro">
+            <div class="wrap">
+                <div class="inner">
+                    <div class="goods-pic-pro">                       
+                        <a href="{$bestgoods.url}" title="{$bestgoods.name}" target="_blank"><img class="action-goods-img" src="{$bestgoods.original_img}" alt="{$bestgoods.name}"></a>
+                    </div>         
+		    
+                    <div class="goods-info">                        
+                        <h4 class="goods-name">
+                            <a href="{$bestgoods.url}" title="{$bestgoods.name}" target="_blank">{$bestgoods.name}</a>
+                        </h4>
+                    </div>
+                                        
+                    <div class="price-buy">
+                        <div class="goods-price">
+                            <ins class="price"><!-- {if $bestgoods.promote_price neq ""} -->
+          {$bestgoods.promote_price}
+          <!-- {else}-->
+          {$bestgoods.shop_price}
+          <!--{/if}--></ins>                            
+                            <p><del class="price"><!-- {if $bestgoods.promote_price neq ""} -->
+          {$bestgoods.shop_price}
+          <!-- {else}-->
+          {$bestgoods.market_price}
+          <!--{/if}--></del></p>
+                        </div>
+                        <div class="goods-buy">
+                           <a class="action-addtocart" href="{$bestgoods.url}" title="查看详情" target="_blank"></a>
+                        </div>
+                                                
+                    </div>
+                    
+                </div>
+            </div>
+        </li>
+        <!-- {/foreach} -->
+       </ul>
+</div>
+<div class="common_clear"></div>
+<!-- {/if} -->

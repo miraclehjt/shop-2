@@ -1,0 +1,51 @@
+ {if $full_page}
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<div class="list-div" id="listDiv">
+{/if}
+<form name="theForm" action="menu.php" enctype="multipart/form-data" method="post">
+<table cellpadding="3" cellspacing="1">
+  <tr>
+    <th width="10%">编号</th>
+	<th width="20%">菜单名称</th>
+    <th width="20%">菜单图片</th>
+    <th width="20%">链接地址</th>
+    <th width="10%">排序</th>
+    <th width="20%">操作</th>
+  </tr>
+   {foreach from=$menu_list item=list}
+  <tr>
+    <td align="center">{$list.id}</td>
+    <td align="center">{$list.menu_name}</td>
+    <td align="center"><img src="../{$list.menu_img}" width="100" height="100" style="border:none"/></td>
+    <td align="center">{$list.menu_url}</td>
+    <td align="center">{$list.sort}</td>
+    <td align="center">
+    <a href="menu.php?act=edit&id={$list.id}"><img src="../images/icon_edit.gif" style="border:none" alt="编辑"/></a>
+    <a href="menu.php?act=delete&id={$list.id}"><img src="../images/icon_drop.gif" style="border:none" alt="删除"/></a>
+    </td>
+  </tr>
+  {/foreach}
+</table>
+</form>
+{if $full_page}
+</div>
+
+<script type="text/javascript" language="JavaScript">
+  listTable.recordCount = {$record_count};
+  listTable.pageCount = {$page_count};
+  {foreach from=$filter item=item key=key}
+  listTable.filter.{$key} = '{$item}';
+  {/foreach}
+  {literal}
+  onload = function()
+  {
+    // 开始检查订单
+    startCheckOrder();
+  }
+  {/literal}
+  
+  
+</script>
+{include file="pagefooter.htm"}
+{/if}

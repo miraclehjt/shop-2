@@ -1,0 +1,20 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--翻页 start-->
+<form name="selectPageForm" action="{$smarty.server.PHP_SELF}" method="get">
+<div class="c_pagination" id="pager">
+      <!-- {if $pager.page eq 1} --><a href="javascript:;" class="last">上一页</a><!--{else}--><a href="{$pager.page_prev}" class="last">上一页</a><!--{/if}-->
+      <a href="javascript:;" class="page-num">{$pager.page}/{$pager.page_count}</a>
+      <!-- {if $pager.page eq $pager.page_count} --><a href="javascript:;" class="next">下一页</a><!--{else}--><a href="{$pager.page_next}" class="next">下一页</a><!--{/if}--> 
+</div>
+</form>
+<script type="Text/Javascript" language="JavaScript">
+<!--
+{literal}
+function selectPage(sel)
+{
+  sel.form.submit();
+}
+{/literal}
+//-->
+</script> 
+

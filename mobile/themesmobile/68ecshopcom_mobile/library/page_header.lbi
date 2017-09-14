@@ -1,0 +1,16 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript">
+var process_request = "{$lang.process_request}";
+</script>
+<script language="javascript"> 
+<!--
+/*屏蔽所有的js错误*/
+function killerrors() { 
+return true; 
+} 
+window.onerror = killerrors; 
+//-->
+</script>
+<a href="catalog.php" class="top_bt"></a>
+<a href="flow.php" class='user_btn'></a>
+<span href="javascript:void(0)" class="logo">{$shop_name}</span>

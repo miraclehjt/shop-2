@@ -1,0 +1,13 @@
+<div class="swiper-container">
+  <div class="ub swiper-wrapper"> {foreach from=$guide_pictures item=guide_picture name=guide_picture}
+    <div class="swiper-slide">
+	<img data-src="{$url}{$guide_picture}?{$rand}" class="swiper-lazy">
+      <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+      {if $smarty.foreach.guide_picture.last}
+      <div class='into-app start'>开始购物</div>
+      {/if} </div>
+    {/foreach} </div>
+  <!-- Navigation -->
+  <div class="swiper-button-next swiper-button-white"></div>
+  <div class="swiper-button-prev swiper-button-white"></div>
+</div>

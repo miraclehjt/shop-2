@@ -1,0 +1,83 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+{if $promotion_goods}
+
+<script>
+var Tday = new Array();
+var daysms = 24 * 60 * 60 * 1000
+var hoursms = 60 * 60 * 1000
+var Secondms = 60 * 1000
+var microsecond = 1000
+var DifferHour = -1
+var DifferMinute = -1
+var DifferSecond = -1
+function clock(key)
+{
+   var time = new Date()
+   var hour = time.getHours()
+   var minute = time.getMinutes()
+   var second = time.getSeconds()
+   var timevalue = ""+((hour > 12) ? hour-12:hour)
+   timevalue +=((minute < 10) ? ":0":":")+minute
+   timevalue +=((second < 10) ? ":0":":")+second
+   timevalue +=((hour >12 ) ? " PM":" AM")
+   var convertHour = DifferHour
+   var convertMinute = DifferMinute
+   var convertSecond = DifferSecond
+   var Diffms = Tday[key].getTime() - time.getTime()
+   DifferHour = Math.floor(Diffms / daysms)
+   Diffms -= DifferHour * daysms
+   DifferMinute = Math.floor(Diffms / hoursms)
+   Diffms -= DifferMinute * hoursms
+   DifferSecond = Math.floor(Diffms / Secondms)
+   Diffms -= DifferSecond * Secondms
+   var dSecs = Math.floor(Diffms / microsecond)
+  
+   if(convertHour != DifferHour) a=DifferHour+":";
+   if(convertMinute != DifferMinute) b=DifferMinute+":";
+   if(convertSecond != DifferSecond) c=DifferSecond+"分"
+     d=dSecs
+     if (DifferHour>0) {a=a}
+     else {a=''}
+   document.getElementById("jstimerBox"+key).innerHTML = a + b + c ; //显示倒计时信息
+}
+</script>
+<section class="index_floor_lou">
+  <div class="floor_body" >
+    <h2>
+      <em></em>{$lang.promotion_goods}<div class="geng"><a href="../search.php?intro=promotion" >更多</a> <span></span></div>
+    </h2>
+    <div id="scroll_promotion">
+        <ul>
+          {foreach from=$promotion_goods item=goods name=promotion_goods key=key}
+          <li>
+            <a href="{$goods.url}" title="{$goods.name|escape:html}">
+             <div class="index_pro"> 
+              <div class="products_kuang">
+              <div class="timerBox" id="jstimerBox{$key}">正在加载请稍等</div>
+                <img src="{$option.static_path}{$goods.thumb}">
+                </div>
+              <div class="goods_name">{$goods.name|truncate:17}</div>
+              <div class="price">
+              <a href="javascript:addToCart({$goods.id})" class="btns">
+                  <img src="themesmobile/68ecshopcom_mobile/images/index_flow.png"></a>
+                <span class="price_pro">
+                  {if $goods.promote_price}{$goods.promote_price}{else}{$goods.shop_price}{/if}
+                </span>
+                
+              </div>
+            </a>
+</div>
+<script>
+Tday[{$key}] = new Date("{$goods.gmt_end_time}");  
+window.setInterval(function()    
+{clock({$key});}, 1000);  
+</script>
+          </li>
+<!--{if $smarty.foreach.promotion_goods.iteration % 3 eq 0 && $smarty.foreach.promotion_goods.iteration neq $smarty.foreach.promotion_goods.total}-->
+          </ul>
+        <ul>
+		<!--{/if}-->
+        {/foreach}</div>
+    </div>
+  </section>
+{/if}

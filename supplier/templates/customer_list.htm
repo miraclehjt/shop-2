@@ -1,0 +1,112 @@
+<!-- $Id: pre_sale_list.htm 14216 2015-02-10 02:27:21Z derek $ -->
+{if $full_page} {include file="pageheader.htm"} {insert_scripts files="../js/utils.js,listtable.js"}
+<div class="form-div">
+	<form action="javascript:searchGroupBuy()" name="searchForm">
+		<img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
+		{$lang.cus_name}
+		<input type="text" name="keyword" size="30" />
+		<input type="submit" value="{$lang.button_search}" class="button" />
+	</form>
+</div>
+<form method="post" action="customer.php?act=batch_drop" name="listForm" onsubmit="return confirm('{$lang.batch_drop_confirm}');">
+	<!-- start pre_sale list -->
+	<div class="list-div" id="listDiv">
+		{/if}
+		<table cellpadding="3" cellspacing="1">
+			<tr>
+				<th>
+					<input onclick='listTable.selectAll(this, "checkboxes")' type="checkbox" />
+					<a href="javascript:listTable.sort('cus_id'); ">{$lang.cus_id}</a>{$sort_cus_id}
+				</th>
+				<th>
+					<a href="javascript:listTable.sort('user_id'); ">{$lang.user_id}</a>{$sort_user_id}
+				</th>
+				<th>
+					<a href="javascript:listTable.sort('of_username'); ">{$lang.of_username}</a>{$sort_of_username}
+				</th>
+				<th>
+					<a href="javascript:listTable.sort('cus_name'); ">{$lang.cus_name}</a>{$sort_cus_name}
+				</th>
+				<th>
+					<a href="javascript:listTable.sort('cus_type'); ">{$lang.cus_type}</a>{$sort_cus_type}
+				</th>
+				<th>
+					<a href="javascript:listTable.sort('cus_enable'); ">{$lang.cus_enable}</a>{$sort_cus_enable}
+				</th>
+				<th>
+					<a href="javascript:listTable.sort('add_time'); ">{$lang.add_time}</a>{$sort_add_time}
+				</th>
+				<th>{$lang.handler}</th>
+			</tr>
+			{foreach from=$customer_list item=item name=name key=key}
+			<tr>
+				<td>
+					<input value="{$item.cus_id}" name="checkboxes[]" type="checkbox" value="{$item.cus_id}">
+					{$item.cus_id}
+				</td>
+				<td align="center">{$item.user_name}</td>
+				<td align="center">{$item.of_username}</td>
+				<td align="center">{$item.cus_name}</td>
+				<td align="center">{$lang.CUS_TYPE[$item.cus_type]}</td>
+				<td align="center">{$lang.CUS_ENABLE[$item.cus_enable]}</td>
+				<td align="center">{$item.formated_add_time}</td>
+				<td align="center">
+					<!-- 查看聊天记录 -->
+					<a href="customer.php?act=edit&id={$item.cus_id}" title="{$lang.edit}">
+						<img src="images/icon_edit.gif" border="0" height="16" width="16" />
+					</a>
+					<a href="javascript:;" onclick="confirm_redirect('{$lang.drop_confirm}', 'customer.php?act=remove&id={$item.cus_id}')" title="{$lang.remove}">
+						<img src="images/icon_drop.gif" border="0" height="16" width="16" />
+					</a>
+				</td>
+			</tr>
+			{foreachelse}
+			<tr>
+				<td class="no-records" colspan="10">{$lang.no_records}</td>
+			</tr>
+			{/foreach}
+		</table>
+		<table cellpadding="4" cellspacing="0">
+			<tr>
+				<td>
+					<input type="submit" name="drop" id="btnSubmit" value="{$lang.drop}" class="button" disabled="true" />
+				</td>
+				<td align="right">{include file="page.htm"}</td>
+			</tr>
+		</table>
+		{if $full_page}
+	</div>
+	<!-- end pre_sale list -->
+</form>
+<script type="text/javascript" >
+
+  listTable.recordCount = {$record_count};
+  listTable.pageCount = {$page_count};
+
+  {foreach from=$filter item=item key=key}
+  listTable.filter.{$key} = '{$item}';
+  {/foreach}
+
+  {literal}
+  onload = function()
+  {
+    document.forms['searchForm'].elements['keyword'].focus();
+
+    //startCheckOrder();
+  }
+
+  /**
+   * 搜索团购活动
+   */
+  function searchGroupBuy()
+  {
+
+    var keyword = Utils.trim(document.forms['searchForm'].elements['keyword'].value);
+    listTable.filter['keyword'] = keyword;
+    listTable.filter['page'] = 1;
+    listTable.loadList("customer_list");
+  }
+  {/literal}
+
+</script>
+{include file="pagefooter.htm"} {/if}

@@ -1,0 +1,18 @@
+{foreach from=$attribute_linked item=linked}
+{if $linked.goods}
+<div class="goods_attrlinked box">
+	<div class="hd"><h3>{$linked.title|truncate:11}</h3><div class="extra"></div></div>
+	<div class="bd product_list">
+		<ul>
+			{foreach from=$linked.goods item=linked_goods_data name=linked_goods}
+			<li{if $smarty.foreach.linked_goods.first} class="first"{/if} data="id:'{$linked_goods_data.goods_id}'">
+				<a href="{$linked_goods_data.url}" title="{$linked_goods_data.goods_name|escape:html}" class="photo"><img src="{$option.static_path}{$linked_goods_data.goods_thumb}" alt="{$linked_goods_data.goods_name|escape:html}"></a>
+				<a href="{$linked_goods_data.url}" title="{$linked_goods_data.goods_name|escape:html}" class="name">{$linked_goods_data.short_name}</a>
+				<span class="price">{if $linked_goods_data.promote_price}<span class="promo"><em>{$linked_goods_data.promote_price}</em></span>{else}{$linked_goods_data.shop_price}{/if}</span>
+			</li>
+			{/foreach}
+		</ul>
+	</div>
+</div>
+{/if}
+{/foreach}

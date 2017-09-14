@@ -1,0 +1,135 @@
+<!DOCTYPE html >
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>{$page_title}</title>
+  <meta name="Keywords" content="{$keywords}" />
+  <meta name="Description" content="{$description}" />
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+  <link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/public.css"/>
+  <link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/group_buy.css"/>
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.js"></script>
+
+<script >
+var Tday = new Array();
+var daysms = 24 * 60 * 60 * 1000
+var hoursms = 60 * 60 * 1000
+var Secondms = 60 * 1000
+var microsecond = 1000
+var DifferHour = -1
+var DifferMinute = -1
+var DifferSecond = -1
+
+function clock11(key)
+{
+   var time = new Date()
+   var hour = time.getHours()
+   var minute = time.getMinutes()
+   var second = time.getSeconds()
+   var timevalue = ""+((hour > 12) ? hour-12:hour)
+   timevalue +=((minute < 10) ? ":0":":")+minute
+   timevalue +=((second < 10) ? ":0":":")+second
+   timevalue +=((hour >12 ) ? " PM":" AM")
+   var convertHour = DifferHour
+   var convertMinute = DifferMinute
+   var convertSecond = DifferSecond
+   var Diffms = Tday[key].getTime() - time.getTime()
+   DifferHour = Math.floor(Diffms / daysms)
+   Diffms -= DifferHour * daysms
+   DifferMinute = Math.floor(Diffms / hoursms)
+   Diffms -= DifferMinute * hoursms
+   DifferSecond = Math.floor(Diffms / Secondms)
+   Diffms -= DifferSecond * Secondms
+   var dSecs = Math.floor(Diffms / microsecond)
+  
+	if(convertHour != DifferHour) e="<span class=hour>"+DifferHour+"</span>天";
+   if(convertMinute != DifferMinute) f="<span class=min>"+DifferMinute+"</span>时";
+   if(convertSecond != DifferSecond) g="<span class=sec>"+DifferSecond+"</span>分";
+     h="<span class=msec>"+dSecs+"</span>秒";
+	 
+
+	 
+	 
+     if (DifferHour>0) {e=e}
+     else {e=''}
+	 
+	 
+      document.getElementById("jstimerBox"+key).innerHTML = e + f + g + h; 
+}
+
+</script>
+</head>
+<body style="background:#FFF;">
+   <!----------------------------------header----------------------------------->
+      <div class="tab_nav">
+        <div class="header">
+          <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+          <div class="h-mid">今日团购</div>
+          <div class="h-right">
+            <aside class="top_bar">
+              <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+       	<!-- #BeginLibraryItem "/library/up_menu.lbi" --><!-- #EndLibraryItem --> <!--弹出菜单-->
+        
+        
+<!-- 商品品牌广告图片 start--> 
+  {foreach from=$wap_group_ad item=ad name=wap_group_ad}
+<div class="u-brand"><!--品牌1-->
+  <div class="p-relative"> <a href="{$ad.url}" class="u-brand-pic J_item-list"> <img src="{$ad.image}" class="BrandMer_star"> </a>
+  {if $ad.link_email}<div class="u-brand-pms">{$ad.link_email}</div>{/if}
+  </div>
+  <div class="u-brand-msg e-border-b clearfix">
+    <p class="u-brand-name f-left"><span class="u-brand-discount"><span class="salebg2">{$ad.link_man}</span></span>{$ad.name}</p>
+    <div class="u-brand-time f-right">剩{$ad.ss_time}</div>
+  </div>
+</div>
+
+    {/foreach} 
+
+<!-- 商品品牌广告图片 end-->
+
+<h3 class="sg_box_tit">今日团购</h3>
+
+<ul class="product_list" id="good_list"> 
+<!--{foreach from=$goods_list item=goods name=name key=key}-->
+{if $goods.goods_id}
+ <li> 
+ <a class="url" href="{$goods.url}"> <img src="{$goods.goods_thumb}">   </a>
+ <a href="{$goods.url}"  class="info_wrap">
+  <div class="fn good">{$goods.goods_name}</div>
+  <div class="price_wrap"> 
+ <i class="discount"  style="display:;">{$goods.zhekou}折</i> <span class="price" style="display:;">{$goods.promote_price}</span> <del class="old_price"  style="display:;">{$goods.shop_price}</del> 
+ </div> 
+ <div class="bottom_info">
+ <span class="remain_num" style="display:;">已售{$goods.count1}件</span>
+  {if $goods.goods_number>0} <span class="sg_g_time last_g_time" id="jstimerBox{$key}"></span>{/if}</div> 
+  </a>  
+  
+  {if $goods.goods_number<=0}
+ <i class="icon_state"></i> 
+ {/if} </li>
+      <script>
+Tday[{$key}] = new Date("{$goods.gmt_end_time}");  
+window.setInterval(function()    
+{clock11({$key});}, 1000);  
+</script> 
+ {/if}
+ <!--{/foreach}-->
+    
+</ul>
+{include file='library/pages.lbi'}
+<!---返回顶部-->
+<script>
+function goTop(){
+	$('html,body').animate({'scrollTop':0},600);
+}
+</script>
+<a href="javascript:goTop();" class="gotop"><img src="themesmobile/68ecshopcom_mobile/images/topup.png"></a> 
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/footer_nav.lbi" --><!-- #EndLibraryItem -->
+</body>
+</html>

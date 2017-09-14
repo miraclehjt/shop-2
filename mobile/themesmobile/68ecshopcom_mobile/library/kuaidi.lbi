@@ -1,0 +1,24 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+{if $order.tc_express}
+同城快递 [ 信息由本网站提供 ]<br>
+<table width="100%" border="0" cellpadding="10" cellspacing="1" bgcolor="#E7E7E7">
+	<tr>
+		<td bgcolor="#ffffff">{$result_content}</td>
+	</tr>
+</table>
+{else}
+<?php
+$k_code = $GLOBALS['db']->getOne("SELECT shipping_code FROM " . $GLOBALS['ecs']->table('shipping') . " WHERE shipping_id = " . $GLOBALS['smarty']->_var['order']['shipping_id']);
+switch ($k_code)
+{
+	case 'ems' : $k_id = 'ems'; break;
+	case 'post_express' : $k_id = 'youzhengguonei'; break;
+	case 'sf_express' : $k_id = 'shunfeng'; break;
+	case 'sto_express' : $k_id = 'shentong'; break;
+	case 'yto' : $k_id = 'yuantong'; break;
+	case 'zto' : $k_id = 'zhongtong'; break;
+}
+$GLOBALS['smarty']->assign('k_id', $k_id);
+?>
+<iframe width=100% height=auto frameborder=0 scrolling=auto src=http://wap.kuaidi100.com/wap_result.jsp?rand=20120517&id={$k_id}&fromWeb=null&&postid={$order.invoice_no_old}></iframe>
+{/if}

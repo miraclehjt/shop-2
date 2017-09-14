@@ -1,0 +1,44 @@
+{if $myprice.is_end eq false}
+	{if $ecs_session.user_id}
+	<div class="actions">
+		<form method="post" action="javascript:bid()" id="snatch_form">
+			<p class="info"><strong>{$lang.au_i_want_bid}{$lang.colon}</strong><input type="text" name="price" size="6"><span class="stock">({$lang.my_integral}{$myprice.pay_points})</span></p>
+			<p class="submit"><input type="submit" value="{$lang.btn_bidding}" class="bright_button"></p>
+			<input type="hidden" name="snatch_id" value="{$id}">
+		</form>
+	</div>
+	{if $myprice.bid_price}
+	<dl class="price_list table">
+		<dt class="title">{$lang.me_now_bid}</dt>
+		<dt class="head">{$lang.bid}</dt>
+		<dd class="head">{$lang.curr_status}</dd>
+		{foreach from=$myprice.bid_price item=item}
+		<dt>{if $item.is_only}{$item.price}{else}<del>{$item.price}</del>{/if}</dt>
+		<dd class="price {cycle values="odd,even"}">{if $item.is_only}{$lang.only_price}{else}{$lang.not_only_price}{/if}</dd>
+		{/foreach}
+	</dl>
+	{/if}
+	{else}
+	<div class="notice_box"><p>{$lang.snatch_needful}</p></div>
+	{/if}
+{else}
+	{if $result}
+	<div class="success_box">
+		<p>{$lang.view_snatch_result}</p>
+		<p>{$lang.victory_user}{$result.user_name}</p>
+		<p>{$lang.price_bid}{$result.formated_bid_price}</p>
+		<p>{$lang.bid_time}{$result.bid_time}</p>
+	</div>
+	{if $result.order_count eq 0 and $result.user_id eq $smarty.session.user_id}
+	<div class="actions">
+		<form name="buy" action="snatch.php" method="get">
+			<p class="submit"><input type="submit" name="buy" value="{$lang.btn_buy}" class="bright_button"></p>
+			<input type="hidden" name="act" value="buy"/>
+			<input type="hidden" name="id" value="{$id}"/>
+		</form>
+	</div>
+	{/if}
+{else}
+	<div class="error_box"><p>{$lang.not_victory_user}</p></div>
+{/if}
+{/if}

@@ -1,0 +1,16 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="no-margin">
+  <div class="userDefinedArea">
+    <div class="userDefinedArea_cate">
+      <h3 style="color:{$navcolor};">店内分类</h3>
+      <!--{foreach from=$categories item=cat name=catname}-->
+      <div class="ghs_cate">
+        <h4 class="mall_cate"><a title="{$cat.name|escape:html}" href="{$cat.url}" style="color:{$navcolor};">{$cat.name|escape:html} &gt;</a></h4>
+        <!--{foreach from=$cat.cat_id item=child name=name}-->
+        <p class="cate_title"><A  title="{$child.name|escape:html}" href="{$child.url}" >{$child.name|escape:html}</A></p>
+        <!--{/foreach}--> 
+      </div>
+      <!--{/foreach}--> 
+    </div>
+  </div>
+</div>

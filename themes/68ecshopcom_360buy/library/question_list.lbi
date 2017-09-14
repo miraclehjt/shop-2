@@ -1,0 +1,324 @@
+<?php
+$this->assign('templatepath',  'themes/'.$GLOBALS['_CFG']['template']);
+?>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+.f_l {
+	float: left;
+}
+.f_r {
+	float: right;
+}
+.f1 {
+	color: #ff6666;
+}
+.f2 {
+	color: #ff6666;
+	font-weight: bold;
+	margin-right: 15px;
+}
+.f3 {
+	color: #9e9e9e;
+}
+.f4 {
+	color: #fe596a;
+}
+.word {
+	word-break: break-all;
+}
+.word_question {
+	background: url(images/icon_question.gif) no-repeat 0 3px;
+	text-indent: 18px;
+}
+.word_reply {
+	background: url(images/icon_reply.gif) no-repeat 0 3px;
+	text-indent: 18px;
+}
+.question {
+	width: 720px;
+	padding: 15px 0;
+	overflow: hidden;
+}
+.question_tit {
+	height: 33px;
+	line-height: 33px;
+	font-size: 12px;
+	background: #f1f1f1;
+	text-align: right;
+	padding: 0 12px;
+	font-weight: 100;
+}
+.question_tit span {
+	float: left;
+	width: auto;
+	height: 33px;
+	line-height: 33px;
+	text-align: left;
+	font-weight: bold;
+	color: #56a5ee;
+	padding-left: 8px;
+}
+.comments {
+	list-style-type: none;
+}
+.comments li {
+	background: url(images/lineBg_question.gif) repeat-x left bottom;
+	padding: 8px 8px 3px 5px;
+	text-align: left;
+	margin-bottom: 8px;
+}
+.comments li img {
+	position: absolute;
+	right: 0px;
+	top: 3px;
+}
+.comments li p {
+	margin: 3px auto;
+	text-align: left;
+}
+.captcha {
+	margin-left: 0px;
+	position: relative;
+	top: -1px;
+*margin-left:8px;
+*position:relative;
+	top: 3px;
+	cursor: pointer;
+}
+.blank {
+	height: 8px;
+	line-height: 8px;
+	clear: both;
+	visibility: hidden;
+}
+.blank5 {
+	height: 5px;
+	line-height: 5px;/* _margin:-3px 0;*/
+	clear: both;
+	visibility: hidden;
+}
+.B_blue {
+	border: 1px solid #c5e4ff;
+}
+/*翻页*/
+.pagebar {
+	height: 40px;
+	padding-top: 10px;
+	float: right;
+	font-size: 12px;
+}
+.pagebar img {
+	position: relative;
+	top: 2px;
+}
+.pagebar a {
+	display: block;
+	float: left;
+	font-size: 12px;
+	margin: 0 2px;
+	color: #0066cc;
+	text-decoration: none;
+}
+.pagebar a:hover {
+	color: #ff5a6a;
+	text-decoration: none;
+}
+.pagebar .page_now {
+	display: block;
+	float: left;
+	margin: 0 5px;
+	color: #ff5a6a;
+	font-weight: bold;
+	background: #fff;
+}
+#pager {
+	font-size: 12px;
+}
+#pager a {
+	font-size: 12px;
+	color: #666666;
+	text-decoration: none;
+	background: none;
+}
+</style>
+<!--用户咨询 START-->
+<!-- {if $question_list} -->
+<div style="width:100%;">
+  <ul style="padding-top:15px; padding-left:15px; padding-right:15px;">
+    <!-- {foreach from=$question_list name="question_list" item=comment} -->
+    <li style=" border-bottom:#CCC 1px dotted; line-height:25px; padding-bottom:10px;">
+      <ul>
+        <li> <span style="color:#9c9a9c">网&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;友：</span> <span style="color:#9C9A9C;"><!-- {if $comment.username} -->{$comment.username|escape:html}<!-- {else} -->{$lang.anonymous}<!-- {/if} --> {$comment.add_time} </span> </li>
+        <li> <span style="color:#666666">咨询内容：</span> <span style="color:#666666">{$comment.content} </span> </li>
+        {if $comment.re_content}
+        <li> <span   style="color:#ff9900;">网站回复：</span> <span style="color:#FF6500;">{$comment.re_content} </span> </li>
+        {/if}
+      </ul>
+    </li>
+    <!-- {/foreach} -->
+  </ul>
+</div>
+<div class="blank"></div>
+<!-- {/if} --> 
+<!--翻页 start-->
+<div id="pagebar" style="float:right; " >
+  <form name="selectPageForm" action="{$smarty.server.PHP_SELF}" method="get">
+    <!-- {if $pager.styleid eq 0 } -->
+    <div id="pager" class="f_r" > {$lang.pager_1}{$pager.record_count}{$lang.pager_2}{$lang.pager_3}{$pager.page_count}{$lang.pager_4} <span> <a href="{$pager.page_first}">{$lang.page_first}</a> <a href="{$pager.page_prev}">{$lang.page_prev}</a> <a href="{$pager.page_next}">{$lang.page_next}</a> <a href="{$pager.page_last}">{$lang.page_last}</a> </span> 
+      <!--{foreach from=$pager.search key=key item=item}-->
+      <input type="hidden" name="{$key}" value="{$item}" />
+      <!--{/foreach}--> 
+    </div>
+    
+    <!-- {/if} -->
+  </form>
+  <script type="Text/Javascript" language="JavaScript">
+        <!--
+        {literal}
+        function selectPage(sel)
+        {
+          sel.form.submit();
+        }
+        {/literal}
+        //-->
+        </script> 
+</div>
+<!--翻页 END-->
+
+<div class="blank"></div>
+
+<!--咨询表单 start-->
+<div style="clear:both;width:100%;">
+  <div class="tab_title"><span>发表咨询</span></div>
+  <table cellpadding=2 cellspacing=2 width="100%" class="question_table">
+    <form action="javascript:;" onsubmit="submitQuestion(this)" method="post" name="questionForm" id="questionForm">
+      <tr>
+        <td colspan=2 align=left style="color:#666666; padding:15px;">声明：您可在购买前对产品包装、颜色、运输、库存等方面进行咨询，我们有专人进行回复！因厂家随时会更改一些产品的包装、颜色、产地等参数，所以该回复仅在当时对提问者有效，其他网友仅供参考！咨询回复的工作时间为：周一至周五，9:00至18:00，请耐心等待工作人员回复。 </td>
+      </tr>
+      <tr>
+        <td width="100" align="right">用户名：</td>
+        <td {if !$enabled_captcha_question}{/if}><!--{if $smarty.session.user_name}-->{$smarty.session.user_name}<!--{else}-->{$lang.anonymous}<!--{/if}--></td>
+      </tr>
+      <tr>
+        <td  align="right" >E-mail：</td>
+        <td ><input type="text" name="email" id="email"  maxlength="100" value="{$smarty.session.email|escape}" class="inputBorder"/></td>
+      </tr>
+      <tr>
+        <td align="right">提问类型：</td>
+        <td><input type="radio" name="question_type" value="0" />
+          商品
+          <input type="radio" name="question_type" value="1" />
+          配送
+          <input type="radio" name="question_type" value="2" />
+          支付
+          <input type="radio" name="question_type" value="3" />
+          售后 </td>
+      </tr>
+      <tr>
+        <td align="right" valign="top">咨询内容：</td>
+        <td><textarea name="content" class="inputBorder" style="height:50px; width:580px;"></textarea>
+          <input type="hidden" name="id" value="{$id}" /></td>
+      </tr>
+      
+      <!-- 判断是否启用验证码{if $enabled_captcha_question} -->
+      <tr>
+        <td align="right" >{$lang.comment_captcha}：</td>
+        <td><input type="text" name="captcha"  class="inputBorder" style="width:50px;"/>
+          <img src="captcha.php?is_zixun=1&{$rand}" alt="captcha" onClick="this.src='captcha.php?is_zixun=1&'+Math.random()" class="captcha"></td>
+      </tr>
+      <!-- {/if} -->
+      <tr>
+        <td>&nbsp;</td>
+        <td height=50><input name="" type="submit"  value="提交" style="background-color: #E74649;background-image: linear-gradient(to bottom, #E74649 0px, #DF3033 100%);border: 0 none;padding:0px;color: #FFFFFF;cursor: pointer;border-radius: 3px;cursor: default;display: block;font: 700 14px/29px verdana;width:72px;height:29px; cursor:pointer"></td>
+      </tr>
+    </form>
+  </table>
+</div>
+<!--评论表单 end-->
+
+<div class="blank"></div>
+<!--用户评论 END--> 
+
+<script type="text/javascript">
+//<![CDATA[
+{foreach from=$lang.cmt_lang item=item key=key}
+var {$key} = "{$item}";
+{/foreach}
+{literal}
+/**
+ * 提交咨询信息
+*/
+function submitQuestion(frm)
+{
+  var cmt = new Object;
+
+  //cmt.username        = frm.elements['username'].value;
+  cmt.email           = frm.elements['email'].value;
+  cmt.content         = frm.elements['content'].value;
+  cmt.id              = frm.elements['id'].value;
+  cmt.enabled_captcha_question = frm.elements['enabled_captcha_question'] ? frm.elements['enabled_captcha_question'].value : '0';
+  cmt.captcha         = frm.elements['captcha'] ? frm.elements['captcha'].value : '';
+  cmt.question_type            = 0;
+
+  for (i = 0; i < frm.elements['question_type'].length; i++)
+  {
+    if (frm.elements['question_type'][i].checked)
+    {
+       cmt.question_type = frm.elements['question_type'][i].value;
+     }
+  }
+
+  if (cmt.email.length > 0)
+  {
+     if (!(Utils.isEmail(cmt.email)))
+     {
+        alert(cmt_error_email);
+        return false;
+      }
+   }
+   else
+   {
+        alert(cmt_empty_email);
+        return false;
+   }
+
+   if (cmt.content.length == 0)
+   {
+      alert(cmt_empty_content);
+      return false;
+   }
+
+   if (cmt.enabled_captcha_question > 0 && cmt.captcha.length == 0 )
+   {
+      alert(captcha_not_null);
+      return false;
+   }
+
+   Ajax.call('question.php', 'cmt=' + $.toJSON(cmt), questionResponse, 'POST', 'JSON');
+   return false;
+}
+
+/**
+ * 处理提交评论的反馈信息
+*/
+  function questionResponse(result)
+  {
+    if (result.message)
+    {
+      alert(result.message);
+    }
+
+    if (result.error == 0)
+    {
+      var layer = document.getElementById('ECS_QUESTION');
+
+      if (layer)
+      {
+        layer.innerHTML = result.content;
+      }
+      question_type_curr(1, result.goods_id, result.question_type)
+    }
+  }
+{/literal}
+//]]>
+</script>

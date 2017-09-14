@@ -1,0 +1,41 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="sidebar-nav" style="display:none">
+<ul class="choose">
+  <li class="nav1"><a class="cur" href="#"><span>折扣</span></a></li>
+  <li class="nav2"><a class="" href="#"><span>减免</span></a></li>
+  <li class="nav3"><a class="" href="#"><span>赠品</span></a></li>
+  </ul>
+</div> 
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+var headHeight2=200;  //这个高度其实有更好的办法的。使用者根据自己的需要可以手工调整。
+ 
+var top=$(".top");       //要悬浮的容器的id
+$(window).scroll(function(){ 
+ 
+if($(this).scrollTop()>headHeight2){ 
+top.removeClass("disabled");  
+}
+else{ 
+top.addClass("disabled"); 
+} 
+}) 
+})
+$(".top").click(function(){
+$('body,html').animate({scrollTop:0},800);
+return false;
+});
+$("#mod-fold").click(function(){
+$('.sidebar-nav').hasClass('fold') ? $('.sidebar-nav').removeClass('fold') : $('.sidebar-nav').addClass('fold');
+});
+</script>
+
+<script type="text/javascript">
+$('.choose li a').click(function(){
+	$('.choose li').each(function() {
+        $(this).children('a').removeClass('cur');
+    });
+	$(this).addClass('cur');
+});
+</script>

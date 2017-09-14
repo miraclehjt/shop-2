@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link rel="stylesheet" type="text/css" href="themes/68ecshopcom_360buy/css/exchange.css" />
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-1.9.1.min.js" ></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+{* 包含脚本文件 *}
+{insert_scripts files='common.js'}
+</head>
+<body>
+<div id="site-nav"> 
+  <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+  <div class="blank"></div>
+  <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+  <div class="w main clearfix">
+    <div id="JS_slider" class="act-slider Left">
+      <div class="stage">
+        <table id="JS_slide_stage" cellpadding="0" spellcheck="0" border="0">
+          <tbody>
+            <tr>
+              <td><!-- TemplateBeginEditable name="积分商城banner广告1" --> <!-- #BeginLibraryItem "/library/ad_position.lbi" --> {insert name='ads' id=$ads_id num=$ads_num} <!-- #EndLibraryItem --> <!-- TemplateEndEditable --></td>
+              <td><!-- TemplateBeginEditable name="积分商城banner广告2" --> <!-- #BeginLibraryItem "/library/ad_position.lbi" --> {insert name='ads' id=$ads_id num=$ads_num} <!-- #EndLibraryItem --> <!-- TemplateEndEditable --></td>
+              <td><!-- TemplateBeginEditable name="积分商城banner广告3" --> <!-- #BeginLibraryItem "/library/ad_position.lbi" --> {insert name='ads' id=$ads_id num=$ads_num} <!-- #EndLibraryItem --> <!-- TemplateEndEditable --></td>
+              <td><!-- TemplateBeginEditable name="积分商城banner广告4" --> <!-- #BeginLibraryItem "/library/ad_position.lbi" --> {insert name='ads' id=$ads_id num=$ads_num} <!-- #EndLibraryItem --> <!-- TemplateEndEditable --></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="JS_slide_nav" class="nav"> 
+      	<a href="javascript:;" class="current"></a> 
+        <a href="javascript:;" class=""></a> 
+        <a href="javascript:;" class=""></a> 
+        <a href="javascript:;" class=""></a> 
+      </div>
+    </div>
+    <div class="spot-goods Right">
+      <h4>火爆兑换</h4>
+      <ul id="JS_spot_goods">
+        <!--{foreach from=$hot_goods item=goods name=goods}-->
+        <li {if $smarty.foreach.goods.first}class="open"{/if}>
+          <div class="show">
+          	<span class="index">{$smarty.foreach.goods.iteration}</span>
+            <a href='{$goods.url}' target="_blank" title="{$goods.name|escape:html}">{$goods.name}</a>
+            <span class="price red">积分：{$goods.exchange_integral}</span>
+          </div>
+          <div class="hide">
+            <div class="title">
+            	<span class="index">{$smarty.foreach.goods.iteration}</span>
+                <a href='{$goods.url}' target="_blank" title="{$goods.name|escape:html}">{$goods.name}</a>
+            </div>
+            <div class="detail"> 
+            	<a href='{$goods.url}' target="_blank" title="{$goods.name|escape:html}" class="img">
+                	<img src="{$goods.thumb}" width="122" height="122" alt="{$goods.name|escape:html}">
+                </a>
+                <div class="number">
+                  <p class="p1"><strong>积分：{$goods.exchange_integral}</strong></p>
+                  <p class="p2"><a href='{$goods.url}' target="_blank">立即兑换</a></p>
+                </div>
+            </div>
+          </div>
+        </li>
+        <!--{/foreach}-->
+      </ul>
+    </div>
+  </div>
+  <div class="blank"></div>
+  <div class="w act-banner"> 
+  <!-- TemplateBeginEditable name="积分商城通栏广告" --> <!-- #BeginLibraryItem "/library/ad_position.lbi" --> {insert name='ads' id=$ads_id num=$ads_num} <!-- #EndLibraryItem --> <!-- TemplateEndEditable --> 
+  </div>
+  <!-- {if isset($goods_list)} -->
+  <div class="blank"></div>
+  <!-- #BeginLibraryItem "/library/exchange_list.lbi" --><!-- #EndLibraryItem --> 
+  <!-- {/if} --> 
+  <script type="text/javascript">
+window.PAGESTR = '/activity-page-1-show_type-0-sort-total_sold_yes_count-order-desc.html';
+// 焦点图
+$(function(){
+    var slider = $('#JS_slider'),
+    sliderWidth = 910,
+    stage = $('#JS_slide_stage'),
+    list = stage.find('img'),
+    len = list.length,
+    nav = $('#JS_slide_nav a'),
+    pTimer,
+    index = 0;
+
+    function move(index) {
+        var distance = 0 - index * sliderWidth;
+        stage.stop(true, false).animate({'margin-left':distance+'px'}, 300);
+        nav.removeClass('current').eq(index).addClass('current');
+	
+        // 图片加载
+        var img = list.eq(index)
+		var src = new src; 
+        img.attr('src',  src );
+		
+    }
+
+    function auto() {
+        move(index);
+        index++;
+        if ( index == len  ) {
+            index = 0
+        }
+    }
+    pTimer = setInterval(function(){
+        auto();
+    }, 3000);
+
+    slider.hover(function(){
+        clearInterval(pTimer);
+    }, function(){
+        pTimer = setInterval(function(){
+            auto();
+        }, 5000);
+    });
+
+    nav.mouseenter(function(){                                                                      
+        index = nav.index(this);
+        move(index);
+    });
+});
+
+// 现货特价
+$(function(){
+    var item = $('#JS_spot_goods li');
+    item.hover(function(){
+        item.removeClass('open')
+        $(this).addClass('open');
+        var img = $(this).find('img'),
+        src = img.attr('data-lazy');
+
+        img.attr('src', src);
+    });
+});
+</script>
+  <div class="blank"></div>
+  <!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem --> 
+  <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+</div>
+</body>
+</html>

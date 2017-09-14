@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>{$page_title}</title>
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.js"></script>
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/TouchSlide.1.1.js"></script>
+<!--v_shop.css-->
+<link href="themesmobile/68ecshopcom_mobile/css/v_shop.css" type="text/css" rel="stylesheet">
+</head>
+<body style=" background:#F5F5F5">
+<!--header-->
+<div class="header"> 
+<div class="user_logo">
+<span>
+{if $user_info.headimgurl}<img src="{$user_info.headimgurl}" alt="店铺logo"/>{else}<img src="themesmobile/68ecshopcom_mobile/images/v-shop/tx.jpg" alt="头像"/>{/if}
+</span>
+<h2>{if $dp_info.dianpu_name}{$dp_info.dianpu_name}的小店{/if}</h2>
+</div>
+<div class="header_dom">
+<dl>
+<dd class="b"><a href="v_shop_list.php"><span>{$goods_count}</span>全部商品</a></dd>
+<dd class="b"><a href="v_user_haibao.php?user_id={$user_id}"><span class="h_collect"></span>专属海报</a></dd>
+<dd><a href="v_user_erweima.php?user_id={$user_id}"><span class="h_erweima"></span>二维码</a></dd>
+</dl>
+</div>
+</div>
+<!--分类-->
+<section class="index_floor">
+  <div class="floor_body">
+    <h2><em></em>热门分类</h2>
+    <div id="vshop_cat" class="scroll_hot">
+      <div class="bd">
+        <ul>
+        {foreach from=$cat_list item=list name=cat_list}
+          <li><a href="v_shop_list.php?cat_id={$list.cat_id}">{$list.cat_name}</a></li>
+
+          <!--{if $smarty.foreach.cat_list.iteration%6 eq 0 && $smarty.foreach.cat_list.iteration neq $smarty.foreach.cat_list.total}--> </ul>
+        <ul>
+          <!--{/if}-->{/foreach}</div>
+        <div class="hd">
+          <ul></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="text/javascript">
+    TouchSlide({ 
+      slideCell:"#vshop_cat",
+      titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+      effect:"leftLoop", 
+      autoPage:true, //自动分页
+      //switchLoad:"_src" //切换加载，真实图片路径为"_src" 
+    });
+  </script>
+
+<!--广告位1-->
+<div class="main ">
+<div class="adv pad">
+<!-- TemplateBeginEditable name="微分销店铺广告1" -->
+<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
+{insert name=ads id=$ads_id num=$ads_num}
+ <!-- #EndLibraryItem -->
+<!-- TemplateEndEditable -->
+<div style=" width:100%; height:5px; margin:auto"></div>
+<!-- TemplateBeginEditable name="微分销店铺广告2" -->
+<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
+{insert name=ads id=$ads_id num=$ads_num}
+ <!-- #EndLibraryItem -->
+<!-- TemplateEndEditable -->
+</div>
+</div>
+<!--楼层1-->
+<div class="main top white">
+<div class="title"><i></i>超值购</div>
+<dl class="flo_one">
+<dt class="b"><!-- TemplateBeginEditable name="微分销店铺楼层广告1" -->
+<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
+{insert name=ads id=$ads_id num=$ads_num}
+ <!-- #EndLibraryItem -->
+<!-- TemplateEndEditable --></dt>
+<dd><!-- TemplateBeginEditable name="微分销店铺楼层广告2" -->
+<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
+{insert name=ads id=$ads_id num=$ads_num}
+ <!-- #EndLibraryItem -->
+<!-- TemplateEndEditable --></dd>
+<dd class="b_top"><!-- TemplateBeginEditable name="微分销店铺楼层广告3" -->
+<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
+{insert name=ads id=$ads_id num=$ads_num}
+ <!-- #EndLibraryItem -->
+<!-- TemplateEndEditable --></dd>
+</dl>
+</div> 
+
+<div class="main top white">
+<div class="title"><i></i>特色购</div>
+<dl class="flo_one">
+<dt class="b"><!-- TemplateBeginEditable name="微分销店铺楼层广告4" -->
+<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
+{insert name=ads id=$ads_id num=$ads_num}
+ <!-- #EndLibraryItem -->
+<!-- TemplateEndEditable --></dt>
+<dd><!-- TemplateBeginEditable name="微分销店铺楼层广告5" -->
+<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
+{insert name=ads id=$ads_id num=$ads_num}
+ <!-- #EndLibraryItem -->
+<!-- TemplateEndEditable --></dd>
+<dd class="b_top"><!-- TemplateBeginEditable name="微分销店铺楼层广告6" -->
+<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
+{insert name=ads id=$ads_id num=$ads_num}
+ <!-- #EndLibraryItem -->
+<!-- TemplateEndEditable --></dd>
+</dl>
+</div> 
+<!--全部商品-->
+<div class="main top white">
+<div class="title"><i></i>全部商品<em><a href="v_shop_list.php">更多></a></em></div>
+{foreach from=$goods_list item=list}
+<dl class="goods_more">
+<dt><a href="goods.php?id={$list.goods_id}&user_id={$user_id}"><img src="../../{$list.goods_thumb}"/></a></dt>
+<dd>
+<a href="goods.php?id={$list.goods_id}&user_id={$user_id}">
+<p>{$list.goods_name}</p>
+<span><strong>￥{$list.shop_price}</strong><em>￥{$list.market_price}</em></span>
+<i>已售：{$list.wap_count}</i>
+</a>
+</dd>
+</dl>
+{/foreach}
+</div>
+<!-----底部悬浮菜单---->
+<!-- #BeginLibraryItem "/library/footer_nav1.lbi" --><!-- #EndLibraryItem --> 
+<!---返回顶部-->
+<script>
+function goTop(){
+	$('html,body').animate({'scrollTop':0},600);
+}
+</script>
+<a href="javascript:goTop();" class="gotop"><img src="themesmobile/68ecshopcom_mobile/images/v-shop/topup.png"></a> 
+</body>
+</html>

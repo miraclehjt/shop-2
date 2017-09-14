@@ -1,0 +1,67 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--{foreach from=get_categories_tree(0) item=cat name=cat0}-->
+{if $smarty.foreach.cat0.iteration < 9}
+<div class="list" onmouseover="_show_(this,{'source':'JS_side_cat_textarea_{$smarty.foreach.cat0.iteration}','target':'JS_side_cat_list_{$smarty.foreach.cat0.iteration}'});" onmouseout="_hide_(this);">
+	<dl class="cat" {if $smarty.foreach.cat0.last || $smarty.foreach.cat0.iteration eq 8}style="border:none"{/if}>
+  		<dt class="catName"> 
+        	<strong class="cat{$smarty.foreach.cat0.iteration} Left">
+            	<a href="{$cat.url}" target="_blank" title="进入{$cat.name}频道">{$cat.name}</a>
+            </strong>
+    		<p> 
+      		<!--{foreach from=$cat.cat_id item=child name=namechild}--> 
+      			<a href="{$child.url}" target="_blank" title="{$child.name|escape:html}">{$child.name|escape:html}</a> 
+      		<!--{/foreach}--> 
+    		</p>
+  		</dt>
+	</dl>
+	<textarea id="JS_side_cat_textarea_{$smarty.foreach.cat0.iteration}" class="none">
+		<div class="topMap clearfix">
+			<div class="subCat clearfix">
+            <!--{foreach from=$cat.cat_id item=child name=namechild}-->
+				<div class="list1 clearfix" {if $smarty.foreach.namechild.last}style="border:none"{/if}>
+					<div class="cat1">
+                        <a href="{$child.url}" target="_blank" title="{$child.name|escape:html}">{$child.name|escape:html}：</a>
+                    </div>
+					<div class="link1">
+                    <!--{foreach from=$child.cat_id item=childer name=childername}-->       
+                        <a href="{$childer.url}" target="_blank" title="{$childer.name|escape:html}">{$childer.name|escape:html}</a>
+                    <!--{/foreach}-->     
+        			</div>
+				</div>
+            <!--{/foreach}-->					
+			</div>
+			<div class="subBrand">
+               <?php
+	 $cat_info = get_cat_info_ex($GLOBALS['smarty']->_var['cat']['id']);
+
+	$GLOBALS['smarty']->assign('index_image',get_advlist('导航菜单-'.$cat_info['cat_id'].'-右侧-促销专题', 5));
+	  ?>
+             <!-- {if $index_image} -->
+              <dl class="categorys-promotions">
+                <dt>促销活动</dt>
+                <dd>
+                  <ul>
+				  {foreach from=$index_image item=ad name=index_image}
+                    <li><a target="_blank" href="{$ad.url}"><img src="{$ad.image}"></a></li>
+                  {/foreach}
+                  </ul>
+                </dd>
+              </dl>
+			  <!-- {/if} -->
+              <dl class="categorys-brands">
+                 <dt>推荐品牌</dt>
+                 <dd>
+                 	<ul>
+                        <!--{foreach from=get_brands1($GLOBALS['smarty']->_var['cat']['id']) item=bchilder}-->
+                        <li><a target="_blank" href="{$bchilder.url}">{$bchilder.brand_name|escape:html}</a></li>
+                        <!--{/foreach}-->
+                    </ul>
+                  </dd>
+                </dl>
+              </div>
+		</div>
+	</textarea>
+	<div id="JS_side_cat_list_{$smarty.foreach.cat0.iteration}" class="hideMap Map_positon{$smarty.foreach.cat0.iteration}"></div>
+</div>
+{/if} 
+<!--{/foreach}--> 

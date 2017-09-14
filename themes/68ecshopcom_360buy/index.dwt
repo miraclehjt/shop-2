@@ -1,0 +1,479 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta property="qc:admins" content="377512662466053307063757" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="renderer" content="webkit" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link rel="alternate" type="application/rss+xml" title="RSS|{$page_title}" href="{$feed_url}" />
+<link rel="stylesheet" href="themes/68ecshopcom_360buy/css/index.css" />
+<link rel="stylesheet" type="text/css" href="themes/68ecshopcom_360buy/css/68ecshop_commin.css" />
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-lazyload.js"></script>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jqueryAll.index.min.js"></script>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jump.js"></script>
+<script language="javascript">
+    /*屏蔽所有的js错误*/
+    function killerrors() {
+        return true;
+    }
+    window.onerror = killerrors;
+</script>
+<script type="text/javascript">
+$(function(){
+	 $(".brand-wall-content img").each(function(k,img){
+		new JumpObj(img,10);
+	});
+});
+var compare_no_goods = "{$lang.compare_no_goods}";
+var btn_buy = "{$lang.btn_buy}";
+var is_cancel = "{$lang.is_cancel}";
+var select_spe = "{$lang.select_spe}";
+</script>
+{insert_scripts files='jquery.json.js,transport.js'} {insert_scripts files='common.js,index.js'}
+</head>
+<body>
+	<div id="site-nav">
+		<!-- #BeginLibraryItem "/library/page_headerindex.lbi" -->
+		<!-- #EndLibraryItem -->
+		<div class="home-focus-layout">
+			<!-- #BeginLibraryItem "/library/index_ad3.lbi" -->
+			<!-- #EndLibraryItem -->
+			<div class="right-sidebar">
+				<!-- #BeginLibraryItem "/library/order_type.lbi" -->
+				<!-- #EndLibraryItem -->
+				<div class="proclamation">
+					<ul class="tabs-nav">
+						<li class="tabs-selected">
+							<h3>招商入驻</h3>
+						</li>
+						<li class="">
+							<h3>商城公告</h3>
+						</li>
+					</ul>
+					<div class="tabs-panel">
+						<a href="apply_index.php" title="申请商家入驻；已提交申请，可查看当前审核状态。" class="store-join-btn" target="_blank"> </a>
+						<a href="supplier" target="_blank" class="store-join-help">
+							<i class="icon-cog"></i>
+							登录商家管理中心
+						</a>
+					</div>
+					<!-- TemplateBeginEditable name="首页主广告右侧公告" -->
+					<!-- #BeginLibraryItem "/library/cat_articles.lbi" -->
+					<div class="tabs-panel tabs-hide">
+						<ul class="mall-news">
+							<!--{foreach from=$articles item=article_item name=name}-->
+							<li>
+								<i></i>
+								<a target="_blank" href="{$article_item.url}" title="{$article_item.title}">{$article_item.short_title} </a>
+							</li>
+							<!--{/foreach}-->
+						</ul>
+					</div>
+					<!-- #EndLibraryItem -->
+					<!-- TemplateEndEditable -->
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+	   	function fun(type_id, no_have_val)
+	   	{
+	  	no_have = (typeof(no_have_val) == "undefined" ? 0 : no_have_val)
+	 	 Ajax.call('user.php?act=user_bonus', 'id=' + type_id + '&no_have=' + no_have, collectResponse, 'GET', 'JSON');
+		}
+		function collectResponse(result)
+		{
+			alert(result.message);	
+		}
+	    </script>
+		<!--{foreach from=$row item=row}-->
+		<!--{if $row.send_start_date<$time && $row.send_end_date>$time}-->
+
+		<!--{/if}-->
+		<!--{/foreach}-->
+		<!-- #BeginLibraryItem "/library/index_ad_group.lbi" -->
+		<!-- #EndLibraryItem -->
+		<div class="blank5"></div>
+		<div class="fp-brand-rec main-container" id="J_FpBrandRec">
+			<a class="brand-title" href="stores.php">热门品牌</a>
+			<div class="brand-content clearfix">
+				<div class="module">
+					<div class="brand-first">
+						<!-- TemplateBeginEditable name="首页店铺展示左侧广告" -->
+						<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
+						{insert name='ads' id=$ads_id num=$ads_num}
+						<!-- #EndLibraryItem -->
+						<!-- TemplateEndEditable -->
+					</div>
+				</div>
+				<div id="J_indexstore">{insert name='supplier_list'}</div>
+				<div class="module">
+					<div class="brand-today-b">
+						<!-- TemplateBeginEditable name="首页店铺展示右侧广告" -->
+						<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
+						{insert name='ads' id=$ads_id num=$ads_num}
+						<!-- #EndLibraryItem -->
+						<!-- TemplateEndEditable -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="blank5"></div>
+		<div class="home-sale-layout wrapper">
+			<div class="left-layout">
+				<!-- #BeginLibraryItem "/library/stores_tab.lbi" -->
+				<!-- #EndLibraryItem -->
+				<div class="tabs-panel sale-goods-list tabs-hide">
+					<ul>
+						<!--{foreach from=$promotion_goods item=goods name=index_goods}-->
+						<!--{if $smarty.foreach.index_goods.iteration < 6}-->
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a target="_blank" href="pro_goods.php?id={$goods.id}" title="{$goods.goods_style_name|escape:html}">{$goods.short_style_name}</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a target="_blank" href="pro_goods.php?id={$goods.id}" title="{$goods.goods_style_name|escape:html}">
+										<img src="{$goods.thumb}" alt="{$goods.goods_style_name|escape:html}">
+									</a>
+								</dd>
+								<dd class="goods-price">
+									商城价：
+									<em>
+										<!-- {if $goods.promote_price neq ""} -->
+										{$goods.promote_price}
+										<!-- {else}-->
+										{$goods.shop_price}
+										<!--{/if}-->
+									</em>
+								</dd>
+							</dl>
+						</li>
+						<!--{/if}-->
+						<!--{/foreach}-->
+					</ul>
+				</div>
+				<div class="tabs-panel sale-goods-list tabs-hide">
+					<ul>
+						<!-- {foreach name=index_goods from=$top_goods item=goods}-->
+						<!--{if $smarty.foreach.index_goods.iteration < 6}-->
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_name}</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}">
+										<img src="{$goods.thumb}" alt="{$goods.name|escape:html}">
+									</a>
+								</dd>
+								<dd class="goods-price">
+									商城价：
+									<em>
+										<!-- {if $goods.promote_price neq ""} -->
+										{$goods.promote_price}
+										<!-- {else}-->
+										{$goods.shop_price}
+										<!--{/if}-->
+									</em>
+								</dd>
+							</dl>
+						</li>
+						<!--{/if}-->
+						<!--{/foreach}-->
+					</ul>
+				</div>
+				<div class="tabs-panel sale-goods-list tabs-hide">
+					<ul>
+						<!--{foreach from=$hot_goods item=goods name=index_goods}-->
+						<!--{if $smarty.foreach.index_goods.iteration < 6}-->
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_name}</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}">
+										<img src="{$goods.thumb}" alt="{$goods.name|escape:html}">
+									</a>
+								</dd>
+								<dd class="goods-price">
+									商城价：
+									<em>
+										<!-- {if $goods.promote_price neq ""} -->
+										{$goods.promote_price}
+										<!-- {else}-->
+										{$goods.shop_price}
+										<!--{/if}-->
+									</em>
+								</dd>
+							</dl>
+						</li>
+						<!--{/if}-->
+						<!--{/foreach}-->
+					</ul>
+				</div>
+				<div class="tabs-panel sale-goods-list tabs-hide">
+					<ul>
+						<!--{foreach from=$best_goods item=goods name=index_goods}-->
+						<!--{if $smarty.foreach.index_goods.iteration < 6}-->
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_name}</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a target="_blank" href="{$goods.url}">
+										<img src="{$goods.thumb}" alt="{$goods.name|escape:html}">
+									</a>
+								</dd>
+								<dd class="goods-price">
+									商城价：
+									<em>
+										<!-- {if $goods.promote_price neq ""} -->
+										{$goods.promote_price}
+										<!-- {else}-->
+										{$goods.shop_price}
+										<!--{/if}-->
+									</em>
+								</dd>
+							</dl>
+						</li>
+						<!--{/if}-->
+						<!--{/foreach}-->
+					</ul>
+				</div>
+				<div class="tabs-panel sale-goods-list">
+					<ul>
+						<!--{foreach from=$new_goods item=goods name=index_goods}-->
+						<!--{if $smarty.foreach.index_goods.iteration < 6}-->
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_name}</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}">
+										<img data-original="{$goods.thumb}" src="themes/68ecshopcom_360buy/images/loading.gif" alt="{$goods.name|escape:html}">
+									</a>
+								</dd>
+								<dd class="goods-price">
+									商城价：
+									<em>
+										<!-- {if $goods.promote_price neq ""} -->
+										{$goods.promote_price}
+										<!-- {else}-->
+										{$goods.shop_price}
+										<!--{/if}-->
+									</em>
+								</dd>
+							</dl>
+						</li>
+						<!--{/if}-->
+						<!--{/foreach}-->
+					</ul>
+				</div>
+			</div>
+			<div class="right-sidebar">
+				<div class="title">
+					<h3>
+						<i></i>
+						限时折扣
+					</h3>
+				</div>
+				<div id="saleDiscount" class="sale-discount">
+					<ul>
+						<!--{foreach from=$promotion_goods item=goods name=index_goods key=key}-->
+						{if $smarty.foreach.index_goods.iteration > 5 and $smarty.foreach.index_goods.iteration < 10}
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a href="pro_goods.php?id={$goods.id}" title="{$goods.name|escape:html}">{$goods.short_style_name}</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a href="pro_goods.php?id={$goods.id}" title="{$goods.name|escape:html}">
+										<img src="{$goods.thumb}" alt="{$goods.name|escape:html}">
+									</a>
+								</dd>
+								<dd class="goods-price">
+									<!-- {if $goods.promote_price neq ""} -->
+									{$goods.promote_price}
+									<!-- {else}-->
+									{$goods.shop_price}
+									<!--{/if}-->
+									<span class="original">{$goods.market_price}</span>
+								</dd>
+								<dd class="goods-price-discount">
+									<em>{$goods.zhekou}</em>
+								</dd>
+								<dd class="time-remain" count_down="{$goods.lefttime}">
+									<i></i>
+									<span id="leftTime{$key}">
+										<em time_id="d"></em>
+										天
+										<em time_id="h"></em>
+										小时
+										<em time_id="m"></em>
+										分
+										<em time_id="s"></em>
+										秒
+									</span>
+								</dd>
+								<dd class="goods-buy-btn"></dd>
+							</dl>
+						</li>
+						<!-- 
+						<script type="text/javascript">
+						/**
+						Tday[{$key}] = new Date("{$goods.gmt_end_time}");
+						
+						window.setInterval(function()     
+						
+						{clock({$key});}, 1000);
+						**/
+						</script>
+						 -->
+						<!-- {/if} -->
+						<!--{/foreach}-->
+					</ul>
+					<div class="pagination">
+						<span style="opacity: 0.4;"></span>
+						<span style="opacity: 0.4;"></span>
+						<span style="opacity: 0.4;"></span>
+						<span style="opacity: 1;"></span>
+					</div>
+					<div class="arrow pre" style="opacity: 0;"></div>
+					<div class="arrow next" style="opacity: 0;"></div>
+				</div>
+			</div>
+		</div>
+		<div class="blank5"></div>
+		<!-- 楼层 - start -->
+		<div class="floorList">
+			<div class="floor"></div>
+			<!--StandardLayout Begin-->
+			<script type="text/javascript">
+			function Move(btn1,btn2,box,btnparent,shu){
+				var llishu=$(box).first().children().length;
+				var liwidth=121;
+				var boxwidth=llishu*liwidth-1;
+				var shuliang=llishu-shu;
+				$(box).css('width',''+boxwidth+'px');
+				var num=0;
+				$(btn1).click(function(){
+					num++;
+					if (num>shuliang) {
+						num=shuliang;
+					}
+					var move=-liwidth*num;
+					$(this).closest(btnparent).find(box).stop().animate({'left':''+move+'px'},300);
+				});
+				$(btn2).click(function(){
+					num--;
+					if (num<0) {
+						num=0;
+					}
+					var move=liwidth*num;
+					$(this).closest(btnparent).find(box).stop().animate({'left':''+-move+'px'},300);
+				})
+			}
+			</script>
+			<!-- TemplateBeginEditable name="商品分类楼层1" -->
+			<!-- #BeginLibraryItem "/library/cat_goods.lbi" -->
+			<!-- #EndLibraryItem -->
+			<!-- TemplateEndEditable -->
+			<!-- TemplateBeginEditable name="商品分类楼层2" -->
+			<!-- #BeginLibraryItem "/library/cat_goods.lbi" -->
+			<!-- #EndLibraryItem -->
+			<!-- TemplateEndEditable -->
+			<!-- TemplateBeginEditable name="商品分类楼层3" -->
+			<!-- #BeginLibraryItem "/library/cat_goods.lbi" -->
+			<!-- #EndLibraryItem -->
+			<!-- TemplateEndEditable -->
+			<!-- TemplateBeginEditable name="商品分类楼层4" -->
+			<!-- #BeginLibraryItem "/library/cat_goods.lbi" -->
+			<!-- #EndLibraryItem -->
+			<!-- TemplateEndEditable -->
+			<!-- TemplateBeginEditable name="商品分类楼层5" -->
+			<!-- #BeginLibraryItem "/library/cat_goods.lbi" -->
+			<!-- #EndLibraryItem -->
+			<!-- TemplateEndEditable -->
+			<!-- TemplateBeginEditable name="商品分类楼层6" -->
+			<!-- #BeginLibraryItem "/library/cat_goods.lbi" -->
+			<!-- #EndLibraryItem -->
+			<!-- TemplateEndEditable -->
+			<!-- TemplateBeginEditable name="商品分类楼层7" -->
+			<!-- #BeginLibraryItem "/library/cat_goods.lbi" -->
+			<!-- #EndLibraryItem -->
+			<!-- TemplateEndEditable -->
+			<!-- TemplateBeginEditable name="商品分类楼层8" -->
+			<!-- #BeginLibraryItem "/library/cat_goods.lbi" -->
+			<!-- #EndLibraryItem -->
+			<!-- TemplateEndEditable -->
+		</div>
+		<!-- 楼层 - end -->
+	</div>
+	<script type="text/javascript">
+	$(function(){
+		$(".anli_con").find(".anniu").hide();
+		$(".anli_con").hover(function(){
+			var num = $(this).find("li").length;
+			if(num > 10){
+		$(this).find(".anniu").show();
+			}
+	},
+	function(){
+	
+		$(this).find(".anniu").hide();
+	})
+	}) 
+	</script>
+	<div class="wrapper">
+		<div class="mt10">
+			<!-- TemplateBeginEditable name="首页底部横幅广告" -->
+			<!-- TemplateEndEditable -->
+		</div>
+	</div>
+	<div class="n-footer"></div>
+	<script type="text/javascript" src="themes/68ecshopcom_360buy/js/indexPrivate.min.js"></script>
+	<!-- #BeginLibraryItem "/library/page_footerindex.lbi" -->
+	<!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem "/library/site_bar.lbi" -->
+	<!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem "/library/left_bar.lbi" -->
+	<!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem "/library/arrive_notice_list.lbi" -->
+	<!-- #EndLibraryItem -->
+</body>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/home_index.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+var goods_id = "{$goods_id}";
+var goodsattr_style = {$cfg.goodsattr_style|default:1};
+var gmt_end_time = {$promote_end_time|default:0};
+{foreach from=$lang.goods_js item=item key=key}
+var {$key} = "{$item}";
+{/foreach}
+var goodsId = "{$goods_id}";
+var now_time = "{$now_time}";
+
+<!-- {literal} -->
+onload = function(){
+  //changePrice();
+  fixpng();
+  //ShowMyComments("{$goods.goods_id}",0,1);
+  try { onload_leftTime(); }
+  catch (e) {}
+}});
+<!-- {/literal} -->
+</script>
+</html>

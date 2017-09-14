@@ -1,0 +1,14 @@
+<!-- {if $is_full_page eq 1} -->
+<div class="bg-color-w">
+  <ul class="f-color-6 " id="article_list">
+<!-- {/if} -->
+    <!-- {foreach from=$artciles_list item=article} -->
+    <li class="ubb ub border-faxian bc-text ub-ac lis article article_p2" article_id='{$article.id}'>
+      <div class="lv_title ub-f1 ub ulev-9 ub-ver ut-m">{$article.short_title}</div>
+      <div class="fa fa-angle-right ulev2 sc-text"></div>
+    </li>
+    <!-- {/foreach} -->
+<!-- {if $is_full_page eq 1} -->
+  </ul>
+</div>
+<!-- {/if} -->

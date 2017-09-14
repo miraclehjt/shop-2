@@ -1,0 +1,54 @@
+{if $full_page}
+<!-- $Id: users_list.htm 17053 2015-02-10 06:50:26Z derek $ -->
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+
+<form method="POST" action="" name="listForm">
+
+<!-- start users list -->
+<div class="list-div" id="listDiv">
+{/if}
+<!--用户列表部分-->
+<table cellpadding="3" cellspacing="1">
+  <tr>
+    <th>分销商名称</th>
+    <th>总分成金额</th>
+  <tr>
+  {foreach from=$distrib_sort_list item=list key=key}
+  <tr>
+    <td align="center">{$list.user_name|escape}</td>
+    <td align="center">{$list.total_money}</td>
+  </tr>
+  {foreachelse}
+  <tr><td class="no-records" colspan="12">{$lang.no_records}</td></tr>
+  {/foreach}
+  <tr>
+      <td colspan="2" align="right">{include file="page.htm"}</td>
+  </tr>
+</table>
+
+{if $full_page}
+</div>
+<!-- end users list -->
+</form>
+<script type="text/javascript" language="JavaScript">
+<!--
+listTable.recordCount = {$record_count};
+listTable.pageCount = {$page_count};
+
+{foreach from=$filter item=item key=key}
+listTable.filter.{$key} = '{$item}';
+{/foreach}
+
+{literal}
+onload = function()
+{
+    document.forms['searchForm'].elements['keyword'].focus();
+    // 开始检查订单
+    startCheckOrder();
+}
+//-->
+</script>
+{/literal}
+{include file="pagefooter.htm"}
+{/if}

@@ -1,0 +1,61 @@
+<!-- $Id: bonus_type.htm 14216 2008-03-10 02:27:21Z testyang $ -->
+
+{if $full_page}
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<!-- start bonus_type list -->
+<form method="post" action="" name="listForm">
+<div class="list-div" id="listDiv">
+{/if}
+
+  <table cellpadding="3" cellspacing="1">
+    <tr>
+      <th>{$lang.type_name}</th>          
+      <th>{$lang.send_count}</th>
+	  <th>{$lang.use_date_valid}</th>  
+      <th>{$lang.handler}</th>
+    </tr>
+    {foreach from=$type_list item=type}
+    <tr>
+      <td class="first-cell">{$type.type_name|escape:html}</td>      
+      <td align="center"><span>{$type.send_count}</span></td>
+      <td align="center">{$type.use_date_valid}</td>
+      <td align="center">
+	    <a href="valuecard.php?act=send&amp;id={$type.type_id}&amp;send_by={$type.send_type}">{$lang.send}</a> |
+        <a href="valuecard.php?act=vc_list&amp;vc_type={$type.type_id}&amp;is_used=-1">{$lang.view}</a> |
+        <a href="valuecard.php?act=edit&amp;type_id={$type.type_id}">{$lang.edit}</a> |
+        <a href="javascript:;" onclick="listTable.remove({$type.type_id}, '{$lang.drop_confirm}')">{$lang.remove}</a></span></td>
+    </tr>
+      {foreachelse}
+    <tr><td class="no-records" colspan="10">{$lang.no_records}</td></tr>
+      {/foreach}
+    <tr>
+      <td align="right" nowrap="true" colspan="8">{include file="page.htm"}</td>
+    </tr>
+  </table>
+
+{if $full_page}
+</div>
+</form>
+<!-- end bonus_type list -->
+
+<script type="text/javascript" language="JavaScript">
+<!--
+  listTable.recordCount = {$record_count};
+  listTable.pageCount = {$page_count};
+
+  {foreach from=$filter item=item key=key}
+  listTable.filter.{$key} = '{$item}';
+  {/foreach}
+
+  {literal}
+  onload = function()
+  {
+     // 开始检查订单
+     startCheckOrder();
+  }
+  {/literal}
+//-->
+</script>
+{include file="pagefooter.htm"}
+{/if}

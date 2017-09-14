@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link rel="alternate" type="application/rss+xml" title="RSS|{$page_title}" href="{$feed_url}" />
+<link href="themes/{$template_dir}/images/ghs/css/customer.css" rel="stylesheet" type="text/css">
+{* 包含脚本文件 *}
+{insert_scripts files='common.js'}
+<script type="text/javascript" src="themes/{$template_dir}/images/ghs/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="themes/{$template_dir}/images/ghs/js/a_002.js"></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+<style>
+html { 
+overflow-x:hidden; /*隐藏水平滚动条*/
+} 
+</style>
+</head>
+<body>
+<div id="site-nav"> 
+<!-- #BeginLibraryItem "/../68ecshopcom_360buy/library/page_shopheader.lbi" --><!-- #EndLibraryItem -->
+</div>
+<link href="themes/{$template_dir}/images/ghs/css/ghs_style.css" rel="stylesheet" type="text/css" />
+<link href="themes/{$template_dir}/images/ghs/css/ghs_category.css" rel="stylesheet" type="text/css" />
+<!-- #BeginLibraryItem "/library/ghs_nav.lbi" --><!-- #EndLibraryItem -->
+<div class="layout-container">
+  <div class="layout-main" isfixed="1" >  
+		<!-- #BeginLibraryItem "/library/ghs_category.lbi" --><!-- #EndLibraryItem -->
+		<!-- {if $cat_pic} --> 
+  		<div class="no-margin">
+  			<div class="userDefinedArea_two">
+  				<a href="{$cat_pic_url}" target="_blank"><img src="{$cat_pic}"  class="" alt="" /></a> 
+  			</div>
+  		</div>
+		<!-- {/if} -->
+        <div class="no-margin no_margin_four">
+  			<div class="userDefinedArea_four">
+            	<!--组合搜索 开始-->
+				<!--{if $price_grade.1 || $filter_attr_list}-->
+				<div class="box">
+ <div class='forelist'>
+		<h3><span>{$lang.goods_filter}</span></h3>
+ </div>
+ <div class="screen-68">
+		
+		<!--{if $price_grade.1}-->
+		<div class="screeBox">
+		<strong>{$lang.price}：</strong>
+		<!--{foreach from=$price_grade item=grade}-->
+			<!-- {if $grade.selected} -->
+			<span class="scr-selected scr-select">{$grade.price_range}</span>
+			<!-- {else} -->
+			<a class="scr-select" href="{$grade.url}">{$grade.price_range}</a>&nbsp;&nbsp;
+			<!-- {/if} -->
+		<!--{/foreach}-->
+		</div>
+		<!--{/if}-->
+		<!--{foreach from=$filter_attr_list item=filter_attr}-->
+		<div class="screeBox">
+		<strong>{$filter_attr.filter_attr_name|escape:html} :</strong>
+			<!--{foreach from=$filter_attr.attr_list item=attr}-->
+				<!-- {if $attr.selected} -->
+				<span class="scr-select scr-selected">{$attr.attr_value}</span>
+				<!-- {else} -->
+				<a class="scr-select" href="{$attr.url}">{$attr.attr_value}</a>&nbsp;
+				<!-- {/if} -->
+			<!--{/foreach}-->
+		</div>
+		<!--{/foreach}-->
+ </div>
+</div>
+				<div class="blank"></div>
+				<!-- {/if} -->
+				<!--组合搜索 结束-->
+
+				<!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem -->
+				<!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
+            </div>
+        </div>
+  </div>
+</div>
+<div style="height:0px; line-height:0px; clear:both;"></div>
+<!-- #BeginLibraryItem "/../68ecshopcom_360buy/library/page_shopfooter.lbi" --><!-- #EndLibraryItem -->
+</body>
+</html>

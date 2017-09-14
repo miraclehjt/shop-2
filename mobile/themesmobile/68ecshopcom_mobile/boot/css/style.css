@@ -1,0 +1,32 @@
+
+
+body{
+	
+	font-family:'微软雅黑';
+	font-size:14px;
+	font-weight:bold;
+	color:#666;
+}
+
+#content{
+	width:700px;
+	height:300px;
+	margin:0 auto;
+	margin-top:50px;
+	overflow:hidden;
+}
+
+
+p.url1{
+	line-height:30px;
+	color:#fff;
+	background:#5CB85C;
+	padding:5px 20px;
+	font-family:'微软雅黑';
+	font-size:14px;
+	font-weight:bold;
+}
+
+#url2{
+	color:#990000;
+}

@@ -1,0 +1,20 @@
+<div class="ub bg-color-w m-btm1 p-all3 ubb ubt border-faxian">
+  <div class="h-w-4 goods-img"><img src="{$url}{$goods.goods_thumb}"/></div>
+  <div class="ub ub-ver ub-f1 m-l1">
+    <div class="f-color-zi text-change ub-f1"><font class="ulev-1">{$goods.goods_name}</font></div>
+    <div class="ub-ae">
+      <div class="ub umar-t1 ub-ac">
+        <div class="ulev-0 f-color-red ub-f1">{$goods.shop_price_formated}</div>
+        <div class="btn-red-2 ulev-1 ub-pe goods" id='buy_button' goods_id='{$goods_id}'>再次购买</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bg-color-w p-all3">
+  <div class="sun-con m-btm1"><font class="ulev-1 f-color-6">{$shaidan.message}</font></div>
+  <div class=""> 
+    <!--{foreach from=$shaidan_imgs key=key item=img}--> 
+    <img src="{$url}{$img.image}" class="ub-fh"> {$img.desc} 
+    <!--{/foreach}--> 
+  </div>
+</div>

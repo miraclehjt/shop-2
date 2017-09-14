@@ -1,0 +1,40 @@
+<table cellpadding=0 width="80%" cellpadding=5 cellspacing=5 style="padding:30px auto;margin:0 auto;">
+<tr><td height=40>
+<b>请选择区域：</b>
+<select name="region_id" onchange="change_PostmanBox(this.value);" >
+<option value="0">请选择</option>
+{foreach from=$district_list item=district}
+<option value="{$district.region_id}" {if $order.send_region_id eq $district.region_id}selected{/if} >{$district.region_name}</option>
+{/foreach}
+</select>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>快递员：</b>
+<select name="postman" id="postman_box">
+<option value="0">请选择</option>
+</select>
+</td></tr>
+<tr>
+<td style="padding:20px 25px;line-height:150%;border:1px solid #bbb;">
+<!-- {if !empty($order.deli)} -->
+<b>发货商家：</b>{$order.send_name}，地址：{$order.send_region_name}，电话（{$order.send_tel}）。
+<br><br>
+<b>收件人：</b>{$order.to_name}，地址：{$order.to_region_name}，电话（{$order.to_tel}）。
+<br><br>
+<!-- {else} -->
+<b>寄件人信息：</b>
+<br>区域（{$order.send_region_name}），包裹数（{$order.package_num}），重量（{$order.goods_weight}），{$order.goods_type}，联系人（{$order.send_name}），联系电话（{$order.send_tel}）。
+<br><br>
+<!-- {/if} -->
+<b>期望送货时间：</b>
+<br>{$order.send_time}
+</td>
+</tr>
+<tr>
+<td >
+<div style="text-align:center;padding:30px 0;">
+<input type="hidden" name="order_id" value="{$order.order_id}">
+<input type="hidden" name="act" value="set_postman_save">
+<input type="submit" name="submit1" value=" 确认发送 ">
+</div>
+</td>
+</tr>
+</table>

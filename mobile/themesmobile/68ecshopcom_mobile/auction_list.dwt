@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width">
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="themesmobile/68ecshopcom_mobile/css/ecsmart.css">
+<link rel="stylesheet" href="themesmobile/68ecshopcom_mobile/css/auction.css">
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.js"></script>
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/TouchSlide.1.1.js"></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+{* 包含脚本文件 *}
+{insert_scripts files='common.js'}
+</head>
+<body>
+<header id="header" class='header'>
+  <h1>拍卖列表</h1>
+  <a href="javascript:history.back(-1)" class="back">返回</a> 
+</header>
+<div id="scrollimg" class="scrollimg">
+	<div class="bd">
+		<ul>
+          {foreach from=$wap_auction_ad item=ad name=wap_auction_ad}
+          <li><a href="{$ad.url}"><img src="../{$ad.image}" width="100%" /></a></li>
+          {/foreach}
+		</ul>
+	</div>
+	<div class="hd">
+		<ul></ul>
+	</div>
+</div>
+<script type="text/javascript">
+				TouchSlide({ 
+					slideCell:"#scrollimg",
+					titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+					mainCell:".bd ul", 
+					effect:"leftLoop", 
+					autoPage:true,//自动分页
+					autoPlay:true //自动播放
+				});
+			</script>
+<div id="tbh5v0">
+  <section class="innercontent"> 
+  	 <!-- {if $auction_list} 如果有拍卖活动 --> 
+ 	<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTabCatGoods(name,cursel,n){
+for(i=1;i<=n;i++){
+var menu=document.getElementById(name+i);
+var con=document.getElementById("con_"+name+"_"+i);
+con.style.display=i==cursel?"block":"none";
+menu.className=i==cursel?"curr":"";
+}
+}
+//-->
+</script>
+	<div class="main">
+  	<div class="tab">
+    	<div class="tab_tit">
+    		<ul>
+        		<li class="curr" id="goods1" onclick="setTabCatGoods('goods',1,3)">正在进行</li>
+            	<li id="goods2" onclick="setTabCatGoods('goods',2,3)">即将开始</li>
+            	<li id="goods3" onclick="setTabCatGoods('goods',3,3)">已经结束</li>
+        	</ul>
+        </div>
+        <div class="tab_con">
+        	<div id="con_goods_1">
+            	<ul>
+                    <!-- {foreach from=$auction_list item=auction name=name} -->
+        		    <!-- {if $auction.check_time eq 0 && $auction.c_0 && $auction.imgfile_c neq ''} -->
+                       <li>
+            			<div class="con_top">
+                        	<span class="count"><font>{$auction.act_count}</font></br>次出价</span>
+                        	<a href="{$auction.url}"><img src="../../{$auction.act_imgfile}" /></a>
+                        </div>
+                        <div class="con_bottom">
+                        	<p class="name"><a href="{$auction.url}">{$auction.goods_name}</a></p>
+               				<p>{$lang.act_status}： 
+                				<!-- {if $auction.status_no eq 0} --> 
+                				{$lang.au_pre_start}
+                				<!-- {elseif $auction.status_no eq 1} --> 
+                				{$lang.au_under_way_1}
+                				<!-- {else} --> 
+                				{$lang.au_finished}
+                				<!-- {/if} -->
+                            </p>
+                			<p>{$lang.au_start_price}：{$auction.formated_start_price}</p>
+                			<!-- {if $auction.end_price gt 0} --> 
+                			<p>{$lang.au_end_price}：{$auction.formated_end_price}</p> 
+                			<!-- {/if} --> 
+                        </div>
+                    </li>
+                    <!-- {/if} --> 
+                    <!--{/foreach}--> 
+                </ul>
+            </div>
+            <div class="mc " id="con_goods_2">
+            	<ul>
+        			<!-- {foreach from=$auction_list item=auction name=name} -->
+        		    <!-- {if $auction.check_time eq 1 && $auction.c_1 && $auction.imgfile_c neq ''} -->
+                    <li>
+            			<div class="con_top">
+                        	<span class="count"><font>{$auction.act_count}</font></br>次出价</span>
+                            <a href="{$auction.url}"><img src="../../{$auction.act_imgfile}"  /></a>
+                        </div>
+                        <div class="con_bottom">
+                        	<p class="name"><a href="{$auction.url}">{$auction.goods_name}</a></p>
+               				<p>{$lang.act_status}： 
+                				<!-- {if $auction.status_no eq 0} --> 
+                				{$lang.au_pre_start}
+                				<!-- {elseif $auction.status_no eq 1} --> 
+                				{$lang.au_under_way_1}
+                				<!-- {else} --> 
+                				{$lang.au_finished}
+                				<!-- {/if} -->
+                            </p>
+                			<p>{$lang.au_start_price}：{$auction.formated_start_price}</p>
+                			<!-- {if $auction.end_price gt 0} --> 
+                			<p>{$lang.au_end_price}：{$auction.formated_end_price}</p> 
+                			<!-- {/if} --> 
+                        </div>
+                    </li>
+                    <!-- {/if} --> 
+                    <!--{/foreach}--> 
+                </ul>
+            </div>
+            <div class="mc " id="con_goods_3">
+            	<ul>
+        			<!-- {foreach from=$auction_list item=auction name=name} -->
+        		    <!-- {if $auction.check_time eq 2 && $auction.c_2 && $auction.imgfile_c neq ''} -->
+                    <li>
+            			<div class="con_top">
+                        	<span class="count"><font>{$auction.act_count}</font></br>次出价</span>
+                            <a href="{$auction.url}"><img src="../../{$auction.act_imgfile}"  /></a>
+                        </div>
+                        <div class="con_bottom">
+                        	<p class="name"><a href="{$auction.url}">{$auction.goods_name}</a></p>
+               				<p>{$lang.act_status}： 
+                				<!-- {if $auction.status_no eq 0} --> 
+                				{$lang.au_pre_start}
+                				<!-- {elseif $auction.status_no eq 1} --> 
+                				{$lang.au_under_way_1}
+                				<!-- {else} --> 
+                				{$lang.au_finished}
+                				<!-- {/if} -->
+                            </p>
+                			<p>{$lang.au_start_price}：{$auction.formated_start_price}</p>
+                			<!-- {if $auction.end_price gt 0} --> 
+                			<p>{$lang.au_end_price}：{$auction.formated_end_price}</p> 
+                			<!-- {/if} --> 
+                        </div>
+                    </li>
+                    <!-- {/if} --> 
+                    <!--{/foreach}--> 
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--{if $auction_list_hot}-->
+    <div class="auction_hot">
+    	<h2>今日热拍</h2>
+        <div class="mc">
+   		  <ul>
+      		<!-- {foreach from=$auction_list_hot item=auction name=name} -->
+      		<!-- {if $smarty.foreach.name.iteration lt 5 && $auction.check_time eq 0} -->
+      			<li>
+      				<div class="p-img"><a href="{$auction.url}"><img width="95" height="95" alt="{$auction.goods_name}"  src="../../{$auction.goods_img}"/></a></div>
+                    <div style="float:right;width:65%">
+      					<div class="rate"><a href="{$auction.url}">{$auction.goods_name|truncate:20}</a></div>
+      					<div class="p-price"><span>当前价：</span><strong>{$auction.formated_current_price}</strong></div>
+                    	<div class="p-count"><i></i><strong>{$auction.act_count}次</strong></div>
+                    </div>
+      			</li>
+      		<!-- {/if} --> 
+      		<!-- {/foreach} -->
+    		</ul>
+  		</div>
+    </div>
+    <!-- {/if} --> 
+    <div class="layout_list">
+    <h2>全部拍卖</h2>
+      <ul class="clearfix">
+      <!-- {foreach from=$auction_list item=auction name=name} 循环拍卖活动开始 -->
+  		<li {if $smarty.foreach.name.iteration mod 2 eq 1}class="layout_list_1"{/if}>
+        	<a href="{$auction.url}" target="_self" class="layout_pic"><img class="err-product" src="../../{$auction.goods_img}" ></a>
+          	<div class="layout_cont">
+            	<a class="layout_name" target="_self" href="{$auction.url}">{$auction.goods_name|truncate:26}</a>
+            	<div class="layout_price">当前价:<span>{$auction.formated_current_price}</span></div>
+                	{if $auction.status_no eq 0}
+                <a href="{$auction.url}" class="bid_btn1" target="_self">即将开始</a>
+                    {elseif $auction.status_no eq 1}
+                <a href="{$auction.url}" class="bid_btn2" target="_self">我要出价</a>
+                    {else}
+                <a href="{$auction.url}" class="bid_btn3" target="_self">已经结束</a>
+                    {/if}
+                </a>
+          	</div>
+        </li>
+        <!--{/foreach}--> 
+  	  </ul>
+    </div>
+	</div>    
+    <!-- {/if} -->
+  </section>
+</div>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/footer_nav.lbi" --><!-- #EndLibraryItem -->
+</body>
+</html>

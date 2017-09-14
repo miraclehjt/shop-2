@@ -1,0 +1,5 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<!-- {foreach from=$logdb name="keyword_list" item=log} -->
+<div id="li_{$smarty.foreach.keyword_list.index}" onclick="checkEmail('{$log}');setTip('{$log}');" onmouseover="this.className='search_t_div_22';" onmouseout="this.className='search_t_div_1';" class="search_t_div_11" title="{$log}">{$log}</div>
+<!-- {/foreach} -->

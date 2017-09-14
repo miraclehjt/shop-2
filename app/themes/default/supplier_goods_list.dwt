@@ -1,0 +1,64 @@
+{if $is_full_page eq 1}
+<div class="cover_div uhide" id="cover_div"></div>
+<div class="p-fixed" style="height:105px" id='header'>
+  <div class="uh ub bc-head-glist maxh head-h">
+    <div class="nav-btn1 _back" id='back_button'>
+      <div class="ub-img icon-back1"></div>
+    </div>
+    <div class="ub-f1 ub ub-ac uc-a1 bg-color uinn-ele2 m-t-b1">
+      <div class="uwh-ele1 ub-img ele-search"></div>
+      <div class="ub-f1 s-input1">
+	  <form action="" onsubmit="return false;">
+        <input type="search" class="ulev-9" id='search_input' value='{$keywords}' placeholder="{if $input_place_holder}{$input_place_holder}{else}搜索店铺内商品{/if}"/>
+		</form>
+      </div>
+    </div>
+    <div class="nav-btn1 ub-ver" id='nav-right'>
+      <div class="ub-img top-more"></div>
+      <div class='uhide' id='pop_menu1'>
+        <div id='small_angel1'></div>
+        <ul>
+          <li class='_to_index' id='select_index'>首页</li>
+          <li class='_to_cat' id='select_cty'>分类</li>
+          <li class='_to_cart' id='select_cart'>购物车</li>
+          <li class='_to_user' id='select_user'>用户中心</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="ub ub-ac shop-top-glist bg-color-w">
+    <div class="ub ub-ac ub-pc sort ub-f1" sort="goods_id" order="{if $pager.sort == 'goods_id'}{$pager.order}{else}ASC{/if}">
+      <div class="ulev-1 {if $pager.sort == 'goods_id'}f-color-red{/if}"> 上架 </div>
+      <div class="ub-img uwh-bus1 t-bus-icon m-l3 {if $pager.sort == 'goods_id'}{$pager.order}{/if}"></div>
+    </div>
+    <div class="ub ub-ac ub-pc sort ub-f1" sort="salenum" order="{if $pager.sort == 'salenum'}{$pager.order}{else}ASC{/if}">
+      <div class="ulev-1 {if $pager.sort == 'salenum'}f-color-red{/if}"> 销量 </div>
+      <div class="ub-img uwh-bus1 t-bus-icon m-l3 {if $pager.sort == 'salenum'}{$pager.order}{/if}"></div>
+    </div>
+	<div class="ub ub-ac ub-pc sort ub-f1" sort="goods_price" order="{if $pager.sort == 'goods_price'}{$pager.order}{else}ASC{/if}">
+      <div class="ulev-1 {if $pager.sort == 'goods_price'}f-color-red{/if}"> 价格 </div>
+      <div class="ub-img uwh-bus1 t-bus-icon m-l3 {if $pager.sort == 'goods_price'}{$pager.order}{/if}"></div>
+    </div>
+	<div class="ub ub-ac ub-pc sort ub-f1" sort="last_update" order="{if $pager.sort == 'last_update'}{$pager.order}{else}ASC{/if}">
+      <div class="ulev-1 {if $pager.sort == 'last_update'}f-color-red{/if}"> 更新 </div>
+      <div class="ub-img uwh-bus1 t-bus-icon m-l3 {if $pager.sort == 'last_update'}{$pager.order}{/if}"></div>
+    </div>
+	<div class="ub ub-ac ub-pc sort ub-f1" sort="click_count" order="{if $pager.sort == 'click_count'}{$pager.order}{else}ASC{/if}">
+      <div class="ulev-1 {if $pager.sort == 'click_count'}f-color-red{/if}"> 人气 </div>
+      <div class="ub-img uwh-bus1 t-bus-icon m-l3 {if $pager.sort == 'click_count'}{$pager.order}{/if}"></div>
+    </div>
+    <div class="ub ub-ac ub-pc ubl border-hui ub-f1 _list_style" id="change-list">
+      <div class="ub-img top-r-glist2 top-r-size" id="style_button"></div>
+    </div>
+  </div>
+</div>
+<div class="goodlist-b ios-top" id="goods_list_container" style="height:100%;overflow-y:scroll"> {/if} 
+  {include file='library/goods_list.lib'}
+  {if $is_full_page eq 1} </div>
+<div id='scroll_to_top' class="ub-img"></div>
+<div id="go_to_cart" class="ub-img">
+<div class="num ub ub-ac ub-pc">
+<div id='cart_num' class="ulev-2 f-color-red">{$cart_num|default:0}</div>
+</div>
+</div>
+{/if}

@@ -1,0 +1,157 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>{$page_title}</title>
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<link rel="stylesheet" href="themesmobile/68ecshopcom_mobile/css/public.css">
+<link rel="stylesheet" href="themesmobile/68ecshopcom_mobile/css/exshangexin.css">
+
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.js"></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+{insert_scripts files='common.js'}
+<style>
+body{
+	background:{$base_style};
+	margin:0 auto;
+}
+.topicwidth{ width:100%;margin:0 auto 40px;}
+ h3.mod1tit{width:100%;height:54px;line-height:54px; text-align:center;margin:0px auto;color:#ffffff;font-size:16px;font-weight:600;border:none;vertical-align:middle;background:url(themesmobile/68ecshopcom_mobile/img/topicbg3.png) no-repeat 50% 50%}
+.srp.album .proTitle1{position: relative;
+white-space: nowrap;
+text-overflow: ellipsis;
+padding: 0px 10px;
+height: 40px;
+line-height: 40px;
+background: none repeat scroll 0% 0% #FAFAFA;}
+.srp.album .proTitle1 a{ color:#555}
+.proPrice1 {
+    position: relative;
+    text-align:center;
+	color:#555;
+}
+.proPrice1 em{
+color: #F52648;
+font-size: 20px;}
+.topic_pic{ margin:0 auto; text-align:center;}
+.topic_pic img{ margin:0 auto; width:100%!important; height:auto}
+</style>
+</head>
+<body>
+
+      <!----------------------------------header----------------------------------->
+      <div class="tab_nav">
+        <div class="header">
+          <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+          <div class="h-mid">{$topic.title}</div>
+          <div class="h-right">
+            <aside class="top_bar">
+              <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+       	<!-- #BeginLibraryItem "/library/up_menu.lbi" --><!-- #EndLibraryItem --> <!--弹出菜单-->
+      
+ 
+  <div class="topic_pic">
+  {if $topic.htmls eq ''}
+  <script language="javascript">
+	var topic_width  = "100%";
+	var topic_height = "";
+	var img_url      ="../../{$topic.topic_img}";
+	if (img_url.indexOf('.swf') != -1)
+	{
+		document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="'+ topic_width +'" height="'+ topic_height +'">');
+		document.write('<param name="movie" value="'+ img_url +'"><param name="quality" value="high">');
+		document.write('<param name="menu" value="false"><param name=wmode value="opaque">');
+		document.write('<embed src="'+ img_url +'" wmode="opaque" menu="false" quality="high" width="'+ topic_width +'" height="'+ topic_height +'" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" wmode="transparent"/>');
+		document.write('</object>');
+	}
+	else
+	{
+		document.write('<img width="' + topic_width + '" height="' + topic_height + '" border="0" src="' + img_url + '">');
+	}
+  </script>
+{else}
+	{$topic.htmls}
+{/if}
+</div>
+{if $topic.intro neq ''}
+  <div class="topic_pic">
+ {$topic.intro}
+</div>
+{/if}
+   	<!-- {if $topic.title_pic eq ''} -->
+    
+     <!-- {foreach from=$sort_goods_arr item=sort key=sort_name} -->
+     <div class="floor_body auction_hot">
+      <h2>{$sort_name}</h2>
+        <div class="mc">
+        <ul style="clear:both;">
+         <!-- {foreach from=$sort item=goods} -->
+                       <li>
+                <a href="{$goods.url}" title="{$goods.name|escape:html}">
+                    <div class="products_kuang">
+                        <img src="{$goods.goods_thumb}"></div>
+                    <div class="goods_name">{$goods.short_style_name}</div>
+                    </a><div class="price"><a href="exchange.php?id=35&amp;act=view" title="{$goods.name|escape:html}">
+                        <strong>   <!-- {if $goods.promote_price neq ""} -->
+      {$goods.promote_price}
+      <!-- {else}-->
+      {$goods.shop_price}
+      <!--{/if}--></strong>
+
+                        </a><a href="{$goods.url}" class="btns">购</a>
+                    </div>
+                
+            </li>
+              <!--{/foreach}-->
+                  </ul>
+         
+      </div>
+    </div>
+      <div style="height:0px; line-height:0px; clear:both;"></div>
+    <!--{/foreach}-->
+    <!-- {else} -->
+		
+		
+		 <!-- {foreach from=$sort_goods_arr item=sort key=sort_name} -->
+         <div class="floor_body auction_hot">
+      <h2>{$sort_name}</h2>
+        <div class="mc">
+        <ul  style="clear:both;">
+        <!-- {foreach from=$sort item=goods} -->
+                       <li>
+                <a href="{$goods.url}" title="{$goods.name|escape:html}">
+                    <div class="products_kuang">
+                        <img src="{$goods.goods_thumb}"></div>
+                    <div class="goods_name">{$goods.short_style_name}</div>
+                    </a><div class="price"><a href="exchange.php?id=35&amp;act=view" title="{$goods.name|escape:html}">
+                        <strong>   <!-- {if $goods.promote_price neq ""} -->
+      {$goods.promote_price}
+      <!-- {else}-->
+      {$goods.shop_price}
+      <!--{/if}--></strong>
+         
+                        </a><a href="{$goods.url}" class="btns">购</a>
+                    </div>
+                
+            </li>
+              <!--{/foreach}-->
+                  </ul>
+      </div>
+    </div>
+
+  <div style="height:0px; line-height:0px; clear:both;"></div>
+    <!--{/foreach}-->
+
+  
+    <!-- {/if} -->    
+    <div style="height:20px; line-height:20px; clear:both;"></div>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+</html>

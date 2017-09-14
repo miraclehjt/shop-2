@@ -1,0 +1,38 @@
+<!-- $Id: brand_list.htm 15898 2009-05-04 07:25:41Z liuhui $ -->
+
+{if $full_page}
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<!-- 品牌搜索 -->
+<div class="list-div" id="listDiv">
+{/if}
+
+  <table cellpadding="3" cellspacing="1">
+    <tr>
+      <th>标签名称</th>
+      <th width="80">类型</th>
+      <th width="100">{$lang.handler}</th>
+    </tr>
+    {foreach from=$item_list item=value}
+    <tr>
+      <td>{$value.tag_name}</td>
+      <td align="center">
+      		{if $value.is_user eq 1}<span style="color:#F00">用户</span>{/if}
+            {if $value.is_user eq 0}系统{/if}
+      </td>
+      <td align="center">
+        <a href="goods_tag.php?act=edit&goods_id={$value.goods_id}&id={$value.tag_id}" title="{$lang.edit}">{$lang.edit}</a> |
+        <a href="javascript:;" onclick="listTable.remove({$value.tag_id}, '{$lang.drop_confirm}')" title="{$lang.edit}">{$lang.remove}</a> 
+      </td>
+    </tr>
+    {foreachelse}
+    <tr><td class="no-records" colspan="4">{$lang.no_records}</td></tr>
+    {/foreach}
+  </table>
+
+{if $full_page}
+<!-- end brand list -->
+</div>
+
+{include file="pagefooter.htm"}
+{/if}

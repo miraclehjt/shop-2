@@ -1,0 +1,171 @@
+<!-- $Id: distrib_goods_list.htm 14216 2008-03-10 02:27:21Z testyang $ -->
+
+
+
+{if $full_page}
+
+{include file="pageheader.htm"}
+
+{insert_scripts files="../js/utils.js,listtable.js"}
+
+
+
+<form method="post" action="distrib_goods.php" name="listForm">
+
+<!-- start distrib_goods list -->
+
+<div class="list-div" id="listDiv">
+
+{/if}
+
+
+
+  <table cellpadding="3" cellspacing="1">
+
+    <tr>
+
+      <th>
+
+        <a href="javascript:listTable.sort('id'); ">{$lang.record_id}</a>{$sort_act_id}
+
+      </th>
+
+      <th><a href="javascript:listTable.sort('goods_name'); ">{$lang.goods_name}</a>{$sort_goods_name}</th>
+
+      <th><a href="javascript:listTable.sort('end_time'); ">{$lang.end_date}</a>{$sort_end_time}</th>
+
+      <th>{$lang.distrib_money}</a></th>
+
+      <th>{$lang.distrib_percent}</th>
+
+      <th>{$lang.handler}</th>
+
+    </tr>
+
+
+
+    {foreach from=$distrib_goods_list item=list}
+
+    <tr>
+
+      <td align="center">{$list.id}</td>
+
+      <td align="center">{$list.goods_name|escape:html}</td>
+
+      <td align="center">{if $list.distrib_time eq 0}永久分销{else}{$list.end_time}{/if}</td>
+
+
+
+      <td align="center">{if $list.distrib_type eq 1}{$list.distrib_money}{else}0{/if}</td>
+
+      <td align="center">{if $list.distrib_type eq 2}{$list.distrib_money}%{else}0{/if}</td>
+
+      <td align="center">
+
+        <a href="distrib_goods.php?act=edit&amp;id={$list.id}" title="{$lang.edit}"><img src="images/icon_edit.gif" border="0" height="16" width="16" /></a>
+
+        <a href="distrib_goods.php?act=del&amp;id={$list.id}" title="{$lang.remove}"><img src="images/icon_drop.gif" border="0" height="16" width="16" /></a>
+
+      </td>
+
+    </tr>
+
+    {foreachelse}
+
+    <tr><td class="no-records" colspan="10">{$lang.no_records}</td></tr>
+
+    {/foreach}
+
+  </table>
+
+
+
+  <table cellpadding="4" cellspacing="0">
+
+    <tr>
+
+      <td align="right">{include file="page.htm"}</td>
+
+    </tr>
+
+  </table>
+
+
+
+{if $full_page}
+
+</div>
+
+<!-- end distrib_goods list -->
+
+</form>
+
+
+
+<script type="text/javascript" language="JavaScript">
+
+<!--
+
+  listTable.recordCount = {$record_count};
+
+  listTable.pageCount = {$page_count};
+
+
+
+  {foreach from=$filter item=item key=key}
+
+  listTable.filter.{$key} = '{$item}';
+
+  {/foreach}
+
+
+
+  {literal}
+
+  onload = function()
+
+  {
+
+    document.forms['searchForm'].elements['keyword'].focus();
+
+
+
+    startCheckOrder();
+
+  }
+
+
+
+  /**
+
+   * 搜索团购活动
+
+   */
+
+  function searchDistribGoods()
+
+  {
+
+
+
+    var keyword = Utils.trim(document.forms['searchForm'].elements['keyword'].value);
+
+    listTable.filter['keyword'] = keyword;
+
+    listTable.filter['page'] = 1;
+
+    listTable.loadList("distrib_goods_list");
+
+  }
+
+  {/literal}
+
+//-->
+
+</script>
+
+
+
+{include file="pagefooter.htm"}
+
+{/if}

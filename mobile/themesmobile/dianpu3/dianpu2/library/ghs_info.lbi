@@ -1,0 +1,15 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="row c-logo-opts" style="height: 3rem;">
+    <div class="small-6 left">
+      <div class="store-logo" style="top: -0.75rem;"> <a href="javascript:;"> <img src="{$shoplogo}" alt="{$shopname}"> </a>
+        <div class="name" shop="38311">{$shopname}</div>
+      </div>
+    </div>
+    <div class="small-6 left">
+      <div class="row collapse"> 
+        <div class="small-4 columns right"> <a href="supplier.php?suppId={$suppid}"> <i class="icon-share"></i> <span>首页</span> </a> </div>
+        <div class="small-3 columns right">
+          <a href="tel:0335-8535668"> <i class="icon-follow"></i> <span>联系</span> </a> </div>
+      </div>
+    </div>
+  </div>

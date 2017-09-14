@@ -1,0 +1,16 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div style="height:0px; line-height:0px; clear:both;"></div>
+<!-- {if $question_list} -->
+<div class="m zixunmt">
+  <DIV class=mt>
+    <UL class=tab>
+      <li  class=curr id="question_li_0"><a href="javascript:question_type_curr(1, {$goods.goods_id}, 0);" onfocus="this.blur();">商品咨询</a></li>
+      <li id="question_li_1" class="no"><a href="javascript:question_type_curr(1, {$goods.goods_id}, 1);" onfocus="this.blur();">库存配送</a></li>
+      <li id="question_li_2" class="no"><a href="javascript:question_type_curr(1, {$goods.goods_id}, 2);" onfocus="this.blur();">支付</a></li>
+      <li id="question_li_3" class="no"><a href="javascript:question_type_curr(1, {$goods.goods_id}, 3);" onfocus="this.blur();">售后</a></li>
+    </ul>
+  </div>
+</div>
+<!-- {/if} --> 
+{insert_scripts files='utils.js'}
+<div id="ECS_QUESTION">{insert name='question' id=$id}</div>

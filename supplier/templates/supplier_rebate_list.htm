@@ -1,0 +1,106 @@
+<!-- $Id: agency_list.htm 14216 2008-03-10 02:27:21Z testyang $ -->
+
+{if $full_page}
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<script type="text/javascript" src="../js/calendar.php?lang="></script>
+<link href="../js/calendar/calendar.css" rel="stylesheet" type="text/css" />
+<!-- 订单搜索 -->
+<div class="form-div">
+  <form action="javascript:searchRebate()" name="searchForm">
+    <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
+    时间段：
+	<input name="rebate_paytime_start" type="text" id="rebate_paytime_start" size="15"><input name="selbtn1" type="button" id="selbtn1" onclick="return showCalendar('rebate_paytime_start', '%Y-%m-%d', false, false, 'selbtn1');" value="选择时间" class="button"/> - <input name="rebate_paytime_end" type="text" id="rebate_paytime_end" size="15"><input name="selbtn1" type="button" id="selbtn1" onclick="return showCalendar('rebate_paytime_end', '%Y-%m-%d', false, false, 'selbtn1');" value="选择时间" class="button"/>
+    {$lang.all_status}
+    
+    <input type="submit" value="{$lang.button_search}" class="button" />
+    <!-- <a href="order.php?act=list&composite_status={$os_unconfirmed}">待确认</a>
+    <a href="order.php?act=list&composite_status={$cs_await_pay}">待付款</a>
+    <a href="order.php?act=list&composite_status={$cs_await_ship}">待发货</a> -->
+  </form>
+</div>
+
+<form method="post" action="" name="listForm" onsubmit="return confirm(batch_drop_confirm);">
+<div class="list-div" id="listDiv">
+{/if}
+
+  <table cellpadding="3" cellspacing="1">
+    <tr>
+	  <th>编号</th>
+      <th>入驻商</th>
+      <th>时间段</th>
+      <th>总营业额</th>
+	  <th>佣金</th>
+	  <th>应结金额</th>
+	  <th>实结金额</th>
+	  <th>返佣状态</th>
+	  <th>返佣日期</th>
+	   <th>操作员</th>
+      <th>{$lang.handler}</th>
+    </tr>
+    {foreach from=$supplier_list item=supplier}
+    <tr>
+	  <td>{$supplier.sign}</td>
+      <td class="first-cell" style="padding-left:10px;" >{$supplier.supplier_name}</td>
+      <td >{$supplier.rebate_paytime_start}---{$supplier.rebate_paytime_end} </td>
+      <td>{$supplier.all_money_formated}</td>
+	  <td align="center">{$supplier.rebate_money_formated}</td>
+	  <td align="center">{$supplier.pay_money_formated}</td>
+	  <td align="center">{$supplier.payable_price}</td>
+	  <td align="center">{$supplier.status_name}</td>
+	  <td align="center">{$supplier.pay_time}</td>
+	  <td align="center">{$supplier.user}</td>
+      <td align="center">
+	  {foreach from=$supplier.caozuo item=do}
+	  <a href="{$do.url}">{$do.name}</a><br>
+	  {/foreach}
+        <!-- <a href="supplier_rebate.php?act=view&is_pay_ok={$smarty.get.is_pay_ok}&id={$supplier.rebate_id}" title="计算此时间段内金额给商家">处理</a><br><a href="supplier_order.php?act=list&rebateid={$supplier.rebate_id}" title="查看相关商家此时间段内订单">{$lang.view}</a> -->
+	  </td>
+    </tr>
+    {foreachelse}
+    <tr><td class="no-records" colspan="15">{$lang.no_records}</td></tr>
+    {/foreach}
+  </table>
+<table id="page-table" cellspacing="0">
+  <tr>
+    <td>&nbsp;</td>
+    <td align="right" nowrap="true">
+    {include file="page.htm"}
+    </td>
+  </tr>
+</table>
+
+{if $full_page}
+</div>
+</form>
+
+<script type="text/javascript" language="javascript">
+  <!--
+  listTable.recordCount = {$record_count};
+  listTable.pageCount = {$page_count};
+
+  {foreach from=$filter item=item key=key}
+  listTable.filter.{$key} = '{$item}';
+  {/foreach}
+
+  {literal}
+  onload = function()
+  {
+      // 开始检查订单
+      startCheckOrder();
+  }
+  /**
+     * 搜索订单
+     */
+    function searchRebate()
+    {
+        listTable.filter['rebate_paytime_start'] = Utils.trim(document.forms['searchForm'].elements['rebate_paytime_start'].value);
+        listTable.filter['rebate_paytime_end'] = Utils.trim(document.forms['searchForm'].elements['rebate_paytime_end'].value);
+        listTable.filter['page'] = 1;
+        listTable.loadList();
+    }
+  {/literal}
+  //-->
+</script>
+{include file="pagefooter.htm"}
+{/if}

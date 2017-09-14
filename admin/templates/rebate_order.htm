@@ -1,0 +1,74 @@
+<form action="supplier_order.php" method="post" name="theForm" onsubmit="return check({$rebate.status})">
+	<table width="100%" cellpadding="3" cellspacing="1">
+	  <tr>
+	  <td>{if $rebate.status == 0}
+	      <input onclick='listTable.selectAll(this, "checkboxes")' type="checkbox" />
+		  {/if}订单编号
+	  </td>
+	  <td>下单时间</td>
+	  <td>计费时间</td>
+	  <td>货款</td>
+	  <td>佣金</td>
+	  <td>订单状态</td>
+	  <td>操作</td>
+	  </tr>
+	  {foreach from=$order_list item=order key=okey}
+	  <tr>
+	  <td>
+	  {if $order.is_rebeat && $rebate.status == 0}
+		<input type="checkbox" name="checkboxes" value="{$order.order_sn}" />
+	  {/if}
+	  {$order.order_sn}
+	  </td>
+	  <td>{$order.short_order_time}</td>
+	  <td>计费时间</td>
+	  <td>{$order.total_fee}</td>
+	  <td>{$order.formated_rebate_fee}</td>
+	  <td>{$lang.os[$order.order_status]},{$lang.ps[$order.pay_status]},{$lang.ss[$order.shipping_status]}</td>
+	  <td><a href="order.php?act=info&order_id={$order.order_id}">查看订单</a></td>
+	  </tr>
+	  {/foreach}
+	  <tr>
+	  {if $rebate.status == 0}<!-- 冻结 -->
+	    <td align="left" nowrap="true" colspan="3">
+		<input type="hidden" name="act" value="operate1">
+		<input type="hidden" name="rid" value="{$rebate.rebate_id}">
+		{if $rebate.isdo}
+		{foreach from=$rebate.caozuo item=do}
+		<input type="submit" value="{$do.name}">
+		{/foreach}
+		{else}
+		<input type="submit" value="临时测试用的结算佣金">
+		<input type="button" value="距离结算还有{$rebate.chadata}天">
+		{/if}
+		</td>
+	  {elseif $rebate.status == 1}
+		<td align="left" nowrap="true" colspan="3">
+		<input type="hidden" name="act" value="operate2">
+		<input type="hidden" name="rid" value="{$rebate.rebate_id}">
+		<input type="submit" value="撤销全部佣金">
+		</td>
+	  {else}
+	    <td align="left" nowrap="true" colspan="3">
+		</td>
+	  {/if}
+		<td align="right" nowrap="true" colspan="4">
+		{include file="page.htm"}
+		</td>
+	  </tr>
+	</table>
+<input name="order_id" type="hidden" value="" />
+</form>
+<script>
+/**
+ * 搜索订单
+ */
+function searchRebateOrder()
+{
+	listTable.filter['add_time_start'] = Utils.trim(document.forms['searchForm'].elements['add_time_start'].value);
+	listTable.filter['add_time_end'] = Utils.trim(document.forms['searchForm'].elements['add_time_end'].value);
+	listTable.filter['order_sn'] = Utils.trim(document.forms['searchForm'].elements['order_sn'].value);
+	listTable.filter['page'] = 1;
+	listTable.loadList();
+}
+</script>

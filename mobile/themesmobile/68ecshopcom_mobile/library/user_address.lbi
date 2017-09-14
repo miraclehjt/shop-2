@@ -1,0 +1,83 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ {insert_scripts files='region.js,shopping_flow.js'}
+ <script type="text/javascript">
+              region.isAdmin = false;
+              {foreach from=$lang.flow_js item=item key=key}
+              var {$key} = "{$item}";
+              {/foreach}
+              {literal}
+              onload = function() {
+                if (!document.all)
+                {
+                  document.forms['theForm'].reset();
+                }
+              }
+              {/literal}
+            </script>
+<div class="addressmone">
+  <form action="user.php" method="post" name="theForm" onsubmit="return checkConsignee(this)">
+	<ul>
+       <li>
+    	<span>{$lang.consignee_name}</span>  <input type="text" name="consignee" value="{$consignee.consignee|escape}" id="consignee_{$sn}"  placeholder="{$lang.consignee_name}"/>
+		</li>
+       <li>
+    	 <span>{$lang.email_address}</span> <input type="email" name="email" value="{$consignee.email|escape}" id="email_{$sn}"  placeholder="{$lang.email_address}"/>
+			</li>     
+       <li>
+          <input name='country' value='1' type="hidden">
+          
+    		<select name="province" id="selProvinces" onchange="region.changed(this, 2, 'selCities')" class="province_select" >
+                     <option value="0">{$lang.please_select}{$name_of_region[1]}</option>
+                      <!-- {foreach from=$province_list item=province} -->
+                      <option value="{$province.region_id}" {if $consignee.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
+                      <!-- {/foreach} -->
+                    </select>
+         
+	             <select name="city" id="selCities" onchange="region.changed(this, 3, 'selDistricts')">
+                   <option value="0">{$lang.please_select}{$name_of_region[2]}</option>
+                      <!-- {foreach from=$city_list item=city} -->
+                      <option value="{$city.region_id}" {if $consignee.city eq $city.region_id}selected{/if}>{$city.region_name}</option>
+                      <!-- {/foreach} -->
+                    </select>
+                    
+                    <select name="district" id="selDistricts" onchange="region.changed(this, 4, 'selXiangcun')" {if !$district_list}style="display:none"{/if}>
+                      <option value="0">{$lang.please_select}{$name_of_region[3]}</option>
+                      <!-- {foreach from=$district_list item=district} -->
+                      <option value="{$district.region_id}" {if $consignee.district eq $district.region_id}selected{/if}>{$district.region_name}</option>
+                      <!-- {/foreach} -->
+                    </select>
+
+                    <select name="xiangcun" id="selXiangcun" {if !$xiangcun_list}style="display:none"{/if}>
+                      <option value="0">{$lang.please_select}{$name_of_region[4]}</option>
+                      <!-- {foreach from=$xiangcun_list item=xiangcun} -->
+                      <option value="{$xiangcun.region_id}" {if $consignee.xiangcun eq $xiangcun.region_id}selected{/if}>{$xiangcun.region_name}</option>
+                      <!-- {/foreach} -->
+                    </select>
+        	</li>
+           <li>
+    		 <span>{$lang.detailed_address}</span> <input type="text"  name="address" value="{$consignee.address|escape}" id="address_{$sn}"  placeholder="{$lang.detailed_address}"/>
+	        </li>
+           <li>
+		<span>{$lang.phone}</span> <input type="tel" name="mobile" value="{$consignee.mobile|escape}" id="mobile_{$sn}" placeholder="{$lang.mobile}{$lang.must}"/>
+	        </li>
+            <li>
+    		<span>{$lang.postalcode}</span> <input type="text" name="zipcode" value="{$consignee.zipcode|escape}" id="zipcode_{$sn}"  placeholder="{$lang.postalcode}"/>
+	        </li>
+    	</ul>
+            <div style=" height:50px"></div>
+                  <div class="dotm_btn">
+ {if $consignee.address_id gt 0}
+                <a href="javascript:void(0);" onclick="if (confirm('{$lang.confirm_drop_address}'))location.href='user.php?act=drop_consignee&id={$consignee.address_id}'"  class="dotm_btn2"/ style="color:#666;">{$lang.drop}</a>
+                <a href="user.php?act=set_address&address_id={$consignee.address_id}" class="dotm_btn3" style=" color:#FFF;font-size:14px;">设置为默认地址</a>
+                <input type="submit" value="保存"  class="dotm_btn1"/>
+                {else}
+                <input type="submit" value="保存"  class="dotm_btn1_1" />
+                {/if}
+				
+                
+                </div>
+				<input type="hidden" name="act" value="act_edit_address">
+				<input type="hidden" name="address_id" value="{$address_id}">
+
+    </form>
+</div>

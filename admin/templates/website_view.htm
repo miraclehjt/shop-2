@@ -1,0 +1,30 @@
+{include file="pageheader.htm"} <!-- 安装程序 -->
+{insert_scripts files="validator.js"}
+<div class="main-div">
+<table cellspacing="1" cellpadding="3" width="100%">
+
+<tr>
+	<td>{$lang.eavl}</td>
+    <td>
+<script type="text/javascript" src="{$scriptsrc}"></script>
+<script language="javascript">
+{$evaljavascript};
+</script>
+    </td>
+</tr>
+
+<tr>
+	<td>
+    {$lang.copycode}</td>
+    <td>
+		<textarea name="textarea" id="textarea" style="width:100%" rows="10"><script type="text/javascript" src="{$scriptsrc}"></script>
+<script language="javascript">
+{$evaljavascript};
+</script></textarea>
+    </td>
+</tr>
+
+</table>
+
+</div>
+{include file="pagefooter.htm"}

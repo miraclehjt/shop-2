@@ -1,0 +1,109 @@
+{if $full_page}
+
+<!-- $Id: users_list.htm 15617 2009-02-18 05:18:00Z Shadow & 鸿宇 -->
+
+{include file="pageheader.htm"}
+
+{insert_scripts files="../js/utils.js,listtable.js"}
+
+
+
+<form method="POST" action="" name="listForm">
+
+
+
+<!-- start users list -->
+
+<div class="list-div" id="listDiv">
+
+{/if}
+
+<!--用户列表部分-->
+
+<table cellpadding="3" cellspacing="1">
+
+  <tr>
+
+  <th>{$lang.order_sn}</th>
+
+  <th>{$lang.total_amount}</th>
+
+  <th>{$lang.total_split_money}</th>
+
+  <th>{$lang.split_money}</th>
+
+  <th>{$lang.status}</th>
+
+  </tr>
+
+  {foreach from=$logdb item=val}
+
+  <tr>
+
+  <td align="center">{$val.order_sn}</td>
+
+  <td align="center">{$val.goods_amount}</td>
+
+  <td align="center">{$val.total_split_money}</td>
+
+  <td align="center">{$val.set_money}</td>
+
+  <td align="center">{if $val.is_separate eq 0}未分成{else}已分成{/if}</td>
+
+  </tr>
+
+  {foreachelse}
+
+  <tr><td class="no-records" colspan="12">{$lang.no_records}</td></tr>
+
+  {/foreach}
+
+  <tr>
+
+      <td align="right" nowrap="true" colspan="12">
+
+      {include file="page.htm"}
+
+      </td>
+
+  </tr>
+
+</table>
+
+
+
+{if $full_page}
+
+</div>
+
+<!-- end users list -->
+
+</form>
+
+<script type="text/javascript" language="JavaScript">
+
+<!--
+
+{literal}
+
+onload = function()
+
+{
+
+    document.forms['searchForm'].elements['keyword'].focus();
+
+    // 开始检查订单
+
+    startCheckOrder();
+
+}
+
+//-->
+
+</script>
+
+{/literal}
+
+{include file="pagefooter.htm"}
+
+{/if}

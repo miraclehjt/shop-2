@@ -1,0 +1,21 @@
+{if $auction_list}
+<div class="auction box">
+	<div class="hd"><h3>{$lang.auction_goods}</h3><div class="extra"></div></div>
+	<div class="bd product_list">	
+		<ul>
+			{foreach from=$auction_list item=auction name=auction_list}
+			<li>
+				<span class="photo">
+					<a href="{$auction.url}" title="{$auction.goods_name|escape:html}" class="image"><img src="{$option.static_path}{$auction.thumb}" alt="{$auction.goods_name|escape:html}"/></a>
+				</span>
+				<span class="info">
+					<a href="{$auction.url}" title="{$auction.goods_name|escape:html}" class="name">{$auction.goods_name}</a>
+					<em class="price auction_price">{$auction.formated_start_price}</em>
+				</span>
+			</li>
+			{/foreach}
+		</ul>
+		<a href="auction.php" title="{$lang.more}{$lang.auction_goods}" class="more button"><span>{$lang.more}</span></a>
+	</div>
+</div>
+{/if}

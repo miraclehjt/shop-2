@@ -1,0 +1,32 @@
+<div class="bg-color-w _tab_content p-all5"> 
+{foreach from=$pinfo item=value key=key}
+  <div class="ztd" id="txt{$key}" {if $key == $district}{else}style="display:none"{/if}>
+   <div class="ulev-9 f-color-red p-t-b1 ubb border-top">选择自提点：</div>
+   <div style="height:15em; overflow-y:scroll">
+  {foreach from=$value.info item=info key=k}
+      <div class="ziti_list f-color-6 p-l-r6 ubb border-hui _checkbox pickup_point {if $info.id == $selectid}checked{/if}" name="pickup_point" value="{$info.id}" radio="true" id="pickup_point_{$info.id}" cancel="false">
+        <div class="p-b1 ulev-1 ub">
+			<div style="width:30%">地点：</div>
+			<div>{$info.shop_name}</div>
+		</div>
+        <div class="p-b1 ulev-1 ub">
+			<div style="width:30%">地址：</div>
+			<div class="ub-f1">{$info.address}</div>
+		</div>
+        <div class="p-b1 ulev-1 ub">
+			<div style="width:30%">联系人：</div>
+			<div>{$info.contact}</div>
+		</div>
+        <div class="p-b1 ulev-1 ub">
+			<div style="width:30%">联系方式：</div>
+			<div>{$info.phone}</div>
+		</div>
+      </div>
+    {/foreach} 
+	</div>
+	</div>
+  {/foreach}
+  <div class="ziti_btn ub ub-pc uinn-p2">
+    <div id="confirm_pickup_point" class="bnt_blue_1 btn-red-3 ulev-1" supplier_id="{$suppid}" >保存自提点</div>
+  </div>
+</div>

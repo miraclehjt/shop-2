@@ -1,0 +1,37 @@
+<!-- $Id: brand_list.htm 15898 2009-05-04 07:25:41Z liuhui $ -->
+
+{if $full_page}
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<form method="post" action="" name="listForm" onsubmit="return confirmSubmit(this)">
+<div class="list-div" id="listDiv">
+{/if}
+
+  <table cellpadding="3" cellspacing="1">
+    <tr>
+      <th>标签名称</th>
+      <th>商品名称</th>
+      <th width="100">审核通过</th>
+      <th width="100">{$lang.handler}</th>
+    </tr>
+    {foreach from=$item_list item=value}
+    <tr>
+      <td>{$value.tag_name}</td>
+      <td>{$value.goods_name}</td>
+      <td align="center"><img src="images/{if $value.state}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_state', {$value.tag_id})" /></td>
+      <td align="center">
+        <a href="javascript:;" onclick="listTable.remove({$value.tag_id}, '{$lang.drop_confirm}')" title="{$lang.edit}">{$lang.remove}</a> 
+      </td>
+    </tr>
+    {foreachelse}
+    <tr><td class="no-records" colspan="4">{$lang.no_records}</td></tr>
+    {/foreach}
+  </table>
+
+{if $full_page}
+<!-- end brand list -->
+</div>
+</form>
+
+{include file="pagefooter.htm"}
+{/if}

@@ -1,0 +1,122 @@
+{if $full_page eq 1}
+<!DOCTYPE html>
+<html>
+  <head>
+    {include file='html_header.htm'}
+    <script>
+      function change_order_type(order_type)
+      {
+        $.zcontent.set('order_type',order_type);
+        search();
+      }
+      
+      function change_back_type(back_type)
+      {
+        if(back_type == $.zcontent.get('back_type'))
+        {
+          $.zcontent.set('back_type','');
+        }
+        else
+        {
+          $.zcontent.set('back_type',back_type);
+        }
+        search();
+      }
+      function search_back_order()
+      {
+        if(check_form_empty('theForm'))
+        {
+          $.zalert.add('至少有一项输入不为空！',1)
+        }
+        else
+        {
+          $.zcontent.set('order_sn',$('#order_sn').val());
+        $.zcontent.set('consignee',$('#consignee').val());
+          search();
+        }
+        return false;
+      }
+    </script>
+  </head>
+  <body>
+    <div id='container'>
+    {/if}
+    {include file='page_header.htm'}
+    <section>
+      {include file='menu_list.htm'}
+      <div class="order_con" id="con_order_manage_2" style="display:none">
+        <div class="order_pd">
+          <div class="order order_t">
+            <form name="theForm" method="" action="" class="order_search" onsubmit='return search_back_order();return false;'>
+              <table width="100%" border="0">
+                <tr>
+                  <td>
+                    <input type="text" name="order_sn" id='order_sn' class="inputBg" placeholder="请输入订单号" {if $filter.order_sn}value='{$filter.order_sn}'{/if}/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="text" name="consignee" id='consignee' class="inputBg" placeholder="请输入申请人姓名" {if $filter.consignee}value='{$filter.consignee}'{/if}/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="submit" name="" class="button2" value="查找"/>
+                  </td>
+                </tr>
+              </table>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="order_con" id="con_order_manage_1">
+        <ul class="back_list_type">
+          <li {if !$filter.order_type || $filter.order_type eq ''}class="curr"{/if} id="type1" onclick="change_order_type('')">全部</li>
+          <li {if $filter.order_type eq '2' }class="curr"{/if}id="type2" onclick="change_order_type('2')">未完成</li>
+          <li {if $filter.order_type eq '3' }class="curr"{/if} id="type3" onclick="change_order_type('3')">已完成</li>
+        </ul>
+        <ul class="back_list_type row2">
+          <li {if $filter.back_type eq $back_type_goods }class="curr"{/if} id="type4" onclick="change_back_type('{$back_type_goods}')">退货</li>
+          <li {if $filter.back_type eq $back_type_money }class="curr"{/if}id="type5" onclick="change_back_type('{$back_type_money}')">退款</li>
+          <li {if $filter.back_type eq $back_type_repair }class="curr"{/if} id="type6" onclick="change_back_type('{$back_type_repair}')">返修</li>
+        </ul>
+		
+        <div class="order_pd" id="con_type_1">
+          <div class="order">
+            <ul class="order_list">
+              {foreach from=$back_list item=back_order}
+              <li>
+                <table width="100%" cellpadding="3" cellspacing="1" >
+                  <tr>
+                    <td align="left">申请人：{$back_order.consignee}</td>
+                    <td align="right" colspan="2">{$back_order.add_time}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="3" align="left">ID：{$back_order.goods_id}&nbsp;&nbsp;{if $back_order.brand_name}[{$back_order.brand_name}]{/if}{$back_order.goods_name}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="3" align="left">当前状态：{$back_order.status_back_val}</td>
+                  </tr>
+                  <tr>
+                    <td align="left">应退：{$back_order.refund_money_1}</td>
+                    <td align="left">实退：{$back_order.refund_money_2}</td>
+                    <td align="right"><a href="back.php?act=back_info&back_id={$back_order.back_id}" class="font">查看</a><a href="back.php?act=remove_back&back_id={$back_order.back_id}" class="font font1">移除</a></td>
+                  </tr>
+                </table>
+              </li>
+              {foreachelse}
+              <li><div class="no_order" style="">您还没有任何退换货订单哦！</div></li>
+              {/foreach}
+            </ul>
+          </div>
+          {include file='page.htm'}
+        </div>
+    </section>
+    {include file='page_footer.htm'}
+    {if $full_page eq 1}
+    </div>
+    {include file='static_div.htm'}
+  </body>
+</html>
+{/if}
+

@@ -1,0 +1,75 @@
+{include file="pageheader.htm"}
+
+{insert_scripts files="../js/utils.js,listtable.js"}
+
+<div class="main-div">
+
+<form method="post" action="weixin.php?act=fansmsg" name="theForm">
+
+<table border="0" align="center" cellpadding="3" cellspacing="1">
+
+  <tr>
+
+    <td>回复内容:</td>
+
+    <td><textarea name="content" cols="50" rows="4" wrap="VIRTUAL"></textarea>
+
+    <br />(注意：在用户最后一次上行信息48小时内可以回复消息)
+
+    </td>
+
+  </tr>
+
+  <tr>
+
+    <td>&nbsp;</td>
+
+    <td>
+
+      <input name="submit" type="submit" value=" 确定 " class="button">
+
+      <input type="hidden" name="fake_id" value="{$fake_id}">
+
+    </td>
+
+  </tr>
+
+</table>
+
+</form>
+
+</div>
+
+<div class="main-div">
+
+  <table width="100%">
+
+  {foreach item=child from=$msg_list}
+
+    <tr>
+
+      <td>{if $child.nickname}{$child.nickname}{else}{$child.fake_id}{/if} 于 {$child.createymd} 回复:<div style="overflow:hidden; word-break:break-all;">{$child.content}</div></td>
+
+    </tr>
+
+    <tr>
+
+      <td><hr color="#dadada" size="1"></td>
+
+    </tr>
+
+  {foreachelse}
+
+  <tr><td class="no-records" colspan="7">{$lang.no_records}</td></tr>
+
+  {/foreach}
+
+  </table>
+
+</div>
+
+
+
+{/literal}
+
+{include file="pagefooter.htm"}

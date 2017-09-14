@@ -1,0 +1,127 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="box">
+ <div class='forelist'>
+<h3>
+	  <span style="float:left">{$lang.goods_list}</span><a name='goods_list'></a>
+	  <div class="sup-list" style="float:right;">
+	  <form method="GET" class="sort" name="listform">
+	  <!-- {if $smarty.request.go == 'category'} -->
+	  <a href="supplier.php?go=category&suppId={$smarty.request.suppId}&id={$smarty.request.id}&brand={$smarty.request.brand}&price_min={$smarty.request.price_min}&price_max={$smarty.request.price_max}&page={$smarty.request.page}&sort=goods_id&order=<!-- {if $smarty.request.sort == 'goods_id' && $smarty.request.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list"><img src="images/goods_id_<!-- {if $smarty.request.sort == 'goods_id'} -->{$smarty.request.order}<!-- {else} -->default<!-- {/if} -->.gif" alt="{$lang.sort.goods_id}"></a>
+	  <a href="supplier.php?go=category&suppId={$smarty.request.suppId}&id={$smarty.request.id}&brand={$smarty.request.brand}&price_min={$smarty.request.price_min}&price_max={$smarty.request.price_max}&page={$smarty.request.page}&sort=shop_price&order=<!-- {if $smarty.request.sort == 'shop_price' && $smarty.request.order == 'ASC'} -->DESC<!-- {else} -->ASC<!-- {/if} -->#goods_list"><img src="images/shop_price_<!-- {if $smarty.request.sort == 'shop_price'} -->{$smarty.request.order}<!-- {else} -->default<!-- {/if} -->.gif" alt="{$lang.sort.shop_price}"></a>
+	  <a href="supplier.php?go=category&suppId={$smarty.request.suppId}&id={$smarty.request.id}&brand={$smarty.request.brand}&price_min={$smarty.request.price_min}&price_max={$smarty.request.price_max}&page={$smarty.request.page}&sort=last_update&order=<!-- {if $smarty.request.sort == 'last_update' && $smarty.request.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list"><img src="images/last_update_<!-- {if $smarty.request.sort == 'last_update'} -->{$smarty.request.order}<!-- {else} -->default<!-- {/if} -->.gif" alt="{$lang.sort.last_update}"></a>
+	  <!-- {else} -->
+	  <a href="supplier.php?go=search&suppId={$smarty.request.suppId}&cid={$smarty.request.cid}&keywords={$smarty.request.keywords}&price={$smarty.request.price}&page={$smarty.request.page}&sort=goods_id&order=<!-- {if $smarty.request.sort == 'goods_id' && $smarty.request.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list"><img src="images/goods_id_<!-- {if $smarty.request.sort == 'goods_id'} -->{$smarty.request.order}<!-- {else} -->default<!-- {/if} -->.gif" alt="{$lang.sort.goods_id}"></a>
+	  <a href="supplier.php?go=search&suppId={$smarty.request.suppId}&cid={$smarty.request.cid}&keywords={$smarty.request.keywords}&price={$smarty.request.price}&page={$smarty.request.page}&sort=shop_price&order=<!-- {if $smarty.request.sort == 'shop_price' && $smarty.request.order == 'ASC'} -->DESC<!-- {else} -->ASC<!-- {/if} -->#goods_list"><img src="images/shop_price_<!-- {if $smarty.request.sort == 'shop_price'} -->{$smarty.request.order}<!-- {else} -->default<!-- {/if} -->.gif" alt="{$lang.sort.shop_price}"></a>
+	  <a href="supplier.php?go=search&suppId={$smarty.request.suppId}&cid={$smarty.request.cid}&keywords={$smarty.request.keywords}&price={$smarty.request.price}&page={$smarty.request.page}&sort=last_update&order=<!-- {if $smarty.request.sort == 'last_update' && $smarty.request.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list"><img src="images/last_update_<!-- {if $smarty.request.sort == 'last_update'} -->{$smarty.request.order}<!-- {else} -->default<!-- {/if} -->.gif" alt="{$lang.sort.last_update}"></a>
+	  <!-- {/if} -->
+	  <input type="hidden" name="category" value="{$smarty.request.id}" /
+	  <input type="hidden" name="brand" value="{$smarty.request.brand}" />
+	  <input type="hidden" name="price_min" value="{$smarty.request.price_min}" />
+	  <input type="hidden" name="price_max" value="{$smarty.request.price_max}" />
+	  <input type="hidden" name="page" value="{$smarty.request.page}" />
+	  <input type="hidden" name="sort" value="{$smarty.request.sort}" />
+	  <input type="hidden" name="order" value="{$smarty.request.order}" />
+	  </form>
+	  </div>
+</h3>
+</div>
+    <!-- {if $category > 0} -->
+  <form name="compareForm" action="compare.php" method="post" onSubmit="return compareGoods(this);">
+    <!-- {/if} -->
+    <div id="nwpmr_01" class="nwg_con">
+      <div class="GoodsListWrap">
+        <div class="GoodsList" id="supshop_smart_main_s1_d">
+          <div class="gallery-grid-pro">
+          <!-- {if isset($goods_list)} -->
+            <ul class="clearfix">
+             <!--{foreach from=$goods_list item=goods name=goods}-->
+    <!-- {if $goods.goods_id} -->
+              <li class="goods-item-pro" {if $smarty.foreach.goods.iteration % 3 == 0}style="margin-right:0px"{/if}>
+            <div class="wrap">
+                <div class="inner">
+                    <div class="goods-pic-pro">                       
+                        <a href="{$goods.url}" title="{$goods.name}" target="_blank"><img class="action-goods-img" src="{$goods.goods_thumb}" alt="{$goods.goods_name}"></a>
+                    </div>         
+		    
+                    <div class="goods-info">                        
+                        <h4 class="goods-name">
+                            <a href="{$goods.url}" title="{$goods.name}" target="_blank">{$goods.goods_name}</a>
+                        </h4>
+                    </div>
+                                        
+                    <div class="price-buy">
+                        <div class="goods-price">
+                            <ins class="price"><!-- {if $goods.promote_price neq ""} -->
+          {$goods.promote_price}
+          <!-- {else}-->
+          {$goods.shop_price}
+          <!--{/if}--></ins>                            
+                            <p><del class="price"><!-- {if $goods.promote_price neq ""} -->
+          {$goods.shop_price}
+          <!-- {else}-->
+          {$goods.market_price}
+          <!--{/if}--></del></p>
+                        </div>
+                        <div class="goods-buy">
+                           <a class="action-collect" href="javascript:collect({$goods.goods_id});" title="加入收藏" target="_blank"></a>
+                        </div>
+                                                
+                    </div>
+                    
+                </div>
+            </div>
+        </li>
+        <!--{/if}-->
+    <!--{/foreach}-->
+            </ul>
+          <!-- {else} -->
+     		<ul class="new-mu_l2w">
+						<div class="new-cp-prom2">
+                <span class="new-logo2"></span>
+                <strong class="new-span-block">抱歉暂时没有相关结果，换个词试试吧</strong>
+            </div>
+			        </ul>
+    	  <!-- {/if} -->
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    
+  <!-- {if $category > 0} -->
+  </form>
+  <!-- {/if} -->
+</div>
+<div class="blank5"></div>
+<script type="Text/Javascript" language="JavaScript">
+<!--
+{literal}
+function selectPage(sel)
+{
+  sel.form.submit();
+}
+{/literal}
+//-->
+</script>
+<script type="text/javascript">
+window.onload = function()
+{
+  fixpng();
+}
+{foreach from=$lang.compare_js item=item key=key}
+{if $key neq 'button_compare'}
+var {$key} = "{$item}";
+{else}
+var button_compare = '';
+{/if}
+{/foreach}
+var compare_no_goods = "{$lang.compare_no_goods}";
+var btn_buy = "{$lang.btn_buy}";
+var is_cancel = "{$lang.is_cancel}";
+var select_spe = "{$lang.select_spe}";
+</script>

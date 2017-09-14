@@ -1,0 +1,89 @@
+<!-- $Id: sitemap.htm 14216 2008-03-10 02:27:21Z testyang $ -->
+{include file="pageheader.htm"}
+<div class="main-div">
+<p style="padding: 0 10px">{$lang.webcollect_notice}</p>
+</div>
+
+{if $case eq 0}
+<div class="main-div">
+<table width="100%" height="100px">
+<tr>
+    <td align="center">{$msg}</td>
+</tr>
+<tr>
+    <td align="center"><input type="button" value="{$lang.open_now}" class="button" onclick="window.open('http://2c.shopex.cn/');"/></td>
+</tr>
+</table>
+</div>
+{else}
+<span style="font-size: 14; font-weight: 900;">{$lang.opened_title}</span>
+<div class="main-div" style="margin-top: 5px;">
+<table width="100%">
+<tr>
+    <td class="label">{$lang.license_label}</td>
+    <td>{$lic_code}</td>
+</tr>
+<tr>
+    <td class="label">{$lang.period}</td>
+    <td>{$lic_btime} {$lang.to} {$lic_etime} &nbsp;&nbsp;&nbsp;&nbsp;{if $case eq 2}{$lang.sev_out}{/if}{if $case eq 1}{$out_notice}{/if}</td>
+</tr>
+<tr>
+    <td class="label">{$lang.included}</td>
+    <td>{$col_goods_num}{$lang.col_goods_num}</td>
+</tr>
+<tr>
+    <td class="label">{$lang.included_status}</td>
+    <td>
+      {foreach from=$col_goods item=goods}
+      {$goods.se_name} : {$goods.se_num}{$lang.item}<br />
+      {/foreach}
+    </td>
+</tr>
+<tr>
+    <td></td>
+    <td>
+      {if $open eq 0}
+      <input type="button" value="{$lang.open_sev}" class="button" onclick="self.location='?act=open';"/>
+      {elseif $open eq 1}
+      <input type="button" value="{$lang.stop_sev}" class="button" onclick="stop_sev();"/>
+      {else}
+      <input type="button" value="{$lang.open_again}" class="button" onclick="window.open('http://2c.shopex.cn/');"/>
+      {/if}    
+      {if $case eq 1}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://2c.shopex.cn/" target="_blank">{$lang.call_pay}</a>{/if}
+    </td>
+</tr>
+</table>
+</div>
+{/if}
+{if $site_arr ne ''}
+<span style="font-size: 14; font-weight: 900;">{if $site_msg eq ''}{$lang.support_engine}{else}{$site_msg}{/if}</span>
+<div class="main-div" style="margin-top: 5px;width: 800px; height:220px;">
+{foreach from=$site_arr item=site}
+<div style="float:left; margin-left:20px; margin-top:10px;">
+<a href="{$site.se_url}" target="_blank"><img style="margin:10px; border:0; height:40px;" src="{$site.se_img}"></a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="{$site.se_url}" target="_blank">{$site.se_url}</a>
+</div>
+{/foreach}
+</div>
+{/if}
+
+{literal}
+<script type="text/javascript" language="JavaScript">
+<!--
+onload = function()
+{
+  // 开始检查订单
+  startCheckOrder();
+}
+
+function stop_sev()
+{
+  if (confirm(sev_stop))
+  {
+    self.location='?act=close';
+  }
+}
+//-->
+</script>
+{/literal}
+{include file="pagefooter.htm"}

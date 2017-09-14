@@ -1,0 +1,263 @@
+@charset "utf-8";
+/* CSS Document */
+	.scrollimg{ position:relative; overflow:hidden; margin:0px auto; /* 设置焦点图最大宽度 */ }
+	.scrollimg .hd{ position:absolute; height:18px; line-height:18px; bottom:5px; right:43%; z-index:1; }
+	.scrollimg .hd li{ display:inline-block;  display: inline-block; background-color: rgba(255,255,255,0); border: 1px rgba(255,255,255,0.5) solid; width: 6px; height: 6px; border-radius: 6px; margin-right: 5px; text-indent:-9999px; overflow:hidden;   }
+	.scrollimg .hd li.on{ background:#fff;  }
+	.scrollimg .bd{ position:relative; z-index:0; }
+	.scrollimg .bd li{ position:relative; text-align:center;  }
+	.scrollimg .bd li img{ background:url(images/loading.gif) center center no-repeat;  vertical-align:top; width:100%;/* 图片宽度100%，达到自适应效果 */}
+	.scrollimg .bd li a{ -webkit-tap-highlight-color:rgba(0,0,0,0);  }  /* 去掉链接触摸高亮 */
+	#tbh5v0{display:inline-block}
+.main {
+	width: 100%;
+	margin: 0 auto
+}
+.main .tab {
+	width: 100%;
+	float: left
+}
+.main .tab .tab_tit {
+}
+.main .tab .tab_tit ul {
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+	border-bottom: 2px #BCBCBC solid;
+}
+.main .tab .tab_tit ul li {
+	float: left;
+	text-align: center;
+	width: 25%;
+	height: 35px;
+	line-height: 35px;
+	cursor: pointer;
+	font-size: 14px;
+}
+.main .tab .tab_tit ul li.curr {
+	border-bottom: 2px #EE2F15 solid;
+	color: #EE2F15;
+}
+.main .tab .tab_tit ul li.curr a{
+	color: #EE2F15;
+}
+.main .tab .tab_con {
+	width: 100%
+}
+.main .tab .tab_con .mc {
+	display: none
+}
+.main .tab .tab_con ul {
+	width: 100%;
+	padding: 5px 0px 10px
+}
+.main .tab .tab_con ul li {
+	display: inline-block;
+	width: 100%;
+	height: auto;
+	margin: 5px 0px;
+	border: 1px #ddd solid;
+	background: #ffffff;
+}
+.main .tab .tab_con ul li .con_top {
+	float: left;
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	position: relative
+}
+.main .tab .tab_con ul li .con_top .count {
+	position: absolute;
+	top: -1px;
+	right: -1px;
+	padding: 2%;
+	background: #E31939;
+	color: #ffffff;
+	text-align: center;
+	font-size: 12px;
+}
+.main .tab .tab_con ul li .con_top .count font {
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 1.5em;
+}
+.main .tab .tab_con ul li .con_top img {
+	width: 100%;
+	height: auto;
+	overflow: hidden
+}
+.main .tab .tab_con ul li .con_bottom {
+	float: left;
+	width: 96%;
+	height: auto;
+	padding: 0px 2%
+}
+.main .tab .tab_con ul li .con_bottom p {
+	height: 30px;
+	line-height: 30px;
+	font-size: 12px;
+	width: 100%;
+	text-align: left;
+	overflow: hidden
+}
+.main .tab .tab_con ul li .con_bottom p.name {
+	margin-top: 15px;
+	font-size: 14px;
+}
+.main .auction_hot {
+	float: left;
+	width: 100%;
+	height: auto
+}
+#tbh5v0 .main .auction_hot h2 {
+	height: 35px;
+	line-height: 35px;
+	font-size: 14px;
+	text-align: left;
+	color: #EE2F15;
+	border-bottom: 2px #EE2F15 solid;
+	margin-top: 0px;
+	text-indent: 15px;
+	background:#ffffff;
+}
+.main .auction_hot ul {
+	padding: 10px 0px;
+}
+.main .auction_hot ul li {
+	width: 100%;
+	height: auto;
+	display: inline-block;
+	margin: 5px 0px 5px;
+	border: 1px solid #DDD;
+	background:#ffffff;
+}
+.main .auction_hot ul li .p-img {
+	float: left;
+	width: 20%;
+	margin: 5px;
+	text-align: center;
+	position:relative
+}
+.main .auction_hot ul li .p-img .index{
+	position:absolute;
+	top:0px;
+	left:0px;
+	padding:3px 5px;
+	background:	#EE2F15;
+	color:#ffffff;
+}
+
+.main .auction_hot ul li .rate {
+	float: left;
+	width: 90%;
+	line-height: 1.5em;
+	margin: 10px 0px 5px 10px;
+}
+.main .auction_hot ul li .p-price, .main .auction_hot ul li .p-count {
+	float: left;
+	width: 90%;
+	line-height: 1.5em;
+	margin-left: 10px;
+}
+.main .auction_hot ul li .p-price span {
+	float: left
+}
+.main .auction_hot ul li .p-price strong {
+	float: left;
+	margin: 0px 0px 5px 5px;
+	color: #EE2F15;
+	font-size: 14px;
+}
+.main .auction_hot ul li .p-count a{
+	padding:1px 5px;
+	background:	#EE2F15;
+	color:#ffffff;
+	float: left;
+}
+.layout_list {
+	width: 100%;
+	float: left;
+	padding-bottom: 10px;
+	overflow: hidden;
+	text-align:right
+}
+#tbh5v0 .layout_list h2 {
+	height: 35px;
+	line-height: 35px;
+	border-bottom: 2px solid #EE2F15;
+	font-size: 14px;
+	text-indent: 10px;
+	color:#EE2F15;
+	margin-top:0px;
+	background:#ffffff;
+}
+.layout_list ul {
+	width: 100%;
+	margin-top: 10px;
+}
+.layout_list ul li {
+	width: 48.5%;
+	display: inline-block;
+*display:inline;
+*zoom:1;
+	float: left;
+	margin-left: 3%;
+	margin-bottom: 10px;
+	overflow:hidden;
+	background:#ffffff;
+	padding:2% 0px;
+	border-radius: 5px;
+}
+.layout_list ul li.layout_list_1{
+	margin-left:0px
+}
+.layout_list ul li .layout_pic {
+	display: block;
+	background: #fff;
+	text-align: center;
+	padding:0px 2% 0px;
+}
+.layout_list ul li .layout_pic img {
+	display: inline-block;
+*display:inline;
+*zoom:1;
+	vertical-align: middle;
+	width: 96%;
+	height: auto;
+}
+.layout_list ul li .layout_cont {
+	padding: 5px 10px
+}
+.layout_list ul li .layout_cont .layout_name {
+	display: block;
+	height: 30px;
+	line-height:30px;
+	overflow: hidden;
+	padding: 0px;
+	text-align:left
+}
+.layout_list ul li .layout_cont .layout_price {
+	height: 25px;
+	line-height: 25px;
+	text-align:left
+}
+.layout_list ul li .layout_cont .layout_price span {
+	font-size: 12px;
+	color: #E31939;
+	float:left
+}
+.layout_list ul li .layout_cont .layout_price em {
+	font-size: 12px;
+	margin: 0px 3px 0px 5px
+}
+.layout_list .bid_btn {
+	margin-top: 3px;
+	display: inline-block;
+	overflow:hidden;
+	padding:0px 5px;
+	background:	#EE2F15;
+	color:#ffffff;
+	float:right;
+	height:20px;
+	line-height:20px;
+}

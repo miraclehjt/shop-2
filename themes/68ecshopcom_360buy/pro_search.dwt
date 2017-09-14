@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link rel="stylesheet" type="text/css" href="themes/68ecshopcom_360buy/css/pro_search.css"/>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-1.9.1.min.js" ></script>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-lazyload.js" ></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+{insert_scripts files='utils.js,common.js'}
+</head>
+<body >
+<div id="site-nav"> <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+  <div class="wdiv">
+    <div class="w"> 
+      <!--分类筛选 star-->
+      <div class="cate"> <span>分类筛选</span>
+        <ul class="cate_all">
+          <li class="all"><a href="pro_search.php?category=0&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter={$filterid}&filter_attr={$filter_attr}&page={$pager.page}&sort=goods_id&order={$pager.order}" title="" {if $pager.category eq '' || $pager.category eq '0'}class="cur"{/if}>全部</a></li>
+          <li class="qita">
+            <div class="cate_main">
+              <ul class="cate_one">
+                <!--{foreach from=$categories_pro item=cat name=cat}-->
+                <li class="J_MenuItem"> <a href="javascript:void(0)" {if $pager.pcategory eq $cat.id}class="cur"{/if}>{$cat.name}</a> </li>
+                <!--{/foreach}-->
+              </ul>
+              <script type="text/javascript">
+							$(document).ready(function(){
+							$( ".J_MenuItem" ).each( function( index ){ 
+								$(this).click( function(){		
+									$( ".zengpin" ).eq( index ).slideToggle().siblings("div.zengpin").hide();
+									$(".J_MenuItem").children("a").removeClass("cur");
+									$(this).children("a").addClass("cur");
+								});
+								$('.all').click( function(){		
+									$( ".zengpin" ).eq( index ).hide();			 
+			
+								});
+								});
+							});
+						</script> 
+              <!--{foreach from=$categories_pro item=cat name=cat}-->
+              <p>
+              <div id="zengpin" class="zengpin" style="display:none;"> <b class="tip_flag"></b>
+                <ul>
+                  <li><a href="pro_search.php?category={$cat.id}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter={$filterid}&filter_attr={$filter_attr}&page={$pager.page}&sort=goods_id&order={$pager.order}" {if $pager.category eq $cat.id}class="cur"{/if}>全部</a></li>
+                  <!--{foreach from=$cat.cat_id item=child}-->
+                  <li><a href="pro_search.php?category={$child.id}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter={$filterid}&filter_attr={$filter_attr}&page={$pager.page}&sort=goods_id&order={$pager.order}" {if $pager.category eq $child.id}class="cur"{/if}>{$child.name|escape:html}</a></li>
+                  <!--{/foreach}-->
+                </ul>
+              </div>
+              </p>
+              <!--{/foreach}--> 
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+      <!--分类筛选 end--> 
+      <!--列表排序 star-->
+      <div id="pro_filter">
+        <form method="GET" name="listform" >
+          <div class='fore1'>
+            <ul class='order'>
+              <a href="pro_search.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter={$filterid}&filter_attr={$filter_attr}&page={$pager.page}&sort={$list_default_sort}&order=<!-- {if $pager.sort == $list_default_sort && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->"><li class="<!-- {if $pager.sort == $list_default_sort} -->curr<!-- {/if} -->" style="border-left:none">默认<b class="icon-order-<!-- {if $pager.sort == $list_default_sort && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->"></b></li></a>
+              <a href="pro_search.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter={$filterid}&filter_attr={$filter_attr}&page={$pager.page}&sort=salenum&order=<!-- {if $pager.sort == 'salenum' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->"><li class="<!-- {if $pager.sort == 'salenum'} -->curr<!-- {/if} -->">销量<b class="icon-order-<!-- {if $pager.sort == 'salenum' && $pager.order == 'ASC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->"></b></li></a>
+              <a href="pro_search.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter={$filterid}&filter_attr={$filter_attr}&page={$pager.page}&sort=promote_price&order=<!-- {if $pager.sort == 'promote_price' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->"><li class="<!-- {if $pager.sort == 'promote_price'} -->curr<!-- {/if} -->">价格<b class="icon-order-<!-- {if $pager.sort == 'promote_price' && $pager.order == 'ASC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->"></b></li></a>
+              <a href="pro_search.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter={$filterid}&filter_attr={$filter_attr}&page={$pager.page}&sort=zhekou&order=<!-- {if $pager.sort == 'zhekou' && $pager.order == 'ASC'} -->DESC<!-- {else} -->ASC<!-- {/if} -->"><li class="<!-- {if $pager.sort == 'zhekou'} -->curr<!-- {/if} -->">折扣<b class="icon-order-<!-- {if $pager.sort == 'zhekou' && $pager.order == 'DESC'} -->DESC<!-- {else} -->ASC<!-- {/if} -->"></b></li></a>
+            </ul>
+            <div class='pro_pagin'> 
+              <!-- {if $pager.page_prev} --> 
+              <a href="{$pager.page_prev}" class="prev" ><img src="themes/68ecshopcom_360buy/images/upgrade_ad/lt_cur.gif" alt="上一页"/></a> 
+              <!-- {else} --> 
+              <span class="prev-disabled"><img src="themes/68ecshopcom_360buy/images/upgrade_ad/lt.gif"/></span> 
+              <!-- {/if} --> 
+              <span class='text'><span>{$pager.page}</span>/{$pager.page_count}</span> 
+              <!-- {if $pager.page_next} --> 
+              <a href="{$pager.page_next}" class="next" ><img src="themes/68ecshopcom_360buy/images/upgrade_ad/gt_cur.gif" alt="下一页"/></a> 
+              <!-- {else} --> 
+              <span class="next-disabled"><img src="themes/68ecshopcom_360buy/images/upgrade_ad/gt.gif" /></span> 
+              <!-- {/if} --> 
+            </div>
+            <div style="height:0px; line-height:0px; clear:both;"></div>
+          </div>
+        </form>
+      </div>
+      <!--列表排序 end-->
+      <div class="l">
+        <div class="pro"> 
+          <!--{foreach from=$goods_list item=goods name=name key=key}--> 
+          <!--{if $goods.goods_name neq ''}-->
+          <div class="product" onmouseover="this.className='product hover1'" onmouseout="this.className='product'">
+            <div class="pic"> <a href="pro_goods.php?id={$goods.goods_id}" target="_blank"> {if $goods.goods_number eq 0} 
+              <!--抢光图标 star--> 
+              <span class="row_soldout"></span> 
+              <!--抢光图标 end--> 
+              {/if} <img title="{$goods.goods_name|escape:html}" alt="{$goods.goods_name|escape:html}" width=220 height=220  data-original="{$goods.goods_thumb}" src="themes/68ecshopcom_360buy/images/loading.gif"> </a> {if $goods.is_best}
+              <DIV class=t_icon_st></DIV>
+              {/if} </div>
+            <div class="title"> <span>{$goods.zhekou}折/</span> <a title="{$goods.goods_name|escape:html}" href="pro_goods.php?id={$goods.goods_id}" target="_blank">{$goods.goods_name} </a> </div>
+            <!--非团购专场-->
+            <div class="buy3">
+              <div class="n-price"> 
+                <!--{if $goods.promote_price neq "" } --> 
+                {$goods.promote_price} 
+                <!--{else}--> 
+                {$goods.shop_price} 
+                <!--{/if}--> 
+                <del class="yp">{$goods.shop_price}</del> </div>
+              <div class="on_buy"><a title="{$goods.goods_name|escape:html}" href="pro_goods.php?id={$goods.goods_id}" target="_blank">立即抢购</a></div>
+            </div>
+            <div class="price3"> <span class="time"><i></i><span class="settime" endTime="{$goods.pro_end_time}"></span></span> <span class="count">{$goods.count1}人已购买</span> </div>
+          </div>
+          <!--{/if}--> 
+          <!--{/foreach}--> 
+        </div>
+        <div style="height:0px;line-height:0px;clear:both"></div>
+        <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem --> </div>
+    </div>
+  </div>
+  <div style="height:0px; line-height:0px; clear:both;"></div>
+  <!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem --> <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> <!-- #BeginLibraryItem "/library/site_bar.lbi" --><!-- #EndLibraryItem --> </div>
+<script type="text/javascript">
+$("img").lazyload({
+    effect       : "fadeIn",
+	 skip_invisible : true,
+	 failure_limit : 20
+});
+</script> 
+<script>
+$(function(){
+updateEndTime();
+});
+//倒计时函数
+function updateEndTime()
+{
+ var date = new Date();
+ var time = date.getTime()+8*60*60*1000;
+
+ $(".settime").each(function(i){
+ 
+ var endDate =this.getAttribute("endTime"); //结束时间字符串
+
+ //转换为时间日期类型
+ var endDate1 = eval('new Date(' + endDate.replace(/\d+(?=-[^-]+$)/, function (a) { return parseInt(a, 10) - 1; }).match(/\d+/g) + ')');
+
+ var endTime = endDate1.getTime(); //结束时间毫秒数
+ 
+ var lag = (endTime - time) / 1000; //当前时间和结束时间之间的秒数
+  if(lag > 0)
+  {
+   var second = Math.floor(lag % 60);     
+   var minite = Math.floor((lag / 60) % 60);
+   var hour = Math.floor((lag / 3600) % 24);
+   var day = Math.floor((lag / 3600) / 24);
+   $(this).html(day+"天"+hour+"小时"+minite+"分"+second+"秒");
+  }
+  else
+   $(this).html("团购已经结束啦！");
+ });
+ setTimeout("updateEndTime()",1000);
+}
+</script>
+</body>
+</html>

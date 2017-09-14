@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link rel="stylesheet" href="themes/68ecshopcom_360buy/css/virtual_group.css">
+<link rel="stylesheet" href="themes/68ecshopcom_360buy/css/store_virtual.css">
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-1.9.1.min.js" ></script>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-lazyload.js" ></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+{insert_scripts files='utils.js,common.js'}
+</head>
+<body >
+<div id="site-nav"> <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+  <div class="blank"></div>
+  <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+  <div class="wdiv">
+    <div class="w"> 
+      <!--分类筛选 star-->
+      <div class="filter_section">
+        <div class="filter_item clearfix">
+          <div class="filter_tit">城市：</div>
+          <div class="city_info_box">
+            <div class="city_info"><span class="curr_city">{$nowcityname}</span><span class="bg_ff"></span>
+              <div class="top_city_list">
+              	<ul>
+              	{foreach from=$zimu_city key=city_key item=city_val}
+                <li class="clearfix"> <span class="city_key fl">{$city_key}</span> <span class="city_list_a fr"> {foreach from=$city_val item=ccity} <a href="javascript:void(0)" onclick="virtual_search(2,'{$ccity.region_id}')" class="region_name">{$ccity.region_name}</a> {/foreach} </span> </li>
+                {/foreach}
+                </ul>
+              </div>
+              
+            </div>
+          </div>
+          <div class="city_list_box">
+            <h4>请选择您所在的城市<span class="change_city_close"></span></h4>
+            <div class="city_list_scroll">
+              <ul class="city_list">
+                {foreach from=$zimu_city key=city_key item=city_val}
+                <li class="clearfix"> <span class="city_key fl">{$city_key}</span> <span class="city_list_a fl"> {foreach from=$city_val item=ccity} <a href="javascript:void(0)" onclick="virtual_search(2,'{$ccity.region_id}')" class="region_name">{$ccity.region_name}</a> {/foreach} </span> </li>
+                {/foreach}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="filter_item clearfix">
+          <div class="filter_tit">分类：</div>
+          <div class="filter_attrs filter_attrs1"> {foreach from=$category item=category} <a href="javascript:void(0)"  onclick="virtual_search(1,'{$category.cat_id}')" class="{if $search_info.cat_id eq $category.cat_id}curr{/if}">{$category.cat_name}</a> {/foreach}
+            <div class="filter_item filter_cat  clearfix bd_none">
+              <div class="filter_attrs"> {foreach from=$category_chr item=category_chr key=key}<a href="javascript:void(0)" onclick="virtual_search(5,'{$category_chr.cat_id}')" class="{if $search_info.catch_id eq $category_chr.cat_id}curr{/if}"><span>{$category_chr.cat_name}</span></a> {/foreach} </div>
+            </div>
+          </div>
+        </div>
+        <div class="filter_item clearfix bd_none">
+          <div class="filter_tit">区域：</div>
+          <div class="filter_attrs filter_attrs2"> {foreach from=$county_list item=county_list key=key} <a href="javascript:void(0)" onclick="virtual_search(3,'{$county_list.region_id}')" class="{if $search_info.county_id eq $county_list.region_id}curr{/if}" ><span>{$county_list.name}</span></a> {/foreach} </div>
+        </div>
+        <div class="filter_item filter_district clearfix bd_none">
+          <div class="filter_tit">商圈：</div>
+          <div class="filter_attrs"> {foreach from=$district item=district key=key}<a href="javascript:void(0)" onclick="virtual_search(4,'{$district.id}')" class="{if $search_info.district_id eq $district.id}curr{/if}"><span>{$district.name}</span></a> {/foreach} </div>
+        </div>
+      </div>
+      
+      <!--筛选条件 end--> 
+      <!--列表排序 star-->
+      <div id="pro_filter">
+        <form method="GET" name="listform" >
+          <div class='fore1'>
+            <ul class='order'>
+              <li class="<!-- {if $pager.sort == $list_default_sort} -->curr1<!-- {/if} -->"> <a href="virtual_group.php?show={$show}&page={$pager.page}&sort={$list_default_sort}&order=<!-- {if $pager.sort == $list_default_sort && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->">默认</a> </li>
+              {if $show eq 'goods'}<li class="<!-- {if $pager.sort == 'salenum'} -->curr<!-- {/if} -->"> <a href="virtual_group.php?show={$show}&page={$pager.page}&sort=salenum&order=<!-- {if $pager.sort == 'salenum' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->">销量</a><b class="icon-order-<!-- {if $pager.sort == 'salenum' && $pager.order == 'ASC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->"></b> </li>{/if}
+              <li class="<!-- {if $pager.sort == 'shop_price'} -->curr<!-- {/if} -->"> <a href="virtual_group.php?show={$show}&page={$pager.page}&sort=shop_price&order=<!-- {if $pager.sort == 'shop_price' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->">价格</a><b class="icon-order-<!-- {if $pager.sort == 'shop_price' && $pager.order == 'ASC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->"></b> </li>
+              <li class="<!-- {if $pager.sort == 'click_count'} -->curr<!-- {/if} -->"> <a href="virtual_group.php?show={$show}&page={$pager.page}&sort=click_count&order=<!-- {if $pager.sort == 'click_count' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->">热度</a><b class="icon-order-<!-- {if $pager.sort == 'click_count' && $pager.order == 'ASC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->"></b> </li>
+            </ul>
+            <div class="change_list">
+            	<a href="virtual_group.php?show=goods" class="checkbox {if $show eq 'goods'} selected {/if}">商品</a><a href="virtual_group.php?show=street" class="checkbox {if $show eq 'street'} selected {/if}">店铺</a>
+            </div>
+            <div class='pro_pagin'> 
+              <!-- {if $pager.page_prev} --> 
+              <a href="{$pager.page_prev}" class="prev" ><img src="themes/68ecshopcom_360buy/images/upgrade_ad/lt_cur.gif" alt="上一页"/></a> 
+              <!-- {else} --> 
+              <span class="prev-disabled"><img src="themes/68ecshopcom_360buy/images/upgrade_ad/lt.gif"/></span> 
+              <!-- {/if} --> 
+              <span class='text'><span>{$pager.page}</span>/{$pager.page_count}</span> 
+              <!-- {if $pager.page_next} --> 
+              <a href="{$pager.page_next}" class="next" ><img src="themes/68ecshopcom_360buy/images/upgrade_ad/gt_cur.gif" alt="下一页"/></a> 
+              <!-- {else} --> 
+              <span class="next-disabled"><img src="themes/68ecshopcom_360buy/images/upgrade_ad/gt.gif" /></span> 
+              <!-- {/if} --> 
+            </div>
+            <div style="height:0px; line-height:0px; clear:both;"></div>
+          </div>
+        </form>
+      </div>
+      <!--列表排序 end-->
+
+      <div class="l">
+        <div class="pro"> 
+        {if $show eq 'goods'}
+          <!--{foreach from=$virtual_goods item=virtual_goods name=name key=key}--> 
+          <!--{if $virtual_goods.goods_name neq ''}-->
+          <div class="product" onmouseover="this.className='product hover1'" onmouseout="this.className='product'">
+            <div class="pic"> <a href="virtual_group_goods.php?id={$virtual_goods.goods_id}" target="_blank"> {if $virtual_goods.goods_number eq 0} 
+              <!--抢光图标 star--> 
+              <span class="row_soldout"></span> 
+              <!--抢光图标 end--> 
+              {/if} <img title="{$virtual_goods.goods_name|escape:html}" alt="{$virtual_goods.goods_name|escape:html}" width=280 height=280  data-original="{$virtual_goods.goods_thumb}" src="themes/68ecshopcom_360buy/images/loading.gif"> </a> {if $virtual_goods.is_best}
+              <DIV class=t_icon_st></DIV>
+              {/if} 
+            <div class="time"><span class="time_tit">购买倒计时</span><span class="settime" endTime="{$virtual_goods.valid_date}"></span></div>
+            </div>
+            <div class="title title1"><a title="{$virtual_goods.goods_name|escape:html}" href="virtual_group_goods.php?id={$virtual_goods.goods_id}" target="_blank">{$virtual_goods.goods_name} </a> </div>
+            <div class="title">商家:{if $virtual_goods.supplier_id eq '0'}网站自营{else}{$virtual_goods.supplier_name}{/if}</div>
+            <!--非团购专场-->
+            <div class="buy3">
+              <div class="n-price"> 
+                <!--{if $virtual_goods.promote_price neq "" } --> 
+                {$virtual_goods.promote_price} 
+                <!--{else}--> 
+                {$virtual_goods.shop_price} 
+                <!--{/if}--> 
+                <del class="yp">{$virtual_goods.shop_price}</del> </div>
+              <div class="price3">  <span class="count"><em>{$virtual_goods.count1}</em>人已购买</span> </div>
+            </div>           
+          </div>
+          <!--{/if}--> 
+          <!--{/foreach}--> 
+        {/if}
+    {if $show eq 'street'}
+         <!-- #BeginLibraryItem "/library/stores_list_virtual.lbi" --><!-- #EndLibraryItem -->
+    {/if}  
+        </div>
+        <div style="height:0px;line-height:0px;clear:both"></div>
+        <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem --> </div>
+    </div>
+  </div>
+  <div style="height:0px; line-height:0px; clear:both;"></div>
+  <!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem --> <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> <!-- #BeginLibraryItem "/library/site_bar.lbi" --><!-- #EndLibraryItem --> </div>
+<script type="text/javascript">
+$("img").lazyload({
+    effect       : "fadeIn",
+	 skip_invisible : true,
+	 failure_limit : 20
+});
+</script> 
+<script>
+$(function(){
+updateEndTime();
+});
+//倒计时函数
+function updateEndTime()
+{
+ var date = new Date();
+ var time = date.getTime()+8*60*60*1000;
+
+ $(".settime").each(function(i){
+ 
+ var endDate =this.getAttribute("endTime"); //结束时间字符串
+ //转换为时间日期类型
+ //var endDate1 = eval('new Date(' + endDate.replace(/\d+(?=-[^-]+$)/, function (a) { return parseInt(a, 10) - 1; }).match(/\d+/g) + ')');
+var endDate1 =  new Date(endDate);
+ var endTime = endDate1.getTime(); //结束时间毫秒数
+ var endTime;
+ var lag = (endTime - time) / 1000; //当前时间和结束时间之间的秒数
+  if(lag > 0)
+  {
+   var second = Math.floor(lag % 60);     
+   var minite = Math.floor((lag / 60) % 60);
+   var hour = Math.floor((lag / 3600) % 24);
+   var day = Math.floor((lag / 3600) / 24);
+   $(this).html(day+"天"+hour+"小时"+minite+"分"+second+"秒");
+  }
+  else
+   $(this).html("团购已经结束啦！");
+ });
+ setTimeout("updateEndTime()",1000);
+}
+
+$(function(){
+
+if({$search_info.county_id} != 0){
+    $('.filter_district').show();
+    $('.filter_attrs2 a').parents('.filter_item').removeClass('bd_none');
+}
+
+if({$search_info.cat_id} != 0){
+    $('.filter_cat').show();
+    $('.filter_attrs2 a').parents('.filter_item').removeClass('bd_none');
+}
+});
+var city_box_l=($(window).width()-$('.city_list_box').width())/2;
+var city_box_t=($(window).height()-$('.city_list_box').height())/2;
+$('.city_list_box').css({'left':city_box_l,'top':city_box_t});
+if($('.curr_city').text()==''){
+    $('.city_list_box').show();	
+    $('body').append('<div id="mask"></div>');
+    $('#mask').css({'width':$(window).width(),'height':$(window).height()});
+}
+
+$('.city_info').hover(function(){
+	$('.top_city_list').toggle();	
+	$(this).find('.bg_ff').toggle();
+})
+$('.change_city_close').click(function(){
+	$('.city_list_box').hide();	
+	$('#mask').remove();
+})
+
+$('.change_list .checkbox').click(function(){
+	$(this).addClass('selected').siblings().removeClass('selected');	
+})
+
+
+function virtual_search(type,id)
+{
+    if(type == 1){
+
+        document.cookie="cat_1="+id;
+        document.cookie="cat_2=0";
+        top.location.reload();
+    }
+
+    if(type == 2){
+        $('.city_list_box').hide();
+        Ajax.call('virtual_group.php', 'act=setcity&id=' + id , set_city_response, 'GET', 'JSON');
+    }
+    if(type == 3){
+
+        document.cookie="region_3="+id;
+        document.cookie="region_4=0";
+        top.location.reload();
+    }
+    if(type == 4){
+
+        document.cookie="region_4="+id;
+        top.location.reload();
+    }
+    if(type == 5){
+        document.cookie="cat_2="+id;
+        top.location.reload();
+    }
+}
+
+function set_city_response(result){
+    document.cookie="region_1="+result.cookieinfo['region_1'];
+    document.cookie="region_2="+result.cookieinfo['region_2'];
+    document.cookie="region_3=0";
+    document.cookie="region_4=0";
+    document.cookie="cat_1=0";
+    document.cookie="cat_2=0";
+    //alert(result.result);
+    top.location.reload();
+}
+
+
+
+</script>
+</body>
+</html>

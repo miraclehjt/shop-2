@@ -1,0 +1,201 @@
+/*LL增加*/
+.tgoulist {
+	width: 1210px;
+	margin: auto;
+	margin-top: 20px
+}
+.tgoulist .tupian {
+	left: 75px;
+	position: fixed;
+	bottom: 75px;
+}
+.tgoulist .right {
+	width: 1190px;
+	min-height: 1000px;
+	border-left: 1px solid #ccc;
+}
+.list_biaoti h3 {
+	color: #E31939;
+	font-size: 16px;
+	font-weight: bold;
+	position: relative;
+	height:35px;
+	line-height:35px;
+	padding-left: 40px;
+	margin-bottom: 15px;
+}
+.list_biaoti h3 i {
+	width: 43px;
+	height: 15px;
+	display: inline-block;
+	background: url(../images/shengji_ad/zyj1_06.jpg) no-repeat;
+	position: absolute;
+	left: -8px;
+	top: 8px
+}
+.list_biaoti h3 img{
+	height:35px;
+	vertical-align:middle;
+	position:absolute;
+	right:0px;
+	top:0px
+}
+.list_tuangou {
+	margin-bottom: 15px;
+	position: relative;
+}
+.list_tuangou .list_tt {
+	height: 262px;
+	border: 1px solid #CCC;
+	margin-left: 30px;
+	padding: 15px;
+}
+.list_tuangou .list_tt .right {
+	width: 345px !important;
+	min-height: 200px !important;
+	border-left: none !important
+}
+.list_tuangou .list_tt .right h3 {
+	height: 45px;
+	background: #fef7f9;
+	line-height: 45px;
+	font-size: 15px;
+}
+.list_tuangou .list_tt .right i {
+	margin-top: -3px;
+	background: url(../images/shengji_ad/my1_13.jpg) no-repeat;
+	width: 25px;
+	margin-left: 10px;
+	height: 17px;
+	display: inline-block;
+	vertical-align: middle;
+	top: 11px;
+	left: 9px
+}
+.list_tuangou .list_tt .right h3 span {
+	color: #E31939;
+	font-size: 14px;
+}
+.list_tuangou .list_tt .right p {
+	line-height: 25px;
+	text-indent: 10px;
+	font-size: 14px;
+	padding: 10px 0;
+	color: #666
+}
+.list_tuangou .list_tt .right div {
+	padding: 15px 0;
+	position: absolute
+}
+.list_tuangou .list_tt .right div b {
+	font-weight: 100;
+	color: #999;
+	font-size: 12px;
+	text-decoration: line-through
+}
+.list_tuangou .list_tt .right div button {
+	background: #ee064b;
+	width: 80px;
+	height: 30px;
+	border: 0;
+	color: #FFF;
+	margin-left: 4px;
+	top: 25px
+}
+.ziti1 {
+	color: #f14572;
+	font-size: 14px;
+	font-size: 30px;
+	margin-right: 7px;
+}
+.pbox_off {
+	position: relative;
+	top: -3px;
+	font-size: 12px;
+	color: #fff;
+	background-color: gray;
+	border-radius: 3px;
+	padding: 0 5px;
+	margin: 0 7px 0 3px;
+}
+.notice {
+	position: absolute;
+	left: 182px;
+	top: 127px;
+	z-index: 201;
+}
+.notice .noticeinp {
+	width: 200px;
+	height: 28px;
+	line-height: 30px;
+	font-size: 12px;
+	color: #999;
+	position: absolute;
+	top: 0;
+	background-color: #fff;
+	text-indent: 8px;
+}
+.notice .sendNotice {
+	left: 210px;
+	top: 0;
+	height: 30px;
+	width: 80px;
+	color: #fff;
+	font-size: 14px;
+	line-height: 30px;
+	background-color: #333;
+	position: absolute;
+	border: 0;
+	cursor: pointer;
+}
+.hdleft {
+	width: 140px;
+	height: auto;
+}
+.hdl {
+	background: url(../images/shengji_ad/hdbg.png) no-repeat;
+	width: 140px;
+	height: 47px;
+}
+.hdl span {
+	width: 110px;
+	height: 35px;
+	padding: 0px 10px;
+	display:inline-block;
+	text-align:center
+}
+.hdl a {
+	color: #fff;
+	font-size: 14px;
+	height: 35px;
+	line-height: 35px;
+}
+.hdl a:hover {
+	color: #fff;
+	text-decoration: none
+}
+.hdleft .gotop {
+	background: url(../images/shengji_ad/hdbg_top.png) no-repeat;
+	width: 140px;
+	height: 34px;
+	text-align: center
+}
+.hdleft .gotop a {
+	color: #ffffff;
+	font-weight: bold;
+}
+.list_tuangou .gift {
+	min-height: 230px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+.list_tuangou .gift table {
+	float: left;
+	margin-left: 15px;
+}
+.list_tuangou .gift td a.thumb {
+	width: 170px;
+	padding: 5px;
+	display: inline-block;
+	text-align: center;
+}

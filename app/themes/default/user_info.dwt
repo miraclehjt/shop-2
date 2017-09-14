@@ -1,0 +1,133 @@
+<div class="ub user_check bg-color-w">
+  <div class="ub-f1 selected _tab" id="tab_profile" tab_key='profile'> <font>基本信息</font> </div>
+  <div class="ub-f1 _tab" id="tab_headimg" tab_key='headimg'> <font>更换头像</font> </div>
+  <div class="ub-f1 _tab" id="tab_identity" tab_key='identity'> <font>实名认证</font> </div>
+</div>
+<div id="tab_content_profile" class='_tab_content'>
+  <div class="m-all2 bg-color-w ulev-9">
+    <div class="ubb ub border-f2 ub-ac h-min1">
+      <div class="f-color-6 sc-text-hui uw-reg"> 用户名称 </div>
+      <div class="uinput sc-text-hui">
+        <input type="text" id="username" placeholder="请输入用户名" value="{$profile.user_name}"/>
+      </div>
+    </div>
+    <div class="ubb ub border-f2 ub-ac h-min1">
+      <div class="f-color-6 sc-text-hui uw-reg"> 出生日期 </div>
+      <div class="uinput sc-text-hui styled-select"> {html_select_date field_order=YMD prefix=birthday start_year=-60 end_year=+1 display_days=true month_format=%m day_value_format=%02d time=$profile.birthday} </div>
+    </div>
+    <div class="ubb ub border-f2 ub-ac h-min1">
+      <div class="f-color-6 sc-text-hui uw-reg"> 性别 </div>
+      <div class="sc-text-hui ub ub-ac">
+		<div class="_checkbox checkbox_radio {if $profile.sex==0}checked{/if}" radio="true" name="sex" value="0" {if $profile.sex==0}checked="true"{/if} cancel="false" id="secret"></div>
+        <div class="mar-ar1 _checkbox_label" for="secret">{$lang.secrecy}</div>
+		<div class="_checkbox checkbox_radio {if $profile.sex==1}checked{/if}" radio="true" name="sex" value="1" checked="{if $profile.sex==1}true{else}false{/if}" cancel="false" id="male"></div>
+        <div class="mar-ar1 _checkbox_label" for="male">{$lang.male}</div>
+		<div class="_checkbox checkbox_radio {if $profile.sex==2}checked{/if}" radio="true" name="sex" value="2" checked="{if $profile.sex==2}true{else}false{/if}" cancel="false" id="female"></div>
+        <div class="mar-ar1 _checkbox_label" for="female">{$lang.female}</div>
+      </div>
+    </div>
+  </div>
+  <div class="m-all2" id='confirm_button_1'>
+    <div class="user-btn"> 确认修改 </div>
+  </div>
+</div>
+<div id="tab_content_headimg" class='uhide _tab_content'>
+  <div class="m-all2 bg-color-w">
+    <div class="ubb ub border-f2 ub-ac p-t-b5">
+      <div class="f-color-6 sc-text-hui uw-reg ulev-9"> 头像预览 </div>
+      <div class="f-color-6 sc-text-hui uw-reg ulev-9"> <img id='headimg_preview' <!-- {if $profile.headimg} -->src="{$url}{$profile.headimg}" <!-- {else} -->src='img/empty_image.png'<!-- {/if} --> style="width:120px;height:120px;border:1px solid #eee;"> </div>
+    </div>
+    <div class="ubb ub border-f2 ulev-1 sc-text-active1 p-all2"> 完善个人信息资料，上传头像图片有助于您结识更多的朋友。头像最佳默认尺寸为120x120像素。 </div>
+    <div class="ubb ub border-f2 f-color-6 ub-ac h-min1">
+      <div class="f-color-6 sc-text-hui uw-reg ulev-9"> 更换头像 </div>
+      <div id='select_headimg' class="btn-red-2 ulev-1">选择图片</div>
+      <!-- <input type="file" id='headimg' value="选择文件"/> --> 
+    </div>
+  </div>
+  <div class="m-all2" id='confirm_button_2'>
+    <div class="user-btn "> 确认修改 </div>
+  </div>
+</div>
+<div id="tab_content_identity" class='uhide _tab_content' >
+  <div class="m-all2 bg-color-w ubb border-hui ulev-9"> {if $profile.status eq 2}
+    <div class="ubb ub border-f2 ub-ac h-min1 uw-reg f-color-red">认证审核中</div>
+    {elseif $profile.status eq 1}
+    <div class="ubb ub border-f2 ub-ac h-min1 uw-reg f-color-red">认证审核通过</div>
+    {elseif $profile.status eq 3}
+    <div class="ubb ub border-f2 ub-ac h-min1 uw-reg f-color-red">认证审核不通过，请重新填写！</div>
+    {/if}
+    <div class="ubb ub border-f2 ub-ac h-min1">
+      <div class="f-color-6 sc-text-hui uw-reg"> 真实姓名 </div>
+      <div class="uinput sc-text-hui">
+        <input type="text" id="real_name" placeholder="请输入真实姓名" value="{$profile.real_name}"/>
+      </div>
+    </div>
+    <div class="ubb ub border-f2 ub-ac h-min1">
+      <div class="f-color-6 sc-text-hui uw-reg"> 身份证号 </div>
+      <div class="uinput sc-text-hui">
+        <input type="text" id="card" placeholder="请输入身份证号" value="{$profile.card}"/>
+      </div>
+    </div>
+    <div class="ubb ub border-f2 ub-ac h-min1">
+      <div class="f-color-6 sc-text-hui uw-reg"> 身份证<br>证件照 </div>
+      <img id='face_card_preview' src="{if $profile.face_card neq ''}{$url}{$profile.face_card}{else}img/empty_image.png{/if}" width="150" height="150" class="face_img"/>
+      <div class="btn-red-2 ulev-1" id='select_face_card'>选择正面 
+        <!-- <input type="file" id='face_card' value="选择文件"/> --> 
+      </div>
+    </div>
+    <div class="ubb ub border-f2 ub-ac h-min1">
+      <div class="f-color-6 sc-text-hui uw-reg"></div>
+      <img id='back_card_preview' src="{if $profile.back_card neq ''}{$url}{$profile.back_card}{else}img/empty_image.png{/if}" width="150" height="150" class="face_img" />
+      <div class="btn-red-2 ulev-1" id='select_back_card'>选择背面 
+        <!-- <input type="file" id='back_card' value="选择文件"/> --> 
+      </div>
+    </div>
+    <div class="ubb ub border-f2 ub-ac h-min1">
+      <div class="f-color-6 sc-text-hui uw-reg"> 现居地 </div>
+      <div class="sc-text-hui ub-ac ulev-1 ub-f1 styled-select">
+        <div class="float-l">
+          <select name="country" id="country" onchange="region.changed(this, 1, 'province')">
+            <option value="0">{$lang.please_select}{$name_of_region[0]}</option>
+            <!-- {foreach from=$country_list item=country} -->
+            <option value="{$country.region_id}" {if $profile.country eq $country.region_id}selected{/if}>{$country.region_name}</option>
+            <!-- {/foreach} -->
+          </select>
+        </div>
+        <div class="float-l">
+          <select name="province" id="province" onchange="region.changed(this, 2, 'city')">
+            <option value="0">{$lang.please_select}{$name_of_region[1]}</option>
+            <!-- {foreach from=$province_list item=province} -->
+            <option value="{$province.region_id}" {if $profile.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
+            <!-- {/foreach} -->
+          </select>
+        </div>
+        <div class="float-l">
+          <select name="city" id="city" onchange="region.changed(this, 3, 'district')">
+            <option value="0">{$lang.please_select}{$name_of_region[2]}</option>
+            <!-- {foreach from=$city_list item=city} -->
+            <option value="{$city.region_id}" {if $profile.city eq $city.region_id}selected{/if}>{$city.region_name}</option>
+            <!-- {/foreach} -->
+          </select>
+        </div>
+        <div class="float-l">
+          <select name="district" id="district" {if !$district_list}style="display:none"{/if}>
+            <option value="0">{$lang.please_select}{$name_of_region[3]}</option>
+            <!-- {foreach from=$district_list item=district} -->
+            <option value="{$district.region_id}" {if $profile.district eq $district.region_id}selected{/if}>{$district.region_name}</option>
+            <!-- {/foreach} -->
+          </select>
+        </div>
+        <div class="clear1"></div>
+      </div>
+    </div>
+    <div class="ubb ub border-f2 ub-ac h-min1">
+      <div class="f-color-6 sc-text-hui uw-reg"> 详细地址 </div>
+      <div class="uinput sc-text-hui">
+        <input type="text" id='address' placeholder="请输入详细地址" value="{$profile.address}" />
+      </div>
+    </div>
+  </div>
+  <div class="m-all2 {if $profile.status eq 2} disabled{/if}" id='confirm_button_3' >
+    <div class="user-btn"> 确认修改 </div>
+  </div>
+</div>

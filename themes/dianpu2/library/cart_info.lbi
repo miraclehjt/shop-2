@@ -1,0 +1,67 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<form id="formCart" name="formCart" method="post" action="flow.php" >
+<dl ><dt class="ld">
+          <s ><span></span></s>
+          <s class="shopping"><span>{$str}</span></s>
+          <a href="flow.php">去购物车结算</a>
+          <b"></b>
+        </dt>
+     </dl>
+<div class="clear"></div>
+  <div class="jiesuan_t" > 
+<!-- {if $goods} -->
+ {foreach from=$goods item=goods name=goods}
+<div class="cart_info_div"  >
+
+                <a class="img_l" href="{$goods.url}"><img src="{$goods.goods_thumb}" alt="{$goods.goods_name}" width="80" height="80"/></a>
+                <div class="f_right">
+                   <p class="name"><a  href="{$goods.url}" title="{$goods.short_name}">{$goods.short_name}</a></p>
+                
+                   <p><span class="fl"><font>{$goods.goods_price}<span class="cheng">×{$goods.goods_number}</span></font></span>  <a class="fr"  href="javascript:" onClick="deleteCartGoods({$goods.rec_id})" style="font-size:12px; height:20px; line-height:20px;">删除</a></p>
+                </div>
+                 
+                 <div style="height:0px; line-height:0px; clear:both;"></div>
+             </div>
+ {/foreach}
+<div class="clear"></div>
+
+ <div >
+  <div class="blank5"></div>
+ 
+ 
+  <p><a href="flow.php" style="float:left;">&nbsp;共<font style="font-weight:bold; color:#C03;">{$str}</font>件商品</a>
+  <a href="flow.php" style="float:right;"><img src="../images/carjiesuan.gif" style="margin-right:10px;"></a>
+  <div class="clear"></div>
+  
+  </p>
+  
+   <div class="blank5"></div>
+   </div>
+ <!-- {else} -->
+ <div style="padding:10px;">
+ 您的购物车里还没有商品！
+ </div>
+<!-- {/if} -->
+<script type="text/javascript">
+function deleteCartGoods(rec_id)
+{
+Ajax.call('delete_cart_goods.php', 'id='+rec_id, deleteCartGoodsResponse, 'POST', 'JSON');
+}
+
+/**
+ * 接收返回的信息
+ */
+function deleteCartGoodsResponse(res)
+{
+  if (res.error)
+  {
+    alert(res.err_msg);
+  }
+  else
+  {
+      document.getElementById('ECS_CARTINFO').innerHTML = res.content;
+  }
+}
+</script>
+  </div>
+</form>

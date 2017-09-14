@@ -1,0 +1,39 @@
+<div class="box">
+	<div class="hd"><h3>{$lang.label_track_packages}</h3><div class="extra"></div></div>
+	<div class="bd">
+		{if $orders}
+		<table class="data_table" id="order_table">
+			<colgroup>
+				<col width="500"/>
+				<col width="100"/>
+			</colgroup>
+			<thead>
+				<tr>
+					<th>{$lang.order_number}</th>
+					<th class="last">{$lang.handle}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{foreach from=$orders item=item name=orders}
+				<tr class="{cycle values="odd,even"}{if $smarty.foreach.orders.last} last{/if}">
+					<td><a href="user.php?act=order_detail&order_id={$item.order_id}">{$item.order_sn}</a></td>
+					<td class="last">{$item.query_link}</td>
+				</tr>
+				{/foreach}
+			</tbody>
+		</table>
+		{else}
+		<p class="empty">{$lang.track_packages_empty}</p>
+		{/if}
+		{if $orders}{include file='library/pages.lbi'}{/if}
+	</div>
+</div>
+<script>
+var query_status = '{$lang.query_status}';
+var ot = document.getElementById('order_table');
+for (var i = 1; i < ot.rows.length; i++) {
+	var row = ot.rows[i];
+	var cel = row.cells[1];
+	cel.getElementsByTagName('a').item(0).innerHTML = query_status;
+}
+</script>

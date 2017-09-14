@@ -1,0 +1,48 @@
+<!--{foreach from=$goods_list item=goods}-->
+<div class="ub bg-color-w m-btm1 p-all3 ubb border-hui goods" goods_id='{$goods.goods_id}' rec_id="{$goods.rec_id}">
+  <div class="h-w-9 goods-img"><img src="{$url}{$goods.thumb}"/></div>
+  <div class="ub-ver ub-f1 m-l1">
+    <div class="f-color-zi text-change"> 
+      <!-- {if $goods.is_pre_sale == 1} --> 
+      【<span style="color: red;">{$lang.label_pre_sale}</span>】
+      <!-- {/if} --> 
+      <font class="ulev-1 goods-img">{$goods.goods_name|escape:html}</font></div>
+    <div class="ub ub-ac ubb border-faxian p-t-b4">
+      <div class="ulev-0 f-color-red ub-f1"> 
+        <!-- {if $goods.promote_price neq ""} --> 
+        {$goods.promote_price} 
+        <!-- {else}--> 
+        {$goods.shop_price} 
+        <!--{/if}--> 
+      </div>
+      <div class="ub-pe ub ub-ac attention sc-text-hui" is_attention="{$goods.is_attention}">
+        <div class="ub-img <!-- {if $goods.is_attention} -->like-icon-on<!-- {else} -->like-icon<!-- {/if} --> h-w-1"></div>
+        <div class="ulev-1 m-l3"> 
+          <!-- {if $goods.is_attention} --> 
+          {$lang.no_attention} 
+          <!-- {else} --> 
+          {$lang.attention} 
+          <!-- {/if} -->  
+          </div>  
+      </div>
+    </div>
+    <div class="ub m-top1 sc-text-hui ub-pj">
+	<!-- {if $goods.is_pre_sale != 1} -->
+      <div class="ub-f1 ub ub-ac add_to_cart">
+        <div class="ub-img cart-add h-w-1"></div>
+        <div class="ulev-1 m-l3"> 
+          {$lang.add_to_cart} 
+        </div>
+      </div>
+	  <!-- {/if} -->
+      
+      <div class="ub-pe ub ub-ac delete">
+        <div class="ub-img search-icon2 h-w-1"></div>
+        <div class="ulev-1 m-l3">{$lang.drop}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- {foreachelse} -->
+<div class="ub ub-pc umar-t1 f-color-6">没有收藏任何商品</div>
+<!--{/foreach} -->

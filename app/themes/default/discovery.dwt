@@ -1,0 +1,55 @@
+
+<div class="ub ub-ver ub-fv">
+  <div class="ub-img1 perBg uh-per1 ub-fh ub ub-ver">
+    <div class="uinn-a1 ub ub-f1">
+      <div class="uwh-per2 uc-a-per1 bc-bg ub ub-ac ub-pc uinn-a16">
+        <div class="ub-fh ub-fv  ub-img setImg1 uc-a-per2"></div>
+      </div>
+      <div class="ub-f1 umar-at1 umar-l-per1 ub ub-ver">
+        <div class="ub ">
+          <div class="umar-ar3 bc-text-head"> 用户名 </div>
+          <div class="sc-bg-alert uc-a1 uinn3 ulev-2 bc-text-head"> V<span class="ulev-2">2</span>会员 </div>
+        </div>
+        <div class="ulev-4 t-wh2 umar-t ub-f1"> 个性签名 </div>
+        <div class="ub ub-ae">
+          <div class="ub ub-ae umar-r-per1">
+            <div class="ulev-4"> 积分 </div>
+            <div class="ulev0 ufm1 umar-l ufsty"> 123 </div>
+          </div>
+          <div class="ub ub-ae">
+            <div class="ulev-4"> 积分 </div>
+            <div class="ulev0 ufm1 umar-l ufsty"> 123 </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ub c-wh-per uinn-a11 ub-ae">
+      <div class="ub ub-ver ub-f1 ub-pc ubr b-gra-per">
+        <div class="t-gra5 ulev-4 tx-c ub-f1"> 代付款 </div>
+        <div class="ub-ae sc-text-warn ufm1 tx-c"> 2 </div>
+      </div>
+      <div class="ub ub-ver ub-f1 ub-pc ubr b-gra-per">
+        <div class="t-gra5 ulev-4 tx-c ub-f1"> 待发货 </div>
+        <div class="ub-ae t-gra5 ufm1 tx-c"> 0 </div>
+      </div>
+      <div class="ub ub-ver ub-f1 ub-pc ubr b-gra-per">
+        <div class="t-gra5 ulev-4 tx-c ub-f1"> 待收货 </div>
+        <div class="ub-ae sc-text-warn ufm1 tx-c"> 2 </div>
+      </div>
+      <div class="ub ub-ver ub-f1 ub-pc ubr b-gra-per">
+        <div class="t-gra5 ulev-4 tx-c ub-f1"> 待评价 </div>
+        <div class="ub-ae t-gra5 ufm1 tx-c"> 0 </div>
+      </div>
+      <div class="ub ub-ver ub-f1 ub-pc">
+        <div class="t-gra5 ulev-4 tx-c ub-f1"> 退款 </div>
+        <div class="ub-ae sc-text-warn ufm1 tx-c"> 2 </div>
+      </div>
+    </div>
+  </div>
+  <div class="ub-f1 ub ub-ver">
+    <div id="indexCon_2-listview1"  class="ubt bc-border c-wh"> </div>
+    <div id="indexCon_2-listview2"  class="ubt bc-border c-wh umar-at1"> </div>
+    <div id="indexCon_2-listview3"  class="ubt bc-border c-wh umar-at1"> </div>
+    <div id="indexCon_2-listview4"  class="ubt bc-border c-wh umar-at1"> </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="columnSpace" id="elem-Products_mobilelist01-001"> 
+	<section id="product-list-Products_mobilelist01-001-43" class="Products_mobilelist01-d1_c1-43">
+
+
+<div class="borderTitle">
+	<span class="left">
+		<em class="icon"></em>
+		<em class="borderName">{$lang.new_article}</em>
+	</span>
+	<span class="right">
+		<em class="moreCont"></em>
+		<em class="active controlBar">
+			<cite class="icon"></cite>
+		</em>
+	</span>
+</div>
+
+	<ul>
+		{foreach from=$new_articles item=article name=new_articles}
+			<li class="active" onClick="javascript:window.location.href='{$article.url}'">				
+					<div class="infoWrap">
+					<h3 class="productTitle">
+						<span>{$article.short_title|escape:html}</span>
+					</h3>
+			</div>
+		</li>
+		{/foreach}
+		
+	</ul>
+	
+    
+</section>
+ 
+</div>

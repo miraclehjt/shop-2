@@ -1,0 +1,29 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--{ if $related_goods}-->
+<div class="m limitbuy " id="limitbuy537">
+        <div class="mt">
+          <h2>相关商品</h2>
+        </div>
+        <div class="mc">
+          <div class="clock" id="clock537">
+            <ul>
+              <!--{foreach from=$related_goods item=releated_goods_data name=releated_goods_data}--> 
+              <li class="fore{$smarty.foreach.releated_goods_data.iteration}" >
+                <div class="p-img"><a target="_blank" title="{$releated_goods_data.goods_name|escape:html}" href="{$releated_goods_data.url}"><img width="100" height="100" alt="" src="{$releated_goods_data.goods_thumb}" /></a> 
+                </div>
+                <div class="rate"><a target="_blank" title="{$releated_goods_data.goods_name|escape:html}" href="{$releated_goods_data.url}">{$releated_goods_data.short_name}</a></div>
+                <div class="p-price"><strong><!-- {if $releated_goods_data.promote_price neq ""} -->{$releated_goods_data.promote_price}<!-- {else}-->{$releated_goods_data.shop_price}<!--{/if}--></strong><del>{$releated_goods_data.market_price}</del></div>
+              </li>
+              {if !$smarty.foreach.releated_goods_data.last}
+              <div class="blank5"></div>
+              {/if} 
+              <!--{/foreach}-->
+              
+            </ul>
+          </div>
+        </div>
+</div>
+<!-- {/if} --> 
+
+
+

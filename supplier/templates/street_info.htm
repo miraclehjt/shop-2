@@ -1,0 +1,105 @@
+{include file="pageheader.htm"}
+<!-- start add new category form -->
+<div class="main-div">
+  <form action="street.php" method="post" name="theForm" enctype="multipart/form-data">
+    <table width="100%" id="general-table">
+	  <tr>
+        <td class="label">店铺类型:</td>
+        <td>
+		<select name="supplier_type">
+		<option value="0">请选择</option>
+		{foreach from=$stype key=value item=name}
+		<option value="{$value}" {if $sinfo.supplier_type == $value} selected {/if}>{$name}</option>
+		{/foreach}
+		</select>
+		<font color="red">*</font> <span class="notice-span"></span>
+		</td>
+      </tr>
+      <tr>
+        <td class="label">店铺名称:</td>
+        <td><input type="text" name="supplier_name" value="{$sinfo.supplier_name}">
+		<font color="red">*</font> <span class="notice-span"></span>
+		</td>
+      </tr>
+	  <tr>
+        <td class="label">店铺标题:</td>
+        <td><input type="text" name="supplier_title" value="{$sinfo.supplier_title}" maxlength="13">
+		<font color="red">*</font> <span class="notice-span">为保证美观度,店铺标题控制在13个文字以内</span>
+		</td>
+      </tr>
+	  
+          
+	  <tr>
+        <td class="label">店铺海报:</td>
+        <td><input name="logo" type="file" size="40" />
+		{if $sinfo.logo}
+            <a href="?act=del&code=logo"><img src="images/no.gif" alt="Delete" border="0" /></a> <img src="images/yes.gif" border="0" onmouseover="showImg('logo_layer', 'show')" onmouseout="showImg('logo_layer', 'hide')" />
+            <div id="logo_layer" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" border="1">
+              <img src="{$sinfo.logo}" border="0" />
+            </div>
+		{else}
+            {if $sinfo.logo neq ""}
+            <img src="images/yes.gif" alt="yes" />
+            {else}
+            <img src="images/no.gif" alt="no" />
+            {/if}
+        {/if}
+		<font color="red">*</font> <span class="notice-span">为达到前台图标显示最佳状态，建议上传150X150px图片</span>
+		</td>
+      </tr>
+	  <tr>
+        <td class="label">是否推荐:</td>
+        <td><input type="radio" name="is_groom" disabled value="1" {if $sinfo.is_groom neq 0} checked="true"{/if}/>
+          {$lang.yes}
+          <input type="radio" name="is_groom" disabled value="0" {if $sinfo.is_groom eq 0} checked="true"{/if} />
+          {$lang.no} 
+		  <font color="red">*</font> <span class="notice-span">如果您希望成为推荐店铺，请联系管理方</span>
+		  </td>
+      </tr>
+      <tr>
+        <td class="label">排序:</td>
+        <td><input type="text" disabled name='sort_order' {if $sinfo.sort_order}value='{$sinfo.sort_order}'{else} value="50"{/if} size="15" />
+		<font color="red">*</font> <span class="notice-span">如果您希望您的店铺排序比其他店铺靠前，请联系管理方</span>
+		</td>
+      </tr>
+	  {if $sinfo.supplier_notice}
+	  <tr>
+        <td class="label">审核通知:</td>
+        <td>{$sinfo.supplier_notice}
+		</td>
+      </tr>
+	  <tr>
+        <td class="label">审核状态:</td>
+        <td>{$sinfo.status_desc}
+		</td>
+      </tr>
+	  {else}
+	  <tr>
+        <td class="label"></td>
+        <td><input type="checkbox" name="sm" id="sm" checked value='1' /><a href="#">声明</a></td>
+      </tr>
+	  {/if}
+    </table>
+    <div class="button-div">
+	{if $sinfo.supplier_notice}
+	  {if $sinfo.status eq 0}
+	  <input type="submit" value="重新提交申请" />
+	  {else}
+	  <input type="submit" value="恭喜,通过申请,再次点我会重新发送申请，请慎重！" />
+	  {/if}
+	{else}
+	  <input type="submit" value="提交申请" />
+	{/if}
+      <input type="reset" value="{$lang.button_reset}" />
+    </div>
+    <input type="hidden" name="act" value="saveinfo" />
+    <input type="hidden" name="supplier_id" value="{$smarty.session.supplier_id}" />
+  </form>
+</div>
+
+{literal} 
+<script language="JavaScript">
+
+</script> 
+{/literal}
+{include file="pagefooter.htm"}

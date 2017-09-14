@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>{$page_title}</title>
+	<meta name="Keywords" content="{$keywords}" />
+	<meta name="Description" content="{$description}" />
+    <script src="themesmobile/68ecshopcom_mobile/js/modernizr.js"></script>
+<link rel="shortcut icon" href="themesmobile/68ecshopcom_mobile/img/favicon.png">
+	<link rel="apple-touch-icon-precomposed" href="themesmobile/68ecshopcom_mobile/img/website_icon.png">
+	<link rel="stylesheet" href="themesmobile/68ecshopcom_mobile/css/style.css">
+
+{insert_scripts files='common.js,utils.js'}
+
+	</head>
+<body>
+<div id="box_root" class="z3g-pageProductDetail">
+  <!-- 主题内容区 -->
+  <div id="box_main" >
+    <div style="min-height: 593px;" id="box_content">
+      <div class="z3g-headerSmall"> <span class="back active"> <em class="icon" onclick="javascript:window.location.href='javascript:history.back(-1)'">返回</em> </span> <span class="title">批发方案</span> <span class="more active"> <em class="icon" onclick="javascript:window.location.href='index.php'"></em> </span> </div>
+      
+      
+      <div class="wholesale box">
+		<div class="hd"><h3>{$lang.myship}</h3><div class="extra"></div></div>
+		<div class="bd">
+			{if $cart_goods}
+			<h4>{$lang.wholesale_goods_cart}</h4>
+			<table class="data_table">
+				<colgroup>
+					<col width="150"/>
+					<col width="200"/>
+					<col width="50"/>
+					<col width="50"/>
+					<col width="50"/>
+					<col width="100"/>
+				</colgroup>
+				<thead>
+					<tr>
+						<th>{$lang.goods_name}</th>
+						<th>{$lang.goods_attr}</th>
+						<th>{$lang.number}</th>
+						<th>{$lang.ws_price}</th>
+						<th>{$lang.ws_subtotal}</th>
+						<th class="last">{$lang.handle}</th>
+					</tr>
+				</thead>
+				<tbody>
+					{foreach from=$cart_goods key=key item=goods name=cart_goods}
+					<tr class="{cycle values="odd,even"}{if $smarty.foreach.cart_goods.last} last{/if}">
+						<td><a href="{$goods.goods_url}" target="_blank">{$goods.goods_name}</a></td>
+						<td>{$goods.goods_attr}</td>
+						<td>{$goods.goods_number}</td>
+						<td class="price">{$goods.formated_goods_price}</td>
+						<td class="price">{$goods.formated_subtotal}</td>
+						<td class="last"><a href="wholesale.php?act=drop_goods&key={$key}">{$lang.drop}</a></td>
+					</tr>
+					{/foreach}
+				</tbody>
+			</table>
+			<form method="post" action="wholesale.php?act=submit_order" class="submit_order clearfix">
+				<p>{$lang.ws_remark}</p>
+				<textarea name="remark" rows="4"></textarea>
+				<span class="action"><input type="submit" value="{$lang.submit}"/></span>
+			</form>
+			{/if}
+			{if $wholesale_list}
+			<h4>{$lang.wholesale_goods_list}<a href="wholesale.php?act=price_list">[{$lang.ws_price_list}]</a></h4>
+			<form method="post" action="wholesale.php?act=list" name="wholesale_search" class="article_search">
+				{$lang.wholesale_search}
+				<select name="search_category" id="search_category">
+				<option value="0">{$lang.all_category}</option>
+				{$category_list}
+				</select>
+				<input name="search_keywords" type="text" id="search_keywords" value="{$search_keywords|escape}"/>
+				<input name="search" type="submit" value="{$lang.search}"/>
+				<input type="hidden" name="search_display" value="{$pager.display}"/>
+			</form>
+			<form action="wholesale.php?act=add_to_cart" method="post">
+				<table class="data_table">
+					<colgroup>
+						<col width="150"/>
+						<col width="250"/>
+						<col width="200"/>
+						<col width="100"/>
+						<col width="50"/>
+					</colgroup>
+					<thead>
+						<tr>
+							<th>{$lang.goods_name}</th>
+							<th>{$lang.goods_attr}</th>
+							<th>{$lang.goods_price_ladder}</th>
+							<th>{$lang.number}</th>
+							<th class="last">&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody>
+						{foreach from=$wholesale_list item=wholesale name=wholesale_list}
+						<tr class="{cycle values="odd,even"}{if $smarty.foreach.wholesale_list.last} last{/if}">
+							<td>
+								<a href="{$wholesale.goods_url}" target="_blank"><img src="{$option.static_path}{$wholesale.goods_thumb}" alt="{$wholesale.goods_name}" class="photo"/></a>
+								<a href="{$wholesale.goods_url}" target="_blank" class="name">{$wholesale.goods_name}</a>
+							</td>
+							<td>
+								<dl class="table">
+									{foreach from=$wholesale.goods_attr item=property_group key=key}
+									{foreach from=$property_group item=property}
+									<dt>{$property.name|escape:html}</dt>
+									<dd class="{cycle values="odd,even"}">{$property.value|escape:html}</dd>
+									{/foreach}
+									{/foreach}
+								</dl>
+							</td>
+							<td>
+								{foreach from=$wholesale.price_ladder key=key item=attr_price}
+								<dl class="table">
+									{if $attr_price.attr neq ''}
+									<dt class="title">{foreach from=$attr_price.attr key=attr_key item=attr_value}{$attr_value.attr_name}{$lang.colon}{$attr_value.attr_val}{/foreach}</dt>
+									{/if}
+									<dt class="head">{$lang.number}</dt>
+									<dd class="head">{$lang.ladder_price}</dd>
+									{foreach from=$attr_price.qp_list key=qp_list_key item=qp_list_value}
+									<dt>{$qp_list_key}</dt>
+									<dd class="{cycle values="odd,even"}">{$qp_list_value}</dd>
+									{/foreach}
+								</dl>
+								{/foreach}
+							</td>
+							<td>
+								{foreach from=$wholesale.price_ladder key=key1 item=attr_price1}
+								<div class="number">
+									{if $attr_price1.attr neq ''}
+									<p>{foreach from=$attr_price1.attr key=attr_key item=attr_value}{$attr_value.attr_name}{$lang.colon}{$attr_value.attr_val}{/foreach}</p>
+									<p>
+										<input type="text" name="goods_number[{$wholesale.act_id}][{$key1}]" size="10"/>
+										{foreach from=$attr_price1.attr key=attr_key1 item=attr_value1}
+										<input type="hidden" name="attr_id[{$wholesale.act_id}][{$key1}][{$attr_key1}][attr_id]" value="{$attr_value1.attr_id}"/>
+										<input type="hidden" name="attr_id[{$wholesale.act_id}][{$key1}][{$attr_key1}][attr_val_id]" value="{$attr_value1.attr_val_id}"/>
+										<input type="hidden" name="attr_id[{$wholesale.act_id}][{$key1}][{$attr_key1}][attr_name]" value="{$attr_value1.attr_name}"/>
+										<input type="hidden" name="attr_id[{$wholesale.act_id}][{$key1}][{$attr_key1}][attr_val]" value="{$attr_value1.attr_val}"/>
+										{/foreach}
+									</p>
+									{else}
+									<p><input type="text" name="goods_number[{$wholesale.act_id}]" size="10"/></p>
+									{/if}
+								</div>
+								{/foreach}
+							</td>
+							<td class="last center">
+								<input type="submit" value="{$lang.btn_buy}" onclick="this.form.elements['act_id'].value = {$wholesale.act_id}"/>
+								<input type="hidden" name="act_id"/>
+								<input type="hidden" name="display" value="{$pager.display}"/>
+							</td>
+						</tr>
+						{/foreach}
+					</tbody>
+				</table>
+			</form>
+			{else}
+			<div style="empty">{$lang.no_wholesale}</div>
+			{/if}
+		{if $wholesale_list}<!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->{/if}
+		</div>
+	</div>
+    
+  </div>
+  
+  
+</div>
+<!-- 内容区域 结束 -->
+</div>
+</body>
+
+</html>

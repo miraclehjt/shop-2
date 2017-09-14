@@ -1,0 +1,21 @@
+{if $goods.goods_id gt 0}
+  <div class="ub ub-f1 ub-ver p-w0 goods bg-color-w shop-goods goods_radius" goods_id="{$goods.goods_id}">
+	<div class="ub-f1 mar-ar1 ub-fh goods-img pos_re">
+		<img src="{$url}{$goods.goods_thumb}"/>
+		{if $goods.exclusive eq $goods.goods_price}
+		<div class="phone-exclusive ub ub-ac ub-pc">手机专享</div>
+		{/if}
+		{if $goods.promote_end_date > 0}
+		<div class="pro-time ulev-2 settime" endTime='{$goods.promote_end_date}'></div>
+		{/if}
+	</div>
+	<div class="ut-m bc-text ulev-4 l-h-pic tx-l f-color-6 p-b1 m-top3 i-p-lr goods-name">{$goods.goods_name}</div>
+	<div class="ub ub-ac ut-s sc-text umar-t p-t1 ubt border-hui i-p-lr">
+	  <div class="ub-f1 f-color-red ulev-9">{$goods.formatted_goods_price}</div>
+	  <div class="ub-pe into-flow ub-img add_to_cart"></div>
+	</div>
+  </div>
+{else}
+  <div class="ub ub-f1 ub-ver mar-ar1 p-w0">&nbsp
+  </div>
+{/if}

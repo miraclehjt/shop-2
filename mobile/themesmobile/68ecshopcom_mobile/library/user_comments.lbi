@@ -1,0 +1,91 @@
+<script type="text/javascript">
+				/*第一种形式 第二种形式 更换显示样式*/
+				function setGoodsTab(name,cursel,n){
+					$('html,body').animate({'scrollTop':0},600);
+				for(i=1;i<=n;i++){
+				var menu=document.getElementById(name+i);
+				var con=document.getElementById("user_"+name+"_"+i);
+				menu.className=i==cursel?"on":"";
+				con.style.display=i==cursel?"block":"none";
+				}
+				}
+				</script>
+<link href="themesmobile/68ecshopcom_mobile/css/photoswipe.css" rel="stylesheet" type="text/css">
+<script src="themesmobile/68ecshopcom_mobile/js/klass.min.js"></script>
+<script src="themesmobile/68ecshopcom_mobile/js/photoswipe.js"></script>
+<script src="themesmobile/68ecshopcom_mobile/js/custom.js"></script>
+<div class="order">
+      <!----------------------------------header----------------------------------->
+      <div class="Evaluation">
+            <ul>
+            <li><a href="javascript:;" class="tab_head on"   id="goods_ka1" onClick="setGoodsTab('goods_ka',1,3)">全部评价</a></li>
+              <li><a href="javascript:;" class="tab_head" id="goods_ka2" onClick="setGoodsTab('goods_ka',2,3)">待评价</a></li>
+              <li><a href="javascript:;" class="tab_head" id="goods_ka3" onClick="setGoodsTab('goods_ka',3,3)">已评价</a></li>
+              
+            </ul>
+      </div>
+      <!-----------------------------------全部评价-------------------------------------->
+      <div class="Emain" id="user_goods_ka_1" style="display:block;">
+{foreach from=$comment_list item=comment}     
+       <div class="pingjia">
+       <h2>成交时间：{$comment.formated_add_time}</h2>
+       <dl>
+       <dt><img src="./../{$comment.goods_thumb}"></dt>
+       <dd><span>{$comment.cmt_name}</span><strong>￥{$comment.shop_price}</strong></dd>
+       </dl>
+       <div class="pj_main">
+       {if $comment.content}
+       <ul>
+       <li><em>评价：</em><img src="themesmobile/68ecshopcom_mobile/images/stars{$comment.comment_rank}.png"></li>
+       <li class="pj_w">{$comment.content}</li>
+       </ul>
+       {/if}
+      {if $comment.content}
+		 <ul>
+       <li><em>管理员admin回复：</em></li>
+       <li class="pj_w" style=" color:#F60">{$comment.content}</li>
+       </ul>
+      {/if}
+       {if $comment.shaidan}
+{foreach from=$comment.shaidan item=shaidan}
+       <ul>
+       <li><em>晒单：</em></li>
+       <li class="pj_w">{$shaidan.message}</li>
+       </ul>
+       {if $shaidan.shaidan_img}
+       <div class="sd_img">
+        <dl id="gallery">
+        {foreach from=$shaidan.shaidan_img item=shaidan_img}
+            <dd><a href="./../{$shaidan_img.image}">
+               <img src="./../{$shaidan_img.thumb}">
+            </a></dd>
+    {/foreach}
+        </dl>
+       </div>
+       {/if}
+{/foreach}
+       {/if}
+       </div>
+       </div>
+{/foreach}
+      </div>
+          
+      <!---------------------------------待评价----------------------------------->
+      <div class="Emain" id="user_goods_ka_2" style="display:none">
+
+      </div> 
+      <!---------------------------------已评价----------------------------------->
+      <div class="Emain" id="user_goods_ka_3" style="display:none;">
+     
+      </div>
+      <!---end-->
+    </div>
+
+<!---返回顶部--->
+<script>
+function goTop(){
+	$('html,body').animate({'scrollTop':0},600);
+}
+</script>
+<a href="javascript:goTop();" class="gotop"><img src="themesmobile/68ecshopcom_mobile/images/topup.png"></a>
+

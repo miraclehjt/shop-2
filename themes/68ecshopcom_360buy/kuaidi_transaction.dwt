@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>
+{if $smarty.get.act eq 'query_kuaidi'}
+寄件查询
+{else if $smarty.get.act eq 'query_cost'}
+运费查询
+{/if}
+</title>
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+{insert_scripts files='jquery-1.6.2.min.js '}
+{insert_scripts files='jquery.json.js,transport.js'}
+</head>
+<body>
+<div role="navigation" id="site-nav">
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<link href="themes/68ecshopcom_360buy/css/wuliu.css" rel="stylesheet" type="text/css">
+<div class="clear pb10"></div>
+
+<!--{if $action eq 'save_kuaidi'} 保存快递单-->
+<div class="wuliu">
+<div class="kuaidi_ok_box">
+  <div class="msgtit">寄件信息填写{if $error}错误{else}成功{/if}</div>
+  <div style="padding:50px 50px 70px 50px;">
+    <table width="100%" >
+      <tr>
+        <td width="40%" align=right style="padding-right:30px;"><img src="images/wuliu/send_ok_{$error}.gif" ></td>
+        <td ><p class="msg">{$message}</p>
+          <br>
+          <p> 客服热线：{$service_phone} </p>
+          <br>
+          <p><a href="" class="goback" >确认返回</a></p></td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+<!--{/if}--> 
+
+<!--{if $action eq 'query_kuaidi'} 快递状态查询-->
+<div class="wuliu">
+  <div class="wuliu-right">
+    <div class="mt">寄件查询结果</div>
+    <div class="mc">
+      <form action="#" method="post" name="theForm" id="theForm" >
+        <div style="padding:35px;">
+          <input type="text" name="order_sn"  class="wyjj_input fl mr10 wyjj_input2" value="请每次输入1个运单号查询"  onfocus="if (this.value =='请每次输入1个运单号查询'){this.value ='';}" onblur="if (value ==''){value='请每次输入1个运单号查询';}"  />
+          <div class="fl mc_b">
+            <input type="text" name="captcha" value="" />
+            <img src="captcha.php?{$rand}" alt="captcha" class="dsb cur" style="vertical-align: middle;cursor: pointer;margin-left:10px" onClick="this.src='captcha.php?'+Math.random()" title="点击刷新" /> </div>
+          <a class="wuliu_btn fl ml10" href="javascript:void(0);" onclick="get_OrderStatus();" id="search_1" title="查询" style="width: 28px;">查询</a>
+          <div class="clear"></div>
+          <div class="fcf33 mt10 pb10" id="left-alert" style="height:auto;overflow:hidden;"> </div>
+        </div>
+      </form>
+      <div class="clear"></div>
+      <div class="jj_mc"> </div>
+      <div class="clear pb20"></div>
+      <div style="padding-left:530px;"><a href="./" class=" wuliu_newbtn fl  mr10">返回首页</a></div>
+      <div class="clear pb10"></div>
+    </div>
+  </div>
+</div>
+<div class="clear pb10"></div>
+<script type="text/javascript">
+function get_OrderStatus()
+{
+	var theForm = document.forms['theForm'];
+	var msg = new Array();
+	var err = false; 
+	if (theForm.elements['order_sn'].value == '' || theForm.elements['order_sn'].value == '请每次输入1个运单号查询' )
+	{
+		err = true;
+		msg.push("运单号不能为空！");
+	}
+	if (theForm.elements['captcha'].value == '' )
+	{
+		err = true;
+		msg.push("验证码不能为空！");
+	}
+	if (err)
+	{
+		message = msg.join("\n");
+		alert(message);
+	}
+	else
+	{	
+		var order        = new Object();
+		order.order_sn = theForm.elements['order_sn'].value;
+		order.captcha = theForm.elements['captcha'].value;
+		Ajax.call('kuaidi.php?act=get_OrderStatus', 'order=' +  $.toJSON(order), get_OrderStatus_Response, 'POST', 'JSON');
+	}
+}
+function get_OrderStatus_Response(result)
+{
+	if (result.error)
+	{
+		alert(result.message);
+	}
+	else
+	{
+		//alert(result.content);
+		document.getElementById('left-alert').innerHTML= result.content;
+	}
+}
+</script> 
+<!--{/if}--> 
+
+{* 运费查询_start *} 
+<!--{if $action eq 'query_cost'} 运费查询-->
+
+<div class="wuliu">
+  <div class="wuliu-right" style="height:500px;">
+    <form action="#" method="post" name="send_form" id="send_form" >
+      <div class="mt">运费查询</div>
+      <div class="mc">
+        <div class="wyjj_mc">
+          <div class="wyjj_xx1 ovh" style="border-right:1px #e9e9e9 solid;">
+            <h4>发件人地址</h4>
+            <dl>
+              <dt><b>*</b> 区域：</dt>
+              <dd>
+                <select name="send_region_id" class="wyjj_input">
+                  
+	      {foreach from=$district_list name="diqu_list" item=district}
+               
+                  <option value="{$district.region_id}">{$district.region_name}</option>
+                  
+               {/foreach}
+              
+                </select>
+              </dd>
+            </dl>
+          </div>
+          <div class="wyjj_xx1 ovh">
+            <h4>收件人地址</h4>
+            <dl>
+              <dt><b>*</b> 区域：</dt>
+              <dd>
+                <select name="to_region_id" class="wyjj_input" onchange="get_ShippingFee(document.getElementById('goods_weight_input'));" >
+                  
+                {foreach from=$district_list item=district}
+               
+                  <option value="{$district.region_id}">{$district.region_name}</option>
+                  
+               {/foreach}
+              
+                </select>
+              </dd>
+            </dl>
+          </div>
+          <div class="clear"></div>
+          <div class="clear pb20"></div>
+          <div class="wyjj_xx2">
+            <h4>物品信息</h4>
+            <dl>
+              <dt><b>*</b>物品重量：</dt>
+              <dd>
+                <input name="goods_weight" id="goods_weight_input" type="text" class="wyjj_input" onkeyup="this.value=this.value.replace(/[^\d^\.]/g,'');get_ShippingFee(this);" onafterpaste="this.value=this.value.replace(/[^\d^\.]/g,'')" >
+                <span class="ml10">千克</span>
+                <div class="msg mt5 fcf33 fl"></div>
+              </dd>
+            </dl>
+            <dl>
+              <dt>运费计算（元）：</dt>
+              <dd>
+                <input name="money" id="money" type="text" class="wyjj_input" readonly="readonly">
+                <input type="hidden" name="country" value="{$shop_country}">
+                <input type="hidden" name="province" value="{$shop_province}">
+                <input type="hidden" name="city" value="{$shop_city}">
+              </dd>
+            </dl>
+            <div class="clear pb20"></div>
+          </div>
+          <div class="clear pb20"></div>
+          <div style="padding-left:450px;"> <a href="kuaidi.php" class=" wuliu_newbtn fl  mr10">我要寄件</a> <a href="" class=" wuliu_newbtn fl  mr10">返回首页</a> </div>
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="clear pb10"></div>
+<script type="text/javascript">
+function  get_ShippingFee(theobj)
+{  
+    var sendform      = document.forms['send_form'];
+    var goods        = new Object();   
+    goods.goods_weight = theobj.value;
+    goods.country = sendform.elements['country'].value;
+    goods.province = sendform.elements['province'].value;
+    goods.city = sendform.elements['city'].value;
+    goods.district = sendform.elements['to_region_id'].value;		
+    Ajax.call('kuaidi.php?act=get_shipping_fee', 'goods=' + $.toJSON(goods), get_ShippingFee_Response, 'POST', 'JSON');		
+}
+function  get_ShippingFee_Response(result)
+{
+	document.getElementById('money').value=result.content;
+}
+</script> 
+<!--{/if}--> 
+{* 运费查询_end *}
+<div class="clear pb10"></div>
+<div class="clear pb10"></div>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+</html>

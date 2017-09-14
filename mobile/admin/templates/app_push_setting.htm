@@ -1,0 +1,82 @@
+<!-- $Id: shop_config.htm 16865 2009-12-10 06:05:32Z sxc_shop $ -->
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js"}
+<script>
+function add_item()
+{
+  var new_item = document.createElement('p');
+  var main_div_e = document.getElementById('main_div');
+ 
+  var app_name_label = document.createElement('label');
+  app_name_label.innerHTML = 'APP名称：&nbsp;';
+  var app_name_input = document.createElement('input');
+  app_name_input.type = 'text';
+  app_name_input.name = 'app_name[]';
+  app_name_input.value = '';
+  app_name_label.appendChild(app_name_input);
+  new_item.appendChild(app_name_label);
+  
+  var app_key_label = document.createElement('label');
+  app_key_label.innerHTML = 'App Key：&nbsp;';
+  var app_key_input = document.createElement('input');
+  app_key_input.type = 'text';
+  app_key_input.name = 'app_key[]';
+  app_key_input.value = '';
+  app_key_input.size = '30';
+  app_key_label.appendChild(app_key_input);
+  new_item.appendChild(app_key_label);
+  
+  var app_secret_label = document.createElement('label');
+  app_secret_label.innerHTML = 'Master Secret：&nbsp;';
+  var app_secret_input = document.createElement('input');
+  app_secret_input.type = 'text';
+  app_secret_input.name = 'app_secret[]';
+  app_secret_input.value = '';
+  app_secret_input.size = '30';
+  app_secret_label.appendChild(app_secret_input);
+  new_item.appendChild(app_secret_label);
+  
+  var delete_input = document.createElement('input');
+  delete_input.type = 'button';
+  delete_input.onclick = function()
+  {
+    delete_item(this.parentNode);
+  };
+  delete_input.value = '删除';
+  new_item.appendChild(delete_input);
+  main_div_e.insertBefore(new_item,document.getElementById('submit_button'));
+}
+
+function delete_item(obj)
+{
+  var main_div_e = document.getElementById('main_div');
+  main_div_e.removeChild(obj);
+}
+</script>
+<form method='POST' action='app_push.php'>
+<div class='main-div' id='main_div'>
+<p>App Key和Master Secret可以在极光后台的应用管理中找到</p>
+<p>App名称不必和极光后台的应用名称保持一致</p>
+<p><input onclick="add_item();" type="button" value="添加配置"></p>
+{foreach from=$push_setting item=item}
+<p> 
+  <label>APP名称：<input type='text' name='app_name[]' value='{$item.app_name}'/></label>
+  <label>App Key：<input type='text' size='30' name='app_key[]' value='{$item.app_key}'/></label>
+  <label>Master Secret：<input type='text' size='30' name='app_secret[]' value='{$item.app_secret}'/></label>
+  <input type='button' onclick='delete_item(this.parentNode)' value='删除'/>
+</p>
+{/foreach}
+<input type='hidden' name='act' value='save_setting'/> 
+<input type='submit' id='submit_button' class='button' value='确定'/>
+</div>
+</form>
+{literal}
+<script language="JavaScript">
+onload = function()
+{
+    // 开始检查订单
+    startCheckOrder();
+}
+</script>
+{/literal}
+{include file="pagefooter.htm"}

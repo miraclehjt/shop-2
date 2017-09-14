@@ -1,0 +1,89 @@
+<div class="orderList">
+    <div class="mc">
+<div class="tab_wrapper">
+	<p class="tabs">
+		<a href="user.php?act=profile" id="tab_profile" class="current"><span>{$lang.label_profile}</span></a>
+		<a href="user.php?act=address_list" id="tab_address_list"><span>{$lang.label_address}</span></a>
+	</p>
+	<div class="extra"></div>
+</div>
+	<h3>{$lang.label_profile}</h3>
+	<ul>
+		<form method="post" action="user.php" id="edit_profile">
+		
+				<li class="label"><b>{$lang.birthday}{$lang.colon}</b>
+					{html_select_date field_order=YMD prefix=birthday start_year=-60 end_year=+1 display_days=true month_format=%m day_value_format=%02d time=$profile.birthday}
+				</li>
+				<li><b>{$lang.sex}{$lang.colon}</b>
+					
+					<label for="sex0"><input type="radio" name="sex" value="0"{if $profile.sex==0} checked="checked"{/if} tabindex="2" class="radio" id="sex0"/>{$lang.secrecy}</label>
+					<label for="sex1"><input type="radio" name="sex" value="1"{if $profile.sex==1} checked="checked"{/if} tabindex="3" class="radio" id="sex1"/>{$lang.male}</label>
+					<label for="sex2"><input type="radio" name="sex" value="2"{if $profile.sex==2} checked="checked"{/if} tabindex="4" class="radio" id="sex2"/>{$lang.female}</label>
+				</li>
+                <li>
+				<label for="email_ep"><b><span class="req">*</span>{$lang.email}{$lang.colon}</b>
+					<input type="text" name="email" value="{$profile.email}" tabindex="5" id="email_ep"/>
+				</label></li>
+				{foreach from=$extend_info_list item=field}
+				{if $field.id eq 6}
+                <li>
+				<label for="sel_ques"><b>{if $field.is_need}<span class="req">*</span>{/if}{$lang.passwd_question}{$lang.colon}</b>
+					<select name="sel_question" tabindex="10"{if $field.is_need} class="required"{/if} id="sel_ques">
+						<option value="0">{$lang.sel_question}</option>
+						{html_options options=$passwd_questions selected=$profile.passwd_question}
+					</select>
+				</label>
+                </li>
+                <li>
+				<label for="pw_answer"{if $field.is_need} id="passwd_quesetion"{/if}><b>{if $field.is_need}<span class="req">*</span>{/if}{$lang.passwd_answer}{$lang.colon}</b>
+					<input type="text" name="passwd_answer" value="{$profile.passwd_answer}" maxlength="20" tabindex="10"{if $field.is_need} class="required"{/if} id="pw_answer"/>
+				</label>
+                </li>
+				{else}
+                <li>
+				<label for="extend_field_{$field.id}"><b>{if $field.is_need}<span class="req">*</span>{/if}{$field.reg_field_name}{$lang.colon}</b>
+					<input type="text" name="extend_field{$field.id}" value="{$field.content}" tabindex="10"{if $field.is_need} class="required"{/if} id="extend_field_{$field.id}"/>
+				</label>
+                </li>
+				{/if}
+				{/foreach}
+				<li class="last">
+					<input type="submit" value="{$lang.confirm_edit}" tabindex="12" class="submit btn_s3_b"/>
+					<input type="hidden" name="act" value="act_edit_profile"/>
+				</li>
+			
+		</form>
+	</ul>
+    
+    
+	<h3>{$lang.edit_password_form_title}</h3>
+	<ul>
+		<form name="formPassword" action="user.php" method="post" onSubmit="return editPassword()">
+    <li>
+				<label for="password"><b>{$lang.old_password}{$lang.colon}</b>
+					<input type="password" name="old_password" tabindex="15" id="password"/>
+				</label>
+                </li>
+    <li>
+				<label for="new_password"><b>{$lang.new_password}{$lang.colon}</b>
+					<input type="password" name="new_password" tabindex="16" id="new_password"/>
+				</label>
+                </li>
+    <li>
+				<label for="comfirm_password"><b>{$lang.confirm_password}{$lang.colon}</b>
+					<input type="password" name="comfirm_password" tabindex="17" id="comfirm_password"/>
+				</label>
+                </li>
+				<li class="last">
+					<input type="submit" value="{$lang.confirm_edit}" tabindex="18" class="submit btn_s3"/>
+					<input type="hidden" name="act" value="act_edit_password"/>
+				</li>
+		</form>
+	</ul>
+</div>
+</div>
+<script type="text/javascript">
+{foreach from=$lang.profile_js item=item key=key}
+var {$key} = "{$item}";
+{/foreach}
+</script>

@@ -1,0 +1,135 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="clearfix">
+<!-- {foreach from=$comments item=comment} -->
+<div style="float:left;display:inline;width:100%;height:auto;margin-top:20px;">
+<div style="float:left;width:80px;height:80px;padding-top:70px;text-align:center;background:url({if $comment.headimg eq ''}themes/68ecshopcom_360buy/images/upgrade_ad/peopleicon_01.gif{else}{$comment.headimg}{/if}) no-repeat center 10px;">
+<!-- {if $comment.username} -->{$comment.username|escape:html}<!-- {else} -->{$lang.anonymous}<!-- {/if} -->
+</div>
+		<div style="float:right;width:84%;margin-right:20px;height:auto;position:relative;border:1px solid #D0E4C2;padding-bottom:15px; background:#FCFFFA;">
+			<div style="display:block;z-index:99999;width:16px;height:26px;position:absolute;top:10px;left:-15px;background:url(images/comments/ico-corner.gif) no-repeat 0 0;">&nbsp;</div>
+			<div style="width:100%;">
+			<table cellpadding=0 cellspacing=0 width="95%" align=center><tr><td width="60%" height=35 style="border-bottom:1px solid #D0E4C2; font-weight:bold;"><img src="../images/stars{$comment.rank}.gif" width="78" height="15" alt="{$comment.rank}" />&nbsp;&nbsp;{$comment.title}</td><td width="40%" align=right style="border-bottom:1px solid #D0E4C2;">{$comment.add_time}</td></tr>
+<tr><td colspan=2 style="padding-top:15px;"><font color=#9C9A9C>使用心得：</font>{$comment.content}</td></tr>
+			
+            <!-- {if $comment.re_content} --><tr>
+			<td colspan=2 style=" color:#666666;" >
+            <div style=" padding:10px 0px; border-top:#f7e7c6 1px dotted; margin-top:15px; color:#ff6500;">
+        {$lang.admin_username}{$comment.re_content}</td>
+			</tr>
+				<!-- {/if} -->
+                </div>
+                
+		
+			
+			</table>			
+			</div>			
+		</div>
+      </div>
+      <!--{/foreach}-->
+     
+<div class="blank"></div>
+     
+<!--翻页 start-->
+<div align="right">
+        <form name="selectPageForm" action="{$smarty.server.PHP_SELF}" method="get">
+        <!-- {if $pager.styleid eq 0 } -->
+        <div id="pager">
+          {$lang.pager_1}{$pager.record_count}{$lang.pager_2}{$lang.pager_3}{$pager.page_count}{$lang.pager_4} <span> <a href="{$pager.page_first}">{$lang.page_first}</a> <a href="{$pager.page_prev}">{$lang.page_prev}</a> <a href="{$pager.page_next}">{$lang.page_next}</a> <a href="{$pager.page_last}">{$lang.page_last}</a> </span>
+            <!--{foreach from=$pager.search key=key item=item}-->
+            <input type="hidden" name="{$key}" value="{$item}" />
+            <!--{/foreach}-->
+        </div>
+        <!-- {/if} -->
+        </form>
+        <script type="Text/Javascript" language="JavaScript">
+        <!--
+        {literal}
+        function selectPage(sel)
+        {
+          sel.form.submit();
+        }
+        {/literal}
+        //-->
+        </script>
+      </div>
+<!--翻页 END-->
+<!--评论表单 start-->
+<div class="blank"></div>
+
+<!--评论表单 end-->
+</div>
+<!--用户评论 END-->
+<script type="text/javascript">
+//<![CDATA[
+{foreach from=$lang.cmt_lang item=item key=key}
+var {$key} = "{$item}";
+{/foreach}
+{literal}
+/**
+ * 提交评论信息
+*/
+function submitComment(frm)
+{
+  var cmt = new Object;
+
+  //cmt.username        = frm.elements['username'].value;
+  cmt.content         = frm.elements['content'].value;
+  cmt.type            = frm.elements['cmt_type'].value;
+  cmt.id              = frm.elements['id'].value;
+  cmt.enabled_captcha = frm.elements['enabled_captcha'] ? frm.elements['enabled_captcha'].value : '0';
+  cmt.captcha         = frm.elements['captcha'] ? frm.elements['captcha'].value : '';
+  cmt.rank            = 0;
+
+  for (i = 0; i < frm.elements['comment_rank'].length; i++)
+  {
+    if (frm.elements['comment_rank'][i].checked)
+    {
+       cmt.rank = frm.elements['comment_rank'][i].value;
+     }
+  }
+
+//  if (cmt.username.length == 0)
+//  {
+//     alert(cmt_empty_username);
+//     return false;
+//  }
+
+  if (cmt.content.length == 0)
+   {
+      alert(cmt_empty_content);
+      return false;
+   }
+
+   if (cmt.enabled_captcha > 0 && cmt.captcha.length == 0 )
+   {
+      alert(captcha_not_null);
+      return false;
+   }
+
+   Ajax.call('comment.php', 'cmt=' + cmt.toJSONString(), commentResponse, 'POST', 'JSON');
+   return false;
+}
+
+/**
+ * 处理提交评论的反馈信息
+*/
+  function commentResponse(result)
+  {
+    if (result.message)
+    {
+      alert(result.message);
+    }
+
+    if (result.error == 0)
+    {
+      var layer = document.getElementById('ECS_COMMENT');
+
+      if (layer)
+      {
+        layer.innerHTML = result.content;
+      }
+    }
+  }
+{/literal}
+//]]>
+</script>

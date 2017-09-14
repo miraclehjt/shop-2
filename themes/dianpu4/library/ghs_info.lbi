@@ -1,0 +1,9 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<ul class="shopTolal">   
+              <li> <span><a href="supplier.php?suppId={$smarty.get.suppId}"><img width="90" height="45" src="{$shoplogo}" style="margin:0 36px;" /></a></span></li>
+              <li style="border-top:1px dashed #F5AFB1 "> <span>商店等级：</span><span>{$userrank}</span></li>
+			  <li> <span>商品数量：</span><span>{$goodsnum}</span></li>
+              <li> <span>所在地区：</span><span>{$region}</span></li>
+			  <li> <span>创店时间：</span><span>{$createtime}</span></li>
+              <li> <span>详细地址：</span><span>{$address}</span></li>
+            </ul>

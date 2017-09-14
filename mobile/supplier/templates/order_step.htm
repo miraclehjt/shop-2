@@ -1,0 +1,284 @@
+{if $full_page eq 1}
+<!DOCTYPE HTML>
+<html>
+  <head>
+    {include file='html_header.htm'}
+    <script src='js/region.js'></script>
+  </head>
+  <body>
+<div id='container'> {/if}
+  {include file='page_header.htm'}
+      <!--修改收货人信息-->
+  {if $step eq 'consignee'}
+  <section>
+    <div class="order_con">
+      <div class="order_pd">
+        <div class="order">
+          <form name="theForm" action="order.php?act=step_post&step={$step}&order_id={$order_id}&step_act={$step_act}" method="post" onsubmit="return checkConsignee()">
+            <div class="order_list_buyer">
+              <table width="100%" cellpadding="3" cellspacing="1" >
+                {if $address_list}
+                <tr>
+                  <td align="left" colspan="2">{$lang.address_list}</td>
+                
+                <tr>
+                
+                <tr>
+                  <td colspan="2"><select onchange="loadAddress(this.value)">
+                      <option value="0" selected>{$lang.select_please}</option>
+                      
+                          {foreach from=$address_list item=address}
+                      <option value="{$address.address_id}" {if $smarty.get.address_id eq $address.address_id}selected{/if}>{$address.consignee|escape} {$address.email} {$address.address|escape} {$address.tel|escape}</option>
+                      {/foreach}
+                        
+                    </select></td>
+                </tr>
+                {/if}
+                <tr>
+                  <td align="left" width="30%">{$lang.label_consignee}</td>
+                  <td><input name="consignee" type="text" value="{$order.consignee}" class="input_buyer"/>
+                    {$lang.require_field} </td>
+                </tr>
+                {if $exist_real_goods}
+                <tr>
+                  <td align="left">{$lang.label_area}</td>
+                  <td><select name="country" id="selCountries" onChange="region.changed(this, 1, 'selProvinces')">
+                      <option value="0" selected="true">{$lang.select_please}</option>
+                      
+                          {foreach from=$country_list item=country}
+                          
+                      <option value="{$country.region_id}" {if $order.country eq $country.region_id}selected{/if}>{$country.region_name}</option>
+                      
+                          {/foreach}
+                        
+                    </select>
+                    <select name="province" id="selProvinces" onChange="region.changed(this, 2, 'selCities')">
+                      <option value="0">{$lang.select_please}</option>
+                      
+                          {foreach from=$province_list item=province}
+                          
+                      <option value="{$province.region_id}" {if $order.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
+                      
+                          {/foreach}
+                        
+                    </select>
+                    <select name="city" id="selCities" onchange="region.changed(this, 3, 'selDistricts')">
+                      <option value="0">{$lang.select_please}</option>
+                      <!-- {foreach from=$city_list item=city} -->
+                      <option value="{$city.region_id}" {if $order.city eq $city.region_id}selected{/if}>{$city.region_name}</option>
+                      <!-- {/foreach} -->
+                    </select>
+                    <select name="district" id="selDistricts">
+                      <option value="0">{$lang.select_please}</option>
+                      <!-- {foreach from=$district_list item=district} -->
+                      <option value="{$district.region_id}" {if $order.district eq $district.region_id}selected{/if}>{$district.region_name}</option>
+                      <!-- {/foreach} -->
+                    </select>
+                    {$lang.require_field} </td>
+                </tr>
+                {/if}
+                <tr>
+                  <td align="left">{$lang.label_email}</td>
+                  <td><input name="email" type="text" value="{$order.email}"  class="input_buyer"/>
+                    {$lang.require_field} </td>
+                </tr>
+                {if $exist_real_goods}
+                <tr>
+                  <td align="left">{$lang.label_address}</td>
+                  <td><input name="address" type="text" value="{$order.address}"  class="input_buyer"/>
+                    {$lang.require_field} </td>
+                </tr>
+                <tr>
+                  <td align="left">{$lang.label_zipcode}</td>
+                  <td><input name="zipcode" type="text" value="{$order.zipcode}"  class="input_buyer"/></td>
+                </tr>
+                {/if}
+                <tr>
+                  <td align="left">{$lang.label_tel}</td>
+                  <td><input name="tel" type="text" value="{$order.tel}"  class="input_buyer"/>
+                    {$lang.require_field} </td>
+                </tr>
+                <tr>
+                  <td align="left">{$lang.label_mobile}</td>
+                  <td><input name="mobile" type="text" value="{$order.mobile}"  class="input_buyer"/></td>
+                </tr>
+                {if $exist_real_goods}
+                <tr>
+                  <td align="left">{$lang.label_sign_building}</td>
+                  <td><input name="sign_building" type="text" value="{$order.sign_building}"  class="input_buyer"/></td>
+                </tr>
+                <tr>
+                  <td align="left">{$lang.label_best_time}</td>
+                  <td><input name="best_time" type="text" value="{$order.best_time}"  class="input_buyer"/></td>
+                </tr>
+                {/if}
+              </table>
+              <p align="center">
+                <input name="{if $step_act eq 'add'}next{else}finish{/if}" type="submit" class="button" value="确定" />
+                <input type="button" value="取消" class="button" onclick="history.back()" />
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+      <!--修改费用信息-->
+  {elseif $step eq 'money'}
+  <section>
+    <div class="order_con">
+      <div class="order_pd">
+        <div class="order">
+          <form name="theForm" action="order.php?act=step_post&step={$step}&order_id={$order_id}&step_act={$step_act}" method="post">
+            <div class="order_list_fee">
+              <table width="100%" cellpadding="3" cellspacing="1" >
+                <tr>
+                  <td align="left" width="50%">商品总金额：{$order.formated_goods_amount}</td>
+                  <td align="left" width="50%">折扣：
+                    <input name="discount" type="text" id="discount" value="{$order.discount}" class="input_fee"/></td>
+                </tr>
+                <tr>
+                  <td>发票税额：
+                    <input name="tax" type="text" id="tax" value="{$order.tax}" class="input_fee"/></td>
+                  <td>订单总金额：{$order.formated_total_fee}</td>
+                </tr>
+                <tr>
+                  <td>配送费用：
+                    <input name="shipping_fee" type="text" value="{$order.shipping_fee}" class="input_fee"/></td>
+                  <td>已付款金额：{$order.formated_money_paid}</td>
+                </tr>
+                <tr>
+                  <td>保价费用：
+                    <input name="insure_fee" type="text" value="{$order.insure_fee}" class="input_fee"/></td>
+                  <td>支付费用：
+                    <input name="pay_fee" type="text" value="{$order.pay_fee}" class="input_fee"/></td>
+                </tr>
+                <tr>
+                  <td>包装费用：
+                    <input name="pack_fee" type="text" value="" class="input_fee"/></td>
+                  <td>贺卡费用：
+                    <input name="card_fee" type="text" value="" class="input_fee"/></td>
+                </tr>
+                <tr>
+                  <td colspan="2">使用余额：{if $order.user_id >0}
+                    <input name="surplus" type="text" value="{$order.surplus}" class="input_fee_t">
+                    {/if} {$lang.available_surplus}{$available_user_money|default:0} </td>
+                </tr>
+                <tr>
+                  <td colspan="2">{$lang.label_integral}{if $order.user_id > 0}
+                    <input name="integral" type="text" value="{$order.integral}"  class="input_fee_t">
+                    {/if} {$lang.available_integral}{$available_pay_points|default:0} </td>
+                </tr>
+                <tr>
+                  <td colspan="2"> 使用红包：
+                    <select name="bonus_id">
+                      <option value="0" {if $order.bonus_id eq 0}selected{/if}>{$lang.select_please}</option>
+                      
+                        {foreach from=$available_bonus item=bonus}
+                        
+                      <option value="{$bonus.bonus_id}" {if $order.bonus_id eq $bonus.bonus_id}selected{/if} money="{$bonus.type_money}">{$bonus.type_name} - {$bonus.type_money}</option>
+                      
+                        {/foreach}
+                        
+                    </select></td>
+                </tr>
+                <tr>
+                  <td colspan="2">应付款金额：622.00</td>
+                </tr>
+              </table>
+              <p align="center">
+                <input name="finish" type="submit" class="button" value="完成" />
+                <input type="button" value="取消" class="button" onclick="history.back()" />
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+      <!--修改配送方式-->
+      {elseif $step eq "shipping"}
+      <section>
+        <div class="order_con">
+          <div class="order_pd">
+            <div class="order">
+              <form name="theForm" action="order.php?act=step_post&step={$step}&order_id={$order_id}&step_act={$step_act}" method="post" onsubmit="return checkShipping()">
+            <div class="order_list_fee">
+              <table cellpadding="" cellspacing="0" width="100%" class="shipping">
+                <tr class="first">
+                  <td width="5%">&nbsp;</td>
+                  <td width="25%" align="left">{$lang.name}</td>
+                  <td width="25%" align="center">{$lang.shipping_fee}</td>
+                  <td width="25%" align="center">{$lang.free_money}</td>
+                  <td width="20%" align="center">{$lang.insure}</td>
+                </tr>
+                    {foreach from=$shipping_list item=shipping}
+                    <tr>
+                      <td><input name="shipping" type="radio" value="{$shipping.shipping_id}" {if $order.shipping_id eq $shipping.shipping_id}checked{/if} onclick="" /></td>
+                      <td>{$shipping.shipping_name}</td>
+                  <td align="center">{$shipping.format_shipping_fee}</td>
+                  <td align="center">{$shipping.free_money}</td>
+                  <td align="center">{$shipping.insure}</td>
+                    </tr>
+                    {/foreach}
+                <tr class="last">
+                  <td colspan="5" align="right"><input name="insure" type="checkbox" value="1" {if $order.insure_fee > 0}checked{/if} />
+                    {$lang.want_insure}
+                </tr>
+                  </td>
+                
+              </table>
+              <p align="center"> {if $step_act eq "add"}
+                <input type="button" value="{$lang.button_prev}" class="button" onclick="history.back()" />
+                {else}<span style="width:13%;display:inline-block;float:left;height:25px;"></span>{/if}
+                <input name="{if $step_act eq 'add'}next{else}finish{/if}" type="submit" class="button" value="{if $step_act eq 'add'}{$lang.button_next}{else}{$lang.button_submit}{/if}" />
+                <input type="button" value="{$lang.button_cancel}" class="button" onclick="location.href='order.php?act=process&func=cancel_order&order_id={$order_id}&step_act={$step_act}'" />
+              </p>
+                </div>
+                
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--修改支付方式-->
+      {elseif $step eq "payment"}
+      <section>
+        <div class="order_con">
+          <div class="order_pd">
+            <div class="order">
+              <form name="theForm" action="order.php?act=step_post&step={$step}&order_id={$order_id}&step_act={$step_act}" method="post" onsubmit="return checkPayment()">
+            <div class="order_list_fee">
+              <table cellpadding="" cellspacing="0" width="100%" class="shipping">
+                <tr class="first">
+                  <td width="5%">&nbsp;</td>
+                  <td width="65%" align="left">{$lang.name}</td>
+                  <td width="30%" align="center">{$lang.pay_fee}</td>
+                </tr>
+                {foreach from=$payment_list item=payment}
+                <tr>
+                  <td><input type="radio" name="payment" value="{$payment.pay_id}" {if $order.pay_id eq $payment.pay_id}checked{/if} /></td>
+                  <td>{$payment.pay_name}</td>
+                  <td align="center">{$payment.pay_fee}</td>
+                </tr>
+                {/foreach}
+              </table>
+              <p align="center"> {if $step_act eq "add"}
+                <input type="button" value="{$lang.button_prev}" class="button" onclick="history.back()" />
+                {else}<span style="width:13%;display:inline-block;float:left;height:25px;"></span>{/if}
+                <input name="{if $step_act eq 'add'}next{else}finish{/if}" type="submit" class="button" value="{if $step_act eq 'add'}{$lang.button_next}{else}{$lang.button_submit}{/if}" />
+                <input type="button" value="{$lang.button_cancel}" class="button" onclick="location.href='order.php?act=process&func=cancel_order&order_id={$order_id}&step_act={$step_act}'" />
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  {/if}
+  {include file='page_footer.htm'}
+  {if $full_page eq 1}
+  {include file='static_div.htm'} </div>
+</body>
+</html>
+{/if}

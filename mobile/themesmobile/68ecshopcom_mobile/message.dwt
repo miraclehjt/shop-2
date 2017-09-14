@@ -1,0 +1,41 @@
+<!DOCTYPE html >
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>{$page_title}</title>
+  <meta name="Keywords" content="{$keywords}" />
+  <meta name="Description" content="{$description}" />
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+  <link rel="stylesheet" href="themesmobile/68ecshopcom_mobile/css/loginxin.css">
+  <link rel="stylesheet" href="themesmobile/68ecshopcom_mobile/css/public.css" >
+  </head>
+
+<body>
+    <header class="header_03">
+      <div class="nl-login-title">
+        <div class="h-left">
+          <a class="sb-back" href="javascript:history.back(-1)" title="返回"></a>
+        </div>
+        <span style="text-align:center">系统提示</span>
+      </div>
+    </header>
+
+  <div class="ng-form-zhu" style="text-align: center;font-size:16px;">
+
+    <div class="tips_a"><img src="../themesmobile/68ecshopcom_mobile/images/xin/icogantanhao.png"></div>
+    <div class="tips">{$message.content}</div>
+    {if $message.url_info}
+    <div class="tips">
+      {foreach from=$message.url_info key=info item=url}
+      <a href="{$url}" style="color: #666;">
+        <span class="tishi">{$info}</span>
+      </a>
+      {/foreach}
+    </div>
+    {/if}
+  </div>
+
+</body>
+
+</html>

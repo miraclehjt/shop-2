@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link rel="stylesheet" type="text/css" href="themes/68ecshopcom_360buy/css/68ecshop_commin.css" />
+<link href="themes/68ecshopcom_360buy/css/store_joinin_new.css" rel="stylesheet" type="text/css">
+{* 包含脚本文件 *}
+{insert_scripts files='common.js,user.js'}
+<script src="themes/68ecshopcom_360buy/js/jquery-1.9.1.min.js" data-fixed="true"></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jq4.js" charset="utf-8"></script>
+</head>
+<body>
+<div class="header">
+  <h2 class="header_logo"><a href="index.php"><img src="../images/header/logo.jpg" class="pngFix"></a></h2>
+  <ul class="header_menu">
+    <li class="current"><a href="apply.php" class="joinin"><i></i>商家入驻申请</a></li>
+    <li class=""><a href="{$mydomain}supplier/" class="login"><i></i>商家管理中心</a></li>
+    <li class=""><a href="#" class="faq"><i></i>商家帮助指南</a></li>
+  </ul>
+</div>
+<div class="header_line"><span></span></div>
+<div class="banner">
+  <div class="user-box">
+    <div class="user-joinin"> {insert name='member_info1'}
+      <dl>
+        <dt>欢迎来到 B2B2C 商城</dt>
+        <dd> 若您还没有填写入驻申请资料<br>
+          请点击“<a href="apply.php" target="_blank">我要入驻</a>”进行入驻资料填写</dd>
+        <dd>若您的店铺还未开通<br>
+          请通过“<a href="apply.php" target="_blank">查看入驻进度</a>”了解店铺开通的最新状况 </dd>
+      </dl>
+      <div class="bottom"><a href="apply.php" target="_blank">我要入驻</a><a href="apply.php" target="_blank">查看入驻进度</a></div>
+    </div>
+  </div>
+  <div id="banner">
+    <div id="ctrl1"> <span class="hov"></span> <span></span> <span></span> </div>
+    <div id="img1" class="full-screen-slides" style="overflow:hidden"> <a href="#"><img style="display:block;" src="images/apply/banner01.jpg" alt="" /></a> <a href="#"><img src="images/apply/banner02.jpg" alt="" /></a> <a href="#"><img src="images/apply/banner03.jpg" alt="" /></a> </div>
+  </div>
+</div>
+<div class="indextip">
+  <div class="container"> <span class="title"><i></i>
+    <h3>贴心提示</h3>
+    </span> <span class="content">【B2B2C】平台提供各类专业管家服务，协助您开通店铺、运营店铺、组织营销活动及分析运营数据，悉心为您解答各类疑问，引导您按相关规则展开运营；我们将竭尽全力，为您的店铺保驾护航。</span></div>
+</div>
+<div class="main mt30">
+  <h2 class="index-title">入驻流程</h2>
+  <div class="joinin-index-step"><span class="step"><i class="a"></i>签署入驻协议</span><span class="arrow"></span><span class="step"><i class="b"></i>商家信息提交</span><span class="arrow"></span><span class="step"><i class="c"></i>平台审核资质</span><span class="arrow"></span><span class="step"><i class="d"></i>商家缴纳费用</span><span class="arrow"></span><span class="step"><i class="e"></i>店铺开通</span></div>
+  <h2 class="index-title">入驻指南</h2>
+  <div class="joinin-info">
+    <ul class="tabs-nav">
+      <li class="tabs-selected">
+        <h3>招商方向</h3>
+      </li>
+      <li class="">
+        <h3>招商标准</h3>
+      </li>
+      <li class="">
+        <h3>资质要求</h3>
+      </li>
+      <li class="">
+        <h3>资费标准</h3>
+      </li>
+    </ul>
+    <div class="tabs-panel">
+      <p> <strong>2014年开放平台招商方向</strong> </p>
+      <p> <br>
+      </p>
+      <h1> 1.&nbsp;&nbsp;&nbsp; 品牌 </h1>
+      <p> <br>
+      </p>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 国际国内知名品牌<br>
+      <p> &nbsp; &nbsp; &nbsp; &nbsp;开放平台将一如既往的最大程度地维护卖家的品牌利益，尊重品牌传统和内涵，欢迎优质品牌旗 </p>
+      <p> <br>
+      </p>
+      <p> 舰店入驻，请参见《2014年开放平台重点招募品牌》。 </p>
+      <h1> <br>
+      </h1>
+      <h1> 2.&nbsp;&nbsp;&nbsp; 货品 </h1>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 能够满足用户群体优质、有特色的货品。<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 根据类目结构细分的货品配置。类目规划详见《2014年开放平台类目一览表》。<br>
+      <h1> 3.&nbsp;&nbsp; 垂直电商 </h1>
+      <p> <br>
+      </p>
+      <p> &nbsp; &nbsp; &nbsp; 开放平台欢迎垂直类电商入驻。开放平台愿意和专业的垂直电商企业分享其优质用户群体， </p>
+      <p> <br>
+      </p>
+      <p> 并且欢迎垂直电商为用户提供该领域专业的货品及服务。 </p>
+      <p> <br>
+      </p>
+      <p> <br>
+      </p>
+    </div>
+    <div class="tabs-panel tabs-hide">
+      <p> <br>
+      </p>
+      <p class="MsoNormal" style="text-align:left;"> 本标准适用于除虚拟业务（包括但不限于旅游、酒店、票务、充值、彩票）外的平台开放平台所有卖家。 </p>
+      <p class="MsoNormal" style="text-align:left;"> <br>
+      </p>
+      <p class="MsoNormal" style="text-align:left;"> <b>第一章 入驻</b><b></b> </p>
+      <p class="MsoNormal" style="text-align:left;"> 1.1&nbsp;&nbsp;&nbsp; 平台开放平台暂未授权任何机构进行代理招商服务，入驻申请流程及相关的收费说明均以平台开放平台官方招商页面为准。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 1.2 &nbsp;&nbsp; 平台开放平台有权根据包括但不限于品牌需求、公司经营状况、服务水平等其他因素退回卖家申请。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 1.3 &nbsp;&nbsp; 平台开放平台有权在申请入驻及后续经营阶段要求卖家提供其他资质。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 1.4 &nbsp;&nbsp; 平台开放平台将结合各行业发展动态、国家相关规定及消费者购买需求，不定期更新招商标准。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 1.5 &nbsp;&nbsp; 卖家必须如实提供资料和信息： </p>
+      <p class="MsoNormal" style="text-align:left;"> 1.5.1 请务必确保申请入驻及后续经营阶段提供的相关资质和信息的真实性、完整性、有效性（若卖家提供的相关资质为第三方提供，包括但不限于商标注册证、授权书
+        等，请务必先行核实文件的真实有效完整性），一旦发现虚假资质或信息的，平台开放平台将不再与卖家进行合作并有权根据平台开放平台规则及与卖家签署的相关 协议之约定进行处理； </p>
+      <p class="MsoNormal" style="text-align:left;"> 1.5.2&nbsp; 卖家应如实提供其店铺运营的主体及相关信息，包括但不限于店铺实际经营主体、代理运营公司等信息； </p>
+      <p class="MsoNormal" style="text-align:left;"> 1.5.3&nbsp; 平台开放平台关于卖家信息和资料变更有相关规定的从其规定，但卖家如变更<span>1.5.2</span>项所列信息，应提前十日书面告知平台；如未提前告知平台，平台将根据平台开放平台规则进行处理。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 1.6&nbsp;&nbsp;&nbsp; 平台开放平台暂不接受个体工商户的入驻申请，卖家须为正式注册企业，亦暂时不接受非中国大陆注册企业的入驻申请。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 1.7&nbsp;&nbsp;&nbsp; 平台开放平台暂不接受未取得国家商标总局颁发的商标注册证或商标受理通知书的品牌开店申请，亦不接受纯图形类商标的入驻申请。卖家提供商标受理通知书（<span>TM</span>状态商标）的，注册申请时间须满六个月。 </p>
+      <p class="MsoNormal" style="text-align:left;"> <br>
+      </p>
+      <p class="MsoNormal" style="text-align:left;"> <b>第二章 平台店铺类型及相关要求</b><b></b> </p>
+      <p class="MsoNormal" style="text-align:left;"> 2.1&nbsp;&nbsp;&nbsp;&nbsp; 旗舰店，卖家以自有品牌（商标为<span>R</span>或<span>TM</span>状态），或由权利人出具的在平台开放平台开设品牌旗舰店的授权文件（授权文件中应明确排他性、不可撤销性），入驻平台开放平台开设的店铺。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 2.1.1&nbsp; 旗舰店，可以有以下几种情形： </p>
+      <p class="MsoNormal" style="text-align:left;"> 经营一个自有品牌（商标为<span>R</span>或<span>TM</span>状态）商品入驻平台开放平台的卖家旗舰店，（自有品牌是指商标权利归卖家所有，自有品牌的子品牌可以放入旗舰店，主、子品牌的商标权利人应为同一实际控制人）； </p>
+      <p class="MsoNormal" style="text-align:left;"> 经营已获得明确排他性授权的一个品牌商品入驻平台开放平台的卖家旗舰店； </p>
+      <p class="MsoNormal" style="text-align:left;"> 卖场型品牌（服务类商标）商标权人开设的旗舰店； </p>
+      <p class="MsoNormal" style="text-align:left;"> 2.1.2&nbsp; 开店主体必须是品牌（商标）权利人或持有权利人出具的开设平台开放平台旗舰店排他性授权文件的被授权企业。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 2.2&nbsp;&nbsp;&nbsp;&nbsp; 专卖店，卖家持他人品牌（商标为<span>R</span>或<span>TM</span>状态）授权文件在平台开放平台开设的店铺。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 2.2.1&nbsp; 专卖店类型：经营一个或多个授权品牌商品（多个授权品牌的商标权人应为同一实际控制人）但未获得旗舰店排他授权入驻平台开放平台的卖家专卖店； </p>
+      <p class="MsoNormal" style="text-align:left;"> 2.2.2 &nbsp; 品牌（商标）权利人出具的授权文件不应有地域限制。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 2.3&nbsp;&nbsp;&nbsp;&nbsp; 专营店，经营平台开放平台相同一级经营类目下两个及以上他人或自有品牌（商标为<span>R</span>或<span>TM</span>状态）商品的店铺。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 2.3.1&nbsp; 专营店，可以有以下几种情形： </p>
+      <p class="MsoNormal" style="text-align:left;"> 相同一级类目下经营两个及以上他人品牌商品入驻平台开放平台的卖家专营店； </p>
+      <p class="MsoNormal" style="text-align:left;"> 相同一级类目下既经营他人品牌商品又经营自有品牌商品入驻平台开放平台的卖家专营店。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 2.4 &nbsp; &nbsp; 各类型店铺命名详细说明，请见<span>《平台开放平台卖家店铺命名规则》。</span> </p>
+      <p class="MsoNormal" style="text-align:left;"> <br>
+      </p>
+      <p class="MsoNormal" style="text-align:left;"> <b>第三章 平台申请入驻资质标准</b><b></b> </p>
+      <p class="MsoNormal" style="text-align:left;"> 3.1&nbsp;&nbsp;&nbsp; 平台开放平台申请入驻资质标准详见<span>《平台开放平台招商资质标准细则》。</span> </p>
+      <p class="MsoNormal" style="text-align:left;"> <br>
+      </p>
+      <p class="MsoNormal" style="text-align:left;"> <b>第四章 开店入驻限制</b><b></b> </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.1&nbsp;&nbsp;&nbsp; 品牌入驻限制： </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.1.1 与平台平台已有的自有品牌、频道、业务、类目等相同或相似名称的品牌； </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.1.2&nbsp; 包含行业名称或通用名称的品牌； </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.1.3&nbsp; 包含知名人士、地名的品牌； </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.1.4&nbsp; 与知名品牌相同或近似的品牌。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.2&nbsp;&nbsp;&nbsp;&nbsp; 经营类目限制，卖家开店所经营的类目应当符合平台开放平台的相关标准，详细请参考<span>《平台开放平台经营类目资费一览表》。</span> </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.3同一主体入驻的店铺限制： </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.3.1&nbsp; 单个店铺只可对应一种经营模式。各经营模式内容请参考与卖家签署的对应合同； </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.3.2&nbsp; 同一主体开设若干店铺的，经营模式总计不得超过两种，且须在开展第二种经营模式时提前<span>10</span>日向平台进行书面申请； </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.3.3&nbsp; 商品重合度：要求店铺间经营的品牌及商品不得重复，<span>4.3.2</span>项下经过平台审批的店铺不受此项约束。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.4&nbsp;&nbsp;&nbsp;&nbsp; 同一主体重新入驻平台开放平台限制： </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.4.1&nbsp; 严重违规、资质造假被平台清退的，永久限制入驻； </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.4.2&nbsp; 若卖家一自然年内主动退出<span>2</span>次，则自最后一次完成退出之日起<span>12</span>个月内限制入驻。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.5&nbsp;&nbsp;&nbsp;&nbsp; 续签限制：须在每年<span>3</span>月<span>1</span>日<span>18</span>时之前完成续签申请的提交，每年<span>3</span>月<span>20</span>日<span>18</span>时之前完成平台使用费的缴纳，如果上一年及下一年资费及资料未补足，平台将在每年<span>3</span>月<span>31</span>日<span>24</span>时终止店铺服务并下架商品。 </p>
+      <p class="MsoNormal" style="text-align:left;"> <br>
+      </p>
+      <p class="MsoNormal" style="text-align:left;"> <b>第五章 平台开放平台保证金<span>/</span>平台使用费<span>/</span>费率标准</b><b></b> </p>
+      <p class="MsoNormal" style="text-align:left;"> 5.1 &nbsp; &nbsp; 保证金：卖家向平台缴纳的用以保证店铺规范运营及对商品和服务质量进行担保的金额。当卖家发生违约、违规行为时，平台可以依照与卖家签署的协议中相关约定及平台开放平台规则扣除相应金额的保证金作为违约金或给予买家的赔偿。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 5.1.1&nbsp; 保证金的补足、退还、扣除等依据卖家签署的相关协议及平台开放平台规则约定办理； </p>
+      <p class="MsoNormal" style="text-align:left;"> 5.1.2&nbsp; 平台开放平台各经营类目对应的保证金标准详见<span>《平台开放平台经营类目资费一览表》。</span> </p>
+      <p class="MsoNormal" style="text-align:left;"> 5.2&nbsp;&nbsp;&nbsp;&nbsp; 平台使用费：卖家依照与平台签署的相关协议使用平台开放平台各项服务时缴纳的固定技术服务费用。平台开放平台各经营类目对应的平台使用费标准详见<span>《平台开放平台经营类目资费一览表》。</span>续签卖家的续展服务期间对应平台使用费须在每年<span>3</span>月<span>20</span>日<span>18</span>时前一次性缴纳；新签卖家须在申请入驻获得批准时一次性缴纳相应服务期间的平台使用费。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 5.2.1&nbsp;&nbsp; 平台使用费结算： </p>
+      <p class="MsoNormal" style="text-align:left;"> 5.2.1.1卖家主动要求停止店铺服务的不返还平台使用费； </p>
+      <p class="MsoNormal" style="text-align:left;"> 5.2.1.2卖家因违规行为或资质造假被清退的不返还平台使用费； </p>
+      <p class="MsoNormal" style="text-align:left;"> 5.2.1.3每个店铺的平台使用费依据相应的服务期计算并缴纳。服务开通之日在每月的<span>1</span>日至<span>15</span>日（含）间的，开通当月按一个月收取平台使用费，服务开通之日在每月的<span>16</span>日（含）至月底最后一日间的，开通当月不收取平台使用费； </p>
+      <p class="MsoNormal" style="text-align:left;"> 5.2.1.4拥有独立店铺<span>ID</span>的为一个店铺，若卖家根据经营情况须开通多个店铺的，须按照店铺数量缴纳相应的平台使用费。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 5.3&nbsp;&nbsp;&nbsp;&nbsp; 费率：卖家根据经营类目在达成每一单交易时按比例（该比例在与卖家签署的相关协议中称为“技术服务费费率”或“毛利保证率”）向平台缴纳的费用。平台开放平台各经营模式各经营类目对应的费率标准详见<span>《平台开放平台经营类目资费一览表》。 </span> </p>
+      <p class="MsoNormal" style="text-align:left;"> <br>
+      </p>
+      <p class="MsoNormal" style="text-align:left;"> <b>第六章 店铺服务期</b><b></b> </p>
+      <p class="MsoNormal" style="text-align:left;"> 6.1&nbsp;&nbsp;&nbsp;&nbsp; 卖家每个店铺的第一个服务期自服务开通之日起至最先到达的<span>3</span>月<span>31</span>日止，第二个服务期自<span>4</span>月<span>1</span>日起至次年<span>3</span>月<span>31</span>日止，第三个、第四个……服务期以此类推，以一年为周期，除非店铺或与卖家签署的相关协议提前终止。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 6.2&nbsp;&nbsp;&nbsp;&nbsp; 卖家每个店铺的服务开通之日以平台通知或系统记录的时间为准。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 6.3&nbsp;&nbsp;&nbsp;&nbsp; 卖家应在店铺每个服务期届满前<span>30</span>日向甲方提出续展的申请，缴纳续展服务期的平台使用费和提交其经营所需的全部有效资质，并经平台审核。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 6.4&nbsp;&nbsp;&nbsp;&nbsp; 卖家未提出续展申请或申请未通过平台审核的，自店铺服务期满之日起，平台开放平台将不再向卖家提供该店铺的任何服务。 </p>
+      <p class="MsoNormal" style="text-align:left;"> <br>
+      </p>
+      <p class="MsoNormal" style="text-align:left;"> <br>
+      </p>
+      <p class="MsoNormal" style="text-align:left;"> <a name="help2267" id="help2267"></a><b>平台开放平台招商资质标准细则</b><b></b> </p>
+      <p class="MsoNormal"> <span></span>&nbsp; </p>
+    </div>
+    <div class="tabs-panel tabs-hide">
+      <p> </p>
+      <p class="MsoNormal" style="text-align:left;"> <br>
+      </p>
+      <p class="MsoNormal" style="text-align:left;"> <a name="undefined" id="undefined"></a><b>平台开放平台招商资质标准细则</b> </p>
+      <p class="MsoNormal"> <span></span>&nbsp; </p>
+      <p class="MsoNormal" style="text-align:left;"> 本标准适用于除虚拟业务（包括但不限于旅游、酒店、票务、充值、彩票）外的平台开放平台所有卖家。 </p>
+      <p class="MsoNormal" style="text-align:left;"> <br>
+      </p>
+      <p class="MsoNormal" style="text-align:left;"> <b>第一章 入驻</b> </p>
+      <p class="MsoNormal" style="text-align:left;"> 1.1&nbsp;&nbsp;&nbsp; 平台开放平台暂未授权任何机构进行代理招商服务，入驻申请流程及相关的收费说明均以平台开放平台官方招商页面为准。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 1.2 &nbsp;&nbsp; 平台开放平台有权根据包括但不限于品牌需求、公司经营状况、服务水平等其他因素退回卖家申请。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 1.3 &nbsp;&nbsp; 平台开放平台有权在申请入驻及后续经营阶段要求卖家提供其他资质。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 1.4 &nbsp;&nbsp; 平台开放平台将结合各行业发展动态、国家相关规定及消费者购买需求，不定期更新招商标准。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 1.5 &nbsp;&nbsp; 卖家必须如实提供资料和信息： </p>
+      <p class="MsoNormal" style="text-align:left;"> 1.5.1 请务必确保申请入驻及后续经营阶段提供的相关资质和信息的真实性、完整性、有效性（若卖家提供的相关资质为第三方提供，包括但不限于商标注册证、授权书
+        等，请务必先行核实文件的真实有效完整性），一旦发现虚假资质或信息的，平台开放平台将不再与卖家进行合作并有权根据平台开放平台规则及与卖家签署的相关 协议之约定进行处理； </p>
+      <p class="MsoNormal" style="text-align:left;"> 1.5.2&nbsp; 卖家应如实提供其店铺运营的主体及相关信息，包括但不限于店铺实际经营主体、代理运营公司等信息； </p>
+      <p class="MsoNormal" style="text-align:left;"> 1.5.3&nbsp; 平台开放平台关于卖家信息和资料变更有相关规定的从其规定，但卖家如变更<span>1.5.2</span>项所列信息，应提前十日书面告知平台；如未提前告知平台，平台将根据平台开放平台规则进行处理。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 1.6&nbsp;&nbsp;&nbsp; 平台开放平台暂不接受个体工商户的入驻申请，卖家须为正式注册企业，亦暂时不接受非中国大陆注册企业的入驻申请。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 1.7&nbsp;&nbsp;&nbsp; 平台开放平台暂不接受未取得国家商标总局颁发的商标注册证或商标受理通知书的品牌开店申请，亦不接受纯图形类商标的入驻申请。卖家提供商标受理通知书（<span>TM</span>状态商标）的，注册申请时间须满六个月。 </p>
+      <p class="MsoNormal" style="text-align:left;"> <br>
+      </p>
+      <p class="MsoNormal" style="text-align:left;"> <b>第二章 平台店铺类型及相关要求</b> </p>
+      <p class="MsoNormal" style="text-align:left;"> 2.1&nbsp;&nbsp;&nbsp;&nbsp; 旗舰店，卖家以自有品牌（商标为<span>R</span>或<span>TM</span>状态），或由权利人出具的在平台开放平台开设品牌旗舰店的授权文件（授权文件中应明确排他性、不可撤销性），入驻平台开放平台开设的店铺。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 2.1.1&nbsp; 旗舰店，可以有以下几种情形： </p>
+      <p class="MsoNormal" style="text-align:left;"> 经营一个自有品牌（商标为<span>R</span>或<span>TM</span>状态）商品入驻平台开放平台的卖家旗舰店，（自有品牌是指商标权利归卖家所有，自有品牌的子品牌可以放入旗舰店，主、子品牌的商标权利人应为同一实际控制人）； </p>
+      <p class="MsoNormal" style="text-align:left;"> 经营已获得明确排他性授权的一个品牌商品入驻平台开放平台的卖家旗舰店； </p>
+      <p class="MsoNormal" style="text-align:left;"> 卖场型品牌（服务类商标）商标权人开设的旗舰店； </p>
+      <p class="MsoNormal" style="text-align:left;"> 2.1.2&nbsp; 开店主体必须是品牌（商标）权利人或持有权利人出具的开设平台开放平台旗舰店排他性授权文件的被授权企业。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 2.2&nbsp;&nbsp;&nbsp;&nbsp; 专卖店，卖家持他人品牌（商标为<span>R</span>或<span>TM</span>状态）授权文件在平台开放平台开设的店铺。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 2.2.1&nbsp; 专卖店类型：经营一个或多个授权品牌商品（多个授权品牌的商标权人应为同一实际控制人）但未获得旗舰店排他授权入驻平台开放平台的卖家专卖店； </p>
+      <p class="MsoNormal" style="text-align:left;"> 2.2.2 &nbsp; 品牌（商标）权利人出具的授权文件不应有地域限制。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 2.3&nbsp;&nbsp;&nbsp;&nbsp; 专营店，经营平台开放平台相同一级经营类目下两个及以上他人或自有品牌（商标为<span>R</span>或<span>TM</span>状态）商品的店铺。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 2.3.1&nbsp; 专营店，可以有以下几种情形： </p>
+      <p class="MsoNormal" style="text-align:left;"> 相同一级类目下经营两个及以上他人品牌商品入驻平台开放平台的卖家专营店； </p>
+      <p class="MsoNormal" style="text-align:left;"> 相同一级类目下既经营他人品牌商品又经营自有品牌商品入驻平台开放平台的卖家专营店。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 2.4 &nbsp; &nbsp; 各类型店铺命名详细说明，请见<span>《平台开放平台卖家店铺命名规则》。</span> </p>
+      <p class="MsoNormal" style="text-align:left;"> <br>
+      </p>
+      <p class="MsoNormal" style="text-align:left;"> <b>第三章 平台申请入驻资质标准</b> </p>
+      <p class="MsoNormal" style="text-align:left;"> 3.1&nbsp;&nbsp;&nbsp; 平台开放平台申请入驻资质标准详见<span>《平台开放平台招商资质标准细则》。</span> </p>
+      <p class="MsoNormal" style="text-align:left;"> <br>
+      </p>
+      <p class="MsoNormal" style="text-align:left;"> <b>第四章 开店入驻限制</b> </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.1&nbsp;&nbsp;&nbsp; 品牌入驻限制： </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.1.1 与平台平台已有的自有品牌、频道、业务、类目等相同或相似名称的品牌； </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.1.2&nbsp; 包含行业名称或通用名称的品牌； </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.1.3&nbsp; 包含知名人士、地名的品牌； </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.1.4&nbsp; 与知名品牌相同或近似的品牌。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.2&nbsp;&nbsp;&nbsp;&nbsp; 经营类目限制，卖家开店所经营的类目应当符合平台开放平台的相关标准，详细请参考<span>《平台开放平台经营类目资费一览表》。</span> </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.3同一主体入驻的店铺限制： </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.3.1&nbsp; 单个店铺只可对应一种经营模式。各经营模式内容请参考与卖家签署的对应合同； </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.3.2&nbsp; 同一主体开设若干店铺的，经营模式总计不得超过两种，且须在开展第二种经营模式时提前<span>10</span>日向平台进行书面申请； </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.3.3&nbsp; 商品重合度：要求店铺间经营的品牌及商品不得重复，<span>4.3.2</span>项下经过平台审批的店铺不受此项约束。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.4&nbsp;&nbsp;&nbsp;&nbsp; 同一主体重新入驻平台开放平台限制： </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.4.1&nbsp; 严重违规、资质造假被平台清退的，永久限制入驻； </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.4.2&nbsp; 若卖家一自然年内主动退出<span>2</span>次，则自最后一次完成退出之日起<span>12</span>个月内限制入驻。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 4.5&nbsp;&nbsp;&nbsp;&nbsp; 续签限制：须在每年<span>3</span>月<span>1</span>日<span>18</span>时之前完成续签申请的提交，每年<span>3</span>月<span>20</span>日<span>18</span>时之前完成平台使用费的缴纳，如果上一年及下一年资费及资料未补足，平台将在每年<span>3</span>月<span>31</span>日<span>24</span>时终止店铺服务并下架商品。 </p>
+      <p class="MsoNormal" style="text-align:left;"> <br>
+      </p>
+      <p class="MsoNormal" style="text-align:left;"> <b>第五章 平台开放平台保证金<span>/</span>平台使用费<span>/</span>费率标准</b> </p>
+      <p class="MsoNormal" style="text-align:left;"> 5.1 &nbsp; &nbsp; 保证金：卖家向平台缴纳的用以保证店铺规范运营及对商品和服务质量进行担保的金额。当卖家发生违约、违规行为时，平台可以依照与卖家签署的协议中相关约定及平台开放平台规则扣除相应金额的保证金作为违约金或给予买家的赔偿。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 5.1.1&nbsp; 保证金的补足、退还、扣除等依据卖家签署的相关协议及平台开放平台规则约定办理； </p>
+      <p class="MsoNormal" style="text-align:left;"> 5.1.2&nbsp; 平台开放平台各经营类目对应的保证金标准详见<span>《平台开放平台经营类目资费一览表》。</span> </p>
+      <p class="MsoNormal" style="text-align:left;"> 5.2&nbsp;&nbsp;&nbsp;&nbsp; 平台使用费：卖家依照与平台签署的相关协议使用平台开放平台各项服务时缴纳的固定技术服务费用。平台开放平台各经营类目对应的平台使用费标准详见<span>《平台开放平台经营类目资费一览表》。</span>续签卖家的续展服务期间对应平台使用费须在每年<span>3</span>月<span>20</span>日<span>18</span>时前一次性缴纳；新签卖家须在申请入驻获得批准时一次性缴纳相应服务期间的平台使用费。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 5.2.1&nbsp;&nbsp; 平台使用费结算： </p>
+      <p class="MsoNormal" style="text-align:left;"> 5.2.1.1卖家主动要求停止店铺服务的不返还平台使用费； </p>
+      <p class="MsoNormal" style="text-align:left;"> 5.2.1.2卖家因违规行为或资质造假被清退的不返还平台使用费； </p>
+      <p class="MsoNormal" style="text-align:left;"> 5.2.1.3每个店铺的平台使用费依据相应的服务期计算并缴纳。服务开通之日在每月的<span>1</span>日至<span>15</span>日（含）间的，开通当月按一个月收取平台使用费，服务开通之日在每月的<span>16</span>日（含）至月底最后一日间的，开通当月不收取平台使用费； </p>
+      <p class="MsoNormal" style="text-align:left;"> 5.2.1.4拥有独立店铺<span>ID</span>的为一个店铺，若卖家根据经营情况须开通多个店铺的，须按照店铺数量缴纳相应的平台使用费。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 5.3&nbsp;&nbsp;&nbsp;&nbsp; 费率：卖家根据经营类目在达成每一单交易时按比例（该比例在与卖家签署的相关协议中称为“技术服务费费率”或“毛利保证率”）向平台缴纳的费用。平台开放平台各经营模式各经营类目对应的费率标准详见<span>《平台开放平台经营类目资费一览表》。 </span> </p>
+      <p class="MsoNormal" style="text-align:left;"> <br>
+      </p>
+      <p class="MsoNormal" style="text-align:left;"> <b>第六章 店铺服务期</b> </p>
+      <p class="MsoNormal" style="text-align:left;"> 6.1&nbsp;&nbsp;&nbsp;&nbsp; 卖家每个店铺的第一个服务期自服务开通之日起至最先到达的<span>3</span>月<span>31</span>日止，第二个服务期自<span>4</span>月<span>1</span>日起至次年<span>3</span>月<span>31</span>日止，第三个、第四个……服务期以此类推，以一年为周期，除非店铺或与卖家签署的相关协议提前终止。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 6.2&nbsp;&nbsp;&nbsp;&nbsp; 卖家每个店铺的服务开通之日以平台通知或系统记录的时间为准。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 6.3&nbsp;&nbsp;&nbsp;&nbsp; 卖家应在店铺每个服务期届满前<span>30</span>日向甲方提出续展的申请，缴纳续展服务期的平台使用费和提交其经营所需的全部有效资质，并经平台审核。 </p>
+      <p class="MsoNormal" style="text-align:left;"> 6.4&nbsp;&nbsp;&nbsp;&nbsp; 卖家未提出续展申请或申请未通过平台审核的，自店铺服务期满之日起，平台开放平台将不再向卖家提供该店铺的任何服务。 </p>
+      <p class="MsoNormal" style="text-align:left;"> <br>
+      </p>
+      <br>
+    </div>
+    <div class="tabs-panel tabs-hide"><br>
+      <p> </p>
+      <h3 class="help_tit"> <strong>2014年开放平台重点招募品牌</strong> </h3>
+      <div class="help_box" style="text-align: center">
+        <p> <img src="themes/68ecshopcom_360buy/images/apply/20140505170523_59415.jpg" alt=""> </p>
+      </div>
+      <p> <br>
+      </p>
+    </div>
+  </div>
+</div>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/home_index.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="right2 borderc">
+<div class="itemtitle" style="margin-top:10px">
+<div class="itemtitleL" style="padding-left:8px">品牌专区</div>
+<div class="itemtitleR" style="width:643px">&nbsp;</div>
+</div>
+    <div id="brands">
+    
+      <!-- {if $brand_list} -->
+          <!-- {foreach from=$brand_list item=brand name="brand_foreach"} -->
+		      <div class="bradnsLogo"><a href="/brand-2-c0.html"><img src="data/brandlogo/{$brand.brand_logo}" alt="{$brand.brand_name|escape:html} ({$brand.goods_num})" class="borderc"  width="80" height="30"/></a></div>
+	     	            <!-- {/foreach} -->
+          <!-- {/if} -->    
+	         <div class="clr"></div>
+	<p align="right"><a href="brand.php" target="_blank" class="lanA">更多品牌</a></p>
+   </div>
+ 
+</div>

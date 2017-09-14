@@ -1,0 +1,60 @@
+<div class="activity"> 
+  <!--优惠活动开始--> 
+  <!-- {foreach from=$list item=val name=val} -->
+  <div class="activity-p2">
+    <div class="ub ub-ver">
+      <div class="ub ub-f1 p-t-b3">
+        <div class="ulev-9 activity-m activity-bg f-color-red"> 活动{$smarty.foreach.val.iteration} </div>
+        <div class="ulev-1 activity-m sc-text-hui ub ub-ac"> {$val.act_name} </div>
+      </div>
+      <div> <img src="{$url}{$val.logo|default:images/ceshi.jpg}" class="phone1"> </div>
+      <div class="ulev-1 sc-text-hui p-t-b2"> {$lang.label_user_rank} <span class="f-color-6"> 
+        <!-- {foreach from=$val.user_rank item=user} --> 
+        {$user}&nbsp;&nbsp; 
+        <!-- {/foreach} --> 
+        </span> </div>
+      <div class="ulev-1 sc-text-hui activity-p2"> {$lang.label_end_time}<span class="f-color-red">{$val.end_time}</span> </div>
+      <div class="ub ub-pj">
+        <div class="ulev-1 sc-text-hui p-t-b2"> {$lang.label_max_amount} <span class="f-color-6"> 
+          <!-- {if $val.max_amount > 0} --> 
+          {$val.max_amount} 
+          <!-- {else} --> 
+          无 
+          <!-- {/if} --> 
+          </span> </div>
+        <div class="ulev-1 sc-text-hui p-t-b2"> {$lang.label_min_amount}<span class="f-color-6">{$val.min_amount}</span> </div>
+      </div>
+      <div class="ulev-1 sc-text-hui activity-p2"> {$lang.label_act_range} 
+        <!-- {if $val.act_range eq $lang.far_all} --> 
+        {$val.act_range} 
+        <!-- {else} --> 
+        <!-- {foreach from=$val.act_range_ext item=ext} --> 
+        <span class="f-color-red _page" page_type="{$val.page_type}" page_file="{$val.page_file}" page_param="{$val.page_param}" {$val.page_param_name}="{$ext.id}" supplier_id="{$val.supplier_id}">{$ext.name}</span> 
+        <!-- {/foreach} --> 
+        <!-- {/if} --> 
+      </div>
+      <div class="ub">
+        <div class="ulev-1 sc-text-hui"> {$lang.label_act_type}<span class="f-color-6">{$val.act_type}<!-- {if $val.act_type ne $lang.fat_goods} -->{$val.act_type_ext}<!-- {/if} --> </span> </div>
+      </div>
+    </div>
+    <!--享受赠品开始--> 
+    <!-- {if $val.gift} -->
+    <div class="mar-aL1" id="act1" >
+      <div class="ub uinn-p2" style='overflow-x:scroll;'> 
+        <!-- {foreach from=$val.gift item=goods name=name1} -->
+        <div class="bg-color-w ub ub-ver activity-w goods p-b1" goods_id='{$goods.id}'>
+          <div class="ub-img uwh-eleL ub-fh goods-img"><img src="{$url}{$goods.thumb}" style="width:4em; height:4em;"/> </div>
+          <div class="ub ub-ver ut-m ulev-1 line1 f-color-6 umar-t1"> {$goods.name} </div>
+        </div>
+        <!-- {/foreach} --> 
+      </div>
+    </div>
+    <!-- {/if} --> 
+    <!--享受赠品结束--> 
+  </div>
+  <div class="ubb border-hui m-top3 m-btm1"></div>
+  <!--优惠活动结束--> 
+  {foreachelse}
+  <div class="clear1">没有更多活动</div>
+  <!-- {/foreach} --> 
+</div>

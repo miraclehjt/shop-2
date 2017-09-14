@@ -1,0 +1,7 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<ul class="allMenu Left">
+  <li ><a class="index nav" href="index.php" title="首页">首页</a></li>
+  <!-- {foreach name=nav_middle_list from=$navigator_list.middle item=nav } --> 
+  <li><a href="{$nav.url}"  class="nav {if $nav.active eq 1}current{/if}" title="{$nav.name}" {if $nav.opennew eq 1}target="_blank" {/if}>{$nav.name}</a></li>  
+  <!-- {/foreach} -->
+</ul>

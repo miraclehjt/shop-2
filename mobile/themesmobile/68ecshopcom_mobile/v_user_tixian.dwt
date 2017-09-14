@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<title>提现</title>
+<!--v_shop.css-->
+<link href="themesmobile/68ecshopcom_mobile/css/v_user.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+function sub_tixian(frm)
+{
+	var deposit_money 	= frm.elements['deposit_money'].value;
+	var real_name 		= frm.elements['real_name'].value;
+	var account_name	= frm.elements['account_name'].value;
+	var bank_account 	= frm.elements['bank_account'].value;
+	var phone 			= frm.elements['phone'].value;
+	var remark			= frm.elements['remark'].value;
+	if(deposit_money.length == 0)
+	{
+		alert('提现金额不能为空！');
+		return false; 
+	}
+	if(real_name.length == 0)
+	{
+		alert('真实姓名不能为空！');
+		return false; 
+	}
+	if(account_name.length == 0)
+	{
+		alert('开户行不能为空！');
+		return false; 
+	}
+	if(bank_account.length == 0)
+	{
+		alert('银行帐号不能为空！');
+		return false;
+	}
+	if(phone.length == 0)
+	{
+		alert('手机号不能为空！'); 
+		return false;
+	}
+	else
+	{
+		if(phone.length != 11)
+		{
+			alert('手机号不是11位！');
+			return false; 
+		} 
+		else
+		{
+			if(isNaN(phone))
+			{
+				alert('手机号不是纯数字！');
+				return false; 
+			} 
+			else
+			{
+				 var reg0 = /^13\d{5,9}$/; 
+				 var reg1 = /^15\d{5,9}$/; 
+				 var reg2 = /^0\d{10,11}$/;
+				 var reg3 = /^145\d{4,8}$/;
+				 var reg4 = /^147\d{4,8}$/;
+				 var reg5 = /^180\d{4,8}$/;
+				 var reg6 = /^182\d{4,8}$/;
+				 var reg7 = /^185\d{4,8}$/;
+				 var reg8 = /^186\d{4,8}$/;
+				 var reg9 = /^187\d{4,8}$/;
+				 var reg10 = /^188\d{4,8}$/;
+				 var reg11 = /^189\d{4,8}$/;
+				 var reg12 = /^181\d{4,8}$/;
+				 var my = false; 
+				if(reg0.test(phone))
+				{
+					my=true;
+				}
+				if(reg1.test(phone))
+				{
+					my=true; 
+				}
+				if(reg2.test(phone))
+				{
+					my=true; 
+				}
+				if(reg3.test(phone))
+				{
+					my=true;
+				}
+				if(reg4.test(phone))
+				{
+					my=true;
+				}
+				if(reg5.test(phone))
+				{
+					my=true;
+				}
+				if(reg6.test(phone))
+				{
+					my=true;
+				}
+				if(reg7.test(phone))
+				{
+					my=true;
+				}
+				if(reg8.test(phone))
+				{
+					my=true;
+				}
+				if(reg9.test(phone))
+				{
+					my=true;
+				}
+				if(reg10.test(phone))
+				{
+					my=true;
+				}
+				if(reg11.test(phone))
+				{
+					my=true;
+				}
+				if(reg12.test(phone))
+				{
+					my=true;
+				}
+				if (!my)
+				{
+					alert('手机号格式不正确！');
+					return false;
+				} 
+			}
+		}
+	}
+	return true;
+}
+</script>
+</head>
+<body style=" background:#F5F5F5">
+<!--header-->
+<div class="dianpu">
+<dl>
+<dt><a href="javascript:history.back(-1)"></a></dt>
+<dd>提现</dd>
+</dl>
+</div>
+<!--header-->
+<div class="Earnings">
+<h2>账户余额（元）</h2>
+<dl>
+<dt>
+<strong>{$user_money}</strong>
+</dt>
+<dd>
+<a href="v_user_tixianmore.php">查看明细</a>
+</dd>
+</dl>
+</div>
+<!--main-->
+<div class="tixian">
+<form action="v_user_tixian.php" method="post" onsubmit="return sub_tixian(this)">
+<dl>
+<dd class="b_dome"><span>提现金额：</span><input name="deposit_money" placeholder="提现金额" type="text"/></dd>
+<dd class="b_dome"><span>真实姓名：</span><input name="real_name" type="text" placeholder="请输入真实姓名" /></dd>
+<dd class="b_dome"><span>开户行：</span><input name="account_name" type="text" placeholder="请输入开户行" /></dd>
+<dd class="b_dome"><span>银行账号：</span><input name="bank_account" type="text" placeholder="请输入银行账号" /></dd>
+<dd class="b_dome"><span>手机号：</span><input name="phone" type="text" placeholder="请输入手机号" /></dd>
+<dd class="b_dome1"><span>备注：</span><textarea name="remark" cols="" rows=""></textarea></dd>
+</dl>
+<div class="Submit">
+<input type="submit" value="提交申请" />
+<input type="hidden" name="act" value="act_tixian" />
+</div>
+</form>
+</div>
+
+<!-----底部悬浮菜单---->
+<!-- #BeginLibraryItem "/library/footer_nav1.lbi" --><!-- #EndLibraryItem --> 
+</body>
+</html>

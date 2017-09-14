@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link rel="stylesheet" type="text/css" href="themes/68ecshopcom_360buy/css/chat_passport.css" />
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery_email.js"></script>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-1.9.1.min.js" ></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+{* 包含脚本文件 *}
+{insert_scripts files='common.js,user.js'}
+</head>
+<body>
+<div id="site-nav">
+  <div class="headerLayout">
+      <h1 id="mallLogo"> <a href="index.php" class="header-logo"><img src="../images/header/logo.jpg" /></a></h1>
+  </div>
+  <div class="w" id="entry">
+    <div class="mcon">
+      <div id="login-box" class="uc_box">
+        <form name="formLogin" action="chat.php?act=act_login" method="post" onSubmit="return userLogin()">
+          <div class="form">
+            <h2><strong>登录</strong><span>还没有账号？<a href="user.php?act=register">立即注册</a></span></h2>
+            <div class="item"> <span class="label">账户名</span>
+              <div>
+                <input type="text" id="username" name="username" class="text" tabindex="1" value="手机号/用户名/邮箱" onmousedown="if(this.value=='手机号/用户名/邮箱'){this.value='';}" onblur="if(this.value==''){this.value='手机号/用户名/邮箱';}"/>
+              </div>
+            </div>
+            <div class="item"> <span class="label">密码</span>
+              <div>
+                <input type="password" id="password" name="password" class="text" tabindex="2"/>
+              </div>
+            </div>
+            <!-- 判断是否启用验证码{if $enabled_captcha} -->
+            <div class="item " id="o-authcode"> <span class="label">验证码</span>
+              <div>
+                <input type="text" id="authcode" name="captcha" class="text text-1" tabindex="3"/>
+                <label class="img"> <img src="captcha.php?is_login=1&{$rand}" alt="captcha" style="vertical-align: middle;cursor: pointer;" onClick="this.src='captcha.php?is_login=1&'+Math.random()" /> </label>
+              </div>
+            </div>
+            <!--{/if}-->
+            <div class="item" id="autoentry">
+              <div class="safety">
+                <input type="checkbox" value="1" name="remember" id="remember" class="checkbox"/>
+                <label for="remember" class="mar-b">{$lang.remember}</label>
+            </div>
+            </div>
+            <div class="item">
+              <input type="hidden" name="act" value="act_login" />
+              <input type="hidden" name="back_act" value="{$back_act}" />
+              <input type="submit" name="submit" class="btn-img btn-entry" id="loginsubmit" value="立即登录" />
+            </div>
+            <div class="item">
+              <table width="300" border="0" cellpadding="10" cellspacing="0">
+                <tr>
+                  <td><a style="text-decoration:none" href="user.php?act=oath&type=qq"><img src="images/upgrade_ad/qq_login.gif" style="vertical-align:middle"/>&nbsp;&nbsp;QQ</a></td>
+                  <td><a style="text-decoration:none" href="user.php?act=oath&type=weibo"><img src="images/upgrade_ad/sina_login.gif" style="vertical-align:middle"/>&nbsp;&nbsp;新浪</a></td>
+                  <td><a style="text-decoration:none" href="user.php?act=oath&type=alipay"><img src="images/upgrade_ad/alipay_login.gif" style="vertical-align:middle"/>&nbsp;&nbsp;支付宝</a></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script type="text/javascript">
+var process_request = "{$lang.process_request}";
+{foreach from=$lang.passport_js item=item key=key}
+var {$key} = "{$item}";
+{/foreach}
+var username_exist = "{$lang.username_exist}";
+</script>
+</html>

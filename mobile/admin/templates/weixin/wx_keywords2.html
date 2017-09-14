@@ -1,0 +1,70 @@
+{include file="pageheader.htm"}
+
+{insert_scripts files="../js/utils.js,listtable.js"}
+
+<!-- 通用信息 -->
+
+<div class="form-div">
+
+  <form action="weixin.php?act=keywords&t=1" method="post" name="searchForm"><input type="text" name="key" /> <input type="submit" value=" 搜索 " />
+
+  </form>
+
+</div>
+
+
+
+<div class="list-div" id="listDiv">
+
+<table width="100%" cellspacing="1" cellpadding="3" id="list-table">
+
+  <tr>
+
+    <th>功能名称</th>
+
+    <th>主功能命令</th>
+
+	<th>扩展功能命令</th>
+
+	<th>回复类型</th>
+
+	<th>请求量</th>
+
+	<th>操作</th>
+
+  </tr>
+
+	{foreach item=item from=$keywords}
+
+  <tr>
+
+	<td>{$item.keyname}</td>
+
+	<td>{$item.key}</td>
+
+	<td>{$item.keys}</td>
+
+	<td>
+
+	{if $item.diy_type eq 1}自定义文字{/if}
+
+	{if $item.diy_type eq 2}自定义图文{/if}
+
+	</td>
+
+	<td>{$item.clicks}</td>
+
+	<td><a href="weixin.php?act=addkey&id={$item.id}">{$lang.edit}</a> | 
+    <a href="weixin.php?act=delkey&id={$item.id}">{$lang.drop}</a>
+    </td>
+
+  </tr>
+
+	{/foreach}
+
+  </table>
+
+</div>
+
+{include file="pagefooter.htm"}
+

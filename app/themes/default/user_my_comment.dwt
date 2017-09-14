@@ -1,0 +1,47 @@
+<!--{foreach from=$item_list item=value} -->
+<div class="sun-m1 ubb border-hui bg-color-w m-btm1 comment goods" goods_id="{$value.goods_id}" rec_id={$value.rec_id} shaidan_id='{$value.shaidan_id}'>
+  <div class="ub ubb border-faxian p-all5">
+    <div class="mar-ar1 goods-img h-w-7"> 
+      <!-- {if $value.goods_id gt 0 && $value.extension_code neq 'package_buy'} 商品 --> 
+      <img src="{$url}{$value.thumb}"/> 
+      <!-- {elseif $value.goods_id gt 0 && $value.extension_code eq 'package_buy'} --> 
+      <img src="img/ico_cart_package.gif"/> 
+      <!-- {/if} --> 
+    </div>
+    <div class="ub ub-ver ub-f1">
+      <div class="ulev-1 f-color-zi"> {$value.goods_name} </div>
+      <div class="f-color-6 ulev-2 l-h-2 m-top2" supplier_id="{$value.supplier_id}}"> 商品来源：{$value.shopname} </div>
+      <div class="ulev-2 sc-text-hui m-top2"> 购买时间：{$value.add_time_str}</div>
+    </div>
+  </div>
+  <div class="ub p-all1">
+    <div class="ub-f1"></div>
+    <div class="ub-pe ub ub-ac"> {if $value.shaidan_points > 0}
+      <div class="ulev-1 f-color-6 mar-ar1">已获{$value.shaidan_points}积分</div>
+      {/if}
+      {if $value.comment_state eq 0}
+      {if $value.shipping_time_end gt $min_time}
+      <div class="ulev-4 btn-red-2 add_comment_button" id="">发表评价</div>
+      {else}
+      <div class="ulev-4 btn-gray-2 disabled">发表评价（已超期）</div>
+      {/if}
+      {/if}
+      {if $value.comment_state eq 1}
+      <div class="ulev-4 btn-red-2 view_comment_button" id=''>已评价{if $value.comment_status eq 0}（审核中）	{/if}</div>
+      {/if}
+      
+      {if $value.shaidan_state eq 0}
+      {if $value.shipping_time_end gt $min_time}
+      <div class="ulev-4 btn-red-2 m-l2 add_shaidan_button" id="">发表晒单</div>
+      {else}
+      <div class="ulev-4 btn-gray-2 m-l2 disabled">发表晒单（已超期）</div>
+      {/if}
+      {/if}
+      {if $value.shaidan_state eq 1}
+      <div class="ulev-4 btn-red-2 m-l2 view_shaidan_button" id=''>已晒单{if $value.shaidan_status eq 0}（审核中）{/if}</div>
+      {/if} </div>
+  </div>
+</div>
+<!-- {foreachelse} -->
+<div class="ub ub-pc umar-t1 f-color-6">没有找到任何订单</div>
+<!-- {/foreach} -->

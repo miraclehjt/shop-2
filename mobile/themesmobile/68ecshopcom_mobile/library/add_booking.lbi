@@ -1,0 +1,40 @@
+<script type="text/javascript">
+{foreach from=$lang.booking_js item=item key=key}
+var {$key} = "{$item}";
+{/foreach}
+</script>
+<div class="box">
+	<div class="hd"><h3>{$lang.label_booking}</h3><div class="extra"></div></div>
+	<div class="bd">
+		<form action="user.php" method="post" name="formBooking" onsubmit="return addBooking();" class="form">
+			<div class="req"><b>*</b>{$lang.required_indicates}</div>
+			<fieldset>
+				<h4>{$lang.booking_form_title}</h4>
+				<p class="label"><b>{$lang.booking_goods_name}{$lang.colon}</b>
+					<em>{$info.goods_name}</em>
+				</p>
+				<label for="number"><b><span class="req">*</span>{$lang.booking_amount}{$lang.colon}</b>
+					<input type="text" name="number" tabindex="1" value="{$info.goods_number}" id="number"/>
+				</label>
+				<label for="desc"><b><span class="req">*</span>{$lang.describe}{$lang.colon}</b>
+					<textarea name="desc" rows="6" cols="20" tabindex="7" id="desc">{$goods_attr}{$info.goods_desc|escape}</textarea>
+				</label>
+				<label for="linkman"><b><span class="req">*</span>{$lang.contact_username}{$lang.colon}</b>
+					<input type="text" name="linkman" tabindex="1" value="{$info.consignee|escape}" id="linkman"/>
+				</label>
+				<label for="email"><b><span class="req">*</span>{$lang.email_address}{$lang.colon}</b>
+					<input type="text" name="email" tabindex="1" value="{$info.email|escape}" id="email"/>
+				</label>
+				<label for="tel"><b><span class="req">*</span>{$lang.contact_phone}{$lang.colon}</b>
+					<input type="text" name="tel" tabindex="1" value="{$info.tel|escape}" id="tel"/>
+				</label>
+				<div class="submit_wrap">
+					<input type="submit" name="submit" value="{$lang.submit_booking_goods}" tabindex="6" class="submit btn_s4_b"/>
+					<input type="hidden" name="act" value="act_add_booking"/>
+					<input type="hidden" name="id" value="{$info.id}"/>
+					<input type="hidden" name="rec_id" value="{$info.rec_id}"/>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>

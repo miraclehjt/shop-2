@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<title>收益统计</title>
+<!--v_shop.css-->
+<link href="themesmobile/68ecshopcom_mobile/css/v_user.css" type="text/css" rel="stylesheet">
+</head>
+<body >
+<!--header-->
+<div class="dianpu">
+<dl>
+<dt><a href="v_user_shouyi.php"></a></dt>
+<dd>{$v_title}</dd>
+</dl>
+</div>
+<!--main-->
+<div class="main">
+	{foreach from=$order_list item=list}
+    <dl class="goods_more">
+<dt><a href=""><img src="../../{$list.goods_thumb}"/></a></dt>
+<dd>
+<a href="">
+<p>{$list.goods_name}</p>
+<span><strong>{$list.call_username}</strong>{if $list.level}<em>（{$list.level}级会员）</em>{/if}</span>
+<i>分成金额：<strong>{$list.split_money}</strong></i>
+</a>
+</dd>
+</dl>
+	{/foreach}
+</div>
+<div class="next_page">
+<!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
+</div> 
+<!-----底部悬浮菜单---->
+<!-- #BeginLibraryItem "/library/footer_nav1.lbi" --><!-- #EndLibraryItem --> 
+</body>
+</html>

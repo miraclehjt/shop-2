@@ -1,0 +1,51 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link rel="alternate" type="application/rss+xml" title="RSS|{$page_title}" href="{$feed_url}" />
+<link rel="stylesheet" type="text/css" href="store/css/dianpu.css">
+<script src="store/js/run_common-min.js" charset="utf-8" type="text/javascript" itemid="run_common.js"></script>
+{* 包含脚本文件 *}
+{insert_scripts files='common.js,global.js,compare.js,transport.js'}
+</head>
+<body style=" background:#F5F5F5">
+<header>
+      <div class="tab_nav">
+        <div class="header">
+          <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+          <div class="h-mid">全部商品{$cat_name}
+          </div>
+          <div class="h-right">
+            <aside class="top_bar">
+              <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+      </header>
+<!-- #BeginLibraryItem "/library/up_menu.lbi" --><!-- #EndLibraryItem --> <!--弹出菜单-->
+
+<!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem -->
+  <!--分页-->
+<!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
+<div style=" height:40px;"></div> 
+<div class="bottm_nav">
+ <ul>
+ <li class="bian"><a href="supplier_catalog.php?act=dianpufeilie">店铺分类</a></li>
+ <li class="bian"><a href="supplier_about.php?act=about">店铺简介</a></li>
+ <li><a href="tel:0335-8535668">联系卖家</a></li>
+ </ul>
+ </div>
+</body>
+</html>

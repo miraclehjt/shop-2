@@ -1,0 +1,30 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div id="J_Taojia" class="taoplus fl cart_time clearfix" style="padding:0px">
+			<div class="circle off" style="display: none;">
+				<div class="tpicons">
+					<ul>
+						<li class="more"><a href="catalog.php"></a><span class="bg"></span></li>
+						<li class="logis"><a href="user.php?act=order_list"></a><span class="bg"></span></li>
+						<li class="ww"><a href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes"></a><span class="bg"></span></li>
+						<li class="individ"><a href="user.php"></a><span class="bg"></span></li>
+						<li class="car"><a href="flow.php"></a><span class="bg"></span></li>
+                        <li class="search12"><a href="catalog.php"></a><span class="bg"></span></li>
+					</ul>
+				</div>
+				<div class="tplogo"><a href="index.php"></a><span class="bg"></span></div>
+			</div>
+			<div class="tpbtn on">菜单</div>
+		</div>
+        <script>
+$("#J_Taojia .tpbtn").toggle(
+function(){
+		$(this).removeClass("on");$(this).addClass("off");
+		$(".taoplus .circle").show();
+	},
+function(){
+	$(this).removeClass("off");
+	$(this).addClass("on");
+	$(".taoplus .circle").hide();
+	}
+);
+</script>

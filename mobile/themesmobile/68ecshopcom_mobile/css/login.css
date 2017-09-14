@@ -1,0 +1,79 @@
+/*个人中心登录*/
+ .font12{ font-size:18px; line-height:50px; text-align:center; color:#333}
+ 
+.denglu{ width:100%; margin:auto; overflow:hidden;}
+.Login{ width:90%; margin:auto; overflow:hidden; padding-top:20px;}
+.Login dl{ width:100%; overflow:hidden; overflow:hidden}
+.Login dl dt{ width:25%; float:left; font-size:14px; line-height:40px; color:#666}
+.Login dl dd{ width:75%; float:left; height:30px;}
+.Login dl dd input{border: 1px solid #DFDFDF; height:30px; line-height:30px; width:95%; padding-left: 5px; -webkit-appearance: none; -webkit-box-flex: 1; -webkit-flex: 1; flex: 1; border-radius: 0; -webkit-rtl-ordering: logical; -webkit-user-select: text; cursor: auto; background-color: white; font-size:14px; line-height:30px;}
+.ng-foot .ng-cookie-area{font-size: 14px;text-align: left;color: #999; vertical-align: middle; width: 35%; float: left; cursor: pointer }
+.ng-foot .ng-link-area { color: #999;  float: right; width:60%; text-align: right;}
+.ng-foot .ng-link-area span{height:10px; }
+.ng-foot .ng-link-area a { color: #5790bb;font-size:14px; }
+.ng-foot .ng-link-area a:hover { color: #ff7e00 }
+.third-area{line-height: 58px; _line-height: 43px; color: #737373; float: left;width:100%;text-align: center;overflow: hidden;margin: auto;margin-top: 15px;}
+.third-area a { display: inline-block; *display:inline;zoom: 1;  width: 50px; height: 50px; font-size: 0; overflow: hidden; margin: 6px 10px 0px; }
+.third-area-a{font-size: 12px;}
+.ta-qq{background:url(../images/pub_user.png) no-repeat;background-size: auto 200px;}
+.ta-weibo{background:url(../images/pub_user.png) no-repeat;background-size: auto 200px; background-position:0 -70px;}
+.ta-alipay{background:url(../images/pub_user.png) no-repeat;background-size: auto 200px;  background-position:0 -147px;}
+.yanzheng{ width:100%; overflow:hidden; margin-top:10px; margin-bottom:10px;}
+.codeTxt{ width:50%; height:35px; float:left;}
+.codeTxt input{border: 1px solid #DFDFDF; height:35px; line-height:35px; width:95%; padding-left: 5px; -webkit-appearance: none; -webkit-box-flex: 1; -webkit-flex: 1; flex: 1; border-radius: 0; -webkit-rtl-ordering: logical; -webkit-user-select: text; cursor: auto; background-color: white; font-size:14px; line-height:30px;}
+.codePhoto{width:50%; height:40px; float:left}
+.codePhoto img{ border:1px solid #DFDFDF; width:90%; float:left; margin-left:10px; height:35px; margin-top:2px;}
+.btn_big1{ display:block; margin:auto; background:#FF2233; font-size:16px; line-height:40px; 
+ border:0px; color:#FFF; width:100%; margin:auto;margin-top:20px; margin-bottom:10px;border-radius:5px;}
+ /*注册*/
+.log_reg_box {width: 100%;}
+.log_reg_box ul.tab {width: 100%;padding-bottom: 20px;}
+.log_reg_box ul.tab li {width: 50%;height: 41px;text-align: center;line-height: 40px;
+	font-family: 微软雅黑;font-size: 14px;color: #3e3e3e;float: left;}
+.log_reg_box ul.tab li.curr span {border-left: 1px solid #fbfdfe;border-right: 1px solid #fbfdfe;display: block;color: #EE2222;}
+.log_reg_box ul.tab li.curr span font {border: 1px solid #fcfcfd;display: block;}
+.log_reg_box ul.tab li.currl span {background: #F2F5F7;border-right: 1px solid #d3d3d3;border-bottom: 1px solid #d3d3d3;
+-webkit-box-shadow: 0 1px 1px #E9EBEC;color: #3e3e3e;}
+.log_reg_box ul.tab li.currr span {background: #F2F5F7;border-left: 1px solid #d3d3d3;border-right: none;
+	border-bottom: 1px solid #d3d3d3;-webkit-box-shadow: 0 1px 1px #E9EBEC;color: #3e3e3e;}
+#logRegTabCon { width:100%; overflow:hidden; padding-top:20px; padding-bottom:20px;}
+.log_reg_item {width:90%; margin:auto; overflow:hidden}
+.hide {display: none}
+.c-form-txt-normal { display:block;height: 36px;width:96%; margin:auto;border: solid 1px #DDD;padding-left: 9px;color: #333333;
+	font-size: 14px;-webkit-border-radius: 0;-webkit-appearance: none;background: #ffffff; margin-bottom:10px;}
+.zphone{ display:block; width:90%; float:right; border:0px; height:35px; background:#f12b2b; font-size:14px; text-align:center; margin-top:2px;border-radius:0; } 
+.field {padding: 5px 0;}
+.tips {font-size: 14px;}
+#tbh5v0 .reg-success .tips, #tbh5v0 .login-success .tips, #tbh5v0 .reg-success .c-btn-oran-big1, #tbh5v0 .login-success 
+#tbh5v0.err .tips {color: red;}
+#tbh5v0 .success .tips {display: none;}
+#tbh5v0  .tips {font-size: 12px;color: #999;margin: 5px 0 5px 0;}
+#tbh5v0 .tips span {color: rgb(0, 153, 51);}
+#tbh5v0 .tips a {color: #69F}
+#tbh5v0 .tips a.big {font-size: 14px;}
+#tbh5v0 .innercontent .tips-act {
+	font-size: 16px;
+	padding: 20px 0;
+	line-height: 25px;
+}
+#tbh5v0 .innercontent .tips-title {
+	font-size: 24px;
+	padding: 20px 0;
+	text-align: center;
+}
+/*找回密码*/
+.find{ width:100%; background:#FFF; margin:auto; overflow:hidden}
+.innercontent{ width:95%; margin:auto;}
+.yonghu{ width:100%; margin-top:20px; padding-bottom:10px; overflow:hidden}
+.yonghu input{ border: 1px solid #DFDFDF; height: 18px; line-height: 18px; padding-top:9px; padding-bottom:9px; width:98%; padding-left: 5px; -webkit-appearance: none; -webkit-box-flex: 1; -webkit-flex: 1; flex: 1; border-radius: 0; -webkit-rtl-ordering: logical; -webkit-user-select: text; cursor: auto; background-color: white; }
+#u_name-error{ font-size:14px; line-height:30px; color:#F30}
+#captcha-error{ display:block; position:absolute;float:left; bottom:-20px;font-size:14px; color:#F30}
+.select { -webkit-appearance: none; border-radius: 0; border: 1px solid #e5e5e5; height: 34px; line-height: 34px; padding: 0 33px 0 10px; color: #333; background-repeat: no-repeat; background-image: url('../images/down.png'); background-position: center right; background-size: 23px 7px; display: inline-block; -webkit-box-flex: 1; -webkit-flex: 1; flex: 1; }
+.v_mobile_phone{ font-size:18px; line-height:40px; color:#666}
+#l_mobile_phone{font-size:18px; line-height:40px; color:#666}
+#l_email{font-size:18px; line-height:40px; color:#666}
+.validate_type{ width:100%; margin-top:10px; font-size:14px; line-height:40px; color:#333; margin-bottom:10px;}
+.m_phone{ width:45%; float:right; height:37px;display:block; border:0px; height:35px; background:#f12b2b; font-size:14px; text-align:center; margin-top:2px;border-radius:0; }
+.find_box_end{ width:100%; margin:auto; margin-top:20px;}
+.find_box_end p{ text-align:center; font-size:18px; color:#F00; line-height:200%;}
+.tips{font-size:14px; color:#F00; line-height:200%;}

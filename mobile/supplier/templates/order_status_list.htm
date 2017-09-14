@@ -1,0 +1,35 @@
+<script>
+;(function($){
+	Zepto(function($)
+	{
+		init_swipe();
+		$.zcontent.add_success(init_swipe);
+	})
+	
+	function init_swipe()
+	{
+		{foreach from=$status_list item=screen key=scr_key}
+		$('#status_list_{$scr_key}').swipeLeft(function()
+		{
+			$('#status_list_{$scr_key}').slideLeftOut(200,{literal}function(){{/literal}$('#status_list_{if $scr_key gte $status_scr_count}1{else}<?php echo ($this->_var['scr_key']+1); ?>{/if}').slideLeftIn(200)});
+		})
+		$('#status_list_{$scr_key}').swipeRight(function()
+		{
+			$('#status_list_{$scr_key}').slideRightOut(200,{literal}function(){{/literal}$('#status_list_{if $scr_key eq 1}{$status_scr_count}{else}<?php echo ($this->_var['scr_key']-1); ?>{/if}').slideRightIn(200)});
+		})
+		{/foreach}
+	}
+})(Zepto)
+function change_status(status)
+{
+	$.zcontent.set('composite_status',status);
+	search();
+}
+</script>
+{foreach from=$status_list item=screen key=scr_key}
+ <ul class="order_type_con" id='status_list_{$scr_key}' {if $scr_key neq $sel_status_scr}style='display:none;'{/if}>
+ {foreach name='status_list' from=$screen item=status_name key=status_id}
+ <li  {if $filter.composite_status eq $status_id }class="curr"{/if} id="type{$smarty.foreach.status_list.iteration}" onclick="change_status('{$status_id}')"><a>{$status_name}</a>
+ {/foreach}
+ </ul>
+{/foreach}

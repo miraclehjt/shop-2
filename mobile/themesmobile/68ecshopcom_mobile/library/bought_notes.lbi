@@ -1,0 +1,25 @@
+{if $notes}
+<table class="data_table">
+	
+	<thead>
+		<tr>
+			<th width="20%">{$lang.username}</th>
+			<th width="20%">{$lang.number}</th>
+			<th width="60%">{$lang.bought_time}</th>
+		</tr>
+	</thead>
+	<tbody>
+		{foreach from=$notes item=note name=notes}
+		<tr class="{cycle values="odd,even"}{if $smarty.foreach.notes.last} last{/if}">
+			<td>{if $note.user_name}{$note.user_name|escape:html}{else}{$lang.anonymous}{/if}</td>
+			<td>{$note.goods_number}</td>
+			<td>{$note.add_time}</td>
+			
+		</tr>
+		{/foreach}
+	</tbody>
+</table>
+
+{else}
+<p class="empty">{$lang.no_notes}</p>
+{/if}

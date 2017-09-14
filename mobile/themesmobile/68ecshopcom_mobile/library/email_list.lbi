@@ -1,0 +1,10 @@
+<div class="subscription box">
+	<div class="hd"><h3>{$lang.subscription}</h3><div class="extra"></div></div>
+	<div class="bd" id="subscription">
+		<form action="javascript:void(0);">
+			<input type="text" name="email" title="{$lang.email_invalid}"/>
+			<input type="button" value="{$lang.email_list_ok}" onclick="addEmailList();">
+			<input type="button" value="{$lang.email_list_cancel}" onclick="cancelEmailList();">
+		</form>
+	</div>
+</div>

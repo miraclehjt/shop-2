@@ -1,0 +1,67 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<form id="formCart" name="formCart" method="post" action="flow.php" >
+  <a href="flow.php" class="btn" style="height:135px; padding-top:5px; color:#fff;" id="collectBox"> <i></i> 购<br/>
+  物<br/>
+  车<br/>
+  <span style="margin-top:7px;" >{$str}</span> </a>
+  <div class="dropdown" id="J-flow-drop" style="opacity: 1; margin-right: 0px; display:none;"> 
+    <!-- {if $goods} -->
+    <div class="bar clearfix">
+      <div class="tip grid-c-l">共<span class="count">{$str}</span>件宝贝</div>
+      <div class="btn-bar grid-c-r"> <a href="flow.php" class="submit-btn" rel="nofollow">去购物车结算</a> </div>
+    </div>
+    <div class="cart_goods">
+    <div class="cart_goods_list">
+    <ul class="unstyled">
+     {foreach from=$goods item=goods name=goods}
+      <li><a href="{$goods.url}"><img src="{if $goods.goods_thumb eq 'package_img'}themes/68ecshopcom_360buy/images/jmpic/ico_cart_package.gif{else}{$goods.goods_thumb}{/if}">
+        <h4>{$goods.short_name}</h4>
+        <span>{$goods.goods_price}<strong style="margin:0 7px;">×</strong>{$goods.goods_number}</span></a> <i class="del-btn" title="删除" onClick="deleteCartGoods({$goods.rec_id})">×</i></li>
+     {/foreach}
+    </ul>
+    </div>
+    </div>
+    <!-- {else} -->
+    <div class="empty-tip">
+      <p></p>
+      <p><a href="index.php" rel="nofollow">您的购物车里什么都没有哦，再去看看吧</a></p>
+    </div>
+    <!-- {/if} --> 
+    <span class="cart_arrow"><b class="arrow-1"></b> <b class="arrow-2"></b></span> </div>
+  <script type="text/javascript">
+function deleteCartGoods(rec_id)
+{
+Ajax.call('delete_cart_goods.php', 'id='+rec_id, deleteCartGoodsResponse, 'POST', 'JSON');
+}
+
+/**
+ * 接收返回的信息
+ */
+function deleteCartGoodsResponse(res)
+{
+  if (res.error)
+  {
+    alert(res.err_msg);
+  }
+  else
+  {
+      document.getElementById('ECS_CARTINFO').innerHTML = res.content;
+  }
+}
+</script> 
+  <script>
+$("#ECS_CARTINFO").mouseover(function() {
+    $("#J-flow-drop").show();
+});
+$("#ECS_CARTINFO").mouseout(function() {
+ $("#J-flow-drop").hide();
+});
+$("#ECS_CARTINFO").mouseenter(function() {
+    $("#J-flow-drop").show();
+});
+$("#ECS_CARTINFO").mouseleave(function() {
+ $("#J-flow-drop").hide();
+});
+</script>
+</form>

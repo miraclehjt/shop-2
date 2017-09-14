@@ -1,0 +1,16 @@
+{if $menu}
+<div class="ub-f1 ub ub-ver p-t-b1 ubb bc-bt uof border-hui bg-color-w"> 
+{foreach from=$menu item=row name='menu_row'}
+  <div class="ub p-all1"> 
+  {foreach from=$row item=menu_item name=menu_item}
+    <div class="ub-f1 ub ub-ver ub-ac ub-pc">
+      <div class="ub-img uwh-acc2 menu_image _menu" style="background-image:url({$url}{$menu_item.image}?{$rand})" menu_type="{$menu_item.type}" menu_link="{$menu_item.link}" menu_name="{$menu_item.name}"></div>
+      <div class="ub ub-pc w-min1">
+        <div class="ulev-1 f-color-6"> {$menu_item.name}</div>
+      </div>
+    </div>
+    {/foreach} 
+	</div>
+  {/foreach}
+  </div>
+  {/if}

@@ -1,0 +1,18 @@
+<div class="brand_goods box">
+	<div class="hd"><h3><a href="{$goods_brand.url}">{$goods_brand.name|escape:html}</a></h3><div class="extra"><a href="{$goods_brand.url}">{$lang.more}</a></div></div>
+	<div class="bd product_list">
+		<ul>
+			{foreach from=$brand_goods item=goods name=brand_goods}
+			<li>
+				<span class="photo">
+					<a href="{$goods.url}" title="{$goods.name|escape:html}" class="image"><img src="{$option.static_path}{$goods.thumb}" alt="{$goods.name|escape:html}"/></a>
+				</span>
+				<span class="info">
+					<a href="{$goods.url}" title="{$goods.name|escape:html}" class="name">{$goods.name}</a>
+					<em class="price{if $goods.promote_price} promote{/if}">{if $goods.promote_price}{$goods.promote_price}{else}{$goods.shop_price}{/if}</em>
+				</span>
+			</li>
+			{/foreach}
+		</ul>
+	</div>
+</div>

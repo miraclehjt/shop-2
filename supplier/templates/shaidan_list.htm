@@ -1,0 +1,66 @@
+<!-- $Id: brand_list.htm 15898 2009-05-04 07:25:41Z liuhui $ -->
+
+{if $full_page}
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<!-- 品牌搜索 -->
+{include file="shaidan_search.htm"}
+<form method="post" action="" name="listForm">
+<!-- start brand list -->
+<div class="list-div" id="listDiv">
+{/if}
+
+    <table cellspacing='1' cellpadding='3' id='list-table'>
+        <tr>
+            <th>标题</th>
+            <th>晒单商品</th>
+            <th width="100">会员</th>
+            <th width="100">晒单时间</th>
+            <th width="80">获得积分</th>
+            <th width="80">状态</th>
+            <th width="60">{$lang.handler}</th>
+        </tr>
+        {foreach from=$member_list item=value}
+        <tr>
+            <td>{$value.title}</td>
+            <td><a href="../goods.php?id={$value.goods_id}" target="_blank">{$value.goods_name}</a></td>
+            <td align="center">{$value.user_name}</td>
+            <td align="center">{$value.add_time}</td>
+            <td align="center">{$value.pay_points}</td>
+            <td align="center">
+            	{if $value.status eq 1}显示{/if}
+                {if $value.status eq 0}隐藏{/if}
+            </td>
+            <td align="center"><a href="shaidan.php?act=edit&id={$value.shaidan_id}" title="{$lang.edit}">查看</a></td>
+        </tr>
+        {foreachelse}
+        <tr><td class="no-records" colspan="7">{$lang.no_records}</td></tr>
+        {/foreach}
+        <tr><td align="right" nowrap="true" colspan="7">{include file="page.htm"}</td></tr>
+    </table>
+
+{if $full_page}
+<!-- end brand list -->
+</div>
+</form>
+
+<script type="text/javascript" language="javascript">
+  <!--
+  listTable.recordCount = {$record_count};
+  listTable.pageCount = {$page_count};
+
+  {foreach from=$filter item=item key=key}
+  listTable.filter.{$key} = '{$item}';
+  {/foreach}
+
+  {literal}
+  onload = function()
+  {
+      // 开始检查订单
+      startCheckOrder();
+  }
+  {/literal}
+  //-->
+</script>
+{include file="pagefooter.htm"}
+{/if}

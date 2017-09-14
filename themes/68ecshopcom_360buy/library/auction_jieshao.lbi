@@ -1,0 +1,11 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="a-pinfo" id="pinfo">
+  <div class="smt">
+    <ul class="tab">
+      <li class="curr">{$lang.activity_intro}</li>
+    </ul>
+  </div>
+  <div class="smc" id="infomation" >
+    <div class="boxCenterList"> {$auction.act_desc|escape:html|nl2br} </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+{if $tag_linked_data}
+<div class="box">
+	<div class="bd">
+		{foreach from=$tag_linked_data item=tag_data}
+		{if $tag_data.data}
+		<p>{$tag_data.name}</p>
+		{if $tag_data.type}<p>{foreach from=$tag_data.data item=show_data}<em>{$show_data}</em>{/foreach}</p>{/if}
+		{/if}
+		{/foreach}
+	</div>
+</div>
+{/if}

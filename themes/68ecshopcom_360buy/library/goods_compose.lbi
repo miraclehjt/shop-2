@@ -1,0 +1,151 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $related_goods} -->
+<script type="text/javascript">
+function check(){
+
+var result='{$id},';
+
+var fid = document.getElementById('boxOne');
+var box = fid.getElementsByTagName('input');
+
+for(var i = 0; i < box.length; i++){
+           if(box[i].type == 'checkbox' && box[i].checked){
+                result = result + box[i].value + ',';
+           }
+        }
+        //在Common.js文件中添加了addToCartNums方法
+        addToCartNums(result);
+}
+
+
+function totalPrice(){
+
+var result=Math.round({$goods.rank_price});
+
+var fid = document.getElementById('boxOne');
+var box = fid.getElementsByTagName('input');
+
+for(var i = 0; i < box.length; i++){
+
+   if(box[i].type == 'checkbox' && box[i].checked){
+        var a = box[i].name;
+        var re = /[¥元]/g;
+    result =  Number(result) +  Number(a.replace(re, ''));
+   }
+}
+result_format='¥%s元';
+re_re=/\%s/g;
+result_format=result_format.replace(re_re, result);
+document.getElementById("totalPrice").innerHTML=result_format;
+}
+
+
+</script>
+<style>
+.cp_box {
+	background:#ffffff;
+	padding:5px 6px;
+}
+.cp_box ul {
+	float:left;
+	width:85%;
+	background:#fff;
+}
+.cp_box ul li {
+	float:left;
+	width:110px;
+	padding:10px 0 10px 5px;
+	text-align:center;
+}
+.cp_box ul li a {
+	text-decoration:none;
+}
+.cp_box ul li img {
+	width:100px;
+	height:100px;
+}
+.cp_box ul li.main_pro {
+	width:150px;
+	background:url(images/ico_add_68ecshop.gif) no-repeat right 50px;
+	text-align:left;
+}
+.cp_box .cp_price {
+	float:left;
+	width:13%;
+	padding-left:10px;
+}
+.cp_box .cp_price .cp_input {
+	width:77px;
+	height:25px;
+	line-height:25px;
+	border:0;
+text-align:center;
+	background:url(images/goumaizuhe.gif) no-repeat 0 0px;
+	color:#fff;
+	font-size:13px;
+	font-weight:bold;
+	cursor:pointer;
+}
+.blank {
+	height:8px;
+	line-height:8px;
+	clear:both;
+	visibility:hidden;
+}
+.B_blue {
+	border:1px solid #ffffff;
+}
+#totalPrice {
+	font-size:15px;
+	font-weight:bold;
+	color:#ff3300;
+}
+.daprice {
+	color:#DD0000;
+	font-weight:bold;
+	font-size:14px;
+}
+</style>
+
+
+<DIV class="m m2 " id=favorable-suit style=" margin-bottom:10px;" >
+<div id="boxOne">
+<DIV class=mt>
+<H2>搭配购买</H2></DIV>
+
+  <div class="mc">
+ <div class="cp_box">
+      <ul>
+        <li class="main_pro">
+          <div style="float:left;text-align:center;"><img src="{$goods.goods_thumb}"><br>
+            {$goods.goods_name}</div>
+        </li>
+        <!--{foreach from=$related_goods item=releated_goods_data}-->
+        <li > <a href="{$releated_goods_data.url}"> <img src="{$releated_goods_data.goods_thumb}" alt="{$releated_goods_data.goods_name}" /> </a><br>
+          <a href="{$releated_goods_data.url}" title="{$releated_goods_data.goods_name}" target="_blank" />{$releated_goods_data.short_name}</a> <br />
+          <input type="checkbox" name="{if $releated_goods_data.promote_price neq 0}{$releated_goods_data.promote_price}{else}{$releated_goods_data.shop_price}{/if}" value="{$releated_goods_data.goods_id}"  onClick="totalPrice()" checked=checked />
+          <!-- {if $releated_goods_data.promote_price neq 0} -->
+          <font class="daprice">{$releated_goods_data.formated_promote_price}</font>
+          <!-- {else} -->
+          <font class="daprice">{$releated_goods_data.shop_price}</font>
+          <!-- {/if} -->
+        </li>
+        <!--{/foreach}-->
+      </ul>
+      <div class="cp_price"><br><font style="font-size:12px;color:#333;">购买最佳组合</font>
+        <br>
+        <span style="color:#999999">组合总价：</span><br>
+        <span id="totalPrice" ></span><br>
+        <br>
+        <input class="cp_input" type="button" value="" onClick="check()" >
+      </div>
+      <div style="clear:both; height:0px; line-height:0px;"></div>
+    </div>
+    <script>totalPrice();</script>
+  </div>
+  </div>
+</div>
+
+
+
+<!-- {/if} -->

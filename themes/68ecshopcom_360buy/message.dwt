@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+{if $auto_redirect}
+<meta http-equiv="refresh" content="3;URL={$message.back_url}" />
+{/if}
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-1.9.1.min.js" ></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+{insert_scripts files='common.js'}
+</head>
+<body>
+<div id="site-nav">
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<div class="message">
+  <div class="message_all">
+    <h3 class="message_tit">{$lang.system_info}</h3>
+    <div class="message_con">
+        <p class="msg_con">{$message.content}</p>
+        <!-- {if $message.url_info} -->
+          <!--{foreach from=$message.url_info key=info item=url}-->
+          <p><a href="{$url}">{$info}</a></p>
+          <!--{/foreach}-->
+        <!--{/if}-->
+    </div>
+  </div>
+</div>
+<!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem -->
+</div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html >
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>{$page_title}</title>
+  <meta name="Keywords" content="{$keywords}" />
+  <meta name="Description" content="{$description}" />
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+  <link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/public.css"/>
+<link rel="stylesheet" href="themesmobile/68ecshopcom_mobile/css/articlexin.css">
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.js"></script>
+
+	</head>
+<body >
+  <!----------------------------------header----------------------------------->
+  <div class="tab_nav">
+    <header class="header">
+      <div class="h-left">
+        <a class="sb-back" href="javascript:history.back(-1)" title="返回"></a>
+      </div>
+      <div class="h-mid">
+        <h6>文章详情</h6>
+      </div>
+      <div class="h-right">
+        <aside class="top_bar">
+          <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more">
+            <a href="javascript:;"></a>
+          </div>
+        </aside>
+      </div>
+    </header>
+  </div>
+  <!-- #BeginLibraryItem "/library/up_menu.lbi" -->
+  <!-- #EndLibraryItem -->
+  <!--弹出菜单-->
+
+<div class="page-service-exchange">
+<div class="backlist"><a href="javascript:void(0)" class="b"><span>{$article.title|escape:html} </span></a></div>
+<style>
+.pagecontent img{ width:100%!important;}
+</style>
+<div class="pagecontent">
+             {if $article.content}
+			{$article.content}
+			{else}
+			{$lang.content_empty}
+			{/if}
+</div>
+</div>
+
+<!-- #BeginLibraryItem "/library/footer_nav.lbi" --><!-- #EndLibraryItem -->
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+{if $goods_list} 
+<!--购物车中有商品时显示-->
+<div class="ub ub-ver m-btm1 p-b3"> {foreach from=$goods_list item=cartgoods name=shop_goods_list key=key}
+  <div class="m-btm1">
+    <div class="bg-color-w p-all3 ub bc-text ub-ac ubb border-faxian">
+      <div class="ub ub-ac ub-f1">
+          <div class="_checkbox checkbox_normal checked" id="checkbox_0_{$key}" parent_id="checkbox_0" checked=true></div>
+        <div class="h-w-1 ub-img m-l1" style="background-image:url(img/icons/store-enter.png)"></div>
+        <div class="f-color-zi ulev-9 ub-f1 m-l2 ub ut-m">{$cartgoods.supplier_name}</div>
+      </div>
+      <!-- {if $cartgoods.favourable} 优惠活动 -->
+      <div class="ub-pe choose_gift" suppid="{$key}"> <font class="ulev-1 sc-text-hui btn-w1">选择赠品</font> </div>
+      <!-- {/if} --> 
+    </div>
+    <div class="bg-color-w"> {foreach from=$cartgoods.goods_list name="goods_list" item=goods}
+      <div class="p-all2 ub bc-grey cart-box" style="position:relative">
+        <div class="ub ub-ac">
+          <div value="{$goods.rec_id}" class="_checkbox checkbox_normal checked" name="goods" id="checkbox_0_{$key}_{$goods.rec_id}" parent_id="checkbox_0_{$key}" checked=true></div>
+        </div>
+        <div class="mar-ar1 ub-img h-w-4 m-l1 goods" goods_id="{$goods.goods_id}">
+		<img class="goods-img" style="width:100%;height:100%;" src="{$url}{$goods.goods_thumb}" />
+		</div>
+        <div class="ub-f1 ub ub-ver">
+          <div class="ub ub-f1">
+            <div class="ub-f1 p-r1">
+              <div class="bc-text ulev-1 f-color-zi l-h-1">{$goods.goods_name} </div>
+              <div class="ulev-2 sc-text-hui">{$goods.goods_attr|nl2br}</div>
+            </div>
+            <div class="ub-pe tx-r ulev-1 f-color-red" id='goods_subtotal_{$goods.rec_id}'>{$goods.subtotal} 
+              <!-- {if $goods.is_gift gt 0} 赠品 -->
+              <div class="ulev-9 f-color-red">{$lang.largess} </div>
+              <!-- {/if} --> 
+            </div>
+          </div>
+          <div class="ub ub-ae m-top4"> 
+            <!-- {if $goods.goods_id gt 0 && $goods.is_gift eq 0 && $goods.parent_id eq 0} 普通商品可修改数量 -->
+            <div class="ub uba border-hui uc-t1 uc-b1 ub-ac f-color-6 uinput1">
+              <div class="ubr border-hui uinn1 reduce_goods_button" rec_id='{$goods.rec_id}'>-</div>
+              <input type="text" class="text-b1 ulev-1 input_number" value="{$goods.goods_number}" id='number_{$goods.rec_id}' rec_id='{$goods.rec_id}' supplier_id='{$key}' package_buy="{if $goods.extension_code eq 'package_buy'}1{else}0{/if}" goods_id='{$goods.goods_id}'/>
+              <div class="ubl border-hui uinn1 increase_goods_button" rec_id='{$goods.rec_id}'>+</div>
+            </div>
+            <!-- {else} -->
+            <div class="ulev-1 f-color-6">数量：{$goods.goods_number} </div>
+            <!-- {/if} -->
+            <div class="ub-pe ub-img h-w-5 search-icon2 cart-del cart_delete_button" rec_id='{$goods.rec_id}'></div>
+          </div>
+        </div>
+      </div>
+      {/foreach} </div>
+    
+    <!-- {if $cartgoods.favourable || $cartgoods.discount} 优惠活动 --> 
+    <!-- {if $cartgoods.discount} -->
+    <div class="ulev-1 bg-color-w sc-text-hui p-all1 tx-r activity" id="zk_{$key}">{$cartgoods.discount.your_discount}</div>
+    <!-- {/if} --> 
+    <!-- {/if} --> 
+  </div>
+  {/foreach} </div>
+<div class="ub ub-ac bg-color-w p-fixed-btm1 ubt border-hui yy-top">
+  <div class="_checkbox checkbox_normal checked" id='checkbox_0' checked=true></div>
+  <div class="ulev-1 f-color-6 m-l2">全选</div>
+  <div class="ub-f1 ub-pe tx-r ub p-r1"> <span class="ulev-9 f-color-6">合计：</span><span class="ufm1 ulev-1 f-color-red" id='cart_amount_desc'>{$shopping_money}</span></div>
+  <div class="ub jiesuan bc-head1 ub-ac ub-pc" id='checkout_button'>
+    <div>结算</div>
+  </div>
+</div>
+<div class="btm-up mfp-hide" id="goods_gift_box"></div>
+{else}
+	{if $login} 
+<!--购物车中没有商品时显示-->
+<div class="m-top8">
+  <div class="ub ub-ac ub-pc">
+    <div class="cart-empty"></div>
+  </div>
+  <div class="ub ub-ac ub-pc f-color-6 ulev-9 umar-t1">购物车中暂无商品！</div>
+</div>
+{else} 
+<!--未登录时显示-->
+<div class="m-top8">
+  <div class="ub ub-ac ub-pc">
+    <div class="cart-empty"></div>
+  </div>
+  <div class="ub ub-ac ub-pc f-color-6 ulev-9 umar-t1">您还没登录哦！请先登录</div>
+  <div class="ub ub-ac ub-pc umar-t1 _login" id='login_button'>
+    <div class="btn-red-1 ulev-9 w-min3"> 登录 </div>
+  </div>
+</div>
+{/if}
+{/if} 

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<regions>
+  <file name="activity.dwt"/>
+  <file name="article.dwt">
+  </file>
+  <file name="article_cat.dwt">
+  </file>
+  <file name="article_pro.dwt"/>
+  <file name="auction.dwt">
+  </file>
+  <file name="auction_list.dwt">
+  </file>
+  <file name="brand.dwt">
+    <region name="主栏">
+      <lib>recommend_best</lib>
+      <lib>recommend_promotion</lib>
+      <lib>goods_list</lib>
+      <lib>category_tree</lib>
+      <lib>promotion_info</lib>
+      <lib>top10</lib>
+      <lib>history</lib>
+      <lib>vote_list</lib>
+    </region>
+  </file>
+  <file name="brand_list.dwt">
+  </file>
+  <file name="catalog.dwt"/>
+  <file name="category.dwt">
+    <region name="主栏">
+      <lib>recommend_best</lib>
+      <lib>recommend_hot</lib>
+      <lib>recommend_promotion</lib>
+      <lib>goods_list</lib>
+      <lib>category_tree</lib>
+      <lib>history</lib>
+      <lib>brands</lib>
+      <lib>promotion_info</lib>
+      <lib>vote_list</lib>
+      <lib>top10</lib>
+    </region>
+  </file>
+  <file name="compare.dwt"/>
+  <file name="exchange_goods.dwt">
+  </file>
+  <file name="exchange_list.dwt">
+    <region name="主栏">
+      <lib>exchange_hot</lib>
+      <lib>exchange_list</lib>
+    </region>
+  </file>
+  <file name="flow.dwt"/>
+  <file name="gallery.dwt"/>
+  <file name="goods.dwt">
+    <region name="主栏">
+      <lib>bought_goods</lib>
+      <lib>bought_note_guide</lib>
+      <lib>goods_related</lib>
+      <lib>goods_fittings</lib>
+      <lib>goods_article</lib>
+      <lib>goods_attrlinked</lib>
+      <lib>comments</lib>
+      <lib>category_tree</lib>
+      <lib>bought_goods</lib>
+      <lib>bought_note_guide</lib>
+      <lib>goods_related</lib>
+      <lib>goods_fittings</lib>
+      <lib>goods_article</lib>
+      <lib>goods_attrlinked</lib>
+      <lib>history</lib>
+    </region>
+  </file>
+  <file name="group_buy_goods.dwt">
+  </file>
+  <file name="group_buy_list.dwt">
+  </file>
+  <file name="index.dwt">
+    <region name="主栏">
+      <lib>recommend_best</lib>
+      <lib>recommend_new</lib>
+      <lib>recommend_hot</lib>
+      <lib>recommend_promotion</lib>
+      <lib>auction</lib>
+      <lib>group_buy</lib>
+      <lib>category_tree</lib>
+      <lib>top10</lib>
+      <lib>promotion_info</lib>
+      <lib>new_articles</lib>
+      <lib>email_list</lib>
+      <lib>brands</lib>
+      <lib>auction</lib>
+      <lib>group_buy</lib>
+    </region>
+  </file>
+  
+    <file name="v_shop.dwt">
+    <region name="店铺">
+      <lib>recommend_best</lib>
+      <lib>recommend_new</lib>
+      <lib>recommend_hot</lib>
+      <lib>recommend_promotion</lib>
+      <lib>auction</lib>
+      <lib>category_tree</lib>
+      <lib>top10</lib>
+      <lib>promotion_info</lib>
+      <lib>new_articles</lib>
+      <lib>email_list</lib>
+      <lib>brands</lib>
+      <lib>auction</lib>
+      <lib>group_buy</lib>
+    </region>
+  </file>
+	
+  <file name="message.dwt"/>
+  <file name="message_board.dwt">
+  </file>
+  <file name="myship.dwt"/>
+  <file name="package.dwt"/>
+  <file name="pick_out.dwt">
+  </file>
+  <file name="quotation.dwt"/>
+  <file name="receive.dwt"/>
+  <file name="respond.dwt"/>
+  <file name="search.dwt">
+  </file>
+  <file name="snatch.dwt">
+  </file>
+  <file name="style.css"/>
+  <file name="tag_cloud.dwt"/>
+  <file name="topic.dwt"/>
+  <file name="user_clips.dwt"/>
+  <file name="user_passport.dwt"/>
+  <file name="user_transaction.dwt"/>
+  <file name="wholesale_list.dwt"/>
+</regions>

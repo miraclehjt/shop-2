@@ -1,0 +1,74 @@
+<!-- $Id: goods_search.htm 16790 2009-11-10 08:56:15Z wangleisvn $ -->
+<link href="styles/zTree/zTreeStyle.css" rel="stylesheet" type="text/css" />
+{insert_scripts files='jquery-1.6.2.min.js,jquery.ztree.all-3.5.min.js,category_selecter.js'}
+<div class="form-div">
+  <form action="javascript:searchGoods()" name="searchForm">
+    <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
+    {if $smarty.get.act neq "trash"}
+    <!-- 分类 -->
+     <input type="text" id="cat_name" name="cat_name" nowvalue="{$goods_cat_name}" value="{$goods_cat_name}" >
+	<input type="hidden" id="cat_id" name="cat_id" value="{$goods_cat_id}">
+    <!-- 品牌 -->
+    <select name="brand_id"><option value="0">{$lang.goods_brand}</option>{html_options options=$brand_list}</select>
+    <!-- 推荐 -->
+	{if $suppliers_exists == 0}
+    <select name="intro_type"><option value="0">{$lang.intro_type}</option>{html_options options=$intro_list selected=$smarty.get.intro_type}</select>
+	{/if}
+     {if $suppliers_exists eq 1}    
+      <!-- 供货商 -->
+      <select name="suppliers_id"><option value="0">{$lang.intro_type}</option>{html_options options=$suppliers_list_name selected=$smarty.get.suppliers_id}</select>
+      
+	
+	  {* 代码增加_start  By  bbs.hongyuvip.com *}
+	  <select name="supplier_status"><option value="">审核状态</option>
+	  {foreach from=$supplier_status_list key=supplier_key item=supplier_status}
+	  <option value="{$supplier_key}" {if $supplier_key neq ''  and $supplier_key eq $smarty.get.supplier_status}selected{/if}>{$supplier_status}</option>
+	  {/foreach}
+	  </select>
+	  {* 代码增加_end  By  bbs.hongyuvip.com *}
+	  {/if}
+      <!-- 上架 -->
+      <select name="is_on_sale"><option value=''>{$lang.intro_type}</option><option value="1">{$lang.on_sale}</option><option value="0">{$lang.not_on_sale}</option></select>
+    {/if}
+    <!-- 关键字 -->
+    {$lang.keyword} <input type="text" name="keyword" size="15" />
+    <input type="submit" value="{$lang.button_search}" class="button" />
+  </form>
+</div>
+
+{literal}
+<script language="JavaScript">
+    function searchGoods()
+    {
+{/literal}
+        {if $smarty.get.act neq "trash"}
+        listTable.filter['cat_id'] = document.forms['searchForm'].elements['cat_id'].value;
+        listTable.filter['brand_id'] = document.forms['searchForm'].elements['brand_id'].value;
+		{if $suppliers_exists == 0}
+        listTable.filter['intro_type'] = document.forms['searchForm'].elements['intro_type'].value;
+		{/if}
+          {if $suppliers_exists eq 1}
+          listTable.filter['suppliers_id'] = document.forms['searchForm'].elements['suppliers_id'].value;
+		  /* 代码增加_start  By  bbs.hongyuvip.com */
+		listTable.filter['supplier_status'] = document.forms['searchForm'].elements['supplier_status'].value;
+		/* 代码增加_end  By  bbs.hongyuvip.com */
+          {/if}
+        listTable.filter['is_on_sale'] = document.forms['searchForm'].elements['is_on_sale'].value;
+        {/if}
+{literal}
+        listTable.filter['keyword'] = Utils.trim(document.forms['searchForm'].elements['keyword'].value);
+		
+        listTable.filter['page'] = 1;
+
+        listTable.loadList();
+    }
+</script>
+{/literal}
+      <script type="text/javascript">
+	$().ready(function(){
+		// $("#cat_name")为获取分类名称的jQuery对象，可根据实际情况修改
+		// $("#cat_id")为获取分类ID的jQuery对象，可根据实际情况修改
+		// "{$goods_cat_id}"为被选中的商品分类编号，无则设置为null或者不写此参数或者为空字符串
+		$.ajaxCategorySelecter($("#cat_name"), $("#cat_id"), "{$goods_cat_id}");
+	});
+</script>

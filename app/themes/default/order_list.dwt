@@ -1,0 +1,61 @@
+{if $is_full_page eq 1}
+<div class="ub bg-color-w ub-ae f-color-6 m-btm1">
+      <div class="ub ub-f1 ub-pc ub-ac ulev-1 p-t-b6 order-list-top _checkbox {if $smarty.request.composite_status eq -1}checked{/if}" radio="true" name="composite_status" value="-1" cancel="false">
+        全部({$order_count.all|default:0})
+      </div>
+      <div class="ub ub-f1 ub-pc ub-ac ulev-1 p-t-b6 order-list-top _checkbox {if $smarty.request.composite_status eq $status.await_pay}checked{/if}" radio="true" name="composite_status" value="{$status.await_pay}" cancel="false">
+        待付款({$order_count.await_pay|default:0})
+      </div>
+      <div class="ub ub-f1 ub-pc ub-ac ulev-1 p-t-b6 order-list-top _checkbox {if $smarty.request.composite_status eq $status.await_ship}checked{/if}" radio="true" name="composite_status" value="{$status.await_ship}" cancel="false">
+        待发货({$order_count.await_ship|default:0})
+      </div>
+      <div class="ub ub-f1 ub-pc ub-ac ulev-1 p-t-b6 order-list-top _checkbox {if $smarty.request.composite_status eq $status.shipped}checked{/if}" radio="true" name="composite_status" value="{$status.shipped}" cancel="false">
+        待收货({$order_count.shipped|default:0})
+      </div>
+      <div class="ub ub-f1 ub-pc ub-ac ulev-1 p-t-b6 order-list-top _checkbox {if $smarty.request.composite_status eq $status.finished}checked{/if}" radio="true" name="composite_status" value="{$status.finished}" cancel="false">
+		已完成({$order_count.finished|default:0})
+      </div>
+    </div>
+<div id="order_list_container">
+{/if}
+<!-- {foreach from=$orders item=item} -->
+<div class="ub ub-ver bg-color-w m-btm1 ubb border-hui">
+  <div class="bg-color-w ub ub-ac uinn-a1">
+    <div class="ub-img h-w-1 shop-icon"></div>
+    <div class="f-color-zi ub ub-f1 ut-m ulev-9 p-l-r5">{$item.shopname}<div class="chat-btn1 p-l-r5 _chat" chat_attr="supplier_id|order_id" supplier_id="{$item.supplier_id}" order_id="{$item.order_id}"></div></div>
+    <div class="f-color-red ulev-1 lv_subTitle m-top4"> {$item.order_status_text}<span class="m-l-r2">{$item.pay_status_text}</span>{$item.shipping_status_text} </div>
+  </div>
+  <div class="ub ub-ver">
+    <div class="ub ub-ac cart-box goods_list" order_id='{$item.order_id}'>
+      <div id="check_order_detail" style="width:100%;"> {foreach from=$item.goods_list item=goods name=goods}
+        <div class="ub uinn-a1 m-btm2 bc-grey">
+          <div class="lis-icon ub-img" style="background-image:url({$url}{$goods.thumb})"></div>
+          <div class="ub-f1">
+            <div class="bc-text ub ulev-1 f-color-6 l-h-1">{$goods.goods_name}</div>
+            <div class="ulev-2 sc-text-hui p-t-b3">{if $goods.goods_attr}{$goods.goods_attr|nl2br}{/if}</div>
+          </div>
+          <div class="ub-ver ulev-1 l-h-1 m-l1">
+            <div class="f-color-zi lv_subTitle"><span class="ulev-2"></span>{$goods.formated_goods_price}</div>
+            <div class="ulev-2 uinn3 sc-text-hui">x{$goods.goods_number}</div>
+          </div>
+        </div>
+        {/foreach} </div>
+    </div>
+    <div class="ub ub-ac uinn-a1 ubb border-faxian">
+      <div class="ub-f1 ub-pe ub"> <span class="ulev-1 f-color-6">合计：</span><span class="f-color-red"><span class="ulev-2"></span>{$item.total_fee}</span></div>
+    </div>
+    <div class="ub ub-pe uinn-a1 order_action_container ub-ac"
+	   order_id="{$item.order_id}"> {foreach from=$item.handler item=handler}
+      <div class="ub btn-w2 m-l2 order_action" order_action="{$handler.code}" >{$handler.name}</div>
+      {if $handler.code eq 'affirm_received'}
+      <div class="ulev-1 sc-text-hui m-l2">还剩{$item.receive_confirm_deadline}天自动收货</div>
+      {/if}
+      {/foreach} </div>
+  </div>
+</div>
+<!-- {foreachelse} -->
+<div class="ub ub-pc umar-t1 f-color-6">没有找到任何订单</div>
+<!--  {/foreach} -->
+{if $is_full_page eq 1}
+</div>
+{/if}

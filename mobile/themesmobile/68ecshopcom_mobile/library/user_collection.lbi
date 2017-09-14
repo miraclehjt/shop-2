@@ -1,0 +1,120 @@
+<script type="text/javascript">
+				/*第一种形式 第二种形式 更换显示样式*/
+				function setGoodsTab(name,cursel,n){
+					$('html,body').animate({'scrollTop':0},600);
+				for(i=1;i<=n;i++){
+				var menu=document.getElementById(name+i);
+				var con=document.getElementById("user_"+name+"_"+i);
+				menu.className=i==cursel?"on":"";
+				con.style.display=i==cursel?"block":"none";
+				}
+				}
+				</script>
+<div class="sc_nav">
+    <ul>
+      <li><a href="user.php?act=collection_list" class="tab_head {if $action eq 'collection_list'}on{/if}" id="goods_ka1" >收藏的宝贝</a></li>
+      <li><a href="user.php?act=follow_shop" class="tab_head {if $action eq 'follow_shop'}on{/if}" id="goods_ka2" >收藏的店铺</a></li>
+     </ul>
+ </div>
+<!---------------------------------收藏的宝贝----------------------------------->
+  <div class="main" id="user_goods_ka_1" {if $action neq 'collection_list'}style="display:none;"{/if}>         
+ {if $goods_list}
+ <form name="theForm" method="post" action="">
+ <div class="shouchang">
+ <ul>
+  {foreach from=$goods_list item=goods name=goods_list}
+  <li>
+            
+              <div class="imgurl"><a href="{$goods.url}" ><img src="{$goods.goods_thumb}" width="100" height="100"></a></div>
+              <a href="{$goods.url}">
+              <div class="order_info">
+                <dl>
+                  <dt>{$goods.goods_name|truncate:13}</dt>
+                  <dd><strong>{if $goods.promote_price}{$goods.promote_price}{else}{$goods.shop_price}{/if}</strong></dd>
+                </dl>
+              </div>
+              </a>
+              <div class="dingdancaozuo" >
+              <a href="javascript:addToCart({$goods.goods_id})" class="s_flow" style=" color:#fff">加入购物车</a>
+               <a href="user.php?act=delete_collection&collection_id={$goods.rec_id}" class="s_out" style=" color:#fff" >删除</a></div>
+          </li>
+  {/foreach}
+   </ul>
+  </div>
+</form>
+{else}
+<div id="list_0_0" class="font12">{$lang.collection_empty}</div>
+{/if}
+{if $goods_list}{include file='library/pages.lbi'}{/if} 
+</div>
+   <!---------------------------------收藏的店铺----------------------------------->
+<div class="main" id="user_goods_ka_2" {if $action neq 'follow_shop'}style="display:none"{/if}>
+ {if $shop_list}
+ <form name="theForm" method="post" action="">
+ <div class="dianpu">
+ <ul>
+  {foreach from=$shop_list item=shop name=shop_list}
+  <li>
+            
+              <div class="imgurl"><a href="{$shop.url}" ><img src="./../{$shop.shop_logo}" width="100" height="100"></a></div>
+              <a href="{$shop.url}">
+              <div class="order_info">
+                <dl>
+                  <dt><span style=" color:#FFF">店铺</span>{$shop.shop_name|truncate:13}</dt>
+                  <dd><img src="themesmobile/68ecshopcom_mobile/images/dianpu2.png" height="25"><span>{if $shop.rank_id eq '1'}初级店铺{elseif $shop.rank_id eq '2'}中级店铺{elseif $shop.rank_id eq '3'}高级店铺{else}初级店铺{/if}</span></dd>
+                  <a class="outdianpu" style=" color:#FFF" href="javascript:if (confirm('确定取消收藏？')) location.href='user.php?act=del_follow&rec_id={$shop.id}'">删除收藏</a>
+                 </dl>
+              </div>
+              </a>
+          </li>
+  {/foreach}
+   </ul>
+  </div>
+</form>
+{else}
+<div id="list_0_0" class="font12">您还没有收藏店铺哦！</div>
+{/if}
+{if $shop_list}{include file='library/pages.lbi'}{/if} 
+</div>
+
+
+<script language="JavaScript">
+	var elements = document.forms['theForm'].elements;
+	var url = '{$url}';
+	var u   = '{$user_id}';
+	/**
+	 * 生成代码
+	 */
+	function genCode()
+	{
+			// 检查输入
+			if (isNaN(parseInt(elements['goods_num'].value)))
+			{
+					alert('{$lang.goods_num_must_be_int}');
+					return;
+			}
+			if (elements['goods_num'].value < 1)
+			{
+					alert('{$lang.goods_num_must_over_0}');
+					return;
+			}
+
+			// 生成代码
+			var code = '\<script src=\"' + url + 'goods_script.php?';
+			code += 'need_image=' + elements['need_image'].value + '&';
+			code += 'goods_num=' + elements['goods_num'].value + '&';
+			code += 'arrange=' + elements['arrange'].value + '&';
+			code += 'charset=' + elements['charset'].value + '&u=' + u;
+			code += '\"\>\</script\>';
+			elements['code'].value = code;
+			elements['code'].select();
+			if (Browser.isIE)
+          {
+              window.clipboardData.setData("Text",code);
+          }
+      }
+			var compare_no_goods = "{$lang.compare_no_goods}";
+			var btn_buy = "{$lang.btn_buy}";
+			var is_cancel = "{$lang.is_cancel}";
+			var select_spe = "{$lang.select_spe}";
+  </script>

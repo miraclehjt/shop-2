@@ -1,0 +1,123 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+{insert_scripts files='utils.js'}
+<div class="headerLayout">
+    <div class="headerCon ">
+      <h1 id="mallLogo" style="padding-top:10px;"> <a href="index.php" class="header-logo"><img src="../images/header/logo.jpg" /></a></h1>
+      <div class="header-extra">
+       	 <div class="panel-heading">
+            <div class="more">
+                <div class="progress">
+                    <div class="progress-wrap">
+                        <div class="progress-item passed">
+                            <div class="number">1</div>
+                            <div class="progress-desc">入驻须知</div>
+                        </div>
+                    </div>
+                    <div class="progress-wrap">
+                        <div class="progress-item passed">
+                            <div class="number">2</div>
+                            <div class="progress-desc">公司信息认证</div>
+                        </div>
+                    </div>
+                    <div class="progress-wrap">
+                        <div class="progress-item ongoing">
+                            <div class="number">3</div>
+                            <div class="progress-desc">店铺信息认证</div>
+                        </div>
+                    </div>
+                    <div class="progress-wrap">
+                        <div class="progress-item tobe">
+                            <div class="number"><i class="tick"></i></div>
+                            <div class="progress-desc">等待审核</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+      </div>
+    </div>
+  </div>
+<div class="store-joinin-apply">
+  <div class="main">
+    <div id="apply_company_info" class="apply-company-info">
+      <form id="form_store_info" name="form_company_info" action="apply.php" method="post" enctype="multipart/form-data" onSubmit="return supplier_Reg()">
+      <table border="0" cellpadding="0" cellspacing="0" class="all">
+        <thead>
+          <tr>
+            <th colspan="20" align="left">店铺经营信息</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="w150"><i>*</i>店铺名称：</th>
+            <td><input name="supplier_name" type="text" class="w200" value="{$supplier.supplier_name}">
+              <span></span>
+              <p class="emphasis">店铺名称注册后不可修改，请认真填写。</p></td>
+          </tr>
+          <tr>
+            <th><i>*</i>店铺等级：</th>
+            <td>
+	    <select name="rank_id" size=1>
+                <option value="0">请选择</option>
+		 {foreach from=$supplier_rank item=rank}
+                <option value="{$rank.rank_id}" {if $supplier.rank_id eq $rank.rank_id}selected{/if}>{$rank.rank_name}</option>
+		  {/foreach}
+              </select>
+              <span></span>
+              <div id="grade_explain" class="grade_explain"></div></td>
+          </tr>
+          <tr>
+            <th><i>*</i>店铺分类：</th>
+            <td> <select name="type_id" size=1>
+                <option value="0">请选择</option>
+		 {foreach from=$supplier_type item=type}
+                <option value="{$type.str_id}" {if $supplier.type_id eq $type.str_id}selected{/if}>{$type.str_name}</option>
+		  {/foreach}
+              </select>
+              <span></span>
+              <p class="emphasis">请根据您所经营的内容认真选择店铺分类，注册后商家不可自行修改。</p></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="20">&nbsp;</td>
+          </tr>
+        </tfoot>
+      </table>
+      <input type="hidden" name="shownum" value="3">
+      <input type="hidden" name="do" value="1">
+      <div class="bottom"><input type="button" value="上一步" class="btn" {if $supplier.guimo}onclick="top.location.href='apply.php?shownum=2'"{else}onclick="top.location.href='apply.php?shownum=1'"{/if}><input type="submit" value="下一步" class="btn"></div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+function supplier_Reg()
+{
+	var frm = document.forms['form_company_info'];
+	var rank_id = frm.elements['rank_id'].value;
+	var supplier_name = frm.elements['supplier_name'] ? Utils.trim(frm.elements['supplier_name'].value) : '';
+
+	if (supplier_name.length == 0)
+	{
+		msg += "店铺名称不能为空！" + '\n';
+	}
+	if (rank_id.length == 0 || rank_id=='0')
+	{
+		msg += "店铺等级不能为空！" + '\n';
+	}
+	if (type_id.length == 0 || type_id=='0')
+	{
+		msg += "店铺分类不能为空！" + '\n';
+	}
+	if (msg.length > 0)
+	{
+		alert(msg);
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+</script>

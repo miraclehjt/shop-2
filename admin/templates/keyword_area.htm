@@ -1,0 +1,28 @@
+<!-- $Id: keyword_area.htm 14216 2008-03-10 02:27:21Z testyang $ -->
+{include file="pageheader.htm"}
+<div class="main-div">
+        <!-- 地区分布 -->
+        <table width="90%" id="area-table">
+          <tr><td align="center">
+            <OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"  codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" WIDTH="465" HEIGHT="320" id="General" ALIGN="middle">
+              <PARAM NAME="FlashVars" value="&dataXML={$area_data}">
+              <PARAM NAME=movie VALUE="images/charts/pie3d.swf?chartWidth=650&chartHeight=400">
+              <PARAM NAME=quality VALUE=high>
+              <PARAM NAME=bgcolor VALUE=#FFFFFF>
+              <param NAME="wmode" VALUE="opaque" />
+              <EMBED src="images/charts/pie3d.swf?chartWidth=650&chartHeight=400" FlashVars="&dataXML={$area_data}" quality=high bgcolor=#FFFFFF WIDTH="650" HEIGHT="400" NAME="General" ALIGN="middle"  wmode="opaque" TYPE="application/x-shockwave-flash" PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer"></EMBED>
+              </OBJECT>
+          </td></tr>
+        </table>
+</div>
+<script type="Text/Javascript" language="JavaScript">
+<!--
+onload = function()
+{
+  // 开始检查订单
+  startCheckOrder();
+}
+//-->
+
+</script>
+{include file="pagefooter.htm"}

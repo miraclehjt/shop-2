@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<title>提现明细</title>
+<!--v_shop.css-->
+<link href="themesmobile/68ecshopcom_mobile/css/v_user.css" type="text/css" rel="stylesheet">
+</head>
+<body >
+<!--header-->
+<div class="dianpu">
+<dl>
+<dt><a href="v_user_tixian.php"></a></dt>
+<dd>提现明细</dd>
+</dl>
+</div>
+<!--main-->
+<div class="main">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style=" border-bottom:1px solid #CCC">
+  <tr>
+    <td width="25%" align="center" height="40">日期</td>
+    <td width="25%" align="center">金额</td>
+    <td width="25%" align="center">状态</td>
+    <td width="25%" align="center">操作</td>
+  </tr>
+</table>
+{if $deposit_list}
+{foreach from=$deposit_list item=list}
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style=" border-bottom:1px solid #CCC">
+  <tr>
+    <td width="25%" align="center" height="40">{$list.add_time}</td>
+    <td width="25%" align="center">{$list.deposit_money}</td>
+    <td width="25%" align="center">{if $list.status eq 0}未处理{elseif $list.status eq 1}已处理{else}未通过{/if}</td>
+    <td width="25%" align="center"><a href="v_user_tixiandetail.php?id={$list.id}">查看</a></td>
+  </tr>
+</table>
+{/foreach}
+{else}
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style=" border-bottom:1px solid #CCC">
+  <tr>
+   <td colspan="4" align="center">暂无提现记录</td>
+  </tr>
+</table>
+{/if}
+
+</div>
+<div class="next_page">
+
+</div> 
+<!-----底部悬浮菜单---->
+<!-- #BeginLibraryItem "/library/footer_nav1.lbi" --><!-- #EndLibraryItem --> 
+</body>
+</html>

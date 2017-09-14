@@ -1,0 +1,112 @@
+<!-- $Id: agency_list.htm 14216 2008-03-10 02:27:21Z testyang $ -->
+
+{if $full_page}
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<!-- 供货商搜索 -->
+<div class="form-div">
+  <form action="javascript:searchSupplier()" name="searchForm">
+    <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" /> 
+
+    {$lang.supplier_name|escape}
+    <input name="supplier_name" type="text" id="supplier_name" size="15">
+    {$lang.supplier_rank}
+    <select name="rank_name" size=1>
+      <option value="0">请选择</option>
+      
+		 {foreach from=$supplier_rank item=rank}
+                
+      <option value="{$rank.rank_id}" {if $supplier.rank_id eq $rank.rank_id}selected{/if}>{$rank.rank_name}</option>
+      
+		  {/foreach}
+              
+    </select>
+    <input type="submit" value="{$lang.button_search}" class="button" />
+  </form>
+</div>
+<form method="post" action="" name="listForm" onsubmit="return confirm(batch_drop_confirm);">
+<div class="list-div" id="listDiv">
+{/if}
+
+  <table cellpadding="3" cellspacing="1">
+    <tr>
+	  <th>{$lang.supplier_username}</th>
+      <th>{$lang.supplier_name}</th>
+      <th>{$lang.supplier_rank}</th>
+      <th>{$lang.supplier_tel}</th>
+	  <th>{$lang.system_fee}</th>
+	  <th>{$lang.supplier_bond}</th>
+	  <th>{$lang.supplier_rebate}</th>
+	  <th>{$lang.supplier_remark}</th>
+	  <th>状态</th>
+      <th>{$lang.handler}</th>
+    </tr>
+    {foreach from=$supplier_list item=supplier}
+    <tr>
+	  <td >{$supplier.user_name} </td>
+      <td class="first-cell" style="padding-left:10px;" >{$supplier.supplier_name}</td>
+      <td >{$supplier.rank_name} </td>
+      <td>{$supplier.tel}</td>
+	  <td align="center">{$supplier.system_fee}</td>
+	  <td align="center">{$supplier.supplier_bond}</td>
+	  <td align="center">{$supplier.supplier_rebate}</td>
+	  <td align="center">{$supplier.supplier_remark}</td>
+	  <td align="center">{$supplier.status_name}</td>
+      <td align="center">
+        <a href="supplier.php?act=edit&id={$supplier.supplier_id}&status={$status}" title="{$lang.view}">{$lang.view}</a>{if $supplier.status > 0 && $supplier.open > 0}&nbsp;&nbsp;<a href="../supplier.php?suppId={$supplier.supplier_id}" target="_blank">查看店铺</a>&nbsp;&nbsp;<a href="supplier.php?act=view&id={$supplier.supplier_id}" title="查看佣金">查看佣金</a>{else}&nbsp;&nbsp;{/if}&nbsp;&nbsp;<a href="javascript:del_supplier({$supplier.supplier_id})" title="删除店铺">删除店铺</a></td>
+    </tr>
+    {foreachelse}
+    <tr><td class="no-records" colspan="10">{$lang.no_records}</td></tr>
+    {/foreach}
+  </table>
+<table id="page-table" cellspacing="0">
+  <tr>
+    <td>&nbsp;</td>
+    <td align="right" nowrap="true">
+    {include file="page.htm"}
+    </td>
+  </tr>
+</table>
+
+{if $full_page}
+</div>
+</form>
+
+<script type="text/javascript" language="javascript">
+  <!--
+  listTable.recordCount = {$record_count};
+  listTable.pageCount = {$page_count};
+
+  {foreach from=$filter item=item key=key}
+  listTable.filter.{$key} = '{$item}';
+  {/foreach}
+
+  {literal}
+  onload = function()
+  {
+      // 开始检查订单
+      startCheckOrder();
+  }
+  {/literal}
+  //-->
+      /**
+     * 搜索供货商
+     */
+    function searchSupplier()
+    {
+        listTable.filter['supplier_name'] = Utils.trim(document.forms['searchForm'].elements['supplier_name'].value);
+        listTable.filter['rank_name'] = document.forms['searchForm'].elements['rank_name'].value;
+
+        listTable.filter['page'] = 1;
+        listTable.loadList();
+    }
+
+	function del_supplier(suppid){
+		var url = "supplier.php?act=delete&id="+suppid;
+		if(confirm('删除后，相关商品，佣金及其它店铺信息将永久删除，确定删除？')){
+			self.location.href = url;
+		}
+	}
+</script>
+{include file="pagefooter.htm"}
+{/if}

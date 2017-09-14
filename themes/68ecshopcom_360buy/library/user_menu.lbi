@@ -1,0 +1,46 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="navList">
+      <div class="func func1 clearfix">
+        <p class="title"><i></i><span>会员中心</span></p>
+        <a href="user.php" class="item {if $action eq 'default'}curs{/if}"><span>{$lang.label_welcome}</span><i></i></a> 
+        <a href="user.php?act=profile" class="item {if $action eq 'profile'}curs{/if}"><span>{$lang.label_profile}</span><i></i></a>
+        <!-- 
+        <a href="user.php?act=account_security" class="item {if $action eq 'account_security'}curs{/if}"><span>账户安全</span><i></i></a>    
+         -->
+        <a href="security.php" class="item {if $is_security eq 'true'}curs{/if}"><span>账户安全</span><i></i></a>    
+        <a href="user.php?act=address_list" class="item {if $action eq 'address_list'}curs{/if}"><span>{$lang.label_address}</span><i></i></a>
+        <a href="user.php?act=account_log" class="item {if $action eq 'account_log'}curs{/if}"><span>{$lang.label_user_surplus}</span><i></i></a>
+        <a href="user.php?act=bonus" class="item {if $action eq 'bonus'}curs{/if}"><span>{$lang.label_bonus}</span><i></i></a>
+        <!--{if $show_transform_points}--> 
+        <a href="user.php?act=transform_points" class="item {if $action eq 'transform_points'}curs{/if}"><span>{$lang.label_transform_points}</span><i></i></a>
+        <!--{/if}--> 
+	{* 代码增加_start  By  bbs.hongyuvip.com *}
+	<a href="user.php?act=vc_login" class="item {if $action eq 'vc_login'}curs{/if}">储值卡充值</a>
+	{* 代码增加_end  By  bbs.hongyuvip.com *}
+      </div>
+      <div class="func func2 clearfix">
+        <p class="title"><i></i><span>交易中心</span></p>
+        <a href="user.php?act=order_list" class="item {if $action eq 'order_list'|| $action eq 'order_detail'}curs{/if}" ><span>{$lang.label_order}</span><i></i></a> 
+        <a href="user.php?act=back_list" class="item {if $action eq 'back_list' || $action eq 'back_order_detail'}curs{/if}"><span>退款/退货及维修</span><i></i></a> 
+        <a href="user.php?act=my_comment" class="item {if $action eq 'my_comment'}curs{/if}"><span>商品评价/晒单</span><i></i></a> 
+        <a href="user.php?act=collection_list" class="item {if $action eq 'collection_list'}curs{/if}"><span>商品收藏</span><i></i></a> 
+        <a href="user.php?act=follow_shop" class="item {if $action eq 'follow_shop'}curs{/if}" title="关注的店铺"><span>店铺关注</span><i></i></a> 
+        <a href="user.php?act=auction_list" class="item {if $action eq 'auction_list'}curs{/if}"><span>我的竞拍</span><i></i></a> 
+        <a href="user.php?act=tg_login" class="item {if $action eq 'tg_login'}curs{/if}"><span>{$lang.takegoods}</span><i></i></a> 
+        <a href="user.php?act=tg_order" class="item {if $action eq 'tg_order'}curs{/if}"><span>{$lang.takegoods_order}</span><i></i></a>
+      </div>
+      <div class="func func3 clearfix">
+        <p class="title"><i></i><span>服务中心</span></p>
+        <a href="user.php?act=booking_list" class="item {if $action eq 'booking_list'}curs{/if}"><span>{$lang.label_booking}</span><i></i></a> 
+        <a href="user.php?act=message_list" class="item {if $action eq 'message_list'}curs{/if}"><span>{$lang.label_message}</span><i></i></a> 
+        <a href="user.php?act=tag_list" class="item {if $action eq 'tag_list'}curs{/if}" style="display:none"><span>{$lang.label_tag}</span><i></i></a>
+       	<!--代码修改--cb--68ecshop-->
+      	<!-- {if $recomm eq 1} -->
+        <!-- {if $affiliate.on eq 1} -->
+        <a href="user.php?act=affiliate" class="item {if $action eq 'affiliate'}curs{/if}"><span>{$lang.label_affiliate}</span><i></i></a>
+        <!--{/if}--> 
+       	<!-- {/if} --> 
+	<!--代码修改--cb--68ecshop-->
+        <a href="apply_index.php" class="item"><span>我要开店</span><i></i></a>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<article>
+	  <!--scroll-->
+	  <div class="scroll">
+	    <div class="scroll_box" id="scroll_img">
+        <ul class="scroll_wrap">
+           {foreach from=$wap_group_ad item=ad name=wap_group_ad}
+          <li><a href="{$ad.url}"><img src="{$ad.image}" width="100%" /></a></li>
+          {/foreach}
+        </ul>
+	    </div>
+      <ul class="scroll_position" id='scroll_position'>
+            {foreach from=$wap_group_ad item=ad name=wap_group_ad}
+          <li {if $smarty.foreach.wap_group_ad.first}class="on"{/if}><a href="javascript:void(0);">{$smarty.foreach.wap_index_ad.iteration}</a></li>
+           {/foreach}
+      </ul>
+	  </div>
+	  <!--scroll-->
+  </article>
+  <script>
+var slider = Swipe(document.getElementById('scroll_img'), {
+	auto: 3000,
+	continuous: true,
+	callback: function(pos) {
+		var i = bullets.length;
+		while (i--) {
+			bullets[i].className = ' ';
+		}
+		bullets[pos].className = 'on';
+	}
+});
+var bullets = document.getElementById('scroll_position').getElementsByTagName('li');
+</script>
+

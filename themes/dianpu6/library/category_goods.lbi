@@ -1,0 +1,63 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $category_goods} -->
+<!--{foreach from=$category_goods item=ginfo}-->
+<div class="blank5"></div>
+<div class="nwg_con">
+  <div id="mwg_mrc01">
+    <h2 style="	background:{$navcolor};">{$ginfo.cat_name}</h2>
+    <!-- {if $ginfo.cat_pic} -->
+  <div class="blank"></div>
+  <a href="{$ginfo.cat_pic_url}" target="_blank" style="width:945px; height:260px;display:inline-block; "><img src="{$ginfo.cat_pic}" width="945" height="260" /></a> 
+  <!-- {/if} -->
+    <div id="nwpmr_01" class="nwg_con">
+      <div class="GoodsListWrap">
+        <div class="GoodsList" id="supshop_smart_main_s1_d">
+          <div class="gallery-grid-pro">
+            <ul class="clearfix">
+            <!--{foreach from=$ginfo.goods item=bestgoods name=bestgoods}-->
+              <li class="goods-item-pro" {if $smarty.foreach.bestgoods.iteration % 3 == 0}style="margin-right:0px"{/if}>
+            <div class="wrap">
+                <div class="inner">
+                    <div class="goods-pic-pro">                       
+                        <a href="{$bestgoods.url}" title="{$bestgoods.name}" target="_blank"><img class="action-goods-img" src="{$bestgoods.original_img}" alt="{$bestgoods.name}"></a>
+                    </div>         
+		    
+                    <div class="goods-info">                        
+                        <h4 class="goods-name">
+                            <a href="{$bestgoods.url}" title="{$bestgoods.name}" target="_blank">{$bestgoods.name}</a>
+                        </h4>
+                    </div>
+                                        
+                    <div class="price-buy">
+                        <div class="goods-price">
+                            <ins class="price"><!-- {if $bestgoods.promote_price neq ""} -->
+          {$bestgoods.promote_price}
+          <!-- {else}-->
+          {$bestgoods.shop_price}
+          <!--{/if}--></ins>                            
+                            <p><del class="price"><!-- {if $bestgoods.promote_price neq ""} -->
+          {$bestgoods.shop_price}
+          <!-- {else}-->
+          {$bestgoods.market_price}
+          <!--{/if}--></del></p>
+                        </div>
+                        <div class="goods-buy">
+                           <a class="action-addtocart" href="{$bestgoods.url}" title="查看详情" target="_blank"></a>
+                        </div>
+                                                
+                    </div>
+                    
+                </div>
+            </div>
+        </li>
+              <!-- {/foreach} --> 
+            </ul>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- {/foreach} --> 
+<!-- {/if} --> 

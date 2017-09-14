@@ -1,0 +1,17 @@
+#toTop {
+    display: none;
+    position: fixed;
+    bottom: 100px;
+    right: 5px;
+    width: 65px;
+    height: 65px;
+    background-image: url('../images/toTop.png');
+    background-repeat: no-repeat;
+	background-position:center center;
+    opacity: 0.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+}
+#toTop:hover {
+    opacity: 1;
+    filter: alpha(opacity=100); /* For IE8 and earlier */
+}

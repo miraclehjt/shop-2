@@ -1,0 +1,59 @@
+{include file="pageheader.htm"} <!-- 安装程序 -->
+{insert_scripts files="validator.js"}
+<div class="main-div">
+
+
+<form action="website.php" method="post" onSubmit="return checkForm(this)">
+<table cellspacing="1" cellpadding="3" width="100%">
+	{foreach from=$info.config item=val key=key}
+	<tr>
+    	<th>
+        {if $lang.help.$val.name}
+        <a href="javascript:showNotice('app_key_{$key}');" title="{$lang.form_notice}">
+        
+        <img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}"></a>
+        {/if}
+        {if $lang.$val.name}
+        {$lang.$val.name}
+        {else}
+        {$val.name}
+        {/if}
+        </th>
+        <td><input name="jntoo[{$val.name}]" type="{$val.type}" value="{if $config.$val.name}{$config.$val.name}{else}{$$val.value}{/if}" size="45" /><br>
+        	{if $lang.help.$val.name}
+            	<span class="notice-span" id="app_key_{$key}">{$lang.help.$val.name}</span>
+            {/if}
+        </td>
+    </tr>
+    {/foreach}
+    
+    
+    <tr>
+    	<th><a href="javascript:showNotice('user_rank');" title="{$lang.form_notice}"><img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}"></a>{$lang.user_rank}</th>
+        <td><input name="rank_name" type="text" value="{$rank.rank_name}" size="30" />
+        	<input type="hidden" name="olb_rank_name" value="{$rank.rank_name}" />
+        	<input type="hidden" name="rank_id" value="{$rank.rank_id}" /><br>
+            <span class="notice-span" id="user_rank">{$lang.help_rank_name}</span>
+        </td>
+    </tr>
+    <tr>
+    	<th>{$lang.website_web}</th>
+        <td>
+        	<a href="{$info.website}" target="_blank">{$lang.once}</a>
+        </td>
+    </tr>
+    
+    <tr>
+    	<th colspan="2">
+        	<input type="hidden" name="type" value="{$type}" />
+            <input type="hidden" name="act" value="{$act}" />
+        	<input type="submit" value="{$lang.button_submit}"  class="button" />
+            <input type="button" onClick="window.history.go(-1)" value="{$lang.cancel}" class="button" />
+            
+        </th>
+    </tr>
+</table>
+</form>
+</div>
+
+{include file="pagefooter.htm"}

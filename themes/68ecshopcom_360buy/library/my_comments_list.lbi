@@ -1,0 +1,70 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--{if $comments.item_list}-->
+<!--{foreach from=$comments.item_list item=value}-->
+<dl class="clearfix">
+  <dt>
+    <div><img src="{if $value.headimg eq ''}themes/68ecshopcom_360buy/images/upgrade_ad/peopleicon_01.gif{else}{$value.headimg}{/if}" height="80" width="80" /></div>
+    <p>{if $value.hide_username eq 1}匿名{else}{$value.user_name}{/if}</p>
+    <p>{$value.user_rank.rank_name}</p>
+  </dt>
+  <dd>
+    <div class="rank68 clearfix"> {if $value.comment_rank}<img src="images/stars{$value.comment_rank}.gif" style="float:left"/>{/if} <span class="add-time" style="float:right">{$value.add_time_str}</span> </div>
+    <div class="blank"></div>
+    <table width="100%" border="0" cellspacing="1" cellpadding="0">
+      {if $value.tags}
+      <tr>
+        <th width="64">标　　签：</th>
+        <td class="tag">
+          <!--{foreach from=$value.tags item=name}--> 
+          <!-- {if !empty($name)} -->
+          <span>{$name}</span>
+          <!-- {/if} -->
+          <!--{/foreach}-->
+        </td>
+      </tr>
+      {/if}
+      <tr>
+        <th width="64">心　　得：</th>
+        <td>{$value.content}</td>
+      </tr>
+      <!--{if $value.shaidan_imgs}-->
+      <tr>
+        <th>用户晒单：</th>
+        <td class="shaidan"><!--{foreach from=$value.shaidan_imgs key=key item=img}--> 
+          {if $key < 3}<a href="goods_shaidan.php?act=view&id={$value.shaidan_id}" target="_blank"><img src="{$img.thumb}"></a>{/if} 
+          <!--{/foreach}--> 
+          共{$value.shaidan_imgs_num}张图片 <a href="goods_shaidan.php?act=view&id={$value.shaidan_id}" target="_blank">查看晒单></a></td>
+      </tr>
+      <!--{/if}-->
+      {if $value.comment_reps}
+      <tr>
+        <th>客服回复：</th>
+        <td> {foreach from=$value.comment_reps item=val}
+          <div style="color:#F00; padding:10px 0 10px 0">{$val.content}</div>
+          {/foreach} </td>
+      </tr>
+      {/if}
+    </table>
+    {if $value.hide_gnum neq 1}
+    <ul class="yong clearfix">
+      <li style="display:none"><a href="javascript:;" onClick="show_good()">回复(0)</a></li>
+      <li><a href="javascript:;" onClick="show_good({$value.comment_id})">有用(<span id="good_num_{$value.comment_id}">{$value.good_num}</span>)</a></li>
+    </ul>
+    {/if} </dd>
+</dl>
+<!--{/foreach}-->
+
+<div id="pager" class="pagebar"> <span class="f_l f6" style="margin-right:10px;">{$lang.pager_1}<b>{$comments.count}</b> {$lang.pager_2}</span> 
+  <!-- {if $comments.page_count neq 1} --> 
+  <!--{foreach from=$comments.page_number key=key item=item}--> 
+  <!-- {if $comments.page eq $key} --> 
+  <span class="page_now">{$key}</span> 
+  <!-- {else} --> 
+  <a href="javascript:;" onClick="{$item}">[{$key}]</a> 
+  <!-- {/if} --> 
+  <!--{/foreach}--> 
+  <!-- {/if} --> 
+</div>
+<!--{else}-->
+<div class="no_comment">暂时还没有任何评论！</div>
+<!--{/if}-->

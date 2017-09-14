@@ -1,0 +1,206 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="order">
+<!--详情顶部-->
+<div class="detail_top">
+<div class="lan">
+<dl>
+<dt class="dingdan_1"></dt>
+<dd><span>{$order.pay_status}&nbsp;&nbsp;&nbsp;&nbsp;卖家{$order.shipping_status}</span><br>
+    <span class="dingdanhao">{$lang.detail_order_sn}&nbsp;:&nbsp;{$lang.colon}{$order.order_sn}</span><br>
+    <span>{if $order.shipping_fee > 0}{$lang.shipping_fee}{$lang.colon}&nbsp;:{$order.formated_shipping_fee}{/if}</span>
+</dd>
+</dl>
+</div>
+<!--如果没有支付-支付方式-->
+{if $order.order_amount gt 0}
+{if $order.order_status eq '已取消'}
+<dl style="border-bottom:1px solid #eeeeee">
+<dt style=" position:absolute;" class="dingdan_2"></dt>
+<dd style=" margin-left:30px;"><span class="zhif">订单状态：已取消</span>
+<span class="zhif">订单已取消，不能继续支付</span>
+ </dd>
+</dl>
+
+{else}
+<dl style="border-bottom:1px solid #eeeeee">
+<dt style=" position:absolute;" class="dingdan_2"></dt>
+<dd style=" margin-left:30px;"><span class="zhif">{$lang.select_payment}&nbsp;:&nbsp;{$lang.colon}{$order.pay_name}</span>
+	<span class="zhif">{$lang.order_amount}&nbsp;:&nbsp;{$lang.colon}{$order.formated_order_amount}</span>
+	<span class="zhif">{$order.pay_desc}</span>
+    <!--
+	{if $payment_list}
+		<div class="other_payment">
+        {$lang.change_payment}{$lang.colon}
+			<form name="payment" method="post" action="user.php">
+			
+				<select name="pay_id">
+				{foreach from=$payment_list item=payment}
+				<option value="{$payment.pay_id}">
+				{$payment.pay_name}({$lang.pay_fee}:{$payment.format_pay_fee})
+				</option>
+				{/foreach}
+				</select>
+				<input type="submit" value="{$lang.button_submit}" style="margin-top:30px;width:40%;"/>
+				<input type="hidden" name="act" value="act_edit_payment">
+				<input type="hidden" name="order_id" value="{$order.order_id}">
+			</form>
+		</div> 
+		{/if}
+      -->
+
+	{if $iswei}
+		{if $order.pay_name == "微信手机支付"}
+			<style>
+				.pay-btn a {
+					color: #FFF;
+				}
+				.sub-btn {
+					display: block;
+					width: 100%;
+					display: block;
+					border-radius: 5px;
+					background-color: #f60;
+					text-align: center;
+					height: 40px;
+					line-height: 40px;
+					color: #FFF;
+					font-size: 14px;
+					border: none;
+					font-family: '微软雅黑';
+				}
+			</style>
+			{$pay_online}
+		{elseif $order.pay_name == "支付宝"}
+			<a href="././pay/alipayapi.php?out_trade_no={$order.order_sn}&total_fee={$order.order_amount}" class="zhifu" style=" color:#fff; font-size:16px;">去支付宝支付</a>
+		{/if}
+	{else}
+		<a href="././pay/alipayapi.php?out_trade_no={$order.order_sn}&total_fee={$order.order_amount}" class="zhifu" style=" color:#fff; font-size:16px;">去支付宝支付</a>
+	{/if}
+     
+</dd>
+</dl>
+{/if}
+{/if}
+<!--收货信息-->
+<dl>
+<dt class="dingdan_3"></dt>
+<dd><h3>{$lang.consignee_name}&nbsp;:{$lang.colon}&nbsp;{$order.consignee}<em>{$order.mobile}</em></h3>
+{if $order.exist_real_goods}
+<div class="adss">
+{$lang.detailed_address}{$lang.colon}&nbsp;:&nbsp;{$order.address}{if $order.zipcode}[{$lang.postalcode}{$lang.colon}{$order.zipcode}]{/if}
+</div>
+{/if}
+		</dd>
+</dl>
+<!--物流信息-->
+{if $order.order_status neq '已取消'}
+<dl style="border-top:1px solid #eeeeee; margin-top:10px; height:70px; padding-bottom:0px;">
+<dt class="dingdan_4"><img src="themesmobile/68ecshopcom_mobile/images/wuliuimg.png" width="30" height="70"></dt>
+<dd><h3>物流信息{$order.order_status}</h3>
+{if $kuaidi}
+<p style=" overflow:hidden; display:block; width:100%; height:20px;">{$kuaidi.context}</p>
+<strong>{if $kuaidi.ftime}{$kuaidi.ftime}{else}{$kuaidi.time}{/if}</strong>
+{else}
+<p>没有数据</p>
+{/if}
+</dd>
+</dl>
+{/if}
+</div>
+<!---订单-->
+<div class="ord_list1">
+<h2><img src="themesmobile/68ecshopcom_mobile/images/dianpu.png">{$order.referer}</h2>
+{foreach from=$goods_list item=goods name=goods_list}
+<div class="order_list">
+        <a href="goods.php?id={$goods.goods_id}">
+          <dl>
+          <dt><img src="./../{$goods.goods_thumb}"></dt>
+          <dd class="name" class="pice" style=" width:55%;"><strong>{$goods.goods_name|truncate:20}</strong><span>{if $goods.goods_attr}{$goods.goods_attr}{/if}
+								{if $goods.is_shipping}<em class="carriage_free">{$lang.carriage_free}</em>{/if}
+								{if $goods.parent_id gt 0}<em class="accessories">{$lang.accessories}</em>{/if}
+								{if $goods.is_gift gt 0}<em class="largess">{$lang.largess}</em>{/if}</span></dd>
+          <dd class="pice" style=" font-size:13px; color:#F60; width:25%;">{$goods.goods_price}<em>x{$goods.goods_number}</em></dd>
+          </dl>
+          </a>
+          <div class="pic" style=" border:0;"><span>小计：</span><strong>{$goods.subtotal}</strong></div>
+          
+         </div>
+{/foreach}
+
+<!--价格信息--->
+<div class="jiage">
+						<p>{$lang.goods_all_price}
+						{if $order.extension_code eq "group_buy"}{$lang.gb_deposit}{/if}{$lang.colon}&nbsp;:&nbsp;<span class="price">{$order.formated_goods_amount}</span>
+                        {if $order.discount gt 0}<br>
+						- {$lang.discount}{$lang.colon}&nbsp;:&nbsp;<span class="price">{$order.formated_discount}</span>
+						{/if}
+						{if $order.tax gt 0}<br>
+						+ {$lang.tax}{$lang.colon}&nbsp;:&nbsp;<span class="price">{$order.formated_tax}</span>
+						{/if}
+						{if $order.shipping_fee > 0}<br>
+						+ {$lang.shipping_fee}{$lang.colon}&nbsp;:&nbsp;<span class="price">{$order.formated_shipping_fee}</span>
+						{/if}
+						{if $order.insure_fee > 0}<br>
+						+ {$lang.insure_fee}{$lang.colon}&nbsp;:&nbsp;<span class="price">{$order.formated_insure_fee}</span>
+						{/if}
+						{if $order.pay_fee > 0}<br>
+						+ {$lang.pay_fee}{$lang.colon}&nbsp;:&nbsp;<span class="price">{$order.formated_pay_fee}</span>
+						{/if}
+						{if $order.pack_fee > 0}<br>
+						+ {$lang.pack_fee}{$lang.colon}&nbsp;:&nbsp;<span class="price">{$order.formated_pack_fee}</span>
+						{/if}
+						{if $order.card_fee > 0}<br>
+						+ {$lang.card_fee}{$lang.colon}&nbsp;:&nbsp;<span class="price">{$order.formated_card_fee}</span>
+						{/if}
+						{if $order.money_paid > 0}<br> - {$lang.order_money_paid}{$lang.colon}&nbsp;:&nbsp;<span class="price">{$order.formated_money_paid}</span>{/if}
+						{if $order.surplus > 0}<br> - {$lang.use_surplus}{$lang.colon}&nbsp;:&nbsp;<span class="price">{$order.formated_surplus}</span>{/if}
+						{if $order.integral_money > 0}<br> - {$lang.use_integral}{$lang.colon}&nbsp;:&nbsp;<span class="price">{$order.formated_integral_money}</span>{/if}
+						{if $order.bonus > 0}<br> - {$lang.use_bonus}{$lang.colon}&nbsp;:&nbsp;<span class="price">{$order.formated_bonus}</span>{/if}</p>
+						<p>{$lang.order_amount}{$lang.colon}&nbsp;:&nbsp;<span class="price1">{$order.formated_order_amount}</span>{if $order.extension_code eq "group_buy"}{$lang.notice_gb_order_amount}{/if}</p>
+						
+					</div>
+</div>
+<!--其他信息-->  
+<section class="qita">
+    <div class="navContent"> 
+    <ul>
+{if $order.shipping_id > 0}<li class="first">{$lang.shipping}{$lang.colon}&nbsp;:&nbsp;{$order.shipping_name}</li>{/if}
+			{if $order.pay_name}<li{if $order.shipping_id <= 0} class="first"{/if}>{$lang.payment}{$lang.colon}&nbsp;:&nbsp;{$order.pay_name}</li>{/if}
+			{if $order.pack_name}<li>{$lang.use_pack}{$lang.colon}&nbsp;:&nbsp;{$order.pack_name}</li>{/if}
+			{if $order.card_name}<li>{$lang.use_card}{$lang.colon}&nbsp;:&nbsp;{$order.card_name}</li>{/if}
+			{if $order.card_message}<li>{$lang.bless_note}{$lang.colon}&nbsp;:&nbsp;{$order.card_message}</li>{/if}
+			{if $order.integral > 0}<li>{$lang.use_integral}{$lang.colon}&nbsp;:&nbsp;{$order.integral}</li>{/if}
+			{if $order.inv_payee && $order.inv_content}
+				<li>{$lang.invoice_title}{$lang.colon}&nbsp;:&nbsp;{$order.inv_payee}</li>
+				<li>{$lang.invoice_content}{$lang.colon}&nbsp;:&nbsp;{$order.inv_content}</li>
+			{/if}
+			{if $order.postscript}<li>{$lang.order_postscript}{$lang.colon}&nbsp;:&nbsp;{$order.postscript}</li>{/if}
+			{if $order.how_oos_name}<li>{$lang.booking_process}{$lang.colon}&nbsp;:&nbsp;{$order.how_oos_name}</li>{/if}
+            </ul>
+       </div>      
+</section>
+<!--底部按钮-->
+<div style=" height:50px;"></div> 
+
+{if $order.order_status neq '已取消'}
+<div class="detail_dowm">
+<div class="anniu1">
+          <a href="kuaidi_list.php?order_id={$order.order_id}" class="on_comment">查看物流</a>
+                  <!-- {if $item.shipping_status eq 2} --> 
+                  <!-- {if $item.comment_s eq 0} --> 
+                  <!-- {else} --> 
+                  <a href="user.php?act=my_comment&s={$item.comment_s}&order_id={$item.order_id}#commtr_{$item.comment_s}" class="on_comment">评价订单</a> 
+                  <!-- {/if} -->
+                  
+                  <!-- {if $item.shaidan_s eq 0} --> 
+                  <!-- {else} --> 
+                  <a href="user.php?act=shaidan_send&id={$item.shaidan_s}" class="on_comment">晒单</a> 
+                  <!-- {/if} -->
+                  
+                  <!-- {/if} -->{$item.handler}
+          </div> 
+ </div>
+{/if}
+
+<!--end--> 
+</div>

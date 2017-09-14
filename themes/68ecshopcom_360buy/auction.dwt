@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="themes/68ecshopcom_360buy/css/auction_goods.css">
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/auction.js"></script>
+<script type="text/javascript">
+	    var charset=document.charset||document.characterSet;
+	    if(charset=="utf-8"||charset=="UTF-8"){
+		}else{
+		     if(document.charset==undefined){
+			     if(document.characterSet!=undefined){
+				    document.characterSet="UTF-8";
+				 }
+			 }else{
+			      document.charset="UTF-8";
+			 }
+			 window.location.reload();
+	    }
+
+        window.pageConfig={
+            navId:"auction"
+        };
+
+        var _nowMil=1407803327340;
+</script>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-1.9.1.min.js" ></script>
+{* 包含脚本文件 *}
+{insert_scripts files='common.js,lefttime.js,transport.js'}
+</head>
+<body>
+<div id="site-nav"> 
+	<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem --> 
+    <div class="blank"></div>
+	<!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+    <div class="w">
+    <div id="product-intro">
+          <div class="p-img"> 
+          	<a href="{$auction_goods.url}" title="{$auction.goods_name|escape:html}">
+            	<img src="{$auction_goods.original_img}" alt="{$auction_goods.goods_name|escape:html}" height="400" width="400"/>
+            </a> 
+          </div>
+          <div class="p-info">
+        	<h1>{$lang.goods_name}：{$auction.goods_name|escape:html}</h1>
+        	<div class="list-info"> 
+              <form name="theForm" action="auction.php" method="post">
+            	<p class="list_info_d">{$lang.au_current_price}：<span style="color:#E31939;">{$auction.formated_current_price}</span></p>
+            	<p class="list_info_s">起止时间：{$auction.start_time} -- {$auction.end_time}</p>
+            	<p class="list_info_d">{$lang.au_start_price}：<span>{$auction.formated_start_price}</span></p>
+            	<p class="list_info_s">{$lang.au_amplitude}：{$auction.formated_amplitude}</p>
+                <!-- {if $auction.end_price gt 0} --> 
+            	<p class="list_info_d">
+                  {$lang.au_end_price}：<span>{$auction.formated_end_price}</span></p>
+                <!-- {/if} --> 
+                <!-- {if $auction.deposit gt 0} -->
+            	<p class="au_deposit">{$lang.au_deposit}：{$auction.formated_deposit}</p>
+                <!-- {/if} --> 
+            	<div style="clear:both"></div>
+                <!-- {if $auction.status_no eq 0} 未开始 --> 
+            	<p>{$lang.au_pre_start}</p>
+            	<!-- {elseif $auction.status_no eq 1} 进行中 --> 
+            	<p><font class="f4">{$lang.au_under_way}<span id="leftTime">{$lang.please_waiting}</span></font></p>
+            	<!-- {else} 已结束 --> 
+            	<!-- {if $auction.is_winner} --> 
+                <p style="padding-bottom:20px"><span class="f_red">{$lang.au_is_winner}</span>
+            	<input name="buy" type="submit" class="bnt_blue_1" value="{$lang.button_buy}" />
+            	<input name="act" type="hidden" value="buy" />
+            	<input name="id" type="hidden" value="{$auction.act_id}" />
+            	<!-- {else} --> 
+            	{$lang.au_finished}，
+                <!-- {if $smarty.session.user_id} -->
+                {$lang.au_final_bid_not_you}
+                <!-- {else} -->
+                {$lang.au_buy_after_login}，{$lang.au_final_unlogin}
+            	<!-- {/if} --> 
+                </p>
+            	<!-- {/if} --> 
+            	<!-- {/if} -->
+          	  </form>
+            </div>
+        	<div class="" id="au-key">
+              <div class="a-key" id="bid-info">
+            	<div class="quantity-form" id="quantityFormId">
+                  <form name="theForm" action="auction.php" method="post">
+                	{$lang.au_i_want_bid}：
+                	<input name="price" type="text" class="inputBg" size="8"/>
+                	<input name="bid" type="submit" class="bnt_blue" value="{$lang.button_bid}" />
+                	<input name="act" type="hidden" value="bid" />
+                	<input name="id" type="hidden" value="{$auction.act_id}" />
+                	<input name="act_count" type="hidden" value="{$auction_log_count}" />
+                	<br />
+              	</form>
+              </div>
+            <div class="btns"><a class="btn-bid" id="buy-btn" href="#"></a></div>
+            <div class="auc-infos"><span id="checkLast8BidRecords">【点击查看（共{$auction_log_count}次出价）】<b class="icon-tria"></b></span></div>
+            <div class="auctioninfo">
+              <div class="tb-void">
+                <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
+                      <tr>
+                    <th align="center" bgcolor="#ffffff">{$lang.au_bid_user}</th>
+                    <th align="center" bgcolor="#ffffff">{$lang.au_bid_price}</th>
+                    <th align="center" bgcolor="#ffffff">{$lang.au_bid_time}</th>
+                  </tr>
+                      <style type="text/css">
+	 				  .tb-void table .oushu td{background:#fff;}
+	  				  .tb-void table .jishu td{background:#F9F9F9;}
+	  				  </style>
+                      <!-- {foreach from=$auction_log item=log name=fe_bid_log} -->
+                      <tr class="oushu {if $smarty.foreach.fe_bid_log.iteration %2 == 1}jishu{/if}">
+                    <td align="center">{$log.user_name}</td>
+                    <td align="center">{$log.formated_bid_price}</td>
+                    <td align="center">{$log.bid_time}</td>
+                  </tr>
+                      <!-- {foreachelse} -->
+                      <tr>
+                    <td colspan="4" align="center" bgcolor="#ffffff">{$lang.no_bid_log}</td>
+                  </tr>
+                      <!-- {/foreach} -->
+                    </table>
+              </div>
+                </div>
+          </div>
+            </div>
+      </div>
+        </div>
+    <!-- #BeginLibraryItem "/library/auction_process.lbi" --><!-- #EndLibraryItem -->
+    <!-- #BeginLibraryItem "/library/auction_jieshao.lbi" --><!-- #EndLibraryItem --> 
+  </div>
+  <div style="height:20px;line-height:20px;clear:both"></div>
+<!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem --> 
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+</div>
+</body>
+<script type="text/javascript">
+    $(function(){
+        // checkBidRecordsAll MORE
+        $('.checkBidRecordsAll').livequery('click',function(){
+            loadBidRecord(getUrlParameter("dealId"),1,2147483647);
+        });
+
+        //checkLast8BidRecords
+        $('#checkLast8BidRecords').livequery('click',function(){
+            loadBidRecord(getUrlParameter("dealId"));
+
+            var parentAuKey = $(this).parents("#au-key");
+            if (parentAuKey.hasClass('select')) {
+                parentAuKey.removeClass();
+            } else {
+                parentAuKey.addClass('select');
+            }
+        });
+
+    })
+
+</script> 
+<script type="text/javascript">
+
+    $(function(){
+        $(".a-flex s,.a-flex dt a").hover(function () { 
+			$(this).siblings(".prompt").show() 
+			}, function () { 
+			$(this).siblings(".prompt").hide() 
+	});
+	})
+</script>
+﻿<script type="text/javascript" src="themes/68ecshopcom_360buy/js/lib-v1.js" ></script> 
+<script type="text/javascript">
+var gmt_end_time = "{$auction.gmt_end_time|default:0}";
+{foreach from=$lang.goods_js item=item key=key}
+var {$key} = "{$item}";
+var now_time = {$now_time};
+{/foreach}
+<!-- {literal} -->
+
+onload = function()
+{
+  try
+  {
+    onload_leftTime(now_time);
+  }
+  catch (e)
+  {}
+}
+<!-- {/literal} -->
+</script>
+</html>

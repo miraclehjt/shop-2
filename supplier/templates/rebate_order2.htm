@@ -1,0 +1,41 @@
+<form action="supplier_order.php" method="post" name="theForm" onsubmit="return check({$rebate.status})">
+	<table width="100%" cellpadding="3" cellspacing="1">
+	  <tr>
+	  <td>订单编号</td>
+	  <td>下单时间</td>
+	  <td>申请退货时间</td>
+	  <td>货款</td>
+	  <td>订单状态</td>
+	  <td>操作</td>
+	  </tr>
+	  {foreach from=$order_list item=order key=okey}
+	  <tr>
+	  <td>{$order.order_sn}</td>
+	  <td>{$order.short_order_time}</td>
+	  <td>{$order.short_back_add_time}</td>
+	  <td>{$order.total_fee}</td>
+	  <td>{$lang.bos[$order.status_back]}-{$lang.bps[$order.status_refund]}{$order.status_back_val}</td>
+	  <td><a href="order.php?act=info&order_id={$order.order_id}">查看原订单</a></td>
+	  </tr>
+	  {/foreach}
+	  <tr>
+	  <td align="right" nowrap="true" colspan="6">
+	  {include file="page.htm"}
+	  </td>
+	  </tr>
+	</table>
+</form>
+<script>
+/**
+ * 搜索订单
+ */
+function searchRebateOrder()
+{
+	listTable.filter['add_time_start'] = Utils.trim(document.forms['searchForm'].elements['add_time_start'].value);
+	listTable.filter['add_time_end'] = Utils.trim(document.forms['searchForm'].elements['add_time_end'].value);
+	listTable.filter['order_sn'] = Utils.trim(document.forms['searchForm'].elements['order_sn'].value);
+	listTable.filter['otype'] = Utils.trim({$smarty.get.otype});
+	listTable.filter['page'] = 1;
+	listTable.loadList();
+}
+</script>

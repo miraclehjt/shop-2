@@ -1,0 +1,33 @@
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<style>
+.weixin{width:280px;}
+.list{border-top: 1px solid #e1e1e1;}
+.list li{list-style: none;padding:10px;}
+.list li p{width:210px; float:left;}
+.f_img{position:relative;}
+.f_text{position:absolute; top:130px; left:23px;}
+</style>
+<div class="list-div" id="listDiv">
+	<div class="weixin">
+		{if $msgtype eq 'news'}
+    	{foreach item=item name=item from=$corn}
+		{if $smarty.foreach.item.index eq 0}
+		<div class="first">
+        	<p class="f_img"><img src="../{$item.file_url}" width="270" height="100" /></p>
+            <p class="f_text">{$item.title}</p>
+        </div>
+		{else}
+        <div class="list">
+        	<li>
+            	<p>{$item.title}</p><em><img src="../{$item.file_url}" width="50" height="50" align="absmiddle" /></em>
+            </li>
+        </div>
+		{/if}
+		{/foreach}
+		{else}
+		{$content.content}
+		{/if}
+    </div>
+</div>
+{include file="pagefooter.htm"}

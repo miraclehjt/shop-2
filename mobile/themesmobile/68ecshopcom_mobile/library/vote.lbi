@@ -1,0 +1,28 @@
+{if $vote}
+<div class="vote box">
+	<div class="hd"><h3>{$lang.vote}</h3><div class="extra"></div></div>
+	<div class="bd" id="vote">
+		<div id="vote_inner">
+		<form method="post" action="javascript:submitVote()" title="{foreach from=$vote item=title}{if $title.can_multi eq 0}{$lang.vote_tip_m}{else}{$lang.vote_tip_s}{/if}{/foreach}">
+			{foreach from=$vote item=title}
+			<h4>{$title.vote_name}</h4>
+			<p class="count">({$lang.vote_times}{$lang.colon}{$title.vote_count})</p>
+			{foreach from=$title.options item=item}
+			{if $title.can_multi eq 0}
+			<label><input type="checkbox" name="option_id" value="{$item.option_id}">{$item.option_name}<em>({$item.percent}%)</em></label>
+			{else}
+			<label><input type="radio" name="option_id" value="{$item.option_id}">{$item.option_name}<em>({$item.percent}%)</em></label>
+			{/if}
+			{/foreach}
+			<input type="hidden" name="type" value="{$title.can_multi}">
+			{/foreach}
+			<input type="hidden" name="id" value="{$vote_id}">
+			<div class="actions">
+				<input type="submit" value="{$lang.submit_vote}">
+				<input type="reset" value="{$lang.submit_reset}">
+			</div>
+		</form>
+		</div>
+	</div>
+</div>
+{/if}

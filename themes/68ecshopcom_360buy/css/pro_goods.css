@@ -1,0 +1,511 @@
+BODY {
+	BACKGROUND: #f8f8f8
+}
+input.date, input.number, .h-input, .f-text, .f-select {
+	BORDER: #ff932c 1px solid;
+	PADDING: 3px 4px;
+	FONT-SIZE: 14px;
+}
+.f-textarea {
+	BORDER-RIGHT: #c3c3c3 1px solid;
+	BORDER-TOP: #7c7c7c 1px solid;
+	FONT-SIZE: 14px;
+	BORDER-LEFT: #c3c3c3 1px solid;
+	PADDING: 3px 4px;
+	BORDER-BOTTOM: #ddd 1px solid
+}
+INPUT.disabled {
+	BORDER: #ccc 1px solid;
+	BACKGROUND: #eee;
+	CURSOR: default;
+	COLOR: #999;
+}
+.clr {
+	CLEAR: both;
+	DISPLAY: block;
+	FONT-SIZE: 0px;
+	OVERFLOW: hidden;
+	LINE-HEIGHT: 0;
+	HEIGHT: 0px
+}
+.box-split .box-top {
+	DISPLAY: none;
+	BACKGROUND: url(../images/tuangou/bg-box-split-702.gif) no-repeat 0px 0px
+}
+.box-split .box-content {
+	BORDER-RIGHT: #ddd 1px solid;
+	BORDER-TOP: #ddd 1px;
+	BORDER-LEFT: #ddd 1px solid;
+	BORDER-BOTTOM: #ddd 1px solid;
+	margin:0 auto
+}
+#deal-share .deal-share-top {
+	FLOAT: left;
+	_display: inline
+}
+#deal-share .deal-share-links {
+	PADDING-RIGHT: 0px;
+	PADDING-LEFT: 3px;
+	FLOAT: left;
+	PADDING-BOTTOM: 0px;
+	WIDTH: 437px;
+	PADDING-TOP: 20px;
+	HEIGHT: 23px
+}
+#deal-share A:hover {
+	COLOR: #0981be
+}
+#deal-share A IMG {
+	VERTICAL-ALIGN: -2px;
+	MARGIN-RIGHT: 2px
+}
+#deal-intro {
+	CLEAR: both;
+	BORDER-RIGHT: #ddd 1px solid;
+	PADDING-RIGHT: 22px;
+	BORDER-TOP: #c8c8c8 2px solid;
+	PADDING-LEFT: 22px;
+	BACKGROUND: #fff;
+	PADDING-BOTTOM: 15px;
+	BORDER-LEFT: #ddd 1px solid;
+	PADDING-TOP: 15px;
+	BORDER-BOTTOM: #ddd 1px solid
+}
+#deal-intro .main {
+	FONT-SIZE: 14px;
+	FLOAT: left;
+	WIDTH: 237px;
+	MARGIN-RIGHT: 15px;
+	FONT-FAMILY: Helvetica, arial, sans-serif;
+	_display: inline;
+	_margin-right: 10px
+}
+#deal-intro .side {
+	FLOAT: left;
+	WIDTH: 660px;
+	MARGIN-RIGHT: 0px;
+}
+#deal-intro .side .deal-buy-cover-img {
+	text-align: center;
+}
+#deal-intro .side .deal-buy-cover-img IMG {
+	WIDTH: 293px;
+	margin: 0 auto;
+}
+#deal-intro H1 {
+	PADDING-RIGHT: 0px;
+	PADDING-LEFT: 0px;
+	FONT-WEIGHT: 600;
+	FONT-SIZE: 16px;
+	PADDING-BOTTOM: 10px;
+	OVERFLOW: auto;
+	WORD-BREAK: normal;
+	LINE-HEIGHT: 28px;
+	PADDING-TOP: 0px;
+	WHITE-SPACE: normal;
+	WORD-WRAP: break-word
+}
+#deal-intro H1 SPAN {
+	FONT-SIZE: 18px;
+	COLOR: #cc0000
+}
+#deal-intro .deal-buy {
+	POSITION: relative
+}
+#deal-intro .deal-price {
+	BORDER-RIGHT: #ddd 1px solid;
+	BORDER-TOP: #ddd 1px solid;
+	Z-INDEX: 2;
+	BACKGROUND: #f5f5f5;
+	LEFT: 0px;
+	BORDER-LEFT: #ddd 1px solid;
+	WIDTH: 235px;
+	LINE-HEIGHT: 82px;
+	PADDING-TOP: 1px;
+	BORDER-BOTTOM: #ddd 1px;
+	POSITION: absolute;
+	HEIGHT: 121px;
+	TEXT-ALIGN: center;
+	_height: 123px
+}
+#deal-intro .deal-price .maiguang a{
+	display:block; background:url(../images/tuangou/maiguang.png) no-repeat;
+}
+#deal-intro .deal-price .tg_pic a{
+	display:block; background:url(../images/tuangou/tg_pic.png) no-repeat;
+}
+#deal-intro .deal-price SPAN {
+	Z-INDEX: 2;
+	LEFT: 60px;
+	COLOR: #fff;
+	POSITION: absolute;
+	TOP: 68px
+}
+#deal-intro .deal-price STRONG {
+	MARGIN-TOP: 15px;
+	PADDING-LEFT: 0px;
+	FONT-WEIGHT: 400;
+	FONT-SIZE: 40px;
+	COLOR: #e3383e;
+	LINE-HEIGHT: 41px;
+	FONT-FAMILY: "microsoft yahei";
+	HEIGHT: 41px;
+	display: inline-block
+}
+#t1 .deal-price STRONG.s1 {
+	MARGIN-TOP: 15px;
+	PADDING-LEFT: 30px;
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 40px;
+	BACKGROUND: url(../images/tuangou/new-price.png) no-repeat left center;
+	COLOR: #e3383e;
+	LINE-HEIGHT: 41px;
+	FONT-FAMILY: "microsoft yahei";
+	HEIGHT: 41px
+}
+#deal-intro .deal-price STRONG.s1 {
+	BACKGROUND: url(../images/tuangou/new-price1.png) no-repeat left center;
+	COLOR: #ccc
+}
+#deal-intro .deal-price SPAN A {
+	DISPLAY: block;
+	WIDTH: 117px;
+	HEIGHT: 51px
+}
+#deal-intro .deal-price SPAN A {
+	DISPLAY: block;
+	BACKGROUND: url(../images/tuangou/menu-bg1.png) no-repeat 0px -90px;
+	WIDTH: 117px;
+	HEIGHT: 51px
+}
+#deal-intro .deal-price SPAN A:hover {
+	BACKGROUND: url(../images/tuangou/menu-bg1.png) no-repeat -130px -90px
+}
+.deal-box {
+	BORDER-RIGHT: #d9d9d9 1px solid;
+	BORDER-TOP: #d9d9d9 1px solid;
+	MARGIN-TOP: 12px;
+	BACKGROUND: #fff;
+	BORDER-LEFT: #d9d9d9 1px solid;
+	BORDER-BOTTOM: #d9d9d9 1px solid
+}
+.deal-timeleft {
+	PADDING-RIGHT: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-BOTTOM: 7px;
+	PADDING-TOP: 7px
+}
+.deal-timeleft SPAN {
+	DISPLAY: block;
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 14px;
+	TEXT-ALIGN: center;
+	OVERFLOW: hidden!important
+}
+.deal-timeleft SPAN input{
+	width:0px; height:0px; margin:0; padding:0;overflow:hidden;
+}
+.deal-status {
+	PADDING-RIGHT: 0px;
+	PADDING-LEFT: 0px;
+	FONT-SIZE: 14px;
+	PADDING-BOTTOM: 7px;
+	PADDING-TOP: 7px;
+	TEXT-ALIGN: center
+}
+.deal-status SPAN.secc {
+	DISPLAY: block;
+	TEXT-ALIGN: center
+}
+.deal-status SPAN STRONG {
+	FONT-SIZE: 16px;
+	COLOR: #c00
+}
+#deal-stuff {
+	margin:10px auto;
+	border:1px #ddd solid
+}
+#deal-stuff .main {
+	DISPLAY: inline;
+	FLOAT: left;
+	FONT-SIZE: 14px;
+}
+#deal-stuff H2 {
+	FONT-SIZE: 16px;
+	BACKGROUND: #e43a3d;
+	COLOR: #fff;
+	TEXT-INDENT: 10px;
+	LINE-HEIGHT: 30px;
+	FONT-FAMILY: "microsoft yahei", arial, sans-serif;
+	HEIGHT: 30px;
+}
+.r {
+	BORDER-RIGHT: #ddd 1px solid;
+	BORDER-TOP: #ddd 1px solid;
+	FLOAT: left;
+	OVERFLOW: hidden;
+	BORDER-LEFT: #ddd 1px solid;
+	WIDTH: 228px;
+	BORDER-BOTTOM: #ddd 1px solid
+}
+.rm {
+	FLOAT: left;
+	WIDTH: 228px;
+	HEIGHT: auto
+}
+.rm .rmt {
+	PADDING-LEFT: 12px;
+	FONT-SIZE: 14px;
+	BACKGROUND: #f1f1f1;
+	WIDTH: 216px;
+	LINE-HEIGHT: 33px;
+	FONT-FAMILY: "microsoft yahei";
+	HEIGHT: 33px
+}
+.rm .rmc {
+	PADDING-RIGHT: 10px;
+	PADDING-LEFT: 10px;
+	BACKGROUND: #fff;
+	PADDING-BOTTOM: 10px;
+	WIDTH: 208px;
+	PADDING-TOP: 10px;
+	HEIGHT: auto
+}
+#hott .rmc .tcon {
+	BORDER-TOP: #ddd 1px solid;
+	MARGIN-TOP: 10px;
+	FLOAT: left;
+	WIDTH: 208px;
+	HEIGHT: auto
+}
+#hott .rmc .price {
+	PADDING-RIGHT: 6px;
+	PADDING-LEFT: 0px;
+	BACKGROUND: #f5f5f5;
+	FLOAT: left;
+	PADDING-BOTTOM: 0px;
+	WIDTH: 202px;
+	LINE-HEIGHT: 20px;
+	PADDING-TOP: 6px;
+	HEIGHT: 27px;
+	font-weight:normal; 
+	color:#666;
+}
+#hott .rmc .price SPAN {
+	PADDING-LEFT: 10px;
+	COLOR: #e3393c
+}
+#hott .rmc .price SPAN.qg {
+	PADDING-RIGHT: 0px;
+	PADDING-LEFT: 0px;
+	FONT-WEIGHT: normal;
+	BACKGROUND: url(../images/tuangou/tuan7.bg.png) -150px 0px;
+	FLOAT: right;
+	PADDING-BOTTOM: 0px;
+	WIDTH: 54px;
+	LINE-HEIGHT: 20px;
+	PADDING-TOP: 0px;
+	HEIGHT: 21px;
+	TEXT-ALIGN: center
+}
+#hott .rmc .price SPAN.qg A {
+	DISPLAY: block;
+	WIDTH: 54px;
+	COLOR: #fff;
+	HEIGHT: 20px;
+	TEXT-DECORATION: none
+}
+#hott .rmc .price SPAN.qg A:hover {
+	DISPLAY: block;
+	WIDTH: 54px;
+	COLOR: #fff;
+	HEIGHT: 20px;
+	TEXT-DECORATION: none
+}
+#hott .rmc .tcon2 {
+	MARGIN-TOP: 0px;
+	FLOAT: left;
+	WIDTH: 208px;
+	BORDER-TOP-STYLE: none;
+	BORDER-RIGHT-STYLE: none;
+	BORDER-LEFT-STYLE: none;
+	HEIGHT: auto;
+	BORDER-BOTTOM-STYLE: none
+}
+#sub .rmc .inp {
+	BACKGROUND: url(../images/tuangou/tuan7.bg.png) no-repeat 0px -199px;
+	FLOAT: left;
+	WIDTH: 208px;
+	POSITION: relative;
+	HEIGHT: 25px
+}
+#sub .rmc .inp A {
+	PADDING-LEFT: 18px
+}
+#sub .rmc .know {
+	PADDING-LEFT: 20px;
+	BACKGROUND: url(../images/tuangou/tuan.bg.png) no-repeat -299px 0px;
+	FLOAT: left;
+	WIDTH: 188px;
+	LINE-HEIGHT: 32px;
+	BORDER-BOTTOM: #cccccc 1px dashed;
+	HEIGHT: 32px
+}
+#bottom_tj {
+	PADDING-RIGHT: 5px;
+	PADDING-LEFT: 0px;
+	FONT-WEIGHT: 400;
+	FONT-SIZE: 16px;
+	BACKGROUND: #f0f0f0;
+	PADDING-BOTTOM: 0px;
+	COLOR: #e5383c;
+	LINE-HEIGHT: 40px;
+	PADDING-TOP: 4px;
+	HEIGHT: 40px;
+	TEXT-ALIGN: center
+}
+#bottom_tj SPAN.but {
+	PADDING-RIGHT: 3px;
+	MARGIN-TOP: 2px;
+	DISPLAY: block;
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 14px;
+	BACKGROUND: #E31939 ;
+	FLOAT: right;
+	WIDTH: 86px;
+	CURSOR: pointer;
+	COLOR: #fff;
+	LINE-HEIGHT: 30px;
+	HEIGHT: 30px;
+	TEXT-ALIGN: center;
+	color:#ffffff;
+}
+#bottom_tj SPAN.but A {
+	DISPLAY: block;
+	WIDTH: 86px;
+	COLOR: #fff;
+	HEIGHT: 30px;
+	TEXT-DECORATION: none
+}
+#bottom_tj SPAN.but A:hover {
+	DISPLAY: block;
+	WIDTH: 86px;
+	COLOR: #fff;
+	HEIGHT: 30px;
+	TEXT-DECORATION: none
+}
+#recommend1 {
+	BORDER-RIGHT: #ddd 1px solid;
+	PADDING-RIGHT: 10px;
+	BORDER-TOP: #ddd 1px solid;
+	PADDING-LEFT: 10px;
+	BACKGROUND: #fff;
+	PADDING-BOTTOM: 0px;
+	BORDER-LEFT: #ddd 1px solid;
+	PADDING-TOP: 33px;
+	BORDER-BOTTOM: #ddd 1px solid;
+}
+body.www {
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+}
+#bdw {
+	padding-top: 10px;
+}
+#miibeian {
+	color: #ddd;
+}
+#bd {
+	position: relative;
+	z-index: 1;
+	width: 1210px;
+	margin: 0 auto 0px;
+	padding-bottom: 20px;
+	padding-left: 0px;
+}
+#deal-stuff .main {
+	FONT-SIZE: 14px;
+	MARGIN: 10px 0px 10px 10px;
+	width: 950px;
+	overflow: hidden;
+}
+#deal-stuff .main .detaildesc {
+	width: 950px;
+	overflow: hidden;
+}
+#content {
+	float: left;
+	width: 970px;
+	_display: inline;
+	padding: 0;
+	margin:0px auto 10px;
+}
+.deal-discount {
+	BORDER-RIGHT: #d9d9d9 1px solid; BORDER-TOP: #d9d9d9 1px; MARGIN-TOP: 123px; BACKGROUND: url(../images/tuangou/zhekou.bg.png) #f5f5f5 no-repeat center center; BORDER-LEFT: #d9d9d9 1px solid; WIDTH: 100%; BORDER-BOTTOM: #d9d9d9 1px solid
+}
+.deal-discount TH {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; TEXT-ALIGN: center;FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #666; PADDING-TOP: 13px
+}
+.deal-discount TD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; TEXT-ALIGN: center;FONT-SIZE: 18px; PADDING-BOTTOM: 8px; WIDTH: 33.3%; COLOR: #E31939
+}
+#hott .rmc .pic IMG {
+	WIDTH: 127px; HEIGHT: 127px ; margin:0 auto;
+}
+#hott .rmc .pic{
+	text-align:center;
+}
+/*Éý¼¶v4ÕªÈ¡*/
+.comm_score {
+	border-left: 1px solid #ccc;
+	padding-left: 20px;
+}
+.comm_score dl {
+	float: left;
+	clear: both;
+	height: 12px;
+	line-height: 12px;
+	margin: 0 0 10px 0;
+}
+.comm_score dl dd.score1 {
+	text-align: left;
+	width: 211px;
+	height: 12px;
+	background: url(../images/comments/bg_score.gif) no-repeat 0 -11px;
+	margin-right: 10px;
+}
+.comm_score dl dt {
+	float: left;
+	height: 15px;
+	line-height: 15px;
+}
+.comm_score dl dd {
+	float: left;
+}
+.my_left {
+	background-image: url("../images/bg_title.png");
+	background-repeat: no-repeat;
+	color: #FFFFFF;
+	font-size: 14px;
+	font-weight: bold;
+	height: 24px;
+	margin: 0;
+	padding-left: 15px;
+	padding-top: 5px;
+	width: 244px;
+	overflow: hidden;
+	line-height: 25px;
+}
+.question_table{
+	border:1px solid #dddddd; border-top:2px solid #ccc; line-height:30px;margin-top:-2px;
+}
+.question_table .inputBorder{
+	width:200px;
+	padding:5px ;
+	border:1px #ddd solid;
+	height:15px;
+	line-height:15px;
+}	
+.zixunmt{
+	margin-top:10px;	
+}

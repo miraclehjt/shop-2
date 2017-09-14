@@ -1,0 +1,99 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $action eq 'message_list'} -->
+<div class="liuyan">
+    <div class="liuyan_list">
+     {if $message_list}		
+      {foreach from=$message_list item=message key=key name=message_list}
+      <dl>
+        <dt><span class="title">{$message.msg_type}</span>{$message.msg_title}</dt>
+        <dd>{$item.total_fee}</dd>
+        
+        <dd><span>{$message.msg_content}{if $message.message_img}<a href="data/feedbackimg/{$message.message_img}" target="_bank">{$lang.view_upload_file}</a>{/if}</span> <font>{$item.handler}</font></dd>
+        <span class="liuyan_time">{$message.msg_time}</span>
+        {if $message.re_msg_content}
+        <dt style=" margin-top:5px;"><span class="price">{$lang.shopman_reply}</span></dt>
+        <dd><span style="color:#F60">{$message.re_msg_content}</span></dd>
+        <span class="liuyan_time">{$message.re_msg_time}</span>
+        {/if}
+         
+      </dl>
+      {/foreach}
+      {include file='library/pages.lbi'}
+      
+      {else}
+      <div id="list_0_0" class="font12">{$lang.message_empty}</div>
+      {/if}
+      </div>
+     <div class="liuyandom"> 
+
+      <section class="innercontent1">
+        <form action="user.php" method="post" enctype="multipart/form-data" name="formMsg" onSubmit="return submitMsg()">
+          {if $order_info}
+            <div class="form_search"> {$lang.message_type}：<a href ="{$order_info.url}">{$order_info.order_sn}</a>
+              <input type="hidden" name="msg_type" value="5">
+              <input type="hidden" name="order_id" value="{$order_info.order_id}">
+            </div>
+          {else}
+          <div>
+            <div class="form_search"><span>{$lang.message_type}：</span>
+            <div class="anniu">
+            <ul>
+            <li class="on">
+              <label for="msg_type0">
+                <input type="radio" name="msg_type" value="0" checked="checked" class="radio" id="msg_type0">
+                {$lang.type[0]}</label>
+                </li>
+                <li>
+              <label for="msg_type1">
+                <input type="radio" name="msg_type" value="1" class="radio" id="msg_type1">
+                {$lang.type[1]}</label>
+                </li>
+                <li>
+              <label for="msg_type2">
+                <input type="radio" name="msg_type" value="2" class="radio" id="msg_type2">
+                {$lang.type[2]}</label>
+                </li>
+                <li>
+              <label for="msg_type3">
+                <input type="radio" name="msg_type" value="3" class="radio" id="msg_type3">
+                {$lang.type[3]}</label>
+                </li>
+                <li>
+              <label for="msg_type4">
+                <input type="radio" name="msg_type" value="4" class="radio" id="msg_type4">
+                {$lang.type[4]}</label>
+                </li>
+                </ul>
+                </div>
+            </div>
+          </div>
+          {/if}
+          <label for="msg_title">
+          <div class="field_else">
+          <span>留言主题：</span>
+              <input type="text" name="msg_title" id="msg_title" placeholder="*{$lang.message_title}"/>
+          </div>
+          </label>
+          <div class="field_else">
+              <label for="msg_content"> 
+              <span>{$lang.message_content}：</span>
+               <textarea name="msg_content" id="msg_content" style="height:100px;"></textarea>
+              </label>
+          </div>
+          <div style=" padding-bottom:10px;">
+            <input type="submit" value="{$lang.submit_message}" class="btn_big1"/>
+          </div>
+          <input type="hidden" name="act" value="act_add_message">
+        </form>
+      </section>
+      </div>
+</div>
+<!-- {/if} -->
+<!--按钮js-->
+    <script>
+    $('.anniu ul li').click(function(){
+	$(this).find("input").attr("checked","checked");
+	$('.anniu ul li').removeClass("on");
+	$(this).addClass("on");
+	})
+    </script>

@@ -1,0 +1,39 @@
+<div class='ub p-l-r2 bg-color-w' style='overflow-x: scroll' id='cat_type_box'>
+  <div class='cat_type selected ulev-1 _tab' tab_key='0' id='tab_0'>全部</div>
+  <!--{foreach from=$categories item=cat name=categories}-->
+  <div class='cat_type ulev-1 _tab' tab_key='{$cat.id}' id='tab_{$cat.id}'>{$cat.name|escape:html}</div>
+  <!-- {/foreach} --> 
+</div>
+<div class='brand_box m-top3 bg-color-w ubt border-faxian _tab_content' id='tab_content_0'> 
+  <!-- {if $brand_list} --> 
+  <!-- {foreach from=$brand_list item=brand_data} -->
+  <div class="brand-div ubb ubr border-faxian ub-ver ub ub-ac ub-pc brand" brand_id="{$brand_data.brand_id}">
+    <div class="brand-logo ub-img" style="background-image:url({$url}data/brandlogo/{$brand_data.brand_logo})"></div>
+    <div class="ulev-1 m-top1 f-color-6 l-h-3">{$brand_data.brand_name|escape:html}</div>
+  </div>
+  <!-- {/foreach} --> 
+  <!-- {else} -->
+  <div class="ulev-9 p-all5 f-color-6">找不到任何品牌</div>
+  <!-- {/if} -->
+  <div class="clear1"></div>
+</div>
+
+<!--{foreach from=$categories item=cat}-->
+<?php 
+				$GLOBALS['smarty']->assign('get_cat_brands', get_cat_brands($GLOBALS['smarty']->_var['cat']['id']));
+		?>
+<div class='brand_box bg-color-w ubt border-faxian _tab_content uhide' id='tab_content_{$cat.id}'> 
+  <!-- {if $get_cat_brands} --> 
+  <!--{foreach from=$get_cat_brands item=brand_cat}-->
+  <div class="brand-div ubb ubr border-faxian ub-ver ub ub-ac ub-pc brand" brand_id="{$brand_cat.brand_id}">
+    <div class="brand-logo ub-img" style="background-image:url({$url}data/brandlogo/{$brand_cat.logo})"></div>
+    <div class="ulev-1 m-top1 f-color-6 l-h-3">{$brand_cat.name}</div>
+  </div>
+  <!-- {/foreach} --> 
+  <!-- {else} -->
+  <div class="ulev-9 p-all5 f-color-6">找不到任何品牌</div>
+  <!-- {/if} -->
+  <div class="clear1"></div>
+</div>
+
+<!-- {/foreach} --> 

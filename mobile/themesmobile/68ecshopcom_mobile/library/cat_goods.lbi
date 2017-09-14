@@ -1,0 +1,35 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<?php
+ $GLOBALS['smarty']->assign('thiscid1',get_wap_parent_id_tree($GLOBALS['smarty']->_var['goods_cat']['id']));
+?>
+<section class="index_floor_lou">
+    <div class="floor_body ">
+        <h2>
+            <em></em>{$goods_cat.name|escape:html}<div class="geng"><a href="{$goods_cat.url}" >更多</a> <span></span></div>
+         </h2>
+        <ul>
+            <!--{foreach from=$cat_goods item=goods name=name}-->
+            <li>
+                <a href="{$goods.url}" title="{$goods.name|escape:html}">
+                <div class="index_pro"> 
+                    <div class="products_kuang">
+                        <img src="{$option.static_path}{$goods.thumb}"></div>
+                    <div class="goods_name">{$goods.name|truncate:17}</div>
+                    <div class="price">
+                            <a href="javascript:addToCart({$goods.id})" class="btns">
+                            <img src="themesmobile/68ecshopcom_mobile/images/index_flow.png"></a>
+                     <span class="price_pro">
+                            {if $goods.promote_price}{$goods.promote_price}{else}{$goods.shop_price}{/if}
+                        </span>
+                    </div>
+                    </div>
+                </a>
+            </li>
+            {/foreach}
+        </ul>
+    </div>
+</section>
+
+
+
+

@@ -1,0 +1,84 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript">  
+        $(document).ready(function () {  
+            var ps = $("#div_pro").position();  
+            $("#float_box").css("position", "absolute");  
+            $("#float_box").css("left", ps.left + -50); //距离左边距  
+            $("#float_box").css("top", ps.top + 30); //距离上边距  
+            $("#div_pro").mouseenter(function () {
+                $("#float_box").show();  
+           });  
+           $("#float_box").mouseleave(function () { 
+                $("#float_box").hide();  
+            });  
+        })  
+</script>
+<div class="jShopHeader">
+  <div class="jFixWidth">
+    <div class="jShopHeaderArea">
+      <div class="j-shopHeader">
+        <div id="div_pro" class="jLogo" > <a href="supplier.php?suppId={$smarty.get.suppId}">{$shopname}</a> </div>
+        <div class="jRating">
+          <div id="float_box"  style="display: none;"  class="jRatingTotal">
+            {include file='library/ghs_info.lbi'} 
+          </div>
+        </div>
+      </div>
+      <div class="jAttention" onclick="guanzhu({$smarty.get.suppId})">
+                <a><span>加关注</span></a>
+            </div>
+      <div title="{$shopname}在线客服" id="im" class="im jIm"><b>
+       <!-- QQ 号码 {foreach from=$qq item=im} -->
+      <!-- {if $im} -->
+      <a href="http://wpa.qq.com/msgrd?V=1&amp;uin={$im}&amp;Site={$shop_name}&amp;Menu=yes" target="_blank" title="{$im}">在线客服</a>
+       <!-- {/if} -->
+      <!-- {/foreach} 结束QQ号码 -->
+      </b></div>
+      <div class="ghs_score"><span>好评</span><em>{if $haoping gt 0}{$haoping}%{else}100%{/if}</em></div>
+      <div class="ghs_score"><span>描述</span><em>{if $c_rank gt 0}{$c_rank}{else}5{/if}</em></div>
+      <div class="ghs_score"><span>服务</span><em>{if $serv_rank gt 0}{$serv_rank}{else}5{/if}</em></div>
+      <div class="ghs_score"><span>物流</span><em>{if $shipp_rank gt 0}{$shipp_rank}{else}5{/if}</em></div>
+    </div>
+  </div>
+</div>
+<div class="ghs_body">
+  <div class="ghs_content1"> {$shopheader} </div>
+  <div class="ghs_title" style="background:{$navcolor};">
+    <div class="ghs_content">
+      <div class="fl" style="width:840px;"> 
+        <a href="supplier.php?suppId={$smarty.get.suppId}" class="cur" style="background:{$navcolor}">店铺首页</a> 
+        <!--{foreach from=$navigator_list_supplier.middle item=mall_get_navigator name=mall_get_navigator}--> 
+        <A title="{$mall_get_navigator.name|escape:html}" href="{$mall_get_navigator.url}" {if $mall_get_navigator.opennew}target="_blank"{/if}>{$mall_get_navigator.name|escape:html}</A>
+        <!--{/foreach}--> 
+      </div>
+      <div class="su_Search fr" style="width:355px;">
+        <form id="searchForm" name="searchForm" method="get" action="/supplier.php">
+          <input type='hidden' name='go' value='search'>
+          <input type='hidden' name='suppId' value='{$smarty.request.suppId}'>
+          <input class="fl" style="width:180px;" name="keywords" type="text" id="su_keyword" value='{$smarty.request.keywords|default:请输入你要查找的商品}' onClick="javascript:this.value='';"/>
+          {if $search_price }
+          <select name="price" class="su-select" style="float:left;border:1px #CCCCCC solid">
+            
+                {foreach from=$search_price item=region key=key}
+                  
+            <option class="su-option" value="{$key}" {if $smarty.request.price eq $key}selected{/if}>{$region}</option>
+            
+                {/foreach}
+        
+          </select>
+          {/if}
+          <input class="fr"  type="submit" id="btsearch" value="搜 索" style="background:#fff;border:none;color:{$navcolor}"/>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+function guanzhu(sid){
+	Ajax.call('supplier.php', 'go=other&act=add_guanzhu&suppId=' + sid, selcartResponse, 'GET', 'JSON');
+}
+
+function selcartResponse(result){
+	alert(result.info);
+}
+</script>

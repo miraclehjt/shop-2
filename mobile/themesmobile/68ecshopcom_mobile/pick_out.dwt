@@ -1,0 +1,115 @@
+
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>{$page_title}</title>
+	<meta name="Keywords" content="{$keywords}" />
+	<meta name="Description" content="{$description}" />
+    <script src="themesmobile/68ecshopcom_mobile/js/modernizr.js"></script>
+<link rel="shortcut icon" href="themesmobile/68ecshopcom_mobile/img/favicon.png">
+	<link rel="apple-touch-icon-precomposed" href="themesmobile/68ecshopcom_mobile/img/website_icon.png">
+	<link rel="stylesheet" href="themesmobile/68ecshopcom_mobile/css/style.css">
+
+{insert_scripts files='common.js,utils.js'}
+
+	</head>
+<body id="page_goods">
+<div id="container">
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+
+<div id="main"><div class="wrapper">
+	{include file='library/ur_here.lbi'}
+	<div class="col_sub">
+	{$render.before_col_sub}
+	<!-- TemplateBeginEditable name="侧栏上方" --><!-- TemplateEndEditable -->
+		{if $picks.1}
+		<div class="your_choose box">
+			<div class="hd"><h3>{$lang.your_choose}</h3><div class="extra"></div></div>
+			<div class="bd">
+					{foreach from=$picks item=pick name=picks}
+					<p{if $smarty.foreach.picks.last} class="action"{/if}><a href="{$pick.url}">{$pick.name}</a></p>
+					{/foreach}
+			</div>
+		</div>
+		{/if}
+		{if $cat_list}
+		<div class="po_cat_list box">
+			<div class="hd"><h3>{$lang.goods_category}</h3><div class="extra"></div></div>
+			<div class="bd">
+				<ul class="text_list">
+					{foreach from=$cat_list item=cat name=cat_list}
+					<li{if $smarty.foreach.cat_list.first} class="first"{/if}>
+						<a href="{$cat.url}">{$cat.cat_name|escape:html}{if $cat.goods_num}<sup>{$cat.goods_num}</sup>{/if}</a>
+					</li>
+					{/foreach}
+				</ul>
+			</div>
+		</div>
+		{/if}
+		{if $brand_list}
+		<div class="brands box">
+			<div class="hd"><h3>{$lang.brands_list}</h3><div class="extra"></div></div>
+			<div class="bd">
+				<ul>
+					{foreach from=$brand_list item=brand name=brand_foreach}
+					{if $brand.brand_logo} 
+					<li class="image{if $smarty.foreach.brand_foreach.first} first{/if}"><a href="{$brand.url}" title="{$brand.brand_name|escape:html}"><img src="../../{$option.static_path}data/brandlogo/{$brand.brand_logo}" alt="{$brand.brand_name|escape:html}"/></a></li>
+					{else}
+					<li class="text{if $smarty.foreach.brand_foreach.first} first{/if}"><a href="{$brand.url}" title="{$brand.brand_name|escape:html}">{$brand.brand_name}</a></li>
+					{/if}
+					{/foreach}
+				</ul>
+			</div>
+		</div>
+		{/if}
+	<!-- TemplateBeginEditable name="侧栏下方" --><!-- TemplateEndEditable -->
+	{$render.after_col_sub}
+	</div>
+	<div class="col_main">
+	
+	<!-- TemplateBeginEditable name="主栏上方" --><!-- TemplateEndEditable -->
+		<div class="pick_out box">
+			<div class="hd"><h3>{$lang.pick_out}</h3><div class="extra"></div></div>
+			<div class="bd">
+				{foreach from=$condition item=caption}
+				<dl class="table">
+					<dt class="title">{$caption.name}</dt>
+					{foreach from=$caption.cat item=cat}
+					<dt>{$cat.cat_name}</dt>
+					<dd class="{cycle values="even,odd"}">{foreach from = $cat.list item=list}<a href="{$list.url}">{$list.name}</a>{/foreach}</dd>
+					{/foreach}
+				</dl>
+				{/foreach}
+			</div>
+		</div>
+		<div class="box">
+			<div class="hd">
+				<h3>{$lang.search_result}({$count})</h3>
+				<div class="extra">{if $count gt 4}<a href="{$url}" title="{$lang.more}{$lang.search_result}" class="more">{$lang.more}</a>{/if}</div>
+			</div>
+			<div class="bd product_list">
+				<ul>
+					{foreach from=$pickout_goods item=goods name=pickout_goods}
+					<li data="id:'{$goods.goods_id}'">
+						<a href="{$goods.url}" title="{$goods.name|escape:html}" class="photo"><img src="{$option.static_path}{$goods.thumb}" alt="{$goods.name|escape:html}"/></a>
+						<a href="{$goods.url}" title="{$goods.name|escape:html}" class="name">{$goods.name}</a>
+						<span class="price">{if $goods.promote_price}<span class="promo"><em>{$goods.promote_price}</em></span>{else}{$goods.shop_price}{/if}</span>
+					</li>
+					{/foreach}
+				</ul>
+			</div>
+		</div>
+	<!-- TemplateBeginEditable name="主栏下方" --><!-- TemplateEndEditable -->
+	
+	</div>
+</div></div>
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+
+
+</div>
+</body>
+
+</html>

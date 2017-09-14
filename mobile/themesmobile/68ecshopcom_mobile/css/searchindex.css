@@ -1,0 +1,9 @@
+/*搜索*/
+
+.h-mid h6{font-size: 14px}
+.search_box { position: relative; top: 0.4rem; width: 100%; background: #fff; border-radius: 8px; text-align: center; }
+.search_box input { width: 70%; height: 3rem; line-height: normal; border: none; font-size: 0.8rem }
+.search_box button { position: absolute; top: 0.6rem; right: 0.8rem; width: 1.8rem; height: 1.8rem; border: none; background: url(../images/xin/icosousuo.png) no-repeat 50% 50%; -webkit-background-size: 1.2rem 1.2rem; -moz-background-size: 1.2rem 1.2rem; background-size: 1.8rem 1.8rem; }
+.search_hide .search_title { height: 3rem; background: #FC6500; position: relative; text-align: center; font-size: 16px; font-family: "微软雅黑"; color: #FFF; line-height: 3rem; }
+.search_hide .search_title .close { width: 3rem; height: 3rem; display: block; overflow: hidden; text-indent: -6.6rem; float: right; background: url(../images/close.png) no-repeat 50% 50%; -webkit-background-size: 1.0rem 1.0rem; -moz-background-size: 1.0rem 1.0rem; background-size: 1.0rem 1.0rem; }
+.search_hide .search_body { padding: 0.2rem 0.6rem; height: 4rem; position: relative }

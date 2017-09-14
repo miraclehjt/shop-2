@@ -1,0 +1,82 @@
+<!-- {if $is_full_page eq 1} -->
+<!--筛选弹出层-->
+<div id="filter_container" class=" mfp-hide bc-grey">
+  <div class="screen bg-color-w p-l-r2" style="position:relative; padding-bottom:3.5em; padding-top:0.8em; overflow-y:scroll; height:90%">
+      <!--{foreach from=$promote_category item=cat name=promote_category}-->
+        <div class="screen_name2 f-color-zi icon-up ubt border-faixan _fold expand" fold_key="category_{$smarty.foreach.promote_category.iteration}">{$cat.name}</div>
+        <div class="screen_name3_div" id="category_{$smarty.foreach.promote_category.iteration}">
+          <div class="screen_name3 f-color-6  _checkbox" radio="true" value='{$cat.id}' name='category' id="cat_{$cat.id}">全部</div>
+          <!--{foreach from=$cat.cat_id item=child}-->
+          <div class="screen_name3 f-color-6  _checkbox" radio="true" value='{$child.id}' name='category' id="cat_{$child.id}">{$child.name}</div>
+          <!--{/foreach}-->
+          <div class="clear1"></div>
+        </div>
+      <!-- {/foreach} --> 
+  <div class="screen_btm p-fixed-btm ub ubt border-hui yy-top">
+      <div class="ub-f1"></div>
+      <div class="ub-pe btn-red1 ub ub-ac" id='confirm_select_button'>
+        <div>完成</div>
+      </div>
+    </div>
+</div>
+</div>
+<div class="p-fixed">
+  <div class="ub ub-ac top-glist bg-color-w f-color-zi ubb border-hui p-t-b4">
+    <div class="ub ub-ac ub-pc sort ub-f1" sort="goods_id" order="{if $pager.sort == 'goods_id'}{$pager.order}{else}ASC{/if}">
+      <div class="ulev-1 {if $pager.sort == 'goods_id'}f-color-red{/if}"> 上架 </div>
+      <div class="ub-img uwh-bus1 t-bus-icon m-l3 {if $pager.sort == 'goods_id'}{$pager.order}{/if}"></div>
+    </div>
+    <div class="ub ub-ac ub-pc sort ub-f1" sort="salenum" order="{if $pager.sort == 'salenum'}{$pager.order}{else}ASC{/if}">
+      <div class="ulev-1 {if $pager.sort == 'salenum'}f-color-red{/if}"> 销量 </div>
+      <div class="ub-img uwh-bus1 t-bus-icon m-l3 {if $pager.sort == 'salenum'}{$pager.order}{/if}"></div>
+    </div>
+	<div class="ub ub-ac ub-pc sort ub-f1" sort="goods_price" order="{if $pager.sort == 'goods_price'}{$pager.order}{else}ASC{/if}">
+      <div class="ulev-1 {if $pager.sort == 'goods_price'}f-color-red{/if}"> 价格 </div>
+      <div class="ub-img uwh-bus1 t-bus-icon m-l3 {if $pager.sort == 'goods_price'}{$pager.order}{/if}"></div>
+    </div>
+	<div class="ub ub-ac ub-pc sort ub-f1" sort="last_update" order="{if $pager.sort == 'last_update'}{$pager.order}{else}ASC{/if}">
+      <div class="ulev-1 {if $pager.sort == 'last_update'}f-color-red{/if}"> 更新 </div>
+      <div class="ub-img uwh-bus1 t-bus-icon m-l3 {if $pager.sort == 'last_update'}{$pager.order}{/if}"></div>
+    </div>
+	<div class="ub ub-ac ub-pc sort ub-f1" sort="zhekou" order="{if $pager.sort == 'zhekou'}{$pager.order}{else}ASC{/if}">
+      <div class="ulev-1 {if $pager.sort == 'zhekou'}f-color-red{/if}"> 折扣 </div>
+      <div class="ub-img uwh-bus1 t-bus-icon m-l3 {if $pager.sort == 'zhekou'}{$pager.order}{/if}"></div>
+    </div>
+    <div class="ub ub-ac ub-pc ubl border-hui ub-f1" id='filter_button'>
+      <div class="ulev-1 f-color-6"> 筛选 </div>
+    </div>
+  </div>
+</div>
+<div class="m-top7" id='goods_list_container'> 
+  <!-- {/if} --> 
+  <!--{foreach from=$goods_list item=goods name=name key=key}--> 
+  <!--{if $goods.goods_name neq ''}-->
+  <div class="ub bg-color-w m-btm1 p-all4 ubb border-hui goods" goods_id='{$goods.goods_id}'>
+    <div class="h-w-9 goods-img"><img src="{$url}{$goods.goods_thumb}"/> </div>
+    <div class="ub-ver ub-f1 m-l1 goods-img ub">
+    	<div class="ub-f1">
+      <div class="f-color-zi text-change"> <font class="ulev-1">{$goods.goods_name}</font> </div>
+      <div class="ub ub-ac p-t-b4">
+        <div class="duihuak ub-img ub ub-pc">
+          <div class="ulev-2 bc-text-head m-top4"> {$goods.zhekou}折 </div>
+        </div>
+        <div class="ulev-0 f-color-red m-l2"> 
+          {$goods.formatted_goods_price}
+        </div>
+        <div class="ulev-5 sc-text f-line-through m-l2"> {$goods.formatted_shop_price} </div>
+      </div>
+      </div>
+      <div class="ub ub-ac m-top1 ub-ae ubt border-hui p-t1">
+        <div class="f-color-6 ulev-1 ub-f1"> 已售<span class="f-color-red">{$goods.salenum}</span>件 </div>
+        <div class="ulev-1 ub-pe ub-ac ub">
+          <div class="ub-img h-w-3 pro_time"></div>
+          <span class="settime f-color-red" endTime="{$goods.promote_end_date}"></span> </div>
+      </div>
+    </div>
+  </div>
+  <!-- {/if} --> 
+  <!-- {/foreach} --> 
+  <!-- {if $is_full_page eq 1} --> 
+</div>
+<div id='scroll_to_top' class="ub-img"></div>
+<!-- {/if} -->

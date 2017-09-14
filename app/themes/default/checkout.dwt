@@ -1,0 +1,100 @@
+<div class="ub bc-blue p-all4" id='address' 
+  {if $consignee} address_id="{$consignee.address_id}"{else}address_id=""{/if}> {if $consignee}
+  <div class="ub-img address-icon mar-ar1 h-w-6"> </div>
+  <div class="ub ub-f1" id="edit_address_button">
+    <div class="ub ub-f1 ub-ver t-wh bc-text-head">
+      <div class="ub ulev-9 p-r1">
+        <div class="ulev-app2 ub-f1"> 收货人：{$consignee.consignee} </div>
+        <div class="ulev-app2 ub-pe ufm1"> {$consignee.mobile} </div>
+      </div>
+      <div class="ulev-1 umar-t1"> 地址：{$consignee.address_short_name} </div>
+      <div class="ub-pe" style="display:none">
+        <div class="bc-head2 border-white"> 点此去完善收货地址吧 </div>
+      </div>
+    </div>
+    <div class="ub ub-ac ub-pc">
+      <div class="ub-img edit-blue h-w-6"> </div>
+    </div>
+  </div>
+  {else}
+  <div id="edit_address_button"> 点此去完善收货地址吧 </div>
+  {/if} </div>
+{foreach from=$goods_list item=goodsinfo name=glist key=key}
+<div class="bg-color-w supplier_box" suppid="{$key}" seller="{$goodsinfo.goodlist[0].seller}" id="supplier_box_{$key}">
+  <div class="m-top3 p-all3 ub ub-ac ubb border-faxian _fold expand" fold_key="goods_list_{$key}" style="padding-right:0px;">
+    <div class="h-w-5 ub-img shop-icon"> </div>
+    <div class="f-color-6 ulev-9 ub-f1 ut-m m-l2"> {$goodsinfo.goodlist[0].seller} </div>
+	<div class="sc-text ulev-1-4 umar-r fold_indicator fa "> </div>
+  </div>
+  <div class="ub-ver" id="goods_list_{$key}">
+  {foreach from=$goodsinfo.goodlist item=goods name=name}
+  <div class="ub bc-grey p-all2 m-btm2 goods" goods_id="{$goods.goods_id}">
+    <div class="h-w-7 mar-ar1 goods-img"> <img src="{$url}{$goods.goods_thumb}"> </div>
+    <div class="ub-f1 ulev-1 mar-ar1 f-color-zi l-h-2">
+      <div class="l-h-1">{$goods.goods_name}</div>
+      <div class="sc-text-hui ulev-1"> {$goods.goods_attr|nl2br} </div>
+    </div>
+    <div class="ub ub-ver ub-ae">
+      <div class="f-color-red ufm1 ulev-2"> {$goods.formated_goods_price} </div>
+      <div class="sc-text-hui ufm1 ulev-2"> x{$goods.goods_number} </div>
+    </div>
+  </div>
+  {/foreach} 
+  </div>
+  <!-- 店铺优惠券和积分 --> 
+  {include file='library/order_supplier_bonus.lib'}
+  {include file='library/order_supplier_shipping.lib'} </div>
+{/foreach} 
+{include file='library/order_delivery_time.lib'} 
+{include file='library/order_invoice.lib'}
+{include file='library/order_how_oos.lib'}
+<div class="m-top3 bg-color-w">
+  <div class="uinn-eo5 ub ub-ac ubb border-hui _fold" fold_key="postscript_box">
+    <div class="ub-f1 f-color-zi ulev-9 p-all5"> 订单附言 </div>
+    <div class="sc-text ulev-1-4 umar-r fold_indicator fa "> </div>
+  </div>
+  <div class="ub uhide" id='postscript_box'>
+    <textarea placeholder="订单附言" type="text" class="ulev-1 txtare-class ub-f1 m-all2" id='postscript'></textarea>
+</div>
+</div>
+{if $allow_use_surplus}
+<div class="m-top3 bg-color-w">
+  <div class="uinn-eo5 ub ub-ac ubb border-hui">
+    <div class="ub-f1 f-color-zi ulev-9 p-all5"> 使用余额 </div>
+    <div id='surplus_switch' class="switch uba switch-mini ulev-1 mar-ar1 border-faxian m-top4 _switch" data-checked="false">
+      <div class="switch-btn sc-bg-active"> </div>
+    </div>
+  </div>
+  <div id='surplus_box' class='uhide'>
+    <div class="p-all5 ulev-1 f-color-6 ub ub-ac">
+      <input type='text' id='surplus' class="text-class ub-f1 ulev-1" placeholder="请输入余额" />
+      <div class="ub-pe m-l1">您当前的可用余额为:<span class="your_surplus f-color-red">{$your_surplus|default:0} </span></div>
+    </div>
+  </div>
+</div>
+{/if}
+<div class="bg-color-w m-top3" id='paymen_container'>
+  <div class="uinn-eo5 ub ub-ac ubb border-hui _fold expand" fold_key="payment_box" value_key='payment_item' id='fold_payment'>
+    <div class="ub-f1 f-color-zi ulev-9 p-all5"> 支付方式 </div>
+    <div class="ub-pe xuanzhong ulev-1 uhide selected_indicator" id='selected_payment'></div>
+    <div class="sc-text ulev-1-4 umar-r fold_indicator fa"> </div>
+  </div>
+  <div id='payment_box' class="p-l-r6 f-color-6"> 
+  {foreach from=$payment_list name="payment_list" item=payment}
+    <div class="ub ulev-1 ub-ac lis-checkout _checkbox checkbox_radio payment {if $payment.pay_code eq 'alipay'}checked{/if}" is_cod="{$payment.is_cod}" is_pickup="{$payment.is_pickup}" pay_code="{$payment.pay_code}" name="payment_item|{if $payment.pay_code neq 'alipay_bank' && $payment.pay_code neq 'cod' && $payment.pay_code neq 'pup'  && $payment.pay_code neq 'balance'}payment_other{else}payment{/if}" value="{$payment.pay_id}" {if $payment.pay_code eq 'alipay'}checked="true"{/if} radio="true" cancel="false" {if $cod_disabled and $payment.is_cod eq "1"}disabled="true"{/if}>{$payment.pay_name}</div>
+    {/foreach}
+	</div>
+</div>
+<div class="bg-color-w ulev-1 tx-r p-all5 l-h-2 f-color-zi ubt border-hui m-top3" id='order_total'> {include file='library/order_total.lib'} </div>
+<div class="ub p-b3"> </div>
+<div class="ub p-fixed-btm1 bg-color-w ubt border-hui yy-top" id='confirm_button'>
+  <div class="ub-f1 ub ub-ac p-r1">
+    <div class="ub-f1"> </div>
+    <div class="ub-pe"> <font class="f-color-zi ulev-1">应付款金额：</font> <font class="f-color-red ulev0" id='order_total_label'> {$total.amount_formated} </font> </div>
+  </div>
+  <div class="btn-red1 ub-pe"> 确认订单 </div>
+</div>
+<script>
+var surplus = '{$your_surplus|default:0}'
+var pay_balance_id = '{$pay_balance_id}'//保存余额支付的id做为js全局变量
+</script> 

@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link rel="alternate" type="application/rss+xml" title="RSS|{$page_title}" href="{$feed_url}" />
+{* 包含脚本文件 *}
+{insert_scripts files='common.js,global.js'}
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery.js" charset="utf-8"></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+</head>
+<body>
+<div id="site-nav"> 
+<!-- #BeginLibraryItem "/../68ecshopcom_360buy/library/page_shopheader.lbi" --><!-- #EndLibraryItem -->
+</div>
+<link href="themes/{$template_dir}/images/ghs/css/ghs_style.css" rel="stylesheet" type="text/css" />
+<link href="themes/{$template_dir}/images/ghs/css/ghs_category.css" rel="stylesheet" type="text/css" />
+<link href="themes/{$template_dir}/images/ghs/css/ghs_index.css" rel="stylesheet" type="text/css" />
+<!-- #BeginLibraryItem "/library/ghs_nav.lbi" --><!-- #EndLibraryItem -->
+<div class="ghs_content">
+  <div class="layout-container">
+    <div class="layout-main">
+      <div class="layout-area J-layout-area no-margin">
+        <div class="layout J-layout">
+          <div class="layout-one" name="main"> <!-- #BeginLibraryItem "/library/ghs_category.lbi" --><!-- #EndLibraryItem -->
+            <div class="fn-clear user_s20019-493268"> <!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem --> <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem --> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="blank "></div>
+<div style="height:0px; line-height:0px; clear:both;"></div>
+<!-- #BeginLibraryItem "/../68ecshopcom_360buy/library/page_shopfooter.lbi" --><!-- #EndLibraryItem -->
+<script type="text/javascript">
+<!--
+$(function(){
+  $("#allCategoryHeader").hide();
+  $("#allcate").hover(function(){
+    $("#allCategoryHeader").show();
+  },function(){
+
+    $("#allCategoryHeader").hide();
+
+    $("#allCategoryHeader").hover(function() {
+
+      $("#allCategoryHeader").show();
+
+    }, function() {
+      $("#allCategoryHeader").hide();
+    });
+  });
+});
+//-->
+</script>
+</body>
+</html>

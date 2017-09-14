@@ -1,0 +1,54 @@
+{include file="pageheader.htm"}
+
+{insert_scripts files="../js/utils.js,listtable.js"}
+
+<div class="list-div" id="listDiv">
+
+<table width="100%" cellspacing="1" cellpadding="2" id="list-table">
+
+  <tr>
+
+    <th>编号</th>
+
+	<th>菜单地址</th>
+
+    <th>跳转地址</th>
+
+    <th>访问次数</th>
+
+	<th>操作</th>
+
+  </tr>
+
+  {foreach item=item from=$oauth}
+
+  <tr>
+
+	<td>{$item.oid}</td>
+
+	<td>{$baseurl}mobile/weixin/oauth.php?id={id}&oid={$item.oid}</td>
+
+	<td>{$item.weburl}</td>
+
+	<td>{$item.click}</td>
+
+	<td>
+
+		<a href="weixin.php?act=oauth&oid={$item.oid}&t=add">修改</a>
+        <a href="weixin.php?act=oauth&oid={$item.oid}&t=delete">删除</a>
+
+	</td>
+
+  </tr>
+
+	{foreachelse}
+
+  <tr><td class="no-records" colspan="5">{$lang.no_records}</td></tr>
+
+  {/foreach}
+
+</table>
+
+</div>
+
+{include file="pagefooter.htm"}

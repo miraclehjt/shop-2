@@ -1,0 +1,36 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="m" id="sortlist" >
+  <div class="mc" id="cate"> 
+    <!--{foreach from=$categories1 item=cat name=cat}-->
+    <div class='item  <!--{if $current_cat_pr2_id eq $cat.id}-->current<!--{/if}-->' >
+      <h3 onclick="tab({$smarty.foreach.cat.index})" {if $smarty.foreach.cat.last}style="border:none"{/if}><b></b>{$cat.name|escape:html}</h3>
+      <ul style=" <!--{if $current_cat_pr2_id eq $cat.id}-->display:block;<!--{else}-->display:none;<!--{/if}-->">
+        <!--{foreach from=$cat.children item=child} name=child-->
+        <li><a href="{$child.url}"  {if $cat_id eq $child.id}class="curr"{/if}>{$child.name|escape:html}</a></li>
+        <!--{/foreach}-->
+        
+      </ul>
+    </div>
+    <!--{/foreach}--> 
+  </div>
+</div>
+<!--sortlist end--> 
+<script type="text/javascript">
+obj_h4 = document.getElementById("cate").getElementsByTagName("h3")
+obj_ul = document.getElementById("cate").getElementsByTagName("ul")
+obj_img = document.getElementById("cate").getElementsByTagName("div")
+function tab(id)
+{ 
+		if(obj_ul.item(id).style.display == "block")
+		{
+			obj_ul.item(id).style.display = "none"
+			obj_img.item(id).className = "item"
+			return false;
+		}
+		else(obj_ul.item(id).style.display == "none")
+		{
+			obj_ul.item(id).style.display = "block"
+			obj_img.item(id).className = "item current"
+		}
+}
+</script>

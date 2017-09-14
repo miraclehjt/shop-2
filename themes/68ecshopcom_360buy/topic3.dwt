@@ -1,0 +1,188 @@
+{* TitlePicWidth: 2 *}
+{* TitlePicHeight: 38 *}
+
+{* 说明：$title_pic，分类标题图片地址； *}
+{* 说明：$base_style，基本风格样式颜色； *}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$topic.title}_{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+{if $topic.css neq ''}
+<style type="text/css">
+  {$topic.css}
+</style>
+{/if}
+{* 包含脚本文件 *}
+{insert_scripts files='common.js'}
+</head>
+<body>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/base-2011.js"></script>
+<div id="site-nav">
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<style type="text/css">
+body{
+	background:{$base_style};
+	margin:0 auto;
+}
+a:hover{color:#F52648; text-decoration:none}
+#product-intro{text-align:center}
+.topicwidth{ width:1210px;margin:0 auto 40px;}
+.topic_con{width:100%;margin:0px auto;padding:20px 0px}
+.topic_con .box{width:980px;margin:0 auto}
+.topic_con .box h3.mod1tit{width:980px;height:54px;line-height:54px; text-align:center;margin:0px auto 40px;color:#ffffff;font-size:46px;font-weight:600;border:none;vertical-align:middle;background:url(images/shengji_ad/topicbg3.png) no-repeat;}
+.top_center{padding: 5px 0px;overflow: hidden; text-align:left}
+.topic_con .goodsItem{
+	width:236px;
+	height:276px;
+	float:left;
+	margin-right:12px;
+	margin-bottom:12px;
+	background:#fff;
+	display: inline-block;
+	overflow:hidden;
+	position:relative
+}
+.topic_con .goodsItem a.goodsimg{
+	width:216px;
+	height:256px;
+	padding:10px;
+	display: inline-block;
+	position:absolute;
+	top:0px;
+	left:0px;
+	text-align:center
+}	
+.topic_con .goodsItem a	img{
+	max-width:216px;
+	max-height:216px
+}
+.topic_con .goodsItem p.name{
+	position:absolute;
+	top:236px;
+	left:0px;
+	width:216px;
+	padding:0px 10px;
+	height:40px;
+	line-height:40px;
+	background:#FAFAFA
+}
+.topic_con .goodsItem p.name a{float:left}
+.topic_con .goodsItem p.name font{float:right;margin-right:10px;color:#F52648;font-size:20px}
+.goodsItem .imgbox{
+	width:170px;
+	overflow:hidden;
+	} 
+h6{
+background:url({$title_pic}) repeat-x 0 0;
+text-align:left;
+height:38px;
+line-height:38px;
+padding-left:20px;
+font-weight:200;
+font-size:18px;
+color:#fff;
+}
+</style>
+<div id="product-intro">
+{if $topic.htmls eq ''}
+  <script language="javascript">
+	var topic_width  = "1210";
+	var topic_height = "485";
+	var img_url      = "{$topic.topic_img}";
+	
+	if (img_url.indexOf('.swf') != -1)
+	{
+		document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="'+ topic_width +'" height="'+ topic_height +'">');
+		document.write('<param name="movie" value="'+ img_url +'"><param name="quality" value="high">');
+		document.write('<param name="menu" value="false"><param name=wmode value="opaque">');
+		document.write('<embed src="'+ img_url +'" wmode="opaque" menu="false" quality="high" width="'+ topic_width +'" height="'+ topic_height +'" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" wmode="transparent"/>');
+		document.write('</object>');
+	}
+	else
+	{
+		document.write('<img class=topicwidth width="' + topic_width + '" height="' + topic_height + '" border="0" src="' + img_url + '">');
+	}
+  </script>
+{else}
+	{$topic.htmls}
+{/if}
+
+{if $topic.intro neq ''}
+ {$topic.intro}
+{/if}
+	 <!-- {if $topic.title_pic eq ''} -->
+     <!-- {foreach from=$sort_goods_arr item=sort key=sort_name name=sort_name} -->
+     <div class="topic_con">  
+    <div class="box">
+     <h3 class="mod1tit"><span style="text-shadow: 2px 4px 8px #888;">{$sort_name}</span></h3>
+    <div class="top_center">
+    <!-- {foreach from=$sort item=goods name=name} -->
+    <div class="goodsItem" {if $smarty.foreach.name.iteration mod 4 eq 0}style="margin-right:0px;"{/if}>
+       <a href="{$goods.url}"  title="{$goods.goods_style_name|escape:html}" class="goodsimg"><img src="{$goods.original_img}" alt="{$goods.goods_style_name|escape:html}" /></a><br />
+       <p class="name">
+       		<a href="{$goods.url}" title="{$goods.goods_style_name|escape:html}">{$goods.goods_style_name|truncate:10}</a>
+        	<font>
+      		 <!-- {if $goods.promote_price neq ""} -->
+      		{$goods.promote_price}
+      		<!-- {else}-->
+      		{$goods.shop_price}
+      		<!--{/if}-->
+            </font>
+        </p>      
+       <div style="height:0px; line-height:0px; clear:both;"></div>
+    </div>
+    <!--{/foreach}-->
+    </div>
+    </div>
+    </div>
+    <!--{/foreach}-->
+    <!-- {else} -->
+		
+		
+		 <!-- {foreach from=$sort_goods_arr item=sort key=sort_name name=sort_name} -->
+         <div class="topic_con">  
+    		<div class="box">
+     			<h6>{$sort_name}</h6>
+				<div class="top_center">
+    			<!-- {foreach from=$sort item=goods name=name} -->
+    				<div class="goodsItem" {if $smarty.foreach.name.iteration mod 4 eq 0}style="margin-right:0px;"{/if}>
+       <a href="{$goods.url}"  title="{$goods.goods_style_name|escape:html}" class="goodsimg"><img src="{$goods.original_img}" alt="{$goods.goods_style_name|escape:html}" /></a><br />
+       <p class="name">
+       		<a href="{$goods.url}" title="{$goods.goods_style_name|escape:html}">{$goods.goods_style_name|truncate:10}</a>
+        	<font>
+      		 <!-- {if $goods.promote_price neq ""} -->
+      		{$goods.promote_price}
+      		<!-- {else}-->
+      		{$goods.shop_price}
+      		<!--{/if}-->
+       </font>
+        </p>      
+       <div style="height:0px; line-height:0px; clear:both;"></div>
+    </div>
+    			<!--{/foreach}-->
+				</div>
+    		</div>
+		</div>
+    	<!--{/foreach}-->
+    <!-- {/if} --> 
+</div>   
+
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</div>
+</body>
+</html>
+
+
+

@@ -1,0 +1,43 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<!--{foreach from=$shop_list item=shop name=shop_list}--> 
+<section class="rzs_info" {if $smarty.foreach.shop_list.first} style=" margin-top:-40px;"{/if}>
+<dl>
+<dt> <a href="supplier.php?suppId={$shop.supplier_id}" title="{$shop.shop_name}">
+ <img alt="" src="../../{$shop.shop_logo}"/></a></dt>
+<dd><strong><a href='supplier.php?suppId={$shop.supplier_id}'>{$shop.shop_name|truncate:9}</a>
+<em onclick='guanzhu({$shop.supplier_id});' class="guanzhu">
+<!---{if $shop.shop_closed}-->装修中..<!---{else}-->收藏<!---{/if}-->
+</em>
+</strong>
+<p>所在地：{$shop.shop_province_name}&nbsp;{$shop.shop_city_name}&nbsp;{$shop.shop_address}</p>
+</dd>
+</dl>
+<ul>
+<li><span>宝贝描述</span><strong>:{if $shop.c_rank gt 0}{$shop.c_rank}{else}5.0{/if}</strong><em>{if $shop.c_rank gt 0}{if $shop.c_rank lte 2}低{elseif $shop.c_rank gt 2 && $shop.c_rank lte 4}中{else}高{/if}{else}高{/if}</em></li>
+<li><span>卖家服务</span><strong>:{if $shop.serv_rank gt 0}{$shop.serv_rank}{else}5.0{/if}</strong><em>{if $shop.serv_rank gt 0}{if $shop.serv_rank lte 2}低{elseif $shop.serv_rank gt 2 && $shop.serv_rank lte 4}中{else}高{/if}{else}高{/if}</em></li>
+<li><span>物流服务</span><strong>:{if $shop.shipp_rank gt 0}{$shop.shipp_rank}{else}5.0{/if}</strong><em>{if $shop.shipp_rank gt 0}{if $shop.shipp_rank lte 2}低{elseif $shop.shipp_rank gt 2 && $shop.shipp_rank lte 4}中{else}高{/if}{else}高{/if}</em></li>
+</ul>
+<div class="index_taocan">
+    <h2>共{$shop.goods_number}件宝贝</h2>
+     {foreach from=$shop.goodlist item=goods name=goods key=i}
+ {if $i lt 4}
+        <a href="goods.php?id={$goods.goods_id}" title="{$goods.goods_name}">             
+          <dl>
+          <dt><img src="{$goods.goods_thumb}"> <em>￥{$goods.shop_price}</em></dt>
+          <dd>{$goods.goods_name}</dd>
+           </dl>
+           </a>
+           {/if}
+   {/foreach}
+  </div>
+<div class="s_dianpu">
+<span><a href="tel:{$shop.service_phone}" style=" margin-left:7%"><em class="bg1"></em>联系客服</a></span>
+<span><a href="supplier.php?suppId={$shop.supplier_id}" style=" margin-left:3%"><em class="bg2"></em>进入店铺</a></span>
+</div>
+</section>
+<!--{foreachelse}-->
+<div class="flow_wrap">
+没有找到相应店铺！
+</div>
+<!--{/foreach}-->	

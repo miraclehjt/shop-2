@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<title>修改店铺信息</title>
+<!--v_shop.css-->
+<link href="themesmobile/68ecshopcom_mobile/css/v_user.css" type="text/css" rel="stylesheet">
+</head>
+<body style=" background:#F5F5F5">
+<!--header-->
+<div class="dianpu">
+<dl>
+<dt><a href="javascript:history.back(-1)"></a></dt>
+<dd>修改店铺信息</dd>
+</dl>
+</div>
+<!--main-->
+<div class="main">
+<dl class="dianpu_name">
+<form action="v_user_dianpu.php" name="frm" method="post"  onsubmit="return sub_dianpu(frm)">
+<dt>店铺名称：</dt>
+<dd><input name="dianpu_name" type="text" value="{$dianpu.dianpu_name}"/></dd>
+</dl>
+<dl class="dianpu_name">
+<dt>手机号：</dt>
+<dd><input name="phone" type="text" value="{$dianpu.phone}"/></dd>
+</dl>
+<div class="button_end">
+<input type="submit" value="完成" />
+<input type="hidden" name="act" value="insert_dianpu" />
+</div>
+</form>
+</div>
+<!-----底部悬浮菜单---->
+<!-- #BeginLibraryItem "/library/footer_nav1.lbi" --><!-- #EndLibraryItem --> 
+<script type="text/javascript">
+function sub_dianpu(frm)
+{
+	var dianpu_name = frm.elements['dianpu_name'].value;
+	if(dianpu_name.length > 8)
+	{
+		alert('店铺名称长度不能超过8个！');
+		return false; 
+	} 
+}
+</script>
+</body>
+</html>

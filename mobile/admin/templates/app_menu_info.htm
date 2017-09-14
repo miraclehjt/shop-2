@@ -1,0 +1,62 @@
+{include file="pageheader.htm"}
+<script>
+function change_link_type(obj)
+{
+	var id = 'value_' + obj.value
+	{foreach from=$link_type item=item key=key}
+	document.getElementById('value_{$key}').style.display = 'none'
+	{/foreach}
+	document.getElementById(id).style.display = ''
+}
+</script>
+<div class="list-div">
+<form name="theForm" action="app_manage.php" enctype="multipart/form-data" method="post">
+<table>
+  <tr>
+  	<td align="left" class="label">菜单名称：</td>
+    <td><input type="text" name="name" value="{$menu.name}" /></td>
+  </tr>
+  <tr>
+  	<td align="left" class="label">菜单图片：</td>
+    <td>
+     <input type="file" name="image" /><br />
+     {if $menu.image}
+     <img src="{$url}{$menu.image}?{$rand}" width="100" height="100"  style="margin-top:10px"/>
+     {/if}
+    </td>
+  </tr>
+  <tr>
+  	<td align="left" class="label">菜单链接：</td>
+    <td>
+		<select name="type" onchange="change_link_type(this)">
+		{foreach from=$link_type item=item key=key}
+		<option value="{$key}" {if $menu.type eq $key}selected{/if} >{$item.name}</option>
+		{/foreach}
+		</select>
+		{foreach from=$link_type item=item key=key}
+		{if $item.options}
+		<select id="value_{$key}" name="value[{$key}]" {if $menu.type neq $key}style="display:none;"{/if}>
+		{$item.options}
+		</select>
+		{else}
+		<input id="value_{$key}" type="text" name="value[{$key}]" {if $menu.type eq $key}value="{$menu.link}"{else}value="{$item.value}"{/if} {if $menu.type neq $key}style="display:none;"{/if}/>
+		{/if}
+		{/foreach}
+	</td>
+  </tr>
+  <tr>
+  	<td align="left" class="label">顺序：</td>
+    <td><input type="text" name="order" value="{$menu.order}"/></td>
+  </tr>
+  <tr>
+  <td>&nbsp;</td>
+    <td>
+    <input type="submit" name="" value="提交" class="button"/>
+     <input type="hidden" name="act" value="save_menu" />
+     <input type="hidden" name="id" value="{$menu.id}" />
+    </td>
+  </tr>
+</table>
+</form>
+</div>
+{include file="pagefooter.htm"}

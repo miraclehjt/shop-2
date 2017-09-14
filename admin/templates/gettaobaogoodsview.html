@@ -1,0 +1,45 @@
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,selectzone.js,colorselector.js"}
+<div class="tab-div">
+    <!-- tab bar -->
+    <div id="tabbar-div">
+      <p>
+		<span class="tab-front" id="detail-tab">详情</span>
+		<span class="tab-back" id="gallery-tab">图片</span>
+		<span class="tab-back" id="comment-tab">评价</span>
+		<span><a href="getTaoBaoGoods.php?gid={$gid}&id={$id}&do=1&istitle={$istitle}&iscomment={$iscomment}">【导入】</a></span>
+      </p>
+    </div>
+    <!-- tab body -->
+    <div id="tabbody-div">
+      <form action="" method="post" name="theForm" >
+        <table width="90%" id="detail-table">
+          <tr>
+            <td>标题：{$goods_name}<br>{$content}</td>
+          </tr>
+        </table>
+        <table width="90%" id="gallery-table" style="display:none" align="center">
+          <tr>
+            <td>
+              {foreach from=$img_list item=img key=i}
+              <div style="float:left; text-align:center; border: 1px solid #DADADA; margin: 4px; padding:2px;">
+                <img src="../{$img}" width="150" height="150">
+              </div>
+              {/foreach}
+            </td>
+          </tr>
+        </table>
+		<table width="90%" id="comment-table" style="display:none" align="center">
+          <tr>
+            <td>
+              {foreach from=$comment_list item=item}
+                <p>{$item.nick}：{$item.feedback}</p>
+              {/foreach}
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+</div>
+{insert_scripts files="validator.js,tab.js"}
+{include file="pagefooter.htm"}

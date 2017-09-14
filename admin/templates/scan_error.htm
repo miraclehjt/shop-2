@@ -1,0 +1,71 @@
+<!-- $Id: agency_list.htm 14216 2008-03-10 02:27:21Z testyang $ -->
+
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<script type="text/javascript" src="../js/calendar.php?lang="></script>
+<link href="../js/calendar/calendar.css" rel="stylesheet" type="text/css" />
+<div class="form-div">
+<span style='color:red'>以下商品操作失败！</span>
+</div>
+{if $goodsinfo}
+<div class="list-div" id="listDiv">
+
+	<table cellpadding="5" cellspacing="1" width="100%" border=0 bgcolor="#E6E6E6">
+        <tr>
+	  	  <th width="10%" align="center"  bgcolor="#F9F9F9">商品条形码</th>
+          <th width="15%" align="center"  bgcolor="#F9F9F9">商品信息</th>
+          <th width="20%" align="center"  bgcolor="#F9F9F9">商品名称</th>
+          <th width="15%" align="center"  bgcolor="#F9F9F9">价格</th>
+          <th width="15%" align="center"  bgcolor="#F9F9F9">属性</th>
+          <th width="7%" align="center"  bgcolor="#F9F9F9">总库存</th>
+          <th width="10%" align="center"  bgcolor="#F9F9F9">操作数量</th>
+        </tr>
+        <!--{foreach from=$goodsinfo item=ginfo name=name key=key}--> 
+        <tr id="info{$key}">
+	  <td align="center" bgcolor="#FFFFFF">
+          	{$key}
+          </td>
+          <td align="center" bgcolor="#FFFFFF">
+          	<a href="{$ginfo.url}" target="_blank" title="{$ginfo.goods_name}" class="goods_img">
+            	<img src="{$ginfo.goods_img}"  width="50" height="50"/>
+            </a>
+          </td>
+          <td align="left" bgcolor="#FFFFFF">
+          	<a href="{$ginfo.url}" target="_blank" title="{$ginfo.goods_name}">{$ginfo.goods_name}</a>
+          </td>
+          <td align="center" bgcolor="#FFFFFF">
+          	<p>当前售价：<font color="#E31939">{$ginfo.goods_price}</font></p>
+            <p><del>市场价：{$ginfo.market_price}</del></p>
+          </td>
+          <td align="center" bgcolor="#FFFFFF">
+	  {if $ginfo.goods_attr}
+	  <!--{foreach from=$ginfo.goods_attr item=attr}--> 
+          	<p>{$attr}</p>
+	  <!--{/foreach}-->
+          {/if}
+          </td>
+          <td align="center" bgcolor="#FFFFFF">
+          	{$ginfo.goods_number}
+          </td>
+          <td align="center" bgcolor="#FFFFFF">
+          	{$ginfo.buy_number}
+          </td>
+
+        </tr>
+        <!--{/foreach}-->
+        <tr>
+        	<td colspan="8" align="center" bgcolor="#FFFFFF" class="scan_con_te">
+				<input type="button" value="确定" class="scan_con_sub" onclick="javascript:gourl();" />
+            </td>
+        </tr>
+    </table>
+
+</div>
+{/if}
+<script>
+function gourl(){
+	self.location.href='scan.php?act=insert';
+}
+</script>
+
+{include file="pagefooter.htm"}

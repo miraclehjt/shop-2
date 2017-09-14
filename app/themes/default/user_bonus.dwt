@@ -1,0 +1,31 @@
+{if $is_full_page eq 1}
+<div class="red-pag ub ub-pc ub-ac p-all5 ubb border-hui bg-color-w">
+  <input id="bonus_sn" placeholder="请输入红包序列号" type="text" class="uba border-hui uc-a1 ulev-1 red-pag-text sc-text-hui">
+  <div id='confirm_button' class="red-pag-btn bc-head1 ulev-1 bc-text-head uc-a1">添加红包</div>
+</div>
+{/if}
+<!--{foreach from=$bonus item=hong name=name}-->
+<div class="red-content ub ub-pc"> 
+  <div class="red-con1"></div>
+  <div class="ub ub-f1">
+    <div class="ub-f1 f-color-zi p-all3 bg-color-w">
+      <div class="ulev-1 m-btm2">红包序列号：{$hong.bonus_sn|default:N/A}</div>
+      <div class="ulev-1">发行店铺：{if $hong.supplier_id == "自营商"}{$hong.supplier_id}{else}{$hong.supplier_id}{/if}</div>
+      <div class="m-btm3 ulev-1 sc-text-hui">使用条件：满{$hong.min_goods_amount}</div>
+      <div class="ulev-1 sc-text-hui">有效时间：截至{$hong.use_enddate}</div>
+    </div>
+    <div class="ub ub-ac ub-pc red-con3 ub-ver">
+      <div class="ulev2 {if $hong.order_id or $hong.status eq $lang.overdue} f-color-6 {else} f-color-red {/if}">{$hong.type_money}</div>
+      <!--未使用时字体颜色为：f-color-red--> 
+      <!-- {if $hong.order_id} -->
+	  <div class="umar-t1 ulev-9 f-color-6 order" order_id="{$hong.order_id}">{$lang.had_use}</div>
+      <!-- {else} -->
+	  <div class="umar-t1 ulev-9 f-color-6">{$hong.status}</div>
+	  <!-- {/if} -->
+    </div>
+  </div>
+  <div class="red-con4"></div>
+</div>
+<!-- {foreachelse} -->
+<div class="no-con">{$lang.user_bonus_empty}</div>
+<!--{/foreach}--> 

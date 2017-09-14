@@ -1,0 +1,52 @@
+<div class="m-all2 bg-color-w f-color-6">
+  <div class="ubb ub border-f2 ub-ac h-min1">
+    <div class="uw-reg ulev-1">标签</div>
+    <div class="uinput ulev-1 ub-ac ub-ver p-t-b5 ub-f1" id='tag_container'> 
+      <!--{foreach from=$goods_tags item=tag}-->
+      <div class="biaoqian tag ub p-all7" tag_id="{$tag.tag_id}">{$tag.tag_name}</div>
+      <!--{/foreach}-->
+      <div class="ub add_tag" style="padding:0; width:21%;"><div class="uba border-red p-all7" id='add_tag_button' style="margin-top:0.5em">自定义</div></div>
+      <div class="new_tag uhide p-t1" id='new_tag_container'>
+        <input type="text" id="new_tag_input"/>
+        <div class="ub p-t1">
+        <div id="confirm_new_tag" class="btn-red-2">确定</div>
+        <div id="cancel_new_tag" class="btn-red-2 m-l2">取消</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ubb ub border-f2 h-min1 p-t-b5">
+    <div class="f-color-6 sc-text-hui uw-reg ulev-1">心得</div>
+    <div class="uinput ulev-1 uba border-faxian p-l-r5">
+      <textarea type="text" id="content" placeholder="亲，给好评哦!"></textarea>
+    </div>
+  </div>
+  <div class="p-t-b6">
+    <div class="ub ub-ac m-btm1">
+      <div class="ulev-1 p-l-r3"> 描述 </div>
+      <div class="ulev-1 star-style" id='comment_rank'> <img src="img/star-on-big.png"/> <img src="img/star-on-big.png"/> <img src="img/star-on-big.png"/> <img src="img/star-on-big.png"/> <img src="img/star-on-big.png"/> </div>
+      <div class="ulev-1 m-l1" id='comment_rank_desc'>5分，非常满意</div>
+    </div>
+    <div class="ub ub-ac m-btm1">
+      <div class="ulev-1 p-l-r3"> 服务 </div>
+      <div class="ulev-1 star-style" id='server'> <img src="img/star-on-big.png"/> <img src="img/star-on-big.png"/> <img src="img/star-on-big.png"/> <img src="img/star-on-big.png"/> <img src="img/star-on-big.png"/> </div>
+      <div class="ulev-1 m-l1" id='server_desc'>5分，非常满意</div>
+    </div>
+    <div class="ub ub-ac m-btm1">
+      <div class="ulev-1 p-l-r3"> 发货 </div>
+      <div class="ulev-1 star-style" id='send'> <img src="img/star-on-big.png"/> <img src="img/star-on-big.png"/> <img src="img/star-on-big.png"/> <img src="img/star-on-big.png"/> <img src="img/star-on-big.png"/> </div>
+      <div class="ulev-1 m-l1" id='send_desc'>5分，非常满意</div>
+    </div>
+    <div class="ub ub-ac m-btm1">
+      <div class="ulev-1 p-l-r3"> 物流 </div>
+      <div class="ulev-1 star-style" id='shipping'> <img src="img/star-on-big.png"/> <img src="img/star-on-big.png"/> <img src="img/star-on-big.png"/> <img src="img/star-on-big.png"/> <img src="img/star-on-big.png"/> </div>
+      <div class="ulev-1 m-l1" id='shipping_desc'>5分，非常满意</div>
+    </div>
+  </div>
+</div>
+<div class="ub ub-pe ub-ac p-all1 ubb border-f2">
+  <input type="checkbox" class="checkbox" checked=true id='hide_username'>
+  <label for="hide_username"></label>
+  <div class="ulev-1 m-l3 sc-text-active1">匿名评价</div>
+</div>
+<div class="user-btn m-all3 content_fade_in" id='confirm_comment_button'>发表评论</div>

@@ -1,0 +1,5 @@
+<div class="header-banner"> 
+	<a href="#1" title="七天包退"></a> 
+    <a href="#2" title="正品保障"></a> 
+    <a href="#3" title="闪电发货"></a> 
+</div>

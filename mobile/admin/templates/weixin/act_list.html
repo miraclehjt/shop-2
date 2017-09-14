@@ -1,0 +1,25 @@
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<div class="list-div" id="listDiv">
+<table width="100%" cellspacing="1" cellpadding="2" id="list-table">
+  <tr>
+    <th>活动名称</th>
+    <th>活动状态</th>
+    <th>参与类型</th>
+    <th>参与次数</th>
+	<th>兑奖截止</th>
+	<th>操作</th>
+  </tr>
+  {foreach item=act from=$actList}
+  <tr align="center">
+	<td>{$act.title}</td>
+	<td>{if $act.isopen == 1}进行中{else}已停止{/if}</td>
+	<td>{if $act.type == 1}每日{else}长期{/if}</td>
+	<td>{$act.num}</td>
+	<td>{$act.overymd}</td>
+	<td><a href="weixin_egg.php?act=list&aid={$act.aid}">{$lang.edit}</a> | <a href="weixin_egg.php?act=listall&aid={$act.aid}">查看奖项</a> | <a href="weixin_egg.php?act=add&aid={$act.aid}">添加奖项</a></td>
+  </tr>
+  {/foreach}
+</table>
+</div>
+{include file="pagefooter.htm"}

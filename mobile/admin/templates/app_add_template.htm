@@ -1,0 +1,134 @@
+{include file="pageheader.htm"}
+<style>
+input:read-only
+{ 
+background-color: #999999;
+}
+</style>
+<script>
+function select_template_type(obj){
+	var type = obj.value
+	if(typeof default_value[type] === 'undefined'){
+		var name = ''
+		var order = '0'
+		var number = '0'
+		var show = 'on'
+		var id = 'custom'
+	}
+	else{
+		var name = default_value[type]['name']
+		var order = default_value[type]['order']
+		var number = default_value[type]['number']
+		var show = default_value[type]['show']
+		var id = default_value[type]['id']
+	}
+	document.forms[0].name.value = name
+	document.forms[0].order.value = order
+	document.forms[0].number.value = number
+	document.forms[0].show.checked = show == 'on'
+	document.forms[0].id.value = id
+	if(typeof default_value[type] != 'undefined' && default_value[type]['editable'] === 'false'){
+		document.forms[0].id.readOnly = true
+	}
+	else{
+		document.forms[0].id.readOnly = false
+	}
+}
+function validate(){
+	if(document.forms[0].name.value == ''){
+		alert('请输入区域');
+		return false;
+	}
+	if(document.forms[0].order.value == ''){
+		alert('请输入顺序');
+		return false;
+	}
+	if(document.forms[0].type.value == '-1'){
+		alert('请输入内容');
+		return false;
+	}
+	if(document.forms[0].number.value == ''){
+		alert('请输入数量');
+		return false;
+	}
+	if(document.forms[0].id.value == ''){
+		alert('请输入标识');
+		return false;
+	}
+	return true;
+}
+var default_value = new Object();
+{foreach from=$default_value item=values key=type}
+default_value.{$type} = new Object();
+default_value.{$type}.id = "{$type}";
+{foreach from=$values item=item key=key}
+default_value.{$type}.{$key} = "{$item}";
+{/foreach}
+{/foreach}
+</script>
+<div class="main-div">
+点击确定会<span style="color:red;">清空</span>您在模板设置列表中填写的具体的值
+</div>
+<div class="list-div">
+<form name="theForm" action="app_manage.php" enctype="multipart/form-data" method="post" onsubmit="return validate()">
+<table>
+  <tr>
+  	<td align="left" class="label">区域：</td>
+    <td><input type="text" id="name" name="name" value="{$template.name}" />
+	<label>在模板设置显示，没有实际意义</label>
+	</td>
+  </tr>
+  <tr>
+  	<td align="left" class="label">排序：</td>
+    <td>
+     <input type="text" name="order" value="{$template.order}" />
+    </td>
+  </tr>
+  <tr>
+  	<td align="left" class="label">内容：</td>
+    <td>
+		<select name="type" onchange="select_template_type(this)">
+		<option value="-1">请选择</option>
+		{foreach from=$template_type item=item key=key}
+		<option value="{$key}" {if $template.type eq $key}selected{/if} >{$item.name}</option>
+		{/foreach}
+		</select>
+		<label>模板内容，可以选择预先定义好的，如分类下的商品等，也可以选择自定义，需要在index.php中生成需要的数据</label>
+	</td>
+  </tr>
+  <tr>
+  	<td align="left" class="label">数量：</td>
+    <td><input type="text" name="number" value="{$template.number}"/></td>
+  </tr>
+  <tr>
+  	<td align="left" class="label">显示：</td>
+    <td><input type="checkbox" name="show" {if $template.show eq 'on'}checked=true{/if}/></td>
+  </tr>
+  <tr>
+  	<td align="left" class="label">标识：</td>
+    <td>
+		<input type="text" name="id" value="{$template.id}"/>
+		<label>用做唯一标识，例如：<font style="color:red">menu</font>，自动引用/app/themes/default/library/index_<font style="color:red">menu</font>.lib文件</label>
+		</td>
+  </tr>
+  <tr>
+  <td>&nbsp;</td>
+    <td>
+    <input type="submit" value="确定" class="button"/>
+     <input type="hidden" name="act" value="save_template" />
+	 <input type="hidden" name="prev_id" value="{$prev_id}" />
+    </td>
+  </tr>
+</table>
+</form>
+</div>
+<script>
+	var type = document.forms[0].type.value
+	if(typeof default_value[type] != 'undefined' && default_value[type]['editable'] === 'false'){
+		document.forms[0].id.readOnly = true
+	}
+	else{
+		document.forms[0].id.readOnly = false
+	}
+</script>
+{include file="pagefooter.htm"}

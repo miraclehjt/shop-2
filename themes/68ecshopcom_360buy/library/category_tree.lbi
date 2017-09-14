@@ -1,0 +1,46 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+ <?php
+	  $GLOBALS['smarty']->assign('categories',       get_categories_tree(0)); // 分类树
+	  ?>
+    <div id="sortlist">
+   
+      <div id="cate">
+
+	<!--{foreach from=$categories item=cat name=cat}-->
+        <div class='item  <!-- {if $cat.id eq $category} -->current{/if}'>
+       <h3  onclick="tab({$smarty.foreach.cat.index})"><b></b>{$cat.name|escape:html}</h3>
+          <ul style=" <!-- {if $cat.id eq $category} -->display:block;{else}display:none;{/if}">
+           <!--{foreach from=$cat.cat_id item=child}-->
+            <li><a href="{$child.url}">{$child.name|escape:html}</a></li>
+            <!--{/foreach}-->
+           
+          </ul>
+        </div>
+        
+        <!--{/foreach}--> 
+   
+      </div>
+    </div>
+    <!--sortlist end-->
+<script type="text/javascript">
+obj_h4 = document.getElementById("cate").getElementsByTagName("h3")
+obj_ul = document.getElementById("cate").getElementsByTagName("ul")
+obj_img = document.getElementById("cate").getElementsByTagName("div")
+function tab(id)
+{ 
+		if(obj_ul.item(id).style.display == "block")
+		{
+			obj_ul.item(id).style.display = "none"
+			obj_img.item(id).className = "item"
+			return false;
+		}
+		else(obj_ul.item(id).style.display == "none")
+		{
+			obj_ul.item(id).style.display = "block"
+			obj_img.item(id).className = "item current"
+		}
+}
+</script>
+
+<div class="blank"></div>

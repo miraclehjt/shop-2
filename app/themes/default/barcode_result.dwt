@@ -1,0 +1,23 @@
+{foreach from=$goods_list item=supplier key=supplier_id}
+{if $supplier.goods_list}
+<div class="m-btm1">
+  <div class="bg-color-w ub lis ub-ac ubb border-hui {if $supplier_id gt 0}supplier{/if}" {if $supplier_id gt 0}supplier_id='{$supplier_id}'{/if}>
+    <div class="ub-img" style="background-image:url(img/icons/store-enter.png); width:1.1em; height:1.1em;"></div>
+    <div class="f-color-zi ub-f1 ub ut-m ulev-9 p-l-r5">{$supplier.shop_name}</div>
+    {if $supplier_id gt 0}
+    <div class='fa fa-angle-right'></div>
+    {/if} </div>
+  {foreach from=$supplier.goods_list item=goods key=goods_id}
+  <div class="ub bg-color-w p-t-b7 ubb border-faxian goods" goods_id='{$goods_id}'>
+    <div class="goods-img"><img src="{$url}{$goods.goods_thumb}" style="width:4.5em; height:auto"/> </div>
+    <div class="ub-ver ub-f1 m-l1">
+      <div class="f-color-6 text-change"> <font class="ulev-1">{$goods.goods_name}</font> </div>
+      <div class="ulev0 p-t-b4 f-color-red">{$goods.goods_price}</div>
+    </div>
+  </div>
+</div>
+{/foreach}
+{/if}
+{foreachelse}
+<div class="ub ub-pc umar-t1 f-color-6">找不到任何商品</div>
+{/foreach} 

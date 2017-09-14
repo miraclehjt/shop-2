@@ -1,0 +1,47 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $category_goods} -->
+<!--{foreach from=$category_goods item=ginfo}-->
+<div class="fn-clear user_s20009-493266">
+                <div class="mc" style="background:#ffffff; min-height:0px;">
+                  <div class="user_box user_bgcolor_3">
+                    <div class="stitle user_font_1">{$ginfo.cat_name}</div>
+                    <div class="clear"></div>
+                  </div>
+                </div>
+              </div>
+<div class="fn-clear user_s20019-493268">
+<!-- {if $ginfo.cat_pic} --> 
+  <div class="blank"></div>
+  <a href="{$ginfo.cat_pic_url}" target="_blank" style="width:1200px; height:400px; margin:4px;"><img src="{$ginfo.cat_pic}" width="1200" height="400" /></a> 
+  <!-- {/if} -->
+                <div class="mc" > 
+                  <div class="user_item_box " style="width:1200px; ">
+                   <!--{foreach from=$ginfo.goods item=bestgoods name=bestgoods}-->
+                    <div class="item {if $smarty.foreach.bestgoods.iteration mod 4 eq 0}item_ts{/if}" >
+                      <div class="jPic"><a href="{$bestgoods.url}" target="_blank" class="user_border_hover_1"><img src="{$bestgoods.original_img}" class="" alt="{$bestgoods.name}" height="293px" width="293px"></a>
+                        <div class="jBuy jBuy_3 user_bgcolor_1">
+                          <div class="jPrice  user_font_price">
+                            <div class="pricebox user_bgcolor_3">
+                              <div class="star user_font_2">{$ginfo.cat_name}</div>
+                                  <span class="jdNum" jshop="price">
+                                     <!-- {if $bestgoods.promote_price neq ""} -->
+          								{$bestgoods.promote_price}
+          							 <!-- {else}-->
+          								{$bestgoods.shop_price}
+          							 <!--{/if}-->
+                                  </span> 
+                             </div>
+                          </div>
+                          <div class="jDesc">
+                            <div class="jTitle user_border_dashed_bottom"><a class="user_a_3" href="{$bestgoods.url}" target="_blank">{$bestgoods.name}</a></div>
+                            <div class="buy"> <span class="SalePrice user_font_3">参考价:<span class="jsNum">{$bestgoods.market_price}</span></span>  </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <!--{/foreach}--> 
+                  </div>
+                </div>
+              </div>
+<!-- {/foreach} --> 
+<!-- {/if} --> 

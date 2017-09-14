@@ -1,0 +1,112 @@
+<!-- $Id: pre_sale_list.htm 14216 2015-02-10 02:27:21Z derek $ -->
+
+{if $full_page}
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<div class="form-div">
+  <form action="javascript:searchPreSale()" name="searchForm" method="post">
+    <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
+    {$lang.goods_name} <input type="text" name="keyword" size="30" />
+    <input type="submit" value="{$lang.button_search}" class="button" />
+  </form>
+</div>
+
+<form method="post" action="pre_sale.php?act=batch_drop" name="listForm" onsubmit="return confirm(batch_drop_confirm);">
+<!-- start pre_sale list -->
+<div class="list-div" id="listDiv">
+{/if}
+
+  <table cellpadding="3" cellspacing="1">
+    <tr>
+      <th>
+        <input onclick='listTable.selectAll(this, "checkboxes")' type="checkbox" />
+        <a href="javascript:listTable.sort('act_id'); ">{$lang.record_id}</a>{$sort_act_id}
+      </th>
+      <th><a href="javascript:listTable.sort('goods_name'); " >{$lang.goods_name}</a>{$sort_goods_name}</th>
+      <th>{$lang.current_status}</a></th>
+      <!-- <th><a href="javascript:listTable.sort('start_time'); ">{$lang.start_date}</a>{$sort_start_time}</th> -->
+      <th><a href="javascript:listTable.sort('end_time'); ">{$lang.end_date}</a>{$sort_end_time}</th>
+      <th><a href="javascript:listTable.sort('deposit'); ">{$lang.deposit}</a>{$sort_deposit}</th>
+      <th><a href="javascript:listTable.sort('restrict_amount'); ">{$lang.restrict_amount}</a>{$sort_restrict_amount}</th>
+      <!-- <th><a href="javascript:listTable.sort('gift_integral'); ">{$lang.gift_integral}</a>{$sort_gift_integral}</th> -->
+      <th>{$lang.valid_goods}</a></th>
+      <th>{$lang.valid_order}</a></th>
+      <th>{$lang.current_price}</a></th>
+      <th>{$lang.handler}</th>
+    </tr>
+
+    {foreach from=$pre_sale_list item=pre_sale}
+    <tr>
+      <td><input value="{$pre_sale.act_id}" name="checkboxes[]" type="checkbox">{$pre_sale.act_id}</td>
+      <td><a href="../pre_sale.php?id={$pre_sale.act_id}" target="_blank">{$pre_sale.goods_name|escape:html}</a></td>
+      <td>{$pre_sale.cur_status}</td>
+      <!-- <td align="right">{$pre_sale.start_time}</td> -->
+      <td align="right">{$pre_sale.end_time}</td>
+      <td align="right"><span onclick="listTable.edit(this, 'edit_deposit', {$pre_sale.act_id})">{$pre_sale.deposit}</span></td>
+      <td align="right"><span onclick="listTable.edit(this, 'edit_restrict_amount', {$pre_sale.act_id})">{$pre_sale.restrict_amount}</span></td>
+      <!-- <td align="right">{$pre_sale.gift_integral}</td> -->
+      <td align="right">{$pre_sale.valid_goods}</td>
+      <td align="right">{$pre_sale.valid_order}</td>
+      <td align="right">{$pre_sale.cur_price}</td>
+      <td align="center">
+        <a href="order.php?act=list&amp;pre_sale_id={$pre_sale.act_id}"><img src="images/icon_view.gif" title="{$lang.view_order}" border="0" height="16" width="16" /></a>
+        <a href="pre_sale.php?act=edit&amp;id={$pre_sale.act_id}" title="{$lang.edit}"><img src="images/icon_edit.gif" border="0" height="16" width="16" /></a>
+        <a href="javascript:remove('{$pre_sale.act_id}');" title="{$lang.remove}"><img src="images/icon_drop.gif" border="0" height="16" width="16" /></a>
+      </td>
+    </tr>
+    {foreachelse}
+    <tr><td class="no-records" colspan="10">{$lang.no_records}</td></tr>
+    {/foreach}
+  </table>
+
+  <table cellpadding="4" cellspacing="0">
+    <tr>
+    <!-- 
+      <td><input type="submit" name="drop" id="btnSubmit" value="{$lang.drop}" class="button" disabled="true" /></td>
+       -->
+      <td align="right">{include file="page.htm"}</td>
+    </tr>
+  </table>
+
+{if $full_page}
+</div>
+<!-- end pre_sale list -->
+</form>
+
+<script type="text/javascript" language="JavaScript">
+  listTable.recordCount = {$record_count};
+  listTable.pageCount = {$page_count};
+
+  {foreach from=$filter item=item key=key}
+  listTable.filter.{$key} = '{$item}';
+  {/foreach}
+
+  {literal}
+  onload = function()
+  {
+    document.forms['searchForm'].elements['keyword'].focus();
+
+    startCheckOrder();
+  }
+
+  /**
+   * 搜索团购活动
+   */
+  function searchPreSale()
+  {
+
+    var keyword = Utils.trim(document.forms['searchForm'].elements['keyword'].value);
+    listTable.filter['keyword'] = keyword;
+    listTable.filter['page'] = 1;
+    listTable.loadList("pre_sale_list");
+  }
+  function remove(id){
+	  if(confirm('您确定要删除此预售活动吗')){
+	  	window.location.href = "pre_sale.php?act=remove&act_id="+id;
+	  }
+  }
+  {/literal}
+</script>
+
+{include file="pagefooter.htm"}
+{/if}

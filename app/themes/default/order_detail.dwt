@@ -1,0 +1,236 @@
+<!--地址显示修改-->  
+  <div class="ub bc-blue bc-text-head uinn-a1">
+    <div class="ub-img address-icon h-w-5"></div>
+    <div class="ub ub-f1 ub-ver t-wh m-l3 ulev-1">
+      <div class="ub">
+        <div class="ub-f1">收货人：{$order.consignee|escape}</div>
+		{if $order.mobile}
+        <div class="ub-pe">{$lang.backup_phone}：{$order.mobile|escape}</div>
+		{/if}
+      </div>
+      <!-- {if $order.exist_real_goods} -->
+      <div class="uinn-p2">{$lang.detailed_address}：{$order.address|escape}</div>
+      <!-- {/if} -->
+	  {if $order.email}
+        <div class="uinn-p2">电子邮件：{$order.email|escape}</div>
+		{/if}
+        <div class="ub ub-pj uinn-p2">
+		{if $order.zipcode}
+        <div class="">{$lang.postalcode}：{$order.zipcode|escape}</div>
+		{/if}
+	  {if $order.tel}
+      <div class=""> {$lang.phone}：{$order.tel|escape} </div>
+	  {/if}
+            </div>
+      <!-- {if $order.exist_real_goods} -->
+      <div class="p-t1">{$lang.deliver_goods_time}：{$order.best_time|escape} </div>
+      <!-- {/if} --> 
+      <!-- {if $order.allow_update_address gt 0} -->
+      <div class="ub ub-pe ubt border-top uinn-p2 m-top3" id='edit_address_button'>
+        <div class="btn-fff">修改收货地址</div>
+      </div>
+      <!-- {/if} --> 
+    </div>
+  </div>
+
+<!--订单状态-->
+<div class="bg-color-w m-btm1 ubb border-hui">
+  <div class="ub uinn-a1 ubb border-hui ub-ac">
+    <div class="ub-img order-list h-w-1"></div>
+    <div class="ub-f1 ub bc-text ulev-9 p-l-r5">{$lang.detail_order_sn}：<span class="f-color-red">{$order.order_sn}</span></div>
+  </div>
+  <div class="ulev-1 f-color-6 p-t-b5">
+    <div class="m-btm5">{$lang.detail_order_status}： {$order.order_status} <span class="sc-text-hui">- {$order.confirm_time}</span></div>
+    <div class="m-btm5">{$lang.detail_shipping_status}： {$order.shipping_status} <span class="sc-text-hui">- {$order.shipping_time}</span></div>
+    <div class="m-btm5">{$lang.detail_pay_status}： {$order.pay_status} <span class="sc-text-hui">- {$order.pay_time}</span></div>
+     </div>
+     
+     <!-- {if $order.invoice_no && $order.shipping_name neq '门店自提'}-->
+	 <!-- {if $order.tc_express} -->
+	 {$result_content}
+	 <!-- {else} -->
+    {foreach from=$order.invoices name=name_i item=invoice_info}
+	<div class="express_info ub uinn-a1 ub-ac ubt border-faxian"  express_number="{$invoice_info.invoice_no}" express_name="{$invoice_info.shipping_name}" order_id="{$order.order_id}">
+    	<div class="ub-img logistics h-w-1"></div>
+    	<div class="ulev-1 f-color-screen p-l-r5 ub-f1">{$lang.consignment}{$smarty.foreach.name_i.iteration}：{$invoice_info.invoice_no}</div>
+        <div class="btn-screen-1 ulev-1 m-l1 ub-pe">查看物流详情</div>
+    </div>
+	{/foreach}
+	<!--{/if}-->
+    <!--{/if}-->
+</div>
+
+<!--支付方式-->
+<div class="bg-color-w m-btm1 ubb border-hui">
+  <div class="ub uinn-a1 ubb border-hui ub-ac">
+    <div class="ub-img user_order1 h-w-1"></div>
+    <div class="ub-f1 ub bc-text ulev-9 p-l-r5">{$lang.payment}</div>
+  </div>
+  <div class="ulev-1 p-t-b2 f-color-6">
+    <div class="m-btm5">{$lang.select_payment}： {$order.pay_name}</div>
+    <div class="m-btm5">{$lang.order_amount}： <span class="f-color-red ulev0">{$order.formated_order_amount}</span> </div>
+    <!--{if $payment_list}-->
+    <div class="m-btm5 ub ub-ac ulev-1 ub-f1 styled-select">
+      <select name="pay_code" id='pay_code'>
+        <!--{foreach from=$payment_list item=payment}-->
+        <option {if $order.pay_name eq $payment.pay_name}selected='selected'{/if} value="{$payment.pay_code}"> {$payment.pay_name} </option>
+        <!--{/foreach}-->
+      </select>
+      <div id='edit_payment_button' class='btn-red-3'>确认</div>
+    </div>
+    <!-- {/if} --> 
+    
+      <!-- {if $allow_edit_surplus} 如果可以编辑使用余额数 -->
+      <div class="ub ub-ac ulev-1 ubt border-faxian p-r1 p-t2 m-btm5">
+            <label for='surplus' class="f-color-6">{$lang.use_more_surplus}：</label>
+            <div class="uinput1 uba border-hui m-l-r2">
+            <input class="ulev0" type='text' id='surplus' placeholder='请输入余额' style="width:7em;" />
+            </div>
+            <div class='btn-red-3' id='confirm_surplus_button'>确定</div>
+      </div>
+      <div class="ub m-btm5 ulev-1 m-top1"> {$max_surplus} </div>
+      <!-- {/if} --> 
+  </div>
+  
+</div>
+
+<!--订单商品列表-->
+<div class="bg-color-w ubb border-hui">
+  <div class="m-top3 ub bc-text ub-ac uinn-a1 ubb border-hui">
+    <div class="ub-img shop-icon h-w-1"></div>
+    <div class="ub-f1 ub ut-m ulev-9 p-l-r5">{$order.referer}</div>
+  </div>
+  {foreach from=$goods_list item=goods}
+  {if $goods.goods_id gt 0 && $goods.extension_code neq 'package_buy'}
+  <div class="ub p-all2 bc-grey goods cart-box" goods_id='{$goods.goods_id}'>
+    <div class="h-w-7 mar-ar1 goods-img" > <img src="{$url}{$goods.goods_thumb}"/></div>
+    <div class="ub-f1 ulev-1 mar-ar1 f-color-zi l-h-1 goods-img"> {$goods.goods_name}
+      {if $goods.parent_id > 0} <span>（{$lang.accessories}）</span> {elseif $goods.is_gift} <span>（{$lang.largess}）</span> {/if} </div>
+    <div class="ub ub-ver ub-ae goods-img">
+      <div class="f-color-red ulev-4"> <span class="ulev-2"></span>{$goods.goods_price} </div>
+      <div class="sc-text-hui ulev-4"> x{$goods.goods_number} </div>
+    </div>
+  </div>
+  {elseif $goods.goods_id gt 0 && $goods.extension_code eq 'package_buy'}
+  {/if}
+  {/foreach} 
+<div class="uinn-a1 lis f-color-6 ubt border-faxian">
+    <div class="ub ulev-1"> 
+    商品总价：
+    <!-- {if $order.extension_code eq "group_buy"} -->{$lang.gb_deposit}<!-- {/if} -->{$order.formated_goods_amount} 
+      <!-- {if $order.discount gt 0} 折扣 --> 
+      - {$lang.discount}：{$order.formated_discount} 
+      <!-- {/if} --> 
+      <!-- {if $order.tax gt 0} --> 
+      + {$lang.tax}：{$order.formated_tax} 
+      <!-- {/if} --> 
+      <!-- {if $order.shipping_fee > 0} --> 
+      + {$lang.shipping_fee}：{$order.formated_shipping_fee} 
+      <!-- {/if} --> 
+      <!-- {if $order.insure_fee > 0} --> 
+      + {$lang.insure_fee}：{$order.formated_insure_fee} 
+      <!-- {/if} --> 
+      <!-- {if $order.pay_fee > 0} --> 
+      + {$lang.pay_fee}：{$order.formated_pay_fee} 
+      <!-- {/if} --> 
+      <!-- {if $order.pack_fee > 0} --> 
+      + {$lang.pack_fee}：{$order.formated_pack_fee} 
+      <!-- {/if} --> 
+      <!-- {if $order.card_fee > 0} --> 
+      + {$lang.card_fee}：{$order.formated_card_fee} 
+      <!-- {/if} --> 
+    </div>
+  <div class="ub ulev-1 m-top1"> 
+    <!-- {if $order.money_paid > 0} --> 
+    - {$lang.order_money_paid}：<font class="f-color-red">{$order.formated_money_paid}</font> 
+    <!-- {/if} --> 
+    <!-- {if $order.surplus > 0} --> 
+    - {$lang.use_surplus}：{$order.formated_surplus} 
+    <!-- {/if} --> 
+    <!-- {if $order.integral_money > 0} --> 
+    - {$lang.use_integral}：{$order.formated_integral_money} 
+    <!-- {/if} --> 
+    <!-- {if $order.bonus > 0} --> 
+    - {$lang.use_bonus}：{$order.formated_bonus} 
+    <!-- {/if} --> 
+  </div>
+    <div class="ub f-color-red ulev-1 ub-pe">
+      <!-- {if $order.extension_code eq "group_buy"} -->
+      {$lang.notice_gb_order_amount} 
+      <!-- {elseif $order.extension_code eq "pre_sale"} --> 
+      {$lang.notice_ps_order_amount} 
+      <!-- {/if} --> 
+    </div>
+</div>
+</div>
+</div>
+<div class="bg-color-w">
+  <div class="m-top3 ub bc-text ub-ac ubb border-faxian uinn-a1">
+    <div class="ub-img" style="background-image:url(img/icons/icon-more-act.png);width:1.1em; height:1.1em;"></div>
+    <div class="ub-f1 ub ut-m ulev-9 p-l-r5">其他信息</div>
+  </div>
+  <div class="m-btm5 ulev-1 f-color-6 p-b2"> 
+    <!-- {if $order.shipping_id > 0} 配送方式 -->
+    <div class="p-t1">配送方式：{$order.shipping_name}</div>
+    <!-- {/if} --> 
+    <!-- {if $order.pay_id > 0} 支付方式 -->
+    <div class="p-t1">支付方式：{$order.pay_name}</div>
+    <!--{/if}--> 
+    <!--{if $order.insure_fee > 0} 保价费 -->
+    <div class="p-t1">{$lang.insure_fee}：{$order.insure_fee}</div>
+    <!--{/if}--> 
+    <!-- {if $order.pack_name} 是否使用包装 -->
+    <div class="p-t1">{$lang.use_pack}：{$order.pack_name}</div>
+    <!-- {/if} --> 
+    <!-- {if $order.card_name} 是否使用贺卡 -->
+    <div class="p-t1">{$lang.use_card}：{$order.card_name}</div>
+    <!-- {/if} --> 
+    <!-- {if $order.card_message} 是否使用贺卡 -->
+    <div class="p-t1">{$lang.bless_note}：{$order.card_message}</div>
+    <!-- {/if} --> 
+    <!-- {if $order.surplus > 0} 是否使用余额 -->
+    <div class="p-t1">{$lang.use_surplus}：{$order.surplus}</div>
+    <!-- {/if} --> 
+    <!-- {if $order.integral > 0} 是否使用积分 -->
+    <div class="p-t1">{$lang.use_integral}：{$order.integral}</div>
+    <!-- {/if} --> 
+    <!-- {if $order.bonus > 0} 是否使用红包 -->
+    <div class="p-t1">{$lang.bonus}：{$order.bonus}</div>
+    <!-- {/if} --> 
+    <!-- {if $order.inv_type eq 'vat_invoice'} 增值税发票 -->
+    <div class="p-t1">发票类型：{$lang[$order.inv_type]}</div>
+    <div class="p-t1">发票内容：{$order.inv_content}</div>
+    <div class="p-t1">单位名称：{$order.vat_inv_company_name}</div>
+    <div class="p-t1">纳税人识别号：{$order.vat_inv_taxpayer_id}</div>
+    <div class="p-t1">注册地址：{$order.vat_inv_registration_address}</div>
+    <div class="p-t1">注册电话：{$order.vat_inv_registration_phone}</div>
+    <div class="p-t1">开户银行：{$order.vat_inv_deposit_bank}</div>
+    <div class="p-t1">银行账户：{$order.vat_inv_bank_account}</div>
+    <div class="p-t1">收票人姓名：{$order.inv_consignee_name}</div>
+    <div class="p-t1">收票人手机：{$order.inv_consignee_phone}</div>
+    <div class="p-t1">收票人地址：{$order.inv_complete_address}</div>
+    <!-- {/if} --> 
+    <!-- {if $order.inv_type eq 'normal_invoice'} 普通发票 -->
+    <div class="p-t1">发票类型：{$lang[$order.inv_type]}</div>
+    <div class="p-t1">发票抬头：{$order.inv_payee}</div>
+    <div class="p-t1">发票内容：{$order.inv_content}</div>
+    <!--{/if}--> 
+    <!-- {if $order.postscript} 是否有订单附言 -->
+    <div class="p-t1">订单附言：{$order.postscript}</div>
+    <!-- {/if} --> 
+    <!-- {if $order.how_oos_name} 缺货处理 -->
+    <div class="p-t1">缺货处理：{$order.how_oos_name}</div>
+    <!-- {/if} --> 
+  </div>
+</div>
+{if $order.order_amount gt 0} 
+<div class="p-fixed-btm1 ubt border-hui bg-color-w yy-top">
+	<div class="p-all2 ub ub-ac ub-pe">
+        <font class="ulev-1 f-color-6">应付款金额：</font><font class="ulev-1-4 f-color-red">{$order.formated_order_amount}</font>
+        {if $order.pay_online}
+          <div pay_online='{$order.pay_online}'  class="btn-w2-red m-l2 payment" style="display:block; width:5em" >立即支付</div>
+        {/if}
+    </div>
+</div>
+{/if}
+<div class="ub" style="height:3em;"></div>

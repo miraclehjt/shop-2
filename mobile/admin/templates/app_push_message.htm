@@ -1,0 +1,97 @@
+<!-- $Id: shop_config.htm 16865 2009-12-10 06:05:32Z sxc_shop $ -->
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js"}
+<script>
+function change_extra_type(obj){
+	if(obj.value != '0')
+	{
+		switch(obj.value)
+		{
+			case 'goods':
+			var placeholder = '请输入商品ID'
+			break
+			case 'article':
+			var placeholder = '请输入文章ID'
+			break
+			case 'url':
+			var placeholder = '请输入链接'
+			break
+		}
+		document.getElementById('extra_value').setAttribute('placeholder',placeholder)
+		document.getElementById('extra_value').value = ''
+		document.getElementById('extra_value').style.display = ''
+	}
+	else{
+		document.getElementById('extra_value').style.display = 'none'
+	}
+}
+
+function strlen(str) {
+	var len = 0
+	for (var i = 0; i < str.length; i++) {
+		var c = str.charCodeAt(i)
+		if ((c >= 0x0001 && c <= 0x007e) || (0xff60 <= c && c <= 0xff9f)) {
+			len += 1
+		}
+		else {
+			len += 3
+		}
+	}
+	return len/3
+}
+var max_content_length = 72
+var cur_content_length = 0
+function change_content(obj){
+	var content = obj.value
+	cur_content_length = parseInt(strlen(content))
+	var count = max_content_length-cur_content_length
+	document.getElementById('content_count_label').innerHTML = count.toString()
+	if(count <= 0)
+	{
+		document.getElementById('content_count_label').style.color = '#ff6666'
+	}
+}
+</script>
+<form method='POST' action='app_push.php'>
+<div class='main-div' id='main_div'>
+{if $push_setting}
+<p>请选择要推送的APP，推送的消息长度（包含额外的参数）不能超过72个汉字</p>
+{foreach from=$push_setting item=item key=key name='push_setting'}
+<p>
+	<label>
+		<input type='checkbox' checked=true name='ids[]' value="{$key}"/>{$item.app_name}
+	</label>
+</p>
+{/foreach}
+<p>推送内容（还可以输入<span id='content_count_label'>72</span>字）：</p>
+<p>
+	<textarea onkeyup="change_content(this)" name='content' rows='4' cols='50'></textarea>
+</p>
+<p>
+	<select id='extra_type' name='extra_type' onchange="change_extra_type(this)">
+		<option value='0'>请选择额外参数（可选）</option>
+		<option value="goods">商品</option>
+		<option value="article">文章</option>
+		<option value="url">链接</option>
+	</select>
+	<input id='extra_value' name='extra_value' value='' placeholder="请输入商品ID" style='display:none;'/>
+</p>
+<p id='submit_area'>
+<input type='hidden' name='act' value='do_push_message'/> 
+<input type='submit' id='submit_button' class='button' value='确定'/>
+</p>
+{else}
+<p>请先<a href='app_push.php?act=setting'>添加推送设置</a></p>
+{/if}
+</div>
+</form>
+{literal}
+<script language="JavaScript">
+onload = function()
+{
+    // 开始检查订单
+    startCheckOrder();
+}
+</script>
+{/literal}
+{include file="pagefooter.htm"}

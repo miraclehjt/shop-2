@@ -1,0 +1,4820 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+		<url>
+			<loc>http://localhost/</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.9</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=1</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=8</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=7</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=6</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=5</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=4</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=3</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=2</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=14</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=13</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=12</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=10</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=9</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=55</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=60</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=56</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=57</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=58</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=59</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=109</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=110</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=112</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=113</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=111</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=146</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=144</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=145</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=147</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=179</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=178</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=180</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=181</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=182</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=306</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=310</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=309</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=308</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=307</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=311</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=272</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=273</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=274</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=271</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=225</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=226</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=224</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=222</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=223</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=221</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=36</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=37</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=38</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=34</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=33</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=32</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=31</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=35</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=46</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=40</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=39</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=41</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=42</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=43</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=44</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=45</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=54</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=47</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=53</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=52</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=51</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=50</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=49</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=48</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=24</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=25</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=29</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=26</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=27</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=28</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=30</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=15</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=16</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=17</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=18</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=19</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=20</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=21</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=22</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=67</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=66</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=65</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=64</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=63</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=62</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=68</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=61</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=70</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=71</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=72</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=73</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=74</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=75</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=76</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=69</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=81</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=84</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=79</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=80</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=82</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=83</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=77</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=78</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=88</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=87</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=85</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=86</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=91</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=90</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=92</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=89</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=95</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=100</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=98</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=97</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=96</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=94</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=93</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=99</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=102</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=108</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=103</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=104</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=105</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=106</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=107</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=101</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=114</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=116</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=117</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=115</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=118</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=123</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=122</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=121</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=120</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=119</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=124</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=126</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=125</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=131</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=127</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=128</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=129</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=130</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=134</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=133</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=135</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=132</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=140</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=141</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=143</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=137</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=142</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=138</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=136</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=139</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=152</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=153</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=151</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=150</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=149</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=148</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=155</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=154</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=158</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=160</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=159</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=163</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=156</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=161</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=162</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=157</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=175</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=177</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=176</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=174</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=173</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=172</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=171</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=170</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=169</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=164</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=168</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=165</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=167</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=166</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=184</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=187</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=186</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=185</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=189</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=190</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=183</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=188</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=195</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=191</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=194</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=192</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=193</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=197</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=198</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=196</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=199</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=200</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=201</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=203</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=204</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=205</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=206</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=202</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=213</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=211</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=210</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=209</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=208</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=207</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=214</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=212</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=220</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=216</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=215</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=217</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=218</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=219</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=228</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=227</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=232</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=231</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=230</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=229</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=234</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=235</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=236</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=238</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=233</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=239</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=240</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=237</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=241</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=242</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=244</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=243</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=245</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=246</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=247</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=253</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=252</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=251</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=250</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=249</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=248</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=254</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=261</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=258</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=257</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=256</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=255</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=259</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=260</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=262</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=265</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=263</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=270</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=269</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=268</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=267</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=264</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=266</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=281</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=280</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=276</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=277</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=278</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=279</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=297</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=282</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=288</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=287</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=286</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=285</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=284</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=283</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=296</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=295</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=290</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=291</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=292</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=293</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=289</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=294</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=302</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=303</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=298</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=299</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=300</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=305</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=304</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=301</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=319</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=318</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=317</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=316</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=315</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=314</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=313</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=312</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=327</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=326</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=325</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=324</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=323</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=322</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=321</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=320</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=333</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=332</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=331</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=330</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=329</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=328</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=341</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=340</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=339</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=338</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=337</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=336</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=335</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=334</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=349</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=348</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=347</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=346</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=345</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=344</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=343</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=342</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=354</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=353</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=352</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=351</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=350</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/category.php?id=355</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article_cat.php?id=4</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article_cat.php?id=14</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article_cat.php?id=11</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article_cat.php?id=12</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article_cat.php?id=13</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article_cat.php?id=16</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article_cat.php?id=17</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article_cat.php?id=18</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article_cat.php?id=20</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>hourly</changefreq>
+			<priority>0.8</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=1</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=2</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=3</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=4</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=5</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=6</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=7</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=10</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=11</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=13</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=14</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=16</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=20</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=22</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=23</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=24</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=25</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=26</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=28</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=27</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=29</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=30</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=31</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=32</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=33</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=34</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=35</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=36</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=37</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=38</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=39</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=40</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=41</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=42</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=43</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=44</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=45</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=46</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=47</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=48</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=49</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=50</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=51</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=52</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=53</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=54</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=55</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=56</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=60</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=62</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=63</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=64</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=67</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=68</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=69</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=70</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=71</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=72</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=73</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=74</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=75</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=77</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=78</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=79</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=81</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=82</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=84</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=85</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=86</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=87</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=88</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=89</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=90</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=91</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=92</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=93</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=94</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=95</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=96</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=97</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=98</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=99</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=100</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=101</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=102</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=103</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=104</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=105</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=106</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=107</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=108</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=110</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=111</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=112</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=113</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=114</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=115</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=116</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=117</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=118</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=119</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=120</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=121</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=122</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=123</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=124</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=125</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=126</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=127</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=128</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=129</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=130</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=131</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=132</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=137</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=133</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=134</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=135</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=136</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=141</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=138</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=139</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=140</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=142</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=143</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=144</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=145</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=146</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=147</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=148</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=149</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=150</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=152</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=151</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=153</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=154</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=155</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=156</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=157</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=158</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=159</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=160</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=161</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=162</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=163</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=164</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=165</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=166</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=167</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=168</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=169</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=170</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=171</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=172</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=173</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=174</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=175</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=176</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=177</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=178</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=179</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=180</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=181</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=182</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=183</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=184</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=185</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=186</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=187</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=188</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=189</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=190</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=191</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=192</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=193</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=194</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=195</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=196</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=197</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=198</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=199</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=200</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=201</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=202</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=203</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=204</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=205</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=206</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=207</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=208</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=210</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=209</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=211</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=212</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=213</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=214</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=215</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=216</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=217</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=218</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=219</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=220</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=221</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=222</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=223</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=224</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=225</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=226</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=227</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=228</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=229</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=230</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=231</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=232</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=233</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=234</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=235</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=236</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=238</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=239</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=240</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=241</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=242</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=243</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=244</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=245</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=246</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=247</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=248</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=249</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=250</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/goods.php?id=251</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=1</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=2</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=3</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=4</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=5</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=6</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=121</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=122</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=123</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=124</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=125</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=126</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=127</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=128</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=129</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=130</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=9</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=10</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=11</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=51</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=52</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=53</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=55</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=15</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=16</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=17</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=18</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=20</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=21</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=22</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=24</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=25</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=26</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=107</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=108</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=31</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=32</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=33</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=34</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=36</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=37</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=38</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=39</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=40</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=41</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=42</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=46</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=61</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=62</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=63</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=94</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=95</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=96</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=97</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=66</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=68</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=69</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=70</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=71</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=72</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=73</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=74</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=76</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=77</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=78</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=79</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=85</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=86</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=87</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=88</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=89</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=90</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=91</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=98</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=99</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=100</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=101</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=102</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=103</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=104</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=105</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=106</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=109</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=110</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=111</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=112</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=113</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=114</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=115</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=116</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=117</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=118</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=119</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+		<url>
+			<loc>http://localhost/article.php?id=120</loc>
+			<lastmod>2015-11-01</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.7</priority>
+		</url>
+
+	</urlset>
+

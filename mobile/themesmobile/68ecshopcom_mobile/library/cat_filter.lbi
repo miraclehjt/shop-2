@@ -1,0 +1,25 @@
+{if $brands.1 || $price_grade.1 || $filter_attr_list}
+<div class="filter box">
+	<div class="hd"><h3>{$lang.goods_filter}</h3><div class="extra"></div></div>
+	<div class="bd">
+		{if $brands.1}
+		<dl class="first">
+			<dt>{$lang.brand}{$lang.colon}</dt>
+			<dd>{foreach from=$brands item=brand name=brands}<a href="{$brand.url}" class="item{if $smarty.foreach.brands.first} all{/if}{if $brand.selected} current{/if}">{$brand.brand_name}</a>{/foreach}</dd>
+		</dl>
+		{/if}
+		{if $price_grade.1}
+		<dl{if $brands.1}{else} class="first"{/if}>
+			<dt>{$lang.price}{$lang.colon}</dt>
+			<dd>{foreach from=$price_grade item=grade name=price_grade}<a href="{$grade.url}" class="item{if $smarty.foreach.price_grade.first} all{/if}{if $grade.selected} current{/if}">{if $smarty.foreach.price_grade.first}{$grade.price_range}{else}{$grade.formated_start} - {$grade.formated_end}{/if}</a>{/foreach}</dd>
+		</dl>
+		{/if}
+		{foreach from=$filter_attr_list item=filter_attr name=filter_attr_list}
+		<dl>
+			<dt>{$filter_attr.filter_attr_name|escape:html}{$lang.colon}</dt>
+			<dd>{foreach from=$filter_attr.attr_list item=attr name=filter_attr}<a href="{$attr.url}" class="item{if $smarty.foreach.filter_attr.first} all{/if}{if $attr.selected} current{/if}">{$attr.attr_value}</a>{/foreach}</dd>
+		</dl>
+		{/foreach}
+	</div>
+</div>
+{/if} 

@@ -1,0 +1,25 @@
+<tr id="news" {if $menu['type'] neq 3}style="display:none"{/if}>
+	<td colspan="2">
+		<table width="90%" align="right">
+			<tr>
+				<td class="narrow-label">标题：</td>
+				<td><input type="text" name="title" size ="40" maxlength="60" value="{$article.title|escape}" /></td>
+			</tr>
+			<tr>
+				<td class="narrow-label">上传图片：</td>
+				<td><input type="file" name="file"></td>
+			</tr>
+			<tr>
+				<td class="narrow-label">描述内容：</td>
+				<td><textarea name="description" cols="40" rows="5">{$article.description|escape}</textarea></td>
+			</tr>
+			<tr>
+				<td class="narrow-label">链接地址：</td>
+				<td><input name="link_url" type="text" value="{$article.link|escape}" maxlength="60"></td>
+			</tr>
+			<input type="hidden" name="article_cat" value="-1" />
+			<input type="hidden" name="article_id" value="{$article.article_id}" />
+			<input type="hidden" name="file_url" value="{$article.file_url}" />
+		</table>
+	</td>
+</tr>

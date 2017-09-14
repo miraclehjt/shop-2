@@ -1,0 +1,10 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {foreach from=$logdb name="keyword_list" item=log} -->
+
+<div id="li_{$smarty.foreach.keyword_list.index}" onclick="setTip('{$log.word}');" onmouseover="this.className='search_t_div_2';" onmouseout="this.className='search_t_div_1';" class="search_t_div_1" title="{$log.word}"><span>{$log.items} 结果</span>{$log.kword}</div>
+
+{if $smarty.foreach.keyword_list.index eq 0 && $log.keyword_cat_count gt 0}
+<p  class="search_t_div_1" style="padding-left:20px;height:20px; padding-right:8px;border-bottom:1px solid #ddd;overflow:hidden;"><span style="float:right">{$log.keyword_cat_count} 结果</span>{$log.keyword_cat}</p>
+{/if}
+
+<!-- {/foreach} -->

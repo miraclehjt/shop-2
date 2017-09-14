@@ -1,0 +1,44 @@
+{if $is_full_page eq 1}
+<div id='content_container'> {/if} 
+  <!--{foreach from=$message_list item=message key=key} -->
+  <div class="bg-color-w ubb ubt border-faxian m-btm1 message" message_id='{$key}' order_id="{$message.order_id}">
+    <div class="ub p-all3">
+      <div class="ub-f1 ub ub-ac">
+        <div class="ulev-9 f-color-6"> {$message.msg_type}</div>
+        <div class="ulev-2 m-l1 sc-text-hui"> {$message.msg_time}</div>
+      </div>
+      <div class="ub-pe ub ub-ac delete">
+        <div class="ub-img search-icon2 h-w-1"></div>
+        <div class="ulev-1 m-l3 f-color-red">删除</div>
+      </div>
+    </div>
+    <div class="bc-grey p-all3">
+      <div><font class="ulev-1 sc-text-hui">标题：</font><font class="ulev-1 f-color-zi">{$message.msg_title}</font></div>
+      <div class="m-top2"><font class="ulev-1 sc-text-hui">内容：</font><font class="ulev-1 f-color-zi">{$message.msg_content} </font></div>
+    </div>
+	<!-- {if $message.message_img} 如果上传了图片--> 
+	<div class="bc-grey p-all3">
+	<img class="message_image" style="width:3em;height:3em;" src="{$url}data/feedbackimg/{$message.message_img}" />
+	</div>
+  <!-- {/if} --> 
+  <!-- {if $message.re_msg_content} -->
+  <div>
+  <div class="ub p-all3">
+  <div class="ulev-9 f-color-6">{$lang.shopman_reply}</div>
+	<div class="ulev-2 m-l1 sc-text-hui">{$message.re_msg_time}</div>
+	{if $message.re_user_email}
+	<a style="display:block;width:0.9em;height:0.9em;" href="mailto:{$message.re_user_email}" class="m-l1"><img src="img/icons/mail.png" style="width:0.9em;height:0.9em;" /></a>
+	{/if}
+	</div>
+  <div class="bc-grey p-all3">
+  <font class="ulev-1 sc-text-hui">内容：</font><font class="ulev-1 f-color-zi">{$message.re_msg_content}</font></div>
+  </div>
+  <!-- {/if} --> 
+  </div>
+  <!-- {foreachelse} -->
+  <div class='no-con'>找不到更多留言</div>
+  <!-- {/foreach} --> 
+  {if $is_full_page eq 1} 
+  </div>
+<div id='scroll_to_top' class="ub-img"></div>
+{/if}

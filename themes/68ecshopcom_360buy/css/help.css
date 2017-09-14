@@ -1,0 +1,186 @@
+/* CSS Document */
+.main {
+	overflow: hidden;
+	zoom: 1;
+	margin-bottom: 10px
+}
+.main a {
+	color: #005ea7
+}
+.main a:hover {
+	color: #C00;
+}
+.Red {
+	color: red
+}
+.right {
+	width: 980px;
+	overflow: hidden;
+	_float: right;
+	font-size: 12px;
+	line-height: 150%;
+}
+.left {
+	width: 210px;
+	overflow: hidden;
+	margin-right: 10px;
+	float: left;
+	padding-bottom: 5px
+}
+.help_side ul li,#sortlist b,.right h3.help_tit{
+	background: url(../images/upgrade_ad/help.png) no-repeat;
+}
+.left h2 {
+	height: 29px;
+	line-height: 300px;
+	overflow: hidden
+}
+.help_side {
+	border: 1px solid #b9e8f9
+}
+.help_side h4 {
+	background: #eff9fe;
+	height: 32px;
+	line-height: 32px;
+	padding-left: 25px;
+	color: #4a4a4a;
+	font-size: 14px;
+	font-family: "microsoft yahei";
+}
+.help_side ul li {
+	padding-left: 32px;
+	height: 32px;
+	line-height: 32px;
+	overflow: hidden;
+	border-top: 1px dotted #cbecf8;
+	background-position:0px -67px;
+}
+.help_side ul li.li1 {
+	border-top: medium none;
+}
+.help_side ul li.helpcurr {
+	background-position:0px -99px;
+	color: #cc0000;
+}
+.help_side ul li a:link, .help_side ul li a {
+	color: #2398d1;
+	text-decoration: none;
+}
+.help_side ul li a:hover, .help_side ul li a:active {
+	color: #cc0000;
+	text-decoration: underline;
+}
+.help_side ul li.helpcurr a {
+	color: #E31939;
+	text-decoration: none;
+}
+.right img {
+	margin: 10px
+}
+.right h3 {
+	background: #deedf9;
+	height: 24px;
+	line-height: 24px;
+	padding-left: 13px;
+}
+.right h3 a {
+	font-weight: 400;
+	font-size: 12px;
+	float: right;
+	margin-right: 10px
+}
+.right h3.help_tit {
+	background-position:0px -31px;
+	background-repeat:repeat-x;
+	height: 36px;
+	line-height: 36px;
+	padding-left: 9px;
+}
+.right h3.help_tit strong {
+	float: left;
+	height: 36px;
+	line-height: 36px;
+	position: relative;
+	font-size: 16px;
+	color: #138bc5;
+	font-family: "microsoft yahei";
+}
+.right h3.help_tit a {
+	font-weight: 400;
+	height: 14px;
+	line-height: 14px;
+	font-size: 12px;
+	float: right;
+	margin-right: 10px
+}
+.help_box {
+	padding: 10px 10px 10px 20px;
+}
+.dt_bold dt {
+	font-weight: 700;
+	margin-top: 5px;
+	color: #333
+}
+.dt_bold dd {
+	padding-left: 1.8em;
+	margin-bottom: 20px
+}
+.dl_box dt {
+	margin-top: 5px;
+	margin-bottom: 5px
+}
+/*sortlist*/
+#sortlist h4 {
+	cursor: pointer;
+}
+#sortlist h4 {
+	border-bottom: 1px solid #B9E8F9;
+}
+#sortlist .current h4 {
+	border-bottom: 0;
+}
+#sortlist b {
+	float: right;
+	width: 14px;
+	height: 14px;
+	margin-top: 1px;
+	background-position:-1px -15px;
+	overflow: hidden;
+	cursor: pointer;
+	margin: 7px 10px 0 0;
+}
+#sortlist ul {
+	display: none;
+}
+#sortlist .current b {
+	background-position:-1px -1px;
+}
+#sortlist .current ul {
+	display: block;
+}
+/*floatinfo*/
+a.info {
+	text-decoration: none;
+	font-size: 12px;
+}
+.info {
+	position: relative;
+	font-size: 14px;
+	cursor: pointer;
+}
+.info:hover {
+	background: #fff;
+}
+.info span {
+	display: none;
+}
+.info:hover span {
+	position: absolute;
+	display: block;
+	top: 15px;
+	left: 0;
+	background: #fff;
+	z-index: 999;
+	text-decoration: none;
+	color: #000;
+}

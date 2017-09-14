@@ -1,0 +1,60 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</script>
+<div id="tbh5v0">
+ {insert_scripts files='region.js'}
+  <script type="text/javascript">
+              region.isAdmin = false;
+              {foreach from=$lang.flow_js item=item key=key}
+              var {$key} = "{$item}";
+              {/foreach}
+              {literal}
+              onload = function() {
+                if (!document.all)
+                {
+                  document.forms['theForm'].reset();
+                }
+              }
+              {/literal}
+            </script>
+            
+ <!-- {foreach from=$consignee_list item=consignee key=sn name=consignee_list} -->
+ {if $consignee.consignee}
+<a href="user.php?act=address&address_id={$consignee.address_id}">
+<div class="address_add {if $consignee.address_id eq $address} Default{/if}">
+{if $consignee.address_id eq $address}
+<h2><img src="themesmobile/68ecshopcom_mobile/images/right.png"></h2>
+{else}
+<h2><img src="themesmobile/68ecshopcom_mobile/images/icojiantou1.png"></h2>
+{/if}
+<dl>
+<dt><span>{$consignee.consignee|escape}</span><em>{$consignee.tel}</em></dt>
+<dd>{$consignee.province_name}-{$consignee.city_name}-{$consignee.district_name}{if $consignee.xiangcun_name}-{$consignee.xiangcun_name}{/if}{if $consignee.address}-{$consignee.address|escape}{/if}</dd>
+</dl>
+</div>
+</a>
+{/if}
+<!--{/foreach}-->
+
+<script type="text/javascript">
+{foreach from=$lang.flow_js item=item key=key}
+var {$key} = "{$item}";
+{/foreach}
+{literal}
+onload = function() {
+	if(!document.all){document.forms['theForm'].reset();}
+}
+{/literal}
+</script>
+</div>
+<!--底部-->
+<div style=" width:100%; height:50px;"></div>
+<div class="list_footer">
+<a href="user.php?act=address">添加新地址</a>
+</div>
+<!---返回顶部-->
+<script>
+function goTop(){
+	$('html,body').animate({'scrollTop':0},600);
+}
+</script>
+<a href="javascript:goTop();" class="gotop"><img src="themesmobile/68ecshopcom_mobile/images/topup.png"></a> 

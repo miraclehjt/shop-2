@@ -1,0 +1,101 @@
+<!-- $Id: wxch_config.html  2013-10-16 10:30:26Z djks $ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>{$lang.cp_home}{if $ur_here} - {$ur_here} {/if}</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="styles/general.css" rel="stylesheet" type="text/css" />
+    <link href="styles/main.css" rel="stylesheet" type="text/css" />
+    {insert_scripts files="../js/transport.js,common.js"}
+    <script language="JavaScript">
+        <!--
+        // 这里把JS用到的所有语言都赋值到这里
+        {foreach from=$lang.js_languages key=key item=item}
+        var {$key} = "{$item}";
+        {/foreach}
+        //-->
+    </script>
+</head>
+<body>
+
+<h1>
+	<span class="action-span"><a href="weixin.php?act=addmenu">添加自定义菜单</a></span>
+    <span class="action-span1"><a href="index.php?act=main">{$lang.cp_home}</a> </span><span id="search_id" class="action-span1"> - 自定义菜单</span>
+    <div style="clear:both"></div>
+</h1>
+
+{insert_scripts files="../js/utils.js,selectzone.js,colorselector.js"}
+<script type="text/javascript" src="../js/calendar.php?lang={$cfg_lang}"></script>
+<link href="../js/calendar/calendar.css" rel="stylesheet" type="text/css" />
+<!-- 通用信息 -->
+<div class="list-div" id="listDiv">
+<table width="100%" cellspacing="1" cellpadding="2" id="list-table">
+  <tr>
+    <th>菜单名称</th>
+    <th>菜单类型</th>
+    <th>菜单值</th>
+    <th>排序</th>
+	<th>操作</th>
+  </tr>
+	{foreach item=item from=$pmenu}
+  <tr>
+	<td>{$item.name}</td>
+	<td>{if $item.type eq 1}命令{elseif $item.type eq 3}自定义图文{else}链接{/if}</td>
+	<td>{$item.value}</td>
+	<td>{$item.order}</td>
+	<td><a href="weixin.php?act=addmenu&id={$item.id}">{$lang.edit}</a>|<a href="weixin.php?act=delmenu&id={$item.id}">{$lang.remove}</a></td>
+  </tr>
+  {foreach item=item from=$menu[$item.id]}
+  <tr>
+	<td>|____{$item.name}</td>
+	<td>{if $item.type eq 1}命令{elseif $item.type eq 3}自定义图文{else}链接{/if}</td>
+	<td>{$item.value}</td>
+	<td>{$item.order}</td>
+	<td><a href="weixin.php?act=addmenu&id={$item.id}">{$lang.edit}</a>|<a href="weixin.php?act=delmenu&id={$item.id}">{$lang.remove}</a></td>
+  </tr>
+	{/foreach}
+	{/foreach}
+  </table>
+
+</div>
+<!-- end goods form -->
+{insert_scripts files="validator.js,tab.js"}
+
+<script language="JavaScript">
+var goodsId = '{$goods.goods_id}';
+var elements = document.forms['theForm'].elements;
+var sz1 = new SelectZone(1, elements['source_select1'], elements['target_select1']);
+var sz2 = new SelectZone(2, elements['source_select2'], elements['target_select2'], elements['price2']);
+var sz3 = new SelectZone(1, elements['source_select3'], elements['target_select3']);
+var marketPriceRate = {$cfg.market_price_rate|default:1};
+var integralPercent = {$cfg.integral_percent|default:0};
+
+{literal}
+onload = function()
+{
+
+    if (document.forms['theForm'].elements['auto_thumb'])
+    {
+        handleAutoThumb(document.forms['theForm'].elements['auto_thumb'].checked);
+    }
+
+    // 检查新订单
+    startCheckOrder();
+    {/literal}
+        {foreach from=$user_rank_list item=item}
+        set_price_note({$item.rank_id});
+    {/foreach}
+        {literal}
+        document.forms['theForm'].reset();
+    }
+
+    function setAttrList(result, text_result)
+    {
+        document.getElementById('tbody-goodsAttr').innerHTML = result.content;
+    }
+
+
+            {/literal}
+</script>
+{include file="pagefooter.htm"}

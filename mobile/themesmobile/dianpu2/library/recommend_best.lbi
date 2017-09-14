@@ -1,0 +1,20 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $best_goods} -->
+<div class="product_value">
+  <h2>店长推荐</h2>
+  <ul>
+  <!--{foreach from=$best_goods item=bestgoods}-->
+  
+    <li> <a href="{$bestgoods.url}">
+    
+    <span> 
+    <img src="{$option.static_path}{$bestgoods.thumb}" srcset="{$option.static_path}{$bestgoods.thumb}" srcd="{$option.static_path}{$bestgoods.thumb}" loaded="no"> </span>
+    <span class="p_info">{$bestgoods.name|truncate:15}</span> 
+    <span class="price">
+    <!-- {if $bestgoods.promote_price neq ""} --> {$bestgoods.promote_price}  <!-- {else}--> {$bestgoods.shop_price} <!--{/if}--></span> 
+    </a> 
+    </li>
+  <!--{/foreach}-->
+  </ul>
+  </div>
+<!-- {/if} --> 

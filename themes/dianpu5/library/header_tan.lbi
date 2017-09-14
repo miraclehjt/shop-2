@@ -1,0 +1,32 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--{foreach from=get_categories_tree(0) item=cat name=cat0}-->
+{if $smarty.foreach.cat0.iteration < 15}
+<div class="list" onmouseover="_show_(this,{'source':'JS_side_cat_textarea_{$smarty.foreach.cat0.iteration}','target':'JS_side_cat_list_{$smarty.foreach.cat0.iteration}'});" onmouseout="_hide_(this);">
+<dl class="cat" {if $smarty.foreach.cat0.last}style="height:16px;"{/if}>
+  <dt class="catName"><strong class="cat{$smarty.foreach.cat0.iteration} Left"><a href="{$cat.url}" target="_blank" title="进入{$cat.name}频道">{$cat.name}</a></strong><span class="Right">&nbsp;</span></dt> 
+</dl>
+<textarea id="JS_side_cat_textarea_{$smarty.foreach.cat0.iteration}" class="none">
+				<div class="topMap clearfix">
+					<div class="subCat clearfix">
+                  <!--{foreach from=$cat.cat_id item=child name=namechild}-->
+								<div class="list1 clearfix" {if $smarty.foreach.namechild.last}style="border:none"{/if}>
+								<div class="cat1">
+                                <a href="{$child.url}" target="_blank" title="{$child.name|escape:html}">{$child.name|escape:html}</a>：</div>
+								<div class="link1">
+                          <!--{foreach from=$child.cat_id item=childer name=childername}-->       
+                            <a href="{$childer.url}" target="_blank" title="{$childer.name|escape:html}" style="width:100px; display:inline-block">{$childer.name|escape:html}</a>
+
+                            <!--{/foreach}-->     
+        
+								</div>
+							</div>
+                            <!--{/foreach}-->					
+					</div>
+					
+				</div>
+				
+			</textarea>
+<div id="JS_side_cat_list_{$smarty.foreach.cat0.iteration}" class="hideMap Map_positon{$smarty.foreach.cat0.iteration}"></div>
+</div>
+{/if}
+<!--{/foreach}-->

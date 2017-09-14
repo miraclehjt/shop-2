@@ -1,0 +1,14 @@
+<!--{foreach from=$shop_list item=shop}-->
+<div class="uc-a1 ub ub-ac ub-pc f-color-zi p-all5 bg-color-w m-btm1 ubb border-hui shop" supplier_id="{$shop.supplierid}">
+  <div class="ub ub-ac ub-pc shop_image">
+    <div class="ulev-1"><img src="{$url}{$shop.shop_logo}" style="width:6em; height:3em"/></div>
+  </div>
+  <div class="ub-f1 p-l-r2 shop_image">
+    <div class="ulev-1 m-btm1">店铺名称：{$shop.shop_name}</div>
+    <div class="ulev-2 sc-text-hui">商家名称：{$shop.supplier_name|escape:html}</div>
+  </div>
+  <div class="bc-text-head ub ub-ac ub-pc delete">
+    <div class="ulev-1"><img src="img/icons/del.png" style="width:1.6em; height:1.6em;"></div>
+  </div>
+</div>
+<!--{/foreach} -->

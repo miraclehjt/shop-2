@@ -1,0 +1,52 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <form name="compareForm" action="compare.php" method="post" onSubmit="return compareGoods(this);">
+   <!-- {if $goods_list} -->
+     <div class="product_list">
+      <ul>
+      <!--{foreach from=$goods_list item=goods name=s_goods}-->
+      <!-- {if $goods.goods_id != ""} -->
+        <li>
+         <a href="{$goods.url}"> 
+          <img src="{$goods.goods_thumb}" alt="{$goods.goods_name}" srcset="{$goods.goods_thumb}" srcd="{$goods.goods_thumb}"> 
+          <p> {$goods.goods_name}  </p>
+          <span><!--{if $goods.promote_price neq "" } -->{$goods.promote_price}<!--{else}-->{$goods.shop_price}<!--{/if}--></span>
+          </a>
+        </li>
+       <!-- {/if}-->
+      <!--{/foreach}-->
+      </ul>
+      </div>
+    <!-- {else} -->
+
+	<div class="cp_prom">抱歉暂时没有相关结果，换个词试试吧!</div>
+
+    <!-- {/if}-->
+  </form>
+<script type="Text/Javascript" language="JavaScript">
+<!--
+{literal}
+function selectPage(sel)
+{
+  sel.form.submit();
+}
+{/literal}
+//-->
+</script>
+<script type="text/javascript">
+window.onload = function()
+{
+  Compare.init();
+  fixpng();
+}
+{foreach from=$lang.compare_js item=item key=key}
+{if $key neq 'button_compare'}
+var {$key} = "{$item}";
+{else}
+var button_compare = '';
+{/if}
+{/foreach}
+var compare_no_goods = "{$lang.compare_no_goods}";
+var btn_buy = "{$lang.btn_buy}";
+var is_cancel = "{$lang.is_cancel}";
+var select_spe = "{$lang.select_spe}";
+</script>

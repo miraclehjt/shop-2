@@ -1,0 +1,57 @@
+<!-- {if $is_full_page eq 1} -->
+<div class="ub user_check bg-color-w">
+  <div class="ub-f1 selected" id="account_log_button" >
+	<font>查看申请记录</font>
+	</div>
+  <div class="ub-f1 " id="account_detail_button" >
+	<font>查看账户明细</font>
+  </div>
+</div>
+<div class="m-all2 bg-color-w p-all3 f-color-6">
+  <div class="ulev-1 l-h-2"> 您当前消费金额为：<span class="f-color-red ulev-0">{$surplus_amount}</span> </div>
+  <div class="ulev-1 l-h-2"> {$lang.current_surplus}<span class="f-color-red ulev-0">{$surplus_yue}</span></div>
+  <div class="ub ub-ac ub-pc ubt border-faxian uinn-p2 m-top1">
+    <div class="btn-red-2 ulev-1" id="user_capital_recharge">充值</div>
+    <div class="btn-red-2 ulev-1 m-l2" id="user_capital_withdrawals">提现</div>
+  </div>
+</div>
+<!--查看申请记录开始-->
+<div id="content_container"> 
+<!-- {/if}  -->
+  <!--{foreach from=$account_log item=item}-->
+  <div class="bg-color-w ubb border-hui m-btm1">
+    <div class="ub p-all5 f-color-6">
+      <div class="ub-f1 ub ub-ac">
+        <div class="ulev-9">{$item.type}：<font class="f-color-red">{$item.amount}</font></div>
+      </div>
+      <div class="ub-pe ulev-1">{$item.pay_status}</div>
+    </div>
+    <div class="bc-grey p-all1 ubb ubt border-faxian">
+      <div><font class="ulev-1 sc-text-hui">{$lang.process_notic}：</font><font class="ulev-1 f-color-zi">{$item.short_user_note}</font></div>
+      <div class="m-top2"><font class="ulev-1 sc-text-hui">{$lang.admin_notic}：</font><font class="ulev-1 f-color-zi">{$item.short_admin_note} </font></div>
+    </div>
+    <div class="ub ub-ac p-all1 sc-text-hui">
+      <div class="ub-f1 ulev-1">
+		{$item.add_time}
+		</div>
+		{if $item.payment_not_support}
+		<div class="ub-f1 ulev-1">
+		APP不支持{$item.pay_name}，请使用PC支付
+		</div>
+		{/if}
+      <div class="ub-pe ub ulev-1"> 
+	  {if $item.pay_online}
+        <div class="btn-w1 m-l3 payment" pay_online='{$item.pay_online}'>付款</div>
+        {/if}
+		
+        <!-- {if ($item.is_paid eq 0 && $item.process_type eq 1) || $item.handle} -->
+        <div class="btn-w1 m-l3 cancel" account_id='{$item.id}'>取消</div>
+        <!-- {/if} --> 
+      </div>
+    </div>
+  </div>
+  <!--{/foreach}--> 
+  <!--查看申请记录结束--> 
+  <!-- {if $is_full_page eq 1} -->
+ </div>
+<!-- {/if} -->

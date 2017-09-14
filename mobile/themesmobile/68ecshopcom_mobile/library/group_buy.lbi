@@ -1,0 +1,20 @@
+{if $group_buy_goods}
+<div class="group_buy_goods box">
+	<div class="hd"><h3>{$lang.group_buy_goods}</h3><div class="extra"><a href="group_buy.php">{$lang.more}</a></div></div>
+	<div class="bd product_list">
+		<ul>
+			{foreach from=$group_buy_goods item=goods name=group_buy_goods}
+			<li>
+				<span class="photo">
+					<a href="{$goods.url}" title="{$goods.name|escape:html}" class="image"><img src="{$option.static_path}{$goods.thumb}" alt="{$goods.name|escape:html}"/></a>
+				</span>
+				<span class="info">
+					<a href="{$goods.url}" title="{$goods.name|escape:html}" class="name">{$goods.short_style_name}</a>
+					<em class="price">{$goods.last_price}</em>
+				</span>
+			</li>
+			{/foreach}
+		</ul>
+	</div>
+</div>
+{/if}

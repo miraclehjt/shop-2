@@ -1,0 +1,15 @@
+{if $invoice_list}
+<div class="invoice_list box">
+	<div class="hd"><h3>{$lang.invoice_list}</h3><div class="extra"></div></div>
+	<div class="bd">
+		<ul>
+			{foreach from=$invoice_list item=invoice name=invoice_list}
+			<li>
+				<em class="title">{$lang.order_number}</em><span class="data">{$invoice.order_sn}</span>
+				<em class="title">{$lang.consignment}</em><span class="data">{$invoice.invoice_no}</span>
+			</li>
+			{/foreach}
+		</ul>
+	</div>
+</div>
+{/if}

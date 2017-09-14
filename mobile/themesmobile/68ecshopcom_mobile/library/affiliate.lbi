@@ -1,0 +1,194 @@
+{if !$goodsid || $goodsid eq 0}
+<div class="affiliate_wrapper box">
+	<div class="hd"><h3>{$lang.label_affiliate}</h3><div class="extra"></div></div>
+	<div class="bd">
+		<h2>{$lang.affiliate_introduction}</h2>
+		<div class="notice_box">{$affiliate_intro}</div>
+		{if $affiliate.config.separate_by eq 0}
+		<h2 id="myrecommend">{$lang.affiliate_member}</h2>
+		<table class="data_table">
+			<colgroup>
+				<col width="100"/>
+				<col width="200"/>
+				<col width="250"/>
+				<col width="250"/>
+			</colgroup>
+			<thead>
+				<tr>
+					<th>{$lang.affiliate_lever}</th>
+					<th>{$lang.affiliate_num}</th>
+					<th>{$lang.level_point}</th>
+					<th class="last">{$lang.level_money}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{foreach from=$affdb key=level item=val name=affdb}
+				<tr class="{cycle values="odd,even"}{if $smarty.foreach.affdb.last} last{/if}">
+					<td>{$level}</td>
+					<td>{$val.num}</td>
+					<td>{$val.point}</td>
+					<td class="last">{$val.money}</td>
+				</tr>
+				{/foreach}
+			</tbody>
+		</table>
+		{/if}
+		<h2>{$lang.affiliate_detail}</h2>
+		{if $logdb}
+		<table class="data_table">
+			<colgroup>
+				<col width="200"/>
+				<col width="150"/>
+				<col width="150"/>
+				<col width="150"/>
+			</colgroup>
+			<thead>
+				<tr>
+					<td>{$lang.order_number}</td>
+					<td>{$lang.affiliate_money}</td>
+					<td>{$lang.affiliate_point}</td>
+					<td>{$lang.affiliate_mode}</td>
+					<td>{$lang.affiliate_status}</td>
+				</tr>
+			</thead>
+			<tbody>
+				{foreach from=$logdb item=val name=logdb}
+				<tr>
+					<td>{$val.order_sn}</td>
+					<td>{$val.money}</td>
+					<td>{$val.point}</td>
+					<td>{if $val.separate_type == 1 || $val.separate_type === 0}{$lang.affiliate_type.$val.separate_type}{else}{$lang.affiliate_type.$affiliate_type}{/if}</td>
+					<td>{$lang.affiliate_stats[$val.is_separate]}</td>
+				</tr>
+				{/foreach}
+			</tbody>
+		</table>
+		{else}
+		<p class="empty">{$lang.no_records}</p>
+		{/if}
+		{if $logdb}
+		<form name="selectPageForm" action="{$smarty.server.PHP_SELF}" method="get">
+		<p class="pagination">
+			<span class="total">{$lang.pager_1}{$pager.record_count}{$lang.pager_2}{$lang.pager_3}{$pager.page_count}{$lang.pager_4}</span>
+			<a href="{$pager.page_first}" class="first">{$lang.page_first}</a>
+			<a href="{$pager.page_prev}" class="prev">{$lang.page_prev}</a>
+			{if $comments}{else}
+			<select name="page" id="page" onchange="selectPage(this)">
+			{html_options options=$pager.array selected=$pager.page}
+			</select>{/if}
+			<a href="{$pager.page_next}" class="next">{$lang.page_next}</a>
+			<a href="{$pager.page_last}" class="last">{$lang.page_last}</a>
+			{foreach from=$pager.search key=key item=item}
+			<input type="hidden" name="act" value="affiliate"/>
+			{/foreach}
+		</p>
+		</form>
+		{/if}
+<script type="text/javascript">
+<!--
+{literal}function selectPage(sel){sel.form.submit();}{/literal}
+//-->
+</script>
+		<h2>{$lang.affiliate_code}</h2>
+		<div class="affiliate_code clearfix">
+			<div class="type_item">
+				<h3>{$lang.code_type_text}</h3>
+				<div class="preview">
+					<a href="{$shopurl}?u={$userid}" target="_blank">{$shopname}</a>
+				</div>
+				<div class="code">
+					<h4>{$lang.affiliate_code}</h4>
+					<label>{$lang.recommend_webcode}<input type="text" value="&lt;a href=&quot;{$shopurl}?u={$userid}&quot; target=&quot;_blank&quot;&gt;{$shopname}&lt;/a&gt;" onclick="this.select();"/></label>
+					<label>{$lang.recommend_bbscode}<input type="text" value="[url={$shopurl}?u={$userid}]{$shopname}[/url]" onclick="this.select();"/></label>
+				</div>
+			</div>
+			<div class="type_item">
+				<h3>{$lang.code_type_image}</h3>
+				<div class="preview">
+					<a href="{$shopurl}?u={$userid}" target="_blank" title="{$shopname}"><img src="{$shopurl}{$logosrc}" /></a>
+				</div>
+				<div class="code">
+					<h4>{$lang.affiliate_code}</h4>
+					<label>{$lang.recommend_webcode}<input type="text" value="&lt;a href=&quot;{$shopurl}?u={$userid}&quot; target=&quot;_blank&quot; title=&quot;{$shopname}&quot;&gt;&lt;img src=&quot;{$shopurl}{$option.logo}&lt;/a&gt;" onclick="this.select();"/></label>
+					<label>{$lang.recommend_bbscode}<input type="text" value="[url={$shopurl}?u={$userid}][img]{$shopurl}{$option.logo}[/img][/url]" onclick="this.select();"/></label>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{else}
+		<div class="affiliate_code_goods box">
+			<div class="hd"><h3>{$lang.affiliate_code}</h3><div class="extra"></div></div>
+			<div class="bd">
+				<table class="data_table">
+					<colgroup>
+						<col width="300"/>
+						<col width="300"/>
+					</colgroup>
+					<thead>
+						<tr>
+							<th>{$lang.affiliate_view}</th>
+							<th class="last">{$lang.affiliate_code}</th>
+						</tr>
+					</thead>
+					<tbody>
+						{foreach from=$types item=val name=types}
+						<tr class="{cycle values="odd,even"}{if $smarty.foreach.types.last} last{/if}">
+							<td class="preview"><script src="{$shopurl}affiliate.php?charset=UTF8&gid={$goodsid}&u={$userid}&type={$val}"></script></td>
+							<td class="last">
+								<div class="item">
+									<p class="label">javascript{$lang.affiliate_codetype}<a href="javascript:;" alt="Copy To Clipboard" onClick="Javascript:copyToClipboard(document.getElementById('txt{$smarty.foreach.types.iteration}').value);alert('{$lang.copy_to_clipboard}');">[{$lang.code_copy}]</a></p>
+									<textarea cols="45" rows="3" id="txt{$smarty.foreach.types.iteration}"><script src="{$shopurl}affiliate.php?charset=UTF8&gid={$goodsid}&u={$userid}&type={$val}"></script></textarea>
+									
+								</div>
+								<div class="item">
+									<p class="label">iframe{$lang.affiliate_codetype} <a href="javascript:;" alt="Copy To Clipboard" onClick="Javascript:copyToClipboard(document.getElementById('txt{$smarty.foreach.types.iteration}_iframe').value);alert('{$lang.copy_to_clipboard}');">[{$lang.code_copy}]</a></p>
+									<textarea cols="45" rows="5" id="txt{$smarty.foreach.types.iteration}_iframe"><iframe width="250" height="270" src="{$shopurl}affiliate.php?charset=UTF8&gid={$goodsid}&u={$userid}&type={$val}&display_mode=iframe" frameborder="0" scrolling="no"></iframe></textarea>
+								</div>
+								<div class="item">
+									<p class="label">{$lang.bbs}UBB{$lang.affiliate_codetype} <a href="javascript:;" title="Copy To Clipboard" onClick="Javascript:copyToClipboard(document.getElementById('txt{$smarty.foreach.types.iteration}_ubb').value);alert('{$lang.copy_to_clipboard}');">[{$lang.code_copy}]</a></p>
+									<textarea cols="45" rows="5" id="txt{$smarty.foreach.types.iteration}_ubb">{if $val != 5}[url={$shopurl}goods.php?id={$goodsid}&u={$userid}][img]{if $val < 3}{$goods.goods_thumb}{else}{$goods.goods_img}{/if}[/img][/url]{/if}[url={$shopurl}goods.php?id={$goodsid}&u={$userid}][b]{$goods.goods_name}[/b][/url]{if $val != 1 && $val != 3}[s]{$goods.market_price|strip_tags}[/s]{/if} [color=red]{$goods.shop_price|strip_tags}[/color]</textarea>
+
+									{if $val == 5}<p class="label">{$lang.im_code}{$lang.affiliate_codetype} <a href="javascript:;" title="Copy To Clipboard" onClick="Javascript:copyToClipboard(document.getElementById('txt{$smarty.foreach.types.iteration}_txt').value);alert('{$lang.copy_to_clipboard}');">[{$lang.code_copy}]</a></p>
+									<textarea cols="45" rows="5" id="txt{$smarty.foreach.types.iteration}_txt">{$lang.show_good_to_you} {$goods.goods_name}{$shopurl}goods.php?id={$goodsid}&u={$userid}</textarea>
+									{/if}
+								</div>
+							</td>
+						</tr>
+						{/foreach}
+					</tbody>
+				</table>
+			</div>
+		</div>
+<script type="text/javascript">
+copyToClipboard = function(txt) {
+	if(window.clipboardData) {
+		window.clipboardData.clearData();
+		window.clipboardData.setData("Text", txt);
+	} else if(navigator.userAgent.indexOf("Opera") != -1) {
+	} else if (window.netscape) {
+		try {
+			netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+		}
+		catch (e) {
+			alert("{$lang.firefox_copy_alert}");
+			return false;
+		}
+		var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard);
+		if (!clip) return;
+		var trans = Components.classes['@mozilla.org/widget/transferable;1'].createInstance(Components.interfaces.nsITransferable);
+		if (!trans) return;
+		trans.addDataFlavor('text/unicode');
+		var str = new Object();
+		var len = new Object();
+		var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+		var copytext = txt;
+		str.data = copytext;
+		trans.setTransferData("text/unicode",str,copytext.length*2);
+		var clipid = Components.interfaces.nsIClipboard;
+		if (!clip) return false;
+		clip.setData(trans,null,clipid.kGlobalClipboard);
+	}
+}
+</script>
+{/if}

@@ -1,0 +1,46 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--{if $orders}-->
+<div class="order">
+          <!--{foreach from=$orders item=item}-->
+          <div class="order_list">
+          <h2> <a href="supplier.php?suppId={$item.supplier_id}"><img src="themesmobile/68ecshopcom_mobile/images/dianpu.png"><span>店铺名称:{$item.shopname}</span><strong><img src="themesmobile/68ecshopcom_mobile/images/icojiantou1.png"></strong></a></h2>
+         <a href="user.php?act=order_detail&order_id={$item.order_id}">
+       {foreach from=$item.goods_list item=goods name=goods}
+        <dl>  
+          <dt><img src="./../{$goods.goods_thumb}"></dt>
+          <dd class="name"><strong>{$goods.goods_name|truncate:25}</strong><span>
+            
+                {if $goods.goods_attr}{$goods.goods_attr|nl2br}{/if}
+      
+          </span></dd>
+          <dd class="pice">{$goods.formated_goods_price}<em>x{$goods.goods_number}</em></dd>
+          </dl>
+        {/foreach}
+          </a>
+          <div class="pic">共{$item.count}件商品<span>实付：</span><strong>{$item.total_fee}</strong></div>
+          <div class="anniu" style="width:95%">    
+                            <!-- {if $item.shipping_status eq 2} --> 
+                  <!-- {if $goods.comment_state} --> 
+                  <!-- {else} --> 
+                    <a href="user.php?act=my_comment" class="on_comment">去评价</a>
+                  <!-- {/if} -->
+                  <!-- {if $goods.shaidan_state} -->
+                  <!-- {else} -->  
+                  <a href="user.php?act=my_comment" class="on_comment">去晒单</a> 
+                  <!-- {/if} -->
+                  <!-- {/if} -->          
+          {$item.handler}
+          </div>
+         </div>
+      <!--{/foreach}-->
+      <!--{else}-->
+        <div id="list_0_0" class="font12">您还没有任何的订单哦！</div>
+</div>        
+      <!--{/if}-->
+
+		{include file='library/pages.lbi'}
+<script type="text/javascript">
+{foreach from=$lang.merge_order_js item=item key=key}
+var {$key} = "{$item}";
+{/foreach}
+</script>

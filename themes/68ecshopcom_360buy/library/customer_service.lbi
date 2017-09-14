@@ -1,0 +1,18 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="customer_service">
+  <dl class="sidebar_subdl">
+    <!-- 在线聊天 -->
+    <dd id="qqdd"> <img src="../images/chat/web_logo.png" width="30" height="29"/> <a style="color:#000000; font-size:14px; margin-left:10px; vertical-align:middle" target="_self" href="javascript:chat_online();" 
+                                alt="点击这里给我发消息" title="点击这里给我发消息">在线客服</a> </dd>
+    {foreach from=$customer item=customer name=customer}
+      {if $customer.cus_type eq 0}
+          <dd id="qqdd"> <img src="../images/qq1.gif" width="30" height="29"/> <a style="color:#000000; font-size:14px; margin-left:10px;" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={$customer.cus_no}&site=qq&menu=yes" 
+                                alt="点击这里给我发消息" title="点击这里给我发消息">{$customer.cus_name}</a> </dd>
+      {else}
+          <dd id="qqdd"> <img src="../images/ww1.gif" width="30" height="29"/> <a style="color:#000000; font-size:14px; margin-left:10px;" target="_blank" href="http://amos1.taobao.com/msg.ww?v=2&uid={$customer.cus_no}&s=2" 
+                                alt="点击这里给我发消息" title="点击这里给我发消息">{$customer.cus_name}</a> </dd>
+      {/if}
+    {/foreach}
+  </dl>
+  <div class="clearbox"></div>
+</div>

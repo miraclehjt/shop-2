@@ -1,0 +1,158 @@
+<!-- $Id: article_list.htm 16783 2009-11-09 09:59:06Z liuhui $ -->
+
+{if $full_page}
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<div class="form-div">
+  <form action="javascript:searchPickupPoint()" name="searchForm" >
+    <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
+    省<select name="province" id="selProvinces" onchange="region.changed(this, 2, 'selCities')">
+      <option value="0">{$lang.select_please}</option>
+      {foreach from=$province_list item=province}
+      <option value="{$province.region_id}"{if $province_id eq $province.region_id}selected="selected"{/if}>{$province.region_name}</option>
+      {/foreach}
+    </select>
+    市<select name="city" id="selCities" onchange="region.changed(this, 3, 'selDistricts')">
+      <option value="0">{$lang.select_please}</option>
+    </select>
+    区<select name="district" id="selDistricts">
+      <option value="0">{$lang.select_please}</option>
+    </select>
+    {$lang.title} <input type="text" name="keyword" id="keyword" />
+    <input type="submit" value="{$lang.button_search}" class="button" />
+  </form>
+</div>
+
+<form method="POST" action="pickup_point.php?act=batch" name="listForm">
+<!-- start cat list -->
+<div class="list-div" id="listDiv">
+{/if}
+
+<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+    <th><input onclick='listTable.selectAll(this, "checkboxes")' type="checkbox">
+      <a href="javascript:listTable.sort('id'); ">{$lang.id}</a>{$sort_article_id}</th>
+    <th>{$lang.shop_name}</th>
+    <th>{$lang.address}</th>
+    <th>{$lang.contact}</th>
+    <th>{$lang.phone}</th>
+    <th>{$lang.province}</th>
+    <th>{$lang.city}</th>
+    <th>{$lang.handler}</th>
+  </tr>
+  {foreach from=$pickup_point_list item=list}
+  <tr>
+    <td><span><input name="checkboxes[]" type="checkbox" value="{$list.id}" />{$list.id}</span></td>
+    <td class="first-cell">
+    <span onclick="javascript:listTable.edit(this, 'edit_shop_name', {$list.id})">
+    {$list.shop_name|truncate:15:".."}</span></td>
+    <td align="left">
+    <span onclick="javascript:listTable.edit(this, 'edit_address', {$list.id})">
+    {$list.address|truncate:15:".."}</span></td>
+    <td align="center">
+    <span onclick="javascript:listTable.edit(this, 'edit_contact', {$list.id})">
+    {$list.contact}</span></td>
+    <td align="center">
+    <span onclick="javascript:listTable.edit(this, 'edit_phone', {$list.id})">{$list.phone}</span></td>
+    <td align="center"><span>{$list.province}</span></td>
+    <td align="center"><span>{$list.city}</span></td>
+    <td align="center" nowrap="true"><span>
+      <a href="pickup_point.php?act=edit&id={$list.id}" title="{$lang.edit}"><img src="images/icon_edit.gif" border="0" height="16" width="16" /></a>&nbsp;
+     <a href="javascript:;" onclick="listTable.remove({$list.id}, '{$lang.drop_confirm}')" title="{$lang.remove}"><img src="images/icon_drop.gif" border="0" height="16" width="16"></a></span>
+    </td>
+   </tr>
+   {foreachelse}
+    <tr><td class="no-records" colspan="10">{$lang.no_article}</td></tr>
+  {/foreach}
+  <tr>&nbsp;
+    <td align="right" nowrap="true" colspan="8">{include file="page.htm"}</td>
+  </tr>
+</table>
+
+{if $full_page}
+</div>
+
+<div>
+  <input type="hidden" name="act" value="batch" />
+  <select name="type" id="selAction" onchange="changeAction()">
+    <option value="">{$lang.select_please}</option>
+    <option value="button_remove">{$lang.button_remove}</option>
+  </select>
+
+  <input type="submit" value="{$lang.button_submit}" id="btnSubmit" name="btnSubmit" class="button" disabled="true" />
+</div>
+</form>
+<!-- end cat list -->
+{insert_scripts files="../js/transport.org.js,../js/region.js"}
+<script type="text/javascript" language="JavaScript">
+  region.isAdmin = true;
+  listTable.recordCount = {$record_count};
+  listTable.pageCount = {$page_count};
+
+  {foreach from=$filter item=item key=key}
+  listTable.filter.{$key} = '{$item}';
+  {/foreach}
+  {literal}
+
+  onload = function()
+  {
+    // 开始检查订单
+    startCheckOrder();
+  }
+	/**
+   * @param: bool ext 其他条件：用于转移分类
+   */
+  function confirmSubmit(frm, ext)
+  {
+      if (frm.elements['type'].value == 'button_remove')
+      {
+          return confirm(drop_confirm);
+      }
+      else if (frm.elements['type'].value == 'not_on_sale')
+      {
+          return confirm(batch_no_on_sale);
+      }
+      else if (frm.elements['type'].value == 'move_to')
+      {
+          ext = (ext == undefined) ? true : ext;
+          return ext && frm.elements['target_cat'].value != 0;
+      }
+      else if (frm.elements['type'].value == '')
+      {
+          return false;
+      }
+      else
+      {
+          return true;
+      }
+  }
+	 function changeAction()
+  {
+		
+      var frm = document.forms['listForm'];
+
+      // 切换分类列表的显示
+      frm.elements['target_cat'].style.display = frm.elements['type'].value == 'button_remove' ? '' : 'none';
+
+      if (!document.getElementById('btnSubmit').disabled &&
+          confirmSubmit(frm, false))
+      {
+          frm.submit();
+      }
+  }
+
+ /* 搜索自提点 */
+ function searchPickupPoint()
+ {
+    listTable.filter.keyword = Utils.trim(document.forms['searchForm'].elements['keyword'].value);
+    listTable.filter.province = parseInt(document.forms['searchForm'].elements['province'].value);
+	listTable.filter.city = parseInt(document.forms['searchForm'].elements['city'].value);
+	listTable.filter.district = parseInt(document.forms['searchForm'].elements['district'].value);
+    listTable.filter.page = 1;
+    listTable.loadList();
+ }
+
+ {/literal}
+</script>
+{include file="pagefooter.htm"}
+{/if}

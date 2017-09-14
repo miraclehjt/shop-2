@@ -1,0 +1,64 @@
+{if $full_page}
+<!-- $Id: users_list.htm 17053 2015-02-10 06:50:26Z derek $ -->
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+
+<form method="POST" action="" name="listForm">
+
+<!-- start users list -->
+<div class="list-div" id="listDiv">
+{/if}
+<!--用户列表部分-->
+<table cellpadding="3" cellspacing="1">
+  <tr>
+    <th>编号</th>
+    <th>提现申请人</th>
+    <th>提现金额</th>
+    <th>申请时间</th>
+    <th>状态</th>
+    <th>操作</th>
+  <tr>
+  {foreach from=$deposit_list item=list key=key}
+  <tr>
+    <td align="center">{$list.id}</td>
+    <td align="center">{$list.user_name}</td>
+    <td align="center">{$list.deposit_money}</td>
+    <td align="center">{$list.add_time}</td>
+    <td align="center">{if $list.status eq 0}未处理{elseif $list.status eq 1}<span style="color:#F00">已处理</span>{else}未通过{/if}</td>
+    <td align="center">
+    <a href="deposit_list.php?act=edit&id={$list.id}" title="{$lang.edit}"><img src="images/icon_edit.gif" border="0" height="16" width="16" /></a>
+    </td>
+  </tr>
+  {foreachelse}
+  <tr><td class="no-records" colspan="12">{$lang.no_records}</td></tr>
+  {/foreach}
+  <tr>
+      <td colspan="12" align="right">{include file="page.htm"}</td>
+  </tr>
+</table>
+
+{if $full_page}
+</div>
+<!-- end users list -->
+</form>
+<script type="text/javascript" language="JavaScript">
+<!--
+listTable.recordCount = {$record_count};
+listTable.pageCount = {$page_count};
+
+{foreach from=$filter item=item key=key}
+listTable.filter.{$key} = '{$item}';
+{/foreach}
+
+{literal}
+onload = function()
+{
+    document.forms['searchForm'].elements['keyword'].focus();
+    // 开始检查订单
+    startCheckOrder();
+}
+//-->
+</script>
+{/literal}
+{include file="pagefooter.htm"}
+{/if}

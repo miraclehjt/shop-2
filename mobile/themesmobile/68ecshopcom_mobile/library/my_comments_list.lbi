@@ -1,0 +1,67 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+ <!---晒单end--> 
+<!--{if $comments.item_list}-->
+<div class="comment_list" id="commentList">
+    <ul>
+      <!--{foreach from=$comments.item_list item=value name=comments}-->
+      <li class="comment_item">
+        <div class="content_head" {if $smarty.foreach.comments.last} style="border-bottom:0px solid #CCC;"{else}style="border-bottom:1px solid #CCC;"{/if}>
+          <div class="info">
+            <div class=" comment_star">
+              <div class="name">{if $value.hide_username eq 1}匿名{else}{$value.user_name}{/if}
+              <em><img src="themesmobile/68ecshopcom_mobile/images/stars{$value.comment_rank}.png" alt="{$value.comment_rank}" /></em>
+              </div>
+               <div class="two">{$value.add_time_str}</div>
+            </div>
+          </div>
+          <p>{$value.content}</p> 
+          
+
+ <!---晒单-->   
+{if $value.shaidan_id}
+    <div class="shaidan">       
+
+        <!--    <h4>{$value.title}</h4>
+           <p>{$value.content}</p>-->
+         </div>
+ <!--{if $value.shaidan_imgs}-->
+<div class="sd_img">
+        <dl id="gallery">
+<!--{foreach from=$value.shaidan_imgs key=key item=img}--> 
+       <dd><a href="./../{$img.image}">
+               <img src="./../{$img.thumb}" width="100px" heigth="100px">
+       </a></dd>
+{/foreach}
+        </dl>
+       </div>
+{/if}
+{/if}
+
+  <!--管理员回复-->  
+ {foreach from=$value.comment_reps item=val}
+<p style=" color:#F60; border-top:1px dashed #e5e5e5; padding-top:8px; margin-top:10px"><span>管理员{$val.user_name}回复：<br></span>{$val.content}</p> 
+{/foreach}          
+        </div>
+      </li>
+       {/foreach}
+    </ul>
+<!-- {if $comments.page_count neq 1} --> 
+<div class="comment_page"> 
+<!-- {if $comments.page neq 1} -->
+<a href="javascript:{$comments.page_prev}" class="prev">{$lang.page_prev}</a> 
+<!-- {/if} -->
+<a href="javascript:;" class="prev" >{$comments.page}/{$comments.page_count}</a> 
+<!-- {if $comments.page neq $comments.page_count} -->
+<a href="javascript:{$comments.page_next}" class="next" >{$lang.page_next}</a>
+<!-- {/if} -->
+</div>
+<!-- {/if} -->
+<!--{else}-->
+<div class="comment_list" >
+<div class="score">{$lang.no_comments}</div>
+</div>
+</div>
+<!--{/if}-->
+
+

@@ -1,0 +1,43 @@
+
+
+/* article_cat 页面*/
+.ui-suggestion-mask { position: relative; z-index: 100; display: -webkit-box; }
+.search-box { padding: 20px 12px 0; margin-top: 5px; }
+.search { height: 41px; margin-bottom: 15px; position: relative; }
+.search-input { width: auto; margin-right: 44px; border: #c7c7c7 solid 1px; background: #fff; border-radius: 3px 0px 0px 3px; -moz-border-radius: 3px 0px 0px 3px; -webkit-border-radius: 3px 0px 0px 3px; }
+.search-input #input { width: 100%; height: 19px; line-height: 19px; padding: 10px 5px; background: none; font-size: 14px; font-weight:normal; color: #808080; border: 0; }
+.search-button { position: absolute; top: 0; right: 0; width: 43px; height: 40px; border: #c7c7c7 solid 1px; border-radius: 0px 3px 3px 0px; -moz-border-radius: 0px 3px 3px 0px; -webkit-border-radius: 0px 3px 3px 0px; -moz-border-radius: 0px 3px 3px 0px; border-left: none; background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e8e8e8)); }
+.search-button .submit { display: block; width: 100%; height: 39px; background: url(../images/icon.png) -49px 11px no-repeat transparent; background-size: 175px 150px; text-indent: -9999px; border: none; }
+.brand-nav { width: 100%; display: -webkit-box; }
+.brand-nav-a { width: 48%; height: 28px; line-height: 28px; -webkit-box-flex: 1; display: block; text-align: center; border: #bdbdbd solid 1px; border-left: none; background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e9e9e9)); }
+.brand-nav-a:last-child { width: 49%; border-right: none; }
+.brand-nav-a-on { background: -webkit-gradient(linear, left top, left bottom, from(#e0e0e0), to(#f4f4f4)); }
+.shadow { box-shadow: 0 1px 3px rgba(0,0,0,0.2); -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.2); -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.2); border-bottom: none; }
+.brand-con { background: #fff; margin: 20px 10px; }
+.brand-con .hot-list { display: -webkit-box; border-bottom: #e6e6e6 solid 1px; height: 40px; line-height: 40px; padding: 0 0px; }
+.brand-con .hot-list a { color: #999; font-size: 14px; text-decoration: none;width:64%; display:block; text-indent:5px;}
+
+.brand-con .hot-list div.art_name { color: #999; font-size: 13px; text-decoration: none;display: -webkit-box;
+  -webkit-line-clamp: 1;  -webkit-box-orient: vertical; overflow:hidden; height:40px; line-height:40px;}
+
+
+
+.brand-con .hot-list span { color: #69C; font-size: 14px;width:35%;text-align: right; display: block;}
+.brand-con .hot-list:last-child { border-bottom: none; }
+.brand-con .hot-list:first-child { background: #F6F6F6; font-weight: bold; color: #000; font-size: 14px ; padding:0 10px;}
+.article_con { padding: 10px; font-size: 13px; color: #999 }
+.brand-con .article-list { display: -webkit-box; border-bottom: #e6e6e6 solid 1px; height: 45px; line-height: 45px; padding: 0 10px; position: relative }
+.brand-con .article-list a { color: #999; font-size: 13px; text-decoration: none }
+.brand-con .article-list  i{  display: block; width: 30px; height: 30px; position: absolute; top: 15px; right: 0.9em; background: url("../images/icojiantou1.png") no-repeat;background-size: 50%}
+/*.brand-con .article-list:after { content: ""; display: block; width: 0.8em; height: 0.8em; border-top: 0.2em solid #CCC; border-right: 0.2em solid #CCC; position: absolute; top: 15px; right: 0.9em; transition: all 0.2s ease 0s; transform: rotate(45deg); }*/
+
+.brand-con .article-list span { color: #69C; font-size: 14px; margin-left: 20px; }
+.brand-con .article-list:last-child { border-bottom: none; }
+.brand-con .article-list_child { display: none; background: #f5f5f5; padding: 0 2em; height:30px;}
+.brand-con .article-list_child a { color: #999; font-size: 13px; text-decoration: none; line-height: 30px; }
+.brand-con .article-list_child .name{height:30px;line-height: 30px;color:#333;}
+.page-service-exchange { background-color: #fff; width:100%; position: relative; z-index: 1 }
+.page-service-exchange .backlist { border-bottom: 1px solid #eee }
+.page-service-exchange .backlist .b { display: block; line-height: 25px ;width:90%;margin:auto;text-align:center;  padding:10px 0px;}
+.page-service-exchange .backlist .b span { font-size: 16px; color: #666 }
+.pagecontent {width:96%;margin:auto; line-height: 30px; font-size: 14px; color: #666666; margin-top:10px; }

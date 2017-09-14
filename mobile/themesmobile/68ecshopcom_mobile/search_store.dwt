@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width">
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link rel="stylesheet" href="themesmobile/68ecshopcom_mobile/css/ecsmart.css">
+<link rel="stylesheet" href="themesmobile/68ecshopcom_mobile/css/exchange.css">
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.js"></script>
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/TouchSlide.1.1.js"></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+{* 包含脚本文件 *}
+{insert_scripts files='common.js'}
+</head>
+<body>
+<header id="header" class='header'>
+  <h1>搜索店铺</h1>
+  <a href="javascript:history.back(-1)" class="back">返回</a> 
+</header>
+<div id="site-nav">
+
+  <div id="content  ">
+    <div class="flow">
+      <!-- #BeginLibraryItem "/library/search_list.lbi" --><!-- #EndLibraryItem -->
+      <!--{if $shops_list}-->
+      <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
+      <!--{/if}-->
+    </div>
+
+  </div>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</div>
+</body>
+<script type="text/javascript">
+
+function guanzhu(sid){
+	Ajax.call('supplier.php', 'go=other&act=add_guanzhu&suppId=' + sid, selcartResponse, 'GET', 'JSON');
+}
+
+function selcartResponse(result){
+	
+	alert(result.info);
+}
+$(".ft-bands div").mouseover(function(){
+$(this).addClass('ft-col-cur').siblings().removeClass('ft-col-cur'); //切换选项卡标签的class
+})
+</script>
+{* 代码增加_start  By  bbs.hongyuvip.com *}
+<script type="text/javascript">
+$("img").lazyload({
+    effect       : "fadeIn",
+	 skip_invisible : true,
+	 failure_limit : 20
+});
+</script>
+{* 代码增加_end  By  bbs.hongyuvip.com *}
+</html>
+
+
+
+

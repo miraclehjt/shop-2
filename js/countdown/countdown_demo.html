@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>countdown.js 测试DEMO</title>
+<script type="text/javascript" src="../jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="../jquery.countdown-2.5.3.js"></script>
+<script type="text/javascript">
+	$().ready(function() {
+
+		countdown.ALL =
+		    countdown.MILLENNIA |
+		    countdown.CENTURIES |
+		    countdown.DECADES |
+		    countdown.YEARS |
+		    countdown.MONTHS |
+		    countdown.WEEKS |
+		    countdown.DAYS |
+		    countdown.HOURS |
+		    countdown.MINUTES |
+		    countdown.SECONDS |
+		    countdown.MILLISECONDS;
+
+		countdown.DEFAULTS =
+		    countdown.YEARS |
+		    countdown.MONTHS |
+		    countdown.DAYS |
+		    countdown.HOURS |
+		    countdown.MINUTES |
+		    countdown.SECONDS;
+		
+		//var text = countdown( new Date(2000, 0, 1) ).toString();
+		//alert(text);
+		
+		countdown.setLabels(
+				 '毫秒|秒|分|小时|天| 周| 月| 年| 十年| 世纪| 千年',
+				 '毫秒|秒|分|小时|天| 周| 月| 年| 十年| 世纪| 千年',
+				 '',//秒连接符
+				 '',//其他时间连接符
+				 'END',
+				 function(n){ return n.toString(); });
+
+		//var timerId = countdown(new Date(), function(ts) {
+		//	document.getElementById('pageTimer').innerHTML = ts.toHTML("strong");
+		//}, countdown.HOURS | countdown.MINUTES | countdown.SECONDS);
+		// later on this timer may be stopped
+		// window.clearInterval(timerId);
+		alert(new Date(1435852800).getYear())
+		var timerId = countdown(function(ts) {
+			document.getElementById('pageTimer').innerHTML = ts.toHTML("strong");
+			if(ts == "END"){
+				window.clearInterval(timerId);
+			}
+		}, new Date(1436054400), countdown.DAYS | countdown.HOURS | countdown.MINUTES | countdown.SECONDS);
+		
+	});
+</script>
+</head>
+<body>
+	<span id="pageTimer" style="border: 1px red solid;"></span>
+</body>
+</html>

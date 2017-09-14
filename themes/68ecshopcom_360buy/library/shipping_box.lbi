@@ -1,0 +1,6 @@
+<ul class="shipping_jm">
+	<!-- {foreach from=$shipping_list item=shipping} 循环配送方式 -->
+	<li><input name="shipping" type="radio" value="{$shipping.shipping_id}" {if $order.shipping_id eq $shipping.shipping_id}checked="true"{/if} supportCod="{$shipping.support_cod}" supoortPickup="{$shipping.support_pickup}" insure="{$shipping.insure}" onclick="selectShipping(this)" /> {$shipping.shipping_name} （{$shipping.format_shipping_fee} 免费额度：{$shipping.free_money}  {$shipping.shipping_desc|truncate:25}）</li>
+	<!-- {/foreach} -->
+	<li style="text-align:right;"><input name="need_insure" id="ECS_NEEDINSURE" type="checkbox"  onclick="selectInsure(this.checked)" value="1" {if $order.need_insure}checked="true"{/if} {if $insure_disabled}disabled="true"{/if}  />{$lang.need_insure}</li>
+	</ul>

@@ -1,0 +1,131 @@
+@charset "utf-8";
+/* CSS Document */
+body{ margin:0; padding:0; font-family:simsun; color:#333; font-size:12px; line-height:1.5;}
+p,ul,li,dl,dd,dt,h1,h2,h3{ margin:0; padding:0; list-style:none;}
+input,textarea{ outline:none;}
+img{ border:0;}
+a{ border:0; text-decoration:none;}
+a:focus{ outline:none;}
+body{ background:url(../images/chat/20130527Bg.jpg) no-repeat center center; width:100%; height:100%;}
+.msg_notice .icon_notice,.btn_area .chat_close{ background:url(../images/chat/a.png) no-repeat left top;}
+.clear{ clear:both; height:0; line-height:0; font-size:0;}
+.txt_bold{ font-weight:bold;}
+.chat_wrap{ width:680px; height:454px; background:#D4D4D4; position:relative;}
+.chat_header{ height:32px; line-height:32px; border:1px solid #e43d40; border-bottom:1px solid #b50b0e; background:url(../images/chat/BtnBg.png) repeat-x 0 -396px; overflow:hidden;}
+.chat_header .chat_logo{ float:left; margin:4px 0 0 10px;}
+.btn_area{ width:32px; height:32px; position:absolute; right:1px; top:1px;}
+.btn_area .chat_close{ display:block; width:32px; height:32px; background-position:-216px -43px;}
+.btn_area .chat_close:hover{ background-position:-256px -43px; cursor:pointer;}
+.chat_content{ width:100%; height:420px; position:relative;}
+.main_con{ border:1px solid #b4b4b4; border-top:0; height:410px; overflow:hidden; padding:5px;}
+.chat_window{ width:400px; height:408px; border:1px solid #b4b4b4; background:#fff;}
+.msg_tl,.msg_tr,.msg_br,.msg_bl{ display:block; width:10px; height:10px; background:url(../images/chat/radius.png) no-repeat left top; position:absolute;}
+
+/*左侧*/
+.chat_list{ padding:0 10px; height:282px; overflow:auto;}
+.msg_notice{ position:relative; margin:12px 0; border:1px solid #c1e9f0; background:#e2f9fd; padding: 5px 10px 6px 30px; line-height: 20px; color: #333; z-index:9;}
+.msg_notice .icon_notice{ position:absolute; left:8px; top:7px; width:16px; height:16px; background-position:0 -31px;}
+.msg_notice .kf_name{ padding: 0 5px; font-weight: 600;}
+.msg_notice .msg_tl{ background-position:0 -32px; left:-1px; top:-1px;}
+.msg_notice .msg_tr{ background-position:right -32px; right:-1px; top:-1px;}
+.msg_notice .msg_br{ background-position:right -54px; right:-1px; bottom:-1px;}
+.msg_notice .msg_bl{ background-position:0 -54px; left:-1px; bottom:-1px;}
+.chat_list .message{ padding:0;}
+
+.msg_me,.msg_others{ overflow:hidden; margin:0 0 10px;}
+.msg_me .message dd,.msg_me .message dt{ float:right;}
+.msg_me .message dt.user_pic{ margin:5px 0 0 5px;}
+.message dt.user_pic{ width:46px; margin:5px 10px 0;}
+.message_detail{ padding:6px 10px; position:relative; z-index:10}
+.message_detail img{ max-width:100%;}
+.msg_me .message_detail{ background:#fafafa; border:1px solid #d8d8d8; max-width:245px; min-width:130px; width:auto; margin-right:10px; float:right;}
+.msg_me .msg_tl,.msg_me .msg_tr,.msg_me .msg_br,.msg_me .msg_bl,.msg_me .msg_arrow{ position:absolute; background:url(../images/chat/mesBlueBgLR.png) no-repeat left top #fff;}
+.msg_arrow{ display:block; width:10px; height:12px; position:absolute;}
+.msg_me .msg_tl{ background-position:-4px -2px; left:-1px; top:-1px;}
+.msg_me .msg_tr{ background-position:-16px -2px; right:-1px; top:-1px;}
+.msg_me .msg_br{ background-position:-16px -68px; right:-1px; bottom:-1px;}
+.msg_me .msg_bl{ background-position:-4px -68px; left:-1px; bottom:-1px;}
+.msg_me .msg_arrow{ right:-10px; top:20px; background-position:-25px -22px;}
+.msg_title{ overflow:hidden; line-height:24px;}
+.msg_title .msg_owner{ float:left;}
+.msg_title .send_time{ float:right;}
+.msg_title .msg_owner{ margin-right:12px;}
+
+.msg_others .message dd,.msg_others .message dt{ float:left;}
+.msg_others .message_detail{ background:#e6f9ff; border:1px solid #c2dfe7; max-width:245px; min-width:130px; width:auto; margin-left:10px; float:right;}
+.msg_others .msg_title{ color:#30a0c9;}
+.msg_others .msg_tl,.msg_others .msg_tr,.msg_others .msg_br,.msg_others .msg_bl,.msg_others .msg_arrow{ position:absolute; background:url(../images/chat/mesBgLR.png) no-repeat left top #fff;}
+.msg_others .msg_tl{ background-position:-10px -2px; left:-1px; top:-1px;}
+.msg_others .msg_tr{ background-position:-29px -2px; right:-1px; top:-1px;}
+.msg_others .msg_br{ background-position:-29px -56px; right:-1px; bottom:-1px;}
+.msg_others .msg_bl{ background-position:-10px -56px; left:-1px; bottom:-1px;}
+.msg_others .msg_arrow{ left:-10px; top:20px; background-position:-2px -22px;}
+.msg_others .message dt.user_pic{ margin:5px 5px 0 0;}
+
+.icon_pic,.icon_hart{ background:url(../images/chat/20130514G.png) no-repeat left top;}
+.edit_area{ background:#fff; position:relative; z-index:11;}
+.edit_toolbar{ width:100%; height:30px; line-height:30px; border-bottom:1px solid #d1d1d1; background:#f0f0f0; position:relative; z-index:10;}
+.edit_toolbar .icon_pic{ display:inline-block; float:left; width:30px; height:30px; margin:3px 5px 0; background-position:-59px top; cursor:pointer;}
+.edit_toolbar .degree_button{ display:inline-block; float:left; width:100px; height:24px; line-height:24px; padding:0 6px; color:#333; text-decoration:none; margin:3px 0; cursor:pointer;}
+.edit_toolbar .degree_button:hover{ background:url(../images/chat/20130514G.png) no-repeat -180px -30px;}
+.edit_toolbar .degree_button .icon_hart{ display:block; float:left; width:20px; height:24px; background-position:-182px 0; margin-right:5px;}
+
+/*评价弹出层*/
+.pop_recommend{ position:absolute; border:1px solid #dcdcdc; padding:0 10px; width:384px; background-color:#f0f0f0; left:42px; bottom:30px; display:none;}
+.close_pop_recommend{ position:absolute; right:0; top:0; width:18px; height:18px; background:url(../images/chat/a.png) no-repeat -190px -86px; cursor:pointer;}
+.close_pop_recommend:hover{ background-position:-190px -116px;}
+.pop_recommend p{ line-height:24px;}
+.pop_recommend p label{ margin-right:12px;}
+.pop_recommend p input{ vertical-align:middle; margin:0 4px 0 0;}
+.pop_recommend .recommend_edit_area{ width:323px; height:40px; position:relative;}
+.pop_recommend .degree_content{ width:323px; height:35px; overflow:auto; resize:none;}
+.pop_recommend .txt_num{ color:#999; position:absolute; right:0; top:35px;}
+.pop_recommend .recommend_btn{ padding:10px 0; height:24px;}
+.pop_recommend .recommend_btn a{ display:inline-block; width:56px; height:24px; line-height:24px; background:url(../images/chat/btn_bg.png) no-repeat left top; color:#999; font-size:14px; text-decoration:none; text-align:center;}
+.pop_recommend .recommend_btn a:hover{ background-position:left bottom; color:#B37C20;}
+.degreeeq50,.degreelt50{ display:none;}
+.edit_ipt_area{ height:60px;}
+.edit_ipt_area .edit_txt{ font-size:12px; border:0; resize:none; width:396px; height:54px;}
+.edit_btn_area{ border-top:1px solid #d1d1d1; padding:4px 4px 4px 0; height:26px; line-height:26px; background:#f8f8f8; text-align:right; text-align:center;}
+.edit_btn_area .btn_close{ display:inline-block; float:right; width:80px; height:26px; line-height:26px; background:url(../images/chat/web_btn_close.png) no-repeat left top; font-size:14px; color:#333; margin-right:12px;}
+.edit_btn_area .send_box{ float:right; position:relative; z-index:10;}
+.edit_btn_area .send_box .btn_send{ display:inline-block; float:left; width:74px; height:26px; line-height:26px; border-right:1px solid #f8a900; font-size:16px; color:#985f01; background:url(../images/chat/web_btn_send.png) no-repeat left top;}
+.edit_btn_area .send_box .btn_send_set{ float:left; width:20px; height:26px; background:url(../images/chat/web_btn_send_arrow.png) no-repeat left top;}
+.edit_btn_area .send_box .send_set_con{ border: 1px solid #d9d9d9; width: 245px; background: #f5f5f5; position:absolute; right:-250px; top:-24px; display:none;}
+.edit_btn_area .send_box .send_set_con li{ height:24px; line-height:24px; padding:0 8px 0 28px; cursor:pointer;}
+.edit_btn_area .send_box .send_set_con li:hover{ background-color:#e6e6e6;}
+.edit_btn_area .send_box .send_set_con li.current{ background-image:url(../images/chat/a.png); background-repeat:no-repeat; background-position:8px -165px}
+/*右侧*/
+.right_sidebar{ width:258px; height:408px; position:absolute; right:1px; top:0; margin:5px; background:#fff; border:1px solid #B4B4B4;}
+/*tab栏*/
+.shop_tab{ height:28px; background:#f0f0f0; }
+.shop_tab span{display:inline-block; float:left; width:76px; height:27px; line-height:27px; text-align:center; border-top:1px solid #fff; border-right:1px solid #c6c6c6; cursor:pointer;}
+.shop_tab span:hover{ background:#f9f9f9;}
+.shop_tab span.current{ background:#fff; border-top:1px solid #ed4447; color:#ed4447;}
+.tab_contents{ height:380px;}
+.tab_content{ padding:10px;  overflow:auto; height:360px;}
+/*商品信息*/
+.product_info .product_pic{ width:100px; height:100px; float:left;}
+.product_info .product_pic img{ width:100px; height:100px; }
+.product_info .product_detail{ width:138px; float:right;}
+.product_info .product_detail .product_name{ height:40px; line-height:20px; overflow:hidden;}
+.product_info .product_detail .product_brief{ height:60px; line-height:20px; overflow:hidden; font-weight:bold;}
+.product_info .product_price{ padding-top:30px; height:30px; line-height:30px; text-align:center;}
+.product_info .product_price span{ color:#c4393c; font-weight:bold; font-size:18px; font-weight:bold;}
+.product_info .product_btn{ padding:30px 0; height:36px;}
+.product_info .product_btn a{ display:block; width:137px; height:36px; margin:0 auto; background:url(../images/chat/p-btns-20130514.png) no-repeat left top;}
+.product_info .product_btn a:hover{ background-position:left -36px;}
+/*订单信息*/
+.order_info .order_info_more{ padding-right:8px; text-align:right; height:24px; line-height:24px;}
+.order_info .order_info_more a:hover{ color:#c4393c;}
+.order_info .order_detail{ border:1px solid #bfe1eb; background: #e6f9ff; margin:10px 0;}
+.order_info .order_detail .detail_box{ padding:12px 5px 0px; overflow:hidden; color:#666;}
+.order_info .order_detail .detail_box .detail_label_txt{ float:left; width:70px; text-align:right;}
+.order_info .order_detail .detail_box .detail_label_con{ float:left; width:130px; text-align:left; padding-left:8px;}
+.order_info .order_detail .detail_box ul.detail_label_con{ overflow:hidden;}
+.order_info .order_detail .detail_box ul.detail_label_con li{ width:50px; height:50px; float:left; border:1px solid #e7e7e7; margin:0 8px 8px 0;}
+.order_pages_box{ overflow:hidden;}
+.order_pages{ float:left; overflow:hidden;}
+.order_pages .order_prev,.order_pages .order_next{display:inline-block; width:40px; height:20px; border:1px solid #ddd; background:#F5F5F5; float:left; padding:0 5px; border-radius:2px; cursor:pointer;}
+.order_pages .order_num{ float:left; padding:0 10px; font-size:14px; height:20px; line-height:20px;}
+.order_info .order_info_more{ padding-right:8px; text-align:right; height:24px; line-height:24px; float:right;}

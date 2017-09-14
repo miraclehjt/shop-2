@@ -1,0 +1,16 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $hot_goods} -->
+<div class="product_value">
+<h2>热卖单品 精挑细选</h2>
+      <ul>
+      <!--{foreach from=$hot_goods item=hotgoods}-->
+        <li> 
+        <a href="{$hotgoods.url}"> <span> 
+        <img src="{$option.static_path}{$hotgoods.thumb}" srcset="{$option.static_path}{$hotgoods.thumb}" srcd="{$option.static_path}{$hotgoods.thumb}" loaded="no"> </span> 
+        <span class="p_info">{$hotgoods.name|truncate:15}</span> 
+        <span class="price"><!-- {if $hotgoods.promote_price neq ""} -->{$hotgoods.promote_price} <!-- {else}--> {$hotgoods.shop_price} <!--{/if}--> </span> </a> </li>
+       <!-- {/foreach} -->
+      </ul>
+
+      </div>
+<!-- {/if} --> 

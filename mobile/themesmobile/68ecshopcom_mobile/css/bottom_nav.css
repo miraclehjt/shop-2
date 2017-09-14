@@ -1,0 +1,20 @@
+/*footer_nav1的css   微分销的底部悬浮菜单css*/
+.footer_nav1,.footer_nav2,.footer_nav3,.footer_nav4,.footer_nav5{background:url(../images/v-shop/footer_navimg.png) no-repeat;background-size: auto 400px;}
+.v_nav { position: fixed; bottom: 0; width: 100%; height:45px; background-color:rgba(238,238,238,0.9);border-top: #dcdcdc 1px solid; z-index: 97;padding:0px; margin:0px; padding-bottom:2px; }
+.vf_nav{ width:100%;height:45px; margin:auto; padding:0px; margin:0px;}
+.vf_nav ul li{ width:20%; height:45px; float:left; text-align:center; margin:0px;}
+.vf_nav ul li a{ text-align:center; font-size:12px; color:#333;position: relative; display:block; height:45px;}
+.vf_nav ul li i{ display:block;  width:25px; height:25px; margin:auto}
+
+.footer_nav1{ background-position:0 2px;}
+.footer_nav2{ background-position:0 -37px; }
+.footer_nav3{ background-position:0 -69px;}
+.footer_nav4{ background-position:0 -101px;}
+.footer_nav5{  background-position:0 -132px;}
+
+.vf_nav ul li span{ display:block; width:100%; height:20px; line-height:20px;}
+.vf_nav ul li a:active{color: #ff7171;}
+.gotop img{ display:block; width:40px; height:40px;}
+.vf_nav ul li em{ font-style:normal;}
+.global-nav__nav-shop-cart-num{
+position: absolute;left: 50%; top: 0px;color: #fff;text-align: center; font-weight:normal; font-size:12px; font-family:宋体;width:13px; height:13px; line-height:13px;}

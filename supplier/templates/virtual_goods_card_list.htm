@@ -1,0 +1,152 @@
+
+{if $full_page}
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+
+<div class="form-div">
+  <form action="javascript:searchSnatch()" name="searchForm">
+    <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
+   <!-- <select name = "searchType" disabled="true">
+      <option value="card_sn">{$lang.lab_card_sn}</option>
+      <option value="order_sn" selected="selected">{$lang.lab_order_sn}</option>
+    </select>-->
+   {$lang.lab_order_sn} <input type="text" name="order_sn" /> <input type="submit" value="{$lang.button_search}" class="button" />
+  </form>
+</div>
+
+<form method="POST" action="virtual_goods_card.php?act=del_virtual_order&goods_id={$goods_id}" name="listForm" onsubmit="return del_virtual_order()">
+<!-- start card list -->
+<div class="list-div" id="listDiv">
+{/if}
+
+  <table cellpadding="3" cellspacing="1">
+    <tr>
+   <!--   <th>
+        <input onclick='listTable.selectAll(this, "checkboxes")' type="checkbox">
+        <a href="javascript:listTable.sort('card_id'); ">{$lang.record_id}</a>{$sort_card_id}
+      </th>-->
+   <td align="center"><input onclick='listTable.selectAll(this, "checkboxes")' type="checkbox"><a href="javascript:listTable.sort('order_sn'); ">订单号</a>{$sort_order_sn}</td>
+    <td align="center">用户</td>
+      <td align="center">{$lang.order_price}</td>
+      <td align="center">订单状态</td>
+      <td align="center" width="60%">
+    <table>
+        <tr>
+      <td align="center" width="25%">验证码</td>
+      <td align="center" width="15%">下单时间</td>
+      <td align="center" width="15%">使用时间</td>
+     <!-- <th><a href="javascript:listTable.sort('card_password'); ">{$lang.lab_card_password}</a>{$sort_card_password}</th>-->
+      <td align="center" width="15%">截止日期</td>
+      <td align="center" width="9%">出售</td>
+      <td align="center" width="9%">使用</td>
+      <td align="center" width="15%">{$lang.handler}</td>
+        </tr>
+    </table>
+      </td>
+      
+    </tr>
+    {foreach from=$order_list item=order}
+    <tr>
+      <td  rowspan="1" align="center"><input value="{$order.order_id}" name="checkboxes[]" type="checkbox">
+        <a href="virtual_goods_card.php?act=info&order_id={$order.order_id}">{$order.order_sn}</a>
+      </td>
+   <td align="center"><span>{$order.user_name}</span></td>
+   <td align="center"><span>{$order.goods_price}</span></td>
+   <td align="center"><span>
+           {if $order.order_status eq 0}未确认{elseif $order.order_status eq 1}已确认{elseif $order.order_status eq 2}已取消{elseif $order.order_status eq 3}无效{elseif $order.order_status eq 4}退货{else}已完成{/if},
+           {if $order.pay_status eq 0}未付款{else}已付款{/if}  
+       </span></td>
+   <td colspan="7" align="center">
+       {if $order.pay_status eq 0}
+       <span>订单未付款</span>
+       {elseif $order.pay_status eq 2}
+       <table>
+        {foreach from=$order.card item=card key=i}
+        <tr>
+            <td align="center" width="25%"><span>{$card.card_sn}</span></td>
+            <td align="center" width="15%"><span>{$card.add_date}</span></td>
+            <td align="center" width="15%"><span>{if $card.buy_date}{$card.buy_date}{else}未使用{/if}</span></td>
+            <td align="center" width="15%"><span>{$card.end_date}</span></td>
+            <td align="center" width="9%"><img src="images/{if $card.is_saled}yes{else}no{/if}.gif" /></span></td>
+            <td align="center" width="9%"><img src="images/{if $card.is_verification}yes{else}no{/if}.gif" /></span></td>
+            <td align="center" width="15%">
+                <a href="virtual_goods_card.php?act=edit_replenish&amp;card_id={$card.card_id}" title="{$lang.edit}"><img src="images/icon_edit.gif" border="0" height="16" width="16" /></a>
+                <a href="javascript:;" onclick="listTable.remove({$card.card_id}, '{$lang.drop_confirm}', 'remove_card')" title="{$lang.drop}"><img src="images/icon_drop.gif" border="0" height="16" width="16" /></a>
+            </td>
+        </tr>
+        {/foreach}
+    </table>
+       {else}
+        异常错误未获取到验证码，请联系管理员
+       {/if}
+   </td>
+    </tr>
+    {foreachelse}
+    <tr><td class="no-records" colspan="10">{$lang.no_records}</td></tr>
+    {/foreach}
+  </table>
+
+  <table cellpadding="4" cellspacing="0">
+    <tr>
+      <td><input type="submit" name="drop" id="btnSubmit" value="{$lang.drop}" class="button" disabled="true" /></td>
+      <td align="right">{include file="page.htm"}</td>
+    </tr>
+  </table>
+
+{if $full_page}
+</div>
+<!-- end card_list list -->
+</form>
+
+<script type="text/javascript" language="JavaScript">
+<!--
+
+  listTable.recordCount = {$record_count};
+  listTable.pageCount = {$page_count};
+  listTable.query = "query_card";
+
+  {foreach from=$filter item=item key=key}
+  listTable.filter.{$key} = '{$item}';
+  {/foreach}
+
+{literal}
+  onload = function()
+  {
+    document.forms['searchForm'].elements['order_sn'].focus();
+    startCheckOrder();
+  }
+
+/**
+ * 搜索团购商品
+ */
+function searchSnatch()
+{
+   var order_sn = Utils.trim(document.forms['searchForm'].elements['order_sn'].value);
+
+  if (order_sn.length > 0)
+  {
+    listTable.filter['order_sn']     = order_sn;
+    listTable.loadList();
+  }
+  else
+  {
+    document.forms['searchForm'].elements['order_sn'].focus();
+  }
+}
+//-->
+function del_virtual_order(){
+       
+    if(confirm("确定要删除吗？"))
+    {
+            return true;
+    }
+    else
+    {
+            return false;
+    }
+}
+</script>
+{/literal}
+
+{include file="pagefooter.htm"}
+{/if}

@@ -1,0 +1,69 @@
+<!-- $Id: postman_info.htm 14216 2015-02-07 02:27:21Z derek $ -->
+
+
+{include file="pageheader.htm"}
+<div class="main-div">
+<form action="postman.php" method="post" name="theForm"  onsubmit="return validate()">
+<table width="100%">
+
+<tr>
+    <td class="label">{$lang.region_name}</td>
+    <td>
+	<select name="region_id" size=1>
+	<option value="0">请选择</option>
+	{foreach from=$district_list item=district}
+	<option value="{$district.region_id}"  {if $postman.region_id eq $district.region_id}selected{/if} >{$district.region_name}</option>
+	{/foreach}
+	</select>
+    </td>
+  </tr> 
+  <tr>
+    <td class="label">{$lang.postman_name}</td>
+    <td>
+      <input type='text' name='postman_name' maxlength="30" value="{$postman.postman_name}" size='20' />    </td>
+  </tr>
+
+  <tr>
+    <td class="label">{$lang.mobile}</td>
+    <td>
+    <input type="text" name="mobile" value="{$postman.mobile}" size="20" />
+    </td>
+  </tr> 
+
+  
+  <tr>
+    <td class="label">&nbsp;</td>
+    <td>
+      <input type="submit" value="{$lang.button_submit}" class="button" />
+      <input type="reset" value="{$lang.button_reset}" class="button" />
+      <input type="hidden" name="act" value="{$form_act}" />
+      <input type="hidden" name="postman_id" value="{$postman.postman_id}" />    </td>
+  </tr>
+</table>
+</form>
+</div>
+{insert_scripts files="../js/utils.js,validator.js"}
+{literal}
+<script language="javascript">
+<!--
+/**
+ * 检查表单输入的数据
+ */
+function validate()
+{
+  validator = new Validator("theForm");
+  if (document.forms['theForm'].elements['region_id'].value == 0)
+  {
+          validator.addErrorMsg('请选择区域！');
+ }
+  validator.required("postman_name",      '快递员姓名不能为空！');
+  validator.required("mobile",     '联系电话不能为空！'); 
+  
+  return validator.passed();
+}
+
+
+//-->
+</script>
+{/literal}
+{include file="pagefooter.htm"}

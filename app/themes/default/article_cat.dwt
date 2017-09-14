@@ -1,0 +1,12 @@
+<ul class="f-color-6 ">
+  {foreach from=$articlecat item=cat key=key}
+  <li class="ubb ub border-faxian article_p2 bg-color-w ub-ac lis article_{$cat.parent_id} level_{$cat.level} {if $cat.level neq 0} uhide {/if}"  cat_id='{$cat.cat_id}' cat_name="{$cat.cat_name}"> {if $cat.level eq 0}
+    <div class="lv_title ub-f1 ub ulev-9 ub-ver ut-m  article_cat" >{$cat.cat_name}</div>
+    {else}
+    <div class="lv_title ub-f1 ub ulev-9 ub-ver ut-m  article_cat" style="padding-left:{$cat.level}em" >{$cat.cat_name}</div>
+    {/if}
+    {if $cat.has_children gt 0}
+    <div class="fa fa-angle-right ulev2 article_p2 sc-text article_toggle"></div>
+    {/if} </li>
+  {/foreach}
+</ul>

@@ -1,0 +1,136 @@
+      <tr id="{$var.code}" {if $var.code eq 'sms_deposit_balance_reduce_tpl' or $var.code eq 'sms_recharge_balance_add_tpl' or $var.code eq 'sms_admin_operation_tpl' or $var.code eq 'sms_return_goods_tpl'} style="display:none"{/if}>
+        <td class="label" valign="top">
+          {if $var.desc}
+          <a href="javascript:showNotice('notice{$var.code}');" title="{$lang.form_notice}"><img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}" /></a>
+          {/if}
+          {$var.name}
+        </td>
+        <td>
+          {if $var.type eq "text"}
+          <input name="value[{$var.id}]" type="text" value="{$var.value}" size="40" {if $var.code eq 'sms_sign' && $var.value neq ''} "{/if}/>
+
+          {elseif $var.type eq "password"}
+          <input name="value[{$var.id}]" type="password" value="{$var.value}" size="40" />
+
+          {elseif $var.type eq "textarea"}
+          <textarea name="value[{$var.id}]" style="width: 290px; height: 28px;line-height: 28px;overflow:hidden; resize:none; border:solid 1px #ddd;">{$var.value}</textarea>
+
+          {elseif $var.type eq "select"}
+          {foreach from=$var.store_options key=k item=opt}
+          <label for="value_{$var.id}_{$k}"><input type="radio" name="value[{$var.id}]" id="value_{$var.id}_{$k}" value="{$opt}"
+            {if $var.value eq $opt}checked="true"{/if}
+            {if $var.code eq 'rewrite'}
+              onclick="return ReWriterConfirm(this);"
+            {/if}
+            {if $var.code eq 'smtp_ssl' and $opt eq 1}
+              onclick="return confirm('{$lang.smtp_ssl_confirm}');"
+            {/if}
+            {if $var.code eq 'enable_gzip' and $opt eq 1}
+              onclick="return confirm('{$lang.gzip_confirm}');"
+            {/if}
+            {if $var.code eq 'retain_original_img' and $opt eq 0}
+              onclick="return confirm('{$lang.retain_original_confirm}');"
+            {/if}
+          />{$var.display_options[$k]}</label>
+          {/foreach}
+		  {if $var.code eq 'sms_user_money_change'}
+          	<select onchange="change_tpl(this.value)">
+            	<option value="sms_use_balance_reduce_tpl">{$lang.use_balance_reduce}</option>
+                <option value="sms_deposit_balance_reduce_tpl">{$lang.deposit_balance_reduce}</option>
+                <option value="sms_recharge_balance_add_tpl">{$lang.recharge_balance_add}</option>
+                <option value="sms_admin_operation_tpl">{$lang.admin_operation}</option>
+                <option value="sms_return_goods_tpl">{$lang.return_goods}</option> 
+            </select>
+          {/if}
+          {elseif $var.type eq "options"}
+          <select name="value[{$var.id}]" id="value_{$var.id}_{$key}">
+            {html_options options=$lang.cfg_range[$var.code] selected=$var.value}
+          </select>
+
+          {elseif $var.type eq "file"}
+          <input name="{$var.code}" type="file" size="40" />
+          
+           {* 代码修改_start By  bbs.hongyuvip.com 下面代码中增加一个 【or $var.code eq "erweima_logo"】 *}
+          {if ($var.code eq "shop_logo" or $var.code eq "no_picture" or $var.code eq "watermark" or $var.code eq "shop_slagon" or $var.code eq "wap_logo" or $var.code eq "erweima_logo") and $var.value}
+		  {* 代码修改_end By  bbs.hongyuvip.com *}
+            <a href="?act=del&code={$var.code}"><img src="images/no.gif" alt="Delete" border="0" /></a> <img src="images/yes.gif" border="0" onmouseover="showImg('{$var.code}_layer', 'show')" onmouseout="showImg('{$var.code}_layer', 'hide')" />
+            <div id="{$var.code}_layer" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" border="1">
+              <img src="{$var.value}" border="0" />
+            </div>
+          {else}
+            {if $var.value neq ""}
+            <img src="images/yes.gif" alt="yes" />
+            {else}
+            <img src="images/no.gif" alt="no" />
+            {/if}
+          {/if}
+          {elseif $var.type eq "manual"}
+
+            {if $var.code eq "shop_country"}
+              <select name="value[{$var.id}]" id="selCountries" onchange="region.changed(this, 1, 'selProvinces')">
+                <option value=''>{$lang.select_please}</option>
+                {foreach from=$countries item=region}
+                  <option value="{$region.region_id}" {if $region.region_id eq $cfg.shop_country}selected{/if}>{$region.region_name}</option>
+                {/foreach}
+              </select>
+                  {elseif $var.code eq "shop_province"}
+              <select name="value[{$var.id}]" id="selProvinces" onchange="region.changed(this, 2, 'selCities')">
+                <option value=''>{$lang.select_please}</option>
+                {foreach from=$provinces item=region}
+                  <option value="{$region.region_id}" {if $region.region_id eq $cfg.shop_province}selected{/if}>{$region.region_name}</option>
+                {/foreach}
+              </select>
+            {elseif $var.code eq "shop_city"}
+              <select name="value[{$var.id}]" id="selCities">
+                <option value=''>{$lang.select_please}</option>
+                {foreach from=$cities item=region}
+                  <option value="{$region.region_id}" {if $region.region_id eq $cfg.shop_city}selected{/if}>{$region.region_name}</option>
+                {/foreach}
+              </select>
+            {elseif $var.code eq "lang"}
+                  <select name="value[{$var.id}]">
+                  {html_options values=$lang_list output=$lang_list selected=$var.value}
+                  </select>
+            {elseif $var.code eq "invoice_type"}
+            <table>
+              <tr>
+                <th scope="col">{$lang.invoice_type}</th>
+                <th scope="col">{$lang.invoice_rate}</th>
+              </tr>
+              <!--增值税发票_更改_START_bbs.hongyuvip.com-->
+              <tr>
+                <td>
+                  <input type='hidden' name='invoice_enable[0]' value='0'/>
+                  {if $cfg.invoice_type.enable[0] eq '1'}
+                  <input id='invoice_type0' name="invoice_enable[0]" type="checkbox" value='1' checked=''/>
+                  {else}
+                  <input id='invoice_type0' name="invoice_enable[0]" type="checkbox" value='1' />
+                  {/if}
+                  <label for='invoice_type0'>{$lang.$cfg.invoice_type.type[0]}</label>
+                  <input name='invoice_type[]' type='hidden' value='{$cfg.invoice_type.type[0]}'/>
+                </td>
+                <td><input name="invoice_rate[]" type="text" value="{$cfg.invoice_type.rate[0]}" /></td>
+              </tr>
+              <tr>
+                <td>
+                  <input type='hidden' name='invoice_enable[1]' value='0'/>
+                  {if $cfg.invoice_type.enable[1] eq '1'}
+                  <input id='invoice_type1' name="invoice_enable[1]" type="checkbox" value='1' checked=''/>
+                  {else}
+                  <input id='invoice_type1' name="invoice_enable[1]" type="checkbox" value='1' />
+                  {/if}
+                  <label for='invoice_type1'>{$lang.$cfg.invoice_type.type[1]}</label>
+                  <input name='invoice_type[]' type='hidden' value='{$cfg.invoice_type.type[1]}'/>
+                </td>
+                <td><input name="invoice_rate[]" type="text" value="{$cfg.invoice_type.rate[1]}" /></td>
+              </tr>
+			  <!--增值税发票_更改_END_bbs.hongyuvip.com-->
+            </table>
+            {/if}
+          {/if}
+          {if $var.desc}
+          <br />
+          <span class="notice-span" {if $help_open}style="display:block;{if $var.code eq 'sms_sign'}color:red;{/if}" {else} style="display:none" {/if} id="notice{$var.code}">{$var.desc|nl2br}</span>
+          {/if}
+        </td>
+      </tr>

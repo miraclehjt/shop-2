@@ -1,0 +1,30 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $best_goods} -->
+<div class="no-margin">
+  <div class="userDefinedArea_two"><img src="themes/{$template_dir}/images/ghs/images/new_best_hot.png" class="" alt=""></div>
+</div>
+<div class="no-margin">
+  <div class="userDefinedArea_three">
+    <h2 style="color:{$navcolor};">精品推荐</h2>
+    <div class="userDefinedArea_three_1">
+      <div class="plist">
+        <div class="mc">
+          <ul class="list-h">
+            <!--{foreach from=$best_goods item=bestgoods name=bestgoods}-->
+            <li class='fore {if $smarty.foreach.bestgoods.iteration < 4}fore1{/if}'>
+              <div class="p-img"><a target="_blank" title="{$bestgoods.name}" href='{$bestgoods.url}'><img alt="{$bestgoods.thumb}" src="{$bestgoods.thumb}" width="150" height="150" /></a></div>
+              <div class="p-name"><a target="_blank" title='{$bestgoods.name}' href='{$bestgoods.url}'>{$bestgoods.name}</a></div>
+              <div  class="p-price">售价：<strong> <!-- {if $bestgoods.promote_price neq ""} --> 
+                {$bestgoods.promote_price} 
+                <!-- {else}--> 
+                {$bestgoods.shop_price} 
+                <!--{/if}--></strong></div>
+            </li>
+            {/foreach}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- {/if} -->

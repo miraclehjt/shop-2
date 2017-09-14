@@ -1,0 +1,13 @@
+<ul class="order_tab" style="position:relative">
+  <li id="order_manage1" class="first" onclick="toggle_menu();">{$ur_here}
+    <i id="menu_list_marker" class='on'></i>
+    <ul class="order_type" style="display:none" id='menu_list'>
+      <li {if $ur_here eq '订单列表'}class='curr'{/if}><a href="order.php?act=list">订单列表</a></li>
+      <li {if $ur_here eq '发货单列表'}class='curr'{/if}><a href="order.php?act=delivery_list">发货单列表</a></li>
+      <li {if $ur_here eq '佣金列表'}class='curr'{/if}><a href="supplier_rebate.php?act=list">佣金列表</a></li>
+      <li {if $ur_here eq '库存列表'}class='curr'{/if}><a href="goods_stock.php?act=list">库存列表</a></li>
+      <li {if $ur_here eq '退款/退货/维修订单列表'}class='curr'{/if}><a href="back.php?act=back_list">退换货列表</a></li>
+    </ul>
+  </li>
+  <li id="order_manage2" onclick="toggle_search();">查询<i class='search'></i></li>
+</ul>

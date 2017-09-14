@@ -1,0 +1,224 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+.utitle2{ height:30px; line-height:30px; font-size:14px; font-family:微软雅黑; border:#ddd 1px solid; background:#f5f5f5; color:#000;margin:10px 0px 10px; text-indent:15px;}
+</style>
+    <!-- *我的推荐 -->
+    <!-- {if $affiliate.on eq 1} -->
+     <!-- {if $action eq 'affiliate'} -->
+      <!-- {if !$goodsid || $goodsid eq 0} -->
+      <div class="utitle2">{$lang.affiliate_detail}</div>
+      <div class="blank"></div>
+     <p class="tuijian">{$affiliate_intro}</p>
+    <!-- {if $affiliate.config.separate_by eq 0} -->
+    <!-- 下线人数、分成 -->
+ 
+    <div class="utitle2"><a name="myrecommend" >{$lang.affiliate_member}</a></div>
+   <div class="tui_main">
+   <table width="95%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd" class="data_table">
+    <tr align="center">
+      <td bgcolor="#ffffff">{$lang.affiliate_lever}</td>
+      <td bgcolor="#ffffff">{$lang.affiliate_num}</td>
+      <td bgcolor="#ffffff">{$lang.level_point}</td>
+      <td bgcolor="#ffffff">{$lang.level_money}</td>
+    </tr>
+    <!-- {foreach from=$affdb key=level item=val name=affdb} -->
+    <tr align="center">
+      <td bgcolor="#ffffff">{$level}</td>
+      <td bgcolor="#ffffff">{$val.num}</td>
+      <td bgcolor="#ffffff">{$val.point}</td>
+      <td bgcolor="#ffffff">{$val.money}</td>
+    </tr>
+    <!-- {/foreach} -->
+  </table>
+  </div>
+<!-- /下线人数、分成 -->
+<!-- {else} -->
+<!-- 介绍订单数、分成 -->
+<!-- /介绍订单数、分成 -->
+<!-- {/if} -->
+<!-- 我的推荐清单 -->
+
+<div class="utitle2">分成规则</div>
+<div class="tui_main">
+<table width="95%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd" class="data_table">
+    <tr align="center">
+      <td bgcolor="#ffffff">{$lang.order_number}</td>
+      <td bgcolor="#ffffff">{$lang.affiliate_money}</td>
+      <td bgcolor="#ffffff">{$lang.affiliate_point}</td>
+      <td bgcolor="#ffffff">{$lang.affiliate_mode}</td>
+      <td bgcolor="#ffffff">{$lang.affiliate_status}</td>
+    </tr>
+    <!-- {foreach from=$logdb item=val name=logdb} -->
+    <tr align="center">
+      <td bgcolor="#ffffff">{$val.order_sn}</td>
+      <td bgcolor="#ffffff">{$val.money}</td>
+      <td bgcolor="#ffffff">{$val.point}</td>
+      <td bgcolor="#ffffff"><!-- {if $val.separate_type == 1 || $val.separate_type === 0} -->{$lang.affiliate_type.$val.separate_type}<!-- {else} -->{$lang.affiliate_type.$affiliate_type}<!-- {/if} --></td>
+      <td bgcolor="#ffffff">{$lang.affiliate_stats[$val.is_separate]}</td>
+    </tr>
+    {foreachelse}
+<tr><td colspan="5" align="center" bgcolor="#ffffff">{$lang.no_records}</td>
+</tr>
+    <!-- {/foreach} -->
+    <!-- {if $logdb} -->
+    <tr>
+    <td colspan="5" bgcolor="#ffffff">
+ <form action="{$smarty.server.PHP_SELF}" method="get">
+  <div id="pager"> {$lang.pager_1}{$pager.record_count}{$lang.pager_2}{$lang.pager_3}{$pager.page_count}{$lang.pager_4} <span> <a href="{$pager.page_first}">{$lang.page_first}</a> <a href="{$pager.page_prev}">{$lang.page_prev}</a> <a href="{$pager.page_next}">{$lang.page_next}</a> <a href="{$pager.page_last}">{$lang.page_last}</a> </span>
+    <select name="page" id="page" onchange="selectPage(this)">
+    {html_options options=$pager.array selected=$pager.page}
+    </select>
+    <input type="hidden" name="act" value="affiliate" />
+  </div>
+</form>
+    </td>
+    </tr>
+    <!-- {/if} -->
+  </table>
+  </div>
+ <script type="text/javascript" language="JavaScript">
+<!--
+{literal}
+function selectPage(sel)
+{
+  sel.form.submit();
+}
+{/literal}
+//-->
+</script>
+<!-- /我的推荐清单 -->
+<div class="utitle2">{$lang.affiliate_code}</div>
+<div class="tui_main">
+<table width="95%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd" class="data_table">
+
+
+<tr>
+<td bgcolor="#ffffff"><a href="{$shopurl}?u={$userid}" target="_blank" class="f6">{$shopname}</a></td>
+<td bgcolor="#ffffff"><textarea  onclick="this.select();" style="width:80%; font-size:14px; height:50px; border:#eeeeee 1px solid; margin-top:10px; line-height:150%">{$shopurl}?u={$userid}</textarea> </td>
+</tr>
+
+<!--start Add By bbs.hongyuvip.com ecshop开发中心 企业QQ123456789 -->
+<tr>
+        <td  bgcolor="#ffffff">分享到</td>
+        <td  bgcolor="#ffffff"><img src="erweima_png.php?data={$shopurl}?u={$userid}" width=150 height=150>
+        
+        
+        <div class="bdsharebuttonbox" data-tag="share_1">
+	<a class="bds_mshare" data-cmd="mshare"></a>
+	<a class="bds_qzone" data-cmd="qzone" href="#"></a>
+	<a class="bds_tsina" data-cmd="tsina"></a>
+	<a class="bds_baidu" data-cmd="baidu"></a>
+	<a class="bds_renren" data-cmd="renren"></a>
+	<a class="bds_tqq" data-cmd="tqq"></a>
+</div>
+<script>
+	window._bd_share_config = {
+		common : {
+			bdText : '{$page_title}',	
+			bdDesc : '{$page_title}',	
+			bdUrl : '{$shopurl}?u={$userid}', 	
+			bdPic : '{$shopurl}erweima_png.php?data={$shopurl}?u={$userid}'
+		},
+		share : [{
+			"bdSize" : 16
+		}],
+	
+		image : [{
+			viewType : 'list',
+			viewPos : 'top',
+			viewColor : 'black',
+			viewSize : '16',
+			viewList : ['qzone','tsina','huaban','tqq','renren']
+		}],
+		selectShare : [{
+			"bdselectMiniList" : ['qzone','tqq','kaixin001','bdxc','tqf']
+		}]
+	}
+	with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+
+        </td>
+        </tr>
+<!--end Add By bbs.hongyuvip.com ecshop开发中心 企业QQ123456789 -->
+</table>
+</div>
+        <!-- {else} -->
+        <!-- 单个商品推荐 -->
+        <style type="text/css">
+        .types a{ text-decoration:none; color:#006bd0;}
+        </style>
+    <div class="utitle2">{$lang.affiliate_code}</div>
+  <div class="tui_main">
+  <table width="95%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd" class="data_table">
+    <tr align="center">
+      <td bgcolor="#ffffff">{$lang.affiliate_view}</td>
+      <td bgcolor="#ffffff">{$lang.affiliate_code}</td>
+    </tr>
+    <!-- {foreach from=$types item=val name=types} -->
+    <tr align="center">
+      <td bgcolor="#ffffff" class="types"><script src="{$shopurl}affiliate.php?charset={$ecs_charset}&gid={$goodsid}&u={$userid}&type={$val}"></script></td>
+      <td bgcolor="#ffffff">javascript {$lang.affiliate_codetype}<br>
+        <textarea cols=30 rows=2 id="txt{$smarty.foreach.types.iteration}" style="border:1px solid #ccc;"><script src="{$shopurl}affiliate.php?charset={$ecs_charset}&gid={$goodsid}&u={$userid}&type={$val}"></script></textarea>[<a href="#" title="Copy To Clipboard" onClick="Javascript:copyToClipboard(document.getElementById('txt{$smarty.foreach.types.iteration}').value);alert('{$lang.copy_to_clipboard}');"  class="f6">{$lang.code_copy}</a>]
+<br>iframe {$lang.affiliate_codetype}<br><textarea cols=30 rows=2 id="txt{$smarty.foreach.types.iteration}_iframe"  style="border:1px solid #ccc;"><iframe width="250" height="270" src="{$shopurl}affiliate.php?charset={$ecs_charset}&gid={$goodsid}&u={$userid}&type={$val}&display_mode=iframe" frameborder="0" scrolling="no"></iframe></textarea>[<a href="#" title="Copy To Clipboard" onClick="Javascript:copyToClipboard(document.getElementById('txt{$smarty.foreach.types.iteration}_iframe').value);alert('{$lang.copy_to_clipboard}');" class="f6">{$lang.code_copy}</a>]
+<br />{$lang.bbs}UBB {$lang.affiliate_codetype}<br /><textarea cols=30 rows=2 id="txt{$smarty.foreach.types.iteration}_ubb"  style="border:1px solid #ccc;">{if $val != 5}[url={$shopurl}goods.php?id={$goodsid}&u={$userid}][img]{if $val < 3}{$goods.goods_thumb}{else}{$goods.goods_img}{/if}[/img][/url]{/if}
+
+[url={$shopurl}goods.php?id={$goodsid}&u={$userid}][b]{$goods.goods_name}[/b][/url]
+{if $val != 1 && $val != 3}[s]{$goods.market_price}[/s]{/if} [color=red]{$goods.shop_price}[/color]</textarea>[<a href="#" title="Copy To Clipboard" onClick="Javascript:copyToClipboard(document.getElementById('txt{$smarty.foreach.types.iteration}_ubb').value);alert('{$lang.copy_to_clipboard}');"  class="f6">{$lang.code_copy}</a>]
+{if $val == 5}<br />{$lang.im_code} {$lang.affiliate_codetype}<br /><textarea cols=30 rows=2 id="txt{$smarty.foreach.types.iteration}_txt"  style="border:1px solid #ccc;">{$lang.show_good_to_you} {$goods.goods_name}
+
+{$shopurl}goods.php?id={$goodsid}&u={$userid}</textarea>[<a href="#" title="Copy To Clipboard" onClick="Javascript:copyToClipboard(document.getElementById('txt{$smarty.foreach.types.iteration}_txt').value);alert('{$lang.copy_to_clipboard}');"  class="f6">{$lang.code_copy}</a>]{/if}</td>
+    </tr>
+    <!-- {/foreach} -->
+  </table>
+  </div>
+<script language="Javascript">
+copyToClipboard = function(txt)
+{
+ if(window.clipboardData)
+ {
+    window.clipboardData.clearData();
+    window.clipboardData.setData("Text", txt);
+ }
+ else if(navigator.userAgent.indexOf("Opera") != -1)
+ {
+   //暂时无方法:-(
+ }
+ else if (window.netscape)
+ {
+  try
+  {
+    netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+  }
+  catch (e)
+  {
+    alert("{$lang.firefox_copy_alert}");
+    return false;
+  }
+  var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard);
+  if (!clip)
+    return;
+  var trans = Components.classes['@mozilla.org/widget/transferable;1'].createInstance(Components.interfaces.nsITransferable);
+  if (!trans)
+    return;
+  trans.addDataFlavor('text/unicode');
+  var str = new Object();
+  var len = new Object();
+  var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+  var copytext = txt;
+  str.data = copytext;
+  trans.setTransferData("text/unicode",str,copytext.length*2);
+  var clipid = Components.interfaces.nsIClipboard;
+  if (!clip)
+  return false;
+  clip.setData(trans,null,clipid.kGlobalClipboard);
+ }
+}
+                </script>
+            <!-- /单个商品推荐 -->
+            <!-- {/if} -->
+        <!-- {/if} -->
+
+    <!-- {/if} -->
+
+  <!-- /我的推荐 -->

@@ -1,0 +1,18 @@
+<div id='goods_attr_container_{$goods_id}' class='index-attr' goods_id="{$goods_id}" parent_id="{$parent_id}">
+<div class="into-cart p-all4">
+<div style="height:10em; overflow-y:scroll">
+{foreach from=$spe_array item=level1}
+<div attr_type="{$level1.attr_type}" attr_id="{$level1.attr_id}" class="ubb border-faxian p-t-b5 goods_attr_container" >
+	<div class="ulev-1 f-color-6">{$level1.name}</div>
+	<div  class="shuxing spec_key m-top1">
+		{foreach from=$level1.values item=level2 name="level2"}
+		<div price="{$level2.price}" format_price="{$level2.format_price}" attr_id="{$level2.id}" class="goods_attr {if $smarty.foreach.level2.iteration eq 1}selected{/if}">{$level2.label}[{$level2.format_price}]</div>
+		{/foreach}
+		<ul class="clear1"></ul>
+	</div>
+</div>
+{/foreach}
+</div>
+<div class="btn-red1 ulev-1 umar-t1 tx-c confirm_attr_button">确定</div>
+</div>
+</div>

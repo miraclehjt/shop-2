@@ -1,0 +1,26 @@
+<!-- {if $how_oos_list} 缺货处理开始 -->
+<div class="checkBox_jm m-top3 bg-color-w">
+  <div class="uinn-eo5 ub ub-ac ubb border-hui _fold" fold_key='how_oos_box' value_key="how_oos">
+    <div class="ub-f1 f-color-zi ulev-9 p-all5">
+      缺货处理
+    </div>
+	<div class='ub-pe xuanzhong ulev-1 selected_indicator' id='selected_how_oos'>
+	<!-- {foreach from=$how_oos_list key=how_oos_id item=how_oos_name} -->
+	{if $order.how_oos eq $how_oos_id}
+	{$how_oos_name}
+	{/if}
+	<!-- {/foreach} -->
+	</div>
+    <div class="sc-text ulev-1-4 umar-r fold_indicator fa ">
+    </div>
+  </div>
+  <div id="how_oos_box" class='uhide p-all1 f-color-6 ulev-1'>
+    <!-- {foreach from=$how_oos_list key=how_oos_id item=how_oos_name} -->
+    <div class="how_oos {if $order.how_oos eq $how_oos_id} checked{/if} _checkbox checkbox_radio" {if $order.how_oos eq $how_oos_id}checked="true"{/if} radio="true" name="how_oos" value="{$how_oos_id}" cancel="false">
+      {$how_oos_name}
+    </div>
+    <!-- {/foreach} -->
+  </div>
+ </div>
+<!-- 缺货处理结束-->
+<!-- {/if} -->

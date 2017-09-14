@@ -1,0 +1,19 @@
+{if $promote}
+<div class="uof bg-color-w ubt ubb border-hui swiper-container index-goods">
+  <div class="ub bc-text ub-ac" data-index="0">
+    <div class="title-left bc-head1"></div>
+    <div class="ub-f1 ub ub-ver ut-m line1 umar-l f-color-red ulev0">今日秒杀</div>
+    <div class="tx-r sc-text ulev-1 umar-r " id='more_promotion'>更多 &gt;</div>
+  </div>
+  <div class="ub umar-t swiper-wrapper">
+  {foreach from=$promote item=row name="promote_row"}
+    <div class='swiper-slide ub'>
+	{foreach from=$row item=goods name="promote_goods"}
+	{include file="/library/goods.lib"}
+	{/foreach}
+	  </div>
+	{/foreach}
+	</div>
+  <div class="swiper-pagination"></div>
+</div>
+{/if}

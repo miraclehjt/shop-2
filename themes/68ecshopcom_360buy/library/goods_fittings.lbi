@@ -1,0 +1,19 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $fittings} -->
+<div  class="m m2 related-buy">
+  <div class="mt">
+    <h2>{$lang.accessories_releate}</h2>
+  </div>
+  <div class="mc">
+    <ul>
+      <!--{foreach from=$fittings item=goods name=goods}--> 
+      <li {if $smarty.foreach.goods.iteration eq 1}style="border-top:none;"{/if}>
+      <div class="p-img"><a href="{$goods.url}"><img width="100" height="100" alt="{$goods.name}"  src="{$goods.goods_thumb}"/></a></div>
+      <div class="rate"><a href="{$goods.url}" target="_blank" title="{$goods.goods_name|escape:html}">{$goods.goods_name|escape:html}</a></div>
+      <div class="p-price"><strong> {$goods.fittings_price} </strong></div>
+      </li>
+      <!-- {/foreach} -->
+    </ul>
+  </div>
+</div>
+<!-- {/if} --> 

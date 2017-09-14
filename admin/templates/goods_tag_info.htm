@@ -1,0 +1,36 @@
+<!-- $Id: brand_info.htm 14216 2008-03-10 02:27:21Z testyang $ -->
+{include file="pageheader.htm"}
+<div class="main-div">
+<form method="post" action="goods_tag.php?goods_id={$goods_id}" enctype="multipart/form-data" name="theForm" onsubmit="return checktagform()">
+<table cellspacing="1" cellpadding="3" width="100%">
+  <tr>
+    <td class="label" style="width:100px;">名称</td>
+    <td><input size="40" type="text" name="tag_name" id="tag_name" value="{$info.tag_name}" />{$lang.require_field}</td>
+  </tr>
+  <tr>
+    <td class="label" style="width:100px;"></td>
+    <td><br />
+      <input type="submit" class="button" value="{$lang.button_submit}" />
+      <input type="reset" class="button" value="{$lang.button_reset}" />
+      <input type="hidden" name="act" value="{$form_action}" />
+      <input type="hidden" name="id" value="{$info.tag_id}" />
+    </td>
+  </tr>
+</table>
+</form>
+</div>
+
+<script>
+function checktagform()
+{
+	if (document.getElementById("tag_name").value == '')
+	{
+		alert("请输入标签名称！");
+		document.getElementById("tag_name").focus();
+		return false;
+	}	
+}
+</script>
+
+{insert_scripts files="../js/utils.js,validator.js"}
+{include file="pagefooter.htm"}

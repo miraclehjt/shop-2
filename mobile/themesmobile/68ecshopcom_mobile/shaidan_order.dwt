@@ -1,0 +1,136 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/public.css"/>
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/user.css"/> 
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.js"></script>
+<body>
+<header>
+      <div class="tab_nav">
+        <div class="header">
+          <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+          <div class="h-mid">用户晒单</div>
+          <div class="h-right">
+            <aside class="top_bar">
+              <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+      </header>
+        <!-- #BeginLibraryItem "/library/up_menu.lbi" --><!-- #EndLibraryItem --> <!--弹出菜单-->
+
+<form  method="post" action="user.php?act=shaidan_save" onsubmit="return validate_comment()" enctype="multipart/form-data" data-ajax="false">
+<input type="hidden" value="{$goods.rec_id}" name="rec_id">
+<input type="hidden" value="{$goods.goods_id}" name="goods_id">
+<div class="pj">
+<dl>
+<dt><img src="./../{$goods.goods_thumb}" width="50"/></dt>
+<dd>
+<p>{$goods.goods_name|truncate:35}</p>
+<span>{$goods.supplier_name}</span>
+</dd>
+</dl>
+<div class="shaidan">
+<h2>标题：</h2>
+<input type="text" name="title" id="title"  class="title"/></div>
+<div class="p_main">
+<h2>晒单内容：</h2><textarea id="content_13" class="inputBorder" name="message"></textarea>
+</div>
+<div class="p_main">
+<h2>上传图片：</h2>
+
+<a href="javascript:;" class="file"><div id="fileList0" style="width:60px;height:60px;"><img width="60" height="60" ></div><input type="file" onchange="handleFiles(this,0)" name = "img_srcs0" accept="image/*" /></a>
+<a href="javascript:;" class="file"><div id="fileList1" style="width:60px;height:60px;"><img width="60" height="60" ></div><input type="file" onchange="handleFiles(this,1)" name = "img_srcs1" accept="image/*" /></a>
+<a href="javascript:;" class="file"><div id="fileList2" style="width:60px;height:60px;"><img width="60" height="60" ></div><input type="file" onchange="handleFiles(this,2)" name = "img_srcs2" accept="image/*" /></a>
+<a href="javascript:;" class="file"><div id="fileList3" style="width:60px;height:60px;"><img width="60" height="60" ></div><input type="file" onchange="handleFiles(this,3)" name = "img_srcs3" accept="image/*" /></a>
+
+
+<span style=" font-size:14px; display:block; width:100%; overflow:hidden"><input type="checkbox" name="hide_username" value="1" />匿名评价</span> 
+</div>
+<input name="" type="submit" value="提交" class="btn_big1" />
+ </div>
+</form>
+</body>
+<script>
+function validate_comment(){
+var error = [];
+var img_num = 0;
+var AllImgExt=".jpg|.jpeg|.gif|.bmp|.png|";//全部图片格式类型 
+var message = document.getElementById("content_13").value;
+var title = document.getElementById("title").value;
+$(".file input").each(function(index){
+FileExt=this.value.substr(this.value.lastIndexOf(".")).toLowerCase(); 
+
+if(this.value!=''){
+    img_num++;
+if(AllImgExt.indexOf(FileExt+"|")==-1){
+     error.push("第"+(index+1)+"张图片格式错误"); 
+}
+}    
+});
+if(message == ''){
+    error.push('标题不能为空！');
+}
+if(title == ''){
+    error.push('晒单内容不能为空！');
+}
+if(img_num == 0){
+    error.push('您还没有上传图片！');
+}
+if(error.length>0){
+    alert(error);
+    return false;
+}else{
+    return true;
+}
+}
+window.URL = window.URL || window.webkitURL;
+function handleFiles(obj,id) {
+fileList = document.getElementById("fileList"+id);
+	var files = obj.files;
+	img = new Image();
+	if(window.URL){
+	//File API
+			  
+	img.src = window.URL.createObjectURL(files[0]); //创建一个object URL，并不是你的本地路径
+	img.width = 60;
+        img.height = 60;
+	img.onload = function(e) {
+	window.URL.revokeObjectURL(this.src); //图片加载后，释放object URL
+	}
+        if(fileList.firstElementChild){
+            fileList.removeChild(fileList.firstElementChild);
+        } 
+	fileList.appendChild(img);
+	}else if(window.FileReader){
+	//opera不支持createObjectURL/revokeObjectURL方法。我们用FileReader对象来处理
+	var reader = new FileReader();
+	reader.readAsDataURL(files[0]);
+	reader.onload = function(e){
+				
+            img.src = this.result;
+            img.width = 60;
+            img.height = 60;
+            fileList.appendChild(img);
+	}
+    }else{
+	//ie
+	obj.select();
+	obj.blur();
+	var nfile = document.selection.createRange().text;
+	document.selection.empty();
+	img.src = nfile;
+	img.width = 60;
+        img.height = 60;
+	img.onload=function(){
+	  
+    }
+	fileList.appendChild(img);
+    }
+}
+
+</script>
+</html>

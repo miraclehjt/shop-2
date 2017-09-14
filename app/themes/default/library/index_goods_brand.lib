@@ -1,0 +1,15 @@
+{if $goods_brand}
+<div class="uof p-t-b1">
+  <div class="goods_list_title ub ub-ac ub-pc brand"  brand_id='{$goods_brand.brand_id}'>
+    <div class="bg-color-f2 ulev-9 f-color-6 p-l-r3">{$goods_brand.brand_name}</div>
+    <div class="goods_more ub-img "></div>
+  </div>
+  {foreach from=$goods_brand.goods item=row}
+  <div class='ub goods_list_b'> 
+	{foreach from=$row item=goods}
+    {include file="/library/goods.lib"}
+    {/foreach} 
+	</div>
+  {/foreach}
+  </div>
+{/if}

@@ -1,0 +1,289 @@
+<!-- $Id: goods_export.htm 17107 2015-02-04 03:29:13Z derek $ -->
+{include file="pageheader.htm"}
+<table width="100%">
+<tr>
+  <td>
+  <div class="main-div" style="background-color: white;">
+  <div>
+    <form action="goods_export.php" method="post" name="searchForm" onsubmit="return queryGoods(this)">
+	  <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
+
+      <!-- 分类 -->
+      <select name="cat_id"><option value="0">{$lang.custom_goods_cat}</option>{$cat_list}</select>
+      <!-- 品牌 -->
+      <select name="brand_id"><option value="0">{$lang.custom_goods_brand}</option>{html_options options=$brand_list}</select>
+      <!-- 关键字 -->
+      {$lang.custom_keyword}<input type="text" name="keyword"/>
+      <!-- 搜索 -->
+      <input type="submit" name="search_submit" id="search_submit" value="{$lang.goods_search}" class="button" />
+    </form>
+  </div>
+
+  <div style='padding:10px 20px; color:#FF0000; font-weight:bold'>
+	特别注意：提货券商品为标准商品，该商品应为专为提货券增加的新商品或者其他无多属性的商品，请勿为提货券匹配多属性商品。
+  </div>
+  
+  <form action="takegoods.php?act=addaddceshi" method="post" name="theForm"  onsubmit="return formValidate0()">
+  <table>
+  <tr>
+    <td width="46%" align=center>{$lang.select_from}</td>
+	<td width="8%" align=center>{$lang.select_action}</td>
+	<td width="46%" align=center>{$lang.select_to}</td>
+</tr>
+  <tr>
+    <td width="46%">
+	<select name="src_goods_lists" id="src_goods_lists" size="14" style="width:100%" multiple="true"></select>
+	</td>
+    <td  width="8%" style="text-align:center;">
+      <p><input type="button" value=">>" id="addAllGoods" class="button" /></p>
+      <p><input type="button" value=">" id="addGoods" class="button" /></p>
+      <p><input type="button" value="<" id="delGoods" class="button" /></p>
+      <p><input type="button" value="<<" id="delAllGoods" class="button" /></p>
+    </td>
+    <td width="46%">
+	<select name="dst_goods_lists" id="dst_goods_lists" size="14" style="width:100%" multiple="true">
+	{foreach from=$goods_list_array item=goods}
+    <option value="{$goods.goods_id}">{$goods.goods_name}</option>
+    {/foreach}
+	</select>
+    <input type="hidden" name="goods_ids" value="" />
+	<input type="hidden" name="tg_ids" value="{$tg_ids}" />
+	<input type="hidden" name="type_id" value="{$type_id}" />
+	<input type="hidden" name="add_type" value="{$add_type}">
+     </td>
+  </tr>
+  <tr>
+  <td align=center colspan=3>
+  <input type="hidden" name="act" value="add_goods_update">
+  <input type="submit" value="提交">
+  </td></tr>
+  </table>
+  </form>
+
+  </div>
+  </td>
+</tr>
+
+
+</table>
+
+
+
+{insert_scripts files="../js/utils.js,validator.js"}
+<script language="JavaScript">
+var express_not_null = "{$lang.express_not_null}";
+var ems_not_null = "{$lang.ems_not_null}";
+var custom_goods_field_not_null = "{$lang.custom_goods_field_not_null}";
+
+{literal}
+
+    var elements;
+    onload = function()
+    {
+        // 开始检查订单
+        startCheckOrder();
+    }
+
+   
+   function formValidate0()
+    {
+        var src_obj = document.forms['searchForm'];
+        var dst_obj = document.forms['theForm'];
+        copy_search_result(src_obj, dst_obj);
+        return true;
+    }
+
+	 function copy_search_result(src_obj, dst_obj)
+    {
+        var goods_lists = Utils.$('dst_goods_lists');
+        for (var i=0,l=goods_lists.options.length; i<l; i++)
+        {
+            var separator = (i==0)?'':',';
+            dst_obj.goods_ids.value += separator + goods_lists.options[i].value;
+        }
+    }
+
+
+    /**
+     * 绑定商品类型控件事件
+     */
+    if(Utils.$('goods_type'))
+    {
+        Utils.$('goods_type').onchange = function ()
+        {
+            Ajax.call('goods_export.php?is_ajax=1&act=get_goods_fields&cat_id='+this.value, '' , goodsFieldsResponse , 'POST', 'JSON');
+        }
+    }
+
+    function goodsFieldsResponse (result)
+    {
+        if (result.error > 0)
+        {
+            alert(result.message);
+            return;
+        }
+        Utils.$('src_goods_fields').innerHTML = '';
+        for (var key in result.content)
+        {
+            if (typeof (result.content[key]) == 'string')
+            {
+                var new_opt = document.createElement('OPTION');
+                new_opt.value = key;
+                new_opt.innerHTML = result.content[key];
+                Utils.$('src_goods_fields').appendChild(new_opt);
+            }
+        }
+    }
+    /* 搜索商品列表 */
+    function queryGoods(obj)
+    {
+        var filters = new Object;
+        filters.cat_id = obj.cat_id.value;
+        filters.brand_id = obj.brand_id.value;
+        filters.keyword = obj.keyword.value;
+
+        Ajax.call('takegoods.php?is_ajax=1&act=get_goods_list', filters, queryGoodsResponse , 'POST', 'JSON');
+        return false;
+    }
+
+    function queryGoodsResponse (result)
+    {
+        if (result.error > 0)
+        {
+            alert(result.message);
+            return;
+        }
+        Utils.$('src_goods_lists').innerHTML = '';
+        for (var i=0,l=result.content.length;i<l;++i)
+        {
+            var new_opt = document.createElement('OPTION');
+            new_opt.value = result.content[i].goods_id;
+            new_opt.innerHTML = result.content[i].goods_name;
+            Utils.$('src_goods_lists').appendChild(new_opt);
+        }
+    }
+
+    /* 操作自定义导出商品的Select Box */
+    var MySelectBox;
+    var MySelectBox2;
+    if (!MySelectBox)
+    {
+        var global = $import("../js/global.js","js");
+        global.onload = global.onreadystatechange= function()
+        {
+            if(this.readyState && this.readyState=="loading")return;
+            var selectbox = $import("js/selectbox.js","js");
+            selectbox.onload = selectbox.onreadystatechange = function()
+            {
+                if(this.readyState && this.readyState=="loading")return;
+                MySelectBox = new SelectBox('src_goods_fields', 'dst_goods_fields');
+                MySelectBox2 = new SelectBox('src_goods_lists', 'dst_goods_lists');
+            }
+        }
+    }
+    if (Utils.$('addItem'))
+    {
+        Utils.$('addItem').onclick = function ()
+        {
+            MySelectBox.addItem();
+        }
+    }
+    if (Utils.$('delItem'))
+    {
+        Utils.$('delItem').onclick = function ()
+        {
+            MySelectBox.delItem();
+        }
+    }
+    if (Utils.$('addAllItem'))
+    {
+        Utils.$('addAllItem').onclick = function ()
+        {
+            MySelectBox.addItem(true);
+        }
+    }
+    if (Utils.$('delAllItem'))
+    {
+        Utils.$('delAllItem').onclick = function ()
+        {
+            MySelectBox.delItem(true);
+        }
+    }
+    if (Utils.$('src_goods_fields'))
+    {
+        Utils.$('src_goods_fields').ondblclick = function ()
+        {
+            MySelectBox.addItem();
+        }
+    }
+    if (Utils.$('dst_goods_fields'))
+    {
+        Utils.$('dst_goods_fields').ondblclick = function ()
+        {
+            MySelectBox.delItem();
+        }
+    }
+    if (Utils.$('mvUp'))
+    {
+        Utils.$('mvUp').onclick = function ()
+        {
+            MySelectBox.moveItem('up');
+        }
+    }
+    if (Utils.$('mvDown'))
+    {
+        Utils.$('mvDown').onclick = function ()
+        {
+            MySelectBox.moveItem('down');
+        }
+    }
+
+    if (Utils.$('addGoods'))
+    {
+        Utils.$('addGoods').onclick = function ()
+        {
+            MySelectBox2.addItem();
+        }
+    }
+    if (Utils.$('delGoods'))
+    {
+        Utils.$('delGoods').onclick = function ()
+        {
+            MySelectBox2.delItem();
+        }
+    }
+    if (Utils.$('addAllGoods'))
+    {
+        Utils.$('addAllGoods').onclick = function ()
+        {
+            MySelectBox2.addItem(true);
+        }
+    }
+    if (Utils.$('delAllGoods'))
+    {
+        Utils.$('delAllGoods').onclick = function ()
+        {
+            MySelectBox2.delItem(true);
+        }
+    }
+    if (Utils.$('src_goods_lists'))
+    {
+        Utils.$('src_goods_lists').ondblclick = function ()
+        {
+            MySelectBox2.addItem();
+        }
+    }
+    if (Utils.$('dst_goods_lists'))
+    {
+        Utils.$('dst_goods_lists').ondblclick = function ()
+        {
+            MySelectBox2.delItem();
+        }
+    } 
+
+  
+
+   
+</script>
+{/literal}
+

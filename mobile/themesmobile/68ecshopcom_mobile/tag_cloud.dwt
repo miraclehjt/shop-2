@@ -1,0 +1,56 @@
+
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>{$page_title}</title>
+	<meta name="Keywords" content="{$keywords}" />
+	<meta name="Description" content="{$description}" />
+    <script src="static/js/modernizr.js"></script>
+<link rel="shortcut icon" href="static/img/favicon.png">
+	<link rel="apple-touch-icon-precomposed" href="static/img/website_icon.png">
+	<link rel="stylesheet" href="static/css/style.css">
+
+{insert_scripts files='common.js,utils.js'}
+
+	</head>
+<body id="page_goods">
+<div id="container">
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+
+<div id="main"><div class="wrapper">
+	{include file='library/ur_here.lbi'}
+	
+	<!-- TemplateBeginEditable name="主栏上方" --><!-- TemplateEndEditable -->
+	<div class="tags_cloud box">
+		<div class="hd"><h3>{$lang.tag_cloud}</h3><div class="extra"></div></div>
+		<div class="bd">
+			<p class="description">{$lang.tag_cloud_desc}</p>
+			{if $tags}
+			<p class="tags">
+			{foreach from=$tags item=tag}
+			<span class="item_wrapper"><a href="{$tag.url}" class="item">{$tag.tag_words|escape:html}<em>{$tag.tag_count}</em></a>
+			{if $tag.user_id eq $smarty.session.user_id and $smarty.session.user_id gt 0}<a href="user.php?act=act_del_tag&tag_words={$tag.tag_words|escape:url}&uid={$tag.user_id}" class="drop">{$lang.drop}</a>{/if}</span>
+			{/foreach}
+			</p>
+			{else}
+			<p class="empty">{$lang.tags_cloud_empty}<p>
+			{/if}
+		</div>
+	</div>
+	<!-- TemplateBeginEditable name="主栏下方" --><!-- TemplateEndEditable -->
+	
+</div></div>
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+
+<script type="text/javascript" src="static/js/plugins.js"></script>
+<script type="text/javascript" src="static/js/lang.zh_cn.js"></script>
+<script type="text/javascript" src="static/js/global.js"></script>
+<script type="text/javascript" src="static/js/init.js"></script>
+
+</div>
+</body>
+
+</html>

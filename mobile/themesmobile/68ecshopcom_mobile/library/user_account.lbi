@@ -1,0 +1,47 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--#会员余额 start-->
+<!--{if $action eq "account_raply" || $action eq "account_log" || $action eq "account_deposit" || $action eq "account_detail"} -->
+<script type="text/javascript">
+	{foreach from=$lang.account_js item=item key=key}
+		var {$key} = "{$item}";
+	{/foreach}
+</script>
+<div style="background:#fff;">
+<!-- {/if}--> 
+<div class="user_login_title"><h2><em>账户余额</em><span>{$surplus_amount}</span></h2></div>
+<!--{if $account_log}-->
+<!-- {if $action eq "account_detail"} -->
+<div class="Funds">
+  <ul>
+  <!--{foreach from=$account_log item=item name=name}-->
+    <li class="Funds_li" {if $smarty.foreach.name.last} style=" border:0"{/if}>
+    	<span class="icon<!--{if $smarty.foreach.name.first}--> on<!--{/if}-->"></span>
+        <span>{$item.type},<em>{$item.amount}</em></span>
+        <span>{$item.change_time}</span>
+        <span>{$item.short_change_desc}</span>
+    </li>
+  <!--{/foreach}-->
+  </ul>
+</div>
+<!-- {/if} -->
+{else}
+<p class="font12">您没有任何资金的变动哦！</p>
+<!-- {/if} -->
+<!--{if $action eq "account_raply" || $action eq "account_log" || $action eq "account_deposit" || $action eq "account_detail"} --> 
+</div>
+<!---返回顶部-->
+<script>
+function goTop(){
+	$('html,body').animate({'scrollTop':0},600);
+}
+</script>
+<a href="javascript:goTop();" class="gotop"><img src="themesmobile/68ecshopcom_mobile/images/topup.png"></a> 
+<!-- {/if} --> 
+
+<!--#会员余额 end--> 
+
+<script type="text/javascript">
+{foreach from=$lang.account_js item=item key=key}
+var {$key} = "{$item}";
+{/foreach}
+</script>

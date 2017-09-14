@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="themes/68ecshopcom_360buy/css/68ecshop_commin.css" />
+<link href="themes/68ecshopcom_360buy/css/store_joinin.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-1.9.1.min.js"></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+{* 包含脚本文件 *}
+{insert_scripts files='common.js,user.js'}
+</head>
+<body onload="radioShow()">
+<div id="site-nav"> 
+	<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem --> 
+    {insert name='apply_supplier' id=$userid} 
+	<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+</div>
+</body>
+<script type="text/javascript">
+function setImagePreview(docObj,localImagId,imgObjPreview) 
+{
+    if(docObj.files && docObj.files[0])
+    {
+	//火狐下，直接设img属性
+	imgObjPreview.style.display = 'block';
+	imgObjPreview.style.width = '300px';
+	imgObjPreview.style.height = '200px';                    
+
+	//火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式  
+	imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+    }
+    else
+    {
+	//IE下，使用滤镜
+	docObj.select();
+	docObj.blur();
+	var imgSrc = document.selection.createRange().text;
+
+	//必须设置初始大小
+	localImagId.style.width = "300px";
+	localImagId.style.height = "200px";
+
+	//图片异常的捕捉，防止用户修改后缀来伪造图片
+	try
+	{
+	    localImagId.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+	    localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+	 }
+	 catch(e)
+	 {
+	    alert("您上传的图片格式不正确，请重新选择!");
+	    return false;
+	  }                          
+	  imgObjPreview.style.display = 'none';
+	  document.selection.empty();
+    }
+    return true;
+}
+</script>
+</html>

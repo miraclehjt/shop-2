@@ -1,0 +1,151 @@
+@charset "utf-8";
+/* CSS Document */
+body, button, input, select, textarea {
+	font: 12px/1.5  microsoft yahei, tahoma, arial;
+*line-height:1.5;
+	-ms-overflow-style: scrollbar;
+}
+input:focus, textarea:focus {
+	outline: none;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%
+}
+a {
+  color: #666666;
+  outline: medium none;
+  text-decoration: none;
+}
+img {
+	border: 0
+}
+.blank {
+	height: 10px;
+	line-height: 10px;
+	clear: both;
+	visibility: hidden;
+}
+#site-nav {
+	min-width: 680px;
+	width: auto;
+	position: relative!important;
+}
+.headerLayout {
+	width: 600px;
+	padding-bottom:10px;
+	margin: 0 auto;
+	text-align:center;
+}
+.w {
+	width: 600px;
+	margin: 0 auto;
+}
+#entry .form{
+	overflow: hidden;
+	border: 1px #ddd solid;
+	padding: 5px 40px;
+	width: 300px;
+	min-height: 300px;
+	height:auto;	
+	-webkit-box-shadow: #ccc 0px 0px 5px;
+	-moz-box-shadow: #ccc 0px 0px 5px;
+	box-shadow: #ccc 0px 0px 5px;
+	margin:0 auto
+}
+#entry .form h2 {
+	height: 25px;
+	line-height: 25px;
+	margin-bottom: 10px;
+}
+#regist .form h2 {
+	margin-bottom: 20px;
+}
+#entry .form h2 strong {
+	float: left;
+	font-size: 20px;
+	font-weight: 400;
+}
+#entry .form h2 span{
+	font-size: 12px;
+	float: right;
+	font-weight: normal;
+}
+#entry .form h2 span a{
+	color: #E4393C
+}
+#entry #autoentry {
+	height: 35px;
+}
+#entry .item_te{
+	margin-top:10px;
+	height:20px;
+}
+#entry .item_te .fl{
+	float:left;
+	margin-left:35px;
+	*margin-left:25px;
+}
+#entry .item_te .fr{
+	float:right;
+	margin-right:35px;
+	*margin-right:25px;
+}
+#entry .label{
+	font-size: 14px;
+	color: #666;
+	padding-right: 10px;
+	height: 30px;
+	line-height: 30px;
+	display: inline-block;
+}
+#entry .text{
+	width: 288px;
+	height: 20px;
+	padding:5px;
+	border: 1px solid #cccccc;
+	font-size: 12px;
+	font-family: arial;
+	color: #999;
+}
+#entry .text-1 {
+	width: 100px;
+}
+#entry .checkbox {
+	margin-top: 1px;
+	*margin-top:-1px;
+}
+#entry .safety {
+	margin-top: 10px;
+	height: 30px;
+	line-height: 30px;
+}
+#entry .safety .checkbox {
+	vertical-align: middle
+}
+#entry .safety .mar-b {
+	height: 26px;
+	line-height: 26px;
+	margin-left: 2px
+}
+#entry .safety .forget_password {
+	float: right;
+	text-decoration: none;
+	margin-top: -2px;
+}
+#entry .mar {
+	margin-right: 10px;
+	line-height: 24px;
+}
+#entry .btn-entry{
+	width: 300px;
+	height: 35px;
+	font-size: 14px;
+	color: #FFF;
+	background: #E4393C;
+	text-align: center;
+	line-height: 35px;
+	text-decoration: none;
+	cursor: pointer;
+	letter-spacing: 2px;
+	border:none;
+}

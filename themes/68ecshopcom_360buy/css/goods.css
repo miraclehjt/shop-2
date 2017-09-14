@@ -1,0 +1,53 @@
+﻿@charset "utf-8";
+/* CSS Document */
+.show-pic {
+	height: 400px;
+	overflow: hidden;
+}
+/*商品详情*/
+.clearfix {
+	zoom: 1;
+}
+.clearfix:after {
+	display: block;
+	content: ".";
+	clear: both;
+	visibility: hidden;
+	height: 0;
+}
+.buyNub-buy .u-buy1 {
+display: block;
+width: 135px;
+height: 36px;
+font-family: "微软雅黑";
+line-height: 36px;
+font-size: 16px;
+float: left;
+cursor: pointer;
+background: none repeat scroll 0% 0% #FF6500;
+margin-right: 15px;
+color: #FFF;
+text-align: center;
+text-decoration: none;
+}
+.buyNub-buy .u-buy2 {
+display: block;
+width: 135px;
+height: 36px;
+font-family: "微软雅黑";
+line-height: 36px;
+font-size: 16px;
+float: left;
+margin-right: 15px;
+cursor: pointer;
+background: none repeat scroll 0% 0% #E31939;
+color: #FFF;
+text-align: center;
+text-decoration: none;
+border: medium none;
+}
+.buyNub-buy-wrap {
+	height: 40px;
+	padding-left:3px;
+	clear: both
+}

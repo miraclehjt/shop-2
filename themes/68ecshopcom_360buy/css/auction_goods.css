@@ -1,0 +1,371 @@
+/*table*/
+.tb-void {
+	overflow: hidden;
+	margin-right: -1px;
+	margin-left: -1px;
+	margin-bottom: -1px;
+	border: 1px solid #E6E6E6;
+	background: #fff
+}
+.tb-void table {
+	border-collapse: collapse;
+	background-color: #fff
+}
+.tb-void th {
+	height: 20px;
+	width: 60px;
+*width:160px;
+	color: #666666;
+	font-weight: bold;
+	border-top: 1px #eee solid;
+}
+.tb-void td {
+	border: solid #E6E6E6;
+	border-width: 1px 0 0 1px;
+	padding: 5px 4px;
+	text-align: center
+}
+#product-intro {
+	overflow: visible
+}
+#product-intro .p-img {
+	float: left;
+	margin-bottom: 15px;
+}
+#product-intro .p-img img {
+	border: 1px solid #D3D3D3;
+	display: block
+}
+.p-info {
+	float: right;
+	width: 770px
+}
+.p-info h1 {
+	border-bottom: 1px dotted #CCCCCC;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	font-size: 18px
+}
+.p-info .list-info {
+	overflow: hidden;
+	zoom: 1;
+}
+.p-info .list-info p {
+	padding: 10px 0px;
+	height: 20px;
+}
+.p-info .list-info .list_info_d {
+	float: left;
+	width: 260px;
+}
+.p-info .list-info .list_info_s {
+	float: left;
+	width: 360px;
+}
+.p-info .list-info .list_info_d span {
+	font-size: 16px;
+	color: #999;
+	font-weight: bold;
+}
+.p-info .list-info .f4 {
+	color: #666666;
+}
+.p-info .list-info .f4 span {
+	clear: both;
+	color: #E31939;
+	font-size: 16px;
+	font-weight: bold;
+}
+.p-info .list-info .au_deposit {
+	clear: both;
+}
+.over-time {
+	color: #FF6600
+}
+#au-key {
+	min-height: 80px;
+	margin-bottom: 10px
+}
+*html #au-key {
+	height: 80px;
+}
+.a-key {
+	border: 1px solid #EED97C;
+	background-color: #FFFCEB;
+	padding: 20px 25px;
+*zoom:1;
+	width: 568px;
+*width:565px;
+	overflow: hidden
+}
+.a-key .text {
+	width: 164px;
+	font-weight: bold;
+	font-size: 14px;
+	text-align: center;
+	border-color: #979797
+}
+.quantity-form {
+	width: 420px;
+	float: left;
+	margin-bottom: 5px;
+	height: 20px;
+}
+*html .quantity-form {
+	height: 30px
+}
+.quantity-form .ftx-03 {
+	clear: both;
+	text-align: center;
+	padding-top: 3px
+}
+.quantity-form .inputBg {
+	vertical-align: middle;
+	font-size: 18px;
+	color: #666;
+	background: #ffffff;
+	font-size: 12px
+}
+.quantity-form .bnt_blue {
+	vertical-align: middle;
+	font-weight: bold;
+	background: #E31939;
+	width: 100px;
+	height: 32px;
+	line-height: 32px;
+	font-size: 16px;
+	text-align: center
+}
+.decrement, .increment {
+	float: left;
+	width: 100px;
+	height: 34px;
+	text-align: center;
+	line-height: 34px;
+	position: relative;
+	top: 0;
+	font-size: 20px;
+}
+a.decrement:hover, a.increment:hover {
+	text-decoration: none
+}
+.decrement {
+	margin-right: 5px
+}
+.auc-infos {
+	clear: both;
+	border-top: 1px dotted #EED97C;
+	text-align: center;
+	color: #005EA7;
+	padding: 10px 0;
+	cursor: pointer;
+	width: 100%;
+	font-size:14px;
+}
+.auctioninfo {
+	display: none
+}
+.auctioninfo .more {
+	text-align: right;
+	padding-top: 10px;
+	cursor: pointer
+}
+.auctioninfo .tb-void {
+	border-top: none;
+	margin: 0;
+	overflow: auto;
+	height: 174px;
+ *width:567px;
+	overflow-y: no;
+	overflow-x: hidden
+}
+.auctioninfo .tb-void td {
+	border-left: none
+}
+.select {
+	position: relative;
+	z-index: 2;
+*zoom:1
+}
+.select .a-key {
+	height: 300px;
+	position: absolute;
+	padding-bottom: 30px
+}
+.select .auctioninfo {
+	display: block
+}
+.odd {
+	background-color: #F9F9F9
+}
+.icon-tria {
+	display: inline-block;
+	line-height: 0;
+	font-size: 0;
+	height: 0;
+	overflow: hidden;
+	vertical-align: middle;
+	border: 4px dashed;
+	border-color: #005EA7 transparent transparent;
+	border-top-style: solid
+}
+.select .icon-tria {
+	border: 4px dashed;
+	border-color: transparent transparent #005EA7;
+	border-bottom-style: solid;
+	position: relative;
+	top: -4px
+}
+.a-flex {
+	border: 1px solid #D3D3D3;
+	background-color: #fff;
+	overflow: visible;
+	clear: left;
+	margin-top: 10px;
+	height: 119px
+}
+.a-flex dt, .a-flex dd {
+	float: left
+}
+.a-flex dt {
+	overflow: hidden;
+	text-indent: -100%
+}
+.flex-icon, .a-flex dt, .a-flex s, .prompt .pt {
+	background-image: url(../images/shengji_ad/a-flex01.png);
+}
+.a-flex dt {
+	width: 107px;
+	height: 119px;
+	position: relative
+}
+.a-flex dd {
+	position: relative;
+	padding-left: 24px;
+	padding-right: 36px;
+	text-align: center;
+	width: 158px;
+}
+.a-flex s {
+	display: inline-block;
+	width: 56px;
+	height: 56px;
+	margin: 17px auto 8px;
+	cursor: pointer;
+*zoom:1
+}
+.a-flex .fore1 s {
+	background-position: 0 -120px;
+}
+.a-flex .fore2 s {
+	background-position: -57px -120px;
+}
+.a-flex .fore3 s {
+	background-position: -114px -120px;
+}
+.a-flex .fore4 s {
+	background-position: -171px -120px;
+}
+.a-flex .fore5 s {
+	background-position: -228px -120px;
+}
+.a-flex h5 {
+	font-weight: normal;
+	text-align: center;
+	background: none;
+	padding: 0
+}
+.ftx-span {
+	font-size: 14px;
+	font-family: "microsoft yahei";
+	display: block;
+	color: #666;
+	text-align: center;
+	width: 150px;
+	padding: 0px;
+	font-weight: normal
+}
+.flex-icon {
+	background-position: -258px 0;
+	position: absolute;
+	right: 0;
+	top: 50px;
+	width: 17px;
+	height: 34px
+}
+.prompt {
+	position: absolute;
+	border: 1px solid #D3D3D3;
+	background-color: #F6F6F6;
+	width: 214px;
+	top: 113px;
+	display: none;
+	left: 0;
+	text-align: center;
+}
+.prompt .pc {
+	padding: 5px 10px;
+	text-align: center;
+}
+.prompt .pt {
+	background-position: -258px -35px;
+	width: 11px;
+	height: 9px;
+	font-size: 0;
+	line-height: 0;
+	overflow: hidden;
+	position: absolute;
+	top: -9px;
+	left: 100px
+}
+.btn-bid {
+	width: 142px;
+	height: 37px;
+	border: none;
+	display: inline-block;
+*zoom:1;
+	line-height: 100px;
+	overflow: hidden;
+	vertical-align: bottom;
+	margin-right: 10px
+}
+.a-pinfo {
+	margin-top: 10px
+}
+.a-pinfo .smt {
+	border-bottom: 2px solid #E31939;
+	text-align: center;
+	height: 35px;
+	line-height: 35px;
+	cursor: pointer;
+	font-size: 14px;
+}
+.a-pinfo .smt .tab {
+	float: left
+}
+.a-pinfo .smt .tab li {
+	border-right: 1px solid #DDDDDD;
+	font-weight: bold;
+	font-size: 14px;
+	padding: 0px 45px;
+	cursor: pointer
+}
+.a-pinfo .smt .tab .curr {
+	background-color: #E31939;
+	color: #fff
+}
+.a-pinfo .smt .extra {
+	float: right;
+	padding-right: 10px
+}
+.a-pinfo .smc {
+	padding: 10px;
+	background-color: #fff;
+	border: solid #e6e6e6;
+	border-width: 0 1px 1px 1px
+}
+.a-pinfo .smc p,.a-pinfo .smc .boxCenterList{
+	line-height:1.5em	;
+	font-size:13px;
+}

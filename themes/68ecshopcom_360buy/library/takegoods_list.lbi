@@ -1,0 +1,43 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="w mt15">
+<div id="filter">
+      <div class='fore1' style="border:none;">
+        <dl class='order'>
+          <dt>{$lang.goods_list}：</dt>
+        </dl>
+        <div class='total'><span>卡号：<strong>{$rowtg.tg_sn}&nbsp;&nbsp;&nbsp;该提货卡您已使用{$rowtg.num_used}次，还有{$rowtg.num_surplus}次使用机会&nbsp;&nbsp;&nbsp;<a href="takegoods.php?act=logout">退出卡</a></strong></span></div>
+     </div>
+    </div>
+</div>
+<div class="w mt15">
+<div class="act-list">
+      <ul class="clearfix">
+         <!--{foreach from=$goods_list item=goods name=goods}-->
+          <!-- {if $goods.goods_id} -->
+        <li {if $smarty.foreach.goods.iteration % 4 eq 1}class="first"{/if}>
+            <div class="img">
+                <a href='{$goods.goods_url}' title="{$goods.goods_name|escape:html}" target="_blank"><img  src='{$goods.goods_thumb}' width="200" height="200" alt='{$goods.name|escape:html}' /></a>
+                <p class="absBg"></p>
+                <p class="absFg"><a href='{$goods.url}'  title="{$goods.goods_name|escape:html}">{$goods.goods_shortname}</a></p>
+            </div>
+            <div class="info">
+                <div class="price"><strong class="red arial"><!--{if $goods.promote_price neq "" } -->{$goods.promote_price}<!--{else}-->{$goods.shop_price}<!--{/if}--></strong></div>
+                <div class="discount"><span class="f16 yahei"><a href="javascript:showDiv({$goods.goods_id});" >提货</a></span></div>
+            </div>
+        </li>
+        <!--{/if}--> 
+        <!--{/foreach}-->
+        
+      </ul>
+  </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+  window.onload = function()
+  {
+    fixpng();
+  }
+</script>

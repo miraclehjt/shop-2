@@ -1,0 +1,241 @@
+{if $full_page}
+
+<!-- $Id: users_list.htm 17053 2015-02-10 06:50:26Z derek $ -->
+
+{include file="pageheader.htm"}
+
+{insert_scripts files="../js/utils.js,listtable.js"}
+
+
+
+<div class="form-div">
+
+  <form action="javascript:searchUser()" name="searchForm">
+
+    <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
+	 <a href="distributor.php?act=list">{$lang.all_user}</a>
+
+  	 <a href="distributor.php?act=list&sign=1">{$lang.plat_user}</a>
+
+     <a href="distributor.php?act=list&sign=2">{$lang.other_user}</a>
+
+ 	 <a href="distributor.php?act=list&sign=3">{$lang.not_user}</a>
+    &nbsp;{$lang.label_rank_name} <select name="user_rank"><option value="0">{$lang.all_option}</option>{html_options options=$user_ranks }</select>
+
+    &nbsp;{$lang.label_user_name} &nbsp;<input type="text" name="keyword" size="20" /> <input type="submit" value="{$lang.button_search}" class="button"/>
+
+  </form>
+
+</div>
+
+
+
+<form method="POST" action="" name="listForm" onsubmit="return confirm_bath()">
+
+
+
+<!-- start users list -->
+
+<div class="list-div" id="listDiv">
+
+{/if}
+
+<!--用户列表部分-->
+
+<table cellpadding="3" cellspacing="1">
+
+  <tr>
+
+    <th>
+
+      <input onclick='listTable.selectAll(this, "checkboxes")' type="checkbox">
+
+      <a href="javascript:listTable.sort('user_id'); ">{$lang.record_id}</a>{$sort_user_id}
+
+    </th>
+
+    <th><a href="javascript:listTable.sort('user_name'); ">{$lang.username}</a>{$sort_user_name}</th>
+
+    <th>{$lang.user_money}</th>
+
+    <th>{$lang.frozen_money}</th>
+
+    <th>{$lang.is_fenxiao}</th>
+
+    <th>{$lang.upper_distrib}</th>
+    
+    <th>{$lang.total_user}</th>
+
+    <th>{$lang.one_level_user}</th>
+
+    <th>{$lang.two_level_user}</th>
+
+    <th>{$lang.three_level_user}</th>
+
+    <th>{$lang.handler}</th>
+
+  <tr>
+
+  {foreach from=$user_list item=user}
+
+  <tr>
+
+    <td><input type="checkbox" name="checkboxes[]" value="{$user.user_id}" notice="{if $user.user_money ne 0}1{else}0{/if}"/>{$user.user_id}</td>
+
+    <td align="center">{$user.user_name|escape}</td>
+
+    <td align="center">{$user.user_money}</td>
+
+    <td align="center">{$user.frozen_money}</td>
+
+    <td align="center"><img src="images/{if $user.is_fenxiao eq 1}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'is_fenxiao', {$user.user_id})" /></td>
+
+    <td align="center">{$user.upper_user_name}</td>
+	<td align="center">{$user.total_user}</td>
+    <th align="center">{if $user.is_fenxiao eq 1}{if $user.one_level_user_count eq 0}{$user.one_level_user_count}{else}<a href="user_grade.php?act=list&user_id={$user.user_id}&level=1">{$user.one_level_user_count}</a>{/if}{else}{$lang.no_distributor}{/if}</th>
+
+    <th align="center">{if $user.is_fenxiao eq 1}{if $user.two_level_user_count eq 0}{$user.two_level_user_count}{else}<a href="user_grade.php?act=list&user_id={$user.user_id}&level=2">{$user.two_level_user_count}</a>{/if}{else}{$lang.no_distributor}{/if}</th>
+
+    <th align="center">{if $user.is_fenxiao eq 1}{if $user.three_level_user_count eq 0}{$user.three_level_user_count}{else}<a href="user_grade.php?act=list&user_id={$user.user_id}&level=3">{$user.three_level_user_count}</a>{/if}{else}{$lang.no_distributor}{/if}</th>
+
+    <td align="center">
+
+      <a href="distributor.php?act=edit&id={$user.user_id}" title="{$lang.edit}"><img src="images/icon_edit.gif" border="0" height="16" width="16" /></a>
+
+    </td>
+
+  </tr>
+
+  {foreachelse}
+
+  <tr><td class="no-records" colspan="12">{$lang.no_records}</td></tr>
+
+  {/foreach}
+
+  <tr>
+
+      <td colspan="2">
+
+      <input type="hidden" name="act" value="batch_remove" />
+
+      <input type="submit" id="btnSubmit" value="{$lang.button_remove}" disabled="true" class="button" /></td>
+
+      <td align="right" nowrap="true" colspan="12">
+
+      {include file="page.htm"}
+
+      </td>
+
+  </tr>
+
+</table>
+
+
+
+{if $full_page}
+
+</div>
+
+<!-- end users list -->
+
+</form>
+
+<script type="text/javascript" language="JavaScript">
+
+<!--
+
+listTable.recordCount = {$record_count};
+
+listTable.pageCount = {$page_count};
+
+
+
+{foreach from=$filter item=item key=key}
+
+listTable.filter.{$key} = '{$item}';
+
+{/foreach}
+
+
+
+{literal}
+
+onload = function()
+
+{
+
+    document.forms['searchForm'].elements['keyword'].focus();
+
+    // 开始检查订单
+
+    startCheckOrder();
+
+}
+
+
+
+/**
+
+ * 搜索用户
+
+ */
+
+function searchUser()
+
+{
+
+    listTable.filter['keywords'] = Utils.trim(document.forms['searchForm'].elements['keyword'].value);
+
+    listTable.filter['rank'] = document.forms['searchForm'].elements['user_rank'].value;
+
+    listTable.filter['page'] = 1;
+
+    listTable.loadList();
+
+}
+
+
+
+function confirm_bath()
+
+{
+
+  userItems = document.getElementsByName('checkboxes[]');
+
+
+
+  cfm = '{$lang.list_remove_confirm}';
+
+
+
+  for (i=0; userItems[i]; i++)
+
+  {
+
+    if (userItems[i].checked && userItems[i].notice == 1)
+
+    {
+
+      cfm = '{$lang.list_still_accounts}' + '{$lang.list_remove_confirm}';
+
+      break;
+
+    }
+
+  }
+
+
+
+  return confirm(cfm);
+
+}
+
+//-->
+
+</script>
+
+{/literal}
+
+{include file="pagefooter.htm"}
+
+{/if}

@@ -1,0 +1,21 @@
+<!-- {foreach from=$booking_list item=item} -->
+<div class="bg-color-w m-btm1">
+  <div class="ubb ub border-faxian bc-text ub-ac p-all5">
+    <div class="f-color-6 ulev-1 ub-f1">{$lang.booking_time}：{$item.booking_time}</div>
+    <div class="ub ub-pe ub-ac delete" rec_id='{$item.rec_id}'>
+      <div class="ub-img search-icon2 h-w-5"></div>
+    </div>
+  </div>
+  <div class="ub p-all5 bc-grey goods" goods_id="{$item.goods_id}">
+    <div class="goods-img h-w-7"><img src="{$url}{$item.goods_thumb}"/></div>
+    <div class="ub-f1 ub ub-ver m-l1 goods-img">
+      <div class="f-color-zi ulev-1">{$item.goods_name}</div>
+      <div class="ulev-2 uinn3 sc-text-hui m-top2">{$lang.booking_store_name}：{$item.supplier_name}</div>
+      <div class="ulev-2 uinn3 sc-text-hui">{$lang.process_desc}：{$item.dispose_note}</div>
+    </div>
+  </div>
+  <div class="p-all1 tx-r ubt border-faxian"> <span class="ulev-1 f-color-6">订购数量：</span><span class="ulev-1 f-color-red">{$item.goods_number}</span> </div>
+</div>
+<!-- {foreachelse} -->
+<div class="ub ub-pc umar-t1 f-color-6">没有登记任何商品</div>
+<!-- {/foreach} -->

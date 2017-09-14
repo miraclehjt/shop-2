@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$gallery.goods_name} - {$shop_name}</title>
+<style>body{margin:0;}</style>
+</head>
+<body id="page_{$pname}">
+<embed src="{$option.static_path}data/images/pic-view.swf" quality="high" id="picview" flashvars="copyright=shopex&xml=
+<products name='{$gallery.goods_name}' shopname='{$shop_name}'>
+{foreach from=$gallery.list item=photo name=gallery_list}
+<smallpic{if $photo.img_id eq $smarty.get.img} selected='selected'{elseif $smarty.foreach.gallery_list.first} selected='selected'{/if}>{$option.static_path}{$photo.gallery_thumb}</smallpic>
+<photo_desc>{if $photo.img_desc}{$photo.img_desc}{else}{$gallery.goods_name}{$photo.img_id}{/if}</photo_desc>
+<bigpic{if $photo.img_id eq $smarty.get.img} selected='selected'{elseif $smarty.foreach.gallery_list.first} selected='selected'{/if}>{$option.static_path}{$photo.gallery}</bigpic>
+{/foreach}
+</products>
+" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="100%" height="100%"></embed>
+<script type="text/javascript">
+{foreach from=$lang.gallery_js item=lang_js key=key}
+var {$key} = '{$lang_js}';
+{/foreach}
+function windowClose(){if(window.confirm(close_window)){window.close();}}
+</script>
+</body>
+</html>

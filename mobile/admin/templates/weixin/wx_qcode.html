@@ -1,0 +1,187 @@
+{if $full_page}
+
+{include file="pageheader.htm"}
+
+{insert_scripts files="../js/utils.js,listtable.js"}
+
+
+
+<div class="form-div">
+
+  <form action="javascript:searchUser()" name="searchForm">
+
+  	<select name="type">
+
+		<option value="1" {if $type eq 1}selected{/if}>商品</option>
+
+		<option value="2" {if $type eq 2}selected{/if}>文章</option>
+
+		<option value="3" {if $type eq 3}selected{/if}>自定义</option>
+
+	</select>
+
+  	<input type="text" name="keyword" /> <input type="submit" value="{$lang.button_search}" />
+
+  </form>
+
+</div>
+
+<form method="POST" action="" name="listForm" onsubmit="return confirm_bath()">
+
+<!-- start users list -->
+
+<form method="get" action="weixin.php?act=fans">
+
+<div class="list-div" id="listDiv">
+
+{/if}
+
+<table width="100%" cellspacing="1" cellpadding="3" id="list-table">
+
+  <tr>
+
+    <th>ID</th>
+
+    <th>类型</th>
+
+	<th>查看</th>
+
+	<th>操作</th>
+
+  </tr>
+
+	{foreach item=item from=$qcode_list}
+
+  <tr>
+
+	<td>{$item.id}</td>
+
+	<td>
+
+	{if $item.type eq 1}商  品：【<a href="goods.php?act=edit&goods_id={$item.content}" target="_blank">{$item.title}</a>】{/if}
+
+	{if $item.type eq 2}文  章：【<a href="article.php?act=edit&id={$item.content}" target="_blank">{$item.title}</a>】{/if}
+
+	{if $item.type eq 3}自定义：【{$item.content}】{/if}
+
+	</td>
+
+	<td><a href="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket={$item.qcode}" target="_blank">查看二维码</a></td>
+
+	<td><a href="weixin.php?act=addqcode&id={$item.id}">修改</a>|<a href="weixin.php?act=addqcode&do=del&id={$item.id}">删除</a></td>
+
+  </tr>
+
+	{foreachelse}
+
+  <tr><td class="no-records" colspan="4">{$lang.no_records}</td></tr>
+
+  {/foreach}
+
+  <tr>
+
+      <td align="right" nowrap="true" colspan="4">
+
+      {include file="page.htm"}
+
+      </td>
+
+  </tr>
+
+  </table>
+
+<!-- end users list -->
+
+{if $full_page}
+
+</div>
+
+</form>
+
+<script type="text/javascript" language="JavaScript">
+
+<!--
+
+listTable.recordCount = {$record_count};
+
+listTable.pageCount = {$page_count};
+
+
+
+{foreach from=$filter item=item key=key}
+
+listTable.filter.{$key} = '{$item}';
+
+{/foreach}
+
+
+
+{literal}
+
+/**
+
+ * 搜索用户
+
+ */
+
+function searchUser()
+
+{
+
+    listTable.filter['keywords'] = Utils.trim(document.forms['searchForm'].elements['keyword'].value);
+
+    listTable.filter['type'] = document.forms['searchForm'].elements['type'].value;
+
+    listTable.filter['act'] = 'qcode';
+
+    listTable.filter['page'] = 1;
+
+    listTable.loadList();
+
+}
+
+
+
+function confirm_bath()
+
+{
+
+  userItems = document.getElementsByName('checkboxes[]');
+
+
+
+  cfm = '{$lang.list_remove_confirm}';
+
+
+
+  for (i=0; userItems[i]; i++)
+
+  {
+
+    if (userItems[i].checked && userItems[i].notice == 1)
+
+    {
+
+      cfm = '{$lang.list_still_accounts}' + '{$lang.list_remove_confirm}';
+
+      break;
+
+    }
+
+  }
+
+
+
+  return confirm(cfm);
+
+}
+
+//-->
+
+</script>
+
+{/literal}
+
+{include file="pagefooter.htm"}
+
+{/if}

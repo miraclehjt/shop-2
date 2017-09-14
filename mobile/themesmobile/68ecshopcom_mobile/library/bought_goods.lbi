@@ -1,0 +1,20 @@
+{if $bought_goods}
+<div class="bought_goods box">
+	<div class="hd"><h3>{$lang.shopping_and_other}</h3><div class="extra"></div></div>
+	<div class="bd product_list">
+		<ul>
+			{foreach from=$bought_goods item=bought_goods_data name=bought_goods}
+			<li>
+				<span class="photo">
+					<a href="{$bought_goods_data.url}" title="{$bought_goods_data.goods_name|escape:html}" class="image"><img src="{$option.static_path}{$bought_goods_data.goods_thumb}" alt="{$bought_goods_data.goods_name|escape:html}"/></a>
+				</span>
+				<span class="info">
+					<a href="{$bought_goods_data.url}" title="{$bought_goods_data.goods_name|escape:html}" class="name">{$bought_goods_data.short_name}</a>
+					<span class="price">{if $bought_goods_data.promote_price}<span class="promo"><em>{$bought_goods_data.formated_promote_price}</em></span>{else}{$bought_goods_data.shop_price}{/if}</span>
+				</span>
+			</li>
+			{/foreach}
+		</ul>
+	</div>
+</div>
+{/if}

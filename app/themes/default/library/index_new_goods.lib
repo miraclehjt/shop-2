@@ -1,0 +1,19 @@
+{if $new} 
+<div class="uof bg-color-w ubt ubb border-hui  swiper-container index-goods">
+  <div class="ub bc-text ub-ac" data-index="0">
+    <div class="title-left bc-grey1"></div>
+    <div class="ub-f1 ub ub-ver ut-m line1 umar-l bc-text ulev0">新品上市</div>
+    <div class="tx-r sc-text ulev-1 umar-r goods_list" goods_type='is_new'>更多 &gt;</div>
+  </div>
+  <div class="ub umar-t swiper-wrapper goods-padding">
+  {foreach from=$new item=row name="new_row"}
+    <div class='swiper-slide ub'>
+	{foreach from=$row item=goods name="new_goods"}
+	{include file="/library/goods.lib"}
+      {/foreach}
+	  </div>
+    {/foreach}
+	</div>
+  <div class="swiper-pagination"></div>
+</div>
+{/if}

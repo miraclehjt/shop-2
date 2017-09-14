@@ -1,0 +1,87 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {foreach from=$goods_list item=cartgoods name="gl" key=key} -->
+<table  align="center"  cellpadding="0" cellspacing="0" style="height:auto;width:100%;">
+<tr height="35">
+  <td style="border-top:2px solid #d9d9d9; text-indent:19px; background:#FAFAFA;font-weight:bold;color:#FF0000">{$cartgoods.supplier_name}<input type="hidden" name="supplierid" id="supplierid" value="{$key}"></td>
+</tr>
+</table>
+<table  align="center"  cellpadding="0" cellspacing="0" style="height:auto;width:100%;">
+<!-- {foreach from=$cartgoods.goods_list name="goods_list" item=goods} -->
+<tr>
+  <td style="width:100%;{if !$smarty.foreach.goods_list.last}border-bottom:1px dashed #ddd;{/if}"><table cellpadding="5" cellspacing="1" border=0 width="100%" {if !$goods.is_cansel}style="background:#ddd;"{/if}>
+      <tr > {* 代码增加_start  By  bbs.hongyuvip.com *}
+	<td  align="center"  width="5%"><input type="checkbox" autocomplete="off" name="sel_cartgoods[]" value="{$goods.rec_id}" id="sel_cartgoods_{$goods.rec_id}" checked=checked onclick="select_cart_goods();"></td>
+	{* 代码增加_end  By  bbs.hongyuvip.com *}
+	<td  align="center"  width="40%">
+    <!-- {if $goods.goods_id gt 0 && $goods.extension_code neq 'package_buy'} 商品 -->
+	  
+	  <div class="thumb_name">
+	    <dl >
+	      <dt> <a href="goods.php?id={$goods.goods_id}" target="_blank"><img src="{$goods.goods_thumb}" border="0" title="{$goods.goods_name|escape:html}" /></a> </dt>
+	      <dd> <a href="goods.php?id={$goods.goods_id}" target="_blank" class="f6">{$goods.goods_name}</a> 
+		<!-- {if $show_goods_attribute eq 1} 显示商品属性 --><br>
+		<font class="attrname">{$goods.goods_attr|nl2br}</font><!-- {/if} --> 
+		<!-- {if $goods.parent_id gt 0} 配件 --> 
+		<span >{$lang.accessories}</span> 
+		<!-- {/if} --> 
+		<!-- {if $goods.is_gift gt 0} 赠品 --> 
+		<span>{$lang.largess}</span> 
+		<!-- {/if} --> 
+	      </dd>
+	    </dl>
+	  </div>
+	  
+	  <!-- {elseif $goods.goods_id gt 0 && $goods.extension_code eq 'package_buy'} -->
+	  
+	  <div class="thumb_name">
+	    <dl >
+	      <dt><img src="themes/{$template_dir}/images/jmpic/ico_cart_package.gif" border="0" title="{$goods.goods_name|escape:html}" /></dt>
+	      <dd> {$goods.goods_name}<font style="color:#FF0000;">（{$lang.remark_package}）</font>
+		<div style="display:block;position:relative;"> <a  href="javascript:void(0)" onclick="setSuitShow({$goods.goods_id})" ><span class="package">商品明细</span></a>
+		  <div id="suit_{$goods.goods_id}" style="float:left;position:absolute;background:#fff;width:500px;top:25px;left:0;border:1px solid #31c8e3;padding:10px 0;display:none; z-index:99;">
+		    <table cellpadding=10 cellspacing=5 width="100%"  style="padding:0;margin:0;">
+		      <!-- {foreach from=$goods.package_goods_list name="package_goods_list" item=package_goods_list} -->
+		      <tr >
+			<td width="60px" {if !$smarty.foreach.package_goods_list.last}style="border-bottom:1px dashed #bbb;"{/if}><img src="{$package_goods_list.goods_thumb}" width="40" height="40"></td>
+			<td {if !$smarty.foreach.package_goods_list.last}style="border-bottom:1px dashed #bbb;"{/if}><a href="goods.php?id={$package_goods_list.goods_id}" target="_blank" class="fpack">{$package_goods_list.goods_name|truncate:20}</a></td>
+			<td {if !$smarty.foreach.package_goods_list.last}style="border-bottom:1px dashed #bbb;"{/if}><div style="float:left;border:1px solid #bbb;background:#ddd;width:20px;text-align:center;padding:5px 10px;">{$package_goods_list.goods_number}</div></td>
+			<td align="center" {if !$smarty.foreach.package_goods_list.last}style="border-bottom:1px dashed #bbb;"{/if}>{$package_goods_list.shop_price}</td>
+		      </tr>
+		      <!-- {/foreach} -->
+		    </table>
+		  </div>
+		</div>
+	      </dd>
+	    </dl>
+	  </div>
+	  
+	  <!-- {else} 优惠活动 --> 
+	  {$goods.goods_name} 
+	  <!-- {/if} --></td>
+	<td align=center  width="15%"><!-- {if $goods.goods_id gt 0 && $goods.is_gift eq 0 && $goods.parent_id eq 0} 普通商品可修改数量 -->
+	  
+	  <div class="jm_cartnum"> <span class="jmminu" {if $goods.is_cansel}onclick="minus_num({$goods.rec_id},{$goods.goods_id},{$key},{if $goods.extension_code eq 'package_buy'}1{else}0{/if});"{/if}>-</span>
+	    <input type="text" name="goods_number[{$goods.rec_id}]" id="goods_number_{$goods.rec_id}" value="{$goods.goods_number}" size="4" class="jminputBg"   onKeyDown='if(event.keyCode == 13) event.returnValue = false'  onblur="change_price({$goods.rec_id},{$goods.goods_id},{if $goods.extension_code eq 'package_buy'}1{else}0{/if})" />
+	    <input type="hidden" id="hidden_{$goods.rec_id}" value="{$goods.goods_number}">
+	    <span class="jmadd" {if $goods.is_cansel}onclick='javascript:add_num({$goods.rec_id},{$goods.goods_id},{$key},{if $goods.extension_code eq 'package_buy'}1{else}0{/if})' {/if}>+</span> </div>
+	  
+	  <!-- {else} --> 
+	  {$goods.goods_number} 
+	  <!-- {/if} --></td>
+	<td align="center"  width="15%"><font class="cart_jmprice" id="goods_price_{$goods.rec_id}">{$goods.goods_price}</font></td>
+	<td align="center"  width="15%"><font class="cart_jmprice" id="subtotal_{$goods.rec_id}">{$goods.subtotal}</font></td>
+	<td align="center"  width="10%"><a href="javascript:if (confirm('{$lang.drop_goods_confirm}')) location.href='flow.php?step=drop_goods&amp;id={$goods.rec_id}'; " class="f6">{$lang.drop}</a></td>
+      </tr>
+    </table></td>
+</tr>
+<!-- {/foreach} -->
+</table>
+<!-- {if $cartgoods.favourable || $cartgoods.discount} 优惠活动 -->
+<table width="100%" align="center" border="0" cellpadding="5" cellspacing="0" bgcolor="#ffffff" style="border-top:1px dashed #ddd; margin-bottom:10px;">
+<tr>
+  <td bgcolor="#ffffff" align=right style="padding:10px 15px 0 0;"><!-- {if $cartgoods.favourable} 优惠活动 --> <a class="choose_gift" href="javascript:void(0);" onclick="choose_gift({$key})"><b class="gift_68"></b>选择赠品</a><!-- {/if} --> 
+    <span id="zk_{$key}"><!-- {if $cartgoods.discount} -->{$cartgoods.discount.your_discount}<!-- {/if} --></span></td>
+</tr>
+</table>
+<!-- {/if} --> 
+<!-- {/foreach} -->

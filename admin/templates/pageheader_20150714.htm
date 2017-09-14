@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>{$lang.cp_home}{if $ur_here} - {$ur_here} {/if}</title>
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="styles/general.css" rel="stylesheet" type="text/css" />
+<link href="styles/main.css" rel="stylesheet" type="text/css" />
+{insert_scripts files="../js/transport.org.js,common.js"}
+<script language="JavaScript">
+<!--
+// 这里把JS用到的所有语言都赋值到这里
+{foreach from=$lang.js_languages key=key item=item}
+var {$key} = "{$item}";
+{/foreach}
+//-->
+</script>
+</head>
+<body>
+
+<div id="menu_list" onmouseover="show_popup()" onmouseout="hide_popup()">
+<ul>
+<li><a href="goods.php?act=add" target="main_frame">添加新商品</a></li>
+<li><a href="category.php?act=add" target="main_frame">添加商品分类</a></li>
+<li><a href="order.php?act=add" target="main_frame">添加订单</a></li>
+<li><a href="article.php?act=add" target="main_frame">添加新文章</a></li>
+<li><a href="users.php?act=add" target="main_frame">添加会员</a></li>
+</ul>
+</div>
+<script>
+function show_popup(){
+frmBody = parent.document.getElementById('frame-body');
+if (frmBody.cols == "37, 12, *")
+{
+parent.main_frame.document.getElementById('menu_list').style.left = '195px';
+}
+else
+{
+parent.main_frame.document.getElementById('menu_list').style.left = '40px';
+}
+parent.main_frame.document.getElementById('menu_list').style.display = 'block';
+}
+function hide_popup(){
+
+parent.main_frame.document.getElementById('menu_list').style.display = 'none';
+}
+</script>
+<h1>
+{if $action_link}
+<span class="action-span"><a href="{$action_link.href}">{$action_link.text}</a></span>
+{/if}
+{if $action_link2}
+<span class="action-span"><a href="{$action_link2.href}">{$action_link2.text}</a>&nbsp;&nbsp;</span>
+{/if}
+<span class="action-span1"><a href="index.php?act=main">{$lang.cp_home}</a> </span><span id="search_id" class="action-span1">{if $ur_here} - {$ur_here} {/if}</span>
+<div style="clear:both"></div>
+</h1>

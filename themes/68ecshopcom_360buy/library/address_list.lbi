@@ -1,0 +1,54 @@
+{if $consignee_list}
+<ul>
+<!-- {foreach from=$consignee_list item=consignee key=sn} -->
+<li {if $consignee.def_addr eq 1}class="curr"{/if}  onmouseover="showAddressEdit(this);" onmouseout="showAddressEdit(this);" >
+<div style="width:100%;height:100%;" onclick="selAddress(this, {$consignee.address_id});"  >
+<table cellpadding=0 cellspacing=0 width="100%">
+<tr><td>{$consignee.address_short_name}</td></tr>
+</table>
+</div>
+<div  class="edit_addr" id="address_edit_{$sn}"><a  href="javascript:AddressEdit({$consignee.address_id});">修改</a> <a  href="javascript:del_Address({$consignee.address_id});" onclick="return confirm('您确认要删除吗？');">删除</a></div>
+</li>
+<!-- {/foreach} -->
+</ul>
+<div class="blank10"></div>
+<div class="address_jm_add" onclick="AddressEdit(0);">使用新地址</div>
+{else}
+<div class="blank10"></div><div class="blank10"></div>
+<table cellpadding=4 cellspacing=4 width="100%">
+<tr><td align=right><font color=#ff3300>*</font>收件人</td><td><input type="text" name="consignee" class="input_addr2"></td></tr>
+<tr><td align=right><font color=#ff3300>*</font>所在地区</td>
+<td>
+<input type="hidden" name="country" value="1">
+<select name="province" id="selProvinces" onchange="region.changed(this, 2, 'selCities');"  style="width:155px;height:25px;border:1px solid #ccc;">
+<option value="0">{$lang.please_select}{$name_of_region[1]}</option>
+ <!-- {foreach from=$shop_province_list item=province} -->
+        <option value="{$province.region_id}" {if $consignee.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
+        <!-- {/foreach} -->
+      </select>
+      <select name="city" id="selCities" onchange="region.changed(this, 3, 'selDistricts');" style="width:155px;height:25px;border:1px solid #ccc;">
+        <option value="0">{$lang.please_select}{$name_of_region[2]}</option>
+        <!-- {foreach from=$city_list.$sn item=city} -->
+        <option value="{$city.region_id}" {if $consignee.city eq $city.region_id}selected{/if}>{$city.region_name}</option>
+        <!-- {/foreach} -->
+      </select>
+      <select name="district" id="selDistricts" style="display:none; width:155px; height:25px; border:1px solid #ccc;" >
+        <option value="0">{$lang.please_select}{$name_of_region[3]}</option>
+        <!-- {foreach from=$district_list.$sn item=district} -->
+        <option value="{$district.region_id}" {if $consignee.district eq $district.region_id}selected{/if}>{$district.region_name}</option>
+        <!-- {/foreach} -->
+      </select>
+</td></tr>
+<tr><td align=right><font color=#ff3300>*</font>街道地址</td><td><input type="text" name="address" class="input_addr1"></td></tr>
+<tr><td style="text-align:right;"><!-- <font color=#ff3300>*</font> -->电子邮箱</td><td><input type="text" name="email" class="input_addr1" value="{$address.email}"></td></tr>
+<tr><td align=right>邮编</td><td><input type="text" name="zipcode" class="input_addr3"></td></tr>
+<tr><td align=right><font color=#ff3300>*</font>手机号码</td><td><input type="text" name="mobile" class="input_addr2">&nbsp;&nbsp;&nbsp;&nbsp;或固定电话 <input type="text" name="tel_01" class="input_addr4"> - <input type="text" name="tel_02" class="input_addr3"> - <input type="text" name="tel_03" class="input_addr4"></td></tr>
+<tr><td></td><td><font color=#cccccc>两者至少填写一项</font></td></tr>
+<tr><td></td><td style="padding-top:10px;">
+<input type="hidden" name="address_id" value="0" >
+<input type="hidden" name="shipping_bian" value="1" >
+<input type="hidden" name="closediv" value="0" >
+<input type="button" class="BonusButton" value=" 确定 " onclick="submitAddress()"></td></tr>
+</table>
+
+{/if}

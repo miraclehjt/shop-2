@@ -1,0 +1,70 @@
+<!--注意控制邮箱、电话号、邮编等填写格式提示-->
+
+<div class="m-all2 bg-color-w ulev-9">
+  <div class="ubb ub border-f2 ub-ac h-min1">
+    <div class="f-color-6 sc-text-hui uw-reg"> <font class="f-color-red">*</font>收件人 </div>
+    <div class="uinput sc-text-hui">
+      <input type="text" id="consignee" placeholder="请输入收件人" value="{$consignee.consignee|escape}"/>
+    </div>
+  </div>
+  <!-- 修改订单收货地址不显示地区 --> 
+  <!-- {if $smarty.request.act neq 'edit_order_address'} -->
+  <div class="ubb ub border-f2 ub-ac h-min1">
+    <div class="f-color-6 sc-text-hui uw-reg"> <font class="f-color-red">*</font>所在地区 </div>
+    <div class="uinput sc-text-hui ub-f1 styled-select">
+      <select id='province'>
+        <option value="0">{$lang.please_select}</option>
+        <!-- {foreach from=$province_list item=province} -->
+        <option value="{$province.region_id}" {if $consignee.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
+        <!-- {/foreach} -->
+      </select>
+      <select id='city'>
+        <option value="0">{$lang.please_select}</option>
+        <!-- {foreach from=$city_list item=city} -->
+        <option value="{$city.region_id}" {if $consignee.city eq $city.region_id}selected{/if}>{$city.region_name}</option>
+        <!-- {/foreach} -->
+      </select>
+      <select id='district'>
+        <option value="0">{$lang.please_select}</option>
+        <!-- {foreach from=$district_list item=district} -->
+        <option value="{$district.region_id}" {if $consignee.district eq $district.region_id}selected{/if}>{$district.region_name}</option>
+        <!-- {/foreach} -->
+      </select>
+    </div>
+  </div>
+  <!-- {/if} -->
+  <div class="ubb ub border-f2 ub-ac h-min1">
+    <div class="f-color-6 sc-text-hui uw-reg"> <font class="f-color-red">*</font>街道地址 </div>
+    <div class="uinput sc-text-hui">
+      <input type="text" id="address" placeholder="请输入街道地址" value="{$consignee.address|escape}"/>
+    </div>
+  </div>
+  <!--电子邮箱做成非必填-->
+  <div class="ubb ub border-f2 ub-ac h-min1">
+    <div class="f-color-6 sc-text-hui uw-reg"> 电子邮箱 </div>
+    <div class="uinput sc-text-hui">
+      <input type="text" id="email" placeholder="请输入电子邮箱" value="{$consignee.email|escape}" />
+    </div>
+  </div>
+  <div class="ubb ub border-f2 ub-ac h-min1">
+    <div class="f-color-6 sc-text-hui uw-reg"> 邮编 </div>
+    <div class="uinput sc-text-hui">
+      <input type="text" id="zipcode" placeholder="请输入邮编" value="{$consignee.zipcode|escape}"/>
+    </div>
+  </div>
+  <div class="ubb ub border-f2 ub-ac h-min1">
+    <div class="f-color-6 sc-text-hui uw-reg"> <font class="f-color-red">*</font>手机号码 </div>
+    <div class="uinput sc-text-hui">
+      <input type="text" id="mobile" placeholder="请输入手机号码" value="{$consignee.mobile|escape}"/>
+    </div>
+  </div>
+  <div class="ubb ub border-f2 ub-ac h-min1">
+    <div class="f-color-6 sc-text-hui uw-reg"> 固定电话 </div>
+    <div class="uinput sc-text-hui">
+      <input type="text" id="tel" placeholder="请输入固定电话" value="{$consignee.tel|escape}"/>
+    </div>
+  </div>
+</div>
+<div class="m-all2" id='confirm_button'>
+  <div class="user-btn"> 确定 </div>
+</div>

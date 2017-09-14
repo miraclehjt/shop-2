@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="Description" content="{$description}" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+{if $auto_redirect}
+<meta http-equiv="refresh" content="3;URL={$message.href}" />
+{/if}
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+{* 包含脚本文件 *}
+{insert_scripts files='common.js,transport.js'}
+</head>
+<body> 
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/base-2011.js"></script>
+<div id="site-nav"> 
+  <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem --> 
+  <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+  <div class="block">
+    <div class="flowBox"> 
+      
+      <!--如果会员登陆了{if $smarty.session.user_name}-->
+      
+      <h6><span>商品报价单</span></h6>
+      <form action="quotation.php" method="post" name="searchForm" target="_blank" class="quotation">
+        <!-- 分类 -->
+        <select name="cat_id" style="vertical-align:middle;">
+          <option value="0">{$lang.all_category}</option>
+          {$cat_list}
+        </select>
+        <!-- 品牌 -->
+        <select name="brand_id" style="vertical-align:middle;">
+          <option value="0">{$lang.all_brand}</option>
+          {html_options options=$brand_list}
+        </select>
+        <!-- 关键字 --> 
+        {$lang.keywords}
+        <input type="text" name="keyword" class="inputBg" style="vertical-align:middle;"/>
+        <!-- 搜索 -->
+        <input name="act" type="hidden" value="print_quotation" />
+        <input type="submit" name="print_quotation" id="print_quotation" value="{$lang.print_quotation}" style="vertical-align:middle;" class="bnt_blue_1" />
+      </form>
+      <!--{else}-->
+      <Div style="font-size:14px; font-weight:bold; "> 注册会员才能查看打印报价单！<a href="user.php" style="color:#00C">点击此处登录</a> </Div>
+      <!--{/if}--> 
+      
+    </div>
+  </div>
+  <div class="blank"></div>
+  <!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem --> 
+  <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+</div>
+</body>
+</html>

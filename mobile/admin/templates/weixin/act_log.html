@@ -1,0 +1,163 @@
+{if $full_page}
+
+{include file="pageheader.htm"}
+
+{insert_scripts files="../js/utils.js,listtable.js"}
+
+<div class="form-div">
+
+  <form action="javascript:searchUser()" name="searchForm">
+
+  	请输入中奖码：<input type="text" name="keyword" /> <input type="submit" value="{$lang.button_search}" />
+
+  </form>
+
+</div>
+
+<form method="get" action="weixin_egg.php?act=log">
+
+<div class="list-div" id="listDiv">
+
+{/if}
+
+<table width="100%" cellspacing="1" cellpadding="2">
+
+  <tr>
+
+    <th>奖项名称</th>
+
+	<th>活动名称</th>
+
+    <th>用户昵称</th>
+
+	<th>中奖时间</th>
+
+	<th>兑奖截止时间</th>
+
+    <th>中奖代码</th>
+
+    <th>是否发奖</th>
+
+  </tr>
+
+  {foreach item=item from=$log}
+
+   <tr align="center">
+
+	<td>{$item.class_name}</td>
+
+	<td>{$item.title}</td>
+
+	<td><a href="users.php?act=edit&id={$item.uid}">{$item.nickname}</a></td>
+
+	<td>{$item.createymd}</td>
+
+	<td>{$item.overymd}</td>
+
+	<td>{$item.code}</td>
+
+
+
+	<td>{if $item.issend == 1}已发{else}<a href="weixin_egg.php?act=log&lid={$item.lid}&tag=send">发奖</a>{/if}|
+    <a href="weixin_egg.php?act=log&lid={$item.lid}&tag=delete">删除</a>
+    </td>
+
+  </tr> 
+
+  {foreachelse}
+
+  <tr><td colspan="7">暂无中奖记录</td></tr>
+
+  {/foreach}
+
+  <tr>
+
+      <td align="right" nowrap="true" colspan="7">
+
+      {include file="page.htm"}
+
+      </td>
+
+  </tr>
+
+</table>
+
+</div>
+
+{if $full_page}
+
+</div>
+
+</form>
+
+<script type="text/javascript" language="JavaScript">
+
+listTable.recordCount = {$record_count};
+
+listTable.pageCount = {$page_count};
+
+{foreach from=$filter item=item key=key}
+
+listTable.filter.{$key} = '{$item}';
+
+{/foreach}
+
+listTable.query = "log";
+
+{literal}
+
+function searchUser()
+
+{
+
+    listTable.filter['keywords'] = Utils.trim(document.forms['searchForm'].elements['keyword'].value);
+
+    //listTable.filter['type'] = document.forms['searchForm'].elements['type'].value;
+
+    listTable.filter['act'] = 'log';
+
+    listTable.filter['page'] = 1;
+
+    listTable.loadList();
+
+}
+
+function confirm_bath()
+
+{
+
+  userItems = document.getElementsByName('checkboxes[]');
+
+
+
+  cfm = '{$lang.list_remove_confirm}';
+
+
+
+  for (i=0; userItems[i]; i++)
+
+  {
+
+    if (userItems[i].checked && userItems[i].notice == 1)
+
+    {
+
+      cfm = '{$lang.list_still_accounts}' + '{$lang.list_remove_confirm}';
+
+      break;
+
+    }
+
+  }
+
+  return confirm(cfm);
+
+}
+
+</script>
+
+{/literal}
+
+{include file="pagefooter.htm"}
+
+{/if}

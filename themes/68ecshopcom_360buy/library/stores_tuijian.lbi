@@ -1,0 +1,21 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<div class="ft-bands" data-spm="a22255a">
+<!--{foreach from=$tuijian item=type name=name}--> 
+	<div style="overflow:hidden" class="ft-col {$type.str_style} {if $smarty.foreach.name.first}ft-col-cur{/if}">
+	<h3 class="ft-title">{$type.str_name}</h3>
+	<h4 class="ft-desc">{$type.str_desc}</h4>
+	<!--{if $type.shoplist}-->
+	<!--{foreach from=$type.shoplist item=shop key=k}--> 
+		<p class="ft-list"> 
+		<a href="supplier.php?suppId={$shop.supplier_id}" class="ft-item"><img width="90" height="45" alt="{$shop.supplier_name}" data-original="{$logopath}logo_supplier{$shop.supplier_id}.jpg" src="themes/68ecshopcom_360buy/images/loading.gif"> <b class="ui-brand-btn ui-brand-btn-ex-s ui-brand-btn-ex-bubble j_CollectBrand" data-brandid="42638"><i></i><span>关注店铺</span><b></b></b> </a> 
+		</p>
+	<!--{/foreach}-->
+	<p class="ft-list"></p>
+	<p class="ft-list"></p>
+	<!--{/if}-->
+	
+	</div>
+	
+<!--{/foreach}-->
+</div>

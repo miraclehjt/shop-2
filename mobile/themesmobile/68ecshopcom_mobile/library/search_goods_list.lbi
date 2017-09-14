@@ -1,0 +1,69 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+{if $goods_list}
+ <form action="javascript:void(0)" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
+<!--{foreach name=goods_list from=$goods_list item=goods}-->
+{if $goods.goods_id}
+<li>
+<a href="{$goods.url}" class="item">
+<div class="pic_box">
+<div class="active_box">
+{if $goods.is_best == 1}
+<span style=" background-position:0px -70px">精品</span>
+{elseif $goods.is_new == 1}
+<span style=" background-position:0px -36px">新品</span>
+{elseif $goods.is_hot == 1}
+<span style=" background-position:0px 0px">热卖</span>
+{/if}
+</div>
+<img src="{$goods.goods_thumb}">
+</div>
+<div class="title_box">
+{$goods.goods_name}
+</div>
+
+<div class="price_box">
+<span class="new_price">
+<i>{if $goods.promote_price}{$goods.promote_price}{else}{$goods.shop_price}{/if}</i>
+</span>
+
+</div>
+<div class="comment_box">
+已售{$goods.wap_count}
+</div></a>
+
+<!--列表页面加减号-->
+<div class="ui-number b"> 
+<a class="decrease" onclick="goods_cut({$goods.goods_id});">-</a>
+<input class="num" id="number_{$goods.goods_id}" type="text" onblur="changePrice();" value="1" onfocus="if(value=='1') {value=''}" size="4" maxlength="5"  />
+<a class="increase" onclick="goods_add({$goods.goods_id});">+</a> 
+</div>
+<span class="bug_car" onClick="addToCart({$goods.goods_id})">
+<i class="icon-shop_cart"></i>
+</span>
+</li>
+{/if}    
+<!--{/foreach}-->
+</form>
+<script language="javascript" type="text/javascript">  
+function goods_cut($val){  
+var num_val=document.getElementById('number_'+$val);  
+var new_num=num_val.value;  
+var Num = parseInt(new_num);  
+if(Num>1)Num=Num-1;  
+num_val.value=Num;  
+} 
+function goods_add($val){ 
+var num_val=document.getElementById('number_'+$val);  
+var new_num=num_val.value;  
+var Num = parseInt(new_num);  
+Num=Num+1;  
+num_val.value=Num;  
+}
+</script>
+{include file='library/pages.lbi'}
+{else}
+<div class="new_prom2">
+<strong>抱歉暂时没有相关结果，换个词试试吧!</strong>
+</div>
+{/if}
+                    

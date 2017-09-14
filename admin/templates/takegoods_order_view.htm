@@ -1,0 +1,145 @@
+<!-- $Id: order_info.htm 17060 2015-02-04 03:44:42Z derek $ -->
+
+{include file="pageheader.htm"}
+{insert_scripts files="topbar.js,../js/utils.js,listtable.js,validator.js,../js/common.js"}
+{if $user}
+<div id="topbar">
+  <div align="right"><a href="" onclick="closebar(); return false"><img src="images/close.gif" border="0" /></a></div>
+  <table width="100%" border="0">
+    <caption><strong> {$lang.buyer_info} </strong></caption>
+    <tr>
+      <td> {$lang.email} </td>
+      <td> <a href="mailto:{$user.email}">{$user.email}</a> </td>
+    </tr>
+    <tr>
+      <td> {$lang.user_money} </td>
+      <td> {$user.formated_user_money} </td>
+    </tr>
+    <tr>
+      <td> {$lang.pay_points} </td>
+      <td> {$user.pay_points} </td>
+    </tr>
+    <tr>
+      <td> {$lang.rank_points} </td>
+      <td> {$user.rank_points} </td>
+    </tr>
+    <tr>
+      <td> {$lang.rank_name} </td>
+      <td> {$user.rank_name} </td>
+    </tr>
+    <tr>
+      <td> {$lang.bonus_count} </td>
+      <td> {$user.bonus_count} </td>
+    </tr>
+  </table>
+
+  {foreach from=$address_list item=address}
+  <table width="100%" border="0">
+    <caption><strong> {$lang.consignee} : {$address.consignee|escape} </strong></caption>
+    <tr>
+      <td> {$lang.email} </td>
+      <td> <a href="mailto:{$address.email|escape}">{$address.email|escape}</a> </td>
+    </tr>
+    <tr>
+      <td> {$lang.address} </td>
+      <td> {$address.address|escape} </td>
+    </tr>
+    <tr>
+      <td> {$lang.zipcode} </td>
+      <td> {$address.zipcode|escape} </td>
+    </tr>
+    <tr>
+      <td> {$lang.tel} </td>
+      <td> {$address.tel|escape} </td>
+    </tr>
+    <tr>
+      <td> {$lang.mobile} </td>
+      <td> {$address.mobile|escape} </td>
+    </tr>
+  </table>
+  {/foreach}
+</div>
+{/if}
+
+<form action="takegoods.php?act=order_send" method="post" name="theForm" id="theForm"  onsubmit="return validate();">
+<div class="list-div" style="margin-bottom: 5px">
+<table width="100%" cellpadding="3" cellspacing="1">
+  <tr>
+    <td colspan="4">
+      <div align="center">
+        <input name="prev" type="button" class="button" onClick="location.href='takegoods.php?act=order_view&id={$prev_id}';" value="{$lang.prev}" {if !$prev_id}disabled{/if} />
+        <input name="next" type="button" class="button"  onClick="location.href='takegoods.php?act=order_view&id={$next_id}';" value="{$lang.next}" {if !$next_id}disabled{/if} />
+    </div></td>
+  </tr>
+  <tr>
+    <th colspan="4">提货信息</th>
+  </tr>
+  <tr>
+    <td width="18%"><div align="right"><strong>提货券号码：</strong></div></td>
+    <td width="34%">{$order.tg_sn}</td>
+    <td width="15%"><div align="right"><strong>使用时间：</strong></div></td>
+    <td>{$order.add_time}</td>
+  </tr>
+  <tr>
+    <td><div align="right"><strong>提货商品：</strong></div></td>
+    <td colspan=3><a href="{$order.goods_url}" >{$order.goods_name}</a></td>
+  </tr>
+  <tr>
+    <td><div align="right"><strong>收货人：</strong></div></td>
+    <td>{$order.consignee}</td>
+    <td><div align="right"><strong>收货人联系电话：</strong></div></td>
+    <td>{$order.mobile}</td>
+  </tr>
+  <tr>
+    <td><div align="right"><strong>收货人地址：</strong></div></td>
+    <td>{$order.address}</td>
+    <td><div align="right"><strong>收货人邮箱：</strong></div></td>
+    <td>{$order.email}</td>
+  </tr>
+  <tr>
+    <td><div align="right"><strong>快递单号：</strong></div></td>
+    <td><input type="text" name="shipping_id" value="{$order.shipping_id}"> <font color=#ff3300>（*）</font></td>
+    <td><div align="right"><strong>发货人：</strong></div></td>
+    <td><input type="text" name="shipping_sender" value="{$order.shipping_sender}"> <font color=#ff3300>（*）</font></td>
+  </tr>
+  <tr>
+    <td><div align="right"><strong>快递员：</strong></div></td>
+    <td><input type="text" name="paisong_name" value="{$order.paisong_name}"> </td>
+    <td><div align="right"><strong>快递员联系电话：</strong></div></td>
+    <td><input type="text" name="paisong_tel" value="{$order.paisong_tel}"> </td>
+  </tr>
+  <tr>
+    <td valign=top><div align="right"><strong>备注：</strong></div></td>
+    <td colspan=3><textarea rows=5 cols=100 name="order_remark">{$order.order_remark}</textarea></td>
+  </tr>
+
+  <tr>
+    <td colspan=4 align=center>
+	<input type="hidden" name="id" value="{$order.rec_id}">
+	<input type="submit" class="button" value=" 发货 "  {if $order.order_status eq 0}{else}disabled=disabled{/if}></td>
+  </tr>
+  
+</table>
+</div>
+
+</form>
+<script language="JavaScript">
+  onload = function()
+  {
+    // 开始检查订单
+    startCheckOrder();
+  }
+
+ function validate()
+{
+  var validator = new Validator('theForm');
+  validator.required('shipping_id', '请输入快递单号');
+  validator.required('shipping_sender', '请输入发货人');
+  //validator.required('paisong_name', '请输入快递员');
+  //validator.required('paisong_tel', '请输入快递员联系电话');
+  return validator.passed();
+}
+
+</script>
+
+{include file="pagefooter.htm"}

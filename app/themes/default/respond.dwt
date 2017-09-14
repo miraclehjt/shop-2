@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+  <head>
+    <title>respond</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="themes/default/css/public.css"/>
+    <link rel="stylesheet" type="text/css" href="themes/default/css/ui-box.css.css"/>
+  </head>
+  <body class="um-vp bc-bg" ontouchstart>
+  <div class="bg-color-w p-all5 ubb border-hui">
+        <div class="ub ub-pc m-top5"><span class="ulev0 f-color-zi">{$lang.system_info}</span></div>
+        <p class="umar-t1 tx-c ulev-9 f-color-red">{$message}</p>
+        <!--{if $virtual_card}-->
+          <!--{foreach from=$virtual_card item=vgoods}-->
+          <!--{foreach from=$vgoods.info item=card}-->
+          	<div class="ulev-9 f-color-zi l-h-2 umar-t1">{$vgoods.goods_name}</div>
+            <div class="ulev-1 f-color-6 l-h-2">
+              <!--{if $card.card_sn}--><strong>{$lang.card_sn}:</strong>{$card.card_sn}<!--{/if}--> 
+              <!--{if $card.card_password}--><strong>{$lang.card_password}:</strong>{$card.card_password}<!--{/if}--> 
+            </div>
+          <!--{/foreach}--> 
+          <!--{/foreach}-->
+        <!--{/if}--> 
+        <div class="ub m-top5 ub-pc" onclick="back_to_user()">
+            <div class="btn-red-2 ulev-9">立即返回</div>
+        </div>
+        <div class="ub ub-pc ulev-1 f-color-6 umar-t1"><span id="count_down_label">3</span>秒后返回</div>
+    </div>
+  </body>
+  <script src="js/server.js"></script>
+  <script>
+	window.uexOnload = function(type){
+		page_type = 'popover'
+		page_name = 'pay'
+		uexWindow.publishChannelNotification(CHANNEL_PAY_RESPOND, '{$pay_result}') 
+		var t = setInterval(function() {
+			var cur = parseInt(document.getElementById('count_down_label').innerHTML) 
+			if (cur === 0) {
+				clearInterval(t)
+				back_to_user()
+			} else {
+				cur --
+			}
+			document.getElementById('count_down_label').innerHTML = cur.toString()
+		},DUR_SECOND)
+	}
+  </script>
+</html>

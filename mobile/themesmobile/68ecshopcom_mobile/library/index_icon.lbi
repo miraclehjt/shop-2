@@ -1,0 +1,15 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="entry-list clearfix">
+	<nav>
+		<ul>
+			{foreach from=$menu_list item=list name=name}
+			<li>
+				<a href="{$list.menu_url}">
+					<img alt="{$list.menu_name}" src="{$list.menu_img}" />
+					<span>{$list.menu_name}</span>
+				</a>
+			</li>
+			{/foreach}
+		</ul>
+	</nav>
+</div>

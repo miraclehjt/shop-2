@@ -1,0 +1,79 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>{$page_title}</title>
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+	<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/public.css"/>
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/catalog.css"/>
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.js"></script>
+{* 包含脚本文件 *}
+{insert_scripts files='common.js'}
+<style>
+.goods_nav{ width:30%; float:right; right:5px; overflow:hidden; position:fixed;margin-top:25px; z-index:9999999}
+</style>
+</head>
+<body>
+<!--分类切换--> 
+<div class="container">    
+  <div class="category-box">
+    <div class="category1" style="outline: none;" tabindex="5000">
+      <ul class="clearfix" style="padding-bottom:50px;">
+       <!--{foreach from=$categories item=cat name=name}-->
+        <li {if $smarty.foreach.name.first}class="cur" style=" margin-top:46px"{/if}>{$cat.name|escape:html}</li>
+<!--{/foreach}-->
+      </ul>
+    </div>
+    <div class="category2" style=" outline: none;" tabindex="5001">
+    <!--{foreach from=$categories item=cat name=name}-->      
+      <dl style="display: none; margin-top:46px; padding-bottom:50px;{if $smarty.foreach.name.first}display: block;{/if}"> 
+        <?php
+		 $GLOBALS['smarty']->assign('index_image',get_advlist('分类-'.$GLOBALS['smarty']->_var['cat']['id'].'-促销广告', 1));
+	  ?>
+	 
+        <span>
+         <!-- {if $index_image} -->
+         <a href="category.php?id={$cat.id}">
+        <em>全部>></em>
+		{foreach from=$index_image item=ad name=index_image}
+ <img  src="{$ad.image}"></a>
+		{/foreach}
+{else}
+<a href="category.php?id={$cat.id}">
+        <em>全部>></em>
+<img src="themesmobile/68ecshopcom_mobile/images/catalog.jpg"></a>
+<!-- {/if} -->
+		</span>  
+        <!--{foreach from=$cat.cat_id item=child name=child}-->   
+        <dt><a href="{$child.url}" >{$child.name|escape:html}</a></dt> 
+        <dd> 
+        <div class="fenimg">
+           <!--{foreach from=$child.cat_id item=childer name=cat22}--> 
+           {if $childer.img} 
+        <div class="fen_img">     
+        <a href="{$childer.url}"><span><img alt="" src="data/catthumb/{$childer.img}"></span><em>{$childer.name}</em></a> 
+        </div>
+        {else}
+        <div class="fen">
+        <a href="{$childer.url}">{$childer.name}</a> 
+        </div>  
+{/if}  
+    <!--{/foreach}-->
+    </div>
+     
+         </dd>
+            <!--{/foreach}-->
+      </dl>
+   <!--{/foreach}-->
+    </div>
+  </div>
+</div>
+<!---切换js----->
+<!-- #BeginLibraryItem "/library/footer_nav.lbi" --> <!-- #EndLibraryItem --> 
+<script src="themesmobile/68ecshopcom_mobile/js/category.js"></script>
+<script src="themesmobile/68ecshopcom_mobile/js/jquery.nicescroll.min.js"></script> 
+</body>
+</html>

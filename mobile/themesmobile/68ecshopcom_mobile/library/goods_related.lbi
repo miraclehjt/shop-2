@@ -1,0 +1,18 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div  style="opacity: 1;" class="srp j_autoResponsive_container m-ks-autoResponsive-container m-animation album">          
+ {foreach from=$related_goods item=releated_goods_data name=related_goods}          
+<div class="product">
+    <div class="pro-inner">
+      <div class="proImg-wrap"> <a href="{$releated_goods_data.url}"> <img src="{$releated_goods_data.goods_thumb}" alt="{$releated_goods_data.name|escape:html}"/> </a> </div>
+      <div class="proInfo-wrap">
+        <div class="proTitle" style="top:10px;"> <a href="{$releated_goods_data.url}">{$releated_goods_data.goods_name}</a> </div>
+        <div class="proPrice" style="top:-70px;" > <em>  <!-- {if $releated_goods_data.promote_price neq 0} -->
+       {$releated_goods_data.formated_promote_price}
+        <!-- {else} -->
+    {$releated_goods_data.shop_price}
+        <!-- {/if} --></em> </div>
+      </div>
+    </div>
+  </div>
+      {/foreach}          
+      </div>

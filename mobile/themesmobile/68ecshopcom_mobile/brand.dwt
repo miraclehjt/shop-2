@@ -1,0 +1,107 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="minimal-ui=yes,width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>{$page_title}</title>
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/public.css"/>
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/category_list.css"/>
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.js"></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+{insert_scripts files='common.js'}
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.more.js"></script>
+
+</head>
+<body >
+<section class="_pre" >
+<header>
+        
+<section class="header" >
+     <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+    <div class="h-mid">
+{$brand.brand_name}
+          </div>
+    <div class="h-right">
+            <aside class="top_bar">
+              <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+            </aside>
+          </div>
+
+<!-- #BeginLibraryItem "/library/up_menu.lbi" --><!-- #EndLibraryItem --> <!--弹出菜单-->
+
+<section class="filtrate_term" id="product_sort" style="width: 100%;">
+<ul>
+        <li class="{if $pager.sort eq 'goods_id'}on{/if}"><a href="{$script_name}.php?category={$category}&display={$pager.display}&id={$brand_id}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=goods_id&order=<!-- {if $pager.sort == 'goods_id' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list">最新</a></li><li class="{if $pager.sort eq 'salenum'}on{/if}"><a href="{$script_name}.php?category={$category}&display={$pager.display}&id={$brand_id}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=salenum&order=<!-- {if $pager.sort == 'salenum' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list" >销量</a></li><li class="{if $pager.sort eq 'last_update'}on{/if}"><a href="{$script_name}.php?category={$category}&display={$pager.display}&id={$brand_id}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=last_update&order=<!-- {if $pager.sort == 'last_update' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list" >更新</a></li><li class="<!-- {if $pager.sort eq 'shop_price'} -->on<!-- {/if} -->"><a href="{$script_name}.php?category={$category}&display={$pager.display}&id={$brand_id}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=shop_price&order=<!-- {if $pager.sort == 'shop_price' && $pager.order == 'ASC'} -->DESC<!-- {else} -->ASC<!-- {/if} -->#goods_list">价格<span class="arrow_up {if $pager.sort eq 'shop_price' && $pager.order == 'ASC'}active_up{/if}"></span><span class="arrow_down {if $pager.sort eq 'shop_price' && $pager.order eq 'DESC'}active_down{/if}"></span></a></li><li class=""><a  href="javascript:void(0);"  class="show_type {if $pager.display == 'grid'} show_list{/if}" >&nbsp;</a></li>
+        </ul>
+</section>
+
+</section>
+
+     
+</header>
+
+  <div style="height:51px;"></div>
+   <script type="text/javascript">
+var url = 'brand.php?act=ajax&brand={$smarty.request.id}&cat={$smarty.request.cat}&page=1&sort={$smarty.request.sort}&order={$smarty.request.order}';
+$(function(){
+	$('#J_ItemList').more({'address': url});
+});
+</script>
+
+<div class="touchweb-com_searchListBox {if $pager.display == 'grid'}openList{/if}" id="goods_list">
+
+  <!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem -->
+   
+</div>
+
+</section>
+
+
+<script>
+   $('.show_type').bind("click", function() {
+    if ($('#goods_list').hasClass('openList')){
+	$('#goods_list').removeClass('openList');
+	$(this).removeClass('show_list');
+	}
+	else
+	{
+	$('#goods_list').addClass('openList');	
+	$(this).addClass('show_list');
+	}
+});
+</script>
+<script type="Text/Javascript" language="JavaScript">
+<!--
+{literal}
+function selectPage(sel)
+{
+  sel.form.submit();
+}
+{/literal}
+//-->
+</script>
+<script type="text/javascript">
+window.onload = function()
+{
+  Compare.init();
+  fixpng();
+}
+{foreach from=$lang.compare_js item=item key=key}
+{if $key neq 'button_compare'}
+var {$key} = "{$item}";
+{else}
+var button_compare = '';
+{/if}
+{/foreach}
+var compare_no_goods = "{$lang.compare_no_goods}";
+var btn_buy = "{$lang.btn_buy}";
+var is_cancel = "{$lang.is_cancel}";
+var select_spe = "{$lang.select_spe}";
+</script>
+<footer>
+<!-- #BeginLibraryItem "/library/footer_nav.lbi" --><!-- #EndLibraryItem -->
+</footer>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link rel="stylesheet" type="text/css" href="themes/68ecshopcom_360buy/css/pre_sale.css" />
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-lazyload.js"></script>
+{insert_scripts files='jquery.json.js,transport.js'} {* 包含脚本文件 *} {insert_scripts files='utils.js,common.js,jquery.countdown-2.5.3.min.js'}
+</head>
+<body>
+	<div id="site-nav">
+		<!-- #BeginLibraryItem "/library/page_header.lbi" -->
+		<!-- #EndLibraryItem -->
+		<div class="wdiv">
+			<div class="blank"></div>
+			<div class="w">
+				<div class="l">
+					<div class="pro">
+						<!--{foreach from=$ps_list item=pre_sale name=name key=key}-->
+						<!--{if $pre_sale.goods_name neq ''}-->
+						<div class="product" id="shijian_{$key}" onmouseover="this.className='product hover1'" onmouseout="this.className='product'" {if $smarty.foreach.name.iteration %4 ==0 }style="margin-right: 0px;"{/if}>
+							<div class="pic" id="li_{$pre_sale.goods_id}">
+								<a href="{$pre_sale.url}" target="_blank"> <img title="{$pre_sale.goods_name|escape:html}" alt="{$pre_sale.goods_name|escape:html}" width=220 height=220 data-original="{$pre_sale.goods_thumb}" src="themes/68ecshopcom_360buy/images/loading.gif" class="pic_img_{$pre_sale.goods_id}"></a> {if $pre_sale.is_best}
+								<div class=t_icon_st></div>
+								{/if}
+							</div>
+							<div class="shijian" id="shijian1_{$key}">
+								<i></i> <span id="ps_label_{$pre_sale.goods_id}" style="text-align: center;" over="false">{$pre_sale.cur_status}</span> <span id="ps_cd_{$pre_sale.goods_id}" style="display: none;"></span>
+							</div>
+							<script type="text/javascript">
+				            $().ready(function(){
+				            	countdown.setLabels(
+				   	   				 '毫秒|秒|分|小时|天| 周| 月| 年| 十年| 世纪| 千年',
+				   	   				 '毫秒|秒|分|小时|天| 周| 月| 年| 十年| 世纪| 千年',
+				   	   				 '',//秒连接符
+				   	   				 '',//其他时间连接符
+				   	   				 'End',
+				   	   				 function(n){ return n.toString()
+				   	   			});
+				            	<!-- {if $pre_sale.status == 0} -->
+				   	           	var endDate = new Date({$pre_sale.local_start_date});
+				            	<!-- {else} -->
+				   	           	var endDate = new Date({$pre_sale.local_end_date});
+				            	<!-- {/if} -->
+				   	           	//if({$pre_sale.goods_id} == 62){
+				   	           	//	endDate = new Date(2015, 6, 29, 12, 09);
+				   	           	//}
+				   	           	
+				   	           	var status = "{$pre_sale.status}";
+				   	           	
+				   	         	var timerId = null;
+				   	           	
+				   	           	function countdown_callback(ts){
+					   	           	$("#ps_cd_{$pre_sale.goods_id}").html("&nbsp;&nbsp;&nbsp;剩余 " + ts.toString());
+				   	    			//alert($("#ps_cd_{$pre_sale.goods_id}").html());
+				   	    			
+				   	    			if(status == 0){
+				   	    				//预热中->预售中
+				   	    				if(ts == "End"){
+					   	    				window.clearInterval(timerId);
+					   	    				$("#ps_cd_{$pre_sale.goods_id}").html("");
+					   	    				$("#ps_label_{$pre_sale.goods_id}").html("预售中");
+					   	    				$("#ps_label_{$pre_sale.goods_id}").attr("over", true);
+					   	    				status = 1;
+					   	    				endDate = new Date({$pre_sale.local_end_date});
+					   	    				timerId = countdown(countdown_callback, endDate, countdown.DAYS | countdown.HOURS | countdown.MINUTES | countdown.SECONDS);
+					   	    			}
+				   	    			}else{
+				   	    				//预售中->活动已结束
+				   	    				if(ts == "End" || new Date().getTime() > endDate.getTime()){
+					   	    				window.clearInterval(timerId);
+					   	    				$("#ps_cd_{$pre_sale.goods_id}").html("");
+					   	    				$("#ps_label_{$pre_sale.goods_id}").html("活动已结束");
+					   	    				$("#ps_label_{$pre_sale.goods_id}").attr("over", true);
+					   	    			}
+				   	    			}
+				   	           	}
+				   	           	
+				   	            timerId = countdown(countdown_callback, endDate, countdown.DAYS | countdown.HOURS | countdown.MINUTES | countdown.SECONDS);
+				            });
+			            </script>
+							<div class="title">
+								<a title="{$pre_sale.goods_name|escape:html}" href="{$pre_sale.url}" target="_blank">{$pre_sale.goods_name}</a>
+							</div>
+							<div class="price3">
+								<div class="y-price">
+									<span>{$pre_sale.formated_cur_price}</span><span class="yp">{$pre_sale.shop_price}</span>
+								</div>
+								<span class="valid_order">{$pre_sale.valid_order}人已购买</span>
+							</div>
+							<div class="buy3">
+								<div class="n-tg">
+									<a id="collect_{$pre_sale.goods_id}" href="javascript:collect({$pre_sale.goods_id}); re_collect({$pre_sale.goods_id})">收藏</a>
+								</div>
+								<div class="n-tg">
+									<a title="立即抢购" href="{$pre_sale.url}" target="_blank">立即抢购</a>
+								</div>
+							</div>
+						</div>
+						<script type="text/javascript">
+			            $(function(){
+			              $("#shijian_{$key}").mouseenter(function(){
+			            	  	var isover = $("#ps_label_{$pre_sale.goods_id}").attr("over");
+			                	if(isover == "false")
+			                	{
+			                		$("#ps_cd_{$pre_sale.goods_id}").show();
+			        				$("#shijian1_{$key}").animate({width:'260px'}, "fast");
+			                	}
+			              });
+			              $("#shijian_{$key}").mouseleave(function(){
+			              		$("#shijian1_{$key}").animate({width:'100px'}, "fast", function(){
+			            			$("#ps_cd_{$pre_sale.goods_id}").hide();
+			              		});
+			              });
+			            });
+			            </script>
+						<!--{/if}-->
+						<!--{/foreach}-->
+					</div>
+					<!-- #BeginLibraryItem "/library/pages.lbi" -->
+					<!-- #EndLibraryItem -->
+				</div>
+			</div>
+		</div>
+		<div style="height: 0px; line-height: 0px; clear: both;"></div>
+		<!-- #BeginLibraryItem "/library/help.lbi" -->
+		<!-- #EndLibraryItem -->
+		<!-- #BeginLibraryItem "/library/page_footer.lbi" -->
+		<!-- #EndLibraryItem -->
+		<!-- #BeginLibraryItem "/library/site_bar.lbi" -->
+		<!-- #EndLibraryItem -->
+	</div>
+	<script type="text/javascript">
+	$("img").lazyload({
+		effect       : "fadeIn",
+		skip_invisible : true,
+		failure_limit : 20
+	});
+	</script>
+</body>
+</html>

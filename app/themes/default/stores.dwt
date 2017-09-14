@@ -1,0 +1,49 @@
+{if $is_full_page eq 1}
+<div id='store_container'> {if $has_no_cat neq 1}
+  <div class="ub p-l-r2 bg-color-w m-btm1" style="overflow-x:scroll;">
+    <div class="{if !$smarty.request.id} selected{/if} cat_type ulev-1" cat_id=''> 全部 </div>
+    {foreach from=$all item=cat}
+    <div class="ulev-1 {if $smarty.request.id == $cat.str_id}selected{/if} cat_type" cat_id="{$cat.str_id}"> {$cat.str_name} </div>
+    {/foreach} </div>
+  {/if} 
+  {/if}
+  <!-- {foreach from=$shops_list item=shop name=shop} -->
+  <div class="shop_list bg-color-w ubb border-hui" id='shop_{$shop.supplier_id}' supplier_id="{$shop.supplier_id}" shop_name='{$shop.shop_name}'>
+    <ul id="into-shop" class="shop_table">
+      <div class="ub ub-pj ub-ac ubb border-faxian p-b1">
+        <div class="ub ub-ac ub-pc shop_name">
+          <div class="shop_logo goods-img"> <img src="{$url}{$logopath}logo_supplier{$shop.supplier_id}.jpg"/> </div>
+          <div class="ulev-9 p-l-r2 bc-text">{$shop.supplier_title}</div>
+        </div>
+        <div class="ulev-1 shop_style uc-a1 ub-ac follow_button{if $shop.is_followed gt 0} followed {/if}" >{if $shop.is_followed gt 0}已关注{else}未关注{/if}</div>
+      </div>
+      <li class='shop_item ub ub-ac ubb border-faxian supplier'>
+        <div class='shop_listimg'>
+          <div class="h-w-7 goods-img"><img src="{$url}{$shop.logo}"/></div>
+          <p class='shop_style1 ulev-2 sc-text-hui'>共<span class="f-color-red">{$shop.goods_number}</span>件商品</p>
+        </div>
+        <div class="shop_item1">
+          <p class="ulev-1 f-color-6 m-btm2">描述相符 ：<span class="f-color-red"> {if $shop.avg_comment gt 0}{$shop.avg_comment}{else}5{/if}</span></p>
+          <p class="ulev-1 f-color-6 m-btm2">服务态度 ：<span class="f-color-red"> {if $shop.avg_comment gt 0}{$shop.avg_server}{else}5{/if}</span></p>
+          <p class="ulev-1 f-color-6 m-btm2">发货速度 ：<span class="f-color-red"> {if $shop.avg_comment gt 0}{$shop.avg_shipping}{else}5{/if}</span></p>
+          <p class='shop_desc ulev-1 f-color-6 umar-t1'>所在地：{$shop.address}</p>
+        </div>
+      </li>
+      {if $shop.goods_info}
+      <div class='ub' style='overflow-x:scroll;'> {foreach from=$shop.goods_info item=goods name=goods}
+        <div class="ub ub-ver store-goods goods" goods_id="{$goods.goods_id}">
+          <div class="ub-fh goods-img"> <img src="{$url}{$goods.goods_thumb}"/>
+            <div class="ulev-2 shop-moy bc-text-head">{$goods.shop_p}</div>
+          </div>
+          <div class="shop-name ulev-4 f-color-6">{$goods.goods_name}</div>
+        </div>
+        {/foreach} </div>
+      {/if}
+    </ul>
+  </div>
+  {foreachelse}
+  <div class="no-con">没有更多店铺</div>
+  <!-- {/foreach} --> 
+  {if $is_full_page eq 1}
+</div>
+{/if}

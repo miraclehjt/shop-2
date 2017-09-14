@@ -1,0 +1,101 @@
+<!-- $Id: auction_info.htm 16992 2010-01-19 08:45:49Z wangleisvn $ -->
+{include file="pageheader.htm"}
+
+<div class="main-div">
+
+<form method="POST" action="virtual_goods.php?act=insert_district" name="listForm" onsubmit="return validateThis()">
+    选择地区
+    <select name="add_province" id="add_province" onchange="selectRegion(1,'add_city')">
+        <option value="">请选择</option>
+        {foreach from=$region item=region}
+            {if $district.province eq $region.region_id}
+            <option value="{$region.region_id}" selected="selected">{$region.region_name}</option>
+            {else}
+            <option value="{$region.region_id}">{$region.region_name}</option>
+            {/if}
+        {/foreach}
+    </select>
+    
+     <select name="add_city" id="add_city" onchange="selectRegion(2,'add_county')">
+         <option value="{$district.city}">{if $district.city neq ''}{$district.city_name}{else}请选择{/if}</option>
+     </select>
+    
+    <select name="add_county" id="add_county">
+         <option value="{$district.county}">{if $district.county neq ''}{$district.county_name}{else}请选择{/if}</option>
+     </select>
+    <input type="text" name="district_name" value="{if $district.district_name neq ''}{$district.district_name}{else}请输入商圈名称{/if}" onfocus="if(value=='请输入商圈名称') {value=''}" onblur="if (value=='') {value='请输入商圈名称'}"> 
+    是否显示<select name="is_show">
+        <option value="1" {if $district.is_show eq 1}selected="selected"{/if}>是</option>
+        <option value="0" {if $district.is_show eq 0}selected="selected"{/if}>否</option>
+        
+    </select>
+    <input type="text" value="{$district_id}" name="district_id"  hidden="true">
+    <input type="submit" value="确定" class="button" />
+</form>
+
+</div>
+
+<script>
+function selectRegion(key,name){
+    var region_id;
+
+    if(key == 1){
+        region_id = $('select[name="add_province"]').val();
+         $('select[name="add_county"]').empty();
+         $('select[name="add_county"]').append('<option value="">全部</option>');  
+    }
+    if(key==2){
+        region_id = $('select[name="add_city"]').val();
+    }
+    if(key==3){
+        region_id = $('select[name="add_county"]').val();
+    }
+        
+    $.ajax({
+        url:'virtual_goods.php?act=get_region_list',
+        dataType: 'json', 
+        data:{region_id:region_id},
+        success:function(data){
+            $('select[name="'+name+'"]').empty();
+            $('select[name="'+name+'"]').append('<option value="">全部</option>');  
+            $.each(data, function(i, item) {
+                $('select[name="'+name+'"]').append('<option value="'+item.region_id+'">'+item.region_name+'</option>');  
+            })
+        }
+    })
+}
+
+function validateThis(){
+    var district_id = $("input[name='district_id']").val();
+    if($('#add_province').val() == '' || $('#add_city').val() == '' || $('#add_county').val() == '' || $('#district_id').val() == '' || $("input[name='district_name']").val() == '请输入商圈名称'){
+        alert("请填写完整信息!");
+        return false;
+    }else{
+       var res = false;
+       if(district_id > 0){
+           return true;
+       }else{
+        $.ajax({
+            async: false,
+            url:'virtual_goods.php?act=validate_district',
+            dataType: 'json',
+            data:{
+                    province:$('#add_province').val(),
+                    city:$('#add_city').val(),
+                    county:$('#add_county').val(),
+                    district_name:$("input[name='district_name']").val()
+                },
+            success:function(data){
+                if(data>0){
+                    res = true;
+                }else{
+                    alert("相同地区已有此商圈!");
+                }
+            }  
+        });
+         return res;
+        }
+    }
+}
+</script>
+{include file="pagefooter.htm"}

@@ -1,0 +1,93 @@
+<!-- $Id: brand_info.htm 14216 2008-03-10 02:27:21Z testyang $ -->
+{include file="pageheader.htm"}
+<div class="main-div">
+<form method="post" action="shaidan.php" enctype="multipart/form-data">
+<table cellspacing="1" cellpadding="3" width="100%">
+  <tr>
+    <td class="label">晒单商品</td>
+    <td>{$goods.goods_name} &nbsp; <a href="../goods.php?id={$goods.goods_id}" target="_blank">查看</a></td>
+  </tr>
+  <tr>
+    <td class="label">标题</td>
+    <td>{$info.title}</td>
+  </tr>
+  <tr>
+    <td class="label">内容</td>
+    <td>{$info.message}</td>
+  </tr>
+  <tr>
+    <td class="label">晒单时间</td>
+    <td>{$info.add_time}</td>
+  </tr>
+  <tr>
+    <td class="label">晒单图片</td>
+    <td>
+    	<style>
+		.shaidan_img, .shaidan_img dt, .shaidan_img dd { padding:0px; margin:0px;}
+		.shaidan_img dd { margin-bottom:10px; margin-top:5px;}
+		</style>
+        <!--{foreach from=$shaidan_imgs key=key item=img}-->
+        <dl class="shaidan_img"><dt><img src="../{$img.image}"></dt><dd>{$img.desc}</dd></dl>
+        <!--{/foreach}-->
+    </td>
+  </tr>
+  <tr>
+    <td class="label">晒单信息属于：</td>
+    <td>第 <strong>{$weizhi}</strong> 位</td>
+  </tr>
+  <tr>
+    <td class="label">晒单图片：</td>
+    <td>共 <strong>{$imgnum}</strong> 张</td>
+  </tr>
+  {if $info.is_points eq 1}
+  <tr>
+    <td class="label">已获得积分：</td>
+    <td>{$info.pay_points}</td>
+  </tr>
+  {else}
+  <tr>
+    <td class="label">积分数量：</td>
+    <td>{$shop_config.shaidan_pay_points}</td>
+  </tr>
+  <tr>
+    <td class="label">赠送积分：</td>
+    <td>
+    	<input type="radio" name="get_points" value="1" {if $get_points eq 1}checked="checked"{/if} /> 是
+        <input type="radio" name="get_points" value="0" {if $get_points eq 0}checked="checked"{/if} /> 否
+    </td>
+  </tr>
+  {/if}
+  <tr>
+    <td class="label">状态：</td>
+    <td>
+    	<input type="radio" name="status" value="1" {if $info.status eq 1}checked="checked"{/if} {if !$supplier_commentshow}disabled{/if}/> 显示
+        <input type="radio" name="status" value="0" {if $info.status eq 0}checked="checked"{/if} {if !$supplier_commentshow}disabled{/if}/> 隐藏
+    {if !$supplier_commentshow}<span style="color:#ff3300;font-weight:bold;">不允许修改是否隐藏显示</span>{/if}
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><br />
+      <input type="submit" class="button" value="{$lang.button_submit}" />
+      <input type="reset" class="button" value="{$lang.button_reset}" />
+      <input type="hidden" name="act" value="{$form_action}" />
+      <input type="hidden" name="shaidan_id" value="{$info.shaidan_id}" />
+    </td>
+  </tr>
+</table>
+</form>
+</div>
+{insert_scripts files="../js/utils.js,validator.js"}
+{literal}
+<script language="JavaScript">
+<!--
+document.forms['theForm'].elements['brand_name'].focus();
+onload = function()
+{
+    // 开始检查订单
+    startCheckOrder();
+}
+
+//-->
+</script>
+{/literal}
+{include file="pagefooter.htm"}

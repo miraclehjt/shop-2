@@ -1,0 +1,202 @@
+<div class="box">
+	<div class="hd"><h3>{$lang.transform_points}</h3><div class="extra"></div></div>
+	<div class="bd">
+		{if $exchange_type eq 'ucenter'}
+		<form action="user.php" method="post" name="transForm" onsubmit="return calcredit();">
+			<table class="data_table">
+				<colgroup>
+					<col width="100"/>
+					<col width="500"/>
+				</colgroup>
+				<tbody>
+					<tr class="odd">
+						<th>{$lang.cur_points}{$lang.colon}</th>
+						<td class="last">
+							<label for="pay_points">{$lang.exchange_points.1}{$lang.colon}</label><input type="text" name="pay_points" value="{$shop_points.pay_points}" size="15" id="pay_points" readonly="readonly"/><br />
+							<label for="rank_points">{$lang.exchange_points.0}{$lang.colon}</label><input type="text" name="rank_points" value="{$shop_points.rank_points}" size="15" id="rank_points" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr class="even">
+						<th><label for="amount">{$lang.exchange_amount}{$lang.colon}</label></th>
+						<td class="last">
+							<input type="text" name="amount" value="0" size="15" id="amount" onkeyup="calcredit();"  />
+							<select name="fromcredits" id="fromcredits" onchange="calcredit();">
+							{html_options options=$lang.exchange_points selected=$selected_org}
+							</select>
+						</td>
+					</tr>
+					<tr class="odd">
+						<th><label for="desamount">{$lang.exchange_desamount}{$lang.colon}</label></th>
+						<td class="last">
+							<input type="text" name="desamount" id="desamount" disabled="disabled" value="0" size="15" />
+							<select name="tocredits" id="tocredits" onchange="calcredit();">
+							{html_options options=$to_credits_options selected=$selected_dst}
+							</select>
+						</td>
+					</tr>
+					<tr class="even last">
+						<th>{$lang.exchange_ratio}{$lang.colon}</th>
+						<td class="last">1 <span id="orgcreditunit">{$orgcreditunit}</span> <span id="orgcredittitle">{$orgcredittitle}</span> {$lang.exchange_action} <span id="descreditamount">{$descreditamount}</span> <span id="descreditunit">{$descreditunit}</span> <span id="descredittitle">{$descredittitle}</span></td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td class="last">&nbsp;</td>
+						<td class="last">
+							<input type="submit" name="transfrom" value="{$lang.transform}" class="btn_s1_b"/>
+							<input type="hidden" name="act" value="act_transform_ucenter_points"/>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</form>
+<script type="text/javascript">
+{foreach from=$lang.exchange_js item=lang_js key=key}
+var {$key} = '{$lang_js}';
+{/foreach}
+var out_exchange_allow = new Array();
+{foreach from=$out_exchange_allow item=ratio key=key}
+out_exchange_allow['{$key}'] = '{$ratio}';
+{/foreach}
+function calcredit() {
+	var frm = document.forms['transForm'];
+	var src_credit = frm.fromcredits.value;
+	var dest_credit = frm.tocredits.value;
+	var in_credit = frm.amount.value;
+	var org_title = frm.fromcredits[frm.fromcredits.selectedIndex].innerHTML;
+	var dst_title = frm.tocredits[frm.tocredits.selectedIndex].innerHTML;
+	var radio = 0;
+	var shop_points = ['rank_points', 'pay_points'];
+	if (parseFloat(in_credit) > parseFloat(document.getElementById(shop_points[src_credit]).value)) {
+		alert(balance.replace('{%s}', org_title));
+		frm.amount.value = frm.desamount.value = 0;
+		return false;
+	}
+	if (typeof(out_exchange_allow[dest_credit+'|'+src_credit]) == 'string') {
+		radio = (1 / parseFloat(out_exchange_allow[dest_credit+'|'+src_credit])).toFixed(2);
+	}
+	document.getElementById('orgcredittitle').innerHTML = org_title;
+	document.getElementById('descreditamount').innerHTML = radio;
+	document.getElementById('descredittitle').innerHTML = dst_title;
+	if (in_credit > 0) {
+		if (typeof(out_exchange_allow[dest_credit+'|'+src_credit]) == 'string') {
+			frm.desamount.value = Math.floor(parseFloat(in_credit) / parseFloat(out_exchange_allow[dest_credit+'|'+src_credit]));
+			frm.transfrom.disabled = false;
+			return true;
+		} else {
+			frm.desamount.value = deny;
+			frm.transfrom.disabled = true;
+			return false;
+		}
+	} else {
+		return false;
+	}
+}
+</script>
+		{else}
+		<h2 class="title"><span>{$lang.cur_points}</span><em class="extra"></em></h2>
+		<table class="data_table">
+			<colgroup>
+				<col width="100"/>
+				<col width="300"/>
+			</colgroup>
+			<tbody>
+				{foreach from=$bbs_points item=points name=bbs_points}
+				<tr class="{cycle values="odd,even"}{if $smarty.foreach.bbs_points.last} last{/if}">
+					<th>{$points.title}{$lang.colon}</th>
+					<td class="last">{$points.value}</td>
+				</tr>
+				{/foreach}
+			</tbody>
+		</table>
+		<table class="data_table">
+			<colgroup>
+				<col width="100"/>
+				<col width="300"/>
+			</colgroup>
+			<tbody>
+				<tr class="odd">
+					<th>{$lang.pay_points}{$lang.colon}</th>
+					<td class="last">{$shop_points.pay_points}</td>
+				</tr>
+				<tr class="even last">
+					<th>{$lang.rank_points}{$lang.colon}</th>
+					<td class="last">{$shop_points.rank_points}</td>
+				</tr>
+			</tbody>
+		</table>
+		<h2 class="title"><span>{$lang.rule_list}</span><em class="extra"></em></h2>
+		<ul class="text_list">
+			{foreach from=$rule_list item=rule name=rule_list}
+			<li{if $smarty.foreach.rule_list.first} class="first"{/if}>"{$rule.from}" {$lang.transform} "{$rule.to}" {$lang.rate_is} {$rule.rate}</li>
+			{/foreach}
+		</ul>
+		<form action="user.php" method="post" name="theForm">
+			<table class="data_table">
+				<colgroup>
+					<col width="200"/>
+					<col width="200"/>
+					<col width="200"/>
+				</colgroup>
+				<thead>
+					<tr>
+						<th>{$lang.rule}</th>
+						<th>{$lang.transform_num}</th>
+						<th class="last">{$lang.transform_result}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="last">
+						<td><select name="rule_index" onchange="changeRule()">
+						{foreach from=$rule_list item=rule key=key}
+						<option value="{$key}">{$rule.from}->{$rule.to}</option>
+						{/foreach}
+						</select></td>
+						<td><input type="text" name="num" value="0" onkeyup="calPoints()"/></td>
+						<td class="last"><span id="ECS_RESULT">0</span></td>
+					</tr>
+				</tbody>
+				<tfoot>
+				<tr>
+					<td colspan="3" class="center last">
+						<input type="submit" value="{$lang.transform}" class="btn_s1_b"/>
+						<input type="hidden" name="act" value="act_transform_points"/>
+					</td>
+				</tr>
+				</tfoot>
+			</table>
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+var rule_list = new Object();
+var invalid_input = '{$lang.invalid_input}';
+{foreach from=$rule_list item=rule key=key}
+rule_list['{$key}'] = '{$rule.rate}';
+{/foreach}
+function calPoints() {
+	var frm = document.forms['theForm'];
+	var rule_index = frm.elements['rule_index'].value;
+	var num = parseInt(frm.elements['num'].value);
+	var rate = rule_list[rule_index];
+	if (isNaN(num) || num < 0 || num != frm.elements['num'].value) {
+		document.getElementById('ECS_RESULT').innerHTML = invalid_input;
+		rerutn;
+	}
+	var arr = rate.split(':');
+	var from = parseInt(arr[0]);
+	var to = parseInt(arr[1]);
+	if (from <=0 || to <=0) {
+		from = 1;
+		to = 0;
+	}
+	document.getElementById('ECS_RESULT').innerHTML = parseInt(num * to / from);
+}
+function changeRule() {
+	document.forms['theForm'].elements['num'].value = 0;
+	document.getElementById('ECS_RESULT').innerHTML = 0;
+}
+//]]>
+</script>
+{/if}

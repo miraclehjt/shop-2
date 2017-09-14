@@ -1,0 +1,11 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<ul>
+<!--{foreach from=$new_articles item=article name=name}-->
+  <!--{if $smarty.foreach.name.iteration lt 4}-->
+  <li>
+	<a href="{$article.url}" title="{$article.title|escape:html}">{$article.short_title|truncate:30:"...":true}</a>
+	</li>
+    <!--{/if}-->
+<!--{/foreach}-->
+
+</ul>

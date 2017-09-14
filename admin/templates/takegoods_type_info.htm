@@ -1,0 +1,139 @@
+<!-- $Id: bonus_type_info.htm 14216 2015-02-04 02:27:21Z derek $ -->
+
+<script type="text/javascript" src="../js/calendar.php?lang={$cfg_lang}"></script>
+<link href="../js/calendar/calendar.css" rel="stylesheet" type="text/css" />
+
+{include file="pageheader.htm"}
+<div class="main-div">
+<form action="takegoods.php" method="post" name="theForm"  onsubmit="return validate()">
+<table width="100%">
+  <tr>
+    <td class="label">{$lang.type_name}</td>
+    <td>
+      <input type='text' name='type_name' maxlength="30" value="{$vtype_arr.type_name}" size='20' />    </td>
+  </tr>
+
+  <tr>
+    <td class="label">{$lang.type_money}</td>
+    <td>
+    <input type="text" id="type_money" name="type_money" value="{$vtype_arr.type_money|default:0}" size="20" onclick="type_money_on('',1,this.value)" onblur="type_money_on('',2,this.value)" oninput="type_money_on('',3,this.value)" />
+    </td>
+  </tr> 
+  
+  <tr>
+    <td class="label">{$lang.type_money_count}</td>
+    <td>
+    <input type="text" id="type_money_count" name="type_money_count" value="{$vtype_arr.type_money_count|default:0}" size="20" onclick="type_money_on('_count',1,this.value)" onblur="type_money_on('_count',2,this.value)" oninput="type_money_on('_count',3,this.value)" />
+    </td>
+  </tr> 
+  
+  <tr>
+    <td class="label">{$lang.type_money_all}</td>
+    <td>
+    <input type="text" id="type_money_all" name="type_money_all" value="" size="20" readonly="readonly" />
+    </td>
+  </tr>
+  <script language="javascript">
+  document.getElementById("type_money_all").value = document.getElementById("type_money").value * document.getElementById("type_money_count").value;
+  function type_money_on(i,j,v)
+  {
+	  switch (j)
+	  {
+		  case 1 :
+			  if (document.getElementById("type_money"+i).value == 0)
+			  	  document.getElementById("type_money"+i).value = "";
+		  	  break;
+		  case 2 :
+		  	  if (document.getElementById("type_money"+i).value == "")
+			  {
+				  document.getElementById("type_money"+i).value = 0;
+		  	  	  document.getElementById("type_money_all").value = 0;
+			  }
+		  	  break;
+	  }
+	  document.getElementById("type_money_all").value = document.getElementById("type_money").value * document.getElementById("type_money_count").value;
+  }
+  </script> 
+
+  <tr>
+    <td class="label">
+	  <a href="javascript:showNotice('Use_start_a');" title="{$lang.form_notice}">
+      <img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}"></a>
+	{$lang.use_startdate}</td>
+    <td>
+      <input name="use_start_date" type="text" id="use_start_date" size="22" value='{$vtype_arr.use_start_date}' readonly="readonly" /><input name="selbtn3" type="button" id="selbtn3" onclick="return showCalendar('use_start_date', '%Y-%m-%d', false, false, 'selbtn3');" value="{$lang.btn_select}" class="button"/>
+	  <br /><span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="Use_start_a">{$lang.use_startdate_notic}</span>    </td>
+  </tr>
+  <tr>
+    <td class="label">{$lang.use_enddate}</td>
+    <td>
+      <input name="use_end_date" type="text" id="use_end_date" size="22" value='{$vtype_arr.use_end_date}' readonly="readonly" /><input name="selbtn4" type="button" id="selbtn4" onclick="return showCalendar('use_end_date', '%Y-%m-%d', false, false, 'selbtn4');" value="{$lang.btn_select}" class="button"/>    </td>
+  </tr>
+  <tr>
+    <td class="label">&nbsp;</td>
+    <td>
+      <input type="submit" value="{$lang.button_submit}" class="button" />
+      <input type="reset" value="{$lang.button_reset}" class="button" />
+      <input type="hidden" name="act" value="{$form_act}" />
+      <input type="hidden" name="type_id" value="{$vtype_arr.type_id}" />    </td>
+  </tr>
+</table>
+</form>
+</div>
+{insert_scripts files="../js/utils.js,validator.js"}
+{literal}
+<script language="javascript">
+<!--
+document.forms['theForm'].elements['type_name'].focus();
+/**
+ * 检查表单输入的数据
+ */
+function validate()
+{
+  validator = new Validator("theForm");
+  validator.required("type_name",      type_name_empty);
+  validator.required("type_money",     type_money_empty);
+  validator.isNumber("type_money",     type_money_isnumber, true);
+  validator.required("use_start_date",      use_start_date_empty);
+  validator.required("use_end_date",      use_end_date_empty);
+  validator.islt('use_start_date', 'use_end_date', use_start_lt_end);
+  
+  return validator.passed();
+}
+onload = function()
+{
+  {/literal}
+  get_value = '{$bonus_arr.send_type}';
+  {literal}
+
+  showunit(get_value)
+  // 开始检查订单
+  startCheckOrder();
+}
+/* 红包类型按订单金额发放时才填写 */
+function gObj(obj)
+{
+  var theObj;
+  if (document.getElementById)
+  {
+    if (typeof obj=="string") {
+      return document.getElementById(obj);
+    } else {
+      return obj.style;
+    }
+  }
+  return null;
+}
+
+function showunit(get_value)
+{
+  gObj("1").style.display =  (get_value == 2) ? "" : "none";
+  document.forms['theForm'].elements['selbtn1'].disabled  = (get_value != 1 && get_value != 2);
+  document.forms['theForm'].elements['selbtn2'].disabled  = (get_value != 1 && get_value != 2);
+
+  return;
+}
+//-->
+</script>
+{/literal}
+{include file="pagefooter.htm"}

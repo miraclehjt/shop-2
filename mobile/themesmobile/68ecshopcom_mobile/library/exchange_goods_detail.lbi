@@ -1,0 +1,104 @@
+<div class="product_details box">
+	<div class="bd">
+		<div class="details">
+			<h1>{$goods.goods_name}</h1>
+			<div class="price_and_no clearfix">
+				<p class="price"><strong>{$goods.exchange_integral}</strong>{$lang.points_price_suf}</p>
+				{if $cfg.show_goodssn}<p class="no">{$lang.goods_sn}{$lang.colon}{$goods.goods_sn}</p>{/if}
+			</div>
+			<form action="exchange.php?act=buy" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY">
+				<ul class="basic">
+					{if $cfg.show_marketprice}
+					<li><strong>{$lang.market_price}</strong><em class="price market_price">{$goods.market_price}</em></li>
+					{/if}
+					{if $goods.goods_brand neq "" and $cfg.show_brand}
+					<li><strong>{$lang.goods_brand}</strong><a href="{$goods.goods_brand_url}">{$goods.goods_brand}</a></li>
+					{/if}
+					{if $cfg.show_goodsweight}
+					<li><strong>{$lang.goods_weight}</strong>{$goods.goods_weight}</li>
+					{/if}
+					{if $goods.goods_number neq "" and $cfg.show_goodsnumber0}
+					<li><strong>{$lang.goods_number}</strong>{$goods.goods_number} {$goods.measure_unit}</li>
+					{/if}
+					{if $cfg.show_addtime}
+					<li><strong>{$lang.add_time}</strong>{$goods.add_time}</li>
+					{/if}
+					{if $option.product_click_count_enabled}<li><strong>{$lang.goods_click_count}</strong>{$goods.click_count}</li>{/if}
+					{if $goods.give_integral > 0}
+					<li><strong>{$lang.goods_give_integral}</strong>{$goods.give_integral} {$points_name}</li>
+					{/if}
+				</ul>
+				{if $specification}
+				<div class="properties">
+					{foreach from=$specification item=spec key=spec_key name=specification}
+					<dl class="clearfix{if $smarty.foreach.specification.first} first{/if}"{if $spec.attr_type eq 2} title="{$lang.multi_choice}"{/if}>
+						<dt>{$spec.name}{$lang.colon}</dt>
+						{if $spec.attr_type eq 1}
+						<dd class="radio">
+							{foreach from=$spec.values item=value key=key}
+							<label for="spec_value_{$value.id}" title="{if $value.price gt 0}{$lang.plus}{$value.format_price|abs}{elseif $value.price lt 0}{$lang.minus}{$value.format_price|abs}{/if}">
+								<input type="radio" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}"{if $key eq 0} checked="checked"{/if} />
+							{$value.label}</label>
+							{/foreach}
+						</dd>
+						{else}
+						<dd class="checkbox">
+							{foreach from=$spec.values item=value key=key}
+							<label for="spec_value_{$value.id}" title="{if $value.price gt 0}{$lang.plus}{$value.format_price|abs}{elseif $value.price lt 0}{$lang.minus}{$value.format_price|abs}{/if}">
+								<input type="checkbox" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" />
+							{$value.label}</label>
+							{/foreach}
+						</dd>
+						{/if}
+					</dl>
+					<input type="hidden" name="spec_list" value="{$key}" />
+					{/foreach}
+				</div>
+				{/if}
+				<div class="actions clearfix">
+					<p class="submit"><input type="submit" value="{$lang.exchange_goods}" class="bright_button"></p>
+					<input type="hidden" name="goods_id" value="{$goods.goods_id}">
+				</div>
+			</form>
+		</div>
+		<div class="extra_details">
+			<div class="gallery" id="gallery">
+				{if $pictures.0.img_url}<a href="{$option.static_path}{$pictures.0.img_url}" title="{$goods.goods_name}" class="cover cloud_zoom" id="product_img_large" rel="zoomHeight:442,zoomWidth:442,adjustX:29,adjustY:15"><img src="{$option.static_path}{$goods.goods_img}" alt="{$goods.goods_name|escape:'html'}"/></a>{else}<span class="cover"><img src="{$option.static_path}{$goods.goods_img}" alt="{$goods.goods_name|escape:'html'}" title="{$goods.goods_name}"/></span>{/if}
+				{if $pictures.1.img_url}
+				<div class="thumb clearfix">
+					<div class="thumb_inner">
+					<ul>
+						{foreach from=$pictures item=picture name=pictures}
+						<li><a href="{$option.static_path}{$picture.img_url}" title="{$picture.img_desc}" class="cloud_zoom_gallery" rel="useZoom: 'product_img_large', smallImage: '{$option.static_path}{if $option.gallery_thumbnails_enabled}{$picture.thumb2}{else}{$picture.img_url}{/if}', title: '{$picture.img_desc}'"><img src="{$option.static_path}{if $picture.thumb_url}{$picture.thumb_url}{else}{$picture.img_url}{/if}" alt="{$picture.img_desc}"></a></li>
+						{/foreach}
+					</ul>
+					</div>
+				</div>
+				{/if}
+			</div>
+		</div>
+	</div>
+</div>
+{if $goods.goods_desc}
+<div class="goods_desc box">
+	<div class="hd"><h3>{$lang.product_description}</h3></div>
+	<div class="bd">
+		<div class="product_description">{$goods.goods_desc}</div>
+	</div>
+</div>
+{/if}
+{if $properties}
+<div class="goods_properties box">
+	<div class="hd"><h3>{$lang.goods_properties}</h3></div>
+	<div class="bd">
+		<dl class="property_list">
+			{foreach from=$properties item=property_group key=key}
+			<dt>{$key|escape}</dt>
+			{foreach from=$property_group item=property}
+			<dd><strong>{$property.name|escape:html}</strong><span>{$property.value}</span></dd>
+			{/foreach}
+			{/foreach}
+		</dl>
+	</div>
+</div>
+{/if}

@@ -1,0 +1,107 @@
+<!-- $Id: valuecard_list.htm 14216 2015-02-04 02:27:21Z derek $ -->
+
+{if $full_page}
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+
+<!-- 订单搜索 -->
+<div class="form-div">
+  <form action="javascript:searchVc()" name="searchForm">
+    <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
+    {$lang.tg_sn}<input name="tg_sn" type="text" id="tg_sn" size="15">
+    {$lang.is_used}
+    <select name="is_used" id="is_used">
+      <option value="-1">{$lang.select_please}</option>
+	  <option value="0">未使用</option>
+	  <option value="1">已使用</option>
+    </select>
+	<input type="hidden" name="tg_type" id="tg_type" value="{$smarty.get.tg_type}" />
+    <input type="submit" value="{$lang.button_search}" class="button" />
+  </form>
+</div>
+
+<form method="POST" action="takegoods.php?act=batch&tg_type={$smarty.get.tg_type}" name="listForm">
+<!-- start user_bonus list -->
+<div class="list-div" id="listDiv">
+{/if}
+
+  <table cellpadding="3" cellspacing="1">
+    <tr>
+      <th>
+        <input onclick='listTable.selectAll(this, "checkboxes")' type="checkbox">
+        {$lang.tg_id}</th>
+		<th>{$lang.tg_sn}</th>
+      <th>{$lang.tg_pwd}</th>
+	  <th>{$lang.tg_type_name}</th>
+      <th>{$lang.type_money}</th>
+      <th>{$lang.type_money_count}</th>
+      <th>{$lang.type_money_all}</th>
+      <th>{$lang.use_date_valid}</th>
+	  <th>{$lang.is_used}</th>
+	  <th>{$lang.used_time_last}</th>
+      <th>{$lang.handler}</th>
+    </tr>
+    {foreach from=$vc_list item=bonus}
+    <tr>
+      <td><span><input value="{$bonus.tg_id}" name="checkboxes[]" type="checkbox">{$bonus.tg_id}</span></td>
+	   <td>{if $bonus.goods_ids}<font color=#ff3300>{/if}{$bonus.tg_sn}{if $bonus.goods_ids}</font>{/if}</td>        
+      <td>{$bonus.tg_pwd}</td>      
+	  <td align=center>{$vctype.type_name}</td>  
+      <td align=center>{$vctype.type_money_format}</td>
+      <td align=center>{$vctype.type_money_count_format}</td>
+      <td align=center>{$vctype.type_money_all_format}</td>
+      <td align=center>{$vctype.valid_time}</td>
+	  <td align=center>{$bonus.is_used}</td>
+	  <td align=center>{$bonus.used_time_format}</td>
+      <td align="center">
+        <a href="javascript:;" onclick="listTable.remove({$bonus.tg_id}, '{$lang.drop_confirm}', 'remove_bonus')"><img src="images/icon_drop.gif" border="0" height="16" width="16"></a>
+        </td>
+    </tr>
+    {foreachelse}
+    <tr><td class="no-records" colspan="11">{$lang.no_records}</td></tr>
+    {/foreach}
+  </table>
+
+  <table cellpadding="4" cellspacing="0">
+    <tr>
+      <td><input type="submit" name="drop" id="btnSubmit" value="{$lang.drop}" class="button" disabled="true" />
+      <input type="submit" name="add_goods" id="btnSubmit1" value="{$lang.addgoods}" class="button" disabled="true" /></td>
+      <td align="right">{include file="page.htm"}</td>
+    </tr>
+  </table>
+
+{if $full_page}
+</div>
+<!-- end user_bonus list -->
+</form>
+
+<script type="text/javascript" language="JavaScript">
+  listTable.recordCount = {$record_count};
+  listTable.pageCount = {$page_count};
+  listTable.query = "query_bonus";
+
+  {foreach from=$filter item=item key=key}
+  listTable.filter.{$key} = '{$item}';
+  {/foreach}
+
+  {literal}
+  onload = function()
+  {
+    // 开始检查订单
+    startCheckOrder();
+    document.forms['listForm'].reset();
+  }
+
+    function searchVc()
+    {
+        listTable.filter['tg_sn'] = Utils.trim(document.forms['searchForm'].elements['tg_sn'].value);
+		listTable.filter['tg_type'] = Utils.trim(document.forms['searchForm'].elements['tg_type'].value);
+        listTable.filter['is_used'] = document.forms['searchForm'].elements['is_used'].value;
+        listTable.filter['page'] = 1;
+        listTable.loadList();
+    }
+
+  {/literal}
+</script>
+{include file="pagefooter.htm"}
+{/if}

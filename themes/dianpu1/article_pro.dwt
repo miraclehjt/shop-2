@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable --><!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="themes/dianpu/store.css" rel="stylesheet" type="text/css" />
+<link href="themes/{$template_dir}/images/ghs/css/ghs_style.css" rel="stylesheet" type="text/css" />
+<link href="themes/{$template_dir}/images/ghs/css/ghs_category.css" rel="stylesheet" type="text/css" />
+<link href="themes/{$template_dir}/images/ghs/css/ghs_index.css" rel="stylesheet" type="text/css" />
+{* 包含脚本文件 *}
+{insert_scripts files='common.js'}
+</head>
+<body>
+<div role="navigation" id="site-nav"> 
+<!-- #BeginLibraryItem "/../68ecshopcom_360buy/library/page_shopheader.lbi" --><!-- #EndLibraryItem -->
+</div>
+
+<!-- #BeginLibraryItem "/library/ghs_nav.lbi" --><!-- #EndLibraryItem -->
+<div class="blank"></div>
+<div class="block">
+   <div class="s_box">
+   <div class="s_box1">
+    <h3><span>{$article.title|escape:html}</span></h3>
+    <div class="boxCenterList">
+      <!-- {if $article.content } -->
+     {$article.content}
+     <!-- {/if} -->
+    </div>
+   </div>
+  <div class="blank5"></div>
+</div>
+</div>
+<div class="blank5"></div>
+
+<div class="blank"></div>
+<!-- #BeginLibraryItem "/../68ecshopcom_360buy/library/page_shopfooter.lbi" --><!-- #EndLibraryItem --></body>
+</html>

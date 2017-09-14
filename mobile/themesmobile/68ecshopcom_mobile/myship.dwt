@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>{$page_title}</title>
+	<meta name="Keywords" content="{$keywords}" />
+	<meta name="Description" content="{$description}" />
+    <script src="static/js/modernizr.js"></script>
+<link rel="shortcut icon" href="static/img/favicon.png">
+	<link rel="apple-touch-icon-precomposed" href="static/img/website_icon.png">
+	<link rel="stylesheet" href="static/css/style.css">
+
+{insert_scripts files='common.js,utils.js'}
+
+	</head>
+<body id="page_goods">
+<div id="container">
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+
+<div id="main"><div class="wrapper">
+	{include file='library/ur_here.lbi'}
+	<!-- TemplateBeginEditable name="主栏上方" --><!-- TemplateEndEditable -->
+	<div class="myship box full_box">
+		<div class="hd"><h3>{$lang.myship}</h3><div class="extra"></div></div>
+		<div class="bd">
+			<form action="myship.php" method="post" name="theForm" id="theForm" onsubmit="return checkForm(this)">
+				<span>{$lang.country_province}:</span>
+				<select name="country" id="selCountries_{$sn}" onchange="regionChanged(this, 1, 'selProvinces_{$sn}')">
+					<option value="0">{$lang.please_select}</option>
+					{foreach from=$country_list item=country}
+					<option value="{$country.region_id}" {if $choose.country eq $country.region_id} selected="selected"{/if}>{$country.region_name}</option>
+					{/foreach}
+				</select>
+				<select name="province" id="selProvinces_{$sn}" onchange="regionChanged(this, 2, 'selCities_{$sn}')">
+					<option value="0">{$lang.please_select}</option>
+					{foreach from=$province_list.$sn item=province}
+					<option value="{$province.region_id}" {if $choose.province eq $province.region_id} selected="selected"{/if}>{$province.region_name}</option>
+					{/foreach}
+				</select>
+				<select name="city" id="selCities_{$sn}" onchange="regionChanged(this, 3, 'selDistricts_{$sn}')">
+					<option value="0">{$lang.please_select}</option>
+					{foreach from=$city_list.$sn item=city}
+					<option value="{$city.region_id}" {if $choose.city eq $city.region_id} selected="selected"{/if}>{$city.region_name}</option>
+					{/foreach}
+				</select>
+				<select name="district" id="selDistricts_{$sn}" {if !$district_list.$sn}style="display:none"{/if}>
+					<option value="0">{$lang.please_select}</option>
+					{foreach from=$district_list.$sn item=district}
+					<option value="{$district.region_id}" {if $choose.district eq $district.region_id} selected="selected"{/if}>{$district.region_name}</option>
+					{/foreach}
+				</select>
+				<input type="submit" value="{$lang.search_ship}" class="button"/>
+				<input type="hidden" name="act" value="viewship" />
+			</form>
+			<table class="data_table">
+				<colgroup>
+					<col width="100"/>
+					<col width="700"/>
+					<col width="100"/>
+					<col width="100"/>
+				</colgroup>
+				<thead>
+					<tr>
+						<th>{$lang.name}</th>
+						<th>{$lang.describe}</th>
+						<th>{$lang.fee}</th>
+						<th class="last">{$lang.insure_fee}</th>
+					</tr>
+				</thead>
+				<tbody>
+					{foreach from=$shipping_list item='shipping' name='shipping'}
+					<tr class="{cycle values="odd,even"}{if $smarty.foreach.shipping.last} last{/if}">
+						<td >{$shipping.shipping_name}</td>
+						<td>{$shipping.shipping_desc}</td>
+						<td class="price">{$shipping.fee}</td>
+						<td class="last">{if $shipping.insure neq 0}{$shipping.insure_formated}{else}{$lang.not_support_insure}{/if}</td>
+					</tr>
+					{/foreach}
+			</tbody>
+			</table>
+		</div>
+	</div>
+	<!-- TemplateBeginEditable name="主栏下方" --><!-- TemplateEndEditable -->
+</div></div>
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+
+<script type="text/javascript" src="static/js/plugins.js"></script>
+<script type="text/javascript" src="static/js/lang.zh_cn.js"></script>
+<script type="text/javascript" src="static/js/global.js"></script>
+<script type="text/javascript" src="static/js/init.js"></script>
+
+</div>
+</body>
+
+</html>

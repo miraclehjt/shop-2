@@ -1,0 +1,405 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery_006.js"></script> 
+{insert_scripts files='jquery.json.js,transport.js'}
+{* 包含脚本文件 *}
+{insert_scripts files='common.js,utils.js,compare.js,global.js'}
+<script language="javascript">
+function remove(id)
+{
+  if (document.getCookie("compareItems") != null)
+  {
+    var obj = $.parseJSON(document.getCookie("compareItems"));
+    delete obj[id];
+    var date = new Date();
+    date.setTime(date.getTime() + 99999999);
+    document.setCookie("compareItems", $.toJSON(obj));
+  }
+}
+
+var compare_no_goods = "{$lang.compare_no_goods}";
+var btn_buy = "{$lang.btn_buy}";
+var is_cancel = "{$lang.is_cancel}";
+var select_spe = "{$lang.select_spe}";
+</script>
+</head>
+<body>
+<div id="site-nav">
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+ <div class="blank"></div>
+  <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+<div class="block compare_wrap" id="compare_wrap">
+<div class="block compare_wrap" id="topper" style="display:none;position:fixed;top:0;z-index:99;">
+    <h5><span>{$lang.goods_compare}</span></h5>
+    <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd" style="float:left;">
+      <tr>
+          <td class="td_first" bgcolor="#ffffff">商品图片</td>
+          <!-- {foreach name="goods_list" from=$goods_list item=goods} -->
+          <td align="center" bgcolor="#ffffff"> {if $goods}
+            <div class="com_info"  style="position:relative;"> <a href="{$goods.url}"><img src="{$goods.goods_thumb}" width="100" height="100" alt="{$goods.goods_name}" class="ent_img" /></a>
+              <div style="padding:5px"><a href="{$goods.url}" title="{$goods.goods_name}">{$goods.goods_name|truncate:18}</a></div>
+              <a class="delBtn" data-goods="{$goods.goods_id}" data-url="compare.php?{$goods.ids}"></a> </div>
+            {else}
+            <div class="no-contrast">暂无对比项</div>
+            <div class="add-contrast"><a rel="nofollow" href="{$back_url}">添加</a></div>
+            {/if} </td>
+          <!-- {/foreach} --> 
+        </tr>
+        <tr>
+          <td class="td_first" bgcolor="#ffffff">{$lang.shop_price}</td>
+          <!-- {foreach name="goods_list" from=$goods_list item=goods} -->
+          <td bgcolor="#ffffff" class="price"><strong style="color:#E4393C;">{$goods.rank_price}</strong></td>
+          <!-- {/foreach} --> 
+        </tr>
+      </table>
+      <div style="clear:both;"></div>
+    </div>
+    <h5><span>{$lang.goods_compare}</span></h5>
+    <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd" style="float:left;">
+      <tr>
+        <td class="td_first" bgcolor="#ffffff">商品图片</td>
+        <!-- {foreach name="goods_list" from=$goods_list item=goods} -->
+        <td align="center" bgcolor="#ffffff"> {if $goods}
+          <div class="com_info" style="position:relative;"> <a href="{$goods.url}"><img width="100" height="100" src="{$goods.goods_thumb}" alt="{$goods.goods_name}" class="ent_img" /></a>
+            <div style="padding:5px"><a href="{$goods.url}" title="{$goods.goods_name}">{$goods.goods_name|truncate:18}</a></div>
+            <a class="delBtn" data-goods="{$goods.goods_id}" data-url="compare.php?{$goods.ids}"></a> 
+          </div>
+          {else}
+          <div class="no-contrast">暂无对比项</div>
+          <div class="add-contrast"><a rel="nofollow" href="{$back_url}">添加</a></div>
+          {/if} </td>
+        <!-- {/foreach} --> 
+      </tr>
+      <tr>
+        <td class="td_first" bgcolor="#ffffff">{$lang.shop_price}</td>
+        <!-- {foreach name="goods_list" from=$goods_list item=goods} -->
+        <td bgcolor="#ffffff" class="price"><strong style="color:#E4393C;">{$goods.rank_price}</strong></td>
+        <!-- {/foreach} --> 
+      </tr>
+      <tr>
+        <td class="td_first" bgcolor="#ffffff">{$lang.brand}</td>
+        <!-- {foreach name="goods_list" from=$goods_list item=goods} -->
+        <td bgcolor="#ffffff" style="color:#005EA7;">{$goods.brand_name}</td>
+        <!-- {/foreach} --> 
+      </tr>
+      <tr>
+        <td class="td_first" bgcolor="#ffffff">{$lang.goods_weight}</td>
+        <!-- {foreach name="goods_list" from=$goods_list item=goods} -->
+        <td bgcolor="#ffffff">{$goods.goods_weight}</td>
+        <!-- {/foreach} --> 
+      </tr>
+      <tr>
+        <td colspan="5" style="padding:0;border:none;">
+        <table class="attr_list" width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd" style="margin-left:-1px;table-layout:auto;">
+            <!-- {foreach from=$attr_list item=attr} -->
+            <tr class="attr-group" data-group="{$attr.group}" bgcolor="#FFFFFF" height="50">
+              <td class="td_first th" bgcolor="#FFFFFF" style="color:#E4393C;font-size:14px;"><i class="attr-group-expand" ></i></td>
+              <!-- {foreach name="goods_list" from=$goods_list item=goods} -->
+        	  <td bgcolor="#ffffff"><a href="{$goods.url}" style="padding:0px 5px">{$goods.goods_name}</a></td>
+        	  <!-- {/foreach} --> 
+            </tr>
+            <!-- {foreach from=$attr.attribute item=val} -->
+            <tr class="attr" data-group="{$attr.group}">
+              <td class="td_first" bgcolor="#ffffff">{$val.attr_name}</td>
+              <!-- {foreach name="goods_list" from=$goods_list item=goods} -->
+              <td bgcolor="#ffffff"><!-- {foreach from=$goods.properties name=properties item=property key=k} --> 
+                <!-- {if $k eq $val.attr_id} --> 
+                {$property.value} 
+                <!-- {/if} --> 
+                <!-- {/foreach} --></td>
+              <!-- {/foreach} --> 
+            </tr>
+            <!-- {/foreach} --> 
+            <!-- {/foreach} -->
+            
+          </table></td>
+      </tr>
+      <tr>
+        <td class="td_first" bgcolor="#ffffff"><strong>{$lang.goods_rank}</strong></td>
+        <!-- {foreach name="goods_list" from=$goods_list item=goods} -->
+        <td bgcolor="#ffffff"> {if $goods} <span class="goods-price"><img src="images/stars{$goods.comment_rank}.gif" width="64" height="12" alt="comment rank {$goods.comment_rank}" /></span> {/if}</td>
+        <!-- {/foreach} --> 
+      </tr>
+      <tr>
+        <td class="td_first" bgcolor="#ffffff"><strong>{$lang.brief}</strong></td>
+        <!-- {foreach name="goods_list" from=$goods_list item=goods} -->
+        <td bgcolor="#ffffff"><a href="{$goods.url}" target="_blank"> {$goods.goods_brief}</a></td>
+        <!-- {/foreach} --> 
+      </tr>
+      <tr>
+        <td class="td_first" bgcolor="#ffffff">&nbsp;</td>
+        <!-- {foreach name="goods_list" from=$goods_list item=goods} -->
+        <td align='center' bgcolor="#ffffff"> 
+        {if $goods} 
+        <a href="javascript:userCollect({$goods.goods_id},{$smarty.session.user_id});" class="u-buy1">加入收藏</a> 
+        <a href="javascript:selectSpe({$goods.goods_id},{if $goods.spe eq null}0{else}1{/if})" class="u-buy">加入购物车</a> 
+        {/if} 
+        </td>
+        <!-- {/foreach} --> 
+      </tr>
+    </table>
+    <div style="clear:both;"></div>
+    <div id="tool" style="position: fixed; margin: 10px 0px 0px -235px;">
+      <div id="locate" title="点击取消固定" style="display: block;"></div>
+      <div id="static" style="display: none;" title="点击固定工具"></div>
+      <div class="con">
+      <a style="width:99px;" class="setup" id="compare_highlight" href="{$url}#"><b></b>高亮显示不同项</a>
+      <a style="width:75px;" class="setup" id="compare_equal" href="{$url}#"><b></b>隐藏相同项</a>
+      </div>
+	</div>
+	</div>
+<div class="blank"></div>
+    <!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem -->
+      <!-- #BeginLibraryItem "/library/arrive_notice_list.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</div>
+<div class="select_attr" style="background:#fff; border:2px solid #ccc; display:none; position:fixed; z-index:1000;">
+	<!--<span class="select_attr_close">X</span>-->
+           <h4>请选择规格:</h4>
+             <!-- {foreach name="goods_list" from=$goods_list item=goods} -->
+                <div style="display:none" id="spe_radio{$goods.goods_id}">
+                       {foreach from=$goods.spe item=spe key=spec_key}
+                       	<h6>{$spe.name}: </h6>
+							{foreach from=$spe.values item=value} 
+                            <input style="" id="spec_value_{$value.id}" type="radio" name="spec_{$spec_key}" value="{$value.id}" />{$value.label}</br>  
+                            {/foreach}           
+                        {/foreach}
+                        <br /><center>
+                        [<a href='javascript:addToCartA({$goods.goods_id})' class='f6' >确定</a>]&nbsp;&nbsp;[<a href='javascript:hiddenSpe({$goods.goods_id})' class='f6' >取消</a>]
+
+                        </center>
+                 </div> 
+             <!-- {/foreach} -->
+             
+    
+</div>
+<style>
+#mask{ background:#000; opacity:0.3; filter:alpha(opacity=30); position:fixed; left:0; top:0; z-index:999;}
+</style>
+<script type="text/javascript" src="{$option.static_path}js/json2.js"></script> 
+<script>
+$(document).ready(function(e) {
+    $(window).scroll(function(e) {
+        if($(this).scrollTop()>$('#compare_wrap').offset().top)
+			$('#topper').css('display', 'block');
+		else
+			$('#topper').css('display', 'none');
+    });
+	$('.attr').mouseenter(function(e) {
+        $(this).css('background-color', '#F7F7F7');
+		$(this).find('td').css('background-color', '#F7F7F7');
+		$(this).find('th').css('background-color', '#F7F7F7');
+    });
+	var hl_dif = false;
+	var hd_equel = false;
+	$('.attr').mouseleave(function(e) {
+		$(this).css('background-color', '#fff');
+		$(this).find('td').css('background-color', '#fff');
+		$(this).find('th').css('background-color', '#fff');
+		
+		if(hl_dif)
+		{
+			$(this).each(function(index, element) {
+				var highlight = true;
+				var values = new Array();
+				$(this).find('td').each(function(index, element) {
+					if($.trim($(this).text()) != '')
+						values.push($.trim($(this).text()));
+				});
+				for(var i=1;i<values.length;i++)
+				{
+					if(values[i] != values[i-1])
+						highlight = false;
+				}
+				if(!highlight)
+				{
+					$(this).css('background-color', '#EBFBE2');
+					$(this).find('td').css('background-color', '#EBFBE2');
+					$(this).find('th').css('background-color', '#EBFBE2');
+				}
+			});
+		}
+    });
+	$('.attr-group').click(function(e) {
+		var group = $(this).attr('data-group');
+		$(this).find('td.th').children("i").toggleClass('attr-group-fold');
+		if($(this).find('td.th').children("i").hasClass('attr-group-fold'))
+		{
+			$('[data-group='+group+']').each(function(index, element) {
+                if($(this).hasClass('attr'))
+					$(this).css('display', 'none');
+            });
+		}
+		else
+		{
+			$('[data-group='+group+']').each(function(index, element) {
+                if($(this).hasClass('attr'))
+					$(this).css('display', 'table-row');
+            });
+		}
+    });
+	
+	
+	$('#compare_highlight').click(function(e) {
+        hl_dif = !hl_dif;
+		if(hl_dif)
+			$(this).html('<b></b>取消高亮不同项');
+		else
+			$(this).html('<b></b>高亮显示不同项');
+		if(hl_dif)
+			$('.attr').each(function(index, element) {
+				var highlight = true;
+				var values = new Array();
+				$(this).find('td').each(function(index, element) {
+					if($.trim($(this).text()) != '')
+						values.push($.trim($(this).text()));
+				});
+				for(var i=1;i<values.length;i++)
+				{
+					if(values[i] != values[i-1])
+						highlight = false;
+				}
+				if(!highlight)
+				{
+					$(this).css('background-color', '#EBFBE2');
+					$(this).find('td').css('background-color', '#EBFBE2');
+					$(this).find('th').css('background-color', '#EBFBE2');
+				}
+			});
+		else
+			$('.attr').each(function(index, element) {
+				$(this).css('background-color', '#fff');
+				$(this).find('td').css('background-color', '#fff');
+				$(this).find('th').css('background-color', '#fff');
+			});
+    });
+	$('#compare_equal').click(function(e) {
+        hd_equel = !hd_equel;
+		if(!hd_equel)
+			$(this).html('<b></b>隐藏相同项');
+		else
+			$(this).html('<b></b>显示相同项');
+		if(hd_equel)
+			$('.attr').each(function(index, element) {
+				var hide = true;
+				var values = new Array();
+				$(this).find('td').each(function(index, element) {
+					if($.trim($(this).text()) != '')
+						values.push($.trim($(this).text()));
+				});
+				for(var i=1;i<values.length;i++)
+				{
+					if(values[i] == values[i-1])
+						hide = true;
+					else
+						hide = false;
+				}
+				if(hide)
+					$(this).css('display', 'none');
+			});
+		else
+			$('.attr').each(function(index, element) {
+				$(this).css('display', 'table-row');
+			});
+    });
+	$('#locate').click(function(e) {
+        $(this).css('display', 'none');
+		$('#static').css('display', 'block');
+		$('#tool').css('position', 'relative');
+    });
+	$('#static').click(function(e) {
+        $(this).css('display', 'none');
+		$('#locate').css('display', 'block');
+		$('#tool').css('position', 'fixed');
+    });
+	$('.compare_wrap .delBtn').mouseenter(function(e) {
+        $(this).animate({right:0});
+    });
+	$('.compare_wrap .delBtn').mouseleave(function(e) {
+        $(this).animate({right:'-25px'});
+    });
+	$('.compare_wrap .delBtn').click(function(e) {
+
+		if (document.getCookie("compareItems") != null)
+		{
+			var cookieValue = document.getCookie("compareItems");
+	        var obj = JSON.parse(cookieValue);
+	        var i = 0;
+	        for(var k in obj)
+	        {
+	          i++;
+	        }
+	        if(i<3)
+	        {
+	          alert(compare_no_goods);
+	          return false;
+	        }
+			var obj = JSON.parse(document.getCookie("compareItems"));
+			delete obj[$(this).attr('data-goods')];
+			var date = new Date();
+			date.setTime(date.getTime() + 99999999);
+			document.setCookie("compareItems", JSON.stringify(obj));
+			
+			document.location.href = $(this).attr('data-url')+'&back_url={$back_url}';
+		}
+    });
+	var isIE = /rv:11/.test(navigator.userAgent.toLowerCase())||
+			   /rv:10/.test(navigator.userAgent.toLowerCase())||
+			   /rv:9/.test(navigator.userAgent.toLowerCase())||
+			   /rv:8/.test(navigator.userAgent.toLowerCase())||
+			   /rv:7/.test(navigator.userAgent.toLowerCase())||
+			   /rv:6/.test(navigator.userAgent.toLowerCase())||
+			   /chrome/.test(navigator.userAgent.toLowerCase())||
+			   /safari/.test(navigator.userAgent.toLowerCase());
+	if(isIE) $('.attr_list').css('margin-left', '0');
+});
+</script>
+<script type="text/javascript">
+var select_attr_l=($(window).width()-$('.select_attr').width())/2;
+var select_attr_r=($(window).height()-$('.select_attr').height())/2;
+$('.select_attr').css({'left':select_attr_l,'top':select_attr_r});
+function selectSpe(goodsId,spe){
+	addToCart(goodsId);
+}
+$('.select_attr_close').click(function(){
+	$('.select_attr').hide();	
+	$('#mask').remove();
+})
+function addToCartA(goodsId){
+    $('.select_attr').hide();
+    $('#mask').remove();
+    var target = document.getElementById("spe_radio"+goodsId);
+    target.style.display="none";
+    addToCart(goodsId);
+    alert('添加购物车成功！');
+}
+function hiddenSpe(goodsId){
+    $('.select_attr').hide();
+    $('#mask').remove();
+    var target = document.getElementById("spe_radio"+goodsId);
+    target.style.display="none";
+}
+function userCollect(goodsId,userId){
+     if(userId == ''){
+        alert("未登录不能使用此功能");
+     }else{
+       collect(goodsId,1);
+       //alert("收藏成功");
+    }
+}
+</script>
+</body>
+</html>

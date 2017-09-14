@@ -1,0 +1,91 @@
+/* 公共背景  */
+body{background: #F2F0F1}
+html, body { height: 100%; width: 100% }
+
+/* 登录页面 */
+.layout { width:100%;  height: 100%; _height: 100%; position: relative; overflow: hidden }
+.nl-content { text-align: center;overflow: hidden; height:100%;}
+.nl-login-title { font-size: 18px; height:50px;line-height: 50px; color: #454c5b;background: #ffffff; }
+.nl-login-title span{width:30%;margin:auto; display: block;}
+.nl-login-title .h-left{float:left;width:15%; height:50px;}
+.nl-login-title .h-left a{ display:block; width:40px; height:50px; margin:auto; background: url(../images/category/arrow_left.png) no-repeat 15px center; background-size: auto 16px; }
+.nl-frame-container{overflow: hidden;width:100%;height:90%;margin:auto;}
+.ng-form-area{overflow: hidden;}
+.ng-form-area form{ overflow: hidden;height: 100% }
+.shake-area{ width:100%; overflow:hidden;border-bottom:1px solid #CCC; border-top:1px solid #CCC; background:#FFF; margin-top:15px; margin-bottom:10px;}
+
+.shake-area dl{ width:95%; float:right; height:50px;}
+.shake-area dl dt{ float:left; width:20%; font-size:16px; color:#333; line-height:50px; text-align:left}
+.shake-area dl dd{ float:left; }
+.shake-area dl dd input{border: 0px solid #DFDFDF; height:40px; line-height:40px;width: 195px;-webkit-appearance: none; -webkit-box-flex: 1; -webkit-flex: 1; flex: 1; border-radius: 0; -webkit-rtl-ordering: logical; -webkit-user-select: text; cursor: auto; background-color: white; font-size:16px; color:#333; text-indent:8px; margin-top:5px;}
+.enter_item{border: 1px solid #DFDFDF; height: 18px; line-height: 18px; padding-top:5px; padding-bottom:6px; width: 195px; padding-left: 5px; -webkit-appearance: none; -webkit-box-flex: 1; -webkit-flex: 1; flex: 1; border-radius: 0; -webkit-rtl-ordering: logical; -webkit-user-select: text; cursor: auto; background-color: white; font-size:14px;}
+
+
+.enter-area{width: 100%;height: 20%;overflow: hidden;}
+.enter-item{width:90%;height:20px;padding:5px;border: 1px solid #ccc;border-radius: 5px;font-size: 12px;}
+.orange, .orange:hover { background: #f23; border: 1px solid #f23;color: #fff }
+.button { display:block;  width: 90%; border-radius: 5px;  padding:5px; font-size: 20px;margin:auto; margin-top:20px;}
+.ng-foot{overflow: hidden;width: 93%;margin: auto;margin-top: 10px;}
+.ng-foot .ng-cookie-area{font-size: 14px;text-align: left;color: #999; vertical-align: middle; width: 35%; float: left; cursor: pointer }
+.ng-foot .ng-link-area { color: #999;  float: right; width:60%; text-align: right;}
+.ng-foot .ng-link-area span{height:10px; }
+.ng-foot .ng-link-area a { color: #5790bb;font-size:14px; }
+.ng-foot .ng-link-area a:hover { color: #ff7e00 }
+.third-area{line-height: 58px; _line-height: 43px; color: #737373; float: left;width:100%;text-align: center;overflow: hidden;margin: auto;margin-top: 15px;}
+.third-area a { display: inline-block; *display:inline;zoom: 1;  width: 50px; height: 50px; font-size: 0; overflow: hidden; margin: 6px 10px 0px; }
+.third-area-a{font-size: 12px;}
+.ta-qq{background:url(../images/pub_user.png) no-repeat;background-size: auto 200px;}
+.ta-weibo{background:url(../images/pub_user.png) no-repeat;background-size: auto 200px; background-position:0 -70px;}
+.ta-alipay{background:url(../images/pub_user.png) no-repeat;background-size: auto 200px;  background-position:0 -147px;}
+
+
+/*  注册页面 */
+.ng_form{ padding-top:10px; padding-bottom:10px; background:#FFF}
+.ng_form dl{ width:95%; float:right; overflow:hidden; border-bottom:1px solid #ccc}
+.ng_form dl dt{ float:left; width:20%; font-size:16px; color:#333; line-height:50px; text-align:left}
+.ng_form dl dd{ float:left; }
+.ng_form dl dd input{border: 0px solid #DFDFDF; height:40px; line-height:40px;width: 195px;-webkit-appearance: none; -webkit-box-flex: 1; -webkit-flex: 1; flex: 1; border-radius: 0; -webkit-rtl-ordering: logical; -webkit-user-select: text; cursor: auto; background-color: white; font-size:16px; color:#333; text-indent:8px;}
+.ng_form dl span{ display:block; text-align:right; width:95%; margin:auto; color:#F30; line-height:20px; clear:both; font-size:14px;}
+.wenti select { -webkit-appearance: none; border-radius: 0; border: 1px solid #e5e5e5; height: 34px; line-height: 34px; padding: 0 33px 0 10px; color: #333; background-repeat: no-repeat; background-image: url('../images/down.png'); background-position: center right; background-size: 23px 7px; display:block; -webkit-box-flex: 1; -webkit-flex: 1; flex: 1; margin-top:10px; width:95%; }
+
+.field input{ display:block;border: 1px solid #DFDFDF; height:30px; line-height:30px;width:90%;-webkit-appearance: none; -webkit-box-flex: 1; -webkit-flex: 1; flex: 1; border-radius: 0; -webkit-rtl-ordering: logical; -webkit-user-select: text; cursor: auto; background-color: white; font-size:16px; color:#333; text-indent:8px; margin:auto;}
+
+
+
+.enter-item-select{width: 95%;  height: 32px;  padding: 5px;  border: 1px solid #ccc;  border-radius: 5px;  font-size: 12px;}
+.third-area .third-area-a .button{color: #737373;padding:0px;text-align: center; font-size: 12px;display:inline;}
+
+/*  找回密码 */
+.ng-form-zhu{width:95%;font-size: 12px; text-align:left;margin:10px auto 0px;color:#999;}
+.ng-form-zhu .tips{overflow: hidden;line-height: 140%;margin-top: 10px;font-size:14px;margin-bottom:20px;}
+.ng-form-zhu .tipss{width:40%; margin:auto;border:1px solid #999; border-radius: 5px; text-align: center;margin-top: 5px; padding-left:10px; padding-right:10px; }
+.ng-form-zhu  a{color:#333;}
+
+
+/* 系统提示  */
+
+.header_03 {  width: 100%;  height: 50px;  background: #f4f4f4;  position: relative;}
+
+.tips_a{width:70%;margin:20px auto 0px;padding: 5px}
+.tips_a img{width:150px;}
+.tips .tishi{border: 1px solid #f23;  padding: 5px;  color: #fff;  background: #F34;  border-radius: 5px;  width: 40%;  display: inline-block;  margin: auto; font-size: 14px;margin: 0px 3px;}
+
+
+
+/* 购物登录页面和注册页面 */
+.m311 { padding-bottom: 20px; }
+.c-f-text { width: 100%; text-indent: 6px; height: 35px; border: 1px solid #DDD; color: #333; font-size: 14px; background: #ffffff; }
+.c-f-text:focus { outline: 0; }
+.log_reg_item { width: 100%; padding-top: 6px; }
+.show { display: block!important }
+.hide { display: none!important }
+.log_reg_box { width: 100%; background:#fbfdfe; }
+.log_reg_box ul.tab { width: 100%; padding-bottom: 20px; }
+.log_reg_box ul.tab li { width: 50%; height: 41px; text-align: center; line-height: 40px; font-family: 微软雅黑; font-size: 14px; color: #3e3e3e; float: left; background: -webkit-gradient(linear, 0% 0, 0% 100%, from(#f7fafc), to(#fbfdfe)); }
+.log_reg_box ul.tab li.curr span { border-left: 1px solid #fbfdfe; border-right: 1px solid #fbfdfe; display: block; color: #EE2222; }
+.log_reg_box ul.tab li.curr span font { border: 1px solid #fcfcfd; display: block; }
+.log_reg_box ul.tab li.currl span { background: #F2F5F7; border-right: 1px solid #d3d3d3; border-bottom: 1px solid #d3d3d3; -webkit-box-shadow: 0 1px 1px #E9EBEC; color: #3e3e3e; }
+.log_reg_box ul.tab li.currr span { background: #F2F5F7; border-left: 1px solid #d3d3d3; border-right: none; border-bottom: 1px solid #d3d3d3; -webkit-box-shadow: 0 1px 1px #E9EBEC; color: #3e3e3e; }
+.top_bar{float:right; display:block; width:75px; margin-right:15px; height:45px; line-height:45px;  text-align:right; background:none;}
+.top_bar a{ font-size:14px; }
+.user_line{ border-left:#ddd 1px solid; margin-right:3px; display:inline-block; height:20px;}

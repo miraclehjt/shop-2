@@ -1,0 +1,22 @@
+{if $top_goods}
+<div class="top_goods box">
+	<div class="hd"><h3>{$lang.top10}</h3><div class="extra"></div></div>
+	<div class="bd product_list">
+		<ul>
+			{foreach from=$top_goods item=goods name=top_goods}
+			{if $smarty.foreach.top_goods.index < $option.top_number}
+			<li>
+				<span class="photo">
+					<a href="{$goods.url}" title="{$goods.goods_name|escape:html}" class="image"><img src="{$option.static_path}{$goods.thumb}" alt="{$goods.goods_name|escape:html}"/></a>
+				</span>
+				<span class="info">
+					<a href="{$goods.url}" title="{$goods.goods_name|escape:html}" class="name">{$goods.short_name}</a>
+					<em class="price">{if $goods.promote_price}{$goods.promote_price}{else}{$goods.price}{/if}</em>{if $goods.promote_price}<span class="promo" title="{$goods.price|escape:html} &gt; {$goods.promote_price|escape:html}">{$lang.sale}</span>{/if}
+				</span>
+			</li>
+			{/if}
+			{/foreach}
+		</ul>
+	</div>
+</div>
+{/if}

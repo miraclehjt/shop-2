@@ -1,0 +1,501 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<title>{$page_title}</title>
+<link rel="alternate" type="application/rss+xml" title="RSS|{$page_title}" href="{$feed_url}" />
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.js"></script>
+<script type="application/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.more.js"></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+{insert_scripts files='common.js'}
+<script tyle='text/javascript' src='../../js/transport.js'></script>
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/v_shop_list.css"/>
+
+<script src="themesmobile/68ecshopcom_mobile/js/modernizr.js"></script>
+<!--v_shop.css-->
+<style>
+.goods_nav{ width:30%; float:right; right:5px; overflow:hidden; position:fixed;margin-top:-20px; z-index:9999999}
+</style>
+</head>
+<body>
+<div id="cotentbody"  class="page-shadow">
+      <header>
+      <div class="tab_nav">
+        <div class="header">
+          <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+          <div class="h-mid">分销商品</div>
+          <div class="h-right">
+            <aside class="top_bar">
+
+              <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+      
+            </aside>
+          </div>
+        </div>
+      </div>
+      </header>
+ 	<!-- #BeginLibraryItem "/library/up_menu.lbi" --><!-- #EndLibraryItem --> <!--弹出菜单--> 
+<!--排序--->
+<section class="filtrate_term" id="product_sort" style="width: 100%;">
+<ul><li class="{if $pager.sort == 'goods_id'}on{/if}"><a href="{$script_name}.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=goods_id&order=<!-- {if $pager.sort == 'goods_id' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list">最新</a></li><li class="{if $pager.sort eq 'salenum'}on{/if}"><a href="{$script_name}.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=salenum&order=<!-- {if $pager.sort == 'salenum' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list" >销量</a></li><li class="{if $pager.sort eq 'last_update'}on{/if}"><a href="{$script_name}.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=last_update&order=<!-- {if $pager.sort == 'last_update' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list" >更新</a></li><li class="<!-- {if $pager.sort == 'shop_price'} -->on<!-- {/if} -->"><a href="{$script_name}.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=shop_price&order=<!-- {if $pager.sort == 'shop_price' && $pager.order == 'ASC'} -->DESC<!-- {else} -->ASC<!-- {/if} -->#goods_list">价格<span class="arrow_up {if $pager.sort == 'shop_price' && $pager.order == 'ASC'}active_up{/if}"></span><span class="arrow_down {if $pager.sort == 'shop_price' && $pager.order == 'DESC'}active_down{/if}"></span></a></li><li class=""><a href="javascript:;" class="show_type {if $pager.display == 'grid'} show_list{/if}">&nbsp;</a></li>
+</ul>
+</section>
+<script type="text/javascript">
+var url = 'v_shop_list.php?act=ajax&cat_id={$cat_id}&display=grid&brand={$smarty.request.brand}&price_min={$smarty.request.price_min}&price_max={$smarty.request.price_max}&filter_attr={$smarty.request.filter_attr}&page=1&sort={$smarty.request.sort}&order={$smarty.request.order}';
+$(function(){
+	$('#J_ItemList').more({'address': url});
+});
+$(window).scroll(function () {
+		if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+			$('.get_more').click();
+		}
+	});
+</script>
+<script>
+   $('.show_type').bind("click", function() {
+    if ($('#goods_list').hasClass('openList')){
+	$('#goods_list').removeClass('openList');
+	$(this).removeClass('show_list');
+	}
+	else
+	{
+	$('#goods_list').addClass('openList');	
+	$(this).addClass('show_list');
+	}
+});
+</script>
+<!--end--->
+<div class="touchweb-com_searchListBox {if $pager.display == 'grid'}openList{/if}" id="goods_list">
+  <!-- #BeginLibraryItem "/library/shop_list.lbi" --><!-- #EndLibraryItem -->
+</div>
+   </div>
+   <form method="post" action="v_shop_list.php" id='horiz_filter_form'>
+     <input type="hidden" name="brand" id="brand" value="{$brand}"><input type="hidden" name="price_min" id="price_min" value="{$price_min}"><input type="hidden" name="price_max" id="price_max" value="{$price_max}">
+     <input type="hidden" name="filter_attr" id="filter_attr" value="{$filter_attr_str}">     
+<div style="position: absolute; width: 190px; height: 1940px; right: 0px; top: -28px; z-index: 99999999; overflow: hidden; -webkit-transform-origin: 0px 0px; opacity: 1; -webkit-transform: scale(1, 1); display: none;" id="filterbar">
+</div>
+</form>
+<script type="text/javascript">
+
+function ajax_change_filter()
+{
+    var para_arr = ['id'{if $brands.1 },'brand'{/if}{if $price_grade.1},'price_min','price_max'{/if}{if $filter_attr_list},'filter_attr'{/if},'sort','order'];
+    var args = '';
+    var idx = 0;
+    for (idx in para_arr)
+    {
+        if(idx == 0)
+        {
+            args +=  para_arr[idx]+'='+document.getElementById(para_arr[idx]).value;
+        }
+        else
+        {
+            args +=  '&'+para_arr[idx]+'='+document.getElementById(para_arr[idx]).value;
+        }
+    }
+    
+    args = 'act=ajax_change_filter&page=1&'+args;
+    url = 'v_shop_list.php?'+args;
+    $('#J_ItemList').empty();
+    $('#J_ItemList').append('<div class="product single_item info"></div><a href="javascript:;" class="get_more"><img src="../themesmobile/68ecshopcom_mobile/images/category/loader.gif"></a>');
+    $('#J_ItemList').set_last('0');
+    $('#J_ItemList').more({'address':url});
+}
+
+var horiz_sort_mark_arr = ['horiz_sort_mark_shop_price','horiz_sort_mark_salenum','horiz_sort_mark_last_update','horiz_sort_mark_goods_id'];
+var horiz_sort_label_arr = ['horiz_sort_label_shop_price','horiz_sort_label_salenum','horiz_sort_label_last_update','horiz_sort_label_goods_id'];
+{if $pager.sort}
+var horiz_sort_arr = {'{$pager.sort}':'{$pager.order}'};
+{else}
+var horiz_sort_arr = new Object();
+{/if}
+
+function horiz_select_order_by(order_by)
+{
+    var order = 'DESC';
+    if(horiz_sort_arr.order_by)
+    {
+        if(horiz_sort_arr.order_by == 'DESC')
+        {
+            order = 'ASC';
+        }
+        else
+        {
+            order = 'DESC'
+        }
+    }
+    horiz_sort_arr.order_by = order;
+    for(var idx in horiz_sort_mark_arr)
+    {
+        if(horiz_sort_mark_arr[idx] == 'horiz_sort_mark_'+order_by)
+        {
+            document.getElementById(horiz_sort_label_arr[idx]).className='filter-cur';
+            if(order == 'DESC')
+            {
+                document.getElementById(horiz_sort_mark_arr[idx]).className='f-ico-arrow-d';
+            }
+            else
+            {
+                document.getElementById(horiz_sort_mark_arr[idx]).className='f-ico-arrow-u';
+            }
+        }
+        else
+        {
+            document.getElementById(horiz_sort_label_arr[idx]).className='';
+            document.getElementById(horiz_sort_mark_arr[idx]).className='';
+        }
+    }
+    document.getElementById('sort').value = order_by;
+    document.getElementById('order').value = order;
+    ajax_change_filter();
+}
+
+function get_brand(brand_id)
+{
+	change_brand(brand_id);
+    showHideFilter(document.getElementById('horiz_brand_filter_label'));
+}
+
+function click_brand_filter_label()
+{
+    var cur_brand_id = $('#brand').val();
+    if(cur_brand_id == '0' || cur_brand_id == '')
+    {
+        showHideFilter($('#horiz_brand_filter_label'));
+    }
+    else
+    {
+        change_brand('0');
+    }
+}
+
+function change_brand(brand_id)
+{
+    document.getElementById('brand').value = brand_id;
+	var obj = document.getElementById('brands').getElementsByTagName('a');
+	for(var i=0;i<obj.length;i++)
+	{
+		obj[i].className = '';
+	}
+    if(brand_id == '0' || brand_id == '')
+    {
+        $('#horiz_brand_filter_label').removeClass('on');
+        document.getElementById('horiz_brand_filter_label').innerHTML='品牌';
+    }
+    else
+    {
+        $('#horiz_brand_filter_label').addClass('on');
+        $('#brand_'+brand_id).addClass('on');
+        document.getElementById('horiz_brand_filter_label').innerHTML = document.getElementById('horiz_brand_name_label_'+brand_id).innerHTML;
+    }
+    ajax_change_filter();
+}
+
+function get_price(price_min,price_max)
+{
+	change_price(price_min,price_max);
+    showHideFilter(document.getElementById('horiz_price_filter_label'));
+}
+
+function click_price_filter_label()
+{
+    var cur_min = $('#price_min').val();
+    var cur_max = $('#price_max').val();
+    if((cur_min == '0' || cur_min == '') && (cur_max == '0' || cur_max == ''))
+    {
+        showHideFilter(document.getElementById('horiz_price_filter_label'));
+    }
+    else
+    {
+        change_price('0','0');
+    }
+}
+
+function change_price(price_min,price_max)
+{
+    document.getElementById('price_min').value = price_min;
+	document.getElementById('price_max').value = price_max;
+	var obj = document.getElementById('prices').getElementsByTagName('a');
+	for(var i=0;i<obj.length;i++)
+	{
+		obj[i].className = '';
+	}
+    
+    if((price_min == '0' || price_min == '') && (price_max == '0' || price_max == ''))
+    {
+        $('#horiz_price_filter_label').removeClass('on');
+        document.getElementById('horiz_price_filter_label').innerHTML = '价格';
+    }
+    else
+    {
+		$('#horiz_price_filter_label').addClass('on');
+        $('#price_'+price_min).addClass('on');
+        
+         document.getElementById('horiz_price_filter_label').innerHTML = document.getElementById('horiz_price_value_label_'+price_min).innerHTML;
+    }
+    ajax_change_filter();
+}
+
+<!--{foreach from=$filter_attr_list item=filter_attr name=filter_attr_list}-->
+
+function get_attr_{$smarty.foreach.filter_attr_list.iteration}(attr_id)
+{
+    change_attr_filter_{$smarty.foreach.filter_attr_list.iteration}(attr_id);
+    showHideFilter(document.getElementById('horiz_attr_filter_label_{$smarty.foreach.filter_attr_list.iteration}'));
+}
+
+function click_attr_filter_label_{$smarty.foreach.filter_attr_list.iteration}()
+{
+    var cur_attr = $('#shows_{$smarty.foreach.filter_attr_list.iteration}').val();
+    if(cur_attr == '0' || cur_attr == '')
+    {
+        showHideFilter(document.getElementById('horiz_attr_filter_label_{$smarty.foreach.filter_attr_list.iteration}'));
+    }
+    else
+    {
+        change_attr_filter_{$smarty.foreach.filter_attr_list.iteration}('0')
+    }
+}
+
+function change_attr_filter_{$smarty.foreach.filter_attr_list.iteration}(attr_id)
+{
+	document.getElementById('shows_{$smarty.foreach.filter_attr_list.iteration}').value=attr_id;
+	var shows = document.getElementsByName("shows");
+	var total_attr = null;
+	for(var i=shows.length;i>0;i--){
+	if(total_attr == null)
+	{
+		total_attr = document.getElementById("shows_"+i).value;
+	}
+	else
+	{
+		total_attr = document.getElementById("shows_"+i).value +"."+total_attr;
+		document.getElementById('filter_attr').value = total_attr;	
+	}
+	}
+	
+	var obj = document.getElementById('attrs_{$smarty.foreach.filter_attr_list.iteration}').getElementsByTagName('a');
+	for(var i=0;i<obj.length;i++)
+	{
+		obj[i].className = '';
+	}
+    
+    if(attr_id == 0)
+    {
+            $('#horiz_attr_filter_label_{$smarty.foreach.filter_attr_list.iteration}').removeClass('on');
+        document.getElementById('horiz_attr_filter_label_{$smarty.foreach.filter_attr_list.iteration}').innerHTML = '{$filter_attr.filter_attr_name|escape:html}';
+    }
+    else
+    {
+        $('#horiz_attr_filter_label_{$smarty.foreach.filter_attr_list.iteration}').addClass('on');
+        $('#attr_{$smarty.foreach.filter_attr_list.iteration}_'+attr_id).addClass('on');
+        document.getElementById('horiz_attr_filter_label_{$smarty.foreach.filter_attr_list.iteration}').innerHTML = document.getElementById('horiz_attr_value_label_'+attr_id).innerHTML;
+    }
+    ajax_change_filter();
+}
+<!--{/foreach}-->
+
+
+</script>
+<script language="javascript">
+	function showHideFilter(obj){
+		$(obj).parent().siblings().children('div').fadeOut();
+		$(obj).siblings().fadeToggle();
+	}
+	function selectExpandSort(obj){
+		$(obj).parent().siblings().children('a').removeClass('on');
+		$(obj).addClass('on');
+		var div = $('#filter_prop a.on[data]');
+		var esId = '';
+		for(var i=0,len=div.size();i<len;i++){
+			if(esId!='')esId+='-';
+			esId+=$(div[i]).attr('data');
+		}
+		var more = 7-div.length;
+		if(more>0){
+			for(var i=0;i<more;i++){
+				if(esId!='')esId+='-0';
+			}
+		}
+		$('#expandSortId').val(esId);
+		$('#condtion').submit();
+		closeFilter();
+	}
+	function selectCategory(obj){
+		$(obj).parent().siblings().children('a').removeClass('on');
+		$(obj).addClass('on');
+		closeFilter();
+	}
+	function selectCategoryFilter(obj){
+		$(obj).parent().siblings().children('a').removeClass('on');
+		$(obj).addClass('on');
+		
+		var param = '';
+		var express = $('#filter_prop a.on[data][type="1"]');
+		for(var i=0,len=express.size();i<len;i++){
+			if($(express[i]).attr('data')!=''){
+				if(param!='')param+=',';
+				param+=($(express[i]).attr('parent')+":"+$(express[i]).attr('data'));
+			}
+		}
+		$('#expressionKey').val(param);
+		
+		var price = $('#filter_prop a.on[data][type="2"]');
+		$('#minprice').val('');
+        $('#maxprice').val('');
+		for(var i=0,len=price.size();i<len;i++){
+			if($(price[i]).attr('data')!=''){
+				content = $(price[i]).attr('data');
+				if(content){
+        			var tmpPrice = content.split('-');
+        			if(tmpPrice.length==2){
+        				$('#minprice').val(tmpPrice[0]);
+        				$('#maxprice').val(tmpPrice[1]);
+        			}
+				}
+			}
+		}
+		
+		param = '';
+		var expand = $('#filter_prop a.on[data][type="3"]');
+		for(var i=0,len=expand.size();i<len;i++){
+			if($(expand[i]).attr('data')!=''){
+				if(param!='')param+=',';
+				param+=($(expand[i]).attr('parent')+":"+$(expand[i]).attr('data'));
+			}
+		}
+		$('#expandName').val(param);
+		$('#condtion').submit();
+		closeFilter();
+	}
+	function closeFilter(){
+		(document.body||document.documentElement).removeChild(document.getElementById('_mask'));
+		(document.body||document.documentElement).removeChild(document.getElementById('_maskArrow'));
+		//$('a[f="1"]').removeClass('on');
+		document.getElementById('slidebar').setAttribute('style','-webkit-transition: -webkit-transform 0.4s;-webkit-transform-origin: 0px 0px; -webkit-transform-style: preserve-3d;-webkit-transform: translate(190px, 0);');
+		setTimeout(function(){
+			$('#filterbar').hide();
+		},400);
+	}
+	$(function(){
+		$('a[f="1"]').click(function(e){
+    		var cobj = e.srcElement || e.target;
+    		var id = $(cobj).attr('id');
+    		if(!id)id=$(cobj).parent('a').attr('id')||$(cobj).parent('span').parent('a').attr('id');
+			if($('#'+id).hasClass('on')){return;}
+			if(id!='btn_filter'){
+    			$('.new-tab-type2').hide();
+        		$('.new-tab-type3').hide();
+        		$('.new-tab-type4').hide();
+			}
+			if($('#'+id).hasClass('on')){
+				//$('a[f="1"]').removeClass('on');
+			}else{
+				var tagSort = !$('#btn_sort').hasClass('on');
+				var tagStock = !$('#btn_stock').hasClass('on');
+				var tagDelivery = !$('#btn_delivery').hasClass('on');
+				if(id!='btn_filter'){
+					$('a[f="1"]').removeClass('on');
+					$('#'+id).addClass('on');
+				}
+        		if(id=='btn_sort'){
+					if(tagStock && tagDelivery){
+    					$('.new-tab-type2').css({'display':'block','height':'0px'});
+        				$('.new-tab-type2').animate({'height':'34px'},{'duration':'fast'});
+					}else{
+						//$('.new-tab-type2').css({'display':'block'});
+						$('.new-tab-type2').css({'opacity':'0','display':'block'});
+						$('.new-tab-type2').animate({'opacity':10},'slow');
+					}
+        		}else if(id=='btn_stock'){
+					if(tagSort && tagDelivery){
+    					$('.new-tab-type3').css({'display':'block','height':'0px'});
+        				$('.new-tab-type3').animate({'height':'34px'},{'duration':'fast'});
+					}else{
+						//$('.new-tab-type3').css({'display':'block'});
+						$('.new-tab-type3').css({'opacity':'0','display':'block'});
+						$('.new-tab-type3').animate({'opacity':10},'slow');
+					}
+        		}else if(id=='btn_delivery'){
+					if(tagSort && tagStock){
+    					$('.new-tab-type4').css({'display':'block','height':'0px'});
+        				$('.new-tab-type4').animate({'height':'34px'},{'duration':'fast'});
+					}else{
+						//$('.new-tab-type4').css({'display':'block'});
+						$('.new-tab-type4').css({'opacity':'0','display':'block'});
+						$('.new-tab-type4').animate({'opacity':10},'slow');
+					}
+        		}else if(id=='btn_filter'){
+					$('#filterbar').show();
+					var height = ((document.body||document.documentElement).clientHeight+20)+'px';
+					if(parseInt($('#slidebar').css('height').replace('px',''))>parseInt(height.replace('px',''))-20){
+						height = (parseInt($('#slidebar').css('height').replace('px',''))+50)+'px';
+					}
+					$('#filterbar').css('height',(parseInt(height.replace('px',''))-50)+"px");
+					var width = '100%';
+					var maskArrow = document.createElement("a");
+					maskArrow.setAttribute('class','new-abtn-slid');
+					maskArrow.setAttribute('style','z-index:88888889;left:auto;right:185px;');
+					maskArrow.setAttribute('id','_maskArrow');
+        			var mask = document.createElement("div");
+					mask.setAttribute('id','_mask');
+					mask.setAttribute('style','position:absolute;left:0px;top:0px;background-color:rgb(13, 13, 13);filter:alpha(opacity=60);opacity: 0.6;width:'+width+';height:'+height+';z-index:88888888;');
+					(document.body||document.documentElement).appendChild(mask);
+					(document.body||document.documentElement).appendChild(maskArrow);
+					var scrolltop = (document.body||document.documentElement).scrollTop;
+					$('#filterbar').css("top",(scrolltop-28)+"px");
+					document.getElementById('slidebar').setAttribute('style',' -webkit-transform-style: preserve-3d; -webkit-transition: -webkit-transform 0.4s; -webkit-transform-origin: 0px 0px; -webkit-transform: translate(0px, 0); ');
+					$('#_maskArrow').click(function(){
+            			closeFilter();
+            		});
+					$('#_mask').click(function(){
+            			closeFilter();
+            		});
+        		}
+			}
+    	});
+
+	})
+	
+</script>
+<script>
+//切换浏览模式: 列表  详情  详情列表
+    function changelist( cls ){
+		
+		            var vl = cls.getAttribute('class') ;
+            var lst = document.getElementById('J_ItemList');
+
+            switch(vl){
+            case "sb-switchBtn sb-switchBtn-list":
+		
+                cls.setAttribute('class', 'sb-switchBtn sb-switchBtn-album') ;
+                lst.setAttribute('class' , 'srp j_autoResponsive_container m-ks-autoResponsive-container m-animation album');
+                break;
+            case "sb-switchBtn sb-switchBtn-album":
+
+                cls.setAttribute('class', 'sb-switchBtn sb-switchBtn-grid') ;
+                lst.setAttribute('class' , 'srp j_autoResponsive_container m-ks-autoResponsive-container m-animation grid');
+                break;
+            case "sb-switchBtn sb-switchBtn-grid":
+
+                cls.setAttribute('class', 'sb-switchBtn sb-switchBtn-list') ;
+                lst.setAttribute('class' , 'srp j_autoResponsive_container m-ks-autoResponsive-container m-animation list');
+                break;
+        }
+
+    } 
+</script>
+
+<!-- #BeginLibraryItem "/library/footer_nav1.lbi" --><!-- #EndLibraryItem --> 
+
+<!---返回顶部-->
+<script>
+function goTop(){
+	$('html,body').animate({'scrollTop':0},600);
+}
+</script>
+<a href="javascript:goTop();" class="gotop"><img src="themesmobile/68ecshopcom_mobile/images/topup.png"></a> 
+</body>
+</html>

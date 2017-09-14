@@ -1,0 +1,54 @@
+.Packages{ width:100%; overflow:hidden; background:#FFF;}
+.sanjiao{ display:block; width:15px; height:45px;background:#fff url(../images/sanjiao1.png) no-repeat left center;background-size: auto 20px; position:absolute; right:0px; top:46px; z-index:99999; padding-right:5px;}
+.all{ width:18%; overflow:hidden; float:left; height:50px;
+ background:#DD2726 url(../images/sanjiao.png) no-repeat right 45% ;background-size: auto 18px;  text-indent:10px;}
+.all a{ font-size:14px; line-height:50px;}
+/* page_guide_slider */
+
+.page_guide_items {
+	width:82%; float:left;
+}
+.page_guide_item {
+	background-color:white;
+	float:left; 
+}
+.page_guide_item_text{  font-size:14px; color:#333;  line-height:50px; overflow:hidden;}
+.page_guide_item_text a{ display:block;padding-left:15px; padding-right:15px; height:50px;}
+.page_guide_item_text .sele{color:#DD2726; border-bottom:1px solid #DD2726}
+
+/*商家入住店铺信息*/
+.rzs_info{ width:100%; margin-top:10px; overflow:hidden; background:#FFF; padding-top:10px; padding-bottom:10px; margin-bottom:10px;}
+.rzs_info dl{ width:95%; margin:auto; overflow:hidden;}
+.rzs_info dl dt{ width:20%; float:left; overflow:hidden}
+.rzs_info dl dt a{ width:100%; height:60px; display:block; background-size:100% ; background-position:center center; background-repeat:no-repeat}
+
+.rzs_info dl dd{ width:80%; float:left; }
+.rzs_info dl dd strong{ display:block; width:100%; height:30px;position:relative;font-size:16px; line-height:30px; text-indent:10px;color:#333; font-weight:normal}
+.rzs_info dl dd p{ width:100%; height:30px;font-size:14px; line-height:30px; text-indent:10px;color:#666;display: -webkit-box;  -webkit-line-clamp: 1; overflow:hidden;
+  -webkit-box-orient: vertical;}
+
+.rzs_info dl dd em{ position:absolute; right:10px; bottom:0px; display:block; font-size:14px; line-height:30px; color:#999; font-style:normal; font-weight:normal}
+
+.rzs_info ul{width:95%; margin:auto; overflow:hidden;}
+.rzs_info ul li{ width:33.3%; float:left; height:40px; text-align:center}
+.rzs_info ul li span{float:left; font-size:13px; line-height:40px; color:#666;}
+.rzs_info ul li strong{float:left; font-size:13px; line-height:40px; color:#DD2726; font-weight:normal; text-align:left}
+.rzs_info ul li em{ float:left; width:13px; height:13px;font-size:10px; line-height:15px; color:#fff;border-radius: 3px; background:#DD2726; text-align:center; margin-left:1px; margin-top:12px; }
+
+.rzs_img{ width:100%; overflow:hidden}
+.rzs_img img{ width:100% !important; height:auto !important}
+.s_dianpu{ width:100%; margin-top:15px; overflow:hidden;}
+.s_dianpu span{ display:block; float:left; width:50%; height:50px;}
+.s_dianpu span a{ display:block; width:90%;height:40px; border:1px solid #a0a0a0;border-radius:3px; font-size:14px; line-height:40px; text-align:center; text-indent:20px;line-height:40px; position:relative; color:#333;}
+
+.bg1{ display:block; width:25px; height:25px; position:absolute; background:url(../images/rzs.png) no-repeat;background-size: auto 50px;  background-position:0 0; margin-top:5px; left:20%;}
+.bg2{ display:block; width:25px; height:25px; position:absolute; background:url(../images/rzs.png) no-repeat;background-size: auto 50px;  background-position:0 -25px; margin-top:6px;left:20%;}
+
+.index_taocan { width:98%; overflow:hidden; border-top:1px solid #eeeeee; margin:auto}
+.index_taocan h2 {font-size: 14px; font-family: "微软雅黑"; font-weight: normal; text-indent: 10px;color:#535353; }
+
+.index_taocan dl{ width:25%;float:left; overflow:hidden;}
+.index_taocan dl dt{ width:100%; overflow:hidden; position:relative;}
+.index_taocan dl dt em{ display:block; width:90%; height:20px; position:absolute; margin-left:5%; bottom:0px;background-color:rgba(0,0,0,0.5); font-size:12px; line-height:20px; text-align:center; color:#FFF}
+.index_taocan dl dt img{ display:block; width:90%; margin:auto}
+.index_taocan dl dd{ width:90%; height:20px;margin-top:8px; margin-left:5%;line-height:20px; font-size:12px; color:#666; }

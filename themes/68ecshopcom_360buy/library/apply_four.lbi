@@ -1,0 +1,420 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="headerLayout">
+    <div class="headerCon ">
+      <h1 id="mallLogo" style="padding-top:10px;"> <a href="index.php" class="header-logo"><img src="../images/header/logo.jpg" /></a></h1>
+      <div class="header-extra">
+       	 <div class="panel-heading">
+            <div class="more">
+                <div class="progress">
+                    <div class="progress-wrap">
+                        <div class="progress-item passed">
+                            <div class="number">1</div>
+                            <div class="progress-desc">入驻须知</div>
+                        </div>
+                    </div>
+                    <div class="progress-wrap">
+                        <div class="progress-item passed">
+                            <div class="number">2</div>
+                            <div class="progress-desc">公司信息认证</div>
+                        </div>
+                    </div>
+                    <div class="progress-wrap">
+                        <div class="progress-item passed">
+                            <div class="number">3</div>
+                            <div class="progress-desc">店铺信息认证</div>
+                        </div>
+                    </div>
+                    <div class="progress-wrap">
+                        <div class="progress-item passed">
+                            <div class="number"><i class="tick"></i></div>
+                            <div class="progress-desc">审核通过</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+      </div>
+    </div>
+  </div>
+<div class="store-joinin-apply">
+  <div class="main">
+	<div class="explain1"><i></i>您好，审核通过，您可以通过<a href="{$mydomain}supplier/" target="_blank" style="color:#1381c0">供货商管理中心</a>来登录供货商后台！</div>
+    <div class="joinin-pay"> {if $supplier.guimo}
+<table border="0" cellpadding="0" cellspacing="0" class="store-joinin">
+    <thead>
+      <tr>
+        <th colspan="6">公司及联系人信息</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th class="w150">公司名称：</th>
+        <td colspan="5">{$supplier.company_name}</td>
+      </tr>
+      <tr>
+        <th class="w150">公司所在地：</th>
+        <td colspan="5">
+		<select name="country" id="selCountries_0" onchange="region.changed(this, 1, 'selProvinces_0')" disabled>
+		  <option value="0">{$lang.please_select}{$name_of_region[0]}</option>
+		  <!-- {foreach from=$country_list item=country} -->
+		  <option value="{$country.region_id}" {if $supplier_country eq $country.region_id}selected{/if}>{$country.region_name}</option>
+		  <!-- {/foreach} -->
+		</select>
+		<select name="province" id="selProvinces_0" onchange="region.changed(this, 2, 'selCities_0')" disabled>
+		  <option value="0">{$lang.please_select}{$name_of_region[1]}</option>
+		  <!-- {foreach from=$province_list item=province} -->
+		  <option value="{$province.region_id}" {if $supplier.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
+		  <!-- {/foreach} -->
+		</select>
+		<select name="city" id="selCities_0" onchange="region.changed(this, 3, 'selDistricts_0')" disabled>
+		  <option value="0">{$lang.please_select}{$name_of_region[2]}</option>
+		  <!-- {foreach from=$city_list item=city} -->
+		  <option value="{$city.region_id}" {if $supplier.city eq $city.region_id}selected{/if}>{$city.region_name}</option>
+		  <!-- {/foreach} -->
+		</select>
+		<select name="district" id="selDistricts_0" {if !$district_list}style="display:none"{/if} disabled>
+		  <option value="0">{$lang.please_select}{$name_of_region[3]}</option>
+		  <!-- {foreach from=$district_list item=district} -->
+		  <option value="{$district.region_id}" {if $supplier.district eq $district.region_id}selected{/if}>{$district.region_name}</option>
+		  <!-- {/foreach} -->
+		</select>
+		</td>
+      </tr>
+      <tr>
+        <th class="w150">公司详细地址：</th>
+        <td colspan="5">{$supplier.address}</td>
+      </tr>
+      <tr>
+        <th class="w150">公司电话：</th>
+        <td>{$supplier.tel}</td>
+        <th class="w150">公司规模：</th>
+        <td>{$supplier.guimo}</td>
+        <th class="w150">公司类型：</th>
+        <td>{$supplier.company_type}</td>
+      </tr>
+      <tr>
+        <th class="w150">联系人姓名：</th>
+        <td>{$supplier.contacts_name}</td>
+        <th class="w150">联系人电话：</th>
+        <td>{$supplier.contacts_phone}</td>
+        <th class="w150">电子邮箱：</th>
+        <td>{$supplier.email}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <table border="0" cellpadding="0" cellspacing="0" class="store-joinin">
+    <thead>
+      <tr>
+        <th colspan="2">营业执照信息（副本）</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th class="w150">营业执照号：</th>
+        <td>{$supplier.business_licence_number}</td>
+	</tr>
+	<tr></tr>
+      <tr>
+        <th class="w150">法定经营范围：</th>
+        <td colspan="20">{$supplier.business_sphere}</td>
+      </tr>
+      <tr>
+        <th class="w150">营业执照号<br>
+	电子版：</th>
+        <td colspan="20">{if $supplier.zhizhao}<img src="../data/supplier/{$supplier.zhizhao}" width=50 height=50>&nbsp;&nbsp;
+	<input type="button" onclick="window.open('../data/supplier/{$supplier.zhizhao}');" value="查看原图">
+	{/if}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table border="0" cellpadding="0" cellspacing="0" class="store-joinin">
+    <thead>
+      <tr>
+        <th colspan="2">组织机构代码证</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th class="w150">组织机构代码：</th>
+        <td>{$supplier.organization_code}</td>
+      </tr>
+      <tr>
+        <th class="w150">组织机构代码证<br>
+	电子版：</th>
+        <td>{if $supplier.organization_code_electronic}<img src="../data/supplier/{$supplier.organization_code_electronic}" width=50 height=50>&nbsp;&nbsp;
+	<input type="button" onclick="window.open('../data/supplier/{$supplier.organization_code_electronic}');" value="查看原图">
+	{/if}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table border="0" cellpadding="0" cellspacing="0" class="store-joinin">
+    <thead>
+      <tr>
+        <th colspan="2">一般纳税人证明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th class="w150">一般纳税人证明：</th>
+        <td>{if $supplier.general_taxpayer}<img src="../data/supplier/{$supplier.general_taxpayer}" width=50 height=50>&nbsp;&nbsp;
+	<input type="button" onclick="window.open('../data/supplier/{$supplier.general_taxpayer}');" value="查看原图">
+	{/if}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table border="0" cellpadding="0" cellspacing="0" class="store-joinin">
+    <thead>
+      <tr>
+        <th colspan="2">开户银行信息</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th class="w150">银行开户名：</th>
+        <td>{$supplier.bank_account_name}</td>
+      </tr>
+      <tr>
+        <th class="w150">公司银行账号：</th>
+        <td>{$supplier.bank_account_number}</td>
+	</tr>
+      <tr>
+        <th class="w150">开户银行支行名称：</th>
+        <td>{$supplier.bank_name}</td>
+      </tr>
+      <tr>
+        <th class="w150">支行联行号：</th>
+        <td>{$supplier.bank_code}</td>
+      </tr>
+      <tr>
+        <th class="w150">开户银行许可证<br>
+	电子版：</th>
+        <td colspan="20">{if $supplier.bank_licence_electronic}<img src="../data/supplier/{$supplier.bank_licence_electronic}" width=50 height=50>&nbsp;&nbsp;
+	<input type="button" onclick="window.open('../data/supplier/{$supplier.bank_licence_electronic}');" value="查看原图">
+	{/if}</td>
+      </tr>
+    </tbody>
+    
+  </table>
+
+  <table border="0" cellpadding="0" cellspacing="0" class="store-joinin">
+    <thead>
+      <tr>
+        <th colspan="2">结算账号信息</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th class="w150">银行开户名：</th>
+        <td>{$supplier.settlement_bank_account_name}</td>
+      </tr>
+      <tr>
+        <th class="w150">公司银行账号：</th>
+        <td>{$supplier.settlement_bank_account_number}</td>
+      </tr>
+      <tr>
+        <th class="w150">开户银行支行名称：</th>
+        <td>{$supplier.settlement_bank_name}</td>
+      </tr>
+      <tr>
+        <th class="w150">支行联行号：</th>
+        <td>{$supplier.settlement_bank_code}</td>
+      </tr>
+    </tbody>
+    
+  </table>
+
+  <table border="0" cellpadding="0" cellspacing="0" class="store-joinin">
+    <thead>
+      <tr>
+        <th colspan="2">税务登记证</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th class="w150">税务登记证号：</th>
+        <td>{$supplier.tax_registration_certificate}</td>
+      </tr>
+      <tr>
+        <th class="w150">纳税人识别号：</th>
+        <td>{$supplier.taxpayer_id}</td>
+      </tr>
+      <tr>
+        <th class="w150">税务登记证号<br>
+	电子版：</th>
+        <td>{if $supplier.tax_registration_certificate_electronic}<img src="../data/supplier/{$supplier.tax_registration_certificate_electronic}" width=50 height=50>&nbsp;&nbsp;
+	<input type="button" onclick="window.open('../data/supplier/{$supplier.tax_registration_certificate_electronic}');" value="查看原图">
+	{/if}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <table border="0" cellpadding="0" cellspacing="0" class="store-joinin">
+      <thead>
+        <tr>
+          <th colspan="2">店铺经营信息</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th class="w150">店铺名称：</th>
+          <td>{$supplier.supplier_name}</td>
+        </tr>
+        <tr>
+          <th class="w150">店铺等级：</th>
+          <td>{$supplier.rank_name}</td>
+          </tr>
+          <tr>
+          <th class="w150">店铺分类：</th>
+          <td>{$supplier.type_name}</td>
+        </tr>
+          <tr>
+            <th class="w150">审核意见：</th>
+            <td colspan="2">{$supplier.supplier_remark}</td>
+        </tr>
+        <tr>
+            <th class="w150">审核状态：</td>
+            <td  colspan="2"><select name="status" size=1 disabled>
+                <option value="0" {if $supplier.status eq '0'}selected{/if}>未审核</option>
+                <option value="1" {if $supplier.status eq '1'}selected{/if}>审核通过</option>
+                <option value="-1" {if $supplier.status eq '-1'}selected{/if}>审核不通过</option>
+              </select></td>
+          </tr>
+        </tbody>
+      </table>
+      {else}
+      <table border="0" cellpadding="0" cellspacing="0" class="store-joinin">
+        <thead>
+          <tr>
+            <th colspan="6">入驻商个人信息</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="w150">店铺名称：</th>
+            <td colspan="5">{$supplier.company_name}</td>
+          </tr>
+          <tr>
+            <th class="w150">联系地址：</th>
+            <td colspan="5"><select name="country" id="selCountries_0" onchange="region.changed(this, 1, 'selProvinces_0')" disabled>
+                <option value="0">{$lang.please_select}{$name_of_region[0]}</option>
+                <!-- {foreach from=$country_list item=country} -->
+                <option value="{$country.region_id}" {if $supplier_country eq $country.region_id}selected{/if}>{$country.region_name}</option>
+                <!-- {/foreach} -->
+              </select>
+              <select name="province" id="selProvinces_0" onchange="region.changed(this, 2, 'selCities_0')" disabled>
+                <option value="0">{$lang.please_select}{$name_of_region[1]}</option>
+                <!-- {foreach from=$province_list item=province} -->
+                <option value="{$province.region_id}" {if $supplier.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
+                <!-- {/foreach} -->
+              </select>
+              <select name="city" id="selCities_0" onchange="region.changed(this, 3, 'selDistricts_0')" disabled>
+                <option value="0">{$lang.please_select}{$name_of_region[2]}</option>
+                <!-- {foreach from=$city_list item=city} -->
+                <option value="{$city.region_id}" {if $supplier.city eq $city.region_id}selected{/if}>{$city.region_name}</option>
+                <!-- {/foreach} -->
+              </select>
+              <select name="district" id="selDistricts_0" {if !$district_list}style="display:none"{/if} disabled>
+                <option value="0">{$lang.please_select}{$name_of_region[3]}</option>
+                <!-- {foreach from=$district_list item=district} -->
+                <option value="{$district.region_id}" {if $supplier.district eq $district.region_id}selected{/if}>{$district.region_name}</option>
+                <!-- {/foreach} -->
+              </select></td>
+          </tr>
+          <tr>
+            <th class="w150">详细地址：</th>
+            <td colspan="5">{$supplier.address}</td>
+          </tr>
+          <tr>
+            <th class="w150">姓名：</th>
+            <td>{$supplier.contacts_name}</td>
+            <th class="w150">联系人电话：</th>
+            <td>{$supplier.contacts_phone}</td>
+            <th class="w150">电子邮箱：</th>
+            <td>{$supplier.email}</td>
+          </tr>
+          <tr>
+            <th class="w150">身份证号码：</th>
+            <td colspan="5">{$supplier.id_card_no}</td>
+          </tr>
+          <tr>
+            <th class="w150">手持身份证照片：</th>
+            <td>{if $supplier.handheld_idcard}<img src="../data/supplier/{$supplier.handheld_idcard}" width=50 height=50>&nbsp;&nbsp;
+              <input type="button" onclick="window.open('../data/supplier/{$supplier.handheld_idcard}');" value="查看原图">
+              {/if}</td>
+            <th class="w150">身份证正面：</th>
+            <td>{if $supplier.idcard_front}<img src="../data/supplier/{$supplier.idcard_front}" width=50 height=50>&nbsp;&nbsp;
+              <input type="button" onclick="window.open('../data/supplier/{$supplier.idcard_front}');" value="查看原图">
+              {/if}</td>
+            <th class="w150">身份证反面：</th>
+            <td>{if $supplier.idcard_reverse}<img src="../data/supplier/{$supplier.idcard_reverse}" width=50 height=50>&nbsp;&nbsp;
+              <input type="button" onclick="window.open('../data/supplier/{$supplier.idcard_reverse}');" value="查看原图">
+              {/if}</td>
+        </tbody>
+      </table>
+      <table border="0" cellpadding="0" cellspacing="0" class="store-joinin">
+        <thead>
+          <tr>
+            <th colspan="2">开户银行信息</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="w150">银行开户名：</th>
+            <td>{$supplier.bank_account_name}</td>
+          </tr>
+          <tr>
+            <th class="w150">个人银行账号：</th>
+            <td>{$supplier.bank_account_number}</td>
+          </tr>
+          <tr>
+            <th class="w150">开户银行支行名称：</th>
+            <td>{$supplier.bank_name}</td>
+          </tr>
+          <tr>
+            <th class="w150">支行联行号：</th>
+            <td>{$supplier.bank_code}</td>
+          </tr>
+        </tbody>
+      </table>
+      <table border="0" cellpadding="0" cellspacing="0" class="store-joinin">
+        <thead>
+          <tr>
+            <th colspan="2">店铺经营信息</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="w150">供货商名称：</th>
+            <td>{$supplier.supplier_name}</td>
+          </tr>
+          <tr>
+            <th class="w150">店铺等级：</th>
+            <td>{$supplier.rank_name} </td>
+          </tr>
+          <th class="w150">店铺分类：</th>
+          <td>{$supplier.type_name}</td>
+        </tr>
+        <tr>
+          <th class="w150">审核意见：</th>
+          <td colspan="2">{$supplier.supplier_remark}</td>
+        </tr>
+	<tr>
+	<th class="w150">审核状态：</th>
+	<td  colspan="2"><select name="status" size=1 disabled>
+	<option value="0" {if $supplier.status eq '0'}selected{/if}>未审核</option>
+	<option value="1" {if $supplier.status eq '1'}selected{/if}>审核通过</option>
+	<option value="-1" {if $supplier.status eq '-1'}selected{/if}>审核不通过</option>
+	</select></td>
+	</tr>
+      </tbody>
+    </table>
+
+      {/if} </div>
+  </div>
+</div>

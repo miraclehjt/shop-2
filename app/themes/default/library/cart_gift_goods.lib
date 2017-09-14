@@ -1,0 +1,48 @@
+<div class="uh bg-color-w f-color-red ub" id="tab_container">
+  <div class="uf t-bla ub ubb border-hui">
+  <!-- {foreach from=$favourable_list item=favourable name=favour key=key} -->
+    <div class="ulev-1 ub-f1 _tab {if $smarty.foreach.favour.first}selected{/if}" id='tab_{$key}' tab_key='{$key}' act_id="{$favourable.act_id}">赠品 {$smarty.foreach.favour.iteration}
+    </div>
+	<!-- {/foreach} -->
+  </div>
+</div>
+<!-- {foreach from=$favourable_list item=favourable name=gift_tab key=key} -->
+<div class="{if $smarty.foreach.gift_tab.index gt 0}uhide{/if} _tab_content ub-f1" id="tab_content_{$key}" act_id="{$favourable.act_id}">
+  <div class="uinn-a1 ubb border-faxian">
+  <div class="m-btm4 ulev-1 f-color-6">{$favourable.act_name}</div>
+    <div class="m-btm4 ulev-1 f-color-6">{$favourable.act_type_desc}</div>
+    <div class="gm-btm4 ulev-1 f-color-6">价格满足<span class="f-color-red">{if $favourable.formated_max_amount=='0.00'}	{$favourable.formated_min_amount}以上{else}{$favourable.formated_min_amount} ~ {$favourable.formated_max_amount}{/if}</span>才可以享受赠品哦！</div>
+    <div class="m-btm4 ulev-1 f-color-6">活动时间：{$favourable.start_time} ~ {$favourable.end_time}</div>
+    <div class="m-btm4 ulev-1 f-color-6">参加活动商品：<span class="f-color-red">{$lang.far_ext[$favourable.act_range]}  {$favourable.act_range_desc}</span></div>
+  </div>
+  <!-- {if $favourable.act_type eq 0} -->
+  <!-- {foreach from=$favourable.gift item=gift} -->
+  <div class="uinn-a1 gift" gift_id='{$gift.id}'>
+    <div class="ubb ub border-faxian t-bla ub-ac lis">
+      <div class="ub ub ub-ver">
+        <div class="">
+          <div class="lis-icon ub-img"><img src="{$url}{$gift.goods_thumb}" style="width:4.6em; height:4.6em;"></div>
+          <div class="ulev-1 bc-text umar-t"></div>
+        </div>
+      </div>
+      <div class="ub-f1 ub ub-pj ub-ac">
+        <div class="ub-f1 ub ub-ver">
+          <div class="bc-text ub ub-ver ulev-1 ut-m line1 gift-m3">{$gift.name}</div>
+          <div class="ulev-1 sc-text1 uinn3 gift-m3">
+            <div class="ub umar-t">
+              <div class="ulev-1 ub ub-f1 f-color-6">数量：
+                <input value="1" type="text" class="gift-text uba border-hui bg-color-w ulev-1" disabled=disabled />
+              </div>
+              <div class="ulev-1 ub ub-f1 ub-ac ub-pe f-color-red">[{$gift.formated_price}]</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="_checkbox checkbox_normal" name="gift_{$key}" value="{$gift.id}" id="gift_{$gift.id}"></div>
+    </div>
+  </div>
+  <!-- {/foreach} -->
+  <!-- {/if} -->
+</div>
+<div id="confirm_button" class="cancel">取消</div>
+<!-- {/foreach} -->

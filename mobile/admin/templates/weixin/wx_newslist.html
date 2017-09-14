@@ -1,0 +1,33 @@
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+
+<div class="list-div" id="listDiv">
+<table width="100%" cellspacing="1" cellpadding="2" id="list-table">
+  <tr>
+    <th>ID</th>
+    <th>内容</th>
+	<th>状态</th>
+	<th>发送时间</th>
+	<th>操作</th>
+  </tr>
+	{foreach item=item from=$corn}
+  <tr>
+	<td>{$item.id}</td>
+	<td>{$item.title}</td>
+	<td>{if $item.issend eq 0}等待发送{elseif $item.issend eq 2}发送成功{else}发送失败{/if}</td>
+	<td>{$item.sendymd}</td>
+	<td>
+		{if $item.issend neq 2}
+		<a href="weixin.php?act=news&id={$item.id}">修改</a>|
+		<a href="weixin.php?act=view&id={$item.id}">预览</a>
+		<a href="../weixin/auto_do.php?type=1" target="_blank">发送</a>|
+		{/if}
+        <a href="weixin.php?act=news&id={$item.id}&tag=1">删除</a>
+	</td>
+  </tr>
+	{foreachelse}
+  <tr><td class="no-records" colspan="7">{$lang.no_records}</td></tr>
+  {/foreach}
+  </table>
+</div>
+{include file="pagefooter.htm"}

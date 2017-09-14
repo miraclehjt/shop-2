@@ -1,0 +1,11 @@
+<div class="uinn-eo5 ub ub-ac ubb border-faxian _fold expand" suppid="{$key}" fold_key="shipping_box_{$key}" value_key='shipping_{$key}'>
+  <div class="ub-f1 f-color-zi ulev-9 p-all5">配送方式</div>
+  <div class='ub-pe xuanzhong uhide selected_indicator ulev-1' id='selected_shipping_{$key}'></div>
+  <div class="ub-pe sc-text ulev-1-4 umar-r fa fold_indicator"></div>
+</div>
+<!-- {if $goodsinfo.shipping_html} -->
+<div id='shipping_box_{$key}' class="p-l-r6 f-color-6 ubb border-hui">
+  {$goodsinfo.shipping_html}
+  </div>
+  <!-- {/if} -->
+<div id='select_pickup_point_{$key}' class='uhide select_pickup_point p-all5 f-color-6 ulev-1 tx-r'></div>

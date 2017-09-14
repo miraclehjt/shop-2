@@ -1,0 +1,40 @@
+<!-- $Id: shop_config.htm 16865 2009-12-10 06:05:32Z sxc_shop $ -->
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js"}
+<form method='POST' action='app_manage.php' enctype="multipart/form-data">
+<div class='main-div' id='main_div'>
+<p>最多选择6张图片，图片格式限制为png、jpg、jpeg、gif，大小限制为300KB，点击确定会<span style="color:red;">覆盖当前设置！</span></p>
+<p>
+当前图片：
+{if $guide_picture}
+{foreach from=$guide_picture key=key item=item}
+<img id="img_{$key}" src="{$item}?{$rand}" style="width:300px;" />
+{/foreach}
+{else}
+无
+{/if}
+</p>
+<p>
+<input id="file_{$key}" type='file' name="guide_picture[]" value="选择图片"/>
+<input id="file_{$key}" type='file' name="guide_picture[]" value="选择图片"/>
+<input id="file_{$key}" type='file' name="guide_picture[]" value="选择图片"/>
+<input id="file_{$key}" type='file' name="guide_picture[]" value="选择图片"/>
+<input id="file_{$key}" type='file' name="guide_picture[]" value="选择图片"/>
+<input id="file_{$key}" type='file' name="guide_picture[]" value="选择图片"/>
+</p>
+<p id='submit_area'>
+<input type='hidden' name='act' value='save_guide_picture'/> 
+<input type='submit' id='submit_button' class='button' value='确定'/>
+</p>
+</div>
+</form>
+{literal}
+<script language="JavaScript">
+onload = function()
+{
+    // 开始检查订单
+    startCheckOrder();
+}
+</script>
+{/literal}
+{include file="pagefooter.htm"}

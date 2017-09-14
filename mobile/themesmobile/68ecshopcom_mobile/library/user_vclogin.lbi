@@ -1,0 +1,55 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--#储值卡 start-->
+<!--{if $action eq "vc_login"} -->    
+	<h2 class="vc_title">当前账户余额：<strong>{$info.surplus}</strong></h2>
+	<form action="" method="post" name="valueForm" id="valueForm" onSubmit="return valueLogin()">
+			<div class="Top">
+            <dl>
+             <dt>账号：</dt>
+            <dd><input type="text" name="card" value="{$smarty.session.user_name}" readonly  class="inputBg" placeholder="充值账号" style="background:#eeeeee;width:90%"></dd>
+            </dl>
+            <dl>
+            <dt>卡号：</dt>
+            <dd><input type="text" name="vcard" class="inputBg"  placeholder="请输入储值卡卡号" style="width:90%"></dd>
+            </dl>
+            <dl>
+            <dt>密码：</dt>
+            <dd><input type="password" name="pwd" class="inputBg" placeholder="请输入密码" style="width:90%"></dd>
+            </dl>
+             <p>* 默认为登录用户，不可编辑</p>
+            <div style=" height:10px;"></div>
+			<input type="hidden" name="act" value="vc_login_act">
+			<input type="submit" name="submit"  class="btn_big1" value="充值"/>
+            </div>
+
+	</form>
+	<script type="text/javascript">
+	function valueLogin()
+	{
+		var frm = document.forms['valueForm'];
+		var vcard=frm.elements['vcard'].value;
+		var pwd = frm.elements['pwd'].value;
+		var msg = '';
+
+		if (vcard.length == 0)
+		{
+			msg +=  '卡号不能为空\n';
+		}
+		if (pwd.length == 0)
+		{
+			msg +=  '密码不能为空\n';
+		}
+
+		if (msg.length > 0)
+		{
+			alert(msg);
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	</script>
+
+<!-- {/if} -->

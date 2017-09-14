@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<title>会员</title>
+<!--v_shop.css-->
+<link href="themesmobile/68ecshopcom_mobile/css/v_user.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.js"></script>
+</head>
+<body>
+<!--header-->
+<div class="dianpu">
+<dl>
+<dt><a href="javascript:history.back(-1)"></a></dt>
+<dd>我的会员</dd>
+</dl>
+</div>
+<!--header-->
+<div class="head red">
+<dl>
+<dt>{if $user_info.headimgurl}<img src="{$user_info.headimgurl}" alt="头像"/>{else}<img src="themesmobile/68ecshopcom_mobile/images/v-shop/tx.jpg" alt="头像"/>{/if}</dt>
+<dd>
+<p>{$user_info.nickname}</p>
+<span>加入时间：{$user_info.createymd}</span>
+</dd>
+</dl>
+</div>
+
+<!--main-->               
+<div class="ccontainer">  
+<div class="clist">
+<!--一级会员-->
+    <ul>
+      <li class="level1">     
+         <div class="crow_icon"> <img alt="" src="themesmobile/68ecshopcom_mobile/images/v-shop/h1.png"> </div>      
+          <div class="crow_title">一级会员<em>（{$one_level_user_count}）</em></div>
+          <div class="crow_arrow"></div>
+      </li>
+   
+      <div class="clist_sub">
+      {if $one_user_list}
+      {foreach from=$one_user_list item=list name=one_user_list}     
+        <dl class="Member_more" <!--{if $smarty.foreach.one_user_list.last}--> style="border-bottom:0px solid #CCC;"<!--{/if}-->>
+        <dt><a href="v_user_huiyuan_list.php?user_id={$list.user_id}"><img src="{if $list.headimgurl}{$list.headimgurl}{else}themesmobile/68ecshopcom_mobile/images/v-shop/tx.jpg{/if}"/></a></dt>
+        <dd>
+        <a href="v_user_huiyuan_list.php?user_id={$list.user_id}">
+        <p>{$list.call_username}</p>
+        <p>订单数量：{$list.order_count}</p>
+        <p>分成金额：<strong>￥{$list.split_money}元</strong></p>
+        </a>
+        </dd>
+        <p><img src="themesmobile/68ecshopcom_mobile/images/v-shop/right.png" /></p>
+        </dl>
+	  {/foreach}
+{else}
+         <div class="font_prompt">您还没有会员哦！</div>
+         {/if}
+      </div>
+     
+    </ul>
+<!--二级会员-->
+    <ul>
+      <li class="level1">     
+         <div class="crow_icon"> <img alt="" src="themesmobile/68ecshopcom_mobile/images/v-shop/h2.png"> </div>      
+          <div class="crow_title">二级会员<em>（{$two_level_user_count}）</em></div>
+          <div class="crow_arrow"></div>
+      </li>
+   
+      <div class="clist_sub">
+      {if $two_user_list}
+      {foreach from=$two_user_list item=list name=two_user_list}
+		<dl class="Member_more" <!--{if $smarty.foreach.two_user_list.last}--> style="border-bottom:0px solid #CCC;"<!--{/if}-->>
+<dt><a href="v_user_huiyuan_list.php?user_id={$list.user_id}"><img src="{if $list.headimgurl}{$list.headimgurl}{else}themesmobile/68ecshopcom_mobile/images/v-shop/tx.jpg{/if}"/></a></dt>
+<dd>
+<a href="v_user_huiyuan_list.php?user_id={$list.user_id}">
+<p>{$list.call_username}</p>
+<p>订单数量：{$list.order_count}</p>
+<p>分成金额：<strong>￥{$list.split_money}元</strong></p>
+</a>
+</dd>
+<p><img src="themesmobile/68ecshopcom_mobile/images/v-shop/right.png" /></p>
+</dl>
+	  {/foreach}
+      {else}
+      <div class="font_prompt">您还没有会员哦！</div>
+         {/if}
+      </div>
+     
+    </ul>
+<!--三级会员-->
+   <ul>
+      <li class="level1">     
+         <div class="crow_icon"> <img alt="" src="themesmobile/68ecshopcom_mobile/images/v-shop/h3.png"> </div>      
+          <div class="crow_title">三级会员<em>（{$three_level_user_count}）</em></div>
+          <div class="crow_arrow"></div>
+      </li>
+   
+      <div class="clist_sub">
+       {if $three_user_list}
+		{foreach from=$three_user_list item=list name=three_user_list}
+		<dl class="Member_more" <!--{if $smarty.foreach.three_user_list.last}--> style="border-bottom:0px solid #CCC;"<!--{/if}-->>
+        <dt><a href="v_user_huiyuan_list.php?user_id={$list.user_id}"><img src="{if $list.headimgurl}{$list.headimgurl}{else}themesmobile/68ecshopcom_mobile/images/v-shop/tx.jpg{/if}"/></a></dt>
+        <dd>
+        <a href="v_user_huiyuan_list.php?user_id={$list.user_id}">
+        <p>{$list.call_username}</p>
+        <p>订单数量：{$list.order_count}</p>
+        <p>分成金额：<strong>￥{$list.split_money}元</strong></p>
+        </a>
+        </dd>
+        <p><img src="themesmobile/68ecshopcom_mobile/images/v-shop/right.png" /></p>
+        </dl>
+	  {/foreach}
+       {else}
+      <div class="font_prompt">您还没有会员哦！</div>
+         {/if}
+      </div>
+     
+    </ul> 
+  </div>
+  </div>
+  <script type="text/javascript">
+	$(function(){
+		 $('.level1').click(function(){
+			$(this).next().slideToggle("slow");
+			 $(this).toggleClass("crow_arrow_shang");
+		});
+	})
+</script>
+<!-----底部悬浮菜单---->
+<!-- #BeginLibraryItem "/library/footer_nav1.lbi" --><!-- #EndLibraryItem --> 
+</body>
+</html>

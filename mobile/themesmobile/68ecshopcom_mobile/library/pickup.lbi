@@ -1,0 +1,43 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="f_content" >
+<div class="choose-inner">
+
+	<div class="gift-table">
+	
+        <div class="miblebox miblebox-cnt mible-suit">
+         	{foreach from=$pinfo item=value key=key}   
+      <ul class="list-suit" id="txt{$key}" style="display:{if $key == $district}{else}none{/if}">
+             
+        
+
+
+		{foreach from=$value.info item=info key=k}
+        <li class="list-suit-item" style="width:100%; height:100px;" >
+                  <input type="radio" value="{$gift.id}" name="gift[]" {if $info.id == $selectid}checked{/if}  class="c_checkbox" onclick="select_point({$info.id})"/>
+							<div class="p-info1">
+								<h5 class="p-name1">{$info.shop_name}</h5>
+                                <div class="p-price1">地址：{$info.address}</div>
+								<div class="p-price1">联系人：{$info.contact}</div>
+                                <div class="p-price1" >电话：{$info.phone}</div>
+							</div>
+
+        </li>
+		{/foreach}
+ </ul>
+        	{/foreach}
+         
+
+	<input type="hidden" id='s_pid' value='{$selectid}'>
+                    <div style="text-align:center;">       
+
+	<input type="button" name="button" class="add_gift" style=" margin-top:20px;" value="保存自提点" onclick="save_point({$suppid})" />
+	
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+
+

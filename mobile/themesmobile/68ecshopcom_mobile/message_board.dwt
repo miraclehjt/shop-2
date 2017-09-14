@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>{$page_title}</title>
+	<meta name="Keywords" content="{$keywords}" />
+	<meta name="Description" content="{$description}" />
+    <script src="static/js/modernizr.js"></script>
+<link rel="shortcut icon" href="static/img/favicon.png">
+	<link rel="apple-touch-icon-precomposed" href="static/img/website_icon.png">
+	<link rel="stylesheet" href="static/css/style.css">
+
+
+{insert_scripts files='common.js,utils.js'}
+
+	</head>
+    <body>
+<div id="box_root" class="z3g-pageProductDetail">
+	<!-- 主题内容区 -->
+		<div id="box_main" >
+<div style="min-height: 493px;" id="box_content">
+<div class="z3g-headerSmall">
+			<span class="back active">
+				<em class="icon" onclick="javascript:window.location.href='javascript:history.back(-1)'">返回</em>
+			</span>
+			<span class="title">留言板</span>	
+			<span class="more active">
+				<em class="icon" onclick="javascript:window.location.href='index.php'"></em>
+			</span>
+		</div>
+
+	
+
+				{include file='library/message_list.lbi'}
+	
+
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+  <!-- #BeginLibraryItem "/library/footer_nav.lbi" --><!-- #EndLibraryItem -->
+<script type="text/javascript" src="static/js/plugins.js"></script>
+<script type="text/javascript" src="static/js/lang.zh_cn.js"></script>
+<script type="text/javascript" src="static/js/global.js"></script>
+<script type="text/javascript" src="static/js/init.js"></script>
+
+</body>
+
+</html>

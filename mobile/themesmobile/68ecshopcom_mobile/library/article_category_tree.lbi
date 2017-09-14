@@ -1,0 +1,37 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<div class="brand-nav shadow">
+			<a id="bzzx1" onClick="setHelpTab('bzzx',1,2)" class="brand-nav-a brand-nav-a-on">网店信息</a>
+			<a id="bzzx2" onClick="setHelpTab('bzzx',2,2)" class="brand-nav-a">帮助中心</a>
+		</div> 
+
+        <div id="user_bzzx_1"> 
+ <div class="brand-con radius">
+            <div class="hot-list">文章列表 </div>
+{foreach from=$artciles_list item=article}
+				<div class="hot-list">
+							<a href="{$article.url}" title="{$article.title|escape:html}">{$article.short_title}</a>
+						<span>{$article.author} {$article.add_time}</span>
+					</div>
+		{/foreach}
+			 </div>
+        </div>
+        
+        
+        <div id="user_bzzx_2" style="display:none"> 
+        {foreach from=$helps item=help_cat name=helps}
+			<div class="brand-con radius">
+				<div class="hot-list">
+                {$help_cat.cat_name}
+                </div>
+                {foreach from=$help_cat.article item=item name=help_list}
+                <div class="hot-list">
+                <a href="{$item.url}">{$item.short_title}</a>
+                </div>
+                {/foreach}
+             </div>
+             {/foreach}
+			
+        </div>
+
+

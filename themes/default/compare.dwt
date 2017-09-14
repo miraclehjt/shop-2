@@ -1,0 +1,379 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable --><!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+{* 包含脚本文件 *}
+{insert_scripts files='transport.js,common.js,utils.js'}
+<script language="javascript">
+function remove(id, url)
+{
+  if (document.getCookie("compareItems") != null)
+  {
+    var obj = document.getCookie("compareItems").parseJSON();
+    delete obj[id];
+    var date = new Date();
+    date.setTime(date.getTime() + 99999999);
+    document.setCookie("compareItems", obj.toJSONString());
+  }
+}
+
+var compare_no_goods = "{$lang.compare_no_goods}";
+var btn_buy = "{$lang.btn_buy}";
+var is_cancel = "{$lang.is_cancel}";
+var select_spe = "{$lang.select_spe}";
+</script>
+</head>
+<body>
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<!--当前位置 start-->
+<div class="block box">
+ <div id="ur_here">
+  <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+ </div>
+</div>
+<!--当前位置 end-->
+<div class="blank"></div>
+
+<div class="block compare_wrap" id="compare_wrap">
+<div class="block compare_wrap" id="topper" style="display:none;position:fixed;top:0;z-index:99;">
+    <h5><span>{$lang.goods_compare}</span></h5>
+    <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd" style="float:left;">
+      <tr>
+          <th bgcolor="#ffffff">商品图片</th>
+          <!-- {foreach name="goods_list" from=$goods_list item=goods} -->
+          <td align="center" bgcolor="#ffffff">
+          {if $goods} 
+          <div style="position:relative;">
+          <a href="{$goods.url}"><img src="{$goods.goods_thumb}" alt="{$goods.goods_name}" class="ent_img" /></a>
+          <div><a href="{$goods.url}">{$goods.goods_name}</a></div>
+          <a class="delBtn" data-goods="{$goods.goods_id}" data-url="compare.php?{$goods.ids}">删除</a>
+          </div>
+          {else}
+          <div class="no-contrast">暂无对比项</div>
+          <div class="add-contrast"><a rel="nofollow" href="{$back_url}">添加</a></div>
+          {/if}
+          </td>
+          <!-- {/foreach} -->
+      </tr>
+      <tr>
+          <th bgcolor="#ffffff">{$lang.shop_price}</th>
+          <!-- {foreach name="goods_list" from=$goods_list item=goods} -->
+          <td bgcolor="#ffffff" class="price"><strong style="color:#E4393C;">{$goods.rank_price}</strong></td>
+          <!-- {/foreach} -->
+      </tr>
+    </table>
+<div style="clear:both;"></div>
+</div>
+  <h5><span>{$lang.goods_compare}</span></h5>
+  <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd" style="float:left;">
+              <tr>
+                <th bgcolor="#ffffff">商品图片</th>
+                <!-- {foreach name="goods_list" from=$goods_list item=goods} -->
+                <td align="center" bgcolor="#ffffff">
+                {if $goods} 
+                <div style="position:relative;">
+                <a href="{$goods.url}"><img src="{$goods.goods_thumb}" alt="{$goods.goods_name}" class="ent_img" /></a>
+                <div><a href="{$goods.url}">{$goods.goods_name}</a></div>
+                <a class="delBtn" data-goods="{$goods.goods_id}" data-url="compare.php?{$goods.ids}">删除</a>
+                </div>
+                {else}
+                <div class="no-contrast">暂无对比项</div>
+                <div class="add-contrast"><a rel="nofollow" href="{$back_url}">添加</a></div>
+                {/if}
+                </td>
+                <!-- {/foreach} -->
+              </tr>
+              
+              <tr>
+                <th bgcolor="#ffffff">{$lang.shop_price}</th>
+                <!-- {foreach name="goods_list" from=$goods_list item=goods} -->
+                <td bgcolor="#ffffff" class="price"><strong style="color:#E4393C;">{$goods.rank_price}</strong></td>
+                <!-- {/foreach} -->
+              </tr>
+              <tr>
+                <th bgcolor="#ffffff">{$lang.brand}</th>
+                <!-- {foreach name="goods_list" from=$goods_list item=goods} -->
+                <td bgcolor="#ffffff" style="color:#005EA7;">{$goods.brand_name}</td>
+                <!-- {/foreach} -->
+              </tr>
+              <tr>
+                <th bgcolor="#ffffff">{$lang.goods_weight}</th>
+                <!-- {foreach name="goods_list" from=$goods_list item=goods} -->
+                <td bgcolor="#ffffff">{$goods.goods_weight}</td>
+                <!-- {/foreach} -->
+              </tr>
+              <tr>
+              	<td colspan="5" style="padding:0;border:none;">
+                  <table class="attr_list" width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd" style="margin-left:-1px;table-layout:auto;">
+                      <!-- {foreach from=$attr_list item=attr} -->
+                      <tr class="attr-group" data-group="{$attr.group}" bgcolor="#F7F7F7" height="50">
+                      	<th class="attr-group-expand" bgcolor="#F7F7F7" style="color:#E4393C;font-size:14px;">{$attr.group_name}</th>
+                        <td bgcolor="#F7F7F7" colspan="4"></td>
+                      </tr>
+                      	<!-- {foreach from=$attr.attribute item=val} -->
+                        <tr class="attr" data-group="{$attr.group}">
+                        	<th bgcolor="#ffffff">{$val.attr_name}</th>
+                            <!-- {foreach name="goods_list" from=$goods_list item=goods} -->
+                            <td bgcolor="#ffffff">
+                                <!-- {foreach from=$goods.properties name=properties item=property key=k} -->
+                                    <!-- {if $k eq $val.attr_id} -->
+                                    {$property.value}
+                                    <!-- {/if} -->
+                                <!-- {/foreach} -->
+                            </td>
+    
+                            <!-- {/foreach} -->
+                        </tr>
+                        <!-- {/foreach} -->
+                      <!-- {/foreach} -->
+                      
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td bgcolor="#ffffff"><strong>{$lang.goods_rank}</strong></td>
+                <!-- {foreach name="goods_list" from=$goods_list item=goods} -->
+                <td bgcolor="#ffffff">
+                	{if $goods}
+                    <span class="goods-price"><img src="images/stars{$goods.comment_rank}.gif" width="64" height="12" alt="comment rank {$goods.comment_rank}" /></span>
+                    {/if}</td>
+                <!-- {/foreach} -->
+              </tr>
+              <tr>
+                <td bgcolor="#ffffff"><strong>{$lang.brief}</strong></td>
+                <!-- {foreach name="goods_list" from=$goods_list item=goods} -->
+                <td bgcolor="#ffffff"><a href="{$goods.url}" target="_blank"> {$goods.goods_brief}</a></td>
+                <!-- {/foreach} -->
+              </tr>
+              <tr>
+                <td bgcolor="#ffffff">&nbsp;</td>
+                <!-- {foreach name="goods_list" from=$goods_list item=goods} -->
+                <td align='center' bgcolor="#ffffff">
+                {if $goods}
+				<a href="javascript:collect({$goods.goods_id});"><img src="images/bnt_colles.gif" alt="{$lang.collect}"  style="margin:2px auto;"/></a>
+                <a href="javascript:addToCart({$goods.goods_id})"><img src="images/bnt_cat.gif" alt="{$lang.add_to_cart}"  style="margin:2px auto;"/></a>
+                {/if}
+                </td>
+                <!-- {/foreach} -->
+              </tr>
+  </table>
+<div style="clear:both;"></div>
+  <div id="tool" style="position: fixed; margin: 10px 0px 0px -235px;">
+      <div id="locate" title="点击取消固定" style="display: block;"></div>
+      <div id="static" style="display: none;" title="点击固定工具"></div>
+      <div class="con">
+      <a style="width:99px;" class="setup" id="compare_highlight" href="#"><b></b>高亮显示不同项</a>
+      <a style="width:75px;" class="setup" id="compare_equal" href="#"><b></b>隐藏相同项</a>
+      
+      </div>
+  </div>
+</div>
+<div class="blank5"></div>
+<!--帮助-->
+<div class="block">
+  <div class="box">
+   <div class="helpTitBg clearfix">
+    <!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem -->
+   </div>
+  </div>
+</div>
+<div class="blank"></div>
+<!--帮助-->
+<!--友情链接 start-->
+<!--{if $img_links  or $txt_links }-->
+<div id="bottomNav" class="box">
+ <div class="box_1">
+  <div class="links clearfix">
+    <!--开始图片类型的友情链接{foreach from=$img_links item=link}-->
+    <a href="{$link.url}" target="_blank" title="{$link.name}"><img src="{$link.logo}" alt="{$link.name}" border="0" /></a>
+    <!--结束图片类型的友情链接{/foreach}-->
+    <!-- {if $txt_links} -->
+    <!--开始文字类型的友情链接{foreach from=$txt_links item=link}-->
+    [<a href="{$link.url}" target="_blank" title="{$link.name}">{$link.name}</a>]
+    <!--结束文字类型的友情链接{/foreach}-->
+    <!-- {/if} -->
+  </div>
+ </div>
+</div>
+<!--{/if}-->
+<!--友情链接 end-->
+<div class="blank"></div>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<script type="text/javascript" src="{$option.static_path}js/json2.js"></script>
+<script type="text/javascript" src="{$option.static_path}js/jquery.js"></script>
+<script>
+$(document).ready(function(e) {
+    $(window).scroll(function(e) {
+        if($(this).scrollTop()>$('#compare_wrap').offset().top)
+			$('#topper').css('display', 'block');
+		else
+			$('#topper').css('display', 'none');
+    });
+	$('.attr').mouseenter(function(e) {
+        $(this).css('background-color', '#F7F7F7');
+		$(this).find('td').css('background-color', '#F7F7F7');
+		$(this).find('th').css('background-color', '#F7F7F7');
+    });
+	var hl_dif = false;
+	var hd_equel = false;
+	$('.attr').mouseleave(function(e) {
+		$(this).css('background-color', '#fff');
+		$(this).find('td').css('background-color', '#fff');
+		$(this).find('th').css('background-color', '#fff');
+		
+		if(hl_dif)
+		{
+			$(this).each(function(index, element) {
+				var highlight = true;
+				var values = new Array();
+				$(this).find('td').each(function(index, element) {
+					if($.trim($(this).text()) != '')
+						values.push($.trim($(this).text()));
+				});
+				for(var i=1;i<values.length;i++)
+				{
+					if(values[i] != values[i-1])
+						highlight = false;
+				}
+				if(!highlight)
+				{
+					$(this).css('background-color', '#EBFBE2');
+					$(this).find('td').css('background-color', '#EBFBE2');
+					$(this).find('th').css('background-color', '#EBFBE2');
+				}
+			});
+		}
+    });
+	$('.attr-group').click(function(e) {
+		var group = $(this).attr('data-group');
+		$(this).find('th').toggleClass('attr-group-fold');
+		if($(this).find('th').hasClass('attr-group-fold'))
+		{
+			$('[data-group='+group+']').each(function(index, element) {
+                if($(this).hasClass('attr'))
+					$(this).css('display', 'none');
+            });
+		}
+		else
+		{
+			$('[data-group='+group+']').each(function(index, element) {
+                if($(this).hasClass('attr'))
+					$(this).css('display', 'table-row');
+            });
+		}
+    });
+	
+	
+	$('#compare_highlight').click(function(e) {
+        hl_dif = !hl_dif;
+		if(hl_dif)
+			$(this).html('<b></b>取消高亮不同项');
+		else
+			$(this).html('<b></b>高亮显示不同项');
+		if(hl_dif)
+			$('.attr').each(function(index, element) {
+				var highlight = true;
+				var values = new Array();
+				$(this).find('td').each(function(index, element) {
+					if($.trim($(this).text()) != '')
+						values.push($.trim($(this).text()));
+				});
+				for(var i=1;i<values.length;i++)
+				{
+					if(values[i] != values[i-1])
+						highlight = false;
+				}
+				if(!highlight)
+				{
+					$(this).css('background-color', '#EBFBE2');
+					$(this).find('td').css('background-color', '#EBFBE2');
+					$(this).find('th').css('background-color', '#EBFBE2');
+				}
+			});
+		else
+			$('.attr').each(function(index, element) {
+				$(this).css('background-color', '#fff');
+				$(this).find('td').css('background-color', '#fff');
+				$(this).find('th').css('background-color', '#fff');
+			});
+    });
+	$('#compare_equal').click(function(e) {
+        hd_equel = !hd_equel;
+		if(!hd_equel)
+			$(this).html('<b></b>隐藏相同项');
+		else
+			$(this).html('<b></b>显示相同项');
+		if(hd_equel)
+			$('.attr').each(function(index, element) {
+				var hide = true;
+				var values = new Array();
+				$(this).find('td').each(function(index, element) {
+					if($.trim($(this).text()) != '')
+						values.push($.trim($(this).text()));
+				});
+				for(var i=1;i<values.length;i++)
+				{
+					if(values[i] == values[i-1])
+						hide = true;
+					else
+						hide = false;
+				}
+				if(hide)
+					$(this).css('display', 'none');
+			});
+		else
+			$('.attr').each(function(index, element) {
+				$(this).css('display', 'table-row');
+			});
+    });
+	$('#locate').click(function(e) {
+        $(this).css('display', 'none');
+		$('#static').css('display', 'block');
+		$('#tool').css('position', 'relative');
+    });
+	$('#static').click(function(e) {
+        $(this).css('display', 'none');
+		$('#locate').css('display', 'block');
+		$('#tool').css('position', 'fixed');
+    });
+	$('.compare_wrap .delBtn').mouseenter(function(e) {
+        $(this).animate({right:0});
+    });
+	$('.compare_wrap .delBtn').mouseleave(function(e) {
+        $(this).animate({right:'-25px'});
+    });
+	$('.compare_wrap .delBtn').click(function(e) {
+
+		if (document.getCookie("compareItems") != null)
+		{
+			var obj = JSON.parse(document.getCookie("compareItems"));
+			delete obj[$(this).attr('data-goods')];
+			var date = new Date();
+			date.setTime(date.getTime() + 99999999);
+			document.setCookie("compareItems", JSON.stringify(obj));
+			
+			document.location.href = $(this).attr('data-url')+'&back_url={$back_url}';
+		}
+    });
+	var isIE = /rv:11/.test(navigator.userAgent.toLowerCase())||
+			   /rv:10/.test(navigator.userAgent.toLowerCase())||
+			   /rv:9/.test(navigator.userAgent.toLowerCase())||
+			   /rv:8/.test(navigator.userAgent.toLowerCase())||
+			   /rv:7/.test(navigator.userAgent.toLowerCase())||
+			   /rv:6/.test(navigator.userAgent.toLowerCase())||
+			   /chrome/.test(navigator.userAgent.toLowerCase())||
+			   /safari/.test(navigator.userAgent.toLowerCase());
+	if(isIE) $('.attr_list').css('margin-left', '0');
+});
+</script>
+
+</body>
+</html>

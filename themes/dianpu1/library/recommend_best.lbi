@@ -1,0 +1,36 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $best_goods} -->
+<div class="fn-clear user_e990_20004_5-493262" style="margin-bottom:0px;" >
+                <div class="mc" style="background:#ffffff; min-height:0px;">
+                  <div>
+                    <div class="j-module"> 
+                      <span class="hotSell"></span>
+                      <div style="margin: 0px auto;" class="items">
+                        <div class="items-inner">
+                          <ul style="float: left;">
+                          <!--{foreach from=$best_goods item=bestgoods name=bestgoods}-->
+                            <div class="item item{$smarty.foreach.bestgoods.iteration} user_bgcolor_3 user_border_3"> 
+                            	<a target="_blank" href="{$bestgoods.url}" title="{$bestgoods.name}">
+                                	<img src="{$bestgoods.original_img}"  width="100%" border="0">
+                                </a>
+                              <div class="sp_txt">
+                                <div class="jTitle"><a class="user_a_1" href="{$bestgoods.url}" target="_blank">{$bestgoods.name}</a></div>
+                                <div class="boxTitle"> 
+                                	<span class="jPrice user_font_price">一口价 <span class="t"><span class="jdNum" jshop="price"> <!-- {if $bestgoods.promote_price neq ""} -->
+          								{$bestgoods.promote_price}
+          							 <!-- {else}-->
+          								{$bestgoods.shop_price}
+          							 <!--{/if}--></span></span></span>
+                                    <span class="SalePrice user_font_2">参考价：<span class="jsNum" jshop="price">{$bestgoods.market_price}</span></span> </div>
+                              </div>
+                            </div>
+                          <!--{/foreach}-->         
+                            </div>
+                            <div class="user-clear"></div>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<!-- {/if} -->

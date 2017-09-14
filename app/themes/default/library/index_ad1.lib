@@ -1,0 +1,12 @@
+{if $ad1}
+<div class="uh-ele1 ub-fh t-bla uof bg-color-w swiper-container">
+  <div class='ub swiper-wrapper ub-fh'> 
+  {foreach from=$ad1 item=item name=swiper1}
+    <div class='swiper-slide ub-fh goods-img ad' ad_link = "{$item.ad_link}"> 
+	<img src='{$url}mobile/data/afficheimg/{$item.ad_code}?{$rand}'/>
+	</div>
+    {/foreach}
+</div>
+  <div class="swiper-pagination" style="text-align:right; bottom:0.3em; width:95%;"></div>
+</div>
+{/if}

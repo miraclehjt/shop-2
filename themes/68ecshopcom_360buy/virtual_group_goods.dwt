@@ -1,0 +1,905 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/common_www_ecshop68_com.js" ></script>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/magiczoom.js" ></script>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/magiczoom_plus.js" ></script>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-1.7.2_www_ecshop68_com.js" ></script>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/script.js" ></script>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/scrollpic.js"></script>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/gw_totop.js" ></script>
+<link rel="stylesheet" type="text/css" href="themes/68ecshopcom_360buy/css/pshow.css" />
+<link rel="stylesheet" href="themes/68ecshopcom_360buy/css/virtual_group.css">
+{insert_scripts files='common.js'}
+</head>
+<body>
+<!-- 咨询商品 -->
+<input type="hidden" id="chat_goods_id" value="{$goods_id}" />
+<div id="bg" class="bg" style="display:none;"></div>
+<!-- #BeginLibraryItem "/library/pricecut_notice.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/arrive_notice.lbi" --><!-- #EndLibraryItem -->
+<div id="site-nav"> <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+  <div class="blank"></div>
+  <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+  <div class="w">
+    <div id="product-intro" class="goods_photo"> 
+      <!--name end--> 
+      <script type='text/javascript'>var warestatus = 1; </script>
+      <form action="javascript:addToCart({$goods.goods_id})" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
+        <div class="clearfix" style="width:591px; min-height:510px;">
+          <div class="goods_info">
+            <div id="name">
+              <h1>{$goods.goods_style_name}</h1>
+            </div>
+            <!-- {if $goods.goods_brief} -->
+            <div class="goods_brief"><span>{$goods.goods_brief}</span></div>
+            <!-- {/if} -->
+            <div id="summary-price" class="clearfix">
+              <div class="mar_l">
+                <p> 
+                  <!--{if $goods.is_promote and $goods.gmt_end_time } 促销--> 
+                  <span class="price">促销价</span><strong class="p-price" id="ECS_GOODS_AMOUNT"></strong> 
+                  <!--{else}--> 
+                  <span class="price">售价</span><strong class="p-price" id="ECS_GOODS_AMOUNT"></strong> 
+                  <!--{/if}--> 
+                <!--  <span class="depreciate"><a href="javascript:showDiv({$goods.goods_id});" style="color:#ffffff;text-decoration:none;">降价通知</a></span> </p>-->
+              </div>
+              <div class="show_price" style="z-index:101"> 
+                <!-- {if $cfg.show_marketprice} 市场价格-->
+                <div class="market_prices_t"> <span class="price">市场价</span><font class="market_price">{$goods.market_price}</font> </div>
+                <!-- {/if} --> 
+               <!-- <div class="market_prices_t" style="width:190px;"><i></i><span class="end_time"><span id="t_d" class="f4">&nbsp;</span><span id="t_h" class="f4"></span><span id="t_m" class="f4"></span><span id="t_s" class="f4"></span></span> </div>-->
+                <!-- {if $rank_prices} 会员等级价格-->
+                <div class="rank_prices">
+                  <div id="vip1" onmouseover="hidevip1()"> <span class="rmbPrice">会员等级价格<i></i></span> </div>
+                  <div class="hover" style="display:none;" id="vip2" onmouseover="hidevip1()" onmouseout="showvip1()"> <span class="rmbPrice">会员等级价格<i></i></span> 
+                    <!-- {foreach from=$rank_prices item=rank_price key=key}--> 
+                    <br/>
+                    <span class="rmbPrice"> {$rank_price.rank_name}：{$rank_price.price}</span> 
+                    <!--{/foreach}--> 
+                  </div>
+                  <script type="text/javascript">
+function hidevip1()
+{ 
+document.getElementById('vip1').style.display="none";
+document.getElementById('vip2').style.display="block";
+}
+function showvip1()
+{ 
+document.getElementById('vip1').style.display="block";
+document.getElementById('vip2').style.display="none";
+}
+</script> 
+                </div>
+                <!-- {/if} --> 
+              </div>
+            </div>
+            <ul id="summary1">
+              <!-- {if $cfg.show_goodssn} 显示商品货号 -->
+              <li class="padd1">
+                <div class="dt">商品货号</div>
+                <div class="dd"> {$goods.goods_sn} </div>
+              </li>
+              <!-- {/if} --> 
+              <!-- {if $goods.goods_brand neq "" and $cfg.show_brand} 显示商品品牌-->
+              <li class="padd1">
+                <div class="dt">商品品牌</div>
+                <div class="dd"> <a href="{$goods.goods_brand_url}" >{$goods.goods_brand}</a></div>
+              </li>
+              <!--{/if}--> 
+              <!-- {if $cfg.show_addtime} 上架时间-->
+              <li class="padd1">
+                <div class="dt">上架时间</div>
+                <div class="dd"> {$goods.add_time} </div>
+                </dd>
+              </li>
+              <!-- {/if} -->
+            </ul>
+            <div id="summary-qita" class="clearfix">
+              <ul class="qita">
+                <li>
+                  <p>累积评价<span>{$review_count}人评价</span></p>
+                </li>
+                <li>
+                  <p>累计销量<span>{$goods.count}</span></p>
+                </li>
+                <!-- {if $goods.give_integral_2 eq '-1'} 购买此商品赠送积分-->
+                <li style="border:none">
+                  <p>赠送积分<span><font id="ECS_GOODS_AMOUNT_jf">{$goods.give_integral}</font></span></p>
+                  <!-- {elseif $goods.give_integral_2 gt 0} -->
+                <li style="border:none">
+                  <p>赠送积分<span>{$goods.give_integral}</span></p>
+                </li>
+                <!-- {else} -->
+                <li style="border:none">
+                  <p>赠送积分<span>0</span></p>
+                </li>
+                <!-- {/if} -->
+              </ul>
+            </div>
+            <ul id="summary" style="padding:0;">
+              <script type="text/javascript">
+$(document).ready(function(){
+  var a = $("#summary").children("li");
+  var b = $("#summary"); 
+  if($(a).length > 0){ 
+		b.css({"display":"block"});
+
+	} 
+	else{ 
+		b.css({"display":"none"});
+	} 
+});
+</script> 
+              <style type="text/css">
+			  li.padd1{width:45%;float:left}
+			  #product-intro li.padd1 .dt{width:27%}
+			  #product-intro li.padd1 .dd{width:73%}
+			  </style>
+              <!-- {if $goods.is_shipping} 为免运费商品则显示-->
+              <li class="padd1" style="width:100%;text-indent:10px;"> {$lang.goods_free_shipping}</li>
+              <!-- {/if} -->
+            </ul>
+            <ul id="choose" class="choose_bor">
+                
+                <input type="hidden" id="valid_date" value="{$goods.valid_date}">
+<script type="text/javascript">
+
+    function getRTime(){    
+    var EndTime= new Date($('#valid_date').val()); 
+    var NowTime = new Date();
+    var t =EndTime.getTime() - NowTime.getTime();
+    if(t>0){
+        /*var d=Math.floor(t/1000/60/60/24);
+        t-=d*(1000*60*60*24);
+        var h=Math.floor(t/1000/60/60);
+        t-=h*60*60*1000;
+        var m=Math.floor(t/1000/60);
+        t-=m*60*1000;
+        var s=Math.floor(t/1000);*/
+
+        var d=Math.floor(t/1000/60/60/24);
+        var h=Math.floor(t/1000/60/60%24);
+        var m=Math.floor(t/1000/60%60);
+        var s=Math.floor(t/1000%60);
+
+        document.getElementById("t_d").innerHTML = d + "天";
+        document.getElementById("t_h").innerHTML = h + "时";
+        document.getElementById("t_m").innerHTML = m + "分";
+        document.getElementById("t_s").innerHTML = s + "秒";
+      }else{
+        $('.end_time').html('团购已经结束');
+    }
+    }
+    setInterval(getRTime,1000);
+
+    </script>
+              <!-- {* 开始循环所有可选属性 *} --> 
+              <!-- {foreach from=$specification item=spec key=spec_key name="name"} -->
+              <li id="choose-version">
+                <div class="dt">{$spec.name}：</div>
+                <div class="dd catt"> 
+                  <!-- {* 判断属性是复选还是单选 *} --> 
+                  <!-- {if $spec.attr_type eq 1} --> 
+                  <!-- {if $cfg.goodsattr_style eq 1} --> 
+                  <!--代码修改_start  By bbs.hongyuvip.com 注：将 if $cfg.goodsattr_style eq 1 与 对应else 之间的代码修改成下面这个样子-->
+                  <input type="hidden" name="spec_attr_type" value="{$spec_key}">
+                  <input type="hidden" name="attr_types" id="spec_attr_type_{$spec_key}" value="0">
+                  <ul class="ys_xuan" id="xuan_{$spec_key}">
+                    <div class="catt" id="catt_{$spec_key}"> 
+                      <!-- {foreach from=$spec.values item=value key=key} --> 
+                      <a onclick="show_attr_status(this,{$goods.goods_id}, {$attr_id});{if $spec_key eq $attr_id}get_gallery_attr({$id}, {$value.id});{/if}"  href="javascript:" name="{$value.id}" id="xuan_a_{$value.id}"  title="[{if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if} {$value.format_price|abs}]"> {if  $value.goods_attr_thumb}
+                      <div style="float:left;cursor:pointer;"><img src="{$value.goods_attr_thumb}" width=40 height=40 title="{$value.label}" alt="{$value.label}" /></div>
+                      <label style="float:left;cursor:pointer;line-height:40px;margin:0 10px 0 10px;color:#000;text-decoration:none;">{$value.label}</label>
+                      {else}
+                      <div style="padding:3px 7px;">{$value.label}</div>
+                      {/if}
+                      <input style="display:none" id="spec_value_{$value.id}" type="radio" name="spec_{$spec_key}" value="{$value.id}"  />
+                      </a> 
+                      <!-- {/foreach} --> 
+                    </div>
+                  </ul>
+                  <div class="clear"></div>
+                  <input type="hidden" name="spec_list" value="{$key}" />
+                  <!--代码修改_end  By bbs.hongyuvip.com-->
+                  <!-- {else} -->
+                  <select name="spec_{$spec_key}">
+                    <!-- {foreach from=$spec.values item=value key=key} -->
+                    <option label="{$value.label}" value="{$value.id}">{$value.label} {if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if}{if $value.price neq 0}{$value.format_price}{/if}</option>
+                    <!-- {/foreach} -->
+                  </select>
+                  <input type="hidden" name="spec_list" value="{$key}" />
+                  <!-- {/if} --> 
+                  <!-- {else} --> 
+                  <!-- {foreach from=$spec.values item=value key=key} -->
+                  <label for="spec_value_{$value.id}">
+                    <input type="checkbox" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" onclick="changePrice()" />
+                    {$value.label} [{if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if} {$value.format_price|abs}] </label>
+                  <br />
+                  <!-- {/foreach} -->
+                  <input type="hidden" name="spec_list" value="{$key}" />
+                  <!-- {/if} --> 
+                </div>
+              </li>
+              <!-- {/foreach} --> 
+              <!--代码修改_start  By bbs.hongyuvip.com-->
+              <script type="text/javascript">
+var myString=new Array();
+{literal}
+{foreach from=$prod_exist_arr key=pkey item=prod}
+myString[{$pkey}]="{$prod}";
+{/foreach}
+{/literal}
+</script> 
+              <!--代码修改_end  By bbs.hongyuvip.com-->
+              <!-- {* 结束循环可选属性 *} -->
+              <li class="padd padd-promotion clearfix">
+                <div class="dt">有效日期</div>   <div class="dd">{$goods.valid_date}</div>
+              <li>
+              <li id="choose-amount">
+                <div class="dt">数量：</div>
+                <div class="dd">
+                  <div class="wrap-input"> 
+                    <script language="javascript" type="text/javascript">  function goods_cut(){  var num_val=document.getElementById('number');  var new_num=num_val.value;  var Num = parseInt(new_num);  if(Num>1)Num=Num-1;  num_val.value=Num;  }  function goods_add(){  var num_val=document.getElementById('number');  var new_num=num_val.value;  var Num = parseInt(new_num);  Num=Num+1;  num_val.value=Num;  } </script> 
+                    <a class="btn-reduce" href="javascript:;" onclick="goods_cut();changePrice();">减少数量</a>
+                    <input name="number" type="text" class="text"  id="number" value="1" onblur="changePrice();"/>
+                    <a class="btn-add" href="javascript:;" onclick="goods_add();changePrice();">增加数量</a> （库存<font id="shows_number">{$goods.goods_number} </font>） </div>
+                </div>
+              </li>
+              <!--{if $tag eq 1}-->
+              <li class="padd1">
+                <div>
+                  <div class="dt">限购数量：</div>
+                  <div class="dd">{$goods.buymax}</div>
+                </div>
+              </li>
+              <!--{/if}-->
+            </ul>
+            <div class="buyNub-buy-wrap">
+              <div id="choose-btns" class="buyNub-buy"> 
+                <!--{if $goods_n>0}--> 
+              <!--<a href="javascript:addToCart({$goods.goods_id},0,1)" name="bi_addToCart" class="u-buy">马上团</a>-->
+                <a href="javascript:group_buy({$goods.goods_id})" name="bi_addToCart" class="u-buy">马上团</a>
+                <script type="text/javascript">
+                    function group_buy(goods_id){
+                            var buy_number = document.getElementById('number').value;
+                            if(buy_number > {$goods.goods_number}){
+                                 document.getElementById('number').value = {$goods.goods_number};           
+                            }else{
+                                addToCart(goods_id,0,1);
+                            }
+                         }
+                </script>
+                <!-- {else}--> 
+                <a onclick="tell_me({$goods.goods_id})" class="tell_me"/><i></i>到货通知</a>
+                
+                <!-- {/if}-->   
+              </div>
+            </div>
+          </div>
+          <!--choose end--> 
+          <span class="clr"></span> </div>
+      </form>
+      <div id="preview">
+        <div  class="goods_img" id="li_{$goods.goods_id}"> <a href="{if $pictures.0.img_original}{$pictures.0.img_original}{else}{$goods.original_img}{/if}" class="MagicZoom" id="zoom" rel="zoom-position: right;"> 
+          <!-- {if $pictures}--> 
+          <img  src="{$pictures.0.img_url}" class="goodsimg pic_img_{$goods.goods_id}" id="goods_bimg" width="378" height="378" style="border:#DDDDDD 1px solid; width:378px; height:378px;" /> 
+          <!-- {else} --> 
+          <img src="{$goods.goods_img}" class="goodsimg pic_img_{$goods.goods_id}" id="goods_bimg" width="378" height="378" style="border:#DDDDDD 1px solid;width:378px; height:378px;" /> 
+          <!-- {/if}--> 
+          </a> </div>
+        <div style="height:10px; line-height:10px; clear:both;"></div>
+        <!--相册 START--> 
+        <!-- #BeginLibraryItem "/library/goods_gallery.lbi" --><!-- #EndLibraryItem --> 
+        <!--相册 END-->
+        <div id="short-share">
+          <div id="view-bigimg" class="fl" style="margin-right:20px;"><b></b><a href="javascript:;" onclick="window.open('gallery.php?id={$goods.goods_id}'); return false;" target="_blank">查看大图</a></div>
+          <div class="share-list fl" style="margin-right:20px;"> 
+            <!-- Baidu Button BEGIN -->
+            <div id="bdshare" class="bdshare_b" style="line-height: 12px; "> <img src="http://bdimg.share.baidu.com/static/images/type-button-1.jpg?cdnversion=20120831" /> </div>
+            <script type="text/javascript" id="bdshare_js" data="type=button&amp;uid=603029" ></script> 
+            <script type="text/javascript" id="bdshell_js"></script> 
+            <script type="text/javascript">
+		document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+	  </script> 
+            <!-- Baidu Button END --> 
+          </div>
+       <!--   <div class="fl com-pare"> <a class="compare-btn" data-goods="{$goods.goods_id}" data-type="{$goods.goods_type}" onclick="Compare.add({$goods.goods_id},'{$goods.goods_name|escape:"html"}','{$goods.goods_type}', '{$goods.goods_thumb}', '{if $smarty.session.user_name}{if $goods.is_promote and $goods.gmt_end_time }{$goods.promote_price}{else}{$goods.shop_price_formated} {/if}{else}{$goods.market_price}{/if}')"></a> </div>-->
+          <div class="clb"></div>
+        </div>
+      </div>
+      <div id="supp_info"> 
+        <!-- {if $goods.supplier_id} --> 
+        <!-- #BeginLibraryItem "/library/ghs_info.lbi" --><!-- #EndLibraryItem --> 
+        <!-- {else} --> 
+        <!-- #BeginLibraryItem "/library/ziying_info.lbi" --><!-- #EndLibraryItem --> 
+        <!-- {/if} --> 
+      </div>
+      <!--preview end--> 
+    </div>
+  </div>
+  <div class="blank"></div>
+  <div class="blank"></div>
+  <div class="w"> 
+  	<div class="detail_all">
+        <div class="detail_tab">
+            <a class="tab_a cur" href="{$url}#goods_detail">商家信息</a>
+            <a class="tab_a" href="{$url}#goods_desc">商品详情</a>
+            <a class="tab_a" href="{$url}#goods_comment" >商品评价({$review_count})</a>
+        </div>	
+    	<!--团购详情 start-->
+    	<div id="goods_detail" class="goods_detail">
+        	<div class="shop_info">
+            	<h3 class="detail_title">商家位置</h3>
+                <div class="shop_address">
+                	<div class="shop_map fl">
+                    	<!--<a class="view-full" href="javascript:void(0)" title="点击查看完整地图">查看完整地图</a>-->
+        <div style="width:544px; height:500px;border:#ccc solid 1px;" id="dituContent"></div>
+        <style type="text/css">
+            .iw_poi_title {color:#CC5522;font-size:14px;font-weight:bold;overflow:hidden;padding-right:13px;white-space:nowrap}
+            .iw_poi_content {font:12px arial,sans-serif;overflow:visible;padding-top:4px;white-space:-moz-pre-wrap;word-wrap:break-word;}
+        </style>
+        <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.2&services=true"></script>
+
+                    </div>
+                    <div class="shop_detail fl">
+                    	{if $goods.supplier_name}<h3 class="shop_name"><a href="#" class="red">{$goods.supplier_name}</a></h3>{/if}
+                        <div class="shop_item">
+                        	<span class="label_title">评论：</span>
+                            <a href="{$url}#goods_comment" class="red">{$review_count}条评论</a><span class="rank">好评度:{$rank_num.rank_pa}%</span>
+                        </div>
+<!-- {if $goods.supplier_id} --> 
+                        {if $region}
+                        <div class="shop_item">
+                        	<span class="label_title">地址：</span>
+                            <span>{$region}-{$address}</span>
+                        </div>
+                        {/if}
+                        {if $servicephone}
+                        <div class="shop_item">
+                        	<span class="label_title">电话：</span>
+                            <span>{$servicephone}</span>
+                        </div>
+                        {/if}
+{else}
+                        <div class="shop_item">
+                        	<span class="label_title">地址：</span>
+                            <span>{$shop_address}</span>
+                        </div>
+                        {/if}
+                        {if $servicephone}
+                        <div class="shop_item">
+                        	<span class="label_title">电话：</span>
+                            <span>{$service_phone}</span>
+                        </div>
+{/if}
+                    </div>
+                </div>
+            </div>
+            <div class="purchase_info">
+            	<h3 class="detail_title">购买须知</h3>
+            <!-- {if $properties} --> 
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                 <!-- {foreach from=$properties item=property_group key=key} --> 
+                 <!-- {foreach from=$property_group item=property} -->
+                    <tr>
+                      <td class="td1">{$property.name|escape:html}</td>
+                      <td class="td2">{$property.value}</td>
+                    </tr>
+              <!-- {/foreach}--> 
+              <!-- {/foreach}--> 
+                </table>
+            <!-- {/if} -->
+            </div>
+
+        </div>
+        <!--团购详情 end-->
+        <!-- 商品详情 start-->
+        <div id="goods_desc" class="goods_detail">
+        <h3 class="detail_title">商品详情</h3>
+        {$goods.goods_desc}
+        </div>
+        <!--商品详情 end-->
+        <!--评论 start-->
+        <div id="goods_comment">
+        <!-- #BeginLibraryItem "/library/my_comments.lbi" --><!-- #EndLibraryItem -->
+        </div>
+        <!--评论 end-->
+    </div>
+    <!--右侧调用其他虚拟团购商品 start-->
+    <div class="other_virtual">
+    	<h3>其他团购推荐</h3>
+    	<div class="other_virtual_list">
+{foreach from=$other_virtual_goods item=other_virtual_goods}
+            <div class="other_virtual_goods">
+                <a href="virtual_group_goods.php?id={$other_virtual_goods.goods_id}" target="_blank">
+                    <img class="virtual_goods_img" src="{$other_virtual_goods.goods_thumb}" width="190" height="190">
+                </a>
+                <h4 class="virtual_goods_tit">
+                    <a href="#" target="_blank" title="{$other_virtual_goods.goods_name}">{$other_virtual_goods.goods_name}</a>
+                </h4>
+                <p class="virtual_goods_price">
+                    <span class="price fl">¥<strong>{$other_virtual_goods.shop_price}</strong></span>
+                    <span class="sales_num fr">已售 <strong class="num">{$other_virtual_goods.salenum}</strong> 件</span>
+                </p>
+            </div>
+{/foreach}
+	</div>
+    </div>
+    <!--右侧调用其他虚拟团购商品 end-->
+    <!--right end--> 
+  </div>
+  <div style="height:20px; line-height:20px; clear:both"></div>
+  <!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem --> <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> <!-- #BeginLibraryItem "/library/site_bar.lbi" --><!-- #EndLibraryItem --> </div>
+</body>
+<script type="text/javascript">
+var goods_id = {$goods_id};
+var goodsattr_style = {$cfg.goodsattr_style|default:1};
+var gmt_end_time = {$promote_end_time|default:0};
+{foreach from=$lang.goods_js item=item key=key}
+var {$key} = "{$item}";
+{/foreach}
+var goodsId = {$goods_id};
+var now_time = {$now_time};
+var suppid = {$goods.supplier_id};
+</script>
+<script type="text/javascript" src="{$option.static_path}js/compare.js"></script>
+<script type="text/javascript" src="{$option.static_path}js/json2.js"></script>
+<script type="text/javascript" src="{$option.static_path}js/jquery.js"></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+<script>
+$(document).ready(function(e) {
+	Compare.init();
+    $('#compareBox .menu li').click(function(e) {
+		$('#compareBox .menu li').each(function(index, element) {
+			$(this).removeClass('current');
+        });
+		if($(this).attr('data-value') == 'compare')
+		{
+			$('#historyList').css('display', 'none');
+			$('#compareList').css('display', 'block');
+		}
+		else
+		{
+			$('#historyList').css('display', 'block');
+			$('#compareList').css('display', 'none');
+		}
+        $(this).addClass('current');
+    });
+	if($('#historyList li').length > 4)
+	{
+		$('#historyList ul').css('width', (226*$('#historyList li').length)+'px');
+		$('#historyList #sc-prev').addClass('disable');
+		var count = 0;
+		$('#historyList #sc-next').click(function(e) {
+			if(($('#historyList li').length-4) > count)
+			{
+				count++;
+				$('#historyList #sc-prev').removeClass('disable');
+				if(($('#historyList li').length-4) >= count)
+					$('#historyList ul').animate({marginLeft:(-226*count)+'px'});
+				if(($('#historyList li').length-4) == count)
+					$('#historyList #sc-next').addClass('disable');
+			}
+        });
+		$('#historyList #sc-prev').click(function(e) {
+			if(count > 0)
+			{
+				count--;
+				$('#historyList #sc-next').removeClass('disable');
+				if(count >= 0)
+					$('#historyList ul').animate({marginLeft:(-226*count)+'px'});
+				if(count == 0)
+					$('#historyList #sc-prev').addClass('disable');
+			}
+        });
+	}
+	else
+	{
+		$('#historyList #sc-prev').css('display', 'none');
+		$('#historyList #sc-next').css('display', 'none');
+	}
+	var compareData = new Object();
+	var compareCookie = document.getCookie('compareItems');
+	var count = 0;
+	if(compareCookie != null)
+	{
+		compareData = JSON.parse(compareCookie);
+        for(var k in compareData)
+        {
+            if(typeof(compareData[k])=="function")
+            	continue;
+            $('.compare-btn').each(function(index, element) {
+            	if(k == $(this).attr('data-goods'))
+					$(this).css('background-position', '0 -24px');
+        	});
+			count ++;
+        }
+	}
+	if(count>0)
+	{
+		$('#compareBox').css('display', 'block');
+		$('.compareHolder').css('display', 'none');
+	}
+	
+});
+function toggle_compare_box()
+{
+	if($('#compareBox').css('display') == 'none')
+	{
+		$('#compareBox').css('display', 'block');
+		$('.compareHolder').css('display', 'none');
+	}
+	else
+	{
+		$('#compareBox').css('display', 'none');
+		$('.compareHolder').css('display', 'block');
+	}
+}
+
+
+//changePrice();
+changePriceAll();
+fixpng();
+ShowMyComments({$goods.goods_id},0,1);
+try { onload_leftTime(); }
+catch (e) {}
+
+/**
+ * 点选可选属性或改变数量时修改商品价格的函数
+ */
+function changePrice()
+{
+  var attr = getSelectedAttributes(document.forms['ECS_FORMBUY']);
+  var qty = document.forms['ECS_FORMBUY'].elements['number'].value;
+
+  Ajax.call('goods.php', 'act=price&id=' + goodsId + '&attr=' + attr + '&number=' + qty, changePriceResponse, 'GET', 'JSON');
+}
+
+/**
+ * 接收返回的信息
+ */
+function changePriceResponse(res)
+{
+  if (res.err_msg.length > 0)
+  {
+    document.getElementById('number').value = res.qty;
+    alert(res.err_msg);
+  }
+  else
+  {
+    document.forms['ECS_FORMBUY'].elements['number'].value = res.qty;
+
+    if (document.getElementById('ECS_GOODS_AMOUNT')){
+      document.getElementById('ECS_GOODS_AMOUNT').innerHTML = res.result;
+	  if (res.result_jf){
+		document.getElementById('ECS_GOODS_AMOUNT_jf').innerHTML = res.result_jf;
+	  }
+    }
+    if(document.getElementById('shows_number')){
+	document.getElementById('shows_number').innerHTML = res.attr_num;
+    }
+    if(document.getElementById('mark_price')){
+	document.getElementById('mark_price').innerHTML = res.result1;
+    }
+  }
+}
+
+/**
+* 获取商品范围价格
+*/
+function changePriceAll()
+{
+	var attr = getSelectedAttributes(document.forms['ECS_FORMBUY']);
+	var qty = document.forms['ECS_FORMBUY'].elements['number'].value;
+	Ajax.call('goods.php', 'act=allprice&id=' + goodsId + '&attr=' + attr + '&number=1', changePriceResponse, 'GET', 'JSON');
+}
+
+
+
+</script>
+<div align="center" id="compareBox" style="display:none">
+  <div class="menu">
+    <ul>
+      <li class="current" data-value='compare'>对比栏</li>
+      <li data-value='history'>最近浏览</li>
+    </ul>
+    <a style="color:#005AA0;float: right; line-height: 32px; margin-right: 20px;" href="javascript:void(0)" onClick="toggle_compare_box()">隐藏</a>
+    <div style="clear:both"></div>
+  </div>
+  <div id="compareList"></div>
+  <div id="historyList" style="display:none;"><span id="sc-prev" class="sc-prev scroll-btn"></span><span id="sc-next" class="sc-next scroll-btn"></span>
+    <div class="scroll_wrap">{insert name='history_list'}</div>
+  </div>
+</div>
+<!--<a class="compareHolder" href="javascript:void(0)" onClick="toggle_compare_box()">对比栏</a>-->
+<script src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js" type="text/javascript"></script>
+<script>
+Ajax.call('goods.php', 'act=get_pickup_info&province='+remote_ip_info.province+'&city='+remote_ip_info.city+'&district='+remote_ip_info.district,
+	function(res){
+		if(res.error == 0) {
+			var result = '<ul>';
+			for(var i=0; i<res.result.length; i++)
+			{
+				result += '<li>店名：'+res.result[i].shop_name+'<br>联系人：'+res.result[i].contact+'&nbsp;&nbsp;联系方式：'+res.result[i].phone + '<br>地址：'+res.result[i].address+'</li>';
+			}
+			result += '</ul>';
+			if(res.result.length > 0){
+				document.getElementById('pickup_point_list').innerHTML = result;
+				
+			}
+			else{
+				document.getElementById('pickup_point_list').innerHTML = '<div style="padding:10px 0;text-align:center;">该地区尚未开放自提点</div>';
+				
+			}
+			hide_area();
+			show_list();
+			document.getElementById('province').innerHTML = res.city_info.province;
+			document.getElementById('province').onclick = function(){
+				get_area_list({$shop_country}, '');
+			}
+			document.getElementById('city').innerHTML = res.city_info.city;
+			document.getElementById('city').onclick = function(){
+				get_area_list(res.city_info.province_id, res.city_info.province);
+			}
+
+			
+			document.getElementById('area_label').innerHTML = res.city_info.province + '&nbsp;' + res.city_info.city;
+			get_area_list(res.city_info.city_id, res.city_info.city);
+		}
+	}, 'GET', 'JSON');
+function show_list()
+{
+	document.getElementById('pickup_point').style.borderBottom = "1px solid #fff";
+	document.getElementById('pickup_point_list').style.display = "block";
+}
+function hide_list()
+{
+	document.getElementById('pickup_point').style.borderBottom = "1px solid #ccc";
+	document.getElementById('pickup_point_list').style.display = "none";
+}
+function get_area_list(parent_id, name)
+{
+	Ajax.call('goods.php', 'act=get_area_list&parent_id='+parent_id, function(res) {
+		var result = '';
+		for(var i=0; i<res.length; i++)
+		{
+			result += '<li';
+			if(res[i].region_name.length>5)
+				result += ' style="widht:170px;"';
+			result += '><a href="javascript:void(0)" ';
+			if(res[i].region_type == 3)
+				result += 'onclick="get_pickup_point_list('+res[i].region_id+', this)">';
+			else
+				result += 'onclick="get_area_list('+res[i].region_id+', \''+res[i].region_name+'\')">';
+			result+=res[i].region_name+'</a></li>';
+		}
+		result += '';
+		document.getElementById('area_list').innerHTML = result;
+		
+		switch(res[0].region_type)
+		{
+			case '1':
+				document.getElementById('province').onclick = function(){get_area_list(parent_id, name);};
+				document.getElementById('city').innerHTML = '市';
+				document.getElementById('district').innerHTML = '区';
+				switch_hover('province');
+				break;
+			case '2':
+				document.getElementById('city').onclick = function(){get_area_list(parent_id, name);};
+				document.getElementById('province').innerHTML = name;
+				//document.getElementById('city').innerHTML = '市';
+				document.getElementById('district').innerHTML = '区';
+				switch_hover('city');
+				break;
+			case '3':
+				document.getElementById('city').innerHTML = name;
+				document.getElementById('district').innerHTML = '区';
+				switch_hover('district');
+				break;
+		}
+		hide_list();
+		//show_area();
+	}, 'GET', 'JSON');
+}
+
+function switch_hover(sel)
+{
+	if(sel == 'province')
+	{
+		document.getElementById('city').className = '';
+		document.getElementById('district').className = '';
+		document.getElementById('province').className = 'hover';
+	}
+	else if(sel == 'city')
+	{
+		document.getElementById('city').className = 'hover';
+		document.getElementById('district').className = '';
+		document.getElementById('province').className = '';
+	}
+	else
+	{
+		document.getElementById('city').className = '';
+		document.getElementById('district').className = 'hover';
+		document.getElementById('province').className = '';
+	}
+}
+
+function get_pickup_point_list(region_id, obj)
+{
+	var name = obj.innerHTML;
+	document.getElementById('district').innerHTML = name;
+	var label = document.getElementById('province').innerHTML + '&nbsp;' +
+				document.getElementById('city').innerHTML + '&nbsp;' +
+				document.getElementById('district').innerHTML;
+	document.getElementById('area_label').innerHTML = label;
+	
+	Ajax.call('goods.php', 'act=get_pickup_point_list&district_id='+region_id+'&suppid='+suppid, function(res) {
+		var result = '<ul>';
+			if(res.length > 0)
+			{
+				for(var i=0; i<res.length; i++)
+				{
+					result += '<li>'+res[i].shop_name+'&nbsp;&nbsp;地址：'+res[i].address+
+								'<br>联系人：'+res[i].contact+'&nbsp;&nbsp;联系方式：'+res[i].phone + '</li>';
+				}
+				result += '</ul>';
+				document.getElementById('pickup_point_list').innerHTML = result;
+				
+			}
+			else{
+				document.getElementById('pickup_point_list').innerHTML = '<div style="padding:10px 0;text-align:center;">该地区尚未开放自提点</div>';
+				
+			}
+			hide_area();
+			show_list();
+			
+			
+	}, 'GET', 'JSON');
+}
+function show_area()
+{
+	document.getElementById('area_label').style.borderBottom = "1px #fff solid";
+	document.getElementById('area_list_wrap').style.display = "block";
+}
+function hide_area()
+{
+	document.getElementById('area_label').style.borderBottom = "1px solid #ccc";
+	document.getElementById('area_list_wrap').style.display = "none";
+}
+</script>
+
+<script type="text/javascript">
+    //创建和初始化地图函数：
+    function initMap(){
+        createMap();//创建地图
+        setMapEvent();//设置地图事件
+        addMapControl();//向地图添加控件
+        addMarker();//向地图中添加marker
+    }
+   
+    //创建地图函数：
+    function createMap(){
+        var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
+        var point = new BMap.Point({$opint.lng},{$opint.lat});//定义一个中心点坐标
+        map.centerAndZoom(point,18);//设定地图的中心点和坐标并将地图显示在地图容器中
+        window.map = map;//将map变量存储在全局
+    }
+   
+    //地图事件设置函数：
+    function setMapEvent(){
+        map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+        map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+        map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+        map.enableKeyboard();//启用键盘上下左右键移动地图
+    }
+   
+    //地图控件添加函数：
+    function addMapControl(){
+        //向地图中添加缩放控件
+ var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+ map.addControl(ctrl_nav);
+        //向地图中添加缩略图控件
+ var ctrl_ove = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:1});
+ map.addControl(ctrl_ove);
+        //向地图中添加比例尺控件
+ var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+ map.addControl(ctrl_sca);
+    }
+   
+    //标注点数组
+    var markerArr = [{title:"{$goods.supplier_name}",content:"电话：{if $goods.supplier_id}{$servicephone}{else}{$service_phone}{/if}<br/>地址:{if $goods.supplier_id}{$address}{else}{$shop_address}{/if}",point:"{$opint.lng}|{$opint.lat}",isOpen:1,icon:{w:23,h:25,l:46,t:21,x:9,lb:12}}
+   ];
+    //创建marker
+    function addMarker(){
+        for(var i=0;i<markerArr.length;i++){
+            var json = markerArr[i];
+            var p0 = json.point.split("|")[0];
+            var p1 = json.point.split("|")[1];
+            var point = new BMap.Point(p0,p1);
+   var iconImg = createIcon(json.icon);
+            var marker = new BMap.Marker(point,{icon:iconImg});
+   var iw = createInfoWindow(i);
+   var label = new BMap.Label(json.title,{"offset":new BMap.Size(json.icon.lb-json.icon.x+10,-20)});
+   marker.setLabel(label);
+            map.addOverlay(marker);
+            label.setStyle({
+                        borderColor:"#808080",
+                        color:"#333",
+                        cursor:"pointer"
+            });
+   
+   (function(){
+    var index = i;
+    var _iw = createInfoWindow(i);
+    var _marker = marker;
+    _marker.addEventListener("click",function(){
+        this.openInfoWindow(_iw);
+       });
+       _iw.addEventListener("open",function(){
+        _marker.getLabel().hide();
+       })
+       _iw.addEventListener("close",function(){
+        _marker.getLabel().show();
+       })
+    label.addEventListener("click",function(){
+        _marker.openInfoWindow(_iw);
+       })
+    if(!!json.isOpen){
+     label.hide();
+     _marker.openInfoWindow(_iw);
+    }
+   })()
+        }
+    }
+    //创建InfoWindow
+    function createInfoWindow(i){
+        var json = markerArr[i];
+        var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>"+json.content+"</div>");
+        return iw;
+    }
+    //创建一个Icon
+    function createIcon(json){
+        var icon = new BMap.Icon("http://map.baidu.com/image/us_cursor.gif", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
+        return icon;
+    }
+   
+    initMap();//创建和初始化地图
+</script>
+
+<script>
+header_login();
+$(function(){
+//获取要定位元素距离浏览器顶部的距离
+	var navH = $(".detail_tab").offset().top;
+
+	//滚动条事件
+	$(window).scroll(function(){
+		//获取滚动条的滑动距离
+		var scroH = $(this).scrollTop();
+		//滚动条的滑动距离大于等于定位元素距离浏览器顶部的距离，就固定，反之就不固定
+		if(scroH>=navH){
+			$(".detail_tab").css({"position":"fixed","top":0,'width':1210,'z-index':99});
+			$(".detail_tab .right_addcut").show();
+		}else if(scroH<navH){
+			$(".detail_tab").css({"position":"static",'width':990});
+			$(".detail_tab .right_addcut").hide();
+		}
+	})
+})
+$('.detail_tab .tab_a').click(function(){
+	$(this).addClass('cur').siblings('.tab_a').removeClass('cur');	
+})
+</script>
+</html>

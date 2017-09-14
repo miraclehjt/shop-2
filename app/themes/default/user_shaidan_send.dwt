@@ -1,0 +1,54 @@
+<!-- {if $pan_1 == 0 } -->
+此单已超期 
+<!-- {elseif $pan_2 == 1 } --> 
+此单已晒单 
+<!-- {elseif $pan_3 == 1 } --> 
+这不是您的订单，请不要非法晒单。 
+<!-- {else} -->
+
+<div class="m-all2 bg-color-w f-color-6">
+  <div class="ubb ub border-f2 ub-ac h-min1">
+    <div class="uw-reg ulev-1">晒单商品</div>
+    <div class="ulev-1 ub-f1"> {$goods.goods_name} </div>
+  </div>
+  <div class="ubb ub border-f2 ub-ac h-min1">
+    <div class="uw-reg ulev-1"><font class="f-color-red">*</font>标题</div>
+    <div class="uinput ulev-1">
+      <input type="text" id='title' placeholder="请输入标题"/>
+    </div>
+  </div>
+  <div class="ubb ub border-f2 h-min1 p-t-b5">
+    <div class="f-color-6 sc-text-hui uw-reg ulev-1"><font class="f-color-red">*</font>内容</div>
+    <div class="uinput ulev-1">
+      <textarea type="text" id="message" placeholder="亲，给好评哦！"></textarea>
+    </div>
+  </div>
+  <div class="ubb ub border-f2 ub-ac h-min1">
+    <div class="uw-reg ulev-1" ><font class="f-color-red">*</font>添加图片</div>
+    <div class="uinput ulev-1 ub-f1" id='add_image_button'> <font class="sc-text-active1">请上传3-20张照片，每张照片不超过4M，支持的照片格式为jpg，jpeg，png，gif； 可一次选择多张；</font><font style='color:red'>点击添加图片</font></div>
+  </div>
+  <div class="ubb ub border-f2 ub-ac h-min1 uhide"  id='image_preview_container'>
+    <div class="uw-reg ulev-1" ><font class="f-color-red">*</font>图片预览</div>
+    <div class="uinput ulev-1 ub-f1" id='image_container'>
+	
+	</div>
+  </div>
+  <div class="ub ub-pe ub-ac p-all1 ubb border-f2">
+    <input type="checkbox" class="checkbox"  checked=true id='hide_username'>
+    <label for="hide_username"></label>
+    <div class="ulev-1 m-l3 sc-text-active1">匿名评价</div>
+  </div>
+</div>
+<div class="m-all2" id='confirm_shaidan_button'>
+  <div class="user-btn"> 发表晒单 </div>
+</div>
+
+<div class="m-all2 bg-color-w">
+  <div class="border-xu p-all2"> <strong class="f-color-zi ulev-1">关于晒单帖：</strong> <br>
+    <div class="ulev-1 l-h-2 f-color-6"> 　　您可以将自己的使用感受、选购建议、实物照片、使用场景、拆包过程等与网友们分享；<br>
+      每个商品前10位成功晒单者且图片数在3张及以上的客户可获得100个京豆奖励；其他用户不再奖励京豆；图书音像商品、赠品晒单帖不奖励京豆；<br>
+      请保证所上传的图片是原创的及合法的，否则京东商城有权删除图片及冻结帐号，且保留追究其法律责任的权利；<br>
+    </div>
+    <font class="ulev-1 sc-text-active1 article" article_id='36'>更多晒单说明</font> </div>
+</div>
+<!-- {/if} -->

@@ -1,0 +1,438 @@
+/*
+Template Name: ECSHOP Default
+Template URI: http://bbs.hongyuvip.com/
+Description: 默认升级绿色版.
+Version: 2.7.2
+Author: ECSHOP Team
+Author URI: http://bbs.hongyuvip.com/
+Logo filename: logo.gif
+Template Type: typegreen_0
+*/
+
+
+/* ====================
+     公共样式
+==================== */
+a {
+	text-decoration:none;
+	color:#333
+}
+a:hover {
+	color:#f60!important;
+	text-decoration:underline
+}
+a:hover img {
+	text-decoration:none
+}
+.Right { float:right}
+
+.article_block {margin-top:10px ;width:1210px;
+	margin-left:auto;
+	margin-right:auto}
+
+.clearfix:after {
+	content:'.';
+	display:block;
+	height:0;
+	clear:both;
+	overflow:hidden
+}
+.clearfix {
+*zoom:1
+}
+.clear {
+	clear:both
+}
+
+
+
+#focus {
+	width:354px;
+	height:auto;
+	float:left;
+	overflow:hidden;
+	height:454px;
+	padding:3px;
+	border:solid 1px #d4d4d4;
+	background:#fafafa;
+	position:relative
+}
+#focus .stageBox {
+	height:454px;
+	width:354px;
+	overflow:hidden;
+	position:absolute;
+	left:3px;
+	top:3px
+}
+#focus .stageBox div {
+	height:454px;
+	width:354px
+}
+#focus .stageBox div a {
+	display:block
+}
+#focus .panel {
+	height:20px;
+	padding:2px 0;
+	position:absolute;
+	bottom:20px;
+	right:10px
+}
+#focus .panel .nav {
+	height:20px;
+	float:right;
+	background:none!important
+}
+#focus .panel .nav a {
+	display:inline-block;
+	background:#4f4f4f;
+	color:#fff!important;
+	text-align:center;
+	text-decoration:none;
+	margin-right:10px;
+	width:24px;
+	height:24px;
+	float:left;
+	border-radius:12px;
+	-webkit-border-radius:12px;
+	-moz-border-radius:12px;
+	line-height:24px;
+	font-weight:400;
+	font-size:14px
+}
+#focus .panel .nav a:hover, #focus .panel .nav a.current {
+	background:#E31939!important
+}
+.articleList {
+	float:left;
+	margin:0 15px;
+	height:460px;
+	width:530px;
+	overflow:hidden
+}
+.articleList h3 {
+	background:url(../images/upgrade_ad/bbs_1.png) left top no-repeat;
+	width:520px;
+	height:24px;
+	text-indent:-999em;
+	overflow:hidden;
+	margin-bottom:15px
+}
+.articleList .focus_news {
+	padding-bottom:15px;
+	margin-bottom:15px;
+	border-bottom:1px dotted #bbb
+}
+.articleList h4 {
+	font-size:16px;
+	margin-bottom:10px;
+	text-align:center;
+	color:#E31939;
+	font-family:'微软雅黑', '黑体'
+}
+.articleList h4 a {
+	font-weight:bold;
+	background:0;
+	padding:0;
+	color:#c00
+}
+.articleList p {
+	line-height:22px;
+	color:#999
+}
+
+.pic {
+	margin-top:10px;
+	padding:3px;
+	background:#f5f5f5;
+	border:solid 1px #dddddd;
+	width:272px;
+	overflow:hidden
+}
+.learn_news { padding-bottom:10px; margin-bottom:10px;}
+.learn_news h4 {
+	text-align:left
+}
+
+
+.pageSide {
+	width:280px; float:right
+}
+.sideCom {
+	height:auto;
+}
+.sideCom .title {
+	height:31px;
+	line-height:31px;
+	padding:0 10px;
+	background:#F9F9F9;
+	font-size:14px;
+	font-weight:400;
+	overflow:hidden;
+	position:relative;
+}
+.sideCom .title span, .sideCom .title a {
+	display:inline-block;
+	height:20px;
+	line-height:20px;
+}
+.sideCom .title a.ico {
+	display:inline-block;
+	width:32px;
+	height:31px;
+	background:url(../images/upgrade_ad/index_ico.png) no-repeat;
+	overflow:hidden;
+	position:absolute;
+	right:5px;
+	top:0
+}
+.sideCom .title .ico1 {
+	background-position:0 0
+}
+.sideCom .title .ico2 {
+	background-position:0 -31px
+}
+.sideCom .title a.ico3 {
+	background-position:0 -62px
+}
+.sideCom .title .more {
+	float:right;
+	line-height:31px;
+	color:#858585;
+	font-size:12px;
+	font-weight:normal
+}
+.sideCom .body {
+	height:auto;
+	padding:5px 15px 12px;
+	*padding:10px 15px 15px
+}
+.sideCom .body li {
+	height:20px;
+	margin-top:8px;
+	color:#474747; overflow:hidden;
+}
+
+.sideCom .body li .subject {
+	overflow:hidden;
+}
+.sideCom .body li .subject span, .sideCom .body li .subject a {
+	display:inline-block;
+	float:left
+}
+.sideCom .body li .subject a {
+	line-height:20px
+}
+
+.sideCom .body li .ico {
+	display:inline-block;
+	width:20px;
+	height:20px;
+	line-height:20px;
+	overflow:hidden;
+	background:#E31939;
+	border-radius:50%;
+	color:#fff;
+	text-align:center;
+	vertical-align:top;
+	margin:0px 5px 0 0
+}
+.sideCom .body li .ico1 {
+	background:#E31939;
+}
+.sideCom .body li .ico2 {
+	background: #e5e5e5;
+    color: #666;
+}
+.sideCom .body .th {
+	border-bottom:dashed 1px #cfcfcf;
+	margin-top:0!important;
+	padding-bottom:2px
+}
+
+.homeAd {
+	margin-top:10px;
+	clear:both;
+	height:100px;
+	overflow:hidden;
+	position:relative
+}
+.homeAd img { width:1210px; height:100px;}
+
+
+.mainCom {
+	width:915px;
+	float:left; 
+}
+
+.mainCom .title,.title, .tabs .tab_nav {
+	height:31px;
+	border:solid 1px #DDD;
+	background:#F9F9F9 ;
+	padding-right:15px;
+	overflow:hidden
+}
+.mainCom .title span, .mainCom .title span,.title b,  .title .span {
+	display:inline-block
+}
+.mainCom .title .tName,  .title .tName {
+	height: 31px;
+line-height: 31px;
+font-weight: bold;
+overflow: hidden;
+padding: 0px 10px;	
+	font-weight: 400;
+font-size: 14px;
+	float:left; 
+}
+.mainCom .title .icon_l { height:30px;  float:left; width:8px;}
+.mainCom .title .keyWords, .mainCom .title .more,  .title .keyWords,  .title .more {
+	height:22px;
+	line-height:22px;
+	margin-top:5px;
+	float:right;
+	color:#cfcfcf
+}
+.mainCom .title .more,  .title .more {
+	margin-top:5px
+}
+.mainCom .title .share,  .title .share {
+	padding-top:3px
+}
+.mainCom .body {
+	height:298px;
+	padding:0 15px;
+	border:solid 1px #dddddd;
+	border-top:0
+	}
+.body {
+	height:auto;
+	padding:0 15px;
+	border:solid 1px #dddddd;
+	border-top:0
+}
+.mainCom .first {
+	border-top:0
+}
+
+
+.first {
+	padding:15px 0;
+	height:200px; width:440px; float:left; 
+}
+.first .head {
+	background:url(../images/upgrade_ad/index.png) 0 -320px repeat-x;
+	height:30px;
+}
+.first .head span {
+	float:left;
+	padding:0 15px;
+	border:1px solid #dddddd;
+	border-bottom:0;
+	height:29px;
+	background:#f9f9f9;
+	line-height:30px
+}
+.first .head .Right {
+	margin:5px 10px 0 0
+}
+.first .head .Right a {
+	margin-right:10px;
+	color:#F64F5F; 
+	cursor:pointer
+}
+
+
+/*图片列表1*/
+.artimg_box {
+	BORDER-BOTTOM: #dddddd 1px solid; BORDER-LEFT: #dddddd 1px solid; BORDER-TOP: #dddddd 1px solid; BORDER-RIGHT: #dddddd 1px solid;HEIGHT: 360px; OVERFLOW: hidden
+}
+.sec-title-1 {	
+	height:31px;
+	line-height:31px;
+	padding:0 0px;
+	background:#F9F9F9 ;
+	font-size:15px;
+	font-weight:bold;
+	overflow:hidden;
+	position:relative; padding:0 10px;
+	border-bottom:1px solid #dddddd; 
+	margin-bottom:10px
+}
+.artimg_box .sec-title-1 H3 {
+	float:left; background:none; font-weight:400; font-size:14px
+}
+.artimg_box .sec-title-1 .more { float:right; font-size:12px; font-weight:lighter; position:relative; }
+.artimg_box .focus {
+	MARGIN: 0px 20px 0px -308px; WIDTH: 340px;
+}
+.artimg_box .focus .view {
+	WIDTH: 337px; HEIGHT: 265px
+}
+
+.artimg_box UL {
+	PADDING-LEFT: 323px; OVERFLOW: hidden
+}
+.artimg_box LI {
+	TEXT-ALIGN: center; MARGIN: 0px 12px 21px; WIDTH: 140px; DISPLAY: inline; FLOAT: left
+}
+.artimg_box IMG {
+	WIDTH: 140px; DISPLAY: block; MARGIN-BOTTOM: 10px; HEIGHT: 110px
+}
+
+/*图片列表2*/
+.artimg_box1 {
+	BORDER-BOTTOM: #dddddd 1px solid; BORDER-LEFT: #dddddd 1px solid; BORDER-TOP: #dddddd 1px solid; BORDER-RIGHT: #dddddd 1px solid;HEIGHT: 200px; OVERFLOW: hidden
+}
+.artimg_box1 .sec-title-1 H3 {
+	float:left; background:none; font-weight:400; font-size:14px
+}
+.artimg_box1 .sec-title-1 .more { float:right; font-size:12px; font-weight:lighter; position:relative;}
+
+
+.artimg_box1 UL {
+	 OVERFLOW: hidden
+}
+.artimg_box1 LI {
+	TEXT-ALIGN: center; MARGIN: 5px 16px 21px; WIDTH: 140px; DISPLAY: inline; FLOAT: left
+}
+.artimg_box1 IMG {
+	WIDTH: 140px; DISPLAY: block; MARGIN-BOTTOM: 10px; HEIGHT: 110px
+}
+
+.artimg_box1 .focus {
+	MARGIN: 0px 10px 0px -308px; WIDTH: 300px
+}
+.artimg_box1 .focus .view {
+	WIDTH: 300px; HEIGHT: 265px
+}
+
+
+/*文章列表*/
+
+ul.allList {
+	padding-top:10px; padding-bottom:10px
+}
+ul.allList.bodertop {
+	border-top:dotted 1px #d9d9d9;
+}
+ul.allList li {
+	height:26px;
+	line-height:26px; overflow:hidden
+}
+ul.allList li a {
+
+	color:#666666;
+}
+ul.allList li a.kind {
+	display:inline-block;
+	padding-left:5px;
+	color:#f64f5f;
+}
+ul.allList li span {
+	display:inline-block;
+	color:#dfdfdf;
+	padding:0 10px;
+}
+.block5 { height:5px; line-height:5px; visibility:hidden; clear:both;}

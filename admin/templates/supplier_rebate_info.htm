@@ -1,0 +1,124 @@
+<!-- $Id: order_info.htm 17060 2010-03-25 03:44:42Z liuhui $ -->
+{if $full_page}
+{include file="pageheader.htm"}
+{insert_scripts files="topbar.js,../js/utils.js,listtable.js,selectzone.js,../js/common.js"}
+<script type="text/javascript" src="../js/calendar.php?lang={$cfg_lang}"></script>
+<link href="../js/calendar/calendar.css" rel="stylesheet" type="text/css" />
+<style>
+.pay_type{position:relative;}
+.pay_type_list{position:absolute;width:100px;height:auto;padding-bottom:50px;background:#eeeeee;border:1px solid #000;left:2px;top:25px;}
+</style>
+
+
+<div class="list-div" style="margin-bottom: 5px">
+<table width="100%" cellpadding="3" cellspacing="1">
+  <tr>
+    <th colspan="4">结算单编号：{$rebate.sign}&nbsp;&nbsp;&nbsp;&nbsp;佣金时间范围：{$rebate.rebate_paytime_start}----{$rebate.rebate_paytime_end}</th>
+  </tr>
+  {if $money_info}
+  <tr>
+	  <table width='100%' cellpadding="3" cellspacing="1">
+	  {foreach from=$money_info item=money key=key}
+	  <tr>
+	  <td>{if $key eq 'online'}线上货款：{else}线下货款(货到付款)：{/if}</td><td>{$money.allmoney}</td><td>佣金比例：</td><td>{$money.supplier_rebate}%</td><td>佣金：</td><td>{$money.rebatemoney}</td>
+	  </tr>
+	  {/foreach}
+	  </table>
+  </tr>
+  {/if}
+  <tr>
+	  <table width="100%" cellpadding="3" cellspacing="1">
+	  <tr>
+	  <td><a href="supplier_order.php?act=view&rid={$rebate.rebate_id}">妥投订单</a></td><td><a href="supplier_order.php?act=view&rid={$rebate.rebate_id}&otype=2">退货订单</a></td>
+	  </tr>
+	  </table>
+  </tr>
+  {if $smarty.get.otype == 2}
+  <tr>
+		<table width="100%" cellpadding="3" cellspacing="1">
+		<tr>
+		<td>退货总货款：{$back_money.all}元（线上货款：{$back_money.online}元，货到付款：{$back_money.onout}元）， 已完成退货货款：{$back_money.finish}元， 申请中退货货款：{$back_money.nofinish}元</td>
+		</tr>
+		</table>
+  </tr>
+  {/if}
+  <tr>
+    <form action="javascript:searchRebateOrder()" name="searchForm">
+	<table width="100%" cellpadding="3" cellspacing="1">
+	<tr><td>
+		订单编号：<input type='text' name='order_sn' id='order_sn' value=''>
+		<img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
+		下单时间：
+		<input name="add_time_start" type="text" id="add_time_start" size="15"><input name="selbtn1" type="button" id="selbtn1" onclick="return showCalendar('add_time_start', '%Y-%m-%d', false, false, 'selbtn1');" value="选择时间" class="button"/> - <input name="add_time_end" type="text" id="add_time_end" size="15"><input name="selbtn1" type="button" id="selbtn1" onclick="return showCalendar('add_time_end', '%Y-%m-%d', false, false, 'selbtn1');" value="选择时间" class="button"/>
+		<input type="submit" value="{$lang.button_search}" class="button" />
+	</td></tr>
+	</table>
+	</form>
+  </tr>
+  <tr>
+  <div id='listDiv'>
+{/if}
+	{if $smarty.get.otype == 2}
+		{include file="rebate_order2.htm"}
+	{else}
+		{include file="rebate_order.htm"}
+	{/if}
+{if $full_page}
+  </div>
+  </tr>
+</table>
+</div>
+
+
+
+{literal}
+<script language="JavaScript">
+listTable.recordCount = {$record_count};
+listTable.pageCount = {$page_count};
+
+{foreach from=$filter item=item key=key}
+listTable.filter.{$key} = '{$item}';
+{/foreach}
+onload = function()
+{
+	// 开始检查订单
+	startCheckOrder();
+}
+
+function check(status)
+{
+	if(status <= 0){//冻结状态下结算佣金验证
+		var snArray = new Array();
+		var eles = document.forms['theForm'].elements;
+		for (var i=0; i<eles.length; i++)
+		{
+			if (eles[i].tagName == 'INPUT' && eles[i].type == 'checkbox' && eles[i].checked && eles[i].value != 'on')
+			{
+			  snArray.push(eles[i].value);
+			}
+		}
+		if (snArray.length == 0)
+		{
+			alert('请选择要结算的订单!');
+			return false;
+		}
+		else
+		{
+			eles['order_id'].value = snArray.toString();
+			return true;
+		}
+	}
+	else if(status == 1){//可结算状态下撤销全部佣金
+		if(confirm('撤销后，佣金状态由可结算将回归到冻结状态')){
+			return true;
+		}else{
+			return false;
+		}
+	}
+}
+
+</script>
+{/literal}
+
+{include file="pagefooter.htm"}
+{/if}

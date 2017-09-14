@@ -1,0 +1,48 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="headerLayout">
+    <div class="headerCon ">
+      <h1 id="mallLogo" style="padding-top:10px;"> <a href="index.php" class="header-logo"><img src="../images/header/logo.jpg" /></a></h1>
+      <div class="header-extra">
+       	 <div class="panel-heading">
+            <div class="more">
+                <div class="progress">
+                    <div class="progress-wrap">
+                        <div class="progress-item passed">
+                            <div class="number">1</div>
+                            <div class="progress-desc">入驻须知</div>
+                        </div>
+                    </div>
+                    <div class="progress-wrap">
+                        <div class="progress-item passed">
+                            <div class="number">2</div>
+                            <div class="progress-desc">公司信息认证</div>
+                        </div>
+                    </div>
+                    <div class="progress-wrap">
+                        <div class="progress-item passed">
+                            <div class="number">3</div>
+                            <div class="progress-desc">店铺信息认证</div>
+                        </div>
+                    </div>
+                    <div class="progress-wrap">
+                        <div class="progress-item ongoing">
+                            <div class="number"><i class="tick"></i></div>
+                            <div class="progress-desc">等待审核</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+      </div>
+    </div>
+  </div>
+<div class="store-joinin-apply">
+  <div class="main">
+    <div class="main">
+<div class="explain"><i></i>入驻申请已经提交，请等待管理员审核</div>
+<div class="bottom">
+    </div>
+
+</div>
+  </div>
+</div>

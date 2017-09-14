@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link rel="alternate" type="application/rss+xml" title="RSS|{$page_title}" href="{$feed_url}" />
+<link href="themes/{$template_dir}/images/ghs/css/customer.css" rel="stylesheet" type="text/css">
+{* 包含脚本文件 *}
+<script type="text/javascript">window.pageConfig = { compatible: true }; </script>
+{insert_scripts files='common.js'}
+{insert_scripts files='jquery.js,jquery.json.js,transport.js'}
+<style>
+html { 
+overflow-x:hidden; /*隐藏水平滚动条*/
+} 
+</style>
+</head>
+<body>
+<div style="position:fixed; top: 250px;" class="mobile-upload-entry " id="mobile-upload-entry">
+<span class="close-btn"></span>
+<span class="erweima detail">
+<a target="_blank" href="#" style="position:relative">
+<img src="erweima_supplier.php?sid={$suppid}" alt="" style="width:72px;heihgt:72px;position:absolute;top:23px;left:23px;"/>
+</a>
+</span>
+</div>
+<script type="text/javascript">
+ function initErweima(){
+                $(window).scroll(function(){
+                    var scrollHeight=$(window).scrollTop();
+                    if(scrollHeight>96){
+                        $("#mobile-upload-entry").css("position","fixed");
+                        $("#mobile-upload-entry").css("top","250px");
+                    }else{
+                        $("#mobile-upload-entry").css("position","absolute");
+                        $("#mobile-upload-entry").css("top","250px");
+                    }
+                })
+            }
+            function closeErweima(){
+                $("#mobile-upload-entry").css("display","none");
+                Cookie.set('mobile_upload_entry', '0', 'today');
+            }
+            $("#mobile-upload-entry .close-btn").click(closeErweima);
+            initErweima();
+</script>
+<div id="site-nav"> 
+<!-- #BeginLibraryItem "/../68ecshopcom_360buy/library/page_shopheader.lbi" --><!-- #EndLibraryItem -->
+
+</div>
+<link href="themes/{$template_dir}/images/ghs/css/ghs_style.css" rel="stylesheet" type="text/css" />
+<link href="themes/{$template_dir}/images/ghs/css/ghs_category.css" rel="stylesheet" type="text/css" />
+<!-- #BeginLibraryItem "/library/ghs_nav.lbi" --><!-- #EndLibraryItem -->
+<div class="ghs_body">
+<!-- #BeginLibraryItem "/library/ghs_ad.lbi" --><!-- #EndLibraryItem -->
+</div>
+<!--店铺公告 start-->
+<!--{if $shop_notice}-->
+<div class="shop_notice">{$shop_notice}</div>
+<!--{/if}-->
+<!--店铺公告 end-->
+<div class="common_case com_spl_case">     
+    <div class="supshop_smart_main_left">
+        <div class="nwg_con">
+        	<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTabCatGoods(name,cursel,n){
+for(i=1;i<=n;i++){
+var menu=document.getElementById(name+i);
+var con=document.getElementById("con_"+name+"_"+i);
+con.style.display=i==cursel?"block":"none";
+menu.className=i==cursel?"hovertab":"normaltab";
+}
+}
+//-->
+</script> 
+<style type="text/css">
+.nwgtb_ .hovertab {
+	background: {$navcolor};
+}
+</style>
+
+            <div id="supshop_smart_main_s1" class="nwgtb_">
+                <ul id="supshop_smart_main_s1_m" class="supshop_smart_main_s1_m">
+                    <li id="nwgtb1" onmouseover="setTabCatGoods('nwgtb',1,3)" class="hovertab">新品上市</li>
+                    <li id="nwgtb2" onmouseover="setTabCatGoods('nwgtb',2,3)">热销商品</li>
+                    <li id="nwgtb3" onmouseover="setTabCatGoods('nwgtb',3,3)">精品推荐</li>
+                </ul>
+                <div id="supshop_smart_main_s1_d">
+                    <div class="itemsWrap" id="con_nwgtb_1"> 
+                        <!-- #BeginLibraryItem "/library/recommend_new.lbi" --><!-- #EndLibraryItem -->
+                    </div>
+                    <div class="common_hide" id="con_nwgtb_2"> 
+						<!-- #BeginLibraryItem "/library/recommend_hot.lbi" --><!-- #EndLibraryItem -->
+                    </div>
+                    <div class="common_hide" id="con_nwgtb_3"> 
+						<!-- #BeginLibraryItem "/library/recommend_best.lbi" --><!-- #EndLibraryItem -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #BeginLibraryItem "/library/category_goods.lbi" --><!-- #EndLibraryItem -->
+    </div>
+    <div class="supshop_smart_main_right"> 
+        	<!-- #BeginLibraryItem "/library/ghs_info_left.lbi" --><!-- #EndLibraryItem -->
+			<!-- #BeginLibraryItem "/library/ghs_category.lbi" --><!-- #EndLibraryItem -->
+			<!-- #BeginLibraryItem "/library/ghs_top10.lbi" --><!-- #EndLibraryItem -->
+ 	</div>
+    <div class="common_clear"></div>
+</div>
+
+
+
+
+<div class="ghs_content" style="padding-top:10px; display:none">
+<div class="ghs_left">
+<!-- #BeginLibraryItem "/library/ghs_info_left.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/ghs_category.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/ghs_top10.lbi" --><!-- #EndLibraryItem -->
+</div>
+
+<div style="height:0px; line-height:0px; clear:both;"></div>
+</div>
+<div style="height:0px; line-height:0px; clear:both;"></div>
+<strong><!--文章列表 start--> 
+<div class="tabs-panel tabs-hide">
+  <ul class="mall-news">
+    <!--{foreach from=$new_articles item=article_item name=name}-->
+    <li><i></i><a target="_blank" href="{$article_item.url}" title="{$article_item.title}">{$article_item.short_title} 
+
+</a> </li>
+    <!--{/foreach}-->
+  </ul>
+</div>
+<!--文章列表 end-->    
+</strong>
+<!-- #BeginLibraryItem "/../68ecshopcom_360buy/library/page_shopfooter.lbi" --><!-- #EndLibraryItem -->
+
+
+</body>
+</html>

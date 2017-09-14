@@ -1,0 +1,19 @@
+<ul class="bg-color-w lis m-btm1">
+  <li class="ub ub-ac">
+    <div class="ub-img" style="background-image:url(img/icons/order-list.png);width:1em; height:1em;"></div>
+    <div class="ub-f1 ub f-color-zi ulev-9 p-l-r5">物流信息</div>
+  </li>
+  <div class="ulev-1 sc-text-hui">
+    <div class="m-btm5">运单号：{$invoice_no}</div>
+    <div class="m-btm5">信息来源：{$shipping_name}</div>
+  </div>
+</ul>
+<div class="bg-color-w logistics" style="background-image:none"> {foreach from=$express_info.data item=item name=express_data}
+  <div class="ub ub-ver ubl border-hui m-l-r1" style="position:relative; padding-bottom:1em; width:100%;">
+    <div class="photo-wh1 {if $smarty.foreach.express_data.first}photo{else}photo1{/if} ub-img"></div>
+    <div class="ulev-9 {if $smarty.foreach.express_data.first}express-color{else}f-color-6{/if}" style="margin-left:1em; margin-right:1em;">{$item.context}</div>
+    <div class="ulev-1 ubb border-hui m-all3 {if $smarty.foreach.express_data.first}express-color{else}f-color-6{/if}"" style="padding-bottom:1em">{$item.ftime}</div>
+  </div>
+  {foreachelse}
+  <div class="ub ub-pc umar-t1 f-color-6 p-t-b6">找不到物流信息</div>
+  {/foreach} </div>

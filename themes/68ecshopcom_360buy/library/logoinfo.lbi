@@ -1,0 +1,7 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div id="guide">
+  <h5>还不是该商城用户？</h5>
+  <div class="content">现在免费注册成为该商城用户，便能立刻享受便宜又放心的购物乐趣。</div>
+  <a href="user.php?act=register" class="btn-link btn-personal">注册新用户</a>
+  <div class="app" style="text-align:center"><a target="_blank" href="#"></a></div>
+</div>

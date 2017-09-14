@@ -1,0 +1,44 @@
+<ul class="ct-list order_total_ul" id="ECS_ORDERTOTAL" >
+  <li class="order_total_li" > 
+*{$lang.complete_acquisition}
+    {if $config.use_integral}<span class="price">{$total.will_get_integral}</span>{$points_name}{/if}
+    {if $total.will_get_bonus neq $option.price_zero_format}
+    {if $config.use_integral and $config.use_bonus}<br/>{$lang.with_price}{/if}{if $config.use_bonus}<span class="price">{$total.will_get_bonus}</span>{$lang.de}{$lang.bonus}{/if}{/if}
+    {if $total.discount gt 0}<br/>- {$lang.discount}：<span class="price">{$total.discount_formated}</span>{/if}
+    {if $total.tax gt 0}<br/>
+    + {$lang.tax}：<span class="price">{$total.tax_formated}</span>{/if}
+    {if $total.shipping_fee > 0}<br/>
+    + {$lang.shipping_fee}：<span class="price">{$total.shipping_fee_formated}</span>{/if}
+    <!--{if $total.aa > 0} 优惠--><br/> - 手机下单优惠：<span class="price">{$total.dd}</span><!--{/if}-->
+    {if $total.shipping_insure > 0}<br/>
+    + {$lang.insure_fee}：<span class="price">{$total.shipping_insure_formated}</span>{/if}
+    {if $total.pay_fee > 0}<br/>
+    + {$lang.pay_fee}：<span class="price">{$total.pay_fee_formated}</span>{/if}
+    {if $total.pack_fee > 0}<br/>
+    + {$lang.pack_fee}：<span class="price">{$total.pack_fee_formated}</span>{/if}
+    {if $total.card_fee > 0}<br/>
+    + {$lang.card_fee}：<span class="price">{$total.card_fee_formated}</span>{/if}
+    {if $total.surplus > 0 or $total.integral > 0 or $total.bonus > 0}
+    {if $total.surplus > 0}<br/>
+    - {$lang.use_surplus}：<span class="price">{$total.surplus_formated}</span>{/if}
+    {if $total.integral > 0}<br/>
+    - {$lang.use_integral}：<span class="price">{$total.integral_formated}</span>{/if}
+    {if $total.bonus > 0}<br/>
+    - {$lang.use_bonus}：<span class="price">{$total.bonus_formated}</span>{/if}
+    {/if} </li>
+  {if $smarty.session.user_id > 0 and ($config.use_integral or $config.use_bonus)}  
+  {/if}
+<li> 
+<div class="subtotal"> 
+<span class="total-text">{$lang.goods_all_price}：</span>
+ <em>{$total.goods_price_formated}</em><br/>
+   <span class="total-text">{$lang.total_fee}：</span>
+  <strong class="price_total">{$total.amount_formated}</strong> 
+  <span class="total-text" style="">{if $is_group_buy || $total.exchange_integral}
+    {if $is_group_buy}{$lang.notice_gb_order_amount}{/if}
+    {if $total.exchange_integral }<br/>
+    {$lang.notice_eg_integral}{$total.exchange_integral} {/if} 
+    {/if}</span>
+  </div>
+</li>
+</ul>

@@ -1,0 +1,49 @@
+<?php
+$this->assign('templatepath',  'themes/'.$GLOBALS['_CFG']['template']);
+?>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--用户评论 START-->
+<div class="zixunmt">
+	 <DIV class=mt>
+	  <ul class=tab>
+	  <li id="comment_li_0" class="curr"><a href="javascript:comment_type_curr(1, {$goods.goods_id}, 0, 0);" onfocus="this.blur();">全部评价({$comment_score.all}20) </a></li>
+	  <li id="comment_li_1" ><a href="javascript:comment_type_curr(1, {$goods.goods_id}, 0, 1);" onfocus="this.blur();">好评({$comment_score.hao}20)  </a></li>
+	  <li id="comment_li_2" ><a href="javascript:comment_type_curr(1, {$goods.goods_id}, 0, 2);" onfocus="this.blur();">中评({$comment_score.zhong}0)  </a></li>
+	  <li id="comment_li_3" ><a href="javascript:comment_type_curr(1, {$goods.goods_id}, 0, 3);" onfocus="this.blur();">差评({$comment_score.cha}0) </a></a></li>
+	  </ul>
+	 </div>
+	 </div>
+     <div style="height:10px; line-height:10px; clear:both;"></div>
+	 <div style="border:1px solid #ddd;padding:10px; border-top: 2px solid #999999">
+	 <table width="100%" cellpadding=0 cellspacing=0 >
+	 <tr>
+	 <td width="140" align=center style="color:#E4393C;"><font style="font-family:'黑体';line-height:35px;font-size:29px;font-weight:bold;">{$comment_score.hao-du}%</font><br>好评度</td>
+	 <td width="650" class="comm_score" >
+	    <dl style="width:90%;" >
+	    <dt >好评：</dt>
+	    <dd class="score1" ><div style="float:left;width:{$comment_score.hao-img}px;height:10px;background:url({$templatepath}/images/comments/bg_score.gif) no-repeat 0 -1px;"></div></dd>
+	    <dd >{$comment_score.hao-du}%</dd>
+	    </dl>
+	    <dl style="width:90%;" >
+	    <dt >中评：</dt>
+	    <dd class="score1" ><div style="float:left;width:{$comment_score.zhong-img}px;height:10px;background:url({$templatepath}/images/comments/bg_score.gif) no-repeat 0 -1px;"></div></dd>
+	    <dd >{$comment_score.zhong-du}%</dd>
+	    </dl>
+	    <dl style="width:90%;" >
+	    <dt >差评：</dt>
+	    <dd class="score1" ><div style="float:left;width:{$comment_score.cha-img}px;height:11px;background:url({$templatepath}/images/comments/bg_score.gif) no-repeat 0 -1px;"></div></dd>
+	    <dd >{$comment_score.cha-du}%</dd>
+	    </dl>
+	 </td>
+	 <td align=center style="border-left:1px solid #ccc;padding-left:10px;">我购买过此商品
+	<br><a href="comment_add.php?id={$goods.goods_id}"><img src="{$templatepath}/images/comments/btn_comment_add.gif" border=0></a></td>
+	 </tr>
+	 </table>
+	 </div>
+	
+	<div class="blank"></div>
+{insert_scripts files='transport.js,utils.js'}
+<div id="ECS_COMMENT"> {* 鸿宇多用户商城 提醒您：动态载入comments_list.lbi，显示评论列表和评论表单 *}{insert name='comments' type=$type id=$id  }
+
+<div style="height:0px; line-height:0px; clear:both;"></div>
+</div>

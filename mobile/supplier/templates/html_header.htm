@@ -1,0 +1,37 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Description" content="{$description}" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<title>{$ur_here}</title>
+<link href="styles/main.css" rel="stylesheet" type="text/css" />
+<link href="styles/zalert.css" rel="stylesheet" type="text/css" />
+<link href="styles/zprogress.css" rel="stylesheet" type="text/css" />
+<link href='styles/intimidatetime.css' rel="stylesheet" type="text/css" />
+<link href='styles/zscrolltotop.css' rel="stylesheet" type="text/css" />
+<script type="text/javascript" src='js/zepto.min.js'></script>
+<script type='text/javascript' src='js/fx.js'></script>
+<script type='text/javascript' src='js/fx_methods.js'></script>
+<script type='text/javascript' src='js/zcontent.js'></script>
+<script type='text/javascript' src='js/zalert.js'></script>
+<script type='text/javascript' src='js/zprogress.js'></script>
+<script type='text/javascript' src='js/zextra_methods.js'></script>
+<script type='text/javascript' src='js/zscroll.js'></script>
+<script type='text/javascript' src='js/zscrolltotop.js'></script>
+<script src='js/intimidatetime.js'></script>
+<script src='js/intimidatetime.zh_CN.js'></script>
+<script type="text/javascript" src='js/main.js'></script>
+
+<script type='text/javascript'>
+  Zepto(function($)
+  {
+    $.zcontent.set("url","{$smarty.server.SCRIPT_NAME}");
+    {foreach from=$smarty.request key=key item=item}
+    $.zcontent.set("{$key}","{$item}");
+    {/foreach}
+    {foreach from=$smarty.get key=key item=item}
+    $.zcontent.add_static("{$key}")
+    {/foreach}
+	  $.intimidatetime.setDefaults($.intimidatetime.i18n['zh-CN']);
+   $(document).on('ajaxStart', $.zprogress.start).on('ajaxStop', $.zprogress.done)
+   $("#toTop").scrollToTop();
+  });
+</script>

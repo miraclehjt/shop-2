@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <title>{$lang.cp_home}{if $ur_here} - {$ur_here} {/if}</title>
+
+    <meta name="robots" content="noindex, nofollow">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link href="styles/general.css" rel="stylesheet" type="text/css" />
+
+    <link href="styles/main.css" rel="stylesheet" type="text/css" />
+
+    {insert_scripts files="../js/transport.js,common.js"}
+
+    <script language="JavaScript">
+
+        <!--
+
+        // 这里把JS用到的所有语言都赋值到这里
+
+        {foreach from=$lang.js_languages key=key item=item}
+
+        var {$key} = "{$item}";
+
+        {/foreach}
+
+        //-->
+
+    </script>
+
+</head>
+
+<body>
+
+
+
+<h1>
+
+    {if $action_link}
+
+    <span class="action-span"><a href="{$action_link.href}">{$action_link.text}</a></span>
+
+    {/if}
+
+    {if $action_link2}
+
+    <span class="action-span"><a href="{$action_link2.href}">{$action_link2.text}</a>&nbsp;&nbsp;</span>
+
+    {/if}
+
+    <span class="action-span1"><a href="index.php?act=main">{$lang.cp_home}</a> </span><span id="search_id" class="action-span1"> - 添加自定义菜单</span>
+
+    <div style="clear:both"></div>
+
+</h1>
+
+
+
+{insert_scripts files="../js/utils.js,selectzone.js,colorselector.js"}
+
+<script type="text/javascript" src="../js/calendar.php?lang={$cfg_lang}"></script>
+
+<link href="../js/calendar/calendar.css" rel="stylesheet" type="text/css" />
+
+
+
+{if $warning}
+
+<ul style="padding:0; margin: 0; list-style-type:none; color: #CC0000;">
+
+    <li style="border: 1px solid #CC0000; background: #FFFFCC; padding: 10px; margin-bottom: 5px;" >{$warning}</li>
+
+</ul>
+
+{/if}
+
+
+
+<!-- start goods form -->
+
+<div class="tab-div">
+
+
+
+<!-- tab body -->
+
+<div id="tabbody-div">
+
+<!-- 通用信息 -->
+
+<form name="theForm" method="post" action="weixin.php?act=addmenu&id={$menu.id}" enctype="multipart/form-data">
+
+  <table width="100%" cellpadding="3" cellspacing="1">
+
+  <tbody><tr>
+
+    <td class="label">选择上级菜单:</td>
+
+	<td>
+
+	<select name="pid">
+
+		<option value="0">顶级</option>
+
+		{foreach from=$pmenu item=child}
+
+		<option value="{$child.id}" {if $menu.pid eq $child.id}selected{/if}>{$child.name}</option>
+
+		{/foreach}
+
+    </select>
+
+	</td>
+
+  </tr>
+
+  <tr>
+
+    <td class="label">菜单名称 :</td>
+
+    <td><input type="text" name="name" size="20" value="{$menu.name}"></td>
+
+  </tr>
+
+  <tr>
+
+    <td class="label">菜单类型 :</td>
+
+    <td>
+
+	<input type="radio" name="type" onclick="shownews(1)" value="1" {if $menu.type eq 1}checked{/if}>命令
+
+	<input type="radio" name="type" onclick="shownews(1)" value="2" {if $menu.type eq 2}checked{/if}>链接
+
+	<input type="radio" name="type" onclick="shownews(2)" value="3" {if $menu.type eq 3}checked{/if}>自定义图文
+
+	</td>
+
+  </tr>
+
+  {include file="weixin/news.html"}
+
+ <tr id="menuvalue" {if $menu['type'] eq 3}style="display:none"{/if}>
+
+    <td class="label">菜单值 :</td>
+
+    <td><input type="text " name="value" size="50" value="{if $menu['type'] neq 3}{$menu.value}{/if}"></td>
+
+  </tr>
+
+ <tr>
+
+    <td class="label">排序 :</td>
+
+    <td><input type="text" name="order" size="5" value="{$menu.order}">（越大越考前）</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2" align="center">
+
+      <input type="submit" value="{$lang.button_submit}" class="button" />
+
+    <input type="reset" value="{$lang.button_reset}" class="button" />
+
+    </td>
+
+  </tr>
+
+</tbody></table>
+
+</form>
+
+</div>
+
+</div>
+
+<!-- end goods form -->
+
+<script language="JavaScript">
+
+function shownews(t){
+
+	if (t == 2) {
+
+		document.getElementById('news').style.display = "";
+
+		document.getElementById('menuvalue').style.display = "none";
+
+	}else{
+
+		document.getElementById('news').style.display = "none";
+
+		document.getElementById('menuvalue').style.display = "";
+
+	}
+
+}
+
+</script>
+
+{include file="pagefooter.htm"}
+

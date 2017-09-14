@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable --><!-- TemplateBeginEditable name="head" -->
+
+<!-- TemplateEndEditable -->
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" /><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link rel="stylesheet" href="themes/68ecshopcom_360buy/css/store.css">
+{insert_scripts files='jquery-1.6.2.min.js'}
+{insert_scripts files='jquery.json.js,transport.js'}
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-lazyload.js" ></script>
+</head>
+<body>
+<div id="site-nav">
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+
+  <div id="content">
+    <div class="flow">
+    	<div class="blank"></div>
+      <h3 class="nav-title"><strong>店铺搜索结果</strong><b></b></h3>
+      <div class="blank"></div><div class="blank5"></div>
+      <!-- #BeginLibraryItem "/library/search_list.lbi" --><!-- #EndLibraryItem -->
+      <!-- #BeginLibraryItem "/library/stores_search_pager.lbi" --><!-- #EndLibraryItem -->
+    </div>
+    <div class="blank5"></div>
+  </div>
+<!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/site_bar.lbi" --><!-- #EndLibraryItem -->
+</div>
+</body>
+<script type="text/javascript">
+
+function guanzhu(sid){
+	Ajax.call('supplier.php', 'go=other&act=add_guanzhu&suppId=' + sid, selcartResponse, 'GET', 'JSON');
+}
+
+function selcartResponse(result){
+	
+	alert(result.info);
+}
+
+function store_focus(e){
+	var logo="#j_logo_"+e;
+	var clo="#j_brand_"+e;
+	$(logo).hide(); 
+	$(clo).show();
+	}
+function store_nofocus(e){
+	var logo="#j_logo_"+e;
+	var clo="#j_brand_"+e;
+	$(logo).show(); 
+	$(clo).hide(); 
+	}
+$(".ft-bands div").mouseover(function(){
+$(this).addClass('ft-col-cur').siblings().removeClass('ft-col-cur'); //切换选项卡标签的class
+})
+</script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+var headHeight=200;  //这个高度其实有更好的办法的。使用者根据自己的需要可以手工调整。
+ 
+var nav=$("#J_NavTag"); 
+$(window).scroll(function(){ 
+ 
+if($(this).scrollTop()>headHeight){ 
+nav.addClass("nav-fixed"); 
+} 
+else{ 
+nav.removeClass("nav-fixed"); 
+} 
+}) 
+})
+</script>
+{* 代码增加_start  By  bbs.hongyuvip.com *}
+<script type="text/javascript">
+$("img").lazyload({
+    effect       : "fadeIn",
+	 skip_invisible : true,
+	 failure_limit : 20
+});
+</script>
+{* 代码增加_end  By  bbs.hongyuvip.com *}
+</html>
+
+
+
+

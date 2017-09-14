@@ -1,0 +1,28 @@
+<!-- {if $shipping_list} -->
+<ul class="shipping_jm">
+	<li>
+		<input type="hidden" name="pay_ship[{$suppid}]" id='pay_ship_{$suppid}' class='shipping' value="{$checkedid}">
+		<!-- {foreach from=$shipping_list item=shipping} 循环配送方式 -->
+		<a id="ship_{$suppid}_{$shipping.shipping_id}" title="{$shipping.shipping_desc} {if $shipping.shipping_fee}运费{$shipping.format_shipping_fee} {if $shipping.free_money1}满{$shipping.free_money}免邮{/if}{else}免邮{/if}" class="shipping_type{if $shipping.selected neq ''} shipping_type_curr{/if} pay_ship{$suppid}" onclick="$('#pay_ship_{$suppid}').val({$shipping.shipping_id});selectShipping({$shipping.shipping_id},{$suppid});$('.pay_ship{$suppid}').removeClass('shipping_type_curr');$(this).addClass('shipping_type_curr');">
+			<!--注意：如果选中的是当前的配送，注意a标签的变化，变化为<a class="shipping_type shipping_type_curr">-->
+			<!-- {if $shipping.shipping_code != 'tc_express' && $shipping.shipping_code != 'pups'} -->
+			<label>
+				<!-- {$lang.common_express } -->
+			</label>
+			<!-- {else} -->
+			<label>
+				<!-- {$shipping.shipping_name } -->
+			</label>
+			<!-- {/if} -->
+		</a>
+		<!-- {/foreach} -->
+	</li>
+</ul>
+<!-- {else} -->
+<ul class="shipping_jm">
+	<li>
+		<input type="hidden" name="pay_ship[{$suppid}]" id='pay_ship_{$suppid}' class='shipping' value="0">
+		<span>暂不支持收货地址配送</span>
+	</li>
+</ul>
+<!-- {/if} -->

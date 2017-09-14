@@ -1,0 +1,363 @@
+/*
+
+Template Name: 网店模板
+
+Template URI: http://bbs.hongyuvip.com/
+
+Description: 商家入驻网店模板.
+
+Version: 2.7.2
+
+Author: supplier
+
+Author URI: http://bbs.hongyuvip.com/
+
+Logo filename: logo.gif
+
+Template Type: type_0
+
+Sign: supplier
+
+*/
+
+/*iphone手机的input的样式问题*/
+
+input[type="submit"],
+
+input[type="reset"],
+
+input[type="button"],
+
+button {
+
+-webkit-appearance: none;
+
+}
+
+/*css初始值*/
+
+body {margin:0px;font-family: "微软雅黑", "宋体", Arial, Helvetica, sans-serif;font-size: 12px;line-height: 180%;color: #000000; min-width:320px;}
+
+html, body, div, p, ul, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, form, input, select, button, textarea, iframe, table, th, td {margin: 0;padding: 0;list-style-type: none;}
+
+img { border:0px}
+
+a:link {font-family: "微软雅黑", "宋体", Arial, Helvetica, sans-serif;font-size:12px;color: #000000;text-decoration: none;}
+
+a:visited {font-family: "微软雅黑", "宋体", Arial, Helvetica, sans-serif;font-size:12px;color:#000000;text-decoration: none;}
+
+a:hover {font-family: "微软雅黑", "宋体", Arial, Helvetica, sans-serif;font-size:12px;color:#E24615;text-decoration: none;}
+
+
+
+/*头部弹出菜单*/
+
+.menu1,.menu2,.menu3,.menu4,#show_more{background:url(../img/pub_goods.png) no-repeat;background-size: auto 200px;}
+
+.hid{ display:none;}
+
+.goods_nav{ width:30%; float:right; right:5px; overflow:hidden; position:fixed;margin-top:25px; z-index:9999999}
+
+.Triangle{ width:100%; height:20px; }
+
+.Triangle h2{ 
+
+width: 0;height: 0;border-style: solid;border-color: transparent transparent #565553 transparent;border-width: 10px;transition: 0.6s;float:right;
+
+ margin-right:10px;}
+
+.goods_nav ul{ width:100%; overflow:hidden;background-color:rgba(46,45,45,0.9);border-radius:2px;}
+
+.goods_nav li{ width:100%; height:40px; border-bottom:1px solid #9b9998;}
+
+.nl5{ background:#2D2D2D}
+
+.goods_nav li span{display: block;width:25px;height:25px; float:left; margin-top:5px; margin-left:5px;}
+
+.goods_nav li i{ font-style:normal; color:#f3f1f1; font-size:14px; display:block; float:left; line-height:40px;}
+
+.menu1{ background-position:0 4px;}
+
+.menu2{ background-position:0 -19px;}
+
+.menu3{ background-position:0 -41px;}
+
+.menu4{ background-position:0 -64px;}
+
+/* 页面头部  */
+
+.header { width:100%; height:45px; background:#F6F6F6;top:0; z-index:9999; border:0; border-bottom:1px solid #CCC}
+
+.h-left{float:left;width:15%; height:45px;}
+
+.h-left a{ display:block; width:45px; height:45px; margin:auto; background: url(../img/arrow_left.png) no-repeat 15px center; background-size: auto 16px; }
+
+.h-right{float:left; width:15%;height:45px;}
+
+.h-mid { width:70%; height:45px; float:left; text-align:center; color:#333; font-size:14px; line-height:45px; position:relative;font-family: "微软雅黑", "宋体", Arial, Helvetica, sans-serif; position:relative}
+
+.dianp_search{ display:block; background:#E5E5E5; width:100%; border:0px; height:35px; margin-top:5px; border-radius:5px; text-indent:35px;font-size:14px; color:#a2a2a2}
+
+.icon_search{ display:block; width:30px; height:30px; position:absolute;top:8px; left:5px; border:0px; background:url(../img/search.png) no-repeat center center;background-size: auto 22px; }
+
+/*弹出菜单*/
+
+.top_bar{float:right; display:block;margin-right:8px; width:40px; height:40px; float:right;}
+
+#show_more{width:30px; height:20px; float:right;background-position:0 -112px; margin-left:10px; margin-top:10px;}
+
+.goods_nav{ width:30%; float:right; right:5px; overflow:hidden; position:fixed;margin-top:-20px; z-index:9999999}
+/*------------mall.dwt店铺信息--------------*/
+.dianpu_main{width:100%; overflow:hidden;background: url(../img/topbg.jpg) no-repeat center bottom}
+.dianpu_main dl{width:100%; overflow:hidden; position:relative; padding-top:20px;}
+.dianpu_main dl p{ position:absolute; width:50px; height:35px;background-color:rgba(27,27,27,0.5); font-size:12px; line-height:35px; text-align:center; color:#FFF; right:5px; top:10px; border-radius:4px; }
+.dianpu_main dl dt{width:100%; overflow:hidden;}
+.dianpu_main dl dt img{ display:block; margin:auto; width:20%; border-radius:50%; }
+.dianpu_main dl dd{width:100%; overflow:hidden;}
+.dianpu_main dl dd span{ display:block; width:100%; overflow:hidden; font-size:14px; color:#FFF; text-align:center; line-height:20px; margin-top:10px;}
+.dianpu_main dl dd em{ display:block; width:100%; overflow:hidden; margin-top:10px;}
+.dianpu_main dl dd em img{ display:block; margin:auto; height:20px;}
+.dianpu_main ul{width:100%; overflow:hidden;background-color:rgba(27,27,27,0.3); margin-top:20px;}
+.dianpu_main ul li{ width:25%; float:left; height:50px; border-right:1px solid #bcbbbb; margin-left:-1px;}
+.dianpu_main ul li span{ display:block; width:100%; overflow:hidden; text-align:center; font-size:12px; line-height:120%; color:#eeeeee; padding-top:10px;}
+.dianpu_main ul li strong{ display:block; width:100%; overflow:hidden; text-align:center; font-size:14px; line-height:150%; color:#fff}
+/*------------mall.dwt店铺信息------------
+
+.bian{ border-right:1px solid #eeeeee; margin-left:-1px;}
+
+.dianpu_main{ width:100%; overflow:hidden; height:190px; position:relative; background:#FFF; border-bottom:1px solid #dcdcdc}
+
+.top_bg{ width:100%; height:100px;background:#000000 url(../img/topbg.png) no-repeat center bottom}
+
+.dianpu_logo{ width:90%; height:130px; margin:auto; position:absolute; bottom:0px; margin-left:5%;}
+
+.dianpu_logo dl{ width:100%; height:70px;}
+
+.dianpu_logo dl dt{ width:25%; height:70px; float:left;}
+
+.dianpu_logo dl dt img{ display:block; width:70px; height:70px; border:1px solid #eeeeee}
+
+.dianpu_logo dl dd{ width:50%; height:70px; float:left}
+
+
+
+.dianpu_logo dl dd span{ display:block; width:100%; height:30px; font-size:14px; line-height:30px; margin-top:10px;text-indent:5px; color:#FFF;}
+
+.dianpu_logo dl dd em{ display:block; width:100%; height:20px; font-size:14px; line-height:20px; font-style:normal; text-indent:5px; color:#666; margin-top:10px;}
+
+
+
+.dianpu_logo dl dd em img{ display:inline-block; height:18px;margin-left:5px; float:left}
+
+.dianpu_logo dl p{ width:20%; height:70px; float:left}
+
+.dianpu_logo dl p a{ display:block; width:80px; height:30px; border:1px solid #FFF; font-size:14px; line-height:30px; text-indent:30px; color:#FFF;border-radius:5px;background: url(../img/guanzhu.png) no-repeat 15% center;background-size: auto 16px; }
+
+
+
+.dianpu_logo ul{ width:100%; height:50px; margin-top:5px;}
+
+.dianpu_logo ul li{ width:25%; height:40px; float:left; margin-top:5px;}
+
+.dianpu_logo ul li span{ display:block; width:100%; text-align:center; font-size:14px; line-height:20px; color:#666}
+
+/*banner*/
+
+	.scrollimg{ position:relative; overflow:hidden; margin:0px auto; margin-top:10px; }
+
+	.scrollimg .hd{ position: absolute;
+
+bottom:0px;
+
+text-align: center;
+
+width: 100%;}
+
+	.scrollimg .hd li{display: inline-block;
+
+width: .4em;
+
+height: .4em;
+
+margin: 0 .4em;
+
+-webkit-border-radius: .8em;
+
+-moz-border-radius: .8em;
+
+-ms-border-radius: .8em;
+
+-o-border-radius: .8em; 
+
+border-radius: .8em;
+
+background: #FFF;
+
+filter: alpha(Opacity=60);
+
+opacity: .6;
+
+box-shadow: 0 0 1px #ccc; text-indent:-100px; overflow:hidden; }
+
+	.scrollimg .hd li.on{ filter: alpha(Opacity=90);
+
+opacity: .9;
+
+background: #f8f8f8;
+
+box-shadow: 0 0 2px #ccc; }
+
+	.scrollimg .bd{ position:relative; z-index:0; }
+
+	.scrollimg .bd li{ position:relative; text-align:center;  }
+
+	.scrollimg .bd li img{ background:url(images/loading.gif) center center no-repeat;  vertical-align:top; width:100%;/* 图片宽度100%，达到自适应效果 */}
+
+	.scrollimg .bd li a{ -webkit-tap-highlight-color:rgba(0,0,0,0);  }  /* 去掉链接触摸高亮 */
+
+	.scrollimg .bd li .tit{ display:block; width:100%;  position:absolute; bottom:0; text-indent:10px; height:28px; line-height:28px; background:url(images/focusBg.png) repeat-x; color:#fff;  text-align:left;  }
+
+/*店长推荐*/
+
+.product_value{ width:100%; overflow:hidden; background:#FFF; margin-top:10px; border-bottom:1px solid #dcdcdc;border-top:1px solid #dcdcdc;}
+
+.product_value h2{ width:95%; margin:auto; height:50px; font-size:16px; line-height:50px; color:#333; font-weight:normal}
+
+.product_value ul{ width:95%; margin:auto; overflow:hidden; padding-bottom:10px;}
+
+.product_value ul li{ width:33.3%; float:left; overflow:hidden; padding-bottom:10px;}
+
+.product_value ul li span{ display:block; width:95%; margin:auto; overflow:hidden}
+
+.product_value ul li span img{ width:100% !important; height:auto !important}
+
+.p_info{ font-size:14px; line-height:20px; color:#333; height:40px; overflow:hidden}
+
+.price{font-size:14px; line-height:150%; color:#e41735;}
+
+.product_value ul li span font{ display:inline-block}
+
+.product_value ul li span .f1{font-size:14px; line-height:150%; color:#e41735}
+
+.product_value ul li span .f2{font-size: 14px;line-height: 150%;color: #999;text-decoration: line-through;}
+
+/*底部炫富菜单*/
+
+.bottm_nav{ position:fixed; bottom:0px; width:100%; height:40px; border-top:1px solid #dcdcdc; background:#fff}
+
+.bottm_nav ul{ width:100%; overflow:hidden}
+
+.bottm_nav ul li{ width:33.3%; float:left; overflow:hidden; text-align:center}
+
+.bottm_nav ul li a{ font-size:16px; line-height:40px; color:#666;}
+
+/*about.dwt店铺简介*/
+
+.about_top{ width:100%; overflow:hidden; background:#FFF; border-bottom:1px solid #dcdcdc; padding-top:10px; padding-bottom:10px;}
+
+.about_top dl{ width:95%; overflow:hidden; margin:auto}
+
+.about_top dl dt{ width:25%; height:70px; float:left;}
+
+.about_top dl dt img{ display:block; width:100%;}
+
+.about_top dl dd{ width:50%; height:70px; float:left}
+
+.about_top dl dd span{ display:block; width:100%; line-height:150%; font-size:18px;text-indent:10px; color:#666;}
+
+.about_top dl dd em{ display:block; width:100%; height:18px; font-size:14px; line-height:150%; font-style:normal; text-indent:10px; color:#999;}
+
+.about_top dl dd em img{ display:inline-block; height:18px; margin-left:10px; float:left}
+
+.about_top dl p{ width:20%; height:70px; float:left}
+
+.about_top dl p a{ display:block; width:70px; height:30px; border:1px solid #FFF; font-size:16px; text-align:center; line-height:30px;color:#FFF;border-radius:5px;background:#e41735 }
+
+.about_main{ width:100%; background:#FFF; padding-top:10px; overflow:hidden; margin-top:10px;border-bottom:1px solid #dcdcdc;border-top:1px solid #dcdcdc; padding-bottom:10px; }
+
+.about_main dl{ width:95%; margin:auto; overflow:hidden}
+
+.about_main dl dt{ width:25%; float:left; font-size:14px; color:#999; line-height:200%;}
+
+.about_main dl dd{ width:75%; float:left; font-size:14px;line-height:200%;}
+
+.hei{ color:#333}
+
+.red{ color:#e41735}
+
+
+
+.about_main h3{ width:100%; height:40px; text-indent:10px; font-size:18px; line-height:40px; color:#333; font-weight:normal}
+
+.about_main span{ display:block; width:80%; margin:auto; overflow:hidden; text-align:center; font-size:14px; color:#666; line-height:30px;}
+
+.about_main span img{ display:block; width:100%}
+
+.link{ display:block; width:80%; margin:auto; height:40px; background:#e41735; font-size:18px; line-height:40px; text-align:center; color:#FFF; margin-top:20px; margin-bottom:20px;}
+
+
+
+/*catalog.dwt分类页面css*/
+
+.container{ width:100%; padding:0; overflow:hidden; margin:auto;}
+
+
+
+.category-box{ padding-top:56px; margin-top:-56px; height:100%; width:100%; overflow:hidden}
+
+.category1{ height:100%; float:left; width:25%;background-color:#fff;}
+
+.category1 ul{width:100%; overflow:hidden;}
+
+.category1 li{ width:100%;height:50px;line-height:50px;background-color: #fff;border-top: 1px solid #f4f4f4;font-size: 16px; overflow:hidden; text-align:center}
+
+.category1 li.cur{color:#DE3535; border-left:2px solid #DE3535; background:#f4f4f4}
+
+.category1 li.cur:before{ position:absolute; right:0; top:50%; margin-top:-5px; content:''; display:block;display: inline-block;border-width: 6px;border-color: transparent #fff transparent transparent;border-style: dashed solid dashed dashed;}
+
+
+
+.category2{ height:100%; float:left; width:75%; background-color:#f4f4f4; }
+
+.category2 dl{ width:95%; margin:auto;overflow:hidden; padding-top:10px; padding-bottom:10px;}
+
+.category2 dl dt{width:100%; overflow:hidden; margin-bottom:10px;}
+
+.category2 dl dt a{ font-size:16px; color:#666; line-height:20px;}
+
+.category2 dl dd{ width:50%; float:left;  margin-bottom:10px; overflow:hidden;}
+
+.category2 dl a{ display:block; width:85%; margin:auto; height:35px;line-height:35px; font-size:14px; color:#666; margin-right:10px;border:1px solid #CCC; background:#FFF; text-align:center}
+
+
+
+/*店铺列表页category.dwt*/
+
+.product_list{ width:100%; overflow:hidden; padding-bottom:10px; padding-top:5px;}
+
+.product_list ul{ width:100%; overflow:hidden}
+
+.product_list ul li{ width:50%; overflow:hidden;float:left; margin-bottom:10px;}
+
+.product_list ul li a{ display:block; width:90%; margin:auto; overflow:hidden;background:#FFF; padding:5px; }
+
+.product_list ul li a img{ display:block; width:100% !important; height:auto !important}
+
+.product_list ul li p{ width:100%; margin:auto; height:40px; overflow:hidden; font-size:14px; line-height:20px;color:#333; margin-top:5px;}
+
+.product_list ul li span{ display:block; width:100%; height:30px; font-size:16px; line-height:30px; color:#e41735}
+
+.cp_prom{ width:100%; height:100px; font-size:16px; line-height:100px; text-align:center; color:#666}
+
+.c_pagination{ width:100%; height:50px; margin-top:10px; text-align:center}
+
+.c_pagination a{ display:inline-block; width:80px; height:35px; border:1px solid #ccc; font-size:14px; line-height:35px; color:#666; text-align:center;border-radius:5px; background:#FFF }
+
+
+
+/*返回顶部*/
+
+.gotop{ display:block; width:40px; height:40px; position:fixed; bottom:70px; right:8px;background-color:rgba(243,241,241,0.5); border:1px solid #CCC; -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; }
+
+.gotop img{ display:block; width:40px; height:40px;}
+

@@ -1,0 +1,125 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>出错提示信息</title>
+	<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font: 12px/1.5 tahoma, arial, "Hiragino Sans GB", "Microsoft Yahei", 宋体;
+	color: #000;
+	height: 100%;
+	background: #EAEAEA;
+}
+
+.clear:after {
+	content: "\20";
+	display: block;
+	height: 0;
+	clear: both;
+} /*清除浮动*/
+.clear {
+	zoom: 1;
+	overflow: hidden;
+}
+
+a, a:visited {
+	color: #2F88CC;
+	text-decoration: none;
+	outline: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.fl {
+	float: left;
+}
+
+.main {
+	margin: 50px auto;
+	width: 990px;
+	box-shadow: 0 3px 5px #B8B8B8;
+}
+
+.ui-box-fail {
+	background: #FDEEE9;
+	border: 20px solid #FFFFFF;
+	padding-bottom: 50px;
+}
+
+.main .ui-tiptext-l {
+	padding-left: 120px;
+}
+
+.ui-tiptext-l {
+	color: #B3B3B3;
+	padding: 50px 0 0 205px;
+}
+
+.ui-tiptext-error-l {
+	width: 64px;
+	height: 64px;
+	margin: 10px 20px 0 0;
+	background: url(/images/icon_fail.gif) no-repeat 0 0;
+}
+
+.ui-tiptext-l-title {
+	color: #666666;
+	font-size: 18px;
+	line-height: 32px
+}
+
+.ui-tiptext-l-explain {
+	color: #B3B3B3;
+	display: block;
+	font-size: 12px;
+	line-height: 24px;
+}
+
+.ui-tiptext-l-link, .ui-tiptext-l-detail {
+	color: #666666;
+	font-size: 14px;
+	line-height: 32px;
+}
+
+.wycopyright {
+	color: #808080;
+}
+
+.sitelink {
+	padding: 55px 0;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<div class="main">
+		<div class="ui-box-fail">
+			<div class="ui-tiptext-l clear">
+				<div class="ui-tiptext-error-l fl"></div>
+				<div>
+					<div class="ui-tiptext-l-title">真遗憾，发生错误了。</div>
+					<div class="ui-tiptext-l-explain">
+						<p>${message}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="wycopyright sitelink  fn-clear">
+			<!-- 
+	  Copyright©2013&nbsp;&nbsp;网银在线&nbsp;授权所有&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;支付业务许可证编号Z2002211000010&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;京ICP证 040599号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;京ICP备11017768号
+		 -->
+		</div>
+	</div>
+</body>
+</html>

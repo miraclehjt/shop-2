@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="themes/68ecshopcom_360buy/css/activity.css">
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-1.9.1.min.js" ></script>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-lazyload.js" ></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+{insert_scripts files='common.js'}
+</head>
+<body>
+<div id="site-nav"> 
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem --> 
+<div class="blank"></div>
+<!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+  <div class="w">
+    <div class="tgoulist">
+      <div class="left tupian">
+        <ul class="hdleft">
+          <li class="hdl"><span><a href="activity.php#0" title="享受赠品">享受赠品</a></span></li>
+          <li class="hdl"><span><a href="activity.php#1" title="现金减免">现金减免</a></span></li>
+          <li class="hdl"><span><a href="activity.php#2" title="价格折扣">满减活动</a></span></li>
+          <li class="hdl gotop"><span class="top"><a href="javascript:;">点击回到顶部</a></span></li>
+        </ul>
+      </div>
+      <div id="slider" class="right" style="width:1020px;">
+        <!-- {foreach from=$list item=val name=val} -->
+        <div class="list_biaoti" id="tg{$smarty.foreach.name.iteration}">
+          <h3><i id="{$val[act_type_num]}"></i>活动{$smarty.foreach.val.iteration}&nbsp;•&nbsp;&nbsp;{$val.act_name}
+          	  <!-- {if $val.shop_logo} -->
+		   <a href="{if $val.supplier_id == 0}#{else}supplier.php?suppId={$val.supplier_id}{/if}" target="_blank"><img src="{$val.shop_logo}"></a>
+		  <!-- {else} -->
+		   <a href="" target="_blank">{$val.shop_name}</a>
+		  {/if}
+          </h3>
+        </div>
+        <div class="list_tuangou">
+          <div class="list_tt">
+            <div class="left"><img data-original="{$val.logo|default:images/ceshi.jpg}" src="themes/68ecshopcom_360buy/images/loading.gif" height="260" width="580"></div>
+            <div class="right">
+              <h3><i></i>{$lang.label_end_time}<span>{$val.end_time}</span></h3>
+              <p>{$lang.label_max_amount} 
+                <!-- {if $val.max_amount > 0} --> 
+                {$val.max_amount} 
+                <!-- {else} --> 
+                无 
+                <!-- {/if} --> 
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                {$lang.label_min_amount}
+                {$val.min_amount} </p>
+              <p> {$lang.label_user_rank} 
+                <!-- {foreach from=$val.user_rank item=user} --> 
+                {$user}&nbsp;&nbsp; 
+                <!-- {/foreach} --> 
+              </p>
+              <p> {$lang.label_act_range}{$val.act_range}<!-- {if $val.act_range ne $lang.far_all} --> 
+                : 
+                <!-- {foreach from=$val.act_range_ext item=ext} --> 
+                <a href="{$val.program}{$ext.id}" taget="_blank"><span class="f_user_info" style="color:#E31939;"><u>{$ext.name}</u></span></a> 
+                <!-- {/foreach} --> 
+                <!-- {/if} --></p>
+              <p>{$lang.label_act_type}{$val.act_type}<!-- {if $val.act_type ne $lang.fat_goods} -->{$val.act_type_ext}<!-- {/if} --> 
+              </p>
+              <div> 
+                
+                <!-- <span><a href="goods.php?id={$goods.id}"><button>去看看</button></a></span>--> </div>
+            </div>
+            <div class="clear"></div>
+          </div>
+          
+          <!-- {if $val.gift} -->
+          <div class="gift"> 
+            <!-- {foreach from=$val.gift item=goods name=name1} -->
+            <table border="0" {if $smarty.foreach.name1.first}style="margin-left:30px;"{/if}>
+              <tr>
+                <td align="center"><a href="goods.php?id={$goods.id}" class="thumb"><img data-original="{$goods.thumb}" src="themes/68ecshopcom_360buy/images/loading.gif" alt="{$goods.name}" width="160" height="160" /></a></td>
+              </tr>
+              <tr>
+                <td align="center"><a href="goods.php?id={$goods.id}" class="f6" title="{$goods.name}">{$goods.name|truncate:16}</a></td>
+              </tr>
+              <tr>
+                <td align="center" style="color:#E31939"><!-- {if $goods.price > 0} --> 
+                  {$goods.price}{$lang.unit_yuan} 
+                  <!-- {else} --> 
+                  {$lang.for_free} 
+                  <!-- {/if} --></td>
+              </tr>
+            </table>
+            <!-- {/foreach} --> 
+          </div>
+          <!--{/if}--> 
+          
+        </div>
+        
+        <!--{/foreach}--> 
+      </div>
+    </div>
+  </div>
+  <div class="blank"></div>
+  <!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem --> 
+  <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+</div>
+<script type="text/javascript">
+$("img").lazyload({
+    effect       : "fadeIn",
+	 skip_invisible : true,
+	 failure_limit : 20
+});
+
+$(".top").click(function(){
+$('body,html').animate({scrollTop:0},800);
+return false;
+});
+</script>
+</body>
+</html>

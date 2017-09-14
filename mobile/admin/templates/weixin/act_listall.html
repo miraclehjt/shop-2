@@ -1,0 +1,27 @@
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<div class="list-div" id="listDiv">
+<table width="100%" cellspacing="1" cellpadding="2">
+  <tr>
+    <th>奖项名称</th>
+	<th>奖品名称</th>
+    <th>奖项状态</th>
+    <th>中奖概率</th>
+    <th>奖项个数</th>
+	<th>操作</th>
+  </tr>
+  {foreach item=item from=$actList}
+   <tr align="center">
+	<td>{$item.title}</td>
+	<td>{$item.awardname}</td>
+	<td>{if $item.isopen == 1}启用{else}禁用{/if}</td>
+	<td>{$item.randnum}%</td>
+	<td>{$item.num}</td>
+	<td><a href="weixin_egg.php?act=add&lid={$item.lid}">{$lang.edit}</a></td>
+  </tr>
+  {foreachelse}
+  <tr><td colspan="7"><a href="weixin_egg.php?act=add&aid={$smarty.get.aid}">添加奖项</a></td></tr>
+  {/foreach}
+</table>
+</div>
+{include file="pagefooter.htm"}

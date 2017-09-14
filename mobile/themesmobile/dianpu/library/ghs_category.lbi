@@ -1,0 +1,42 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="small-12">
+      <div class="row collapse">
+        <div class="small-12"> 
+          <!--店铺名-->
+          <div class="name">{$shopname}</div>
+          <!--店铺评分-->
+          <div class="score"><a href="javascript:;"> <img src="{$shoplogo}" alt="{$shopname}"> </a></div>
+          <!--评分详细信息-->
+          <div class="score-list">
+            <ul class="small-block-grid-3">
+              <li>
+                <div class="key">商店地区</div>
+                <div class="value"><span>{$region}</span></div>
+              </li>
+              <li>
+                <div class="key">商品数量</div>
+                <div class="value"><span>{$goodsnum}</span></div>
+              </li>
+              <li>
+                <div class="key">店铺等级</div>
+                <div class="value"><span>{$userrank}</span></div>
+              </li>
+            </ul>
+            <div class="divider"></div>
+            <div class="divider"></div>
+          </div>
+        </div>
+      </div>
+      <!--分类详情-->
+      <!--{foreach from=$categories item=cat}-->
+      <div class="category-list">
+        <div class="header"><span>{$cat.name|escape:html}</span> <i class="icon-open"></i> </div>
+        <ul class="list">
+        <!--{foreach from=$cat.cat_id item=child}-->
+          <li> <a href="{$child.url}">{$child.name|escape:html}</a> </li>
+        <!--{/foreach}-->
+        </ul>
+      </div>
+      <!--{/foreach}-->
+      
+    </div>

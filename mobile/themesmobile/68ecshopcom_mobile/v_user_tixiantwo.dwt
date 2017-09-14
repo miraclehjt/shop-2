@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<title>店铺</title>
+<link href="themesmobile/68ecshopcom_mobile/css/v_user.css" type="text/css" rel="stylesheet">
+<style>
+.t_main{ width:90%; background:#FFF; overflow:hidden; margin:auto; margin-top:20px;}
+.top{ width:100%; height:25px; padding-top:5px; padding-bottom:5px; border-bottom:1px solid #CCC}
+.top input{ display:block; width:24px; height:24px; float:left; border:1px solid #CCC; margin-left:10px;}
+.top ul{ float:right}
+.top ul li{ float:left; margin-right:10px; line-height:25px;}
+.top ul li a{display:block; float:left;font-size:14px; line-height:25px; color:#666; padding:0px;  margin:0px;}
+.top ul li img{ display:block; float:left; width:20px; height:20px; margin:auto;}
+.t_main dl{ width:90%; overflow:hidden; margin-top:10px; margin:auto}
+.t_main dl dd span{ display:inline-block; width:40%; font-size:14px; line-height:180%; color:#666}
+.t_main dl dd strong{ display:inline-block; width:60%; font-size:14px; line-height:180%; color:#999; font-weight:normal}
+
+.cart-checkbox.checked {background: url(themesmobile/68ecshopcom_mobile/images/v-shop/dui.png) no-repeat 0 0;background-size:100% 100%;}
+.cart-checkbox { display: block;float:left; width:25px; height:25px; margin: 0 auto; background:url(themesmobile/68ecshopcom_mobile/images/v-shop/kong.png); background-size:100% 100%; }
+</style>
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.js"></script>
+</head>
+<body style=" background:#F5F5F5">
+<!--header-->
+<div class="Earnings">
+<h2>账户余额（元）</h2>
+<dl>
+<dt>
+<strong>{$user_money}</strong>
+</dt>
+<dd>
+<a href="v_user_tixianmore.php">查看明细</a>
+</dd>
+</dl>
+</div>
+<form action="v_user_tixian_more.php" method="post" onsubmit="return sub_tixian(this)">
+<div style=" width:90%; margin:auto; margin-top:10px;">
+<span style="display:inline-block; font-size:14px; height:25px;">输入提现金额：</span><input type="text" name="deposit_money" value="{$user_money}" style=" display:inline-block; height:25px; border:1px solid #CCC; text-indent:10px"/>
+</div>
+<!--main-->
+
+{foreach from=$deposit_list item=list name=deposit_list}
+<div class="t_main">
+<div class="top">
+<span  class="cart-checkbox {if $smarty.foreach.deposit_list.first}checked{/if}" ><input type="radio" style="display:none" name="deposit_id" value="{$list.id}" {if $smarty.foreach.deposit_list.first}checked="checked"{/if} /></span>
+
+<ul>
+<li><img src="themesmobile/68ecshopcom_mobile/images/v-shop/xiugai.png" /><a href="v_user_tixian_more.php?act=edit&id={$list.id}">修改</a></li>
+<li><img src="themesmobile/68ecshopcom_mobile/images/v-shop/shanc.png" /><a href="v_user_tixian_more.php?act=del&id={$list.id}">删除</a></li>
+</ul>
+</div>
+	
+<dl>
+<dd><span>真实姓名：</span><strong>{$list.real_name}</strong></dd>
+<dd><span>开户行：</span><strong>{$list.account_name}</strong></dd>
+<dd><span>银行账号：</span><strong>{$list.bank_account}</strong></dd>
+<dd><span>手机号：</span><strong>{$list.phone}</strong></dd>
+</dl>
+</div>
+{/foreach}
+
+<script type="text/javascript" charset="utf-8">
+	 
+    $(".cart-checkbox").click(function(){
+		$(".cart-checkbox").removeClass('checked');
+		$(this).find('input').attr('checked',true);
+		$(this).addClass('checked');
+	})
+	
+	function sub_tixian(frm)
+	{
+		var deposit_money = frm.elements['deposit_money'].value;
+		if(deposit_money.length == 0)
+		{
+			alert('提现金额不能为空！');
+			return false; 
+		}
+		return true;
+	}
+	</script>
+<div class="Submit1" style=" margin-top:20px;">
+<ul>
+<li>
+<a href="v_user_tixian_more.php" style=" color:#FFF">使用新的提现信息</a>
+</li>
+<li>
+<input type="submit" value="提交提现信息" style="display:block; width:90%; margin:auto; height:35px; margin-top:7px; font-size:12px; text-align:center; color:#fff; background:#DD1019; line-height:35px;border:0px solid #CCC" />
+<input type="hidden" name="act" value="act_deposit" />
+</li>
+</ul>
+</div>
+</form>
+<!-----底部悬浮菜单---->
+<!-- #BeginLibraryItem "/library/footer_nav1.lbi" --><!-- #EndLibraryItem --> 
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+<style>
+.fee_table td{ border:none; background:#FDFCFC; height:30px; padding:0;}
+</style>
+<div style="margin-left:10px;">
+<font color=#ff3300>快递运输：</font>  其中{if $total.supplier_goodsnumber.1}<font style="color:#ff3300;font-weight:bold;">{$total.supplier_goodsnumber.1}</font> 件商品由第三方为您配送 {/if} {if $total.supplier_goodsnumber.0}<font style="color:#ff3300;font-weight:bold;">{$total.supplier_goodsnumber.0}</font> 件商品由本网站为您配送{/if}
+     <table class="fee_table" cellpadding="0" cellspacing="0">
+     {foreach from=$total.supplier_shipping item=supp_ship}
+     <tr height="30">
+     <td align="left" style="border:none; background:#FDFCFC; height:30px; padding:0;">{$supp_ship.supplier_name}&nbsp;&nbsp;&nbsp;&nbsp;</td>
+     <td style="border:none; background:#FDFCFC; height:30px; padding:0;">运费：&nbsp;&nbsp;</td>
+     <td style="border:none; background:#FDFCFC; height:30px; padding:0;">{$supp_ship.formated_shipping_fee}</td>
+     </tr>
+     {/foreach}
+     </table>
+</div>

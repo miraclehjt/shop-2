@@ -1,0 +1,33 @@
+<div class="top-div"></div>
+<div></div>
+{foreach from=$goods_list item=goods}
+<div class="goodlist goods" goods_id="{$goods.goods_id}">
+	<div class="goods-img">
+	<img src="{$url}{$goods.goods_thumb}"/>
+	{if $goods.exclusive eq $goods.goods_price}
+	<div class="phone-exclusive-goodslist ub ub-ac ub-pc">手机</br>专享</div>
+	{/if}
+	</div>
+	<div class="goods-con">
+		<div class="goods-name f-color-zi">{$goods.goods_name}</div>
+		<div class="goods-other">
+			<div class="ub-f1">
+				<span class="f-color-red ulev1">{$goods.formatted_goods_price}</span>
+				<span class="ulev-1 sc-text-hui sc-text-tab">销量：{$goods.salenum}</span>
+			 </div>
+		</div>
+		<div class="ub ub-ae ub-pj m-top4 goods-number"> 
+            <div class="ub uba border-hui uc-t1 uc-b1 ub-ac f-color-6 uinput1">
+              <div class="ubr border-hui uinn1 minus disabled" id='minus_{$goods.goods_id}'>-</div>
+              <input type="text" class="text-b1 ulev-1" value="1" id='goods_number_{$goods.goods_id}'/>
+              <div class="ubl border-hui uinn1 plus" id='plus_{$goods.goods_id}'>+</div>
+            </div>
+           	 <div class="ub-pe add_to_cart">
+				<div class="into-flow ub-img"></div>
+			 </div>
+          </div>
+	</div>
+</div>
+{foreachelse}
+<div class="clear1"></div>
+{/foreach}

@@ -1,0 +1,74 @@
+
+{insert_scripts files="../js/utils.js"}
+{include file="pageheader.htm"}
+<div class="main-div">
+<form action="price_batch.php" method="post" name="theForm" onsubmit="return start()">
+  <table cellspacing="1" cellpadding="3" width="100%">
+  <tr>
+    <td colspan=2><br></td>
+  </tr>
+  <tr>
+    <td width="300px" align=right>商品类别：</td>
+	<td>
+	<select name="category"><option value="0">不限类别</option>{$cat_list}</select>&nbsp;
+	商品品牌：<select name="brand"><option value="0">不限品牌</option>{html_options options=$brand_list }</select><br>
+	</td>
+  </tr>
+  <tr>
+    <td width="300px" align=right>修改方向：</td><td><input type="radio" name="edittype" value="1" checked onclick="javascript:document.getElementsByName('number')[0].disabled=false;">增加 <input type="radio" name="edittype" value="2" onclick="javascript:document.getElementsByName('number')[0].disabled=false;">减少 <input type="radio" name="edittype" id="edittype9" value="9" onclick="javascript:document.getElementsByName('number')[0].disabled=true;">恢复原价
+    </td>
+  </tr>
+   <tr>
+    <td  width="300px" align=right valign=top>变动幅度： </td><td><input type="text" name="number" size=10>%
+	<br>取值 1-100，如输入40 表示增加或者减少原价的40%
+	<br> 如果上面选择的是“增加”，那么    新价格 =  原价格 + 原价格*40%
+	<br> 如果上面选择的是“减少”，那么    新价格 =  原价格 - 原价格*40%
+	<br> 如果上面选择的是“恢复原价”，那么    变动幅度无需填写，留空即可
+    </td>
+  </tr>
+  
+  <tr>
+    <td align="center"></td>
+	<td>
+	  <input type="hidden" name="act" value="query">
+      <input type="submit" class="button" value="开始批量修改" />
+    </td>
+  </tr>
+  </table>
+</form>
+</div>
+
+
+
+<div style="display:none;border: 1px solid rgb(204, 0, 0);margin-top:10px; padding: 4px; background-color: rgb(255, 255, 206); color: rgb(206, 0, 0);" id="errorMsg" ></div>
+
+<script type="Text/Javascript" language="JavaScript">
+<!--
+
+/**
+ * 开始处理数据
+ */
+function start()
+{
+    var number= document.forms['theForm'].elements['number'].value;
+	var edittype9 = document.forms['theForm'].elements['edittype9'].checked;
+if(!edittype9)
+{
+	if(!number)
+	{
+		alert('请输入折扣范围');
+		return false;
+	}
+	else if( number >100 || number <1)
+	{
+		alert('折扣范围不合法');
+		return false;
+	}
+}
+    return true;
+}
+
+
+//-->
+</script>
+{include file="pagefooter.htm"}

@@ -1,0 +1,72 @@
+/*
+Template Name: 网店模板
+Template URI: http://bbs.hongyuvip.com/
+Description: 商家入驻网店模板.
+Version: 2.7.2
+Author: supplier
+Author URI: http://bbs.hongyuvip.com/
+Logo filename: logo.gif
+Template Type: type_0
+Sign: supplier
+*/
+
+
+/* ====================
+     公共样式
+==================== */
+body{background:#fff; font-size:12px; font-family:"宋体",Verdana, Arial; line-height:150%; margin:5px 0 0 0; padding:0; color:#404040;}
+div{margin:0 auto; padding:0;}
+h1,h2,h3,h4,h5,h6,ul,li,dl,dt,dd,form,img,p{
+margin:0; padding:0; border:none; list-style-type:none;
+}
+.f_l{float:left;}
+.f_r{float:right;}
+.tl{ text-align:left;}
+.tc{ text-align:center;}
+.tr{ text-align:right;}
+.dis{display:block;}
+.inline{display:inline;}
+.none{display:none;}
+.dashed{background:url(images/lineBg.gif) repeat-x left top; color:#3f3f3f;  padding:2px 0 3px 12px;}
+
+.clearfix:after{
+content:"."; display:block; height:0; clear:both;
+visibility:hidden;
+}
+*html .clearfix{
+ height:1%;
+}
+*+html .clearfix{
+ height:1%;
+}
+/*英文强制换行*/
+.word{word-break:break-all;}
+
+  /*边框*/
+  .B_blue{border:1px solid #c5e4ff;}
+  .B_input{border:1px solid #0f97ed;}
+  .inputBg{border:1px solid #b3b3b3; background:url(images/inputbg.gif) repeat-x left top; height:18px;}
+  /*字体颜色*/
+  .f1{color:#ff6666;}
+  .f2{color:#006bd0; font-weight:bold; margin-right:15px;}
+  .f3{color:#9e9e9e;}
+  .f4{color:#fe596a;}
+  .f4_b{color:#fe596a; font-weight:bold;}
+  .f5{ font-size:14px; font-weight:bold;}
+  .f6{color:#006bd0;}
+  /*页面留白*/
+  .blank{height:8px; line-height:8px; clear:both; visibility:hidden;}
+  .blank5{height:5px; line-height:5px;/* _margin:-3px 0;*/ clear:both; visibility:hidden;}
+  /*布局*/
+  .AreaL{width:200px; float:left; margin-right:10px;}
+  .AreaR{width:750px; float:left;}
+
+/* ====================
+     导航部分
+==================== */
+.block{ width:1210px; margin:0 auto;} 
+#ur_here{ border-bottom:1px solid #ddd; height:30px; line-height:30px;}
+.s_box{ border:1px solid #ddd;}
+.s_box1{ margin:15px; line-height:30px; height:auto;}
+.s_box .s_box1 h3{ color:#F00; text-align:center; border-bottom:1px solid #ddd;}
+.s_box .s_box1 .boxCenterList{ margin-top:10px; line-height:25px;}
